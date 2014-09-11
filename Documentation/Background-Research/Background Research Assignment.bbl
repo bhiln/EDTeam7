@@ -6,6 +6,24 @@ Rodney~A. Brooks.
 \newblock Technical report, Massachusetts Institute of Technology, Cambridge,
   MA, USA, 1985.
 
+\bibitem{Discant}
+Anca Discant, Alexandrina Rogozan, Corneliu Rusu, and Abdelaziz Bensrhair.
+\newblock Sensors for obstacle detection - a survey.
+\newblock {\em Electronics Technology}, pages 100--105, 2007.
+
+\bibitem{Calin}
+Calin Dragos.
+\newblock Types of sensors for target detection and tracking.
+\newblock {\em Intro Robotics}, 2013.
+
+\bibitem{Google:2014}
+Google.
+\newblock Protocol buffers, 2014.
+
+\bibitem{NSI:2014}
+Inc. Network~Sorcery.
+\newblock Tcp, transmission control protocol, 2012.
+
 \bibitem{Walter:1950}
 W.~Grey Walter.
 \newblock Imitation of life.
