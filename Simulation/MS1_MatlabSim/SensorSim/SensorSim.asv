@@ -16,8 +16,7 @@
 obj = Sensor(5.0);
 editObj = editSensor();
 
-disp(editObj);
-%set(editObj.edit2, 'String', 2.0);
+set(editObj.slider1.Value = 2.0;
 
 % Create and start the sensorSimTimer object
 sensorSimTimer = timer;
