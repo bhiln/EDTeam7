@@ -29,4 +29,9 @@ W.~Grey Walter.
 \newblock Imitation of life.
 \newblock {\em Scientific American}, 1950.
 
+\bibitem{Hogle}
+R. A. Hogle, P. P. Bonissone.
+\newblock A fuzzy algorithm for path selection in autonomous vehicle navigation.
+\newblock General Electric, Schenectady, New York, 1984.
+
 \end{thebibliography}
