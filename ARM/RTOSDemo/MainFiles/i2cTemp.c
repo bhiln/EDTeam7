@@ -1,34 +1,36 @@
+/*------------------------------------------------------------------------------
+ * File:		i2cTemp.c
+ * Authors: 	FreeRTOS, Igor Janjic
+ * Description:	I2CTempTask
+ *----------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------
+ * Includes
+ */
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
 
-/* Scheduler include files. */
+// Schedular includes.
 #include "FreeRTOS.h"
 #include "task.h"
 #include "projdefs.h"
 #include "semphr.h"
 
-/* include files. */
 #include "vtUtilities.h"
 #include "vtI2C.h"
 #include "LCDtask.h"
 #include "i2cTemp.h"
 #include "I2CTaskMsgTypes.h"
 
-/* *********************************************** */
-// definitions and data structures that are private to this file
-// Length of the queue to this task
-#define vtTempQLen 10 
-// actual data structure that is sent in a message
-typedef struct __vtTempMsg {
-	uint8_t msgType;
-	uint8_t	length;	 // Length of the message to be printed
-	uint8_t buf[vtTempMaxLen+1]; // On the way in, message to be sent, on the way out, message received (if any)
-} vtTempMsg;
+/*------------------------------------------------------------------------------
+ * Configuration
+ */
+// Length of the queue to this task.
+#define vtTempQLen 10
 
-// I have set this to a large stack size because of (a) using printf() and (b) the depth of function calls
-//   for some of the i2c operations	-- almost certainly too large, see LCDTask.c for details on how to check the size
+// Stack sizes.
 #define baseStack 3
 #if PRINTF_VERSION == 1
 #define i2cSTACK_SIZE		((baseStack+5)*configMINIMAL_STACK_SIZE)
@@ -36,14 +38,19 @@ typedef struct __vtTempMsg {
 #define i2cSTACK_SIZE		(baseStack*configMINIMAL_STACK_SIZE)
 #endif
 
-// end of defs
-/* *********************************************** */
+/*------------------------------------------------------------------------------
+ * I2CTemp Task
+ */ 
+// Actual data structure that is sent in a message.
+typedef struct __vtTempMsg {
+	uint8_t msgType; 				// Type of message
+	uint8_t	length;	 				// Length of the message
+	uint8_t buf[vtTempMaxLen+1]; 	// On the way in, message to be sent, on the way out, message received (if any)
+} vtTempMsg;
 
-/* The i2cTemp task. */
+// The i2cTemp task.
 static portTASK_FUNCTION_PROTO( vi2cTempUpdateTask, pvParameters );
 
-/*-----------------------------------------------------------*/
-// Public API
 void vStarti2cTempTask(vtTempStruct *params,unsigned portBASE_TYPE uxPriority, vtI2CStruct *i2c,vtLCDStruct *lcd)
 {
 	// Create the queue that will be used to talk to this task
@@ -92,8 +99,6 @@ portBASE_TYPE SendTempValueMsg(vtTempStruct *tempData,uint8_t msgType,uint8_t va
 	return(xQueueSend(tempData->inQ,(void *) (&tempBuffer),ticksToBlock));
 }
 
-// End of Public API
-/*-----------------------------------------------------------*/
 int getMsgType(vtTempMsg *Buffer)
 {
 	return(Buffer->msgType);
@@ -105,12 +110,12 @@ uint8_t getValue(vtTempMsg *Buffer)
 }
 
 // I2C commands for the temperature sensor
-	const uint8_t i2cCmdInit[]= {0xAC,0x00};
-	const uint8_t i2cCmdStartConvert[]= {0xEE};
-	const uint8_t i2cCmdStopConvert[]= {0x22};
-	const uint8_t i2cCmdReadVals[]= {0xAA};
-	const uint8_t i2cCmdReadCnt[]= {0xA8};
-	const uint8_t i2cCmdReadSlope[]= {0xA9};
+const uint8_t i2cCmdInit[]= {0xAC,0x00};
+const uint8_t i2cCmdStartConvert[]= {0xEE};
+const uint8_t i2cCmdStopConvert[]= {0x22};
+const uint8_t i2cCmdReadVals[]= {0xAA};
+const uint8_t i2cCmdReadCnt[]= {0xA8};
+const uint8_t i2cCmdReadSlope[]= {0xA9};
 // end of I2C command definitions
 
 // Definitions of the states for the FSM below
@@ -119,6 +124,7 @@ const uint8_t fsmStateInit2Sent = 1;
 const uint8_t fsmStateTempRead1 = 2;
 const uint8_t fsmStateTempRead2 = 3;
 const uint8_t fsmStateTempRead3 = 4;
+
 // This is the actual task that is run
 static portTASK_FUNCTION( vi2cTempUpdateTask, pvParameters )
 {
@@ -253,4 +259,3 @@ static portTASK_FUNCTION( vi2cTempUpdateTask, pvParameters )
 
 	}
 }
-

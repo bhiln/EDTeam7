@@ -7,7 +7,7 @@
 
   <Targets>
     <Target>
-      <TargetName>WebServerELF</TargetName>
+      <TargetName>AutoRover</TargetName>
       <ToolsetNumber>0x3</ToolsetNumber>
       <ToolsetName>ARM-GNU</ToolsetName>
       <TargetOption>
@@ -44,7 +44,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\ObjectFiles\</OutputDirectory>
-          <OutputName>RTOSDemo</OutputName>
+          <OutputName>AutoRover</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
@@ -439,111 +439,6 @@
               <FileName>usbstdreq.c</FileName>
               <FileType>1</FileType>
               <FilePath>../FreeRTOS/Demo/CORTEX_LPC1768_GCC_Rowley/LPCUSB/usbstdreq.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>Common Demo Tasks</GroupName>
-          <Files>
-            <File>
-              <FileName>BlockQ.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../FreeRTOS/Demo/Common/Minimal/BlockQ.c</FilePath>
-            </File>
-            <File>
-              <FileName>blocktim.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../FreeRTOS/Demo/Common/Minimal/blocktim.c</FilePath>
-            </File>
-            <File>
-              <FileName>flash.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../FreeRTOS/Demo/Common/Minimal/flash.c</FilePath>
-            </File>
-            <File>
-              <FileName>GenQTest.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../FreeRTOS/Demo/Common/Minimal/GenQTest.c</FilePath>
-            </File>
-            <File>
-              <FileName>integer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../FreeRTOS/Demo/Common/Minimal/integer.c</FilePath>
-            </File>
-            <File>
-              <FileName>PollQ.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../FreeRTOS/Demo/Common/Minimal/PollQ.c</FilePath>
-            </File>
-            <File>
-              <FileName>QPeek.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../FreeRTOS/Demo/Common/Minimal/QPeek.c</FilePath>
-            </File>
-            <File>
-              <FileName>recmutex.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../FreeRTOS/Demo/Common/Minimal/recmutex.c</FilePath>
-            </File>
-            <File>
-              <FileName>semtest.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../FreeRTOS/Demo/Common/Minimal/semtest.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>webserver</GroupName>
-          <Files>
-            <File>
-              <FileName>emac.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../FreeRTOS/Demo/CORTEX_LPC1768_GCC_Rowley/webserver/emac.c</FilePath>
-            </File>
-            <File>
-              <FileName>httpd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../FreeRTOS/Demo/CORTEX_LPC1768_GCC_Rowley/webserver/httpd.c</FilePath>
-            </File>
-            <File>
-              <FileName>httpd-cgi.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../FreeRTOS/Demo/CORTEX_LPC1768_GCC_Rowley/webserver/httpd-cgi.c</FilePath>
-            </File>
-            <File>
-              <FileName>httpd-fs.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../FreeRTOS/Demo/CORTEX_LPC1768_GCC_Rowley/webserver/httpd-fs.c</FilePath>
-            </File>
-            <File>
-              <FileName>http-strings.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../FreeRTOS/Demo/CORTEX_LPC1768_GCC_Rowley/webserver/http-strings.c</FilePath>
-            </File>
-            <File>
-              <FileName>uIP_Task.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../FreeRTOS/Demo/CORTEX_LPC1768_GCC_Rowley/webserver/uIP_Task.c</FilePath>
-            </File>
-            <File>
-              <FileName>psock.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../FreeRTOS/Demo/Common/ethernet/uIP/uip-1.0/uip/psock.c</FilePath>
-            </File>
-            <File>
-              <FileName>timer.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../FreeRTOS/Demo/Common/ethernet/uIP/uip-1.0/uip/timer.c</FilePath>
-            </File>
-            <File>
-              <FileName>uip_arp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../FreeRTOS/Demo/Common/ethernet/uIP/uip-1.0/uip/uip_arp.c</FilePath>
-            </File>
-            <File>
-              <FileName>uip.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../FreeRTOS/Demo/Common/ethernet/uIP/uip-1.0/uip/uip.c</FilePath>
             </File>
           </Files>
         </Group>
