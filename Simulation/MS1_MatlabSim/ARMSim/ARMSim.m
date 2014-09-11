@@ -34,7 +34,7 @@ fopen(ioARMSimWiFly);
 % Note that we pass the WiFly serial object to the timer so
 % that we can write to the WiFly from the timer callback
 ARMSimTimer = timer;
-ARMSimTimer.Period         = 2.0;
+ARMSimTimer.Period         = 0.5;
 ARMSimTimer.ExecutionMode  = 'fixedRate';
 ARMSimTimer.TimerFcn       = {@callbackARMSimTimer,ioARMSimWiFly};
 ARMSimTimer.BusyMode       = 'drop';
