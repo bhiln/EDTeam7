@@ -40,6 +40,15 @@ This paradigm was designed by Brooks, R. At the MIT Artificial Intelligence Labo
 
 \subsection*{Comparison of Algorithms}
 
+\subsection*{Communication Protocols}
+In general terms, a message intended for communication between two devices (the protocol) is comprised of two main parts: the header and the payload. The header consists of information about the message, including source or destination id, the nature of the message, and the size of the payload. The payload is the data which is being sent from one device to another. This payload can be formatted in any way, as long as it is consistent in both the source and destination.
+
+Google Protocol Buffers \cite{Google:2014} are used in the automotive industry to format and serialize both small and large packets of information, preparing the payload for transmission to any destination. Once recieved at the destination, the payload can be deserialized and treated as an object, pulling specific pieces of data out of the payload as necessary. A single .proto file is written to define any number of different payloads to send, which is compiled by the protocol buffer compiler to produce libraries to be used for serialization. This provides an easy way to create payloads with lots of information if necessary, which can be created and understood seemlessly by both the source device and the destination device.
+
+In addition, a modified transmission protocol \cite{NSI:2014} should be used to define the order and confirmation of transmission. If the link between two devices is thought of as an open stream of communication, it is wise to set up a series of handshakes and data packets to ensure correct communication. For example, one may want to send the header first to alert the destination device of an incomming payload, what information it will contain, and how long the stream of data is. Once the destination device has processed this header and is ready to recieve information from the source, such as a sensor data point, it will send a handshake, or similar confirmation. Since the destination device already knows the length of the incomming payload, there is no need to analyze it as it is comming in to catch a delimiter and end reception of a certain transmission.
+
+On the other hand, delimeters are usefull when sending data that will always be in the same format every time, but of varying length. This removes the need for certain information to be sent ahead of time, such as payload type and length, and any other overhead the payload may contain. This could reduce the size of the transmission, making for a faster exchange.
+
 \bibliographystyle{plain}
 \bibliography{Biblio}
 
