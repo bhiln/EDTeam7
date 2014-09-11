@@ -34,4 +34,9 @@ R. A. Hogle, P. P. Bonissone.
 \newblock A fuzzy algorithm for path selection in autonomous vehicle navigation.
 \newblock General Electric, Schenectady, New York, 1984.
 
+\bibitem{Buniyamin}
+N. Buniyamin, W. A. J. Wan Ngah, N. Sariff, Z. Mohamad.
+\newblock A Simple Local Path Planning Algorithm for Autonomous Mobile Robots.
+\newblock {\em International Journal of Systems Applications}, 2011
+
 \end{thebibliography}
