@@ -11,6 +11,8 @@
 %    3. Open the serial connection to the WiFly 
 %
 
+editSensorData();
+
 % Create a Sensor object, paramter is the initial distance to 
 % the wall
 obj = Sensor(5.0);

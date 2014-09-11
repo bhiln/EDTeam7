@@ -1,0 +1,47 @@
+%-------------------------------------------------------------------------------
+% File:		Homework.tex
+% Author:	Igor Janjic, Brian Hilnbrand, Danny Duangphachanh, Leah
+%		Krynitsky  
+% Description:	[ECE 4534] Embedded Systems Design
+%		Background Research Assignment
+%%------------------------------------------------------------------------------ 
+
+%\documentclass{Book}
+
+\input{./Preamble.tex}
+\input{./Definitions.tex}
+\input{./Programming.tex}
+
+\begin{document}
+
+\input{./Title.tex}
+
+\subsection*{Background}
+Of the first autonomous robots, none are more famous than Grey Walter's tortoises Elmer and Elsie. These two robots were very simple analog circuits equipped with three wheels for locomotion and light sensors which they used to navigate their environment and move toward illuminated recharging stations when low on power \cite{Walter:1950}. Since then, the design of autonomous robots has shifted toward the processing of sensory data using algorithms based in terms of digital computation. The remaining paper focuses on this last view of autonomous robotics.
+
+\subsection*{Robot Framework Considerations}
+The three primitives of robotics: plan, sense, act, as well as their relationships imply a robotic framework. Since the design specifications and hardware limitations are given, the robotics framework must then be determined by judging each framework's strengths and weaknesses as well as the compatibility between the framework and the choice of available sensors (described later). Thus, we are purposefully limiting our discussion to only those frameworks that coincide with usability of the various sensors available.
+
+The framework must be able to handle quickly processing large amounts of complex information.
+
+Additionally, the framework must be able to handle the prioritization of tasks. Since the robot has multiple goals that it is trying to achieve, often at the same time and often contradictory to each other, the control system framework must be able to rank goals by priority and focus computational power to solving high-priority goals first while at the same time reserving enough computational power to service low-priority goals.
+
+The more sensors the robot has, the more information it is able to gather and then process to help it achieve its goals. The framework must be able to handle error in the sensors, overlapping sensors, inconsistent or failed sensors, and the addition of more sensors, 
+
+\subsection*{Layered Control Paradigm \cite{Brooks:1985}}
+This paradigm was designed by Brooks, R. At the MIT Artificial Intelligence Laboratory, which allowed for the design of various levels of intelligence in autonomous robots by building the control system in layers. Each layer is composed of simple computational modules communicating over low bandwidth channels asynchronously. The problem formulated in the language of control theory is as follows: a group of sensors receive information about the environment which the control system processes, turns into commands, and then sends to the motor controller which moves the robot accordingly.
+
+\subsubsection*{Hierarchical/Deliberative Paradigm}
+\subsubsection*{The Reactive Paradigm}
+\subsubsection*{Hybrid Deliberate/Reactive Paradigm}
+\subsubsection*{Automatic Planning}
+
+\subsection*{Choice of Sensors}
+
+\subsection*{Comparison of Algorithms}
+
+\bibliographystyle{plain}
+\bibliography{Biblio}
+
+\end{document}
+
