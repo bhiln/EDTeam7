@@ -20,6 +20,18 @@ Calin Dragos.
 Google.
 \newblock Protocol buffers, 2014.
 
+\bibitem{Hogle}
+R.~A. Hogle and P.~P. Bonissone.
+\newblock A fuzzy algorithm for path selection in autonomous vehicle
+  navigation.
+\newblock {\em The 23rd IEEE Conference on Decision and Control}, pages
+  898--900, 1984.
+
+\bibitem{Buniyamin}
+Buniyamin N., W.~A. J.~Wan Ngah, N.~Sariff, and Z.~Mohamad.
+\newblock A simple local path planning algorithm for autonomous mobile robots.
+\newblock {\em International Journal of Systems Applications}, 2011.
+
 \bibitem{NSI:2014}
 Inc. Network~Sorcery.
 \newblock Tcp, transmission control protocol, 2012.
@@ -28,15 +40,5 @@ Inc. Network~Sorcery.
 W.~Grey Walter.
 \newblock Imitation of life.
 \newblock {\em Scientific American}, 1950.
-
-\bibitem{Hogle}
-R. A. Hogle, P. P. Bonissone.
-\newblock A fuzzy algorithm for path selection in autonomous vehicle navigation.
-\newblock General Electric, Schenectady, New York, 1984.
-
-\bibitem{Buniyamin}
-N. Buniyamin, W. A. J. Wan Ngah, N. Sariff, Z. Mohamad.
-\newblock A Simple Local Path Planning Algorithm for Autonomous Mobile Robots.
-\newblock {\em International Journal of Systems Applications}, 2011
 
 \end{thebibliography}
