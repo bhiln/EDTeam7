@@ -9,7 +9,6 @@
 .extern xPortPendSVHandler
 .extern xPortSysTickHandler
 .extern vPortSVCHandler
-.extern vEMAC_ISR
 .extern vtSSPIsr
 .extern vtI2C0Isr
 .extern vtI2C1Isr
@@ -112,7 +111,6 @@ __cs3_interrupt_vector_cortex_m:
     .long   CAN_IRQHandler              /* 41: CAN                          */
     .long   DMA_IRQHandler              /* 42: General Purpose DMA          */
     .long   I2S_IRQHandler              /* 43: I2S                          */
-    .long   vEMAC_ISR					/* MTJ changed from default ENET_IRQHandler  */           /* 44: Ethernet                     */
     .long   RIT_IRQHandler              /* 45: Repetitive Interrupt Timer   */
     .long   MCPWM_IRQHandler            /* 46: Motor Control PWM            */
     .long   QEI_IRQHandler              /* 47: Quadrature Encoder Interface */
