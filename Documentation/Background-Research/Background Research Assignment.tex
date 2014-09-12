@@ -38,7 +38,12 @@ Infrared sensors, available as passive or active sensors, are very widely used a
 
 When designing a sensor system, more than one type of sensor can be used when multiple sensors are to be implemented.  As a result, many designs optimize performance by creating a system which includes both active and passive sensors, thus achieving the advantages of each and eliminating most of the disadvantages that come from using only one type of sensor.  A design which implements a mix of active and passive sensors improves both system performance and object recognition. \cite{Discant}  
 
+\subsection*{Comparison of Algorithms}
+The objective of navigating an unknown terrain can be accomplished by an assortment of navigation methods and their execution and completion times vary. These local path planning algorithms use sensors to realize the surrounding area, compute the fastest and/or shortest route, proceeds with the trajectory, and repeats the process until the autonomous robot is at its destination.
 
+Normally for local path planning, a robot begins with a destination and is guided with a straight line and follows the line until it senses an obstacle. Once an obstacle is found, the robot performs obstacle avoidance by updating the route, the new distance, and continues running. This general approach is used in bug algorithms such as Bug1, Bug2, DistBug, VisBug, and TangentBug.
+
+The variations of the mentioned bug algorithms differ in their importance over aspects to find a better route. Bug1 and Bug2 moves toward the target and circumnavigates the obstacle and continues. The DistBug algorithm also incorporates range sensors, but also makes use of odometry and destination. The VisBug is the first bug family algorithm that integrates a range sensors and calculates shortcuts relative to the destination. In addition to what the DistBug algorithm is capable of, the TangentBug uses range sensors with a 360-degree orientation resolution to completely see its surroundings.
 
 \subsection*{Communication Protocols}
 In general terms, a message intended for communication between two devices (the protocol) is comprised of two main parts: the header and the payload. The header consists of information about the message, including source or destination id, the nature of the message, and the size of the payload. The payload is the data which is being sent from one device to another. This payload can be formatted in any way, as long as it is consistent in both the source and destination.
