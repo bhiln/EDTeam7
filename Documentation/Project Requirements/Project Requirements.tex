@@ -20,13 +20,13 @@
 The purpose of the project is to design a rover that can traverse a room autonomously and be able to locate and drive over ramps.
 
 \subsection*{Functional Requirements}
-The ARM board must perform all complex tasks. 
+The ARM board must perform all complex tasks.  The rover will use an accelerometer to determine whether the rover is parsing flat ground, ascending a ramp, or descending a ramp.  This accelerometer will also determine when the rover has reached the platform at the top of the ramp, and what the height of the platform is in comparrison to the ground.  The rover will indicate whether it is driving forward unimpeded, has detected an obstacle, is maneuvering up or down a ramp, or has completed the course, and will report this status.
 
 \subsection*{Technical Requirements}
 All software must be written in \texttt{C}/\texttt{C++} and must use the example code framework. Additionaly, the only hardware used must be an ARM board and PIC 18s. The ARM board may not power any other components and may only communicate to other components through I2C, USB, or Ethernet and to other processors through I2C or Ethernet. Additionaly, the rover must be remote from the ARM board.
 
 \subsection*{Environmental Requirements}
-The rover should be able to be given a map of a large room and be able to use onboard sensors to find its location on the map and the location of ramps. The rover should then be able to 
+The rover should be able to be given a map of a large room and be able to use onboard sensors to find its location on the map and the location of ramps. The sensors will also be used to locate any obstacles throughout the course and to avoid collisions and navigate turns safely.  Any obstacles detected in the path of the rover will be reported to the motor PIC and the rover will be re-routed to an object free alternative route.
 
 \subsection*{Useability Requirements}
 
