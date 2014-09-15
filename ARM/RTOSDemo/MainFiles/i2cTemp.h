@@ -1,7 +1,9 @@
 #ifndef I2CTEMP_TASK_H
 #define I2CTEMP_TASK_H
+
 #include "vtI2C.h"
 #include "lcdTask.h"
+
 // Structure used to pass parameters to the task
 // Do not touch...
 typedef struct __TempStruct {
@@ -9,6 +11,7 @@ typedef struct __TempStruct {
 	vtLCDStruct *lcdData;
 	xQueueHandle inQ;
 } vtTempStruct;
+
 // Maximum length of a message that can be received by this task
 #define vtTempMaxLen   (sizeof(portTickType))
 

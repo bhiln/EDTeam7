@@ -53,7 +53,7 @@ static portTASK_FUNCTION_PROTO( vI2CMonitorTask, pvParameters );
 // Public API Functions
 //
 // Note: This will startup an I2C thread, once for each call to this routine
-int vtI2CInit(vtI2CStruct *devPtr,uint8_t i2cDevNum,unsigned portBASE_TYPE taskPriority,uint32_t i2cSpeed)
+int vtI2CInit(vtI2CStruct *devPtr, uint8_t i2cDevNum, unsigned portBASE_TYPE taskPriority, uint32_t i2cSpeed)
 {
 	PINSEL_CFG_Type PinCfg;
 
@@ -66,7 +66,7 @@ int vtI2CInit(vtI2CStruct *devPtr,uint8_t i2cDevNum,unsigned portBASE_TYPE taskP
 			devStaticPtr[0] = devPtr; // Setup the permanent variable for use by the interrupt handler
 			devPtr->devAddr = LPC_I2C0;
 			// Start with the interrupts disabled *and* make sure we have the priority correct
-			NVIC_SetPriority(I2C0_IRQn,vtI2CIntPriority);	
+			NVIC_SetPriority(I2C0_IRQn, vtI2CIntPriority);	
 			NVIC_DisableIRQ(I2C0_IRQn);
 			// Init I2C pin connect
 			PinCfg.OpenDrain = 0;

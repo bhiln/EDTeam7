@@ -1,22 +1,34 @@
+/*------------------------------------------------------------------------------
+ * File:		LCDtask.c
+ * Authors: 	FreeRTOS, Igor Janjic
+ * Description:	File for implementing the LCD task.
+ *----------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------
+ * Includes
+ */
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
 
-/* Scheduler include files. */
+// Scheduler include files.
 #include "FreeRTOS.h"
 #include "task.h"
 
-/* include files. */
 #include "GLCD.h"
 #include "vtUtilities.h"
 #include "LCDtask.h"
 #include "string.h"
 
-// I have set this to a larger stack size because of (a) using printf() and (b) the depth of function calls
-//   for some of the LCD operations
-// I actually monitor the stack size in the code to check to make sure I'm not too close to overflowing the stack
-//   This monitoring takes place if INPSECT_STACK is defined (search this file for INSPECT_STACK to see the code for this) 
+/*------------------------------------------------------------------------------
+ * Preprocessor Commands
+ */
+// Defines a command for monitering the stack size to make sure that the stack
+// does not overflow.
 #define INSPECT_STACK 1
+
+// Set to a larger stack size because of (a) using printf() and (b) the depth of
+// function calls for some of the LCD operations.
 #define baseStack 3
 #if PRINTF_VERSION == 1
 #define lcdSTACK_SIZE		((baseStack+5)*configMINIMAL_STACK_SIZE)
@@ -24,25 +36,23 @@
 #define lcdSTACK_SIZE		(baseStack*configMINIMAL_STACK_SIZE)
 #endif
 
-// definitions and data structures that are private to this file
-// Length of the queue to this task
-#define vtLCDQLen 10 
-// a timer message -- not to be printed
-#define LCDMsgTypeTimer 1
-// a message to be printed
-#define LCDMsgTypePrint 2
-// actual data structure that is sent in a message
+/*------------------------------------------------------------------------------
+ * Private Data Structures
+ */
+
+#define vtLCDQLen 		10 	// Length of the queue to this task 
+#define LCDMsgTypeTimer 1	// A timer message (not to be printed)
+#define LCDMsgTypePrint 2 	// A message to be printed
+
+// Actual data structure that is sent in a message.
 typedef struct __vtLCDMsg {
-	uint8_t msgType;
-	uint8_t	length;	 // Length of the message to be printed
-	uint8_t buf[vtLCDMaxLen+1]; // On the way in, message to be sent, on the way out, message received (if any)
+	uint8_t msgType; 			// Type of message
+	uint8_t	length;	 			// Length of the message to be printed
+	uint8_t buf[vtLCDMaxLen + 1]; // On the way in, message to be sent, on the way out, message received (if any)
 } vtLCDMsg;
-// end of defs
 
-/* definition for the LCD task. */
-static portTASK_FUNCTION_PROTO( vLCDUpdateTask, pvParameters );
-
-/*-----------------------------------------------------------*/
+// Definition for the LCD task.
+static portTASK_FUNCTION_PROTO(vLCDUpdateTask, pvParameters);
 
 void StartLCDTask(vtLCDStruct *ptr, unsigned portBASE_TYPE uxPriority)
 {
@@ -50,18 +60,18 @@ void StartLCDTask(vtLCDStruct *ptr, unsigned portBASE_TYPE uxPriority)
 		VT_HANDLE_FATAL_ERROR(0);
 	}
 
-	// Create the queue that will be used to talk to this task
-	if ((ptr->inQ = xQueueCreate(vtLCDQLen,sizeof(vtLCDMsg))) == NULL) {
+	// Create the queue that will be used to talk to this task.
+	if ((ptr->inQ = xQueueCreate(vtLCDQLen, sizeof(vtLCDMsg))) == NULL) {
 		VT_HANDLE_FATAL_ERROR(0);
 	}
-	/* Start the task */
+	// Start the task.
 	portBASE_TYPE retval;
 	if ((retval = xTaskCreate( vLCDUpdateTask, ( signed char * ) "LCD", lcdSTACK_SIZE, (void*)ptr, uxPriority, ( xTaskHandle * ) NULL )) != pdPASS) {
 		VT_HANDLE_FATAL_ERROR(retval);
 	}
 }
 
-portBASE_TYPE SendLCDTimerMsg(vtLCDStruct *lcdData,portTickType ticksElapsed,portTickType ticksToBlock)
+portBASE_TYPE SendLCDTimerMsg(vtLCDStruct *lcdData, portTickType ticksElapsed, portTickType ticksToBlock)
 {
 	if (lcdData == NULL) {
 		VT_HANDLE_FATAL_ERROR(0);
@@ -94,8 +104,8 @@ portBASE_TYPE SendLCDPrintMsg(vtLCDStruct *lcdData,int length,char *pString,port
 	return(xQueueSend(lcdData->inQ,(void *) (&lcdBuffer),ticksToBlock));
 }
 
-// Private routines used to unpack the message buffers
-//   I do not want to access the message buffer data structures outside of these routines
+// Private routines used to unpack the message buffers. I do not want to access
+// the message buffer data structures outside of these routines.
 portTickType unpackTimerMsg(vtLCDMsg *lcdBuffer)
 {
 	portTickType *ptr = (portTickType *) lcdBuffer->buf;
@@ -117,57 +127,177 @@ void copyMsgString(char *target,vtLCDMsg *lcdBuffer,int targetMaxLen)
 	strncpy(target,(char *)(lcdBuffer->buf),targetMaxLen);
 }
 
-// End of private routines for message buffers
+/*------------------------------------------------------------------------------
+ * LCD Task
+ */
 
-// If LCD_EXAMPLE_OP=0, then accept messages that may be timer or print requests and respond accordingly
-// If LCD_EXAMPLE_OP=1, then do a rotating ARM bitmap display
-#define LCD_EXAMPLE_OP 0
-#if LCD_EXAMPLE_OP==1
-// This include the file with the definition of the ARM bitmap
-#include "ARM_Ani_16bpp.c"
-#endif
+static unsigned short hsl2rgb(float H, float S, float L);
 
-static unsigned short hsl2rgb(float H,float S,float L);
+#define SCREEN_WIDTH 		320
+#define SCREEN_HEIGHT 		240
+#define SMALL_PIX_WIDTH 	6
+#define SMALL_PIX_HEIGHT  	8
+#define LARGE_PIX_WIDTH		16
+#define LARGE_PIX_HEIGHT	24
 
-#if LCD_EXAMPLE_OP==0
+#define X_OFFSET			SMALL_PIX_WIDTH*6
+#define Y_OFFSET			LARGE_PIX_HEIGHT + SMALL_PIX_HEIGHT			
+
 // Buffer in which to store the memory read from the LCD
-	#define MAX_RADIUS 15
-	#define BUF_LEN (((MAX_RADIUS*2)+1)*((MAX_RADIUS*2)+1))
-	static unsigned short int buffer[BUF_LEN];
-#endif
+#define MAX_RADIUS 15
+#define BUF_LEN (((MAX_RADIUS*2) + 1)*((MAX_RADIUS*2) + 1))
+static unsigned short int buffer[BUF_LEN];
+
+typedef enum
+{
+	IRSensor
+} Tabs;
+
+unsigned int centerStr(char* uncentStr, unsigned int fontInd, unsigned int alignInd)
+{
+	unsigned int lineLen;
+
+	if(fontInd && alignInd)
+		lineLen = SCREEN_WIDTH/LARGE_PIX_WIDTH;
+	else if(!fontInd && alignInd)
+		lineLen = SCREEN_WIDTH/SMALL_PIX_WIDTH;
+	else if(fontInd && !alignInd)
+		lineLen = SCREEN_HEIGHT/LARGE_PIX_HEIGHT;
+	else if(!fontInd && !alignInd)
+		lineLen = SCREEN_HEIGHT/SMALL_PIX_HEIGHT;
+	else
+		lineLen = 0; 
+
+	return (lineLen - strlen(uncentStr))/2; 
+}
+
+void mapPixGraph(unsigned int x, unsigned int y, unsigned int* xMapped, unsigned int* yMapped)
+{
+	*xMapped = X_OFFSET + x;
+	*yMapped = SCREEN_HEIGHT - LARGE_PIX_HEIGHT - SMALL_PIX_HEIGHT*5 + y;
+}
+
+void drawLCDTabs(Tabs tab)
+{
+	char* tabName;
+	unsigned int tabNameLine = 9;
+
+	switch(tab)
+	{
+		case IRSensor:
+		{
+			tabName = "Sensor 0";
+
+			char* graphTitle = "IR";
+			char* graphLabelX = "Time (s)";
+			char* graphLabelY = "Voltage (V)";
+
+			unsigned int tabOffset;
+			unsigned int graphTitleOffset;
+			unsigned int graphLabelXOffset;
+			unsigned int graphLabelYOffset;
+			  
+			tabOffset 		  = centerStr(tabName, 1, 1);
+			graphTitleOffset  = centerStr(graphTitle, 1, 1);
+			graphLabelXOffset = centerStr(graphLabelX, 0, 1);
+			graphLabelYOffset = centerStr(graphLabelY, 0, 0);
+
+			unsigned int graphTitleLine  = 0;
+			unsigned int graphLabelXLine = 25;
+			unsigned int graphlabelYCol  = 1;
+
+			GLCD_ClearLn(tabNameLine, 1);
+			GLCD_ClearLn(graphTitleLine, 1);
+			GLCD_ClearLn(graphLabelXLine, 0);
+
+			GLCD_DisplayString(tabNameLine, tabOffset, 1, (unsigned char*)tabName);
+			GLCD_DisplayString(graphTitleLine, graphTitleOffset, 1, (unsigned char*)graphTitle);
+
+			// Draw vertical plot line.
+			GLCD_ClearWindow(X_OFFSET, Y_OFFSET, 1, SCREEN_HEIGHT - LARGE_PIX_HEIGHT*2 - SMALL_PIX_HEIGHT*6 + 3, Green);
+
+			// Draw horizontal plot line.
+			GLCD_ClearWindow(X_OFFSET - 2, SCREEN_HEIGHT - LARGE_PIX_HEIGHT - SMALL_PIX_HEIGHT*5, SCREEN_WIDTH - SMALL_PIX_WIDTH*10, 1, Green);
+
+			// Draw X label.
+			GLCD_DisplayString(graphLabelXLine, graphLabelXOffset, 0, (unsigned char*)graphLabelX);
+
+			// Draw Y label.
+			unsigned int i;
+			for(i = 0; i < strlen(graphLabelY); i++)
+				GLCD_DisplayChar(i + graphLabelYOffset, graphlabelYCol, 0, (unsigned char)graphLabelY[i]);
+
+			int xTicks[8];
+			for(i = 0; i < 8; i++)
+				xTicks[i] = 8 - i;
+			
+			int yTicks[6];
+			for(i = 0; i < 6 ; i++)
+				yTicks[i] = 30 - 5*i;
+
+		   	GLCD_SetTextColor(Green);
+			for(i = 1; i < 20; i = i + 3) {
+				unsigned int ln = i + 3;
+				if(i == 19)
+					GLCD_DisplayChar(ln, 4, 0, '0');
+				else {
+					int x = yTicks[i/3];
+					unsigned char y = (unsigned char)((unsigned int)'0' + x/10);
+					unsigned char z = (unsigned char)((unsigned int)'0' + x%10);
+					GLCD_DisplayChar(ln, 3, 0, y);
+					GLCD_DisplayChar(ln, 4, 0, '.');
+					GLCD_DisplayChar(ln, 5, 0, z);
+				}	
+			}
+			
+			for(i = 0; i < 8; i++) {
+				unsigned int ln = (SCREEN_HEIGHT - LARGE_PIX_HEIGHT - SMALL_PIX_HEIGHT*4)/SMALL_PIX_HEIGHT;
+				int x = xTicks[i];
+				unsigned char z = (unsigned char)((unsigned int)'0' + x%10);
+				GLCD_DisplayChar(ln, 5 + 6*i, 0, '-');
+				GLCD_DisplayChar(ln, 6 + 6*i, 0, z);	
+			}
+			
+			/*unsigned int* xMapped;
+			unsigned int* yMapped;
+			unsigned int x = 10;
+			unsigned int y = 10;
+			mapPixGraph(x, y, xMapped, yMapped); 
+			GLCD_ClearWindow(x, y, 1, 30, Green);*/
+
+			break;
+		}
+		default:
+		{
+			break;
+		}
+	} 
+}
 
 // This is the actual task that is run
-static portTASK_FUNCTION( vLCDUpdateTask, pvParameters )
+static portTASK_FUNCTION(vLCDUpdateTask, pvParameters)
 {
-	#if LCD_EXAMPLE_OP==0
 	unsigned short screenColor = 0;
 	unsigned short tscr;
-	unsigned char curLine;
 	unsigned timerCount = 0;
-	int xoffset = 0, yoffset = 0;
-	unsigned int xmin=0, xmax=0, ymin=0, ymax=0;
-	unsigned int x, y;
-	int i;
-	float hue=0, sat=0.2, light=0.2;
-	#elif LCD_EXAMPLE_OP==1
-	unsigned char picIndex = 0;
-	#else
-	Bad definition
-	#endif
+
+	float hue = 0;
+	float sat = 0.2;
+	float light = 0.2;
+
 	vtLCDMsg msgBuffer;
 	vtLCDStruct *lcdPtr = (vtLCDStruct *) pvParameters;
 
-	#ifdef INSPECT_STACK
-	// This is meant as an example that you can re-use in your own tasks
-	// Inspect to the stack remaining to see how much room is remaining
-	// 1. I'll check it here before anything really gets started
-	// 2. I'll check during the run to see if it drops below 10%
+	// Inspect to the stack remaining to see how much room is remaining.
+	// 1. I'll check it here before anything really gets started.
+	// 2. I'll check during the run to see if it drops below 10%.
 	// 3. You could use break points or logging to check on this, but
 	//    you really don't want to print it out because printf() can
 	//    result in significant stack usage.
 	// 4. Note that this checking is not perfect -- in fact, it will not
 	//    be able to tell how much the stack grows on a printf() call and
-	//    that growth can be *large* if version 1 of printf() is used.   
+	//    that growth can be *large* if version 1 of printf() is used.
+	#ifdef INSPECT_STACK   
 	unsigned portBASE_TYPE InitialStackLeft = uxTaskGetStackHighWaterMark(NULL);
 	unsigned portBASE_TYPE CurrentStackLeft;
 	float remainingStack = InitialStackLeft;
@@ -179,10 +309,10 @@ static portTASK_FUNCTION( vLCDUpdateTask, pvParameters )
 	}
 	#endif
 
-	/* Initialize the LCD and set the initial colors */
+	// Initialize the LCD and set the initial colors.
 	GLCD_Init();
-	tscr = Green; // may be reset in the LCDMsgTypeTimer code below
-	screenColor = Red; // may be reset in the LCDMsgTypeTimer code below
+	tscr = Red;
+	screenColor = Blue;
 	GLCD_SetTextColor(tscr);
 	GLCD_SetBackColor(screenColor);
 	GLCD_Clear(screenColor);
@@ -193,10 +323,13 @@ static portTASK_FUNCTION( vLCDUpdateTask, pvParameters )
 	srand((unsigned) 55); // initialize the random number generator to the same seed for repeatability
 	#endif
 
-	curLine = 5;
-	// This task should never exit
+	Tabs curTab = IRSensor;
+	drawLCDTabs(curTab);
+
+	// This task should never exit.
 	for(;;)
-	{	
+	{
+		// Make sure there is enough room in the stack.	
 		#ifdef INSPECT_STACK   
 		CurrentStackLeft = uxTaskGetStackHighWaterMark(NULL);
 		float remainingStack = CurrentStackLeft;
@@ -207,30 +340,21 @@ static portTASK_FUNCTION( vLCDUpdateTask, pvParameters )
 		}
 		#endif
 
-		#if LCD_EXAMPLE_OP==0
 		// Wait for a message
-		if (xQueueReceive(lcdPtr->inQ,(void *) &msgBuffer,portMAX_DELAY) != pdTRUE) {
+		if (xQueueReceive(lcdPtr->inQ, (void *) &msgBuffer, portMAX_DELAY) != pdTRUE) {
 			VT_HANDLE_FATAL_ERROR(0);
 		}
 		
-		//Log that we are processing a message -- more explanation of logging is given later on
-		vtITMu8(vtITMPortLCDMsg,getMsgType(&msgBuffer));
-		vtITMu8(vtITMPortLCDMsg,getMsgLength(&msgBuffer));
+		// Log that we are processing a message.
+		vtITMu8(vtITMPortLCDMsg, getMsgType(&msgBuffer));
+		vtITMu8(vtITMPortLCDMsg, getMsgLength(&msgBuffer));
 
-		// Take a different action depending on the type of the message that we received
-		switch(getMsgType(&msgBuffer)) {
+		// Take a different action depending on the type of the message that we received.
+		switch(getMsgType(&msgBuffer))
+		{
+
 		case LCDMsgTypePrint: {
-			// This will result in the text printing in the last five lines of the screen
-			char   lineBuffer[lcdCHAR_IN_LINE+1];
-			copyMsgString(lineBuffer,&msgBuffer,lcdCHAR_IN_LINE);
-			// clear the line
-			GLCD_ClearLn(curLine,1);
-			// show the text
-			GLCD_DisplayString(curLine,0,1,(unsigned char *)lineBuffer);
-			curLine++;
-			if (curLine == lcdNUM_LINES) {
-				curLine = 5;
-			}
+
 			break;
 		}
 		case LCDMsgTypeTimer: {
@@ -240,83 +364,9 @@ static portTASK_FUNCTION( vLCDUpdateTask, pvParameters )
 			//   as explained below
 			
 			if (timerCount == 0) {
-				/* ************************************************** */
-				// Find a new color for the screen by randomly (within limits) selecting HSL values
-				// This can be ignored unless you care about the color map
-				#if MALLOC_VERSION==1
-				hue = rand() % 360;
-				sat = (rand() % 1024) / 1023.0; sat = sat * 0.5; sat += 0.5;
-				light = (rand() % 1024) / 1023.0;	light = light * 0.8; light += 0.10;
-				#else
-				hue = (hue + 1); if (hue >= 360) hue = 0;
-				sat+=0.01; if (sat > 1.0) sat = 0.20;	
-				light+=0.03; if (light > 1.0) light = 0.20;
-				#endif
-				screenColor = hsl2rgb(hue,sat,light);
-				// Now choose a complementary value for the text color
-				hue += 180;
-				if (hue >= 360) hue -= 360;
-				tscr = hsl2rgb(hue,sat,light);
-				GLCD_SetTextColor(tscr);
-				GLCD_SetBackColor(screenColor);
-			
-				unsigned short int *tbuffer = buffer;
-				//int i;
-				for(i = BUF_LEN; i--;) {
-					tbuffer[i] = screenColor;
-				}
-				// End of playing around with figuring out a random color
-				/* ************************************************** */
 
-				// clear the top half of the screen
-				GLCD_ClearWindow(0,0,320,120,screenColor); 
-
-				// Now we are going to draw a circle in the buffer
-				// count is how many pixels are in the circle
-				int	count = 50;
-				float radius;
-				float inc, val, offset = MAX_RADIUS;
-				unsigned short circleColor;
-				inc = 2*M_PI/count;
-				xmax = 0;
-				ymax = 0;
-				xmin = 50000;
-				ymin = 50000;
-				val = 0.0;
-				for (i=0;i<count;i++) {
-					// Make the circle a little thicker
-					// by actually drawing three circles w/ different radii
-					float cv = cos(val), sv=sin(val);
-					circleColor = (val*0xFFFF)/(2*M_PI);
-					GLCD_SetTextColor(circleColor);
-					for (radius=MAX_RADIUS-2.0;radius<=MAX_RADIUS;radius+=1.0) {
-						x = round(cv*radius+offset);
-						y = round(sv*radius+offset);
-						if (x > xmax) xmax = x;
-						if (y > ymax) ymax = y;
-						if (x < xmin) xmin = x;
-						if (y < ymin) ymin = y;
-						tbuffer[(y*((MAX_RADIUS*2)+1)) + x] = circleColor;
-					}
-					val += inc;
-				}
 			} else {
-				// We are going to write out the buffer
-				//   back onto the screen at a new location
-				// This is *very* fast
 
-				// First, clear out where we were
-				GLCD_ClearWindow(xoffset,yoffset,xmax+1-xmin,ymax+1-ymin,screenColor);
-				// Pick the new location
-				#if MALLOC_VERSION==1
-				xoffset = rand() % (320-(xmax+1-xmin));
-				yoffset = rand() % (120-(ymax+1-ymin));
-				#else
-				xoffset = (xoffset + 10) % (320-(xmax+1-xmin));
-				yoffset = (yoffset + 10) % (120-(ymax+1-ymin));
-				#endif
-				// Draw the bitmap
-				GLCD_Bitmap(xoffset,yoffset,xmax+1-xmin,ymax-1-ymin,(unsigned char *)buffer);
 			}
 			
 			timerCount++;
@@ -332,36 +382,7 @@ static portTASK_FUNCTION( vLCDUpdateTask, pvParameters )
 			VT_HANDLE_FATAL_ERROR(getMsgType(&msgBuffer));
 			break;
 		}
-		} // end of switch()
-
-		// Here is a way to do debugging output via the built-in hardware -- it requires the ULINK cable and the
-		//   debugger in the Keil tools to be connected.  You can view PORT0 output in the "Debug(printf) Viewer"
-		//   under "View->Serial Windows".  You have to enable "Trace" and "Port0" in the Debug setup options.  This
-		//   should not be used if you are using Port0 for printf()
-		// There are 31 other ports and their output (and port 0's) can be seen in the "View->Trace->Records"
-		//   windows.  You have to enable the prots in the Debug setup options.  Note that unlike ITM_SendChar()
-		//   this "raw" port write is not blocking.  That means it can overrun the capability of the system to record
-		//   the trace events if you go too quickly; that won't hurt anything or change the program execution and
-		//   you can tell if it happens because the "View->Trace->Records" window will show there was an overrun.
-		//vtITMu16(vtITMPortLCD,screenColor);
-
-		#elif 	LCD_EXAMPLE_OP==1
-		// In this alternate version, we just keep redrawing a series of bitmaps as
-		//   we receive timer messages
-		// Wait for a message
-		if (xQueueReceive(lcdPtr->inQ,(void *) &msgBuffer,portMAX_DELAY) != pdTRUE) {
-			VT_HANDLE_FATAL_ERROR(0);
 		}
-		if (getMsgType(&msgBuffer) != LCDMsgTypeTimer) {
-			// In this configuration, we are only expecting to receive timer messages
-			VT_HANDLE_FATAL_ERROR(getMsgType(&msgBuffer));
-		}
-  		/* go through a  bitmap that is really a series of bitmaps */
-		picIndex = (picIndex + 1) % 9;
-		GLCD_Bmp(99,99,120,45,(unsigned char *) &ARM_Ani_16bpp[picIndex*(120*45*2)]);
-		#else
-		Bad setting
-		#endif	
 	}
 }
 
