@@ -26,7 +26,9 @@ The ARM board must perform all complex tasks.
 All software must be written in \texttt{C}/\texttt{C++} and must use the example code framework. Additionaly, the only hardware used must be an ARM board and PIC 18s. The ARM board may not power any other components and may only communicate to other components through I2C, USB, or Ethernet and to other processors through I2C or Ethernet. Additionaly, the rover must be remote from the ARM board.
 
 \subsection*{Environmental Requirements}
-The rover should be able to be given a map of a large room and be able to use onboard sensors to find its location on the map and the location of ramps. The rover should then be able to 
+The rover should be able to be given a map of a large room and be able to use onboard sensors to find its location on the map and the location of ramps. These onboard sensors will continually send messages to the motor controller queue and the motor PIC will decide how the rover will operate. Depending on the surrounding area, the rover will turn left or right, move forward or backward at a normal speed, or climb an incline at an increased speed.
+
+When the rover detects a ramp or any incline via the accelerometer, the motor will output more power. The motor will lower the power that is being sent to the wheels when a marker is detected on the top of the ramp or the accelerometer signals that the rover is on level ground, whichever scenario occurs first. Once the rover finds this indicator, the motor will lower the power to normal operating speeds. If there is no indicator, whether a missing marker or the accelerometer is unleveled, the rover will continue at an increased speed.
 
 \subsection*{Useability Requirements}
 
