@@ -1,12 +1,13 @@
 #ifndef CONDUCTOR_H
 #define CONDUCTOR_H
 #include "vtI2C.h"
-#include "i2cTemp.h"
+#include "i2cIR0.h"
+
 // Structure used to pass parameters to the task
 // Do not touch...
 typedef struct __ConductorStruct {
 	vtI2CStruct *dev;
-	vtTempStruct *tempData;
+	vtIR0Struct *ir0Data;
 } vtConductorStruct;
 
 // Public API
@@ -18,6 +19,6 @@ typedef struct __ConductorStruct {
 //   conductorData: Data structure used by the task
 //   uxPriority -- the priority you want this task to be run at
 //   i2c: pointer to the data structure for an i2c task
-//   temperature: pointer to the data structure for an LCD task (may be NULL)
-void vStartConductorTask(vtConductorStruct *conductorData,unsigned portBASE_TYPE uxPriority, vtI2CStruct *i2c,vtTempStruct *temperature);
+//	 ir0: pointer to the data structure for an LCD task
+void vStartConductorTask(vtConductorStruct *conductorData, unsigned portBASE_TYPE uxPriority, vtI2CStruct *i2c, vtIR0Struct* ir0);
 #endif

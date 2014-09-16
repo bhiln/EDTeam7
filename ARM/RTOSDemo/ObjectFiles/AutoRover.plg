@@ -4,7 +4,7 @@
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
 C:\ARMCode\RTOSDemo\RTOSDemo.uvproj
-Project File Date:  09/10/2014
+Project File Date:  09/15/2014
 
 <h2>Output:</h2>
 Build target 'AutoRover'
@@ -14,34 +14,68 @@ compiling tasks.c...
 compiling port.c...
 compiling timers.c...
 compiling main.c...
+MainFiles/myTimers.h(5): error: fatal error: i2cTemp.h: No such file or directory
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(278): warning: unused variable 'light'
+MainFiles/LCDtask.c(277): warning: unused variable 'sat'
+MainFiles/LCDtask.c(276): warning: unused variable 'hue'
+MainFiles/LCDtask.c: At top level:
+MainFiles/LCDtask.c(393): warning: 'hsl2rgb' defined but not used
+MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
+compiling myTimers.c...
+MainFiles/myTimers.h(5): error: fatal error: i2cTemp.h: No such file or directory
+compiling conductor.c...
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(143): warning: unused variable 'lcdBuffer'
+MainFiles/i2cIR0.c(140): warning: unused variable 'lcdData'
+Target not created
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c: In function 'main':
+MainFiles/main.c(131): error: 'tempSensorData' undeclared (first use in this function)
+MainFiles/main.c(131): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/main.c(131): error: too many arguments to function 'vStartConductorTask'
+MainFiles/conductor.h(23): error: note: declared here
+MainFiles/main.c: At top level:
 MainFiles/main.c(217): warning: null character(s) ignored
-compiling i2cTemp.c...
-MainFiles/i2cTemp.c: In function 'vi2cTempUpdateTask':
-MainFiles/i2cTemp.c(239): warning: format '%d' expects type 'int', but argument 2 has type 'long int'
-MainFiles/i2cTemp.c(239): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
-MainFiles/i2cTemp.c(239): warning: format '%d' expects type 'int', but argument 2 has type 'long int'
-MainFiles/i2cTemp.c(239): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
-MainFiles/i2cTemp.c(240): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
-MainFiles/i2cTemp.c(240): warning: format '%d' expects type 'int', but argument 4 has type 'long int'
-MainFiles/i2cTemp.c(240): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
-MainFiles/i2cTemp.c(240): warning: format '%d' expects type 'int', but argument 4 has type 'long int'
+compiling myTimers.c...
+Target not created
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c(217): warning: null character(s) ignored
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 1 Warning(s).
+Clean started: Project: 'RTOSDemo'
+   deleting intermediate output files for target 'AutoRover'
+Build target 'AutoRover'
+compiling list.c...
+compiling queue.c...
+compiling tasks.c...
+compiling port.c...
+compiling timers.c...
+compiling main.c...
+MainFiles/main.c(217): warning: null character(s) ignored
 compiling vtUtilities.c...
 compiling ParTest.c...
 compiling LCDtask.c...
 MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(255): warning: unused variable 'light'
-MainFiles/LCDtask.c(254): warning: unused variable 'sat'
-MainFiles/LCDtask.c(253): warning: unused variable 'hue'
+MainFiles/LCDtask.c(278): warning: unused variable 'light'
+MainFiles/LCDtask.c(277): warning: unused variable 'sat'
+MainFiles/LCDtask.c(276): warning: unused variable 'hue'
 MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(366): warning: 'hsl2rgb' defined but not used
+MainFiles/LCDtask.c(393): warning: 'hsl2rgb' defined but not used
 MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-MainFiles/LCDtask.c: In function 'drawLCDTabs':
-MainFiles/LCDtask.c(234): warning: 'xMapped' may be used uninitialized in this function
-MainFiles/LCDtask.c(234): warning: 'yMapped' may be used uninitialized in this function
 compiling myTimers.c...
 compiling conductor.c...
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(143): warning: unused variable 'lcdBuffer'
+MainFiles/i2cIR0.c(140): warning: unused variable 'lcdData'
 compiling syscalls.c...
 compiling system_LPC17xx.c...
+assembling startup_LPC17xx.s...
 compiling USB_CDC.c...
 compiling usbcontrol.c...
 compiling usbhw_lpc.c...
@@ -66,88 +100,332 @@ compiling lpc17xx_ssp.c...
 ../NXPDrivers/source/lpc17xx_ssp.c(345): warning: 'wdata16' may be used uninitialized in this function
 compiling vtI2C.c...
 linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 22 Warning(s).
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 14 Warning(s).
+Clean started: Project: 'RTOSDemo'
+   deleting intermediate output files for target 'AutoRover'
 Build target 'AutoRover'
+compiling list.c...
+compiling queue.c...
+compiling tasks.c...
+compiling port.c...
+compiling timers.c...
+compiling main.c...
+MainFiles/main.c(216): warning: null character(s) ignored
+compiling vtUtilities.c...
+compiling ParTest.c...
 compiling LCDtask.c...
 MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(255): warning: unused variable 'light'
-MainFiles/LCDtask.c(254): warning: unused variable 'sat'
-MainFiles/LCDtask.c(253): warning: unused variable 'hue'
+MainFiles/LCDtask.c(278): warning: unused variable 'light'
+MainFiles/LCDtask.c(277): warning: unused variable 'sat'
+MainFiles/LCDtask.c(276): warning: unused variable 'hue'
 MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(366): warning: 'hsl2rgb' defined but not used
+MainFiles/LCDtask.c(393): warning: 'hsl2rgb' defined but not used
 MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-MainFiles/LCDtask.c: In function 'drawLCDTabs':
-MainFiles/LCDtask.c(234): warning: 'xMapped' may be used uninitialized in this function
-MainFiles/LCDtask.c(234): warning: 'yMapped' may be used uninitialized in this function
+compiling myTimers.c...
+compiling conductor.c...
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(143): warning: unused variable 'lcdBuffer'
+MainFiles/i2cIR0.c(140): warning: unused variable 'lcdData'
+compiling syscalls.c...
+compiling system_LPC17xx.c...
+assembling startup_LPC17xx.s...
+compiling USB_CDC.c...
+compiling usbcontrol.c...
+compiling usbhw_lpc.c...
+compiling usbinit.c...
+compiling usbstdreq.c...
+compiling vtSSP.c...
+compiling GLCD_SPI_LPC1700.c...
+compiling lpc17xx_clkpwr.c...
+compiling lpc17xx_i2c.c...
+../NXPDrivers/source/lpc17xx_i2c.c: In function 'I2C_Init':
+../NXPDrivers/source/lpc17xx_i2c.c(213): warning: 'temp' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_i2c.c: In function 'I2C_SlaveTransferData':
+../NXPDrivers/source/lpc17xx_i2c.c(985): warning: 'CodeStatus' may be used uninitialized in this function
+compiling lpc17xx_libcfg_default.c...
+compiling lpc17xx_pinsel.c...
+compiling lpc17xx_gpio.c...
+compiling lpc17xx_ssp.c...
+../NXPDrivers/source/lpc17xx_ssp.c: In function 'SSP_ReadWrite':
+../NXPDrivers/source/lpc17xx_ssp.c(342): warning: 'rdata8' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(343): warning: 'wdata8' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(344): warning: 'rdata16' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(345): warning: 'wdata16' may be used uninitialized in this function
+compiling vtI2C.c...
 linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 7 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 14 Warning(s).
 Build target 'AutoRover'
 compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(255): warning: unused variable 'light'
-MainFiles/LCDtask.c(254): warning: unused variable 'sat'
-MainFiles/LCDtask.c(253): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(366): warning: 'hsl2rgb' defined but not used
+MainFiles/LCDtask.c(389): warning: 'hsl2rgb' defined but not used
 MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-MainFiles/LCDtask.c: In function 'drawLCDTabs':
-MainFiles/LCDtask.c(234): warning: 'xMapped' may be used uninitialized in this function
-MainFiles/LCDtask.c(234): warning: 'yMapped' may be used uninitialized in this function
 linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 7 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 2 Warning(s).
+Clean started: Project: 'RTOSDemo'
+   deleting intermediate output files for target 'AutoRover'
 Build target 'AutoRover'
+compiling list.c...
+compiling queue.c...
+compiling tasks.c...
+compiling port.c...
+compiling timers.c...
+compiling main.c...
+MainFiles/main.c(216): warning: null character(s) ignored
+compiling vtUtilities.c...
+compiling ParTest.c...
 compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'drawLCDTabs':
-MainFiles/LCDtask.c(231): warning: unused variable 'yMapped'
-MainFiles/LCDtask.c(230): warning: unused variable 'xMapped'
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(255): warning: unused variable 'light'
-MainFiles/LCDtask.c(254): warning: unused variable 'sat'
-MainFiles/LCDtask.c(253): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(366): warning: 'hsl2rgb' defined but not used
+MainFiles/LCDtask.c(389): warning: 'hsl2rgb' defined but not used
 MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
+compiling myTimers.c...
+compiling conductor.c...
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(143): warning: unused variable 'lcdBuffer'
+MainFiles/i2cIR0.c(140): warning: unused variable 'lcdData'
+compiling syscalls.c...
+compiling system_LPC17xx.c...
+assembling startup_LPC17xx.s...
+compiling USB_CDC.c...
+compiling usbcontrol.c...
+compiling usbhw_lpc.c...
+compiling usbinit.c...
+compiling usbstdreq.c...
+compiling vtSSP.c...
+compiling GLCD_SPI_LPC1700.c...
+compiling lpc17xx_clkpwr.c...
+compiling lpc17xx_i2c.c...
+../NXPDrivers/source/lpc17xx_i2c.c: In function 'I2C_Init':
+../NXPDrivers/source/lpc17xx_i2c.c(213): warning: 'temp' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_i2c.c: In function 'I2C_SlaveTransferData':
+../NXPDrivers/source/lpc17xx_i2c.c(985): warning: 'CodeStatus' may be used uninitialized in this function
+compiling lpc17xx_libcfg_default.c...
+compiling lpc17xx_pinsel.c...
+compiling lpc17xx_gpio.c...
+compiling lpc17xx_ssp.c...
+../NXPDrivers/source/lpc17xx_ssp.c: In function 'SSP_ReadWrite':
+../NXPDrivers/source/lpc17xx_ssp.c(342): warning: 'rdata8' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(343): warning: 'wdata8' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(344): warning: 'rdata16' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(345): warning: 'wdata16' may be used uninitialized in this function
+compiling vtI2C.c...
 linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 7 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 11 Warning(s).
 Build target 'AutoRover'
 compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(255): warning: unused variable 'light'
-MainFiles/LCDtask.c(254): warning: unused variable 'sat'
-MainFiles/LCDtask.c(253): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(366): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-MainFiles/LCDtask.c: In function 'drawLCDTabs':
-MainFiles/LCDtask.c(234): warning: 'xMapped' may be used uninitialized in this function
-MainFiles/LCDtask.c(234): warning: 'yMapped' may be used uninitialized in this function
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 7 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(273): warning: unused variable 'light'
-MainFiles/LCDtask.c(272): warning: unused variable 'sat'
-MainFiles/LCDtask.c(271): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
 MainFiles/LCDtask.c(384): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 1 Warning(s).
+Clean started: Project: 'RTOSDemo'
+   deleting intermediate output files for target 'AutoRover'
+Build target 'AutoRover'
+compiling list.c...
+compiling queue.c...
+compiling tasks.c...
+compiling port.c...
+compiling timers.c...
+compiling main.c...
+MainFiles/main.c(216): warning: null character(s) ignored
+compiling vtUtilities.c...
+compiling ParTest.c...
+compiling LCDtask.c...
+MainFiles/LCDtask.c(384): warning: 'hsl2rgb' defined but not used
+compiling myTimers.c...
+compiling conductor.c...
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(143): warning: unused variable 'lcdBuffer'
+MainFiles/i2cIR0.c(140): warning: unused variable 'lcdData'
+compiling syscalls.c...
+compiling system_LPC17xx.c...
+assembling startup_LPC17xx.s...
+compiling USB_CDC.c...
+compiling usbcontrol.c...
+compiling usbhw_lpc.c...
+compiling usbinit.c...
+compiling usbstdreq.c...
+compiling vtSSP.c...
+compiling GLCD_SPI_LPC1700.c...
+compiling lpc17xx_clkpwr.c...
+compiling lpc17xx_i2c.c...
+../NXPDrivers/source/lpc17xx_i2c.c: In function 'I2C_Init':
+../NXPDrivers/source/lpc17xx_i2c.c(213): warning: 'temp' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_i2c.c: In function 'I2C_SlaveTransferData':
+../NXPDrivers/source/lpc17xx_i2c.c(985): warning: 'CodeStatus' may be used uninitialized in this function
+compiling lpc17xx_libcfg_default.c...
+compiling lpc17xx_pinsel.c...
+compiling lpc17xx_gpio.c...
+compiling lpc17xx_ssp.c...
+../NXPDrivers/source/lpc17xx_ssp.c: In function 'SSP_ReadWrite':
+../NXPDrivers/source/lpc17xx_ssp.c(342): warning: 'rdata8' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(343): warning: 'wdata8' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(344): warning: 'rdata16' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(345): warning: 'wdata16' may be used uninitialized in this function
+compiling vtI2C.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 10 Warning(s).
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c(216): warning: null character(s) ignored
+compiling LCDtask.c...
+compiling myTimers.c...
+compiling conductor.c...
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(143): warning: unused variable 'lcdBuffer'
+MainFiles/i2cIR0.c(140): warning: unused variable 'lcdData'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 3 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c(216): warning: null character(s) ignored
+compiling LCDtask.c...
+compiling conductor.c...
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(169): error: 'fsmStateInit2Sent' undeclared (first use in this function)
+MainFiles/i2cIR0.c(169): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/i2cIR0.c(140): warning: unused variable 'lcdBuffer'
+MainFiles/i2cIR0.c(137): warning: unused variable 'lcdData'
+Target not created
+Build target 'AutoRover'
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(205): warning: format '%f' expects type 'double', but argument 3 has type 'int'
+MainFiles/i2cIR0.c(205): warning: format '%f' expects type 'double', but argument 3 has type 'int'
+MainFiles/i2cIR0.c(140): warning: unused variable 'lcdBuffer'
+MainFiles/i2cIR0.c(137): warning: unused variable 'lcdData'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 4 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Clean started: Project: 'RTOSDemo'
+   deleting intermediate output files for target 'AutoRover'
+Build target 'AutoRover'
+compiling list.c...
+compiling queue.c...
+compiling tasks.c...
+compiling port.c...
+compiling timers.c...
+compiling main.c...
+MainFiles/main.c(216): warning: null character(s) ignored
+compiling vtUtilities.c...
+compiling ParTest.c...
+compiling LCDtask.c...
+compiling myTimers.c...
+compiling conductor.c...
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(140): warning: unused variable 'lcdBuffer'
+MainFiles/i2cIR0.c(137): warning: unused variable 'lcdData'
+compiling syscalls.c...
+compiling system_LPC17xx.c...
+assembling startup_LPC17xx.s...
+compiling USB_CDC.c...
+compiling usbcontrol.c...
+compiling usbhw_lpc.c...
+compiling usbinit.c...
+compiling usbstdreq.c...
+compiling vtSSP.c...
+compiling GLCD_SPI_LPC1700.c...
+compiling lpc17xx_clkpwr.c...
+compiling lpc17xx_i2c.c...
+../NXPDrivers/source/lpc17xx_i2c.c: In function 'I2C_Init':
+../NXPDrivers/source/lpc17xx_i2c.c(213): warning: 'temp' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_i2c.c: In function 'I2C_SlaveTransferData':
+../NXPDrivers/source/lpc17xx_i2c.c(985): warning: 'CodeStatus' may be used uninitialized in this function
+compiling lpc17xx_libcfg_default.c...
+compiling lpc17xx_pinsel.c...
+compiling lpc17xx_gpio.c...
+compiling lpc17xx_ssp.c...
+../NXPDrivers/source/lpc17xx_ssp.c: In function 'SSP_ReadWrite':
+../NXPDrivers/source/lpc17xx_ssp.c(342): warning: 'rdata8' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(343): warning: 'wdata8' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(344): warning: 'rdata16' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(345): warning: 'wdata16' may be used uninitialized in this function
+compiling vtI2C.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 9 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(143): warning: unused variable 'lcdBuffer'
+MainFiles/i2cIR0.c(140): warning: unused variable 'lcdData'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 2 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Clean started: Project: 'RTOSDemo'
+   deleting intermediate output files for target 'AutoRover'
+Build target 'AutoRover'
+compiling list.c...
+compiling queue.c...
+compiling tasks.c...
+compiling port.c...
+compiling timers.c...
+compiling main.c...
+MainFiles/main.c(216): warning: null character(s) ignored
+compiling vtUtilities.c...
+compiling ParTest.c...
+compiling LCDtask.c...
+compiling myTimers.c...
+compiling conductor.c...
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(143): warning: unused variable 'lcdBuffer'
+MainFiles/i2cIR0.c(140): warning: unused variable 'lcdData'
+compiling syscalls.c...
+compiling system_LPC17xx.c...
+assembling startup_LPC17xx.s...
+compiling USB_CDC.c...
+compiling usbcontrol.c...
+compiling usbhw_lpc.c...
+compiling usbinit.c...
+compiling usbstdreq.c...
+compiling vtSSP.c...
+compiling GLCD_SPI_LPC1700.c...
+compiling lpc17xx_clkpwr.c...
+compiling lpc17xx_i2c.c...
+../NXPDrivers/source/lpc17xx_i2c.c: In function 'I2C_Init':
+../NXPDrivers/source/lpc17xx_i2c.c(213): warning: 'temp' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_i2c.c: In function 'I2C_SlaveTransferData':
+../NXPDrivers/source/lpc17xx_i2c.c(985): warning: 'CodeStatus' may be used uninitialized in this function
+compiling lpc17xx_libcfg_default.c...
+compiling lpc17xx_pinsel.c...
+compiling lpc17xx_gpio.c...
+compiling lpc17xx_ssp.c...
+../NXPDrivers/source/lpc17xx_ssp.c: In function 'SSP_ReadWrite':
+../NXPDrivers/source/lpc17xx_ssp.c(342): warning: 'rdata8' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(343): warning: 'wdata8' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(344): warning: 'rdata16' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(345): warning: 'wdata16' may be used uninitialized in this function
+compiling vtI2C.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 9 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c(216): warning: null character(s) ignored
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(210): warning: format '%f' expects type 'double', but argument 3 has type 'int'
+MainFiles/i2cIR0.c(210): warning: format '%f' expects type 'double', but argument 3 has type 'int'
+MainFiles/i2cIR0.c(143): warning: unused variable 'lcdBuffer'
+MainFiles/i2cIR0.c(140): warning: unused variable 'lcdData'
 linking...
 ".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
 Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
@@ -155,45 +433,169 @@ Full Chip Erase Done.
 Programming Done.
 Verify OK.
 Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c(216): warning: null character(s) ignored
 compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(273): warning: unused variable 'light'
-MainFiles/LCDtask.c(272): warning: unused variable 'sat'
-MainFiles/LCDtask.c(271): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(384): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(210): warning: format '%f' expects type 'double', but argument 3 has type 'int'
+MainFiles/i2cIR0.c(210): warning: format '%f' expects type 'double', but argument 3 has type 'int'
+MainFiles/i2cIR0.c(211): error: 'temperature' undeclared (first use in this function)
+MainFiles/i2cIR0.c(211): error: note: each undeclared identifier is reported only once for each function it appears in
+Target not created
+Build target 'AutoRover'
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(210): warning: format '%f' expects type 'double', but argument 3 has type 'int'
+MainFiles/i2cIR0.c(210): warning: format '%f' expects type 'double', but argument 3 has type 'int'
+MainFiles/i2cIR0.c(211): warning: format '%6.2f' expects type 'double', but argument 4 has type 'int'
+MainFiles/i2cIR0.c(211): warning: format '%6.2f' expects type 'double', but argument 4 has type 'int'
 linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 4 Warning(s).
 Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
 Full Chip Erase Done.
 Programming Done.
 Verify OK.
 Build target 'AutoRover'
 compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'drawLCDTabs':
-MainFiles/LCDtask.c(235): error: 'ln' undeclared (first use in this function)
-MainFiles/LCDtask.c(235): error: note: each undeclared identifier is reported only once for each function it appears in
+compiling i2cIR0.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Clean started: Project: 'RTOSDemo'
+   deleting intermediate output files for target 'AutoRover'
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+_____^
+*** error 56: cannot open file
+Build target 'AutoRover'
+compiling list.c...
+compiling queue.c...
+compiling tasks.c...
+compiling port.c...
+compiling timers.c...
+compiling main.c...
+MainFiles/main.c(216): warning: null character(s) ignored
+compiling vtUtilities.c...
+compiling ParTest.c...
+compiling LCDtask.c...
+compiling myTimers.c...
+compiling conductor.c...
+compiling i2cIR0.c...
+compiling syscalls.c...
+compiling system_LPC17xx.c...
+assembling startup_LPC17xx.s...
+compiling USB_CDC.c...
+compiling usbcontrol.c...
+compiling usbhw_lpc.c...
+compiling usbinit.c...
+compiling usbstdreq.c...
+compiling vtSSP.c...
+compiling GLCD_SPI_LPC1700.c...
+compiling lpc17xx_clkpwr.c...
+compiling lpc17xx_i2c.c...
+../NXPDrivers/source/lpc17xx_i2c.c: In function 'I2C_Init':
+../NXPDrivers/source/lpc17xx_i2c.c(213): warning: 'temp' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_i2c.c: In function 'I2C_SlaveTransferData':
+../NXPDrivers/source/lpc17xx_i2c.c(985): warning: 'CodeStatus' may be used uninitialized in this function
+compiling lpc17xx_libcfg_default.c...
+compiling lpc17xx_pinsel.c...
+compiling lpc17xx_gpio.c...
+compiling lpc17xx_ssp.c...
+../NXPDrivers/source/lpc17xx_ssp.c: In function 'SSP_ReadWrite':
+../NXPDrivers/source/lpc17xx_ssp.c(342): warning: 'rdata8' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(343): warning: 'wdata8' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(344): warning: 'rdata16' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(345): warning: 'wdata16' may be used uninitialized in this function
+compiling vtI2C.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 7 Warning(s).
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c(216): warning: null character(s) ignored
+compiling LCDtask.c...
+compiling i2cIR0.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 1 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Clean started: Project: 'RTOSDemo'
+   deleting intermediate output files for target 'AutoRover'
+Build target 'AutoRover'
+compiling list.c...
+compiling queue.c...
+compiling tasks.c...
+compiling port.c...
+compiling timers.c...
+compiling main.c...
+MainFiles/main.c(216): warning: null character(s) ignored
+compiling vtUtilities.c...
+compiling ParTest.c...
+compiling LCDtask.c...
+compiling myTimers.c...
+compiling conductor.c...
+compiling i2cIR0.c...
+compiling syscalls.c...
+compiling system_LPC17xx.c...
+assembling startup_LPC17xx.s...
+compiling USB_CDC.c...
+compiling usbcontrol.c...
+compiling usbhw_lpc.c...
+compiling usbinit.c...
+compiling usbstdreq.c...
+compiling vtSSP.c...
+compiling GLCD_SPI_LPC1700.c...
+compiling lpc17xx_clkpwr.c...
+compiling lpc17xx_i2c.c...
+../NXPDrivers/source/lpc17xx_i2c.c: In function 'I2C_Init':
+../NXPDrivers/source/lpc17xx_i2c.c(213): warning: 'temp' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_i2c.c: In function 'I2C_SlaveTransferData':
+../NXPDrivers/source/lpc17xx_i2c.c(985): warning: 'CodeStatus' may be used uninitialized in this function
+compiling lpc17xx_libcfg_default.c...
+compiling lpc17xx_pinsel.c...
+compiling lpc17xx_gpio.c...
+compiling lpc17xx_ssp.c...
+../NXPDrivers/source/lpc17xx_ssp.c: In function 'SSP_ReadWrite':
+../NXPDrivers/source/lpc17xx_ssp.c(342): warning: 'rdata8' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(343): warning: 'wdata8' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(344): warning: 'rdata16' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(345): warning: 'wdata16' may be used uninitialized in this function
+compiling vtI2C.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 7 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c(216): warning: null character(s) ignored
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 1 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c(216): warning: null character(s) ignored
+compiling LCDtask.c...
 MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(274): warning: unused variable 'light'
-MainFiles/LCDtask.c(273): warning: unused variable 'sat'
-MainFiles/LCDtask.c(272): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(385): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
+MainFiles/LCDtask.c(340): error: 'offset' undeclared (first use in this function)
+MainFiles/LCDtask.c(340): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/LCDtask.c(341): error: expected ';' before 'GLCD_ClearLn'
+compiling i2cIR0.c...
 Target not created
 Build target 'AutoRover'
 compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'drawLCDTabs':
-MainFiles/LCDtask.c(235): error: 'ln' undeclared (first use in this function)
-MainFiles/LCDtask.c(235): error: note: each undeclared identifier is reported only once for each function it appears in
 MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(274): warning: unused variable 'light'
-MainFiles/LCDtask.c(273): warning: unused variable 'sat'
-MainFiles/LCDtask.c(272): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(385): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
+MainFiles/LCDtask.c(340): error: 'offset' undeclared (first use in this function)
+MainFiles/LCDtask.c(340): error: note: each undeclared identifier is reported only once for each function it appears in
 Target not created
 Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
 _____^
@@ -201,294 +603,62 @@ _____^
 Build target 'AutoRover'
 compiling LCDtask.c...
 MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(274): warning: unused variable 'light'
-MainFiles/LCDtask.c(273): warning: unused variable 'sat'
-MainFiles/LCDtask.c(272): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(385): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(273): warning: unused variable 'light'
-MainFiles/LCDtask.c(272): warning: unused variable 'sat'
-MainFiles/LCDtask.c(271): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(384): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(273): warning: unused variable 'light'
-MainFiles/LCDtask.c(272): warning: unused variable 'sat'
-MainFiles/LCDtask.c(271): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(384): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(273): warning: unused variable 'light'
-MainFiles/LCDtask.c(272): warning: unused variable 'sat'
-MainFiles/LCDtask.c(271): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(384): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(273): warning: unused variable 'light'
-MainFiles/LCDtask.c(272): warning: unused variable 'sat'
-MainFiles/LCDtask.c(271): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(384): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(273): warning: unused variable 'light'
-MainFiles/LCDtask.c(272): warning: unused variable 'sat'
-MainFiles/LCDtask.c(271): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(384): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(273): warning: unused variable 'light'
-MainFiles/LCDtask.c(272): warning: unused variable 'sat'
-MainFiles/LCDtask.c(271): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(384): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'drawLCDTabs':
-MainFiles/LCDtask.c(237): warning: passing argument 1 of 'memcpy' makes pointer from integer without a cast
-c:\program files\codesourcery\sourcery g++ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/string.h:24:8: note: expected 'void *' but argument is of type 'unsigned char'
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(275): warning: unused variable 'light'
-MainFiles/LCDtask.c(274): warning: unused variable 'sat'
-MainFiles/LCDtask.c(273): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(386): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-MainFiles/LCDtask.c: In function 'drawLCDTabs':
-MainFiles/LCDtask.c(237): warning: 'ch' may be used uninitialized in this function
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 7 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'drawLCDTabs':
-MainFiles/LCDtask.c(237): warning: passing argument 1 of 'memcpy' makes pointer from integer without a cast
-c:\program files\codesourcery\sourcery g++ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/string.h:24:8: note: expected 'void *' but argument is of type 'unsigned char'
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(275): warning: unused variable 'light'
-MainFiles/LCDtask.c(274): warning: unused variable 'sat'
-MainFiles/LCDtask.c(273): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(386): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-MainFiles/LCDtask.c: In function 'drawLCDTabs':
-MainFiles/LCDtask.c(237): warning: 'ch' may be used uninitialized in this function
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 7 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'drawLCDTabs':
-MainFiles/LCDtask.c(237): warning: passing argument 1 of 'memcpy' makes pointer from integer without a cast
-c:\program files\codesourcery\sourcery g++ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/string.h:24:8: note: expected 'void *' but argument is of type 'unsigned char'
-MainFiles/LCDtask.c(237): warning: passing argument 2 of 'memcpy' makes pointer from integer without a cast
-c:\program files\codesourcery\sourcery g++ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/string.h:24:8: note: expected 'const void *' but argument is of type 'char'
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(275): warning: unused variable 'light'
-MainFiles/LCDtask.c(274): warning: unused variable 'sat'
-MainFiles/LCDtask.c(273): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(386): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-MainFiles/LCDtask.c: In function 'drawLCDTabs':
-MainFiles/LCDtask.c(237): warning: 'ch' may be used uninitialized in this function
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 8 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'drawLCDTabs':
-MainFiles/LCDtask.c(237): warning: passing argument 1 of 'memcpy' makes pointer from integer without a cast
-c:\program files\codesourcery\sourcery g++ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/string.h:24:8: note: expected 'void *' but argument is of type 'unsigned char'
-MainFiles/LCDtask.c(238): error: expected ')' before ';' token
-MainFiles/LCDtask.c(247): error: expected ';' before '}' token
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(275): warning: unused variable 'light'
-MainFiles/LCDtask.c(274): warning: unused variable 'sat'
-MainFiles/LCDtask.c(273): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(386): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
+MainFiles/LCDtask.c(340): error: 'offset' undeclared (first use in this function)
+MainFiles/LCDtask.c(340): error: note: each undeclared identifier is reported only once for each function it appears in
 Target not created
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Clean started: Project: 'RTOSDemo'
+   deleting intermediate output files for target 'AutoRover'
 Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
 _____^
 *** error 56: cannot open file
 Build target 'AutoRover'
+compiling list.c...
+compiling queue.c...
+compiling tasks.c...
+compiling port.c...
+compiling timers.c...
+compiling main.c...
+MainFiles/main.c(216): warning: null character(s) ignored
+compiling vtUtilities.c...
+compiling ParTest.c...
 compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'drawLCDTabs':
-MainFiles/LCDtask.c(237): error: expected ')' before ';' token
-MainFiles/LCDtask.c(246): error: expected ';' before '}' token
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(274): warning: unused variable 'light'
-MainFiles/LCDtask.c(273): warning: unused variable 'sat'
-MainFiles/LCDtask.c(272): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(385): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-Target not created
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-_____^
-*** error 56: cannot open file
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'drawLCDTabs':
-MainFiles/LCDtask.c(237): error: expected ')' before ';' token
-MainFiles/LCDtask.c(246): error: expected ';' before '}' token
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(274): warning: unused variable 'light'
-MainFiles/LCDtask.c(273): warning: unused variable 'sat'
-MainFiles/LCDtask.c(272): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(385): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-Target not created
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(274): warning: unused variable 'light'
-MainFiles/LCDtask.c(273): warning: unused variable 'sat'
-MainFiles/LCDtask.c(272): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(385): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(274): warning: unused variable 'light'
-MainFiles/LCDtask.c(273): warning: unused variable 'sat'
-MainFiles/LCDtask.c(272): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(385): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(275): warning: unused variable 'light'
-MainFiles/LCDtask.c(274): warning: unused variable 'sat'
-MainFiles/LCDtask.c(273): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(386): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(275): warning: unused variable 'light'
-MainFiles/LCDtask.c(274): warning: unused variable 'sat'
-MainFiles/LCDtask.c(273): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(386): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'drawLCDTabs':
-MainFiles/LCDtask.c(236): warning: unused variable 'volt'
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(270): warning: unused variable 'light'
-MainFiles/LCDtask.c(269): warning: unused variable 'sat'
-MainFiles/LCDtask.c(268): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(381): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-MainFiles/LCDtask.c: In function 'drawLCDTabs':
-MainFiles/LCDtask.c(237): warning: 'x' may be used uninitialized in this function
+compiling myTimers.c...
+compiling conductor.c...
+compiling i2cIR0.c...
+compiling syscalls.c...
+compiling system_LPC17xx.c...
+assembling startup_LPC17xx.s...
+compiling USB_CDC.c...
+compiling usbcontrol.c...
+compiling usbhw_lpc.c...
+compiling usbinit.c...
+compiling usbstdreq.c...
+compiling vtSSP.c...
+compiling GLCD_SPI_LPC1700.c...
+compiling lpc17xx_clkpwr.c...
+compiling lpc17xx_i2c.c...
+../NXPDrivers/source/lpc17xx_i2c.c: In function 'I2C_Init':
+../NXPDrivers/source/lpc17xx_i2c.c(213): warning: 'temp' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_i2c.c: In function 'I2C_SlaveTransferData':
+../NXPDrivers/source/lpc17xx_i2c.c(985): warning: 'CodeStatus' may be used uninitialized in this function
+compiling lpc17xx_libcfg_default.c...
+compiling lpc17xx_pinsel.c...
+compiling lpc17xx_gpio.c...
+compiling lpc17xx_ssp.c...
+../NXPDrivers/source/lpc17xx_ssp.c: In function 'SSP_ReadWrite':
+../NXPDrivers/source/lpc17xx_ssp.c(342): warning: 'rdata8' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(343): warning: 'wdata8' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(344): warning: 'rdata16' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(345): warning: 'wdata16' may be used uninitialized in this function
+compiling vtI2C.c...
 linking...
 ".\ObjectFiles\AutoRover.elf" - 0 Error(s), 7 Warning(s).
 Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
@@ -496,50 +666,28 @@ Full Chip Erase Done.
 Programming Done.
 Verify OK.
 Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(270): warning: unused variable 'light'
-MainFiles/LCDtask.c(269): warning: unused variable 'sat'
-MainFiles/LCDtask.c(268): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(381): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
+compiling i2cIR0.c...
 linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
 Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
 Full Chip Erase Done.
 Programming Done.
 Verify OK.
 Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(270): warning: unused variable 'light'
-MainFiles/LCDtask.c(269): warning: unused variable 'sat'
-MainFiles/LCDtask.c(268): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(381): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
+compiling i2cIR0.c...
 linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
 Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
 Full Chip Erase Done.
 Programming Done.
 Verify OK.
 Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(270): warning: unused variable 'light'
-MainFiles/LCDtask.c(269): warning: unused variable 'sat'
-MainFiles/LCDtask.c(268): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(381): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(210): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
+MainFiles/i2cIR0.c(210): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
 linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 2 Warning(s).
 Build target 'AutoRover'
 linking...
 ".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
@@ -548,133 +696,500 @@ Full Chip Erase Done.
 Programming Done.
 Verify OK.
 Build target 'AutoRover'
-compiling main.c...
-MainFiles/main.c(217): warning: null character(s) ignored
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(270): warning: unused variable 'light'
-MainFiles/LCDtask.c(269): warning: unused variable 'sat'
-MainFiles/LCDtask.c(268): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(381): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(210): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
+MainFiles/i2cIR0.c(210): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
 linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 6 Warning(s).
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 2 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling i2cIR0.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
 Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
 Full Chip Erase Done.
 Programming Done.
 Verify OK.
 Build target 'AutoRover'
 compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(270): warning: unused variable 'light'
-MainFiles/LCDtask.c(269): warning: unused variable 'sat'
-MainFiles/LCDtask.c(268): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(381): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
+compiling i2cIR0.c...
 linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
 Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
 Full Chip Erase Done.
 Programming Done.
 Verify OK.
 Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'drawLCDTabs':
-MainFiles/LCDtask.c(237): warning: suggest parentheses around '+' inside '>>'
-MainFiles/LCDtask.c(237): error: expected ',' or ';' before ')' token
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(270): warning: unused variable 'light'
-MainFiles/LCDtask.c(269): warning: unused variable 'sat'
-MainFiles/LCDtask.c(268): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(381): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
+compiling i2cIR0.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling i2cIR0.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling i2cIR0.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling i2cIR0.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling i2cIR0.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(210): error: 'a' undeclared (first use in this function)
+MainFiles/i2cIR0.c(210): error: note: each undeclared identifier is reported only once for each function it appears in
 Target not created
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(270): warning: unused variable 'light'
-MainFiles/LCDtask.c(269): warning: unused variable 'sat'
-MainFiles/LCDtask.c(268): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(381): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'drawLCDTabs':
-MainFiles/LCDtask.c(238): error: expected ',' or ';' before 'char'
-MainFiles/LCDtask.c(241): error: 'z' undeclared (first use in this function)
-MainFiles/LCDtask.c(241): error: note: each undeclared identifier is reported only once for each function it appears in
-MainFiles/LCDtask.c(237): warning: unused variable 'y'
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(270): warning: unused variable 'light'
-MainFiles/LCDtask.c(269): warning: unused variable 'sat'
-MainFiles/LCDtask.c(268): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(381): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-Target not created
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(270): warning: unused variable 'light'
-MainFiles/LCDtask.c(269): warning: unused variable 'sat'
-MainFiles/LCDtask.c(268): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(381): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Clean started: Project: 'RTOSDemo'
-   deleting intermediate output files for target 'AutoRover'
 Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
 _____^
 *** error 56: cannot open file
 Build target 'AutoRover'
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(210): error: 'a' undeclared (first use in this function)
+MainFiles/i2cIR0.c(210): error: note: each undeclared identifier is reported only once for each function it appears in
+Target not created
+Build target 'AutoRover'
+compiling i2cIR0.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(211): warning: format '%d' expects type 'int', but argument 2 has type 'long int'
+MainFiles/i2cIR0.c(211): warning: format '%d' expects type 'int', but argument 2 has type 'long int'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 2 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(211): warning: format '%d' expects type 'int', but argument 2 has type 'long int'
+MainFiles/i2cIR0.c(211): warning: format '%d' expects type 'int', but argument 2 has type 'long int'
+MainFiles/i2cIR0.c(212): warning: format '%f' expects type 'double', but argument 3 has type 'long int'
+MainFiles/i2cIR0.c(212): warning: format '%f' expects type 'double', but argument 3 has type 'long int'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 4 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(211): warning: format '%d' expects type 'int', but argument 2 has type 'long int'
+MainFiles/i2cIR0.c(211): warning: format '%d' expects type 'int', but argument 2 has type 'long int'
+MainFiles/i2cIR0.c(212): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
+MainFiles/i2cIR0.c(212): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 4 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(211): warning: format '%d' expects type 'int', but argument 2 has type 'long int'
+MainFiles/i2cIR0.c(211): warning: format '%d' expects type 'int', but argument 2 has type 'long int'
+MainFiles/i2cIR0.c(212): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
+MainFiles/i2cIR0.c(212): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 4 Warning(s).
+Build target 'AutoRover'
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(211): warning: format '%d' expects type 'int', but argument 2 has type 'long int'
+MainFiles/i2cIR0.c(211): warning: format '%d' expects type 'int', but argument 2 has type 'long int'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 2 Warning(s).
+Build target 'AutoRover'
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(211): warning: format '%d' expects type 'int', but argument 2 has type 'long int'
+MainFiles/i2cIR0.c(211): warning: format '%d' expects type 'int', but argument 2 has type 'long int'
+MainFiles/i2cIR0.c(212): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
+MainFiles/i2cIR0.c(212): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 4 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(210): warning: format '%d' expects type 'int', but argument 2 has type 'long int'
+MainFiles/i2cIR0.c(210): warning: format '%d' expects type 'int', but argument 2 has type 'long int'
+MainFiles/i2cIR0.c(211): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
+MainFiles/i2cIR0.c(211): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 4 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(210): warning: format '%d' expects type 'int', but argument 2 has type 'long int'
+MainFiles/i2cIR0.c(210): warning: format '%d' expects type 'int', but argument 2 has type 'long int'
+MainFiles/i2cIR0.c(211): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
+MainFiles/i2cIR0.c(211): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 4 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(216): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
+MainFiles/i2cIR0.c(216): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 2 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(213): error: expected ',' or ';' before 'int'
+MainFiles/i2cIR0.c(214): error: 'dec1' undeclared (first use in this function)
+MainFiles/i2cIR0.c(214): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/i2cIR0.c(218): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
+MainFiles/i2cIR0.c(218): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
+Target not created
+Build target 'AutoRover'
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(218): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
+MainFiles/i2cIR0.c(218): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 2 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling i2cIR0.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(218): warning: unknown escape sequence: '\s'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 1 Warning(s).
+Build target 'AutoRover'
+compiling i2cIR0.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c(216): warning: null character(s) ignored
+compiling vtUtilities.c...
+compiling LCDtask.c...
+compiling i2cIR0.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 1 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling i2cIR0.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Build target 'AutoRover'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling i2cIR0.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Build target 'AutoRover'
+compiling i2cIR0.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling i2cIR0.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(345): warning: pointer targets in passing argument 4 of 'GLCD_DisplayString' differ in signedness
+./../vtCode/vtLCD/GLCD.h(55): error: note: expected 'unsigned char *' but argument is of type 'char *'
+MainFiles/LCDtask.c(341): warning: unused variable 'voltage'
+compiling i2cIR0.c...
+Target not created
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+_____^
+*** error 56: cannot open file
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(339): warning: pointer targets in passing argument 1 of 'copyMsgString' differ in signedness
+MainFiles/LCDtask.c(125): error: note: expected 'char *' but argument is of type 'unsigned char *'
+MainFiles/LCDtask.c(341): warning: pointer targets in passing argument 1 of 'strtof' differ in signedness
+c:\program files\codesourcery\sourcery g++ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/stdlib.h:138:7: note: expected 'const char *' but argument is of type 'unsigned char *'
+MainFiles/LCDtask.c(343): error: expected ';' before 'unsigned'
+MainFiles/LCDtask.c(345): error: 'offset' undeclared (first use in this function)
+MainFiles/LCDtask.c(345): error: note: each undeclared identifier is reported only once for each function it appears in
+Target not created
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(339): warning: pointer targets in passing argument 1 of 'copyMsgString' differ in signedness
+MainFiles/LCDtask.c(125): error: note: expected 'char *' but argument is of type 'unsigned char *'
+MainFiles/LCDtask.c(341): warning: pointer targets in passing argument 1 of 'strtof' differ in signedness
+c:\program files\codesourcery\sourcery g++ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/stdlib.h:138:7: note: expected 'const char *' but argument is of type 'unsigned char *'
+MainFiles/LCDtask.c(343): warning: pointer targets in passing argument 1 of 'centerStr' differ in signedness
+MainFiles/LCDtask.c(149): error: note: expected 'char *' but argument is of type 'unsigned char *'
+MainFiles/LCDtask.c(341): warning: unused variable 'voltage'
+Target not created
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'centerStr':
+MainFiles/LCDtask.c(164): warning: pointer targets in passing argument 1 of 'strlen' differ in signedness
+c:\program files\codesourcery\sourcery g++ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/string.h:34:9: note: expected 'const char *' but argument is of type 'unsigned char *'
+MainFiles/LCDtask.c: In function 'drawLCDTabs':
+MainFiles/LCDtask.c(193): warning: pointer targets in passing argument 1 of 'centerStr' differ in signedness
+MainFiles/LCDtask.c(149): error: note: expected 'unsigned char *' but argument is of type 'char *'
+MainFiles/LCDtask.c(194): warning: pointer targets in passing argument 1 of 'centerStr' differ in signedness
+MainFiles/LCDtask.c(149): error: note: expected 'unsigned char *' but argument is of type 'char *'
+MainFiles/LCDtask.c(195): warning: pointer targets in passing argument 1 of 'centerStr' differ in signedness
+MainFiles/LCDtask.c(149): error: note: expected 'unsigned char *' but argument is of type 'char *'
+MainFiles/LCDtask.c(196): warning: pointer targets in passing argument 1 of 'centerStr' differ in signedness
+MainFiles/LCDtask.c(149): error: note: expected 'unsigned char *' but argument is of type 'char *'
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(339): warning: pointer targets in passing argument 1 of 'copyMsgString' differ in signedness
+MainFiles/LCDtask.c(125): error: note: expected 'char *' but argument is of type 'unsigned char *'
+MainFiles/LCDtask.c(341): warning: pointer targets in passing argument 1 of 'strtof' differ in signedness
+c:\program files\codesourcery\sourcery g++ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/stdlib.h:138:7: note: expected 'const char *' but argument is of type 'unsigned char *'
+MainFiles/LCDtask.c(341): warning: unused variable 'voltage'
+Target not created
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(341): error: expected '=', ',', ';', 'asm' or '__attribute__' before 'strtof'
+Target not created
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(341): warning: unused variable 'voltage'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 1 Warning(s).
+Build target 'AutoRover'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(344): error: expected ';' before 'unsigned'
+MainFiles/LCDtask.c(346): error: 'offset' undeclared (first use in this function)
+MainFiles/LCDtask.c(346): error: note: each undeclared identifier is reported only once for each function it appears in
+Target not created
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+_____^
+*** error 56: cannot open file
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(344): error: expected ';' before 'unsigned'
+MainFiles/LCDtask.c(346): error: 'offset' undeclared (first use in this function)
+MainFiles/LCDtask.c(346): error: note: each undeclared identifier is reported only once for each function it appears in
+Target not created
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(342): warning: format '%d' expects type 'int', but argument 2 has type 'double'
+MainFiles/LCDtask.c(342): warning: format '%d' expects type 'int', but argument 2 has type 'double'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 2 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(342): warning: format '%d' expects type 'int', but argument 2 has type 'long int'
+MainFiles/LCDtask.c(342): warning: format '%d' expects type 'int', but argument 2 has type 'long int'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 2 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(342): error: 'linebuffer' undeclared (first use in this function)
+MainFiles/LCDtask.c(342): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/LCDtask.c(341): warning: unused variable 'voltage'
+Target not created
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+_____^
+*** error 56: cannot open file
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(341): warning: unused variable 'voltage'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 1 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(341): warning: unused variable 'voltage'
+compiling i2cIR0.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 1 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(344): warning: unused variable 'voltage'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 1 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(344): warning: unused variable 'voltage'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 1 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(346): error: 'IR0_READS_PER8' undeclared (first use in this function)
+MainFiles/LCDtask.c(346): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/LCDtask.c(346): warning: unused variable 'reads'
+MainFiles/LCDtask.c(344): warning: unused variable 'voltage'
+compiling myTimers.c...
+compiling i2cIR0.c...
+Target not created
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(347): error: 'IR0_READS_PER8' undeclared (first use in this function)
+MainFiles/LCDtask.c(347): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/LCDtask.c(347): warning: unused variable 'reads'
+MainFiles/LCDtask.c(345): warning: unused variable 'voltage'
+Target not created
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(345): warning: unused variable 'voltage'
+compiling myTimers.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 1 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
 compiling list.c...
 compiling queue.c...
 compiling tasks.c...
 compiling port.c...
 compiling timers.c...
 compiling main.c...
-MainFiles/main.c(217): warning: null character(s) ignored
-compiling i2cTemp.c...
-MainFiles/i2cTemp.c: In function 'vi2cTempUpdateTask':
-MainFiles/i2cTemp.c(239): warning: format '%d' expects type 'int', but argument 2 has type 'long int'
-MainFiles/i2cTemp.c(239): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
-MainFiles/i2cTemp.c(239): warning: format '%d' expects type 'int', but argument 2 has type 'long int'
-MainFiles/i2cTemp.c(239): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
-MainFiles/i2cTemp.c(240): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
-MainFiles/i2cTemp.c(240): warning: format '%d' expects type 'int', but argument 4 has type 'long int'
-MainFiles/i2cTemp.c(240): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
-MainFiles/i2cTemp.c(240): warning: format '%d' expects type 'int', but argument 4 has type 'long int'
+MainFiles/main.c(216): warning: null character(s) ignored
 compiling vtUtilities.c...
 compiling ParTest.c...
 compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'drawLCDTabs':
-MainFiles/LCDtask.c(239): error: expected ',' or ';' before 'GLCD_DisplayChar'
-MainFiles/LCDtask.c(237): warning: unused variable 'y'
 MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(270): warning: unused variable 'light'
-MainFiles/LCDtask.c(269): warning: unused variable 'sat'
-MainFiles/LCDtask.c(268): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(381): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
+MainFiles/LCDtask.c(345): warning: unused variable 'voltage'
 compiling myTimers.c...
 compiling conductor.c...
+compiling i2cIR0.c...
 compiling syscalls.c...
 compiling system_LPC17xx.c...
 assembling startup_LPC17xx.s...
@@ -701,22 +1216,933 @@ compiling lpc17xx_ssp.c...
 ../NXPDrivers/source/lpc17xx_ssp.c(344): warning: 'rdata16' may be used uninitialized in this function
 ../NXPDrivers/source/lpc17xx_ssp.c(345): warning: 'wdata16' may be used uninitialized in this function
 compiling vtI2C.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 8 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling myTimers.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling myTimers.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling myTimers.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling myTimers.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling myTimers.c...
+MainFiles/myTimers.c: In function 'IR0TimerCallback':
+MainFiles/myTimers.c(69): error: invalid type argument of unary '*' (have 'int')
+MainFiles/myTimers.c: In function 'startTimerForIR0':
+MainFiles/myTimers.c(80): error: invalid type argument of unary '*' (have 'int')
 Target not created
+Build target 'AutoRover'
+compiling myTimers.c...
+MainFiles/myTimers.c: In function 'IR0TimerCallback':
+MainFiles/myTimers.c(69): error: invalid type argument of unary '*' (have 'int')
+MainFiles/myTimers.c: In function 'startTimerForIR0':
+MainFiles/myTimers.c(80): error: invalid type argument of unary '*' (have 'int')
+Target not created
+Build target 'AutoRover'
+compiling myTimers.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling myTimers.c...
+MainFiles/myTimers.c: In function 'IR0TimerCallback':
+MainFiles/myTimers.c(69): warning: left-hand operand of comma expression has no effect
+MainFiles/myTimers.c(69): error: too few arguments to function 'SendIR0TimerMsg'
+MainFiles/i2cIR0.h(35): error: note: declared here
+MainFiles/myTimers.c(69): error: expected ')' before '{' token
+MainFiles/myTimers.c(73): error: expected expression before '}' token
+MainFiles/myTimers.c: In function 'startTimerForIR0':
+MainFiles/myTimers.c(80): warning: left-hand operand of comma expression has no effect
+MainFiles/myTimers.c(80): warning: left-hand operand of comma expression has no effect
+MainFiles/myTimers.c(80): warning: left-hand operand of comma expression has no effect
+MainFiles/myTimers.c(80): error: expected ')' before ';' token
+MainFiles/myTimers.c(88): warning: passing argument 2 of 'xTimerCreate' makes integer from pointer without a cast
+./../FreeRTOS/Source/include/timers.h(226): error: note: expected 'portTickType' but argument is of type 'void (*)(void *)'
+MainFiles/myTimers.c(88): error: too few arguments to function 'xTimerCreate'
+./../FreeRTOS/Source/include/timers.h(226): error: note: declared here
+MainFiles/myTimers.c(88): error: expected ',' or ';' before '}' token
+MainFiles/myTimers.c(88): error: expected declaration or statement at end of input
+MainFiles/myTimers.c(80): warning: unused variable 'IR0TimerHandle'
+Target not created
+Build target 'AutoRover'
+compiling myTimers.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling myTimers.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
 Build target 'AutoRover'
 compiling LCDtask.c...
 MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(270): warning: unused variable 'light'
-MainFiles/LCDtask.c(269): warning: unused variable 'sat'
-MainFiles/LCDtask.c(268): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(381): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
+MainFiles/LCDtask.c(345): warning: unused variable 'voltage'
+compiling lpc17xx_ssp.c...
+../NXPDrivers/source/lpc17xx_ssp.c: In function 'SSP_ReadWrite':
+../NXPDrivers/source/lpc17xx_ssp.c(342): warning: 'rdata8' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(343): warning: 'wdata8' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(344): warning: 'rdata16' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(345): warning: 'wdata16' may be used uninitialized in this function
 linking...
 ".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
 Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
 Full Chip Erase Done.
 Programming Done.
 Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(345): warning: unused variable 'voltage'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 1 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(345): warning: unused variable 'voltage'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 1 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(345): warning: unused variable 'voltage'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 1 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(270): error: both 'unsigned' and 'float' in declaration specifiers
+MainFiles/LCDtask.c(270): error: expected identifier or '(' before '[' token
+MainFiles/LCDtask.c(328): error: 'msgBuffer' undeclared (first use in this function)
+MainFiles/LCDtask.c(328): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/LCDtask.c(347): warning: unused variable 'voltage'
+Target not created
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(270): error: both 'unsigned' and 'float' in declaration specifiers
+MainFiles/LCDtask.c(347): warning: unused variable 'voltage'
+MainFiles/LCDtask.c(270): warning: unused variable 'histBuffer'
+Target not created
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(347): warning: unused variable 'voltage'
+MainFiles/LCDtask.c(270): warning: unused variable 'histBuffer'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 2 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(347): warning: unused variable 'voltage'
+MainFiles/LCDtask.c(270): warning: unused variable 'histBuffer'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 2 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(347): warning: unused variable 'voltage'
+MainFiles/LCDtask.c(270): warning: unused variable 'histBuffer'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 2 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(349): warning: unused variable 'voltage'
+MainFiles/LCDtask.c(272): warning: unused variable 'histBuffer'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 2 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(361): error: expected ';' before 'break'
+MainFiles/LCDtask.c(363): error: expected expression before '{' token
+Target not created
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(363): error: expected expression before '{' token
+Target not created
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(363): error: expected expression before '{' token
+MainFiles/LCDtask.c(365): error: expected ';' before ':' token
+MainFiles/LCDtask.c(365): error: expected ';' before ')' token
+MainFiles/LCDtask.c(369): warning: passing argument 4 of 'GLCD_DisplayChar' makes integer from pointer without a cast
+./../vtCode/vtLCD/GLCD.h(54): error: note: expected 'unsigned char' but argument is of type 'char *'
+Target not created
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(362): error: expected expression before '{' token
+MainFiles/LCDtask.c(364): error: expected ';' before ':' token
+MainFiles/LCDtask.c(364): error: expected ';' before ')' token
+MainFiles/LCDtask.c(368): warning: passing argument 4 of 'GLCD_DisplayChar' makes integer from pointer without a cast
+./../vtCode/vtLCD/GLCD.h(54): error: note: expected 'unsigned char' but argument is of type 'char *'
+Target not created
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(364): error: expected expression before ';' token
+MainFiles/LCDtask.c(366): error: expected ';' before ':' token
+MainFiles/LCDtask.c(366): error: expected ';' before ')' token
+MainFiles/LCDtask.c(370): warning: passing argument 4 of 'GLCD_DisplayChar' makes integer from pointer without a cast
+./../vtCode/vtLCD/GLCD.h(54): error: note: expected 'unsigned char' but argument is of type 'char *'
+Target not created
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(366): error: expected ';' before ':' token
+MainFiles/LCDtask.c(366): error: expected ';' before ')' token
+MainFiles/LCDtask.c(370): warning: passing argument 4 of 'GLCD_DisplayChar' makes integer from pointer without a cast
+./../vtCode/vtLCD/GLCD.h(54): error: note: expected 'unsigned char' but argument is of type 'char *'
+Target not created
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(370): warning: passing argument 4 of 'GLCD_DisplayChar' makes integer from pointer without a cast
+./../vtCode/vtLCD/GLCD.h(54): error: note: expected 'unsigned char' but argument is of type 'char *'
+Target not created
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(358): error: 'i' undeclared (first use in this function)
+MainFiles/LCDtask.c(358): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/LCDtask.c(359): error: too many arguments to function 'GLCD_ClearWindow'
+./../vtCode/vtLCD/GLCD.h(52): error: note: declared here
+MainFiles/LCDtask.c(362): error: expected ';' before 'int'
+Target not created
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+_____^
+*** error 56: cannot open file
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(360): error: too many arguments to function 'GLCD_ClearWindow'
+./../vtCode/vtLCD/GLCD.h(52): error: note: declared here
+MainFiles/LCDtask.c(363): error: expected ';' before 'for'
+Target not created
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(360): error: too many arguments to function 'GLCD_ClearWindow'
+./../vtCode/vtLCD/GLCD.h(52): error: note: declared here
+Target not created
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(359): error: too many arguments to function 'GLCD_ClearWindow'
+./../vtCode/vtLCD/GLCD.h(52): error: note: declared here
+Target not created
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(359): error: too many arguments to function 'GLCD_ClearWindow'
+./../vtCode/vtLCD/GLCD.h(52): error: note: declared here
+Target not created
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+_____^
+*** error 56: cannot open file
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(359): error: too many arguments to function 'GLCD_ClearWindow'
+./../vtCode/vtLCD/GLCD.h(52): error: note: declared here
+Target not created
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'drawLCDTabs':
+MainFiles/LCDtask.c(218): error: too few arguments to function 'GLCD_ClearWindow'
+./../vtCode/vtLCD/GLCD.h(52): error: note: declared here
+Target not created
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+_____^
+*** error 56: cannot open file
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(371): error: 'I0_READS' undeclared (first use in this function)
+MainFiles/LCDtask.c(371): error: note: each undeclared identifier is reported only once for each function it appears in
+Target not created
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+compiling myTimers.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+compiling myTimers.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+compiling myTimers.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+compiling myTimers.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(375): error: 'flaot' undeclared (first use in this function)
+MainFiles/LCDtask.c(375): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/LCDtask.c(375): error: expected ')' before numeric constant
+Target not created
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+_____^
+*** error 56: cannot open file
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+compiling myTimers.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(376): error: expected ')' before 'GLCD_DisplayChar'
+MainFiles/LCDtask.c(375): error: called object 'i' is not a function
+MainFiles/LCDtask.c(377): error: expected ',' or ';' before '}' token
+MainFiles/LCDtask.c(375): warning: unused variable 'col'
+MainFiles/LCDtask.c(409): error: expected declaration or statement at end of input
+Target not created
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(375): error: called object 'i' is not a function
+MainFiles/LCDtask.c(376): error: expected ',' or ';' before 'GLCD_DisplayChar'
+MainFiles/LCDtask.c(375): warning: unused variable 'col'
+Target not created
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+_____^
+*** error 56: cannot open file
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(375): error: called object 'i' is not a function
+Target not created
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(375): error: expected ',' or ';' before ')' token
+Target not created
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+_____^
+*** error 56: cannot open file
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+compiling myTimers.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+compiling myTimers.c...
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(220): error: expected ';' before '}' token
+MainFiles/i2cIR0.c(224): error: expected ';' before '}' token
+Target not created
+Build target 'AutoRover'
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(224): error: expected ';' before 'voltage'
+Target not created
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+_____^
+*** error 56: cannot open file
+Build target 'AutoRover'
+compiling i2cIR0.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling i2cIR0.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(342): error: 'voltage' undeclared (first use in this function)
+MainFiles/LCDtask.c(342): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/LCDtask.c(346): error: 'i' undeclared (first use in this function)
+compiling i2cIR0.c...
+Target not created
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+_____^
+*** error 56: cannot open file
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(342): error: 'voltage' undeclared (first use in this function)
+MainFiles/LCDtask.c(342): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/LCDtask.c(346): error: 'i' undeclared (first use in this function)
+Target not created
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(347): warning: 'i' may be used uninitialized in this function
+MainFiles/LCDtask.c(343): warning: 'voltage' may be used uninitialized in this function
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 2 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Build target 'AutoRover'
+compiling myTimers.c...
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(220): error: expected ';' before '}' token
+MainFiles/i2cIR0.c(225): error: expected ';' before '}' token
+Target not created
+Build target 'AutoRover'
+compiling i2cIR0.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(161): warning: unused variable 'i'
+MainFiles/i2cIR0.c(170): warning: 'i' may be used uninitialized in this function
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 2 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(161): warning: unused variable 'i'
+MainFiles/i2cIR0.c(170): warning: 'i' may be used uninitialized in this function
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 2 Warning(s).
+Build target 'AutoRover'
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(169): warning: 'i' may be used uninitialized in this function
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 1 Warning(s).
+Build target 'AutoRover'
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(219): error: 'i' undeclared (first use in this function)
+MainFiles/i2cIR0.c(219): error: note: each undeclared identifier is reported only once for each function it appears in
+Target not created
+Build target 'AutoRover'
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(169): warning: 'k' may be used uninitialized in this function
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 1 Warning(s).
+Build target 'AutoRover'
+compiling i2cIR0.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c(216): warning: null character(s) ignored
+compiling myTimers.c...
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(212): error: expected ';' before 'k'
+MainFiles/i2cIR0.c(215): error: 'dec1' undeclared (first use in this function)
+MainFiles/i2cIR0.c(215): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/i2cIR0.c(215): error: 'dec2' undeclared (first use in this function)
+MainFiles/i2cIR0.c(165): warning: unused variable 'k'
+Target not created
+Build target 'AutoRover'
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(213): error: expected ';' before 'sprintf'
+Target not created
+Build target 'AutoRover'
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(213): error: 'dec1' undeclared (first use in this function)
+MainFiles/i2cIR0.c(213): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/i2cIR0.c(213): error: 'dec2' undeclared (first use in this function)
+Target not created
+Build target 'AutoRover'
+compiling i2cIR0.c...
+MainFiles/i2cIR0.c: In function 'vi2cIR0UpdateTask':
+MainFiles/i2cIR0.c(165): warning: unused variable 'k'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 1 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
+MainFiles/LCDtask.c(279): error: expected ';' before 'vtLCDMsg'
+MainFiles/LCDtask.c(335): error: 'msgBuffer' undeclared (first use in this function)
+MainFiles/LCDtask.c(335): error: note: each undeclared identifier is reported only once for each function it appears in
+compiling i2cIR0.c...
+Target not created
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+_____^
+*** error 56: cannot open file
+Build target 'AutoRover'
+compiling LCDtask.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+compiling myTimers.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling LCDtask.c...
+compiling myTimers.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
 Clean started: Project: 'RTOSDemo'
    deleting intermediate output files for target 'AutoRover'
 Build target 'AutoRover'
@@ -726,29 +2152,13 @@ compiling tasks.c...
 compiling port.c...
 compiling timers.c...
 compiling main.c...
-MainFiles/main.c(217): warning: null character(s) ignored
-compiling i2cTemp.c...
-MainFiles/i2cTemp.c: In function 'vi2cTempUpdateTask':
-MainFiles/i2cTemp.c(239): warning: format '%d' expects type 'int', but argument 2 has type 'long int'
-MainFiles/i2cTemp.c(239): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
-MainFiles/i2cTemp.c(239): warning: format '%d' expects type 'int', but argument 2 has type 'long int'
-MainFiles/i2cTemp.c(239): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
-MainFiles/i2cTemp.c(240): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
-MainFiles/i2cTemp.c(240): warning: format '%d' expects type 'int', but argument 4 has type 'long int'
-MainFiles/i2cTemp.c(240): warning: format '%d' expects type 'int', but argument 3 has type 'long int'
-MainFiles/i2cTemp.c(240): warning: format '%d' expects type 'int', but argument 4 has type 'long int'
+MainFiles/main.c(216): warning: null character(s) ignored
 compiling vtUtilities.c...
 compiling ParTest.c...
 compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(270): warning: unused variable 'light'
-MainFiles/LCDtask.c(269): warning: unused variable 'sat'
-MainFiles/LCDtask.c(268): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(381): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
 compiling myTimers.c...
 compiling conductor.c...
+compiling i2cIR0.c...
 compiling syscalls.c...
 compiling system_LPC17xx.c...
 assembling startup_LPC17xx.s...
@@ -776,262 +2186,6 @@ compiling lpc17xx_ssp.c...
 ../NXPDrivers/source/lpc17xx_ssp.c(345): warning: 'wdata16' may be used uninitialized in this function
 compiling vtI2C.c...
 linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 20 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(270): warning: unused variable 'light'
-MainFiles/LCDtask.c(269): warning: unused variable 'sat'
-MainFiles/LCDtask.c(268): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(381): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(270): warning: unused variable 'light'
-MainFiles/LCDtask.c(269): warning: unused variable 'sat'
-MainFiles/LCDtask.c(268): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(381): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(270): warning: unused variable 'light'
-MainFiles/LCDtask.c(269): warning: unused variable 'sat'
-MainFiles/LCDtask.c(268): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(381): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(270): warning: unused variable 'light'
-MainFiles/LCDtask.c(269): warning: unused variable 'sat'
-MainFiles/LCDtask.c(268): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(381): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(270): warning: unused variable 'light'
-MainFiles/LCDtask.c(269): warning: unused variable 'sat'
-MainFiles/LCDtask.c(268): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(381): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(270): warning: unused variable 'light'
-MainFiles/LCDtask.c(269): warning: unused variable 'sat'
-MainFiles/LCDtask.c(268): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(381): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(270): warning: unused variable 'light'
-MainFiles/LCDtask.c(269): warning: unused variable 'sat'
-MainFiles/LCDtask.c(268): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(381): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(270): warning: unused variable 'light'
-MainFiles/LCDtask.c(269): warning: unused variable 'sat'
-MainFiles/LCDtask.c(268): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(381): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(270): warning: unused variable 'light'
-MainFiles/LCDtask.c(269): warning: unused variable 'sat'
-MainFiles/LCDtask.c(268): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(381): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(274): warning: unused variable 'light'
-MainFiles/LCDtask.c(273): warning: unused variable 'sat'
-MainFiles/LCDtask.c(272): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(385): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(274): warning: unused variable 'light'
-MainFiles/LCDtask.c(273): warning: unused variable 'sat'
-MainFiles/LCDtask.c(272): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(385): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(274): warning: unused variable 'light'
-MainFiles/LCDtask.c(273): warning: unused variable 'sat'
-MainFiles/LCDtask.c(272): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(385): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(274): warning: unused variable 'light'
-MainFiles/LCDtask.c(273): warning: unused variable 'sat'
-MainFiles/LCDtask.c(272): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(385): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'drawLCDTabs':
-MainFiles/LCDtask.c(253): error: 'ln' undeclared (first use in this function)
-MainFiles/LCDtask.c(253): error: note: each undeclared identifier is reported only once for each function it appears in
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(284): warning: unused variable 'light'
-MainFiles/LCDtask.c(283): warning: unused variable 'sat'
-MainFiles/LCDtask.c(282): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(395): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-Target not created
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(284): warning: unused variable 'light'
-MainFiles/LCDtask.c(283): warning: unused variable 'sat'
-MainFiles/LCDtask.c(282): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(395): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(285): warning: unused variable 'light'
-MainFiles/LCDtask.c(284): warning: unused variable 'sat'
-MainFiles/LCDtask.c(283): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(396): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'drawLCDTabs':
-MainFiles/LCDtask.c(256): warning: unused variable 'z'
-MainFiles/LCDtask.c(254): warning: unused variable 'ln'
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(286): warning: unused variable 'light'
-MainFiles/LCDtask.c(285): warning: unused variable 'sat'
-MainFiles/LCDtask.c(284): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(397): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
 ".\ObjectFiles\AutoRover.elf" - 0 Error(s), 7 Warning(s).
 Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
 Full Chip Erase Done.
@@ -1039,276 +2193,18 @@ Programming Done.
 Verify OK.
 Build target 'AutoRover'
 compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'drawLCDTabs':
-MainFiles/LCDtask.c(256): warning: unused variable 'z'
-MainFiles/LCDtask.c(254): warning: unused variable 'ln'
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(286): warning: unused variable 'light'
-MainFiles/LCDtask.c(285): warning: unused variable 'sat'
-MainFiles/LCDtask.c(284): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(397): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
+compiling myTimers.c...
+compiling i2cIR0.c...
 linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 7 Warning(s).
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
 Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
 Full Chip Erase Done.
 Programming Done.
 Verify OK.
 Build target 'AutoRover'
 compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'drawLCDTabs':
-MainFiles/LCDtask.c(256): warning: unused variable 'z'
-MainFiles/LCDtask.c(254): warning: unused variable 'ln'
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(286): warning: unused variable 'light'
-MainFiles/LCDtask.c(285): warning: unused variable 'sat'
-MainFiles/LCDtask.c(284): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(397): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
 linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 7 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'drawLCDTabs':
-MainFiles/LCDtask.c(256): warning: unused variable 'z'
-MainFiles/LCDtask.c(254): warning: unused variable 'ln'
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(286): warning: unused variable 'light'
-MainFiles/LCDtask.c(285): warning: unused variable 'sat'
-MainFiles/LCDtask.c(284): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(397): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 7 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'drawLCDTabs':
-MainFiles/LCDtask.c(256): warning: unused variable 'z'
-MainFiles/LCDtask.c(254): warning: unused variable 'ln'
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(286): warning: unused variable 'light'
-MainFiles/LCDtask.c(285): warning: unused variable 'sat'
-MainFiles/LCDtask.c(284): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(397): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 7 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'drawLCDTabs':
-MainFiles/LCDtask.c(256): warning: unused variable 'z'
-MainFiles/LCDtask.c(254): warning: unused variable 'ln'
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(286): warning: unused variable 'light'
-MainFiles/LCDtask.c(285): warning: unused variable 'sat'
-MainFiles/LCDtask.c(284): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(397): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 7 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'drawLCDTabs':
-MainFiles/LCDtask.c(256): warning: unused variable 'z'
-MainFiles/LCDtask.c(254): warning: unused variable 'ln'
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(286): warning: unused variable 'light'
-MainFiles/LCDtask.c(285): warning: unused variable 'sat'
-MainFiles/LCDtask.c(284): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(397): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 7 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'drawLCDTabs':
-MainFiles/LCDtask.c(257): warning: unused variable 'z'
-MainFiles/LCDtask.c(255): warning: unused variable 'ln'
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(287): warning: unused variable 'light'
-MainFiles/LCDtask.c(286): warning: unused variable 'sat'
-MainFiles/LCDtask.c(285): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(398): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 7 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(285): warning: unused variable 'light'
-MainFiles/LCDtask.c(284): warning: unused variable 'sat'
-MainFiles/LCDtask.c(283): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(396): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(285): warning: unused variable 'light'
-MainFiles/LCDtask.c(284): warning: unused variable 'sat'
-MainFiles/LCDtask.c(283): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(396): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(285): warning: unused variable 'light'
-MainFiles/LCDtask.c(284): warning: unused variable 'sat'
-MainFiles/LCDtask.c(283): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(396): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(285): warning: unused variable 'light'
-MainFiles/LCDtask.c(284): warning: unused variable 'sat'
-MainFiles/LCDtask.c(283): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(396): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(285): warning: unused variable 'light'
-MainFiles/LCDtask.c(284): warning: unused variable 'sat'
-MainFiles/LCDtask.c(283): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(396): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(285): warning: unused variable 'light'
-MainFiles/LCDtask.c(284): warning: unused variable 'sat'
-MainFiles/LCDtask.c(283): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(396): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(285): warning: unused variable 'light'
-MainFiles/LCDtask.c(284): warning: unused variable 'sat'
-MainFiles/LCDtask.c(283): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(396): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(285): warning: unused variable 'light'
-MainFiles/LCDtask.c(284): warning: unused variable 'sat'
-MainFiles/LCDtask.c(283): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(396): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(285): warning: unused variable 'light'
-MainFiles/LCDtask.c(284): warning: unused variable 'sat'
-MainFiles/LCDtask.c(283): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(396): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
-Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Full Chip Erase Done.
-Programming Done.
-Verify OK.
-Build target 'AutoRover'
-compiling LCDtask.c...
-MainFiles/LCDtask.c: In function 'vLCDUpdateTask':
-MainFiles/LCDtask.c(286): warning: unused variable 'light'
-MainFiles/LCDtask.c(285): warning: unused variable 'sat'
-MainFiles/LCDtask.c(284): warning: unused variable 'hue'
-MainFiles/LCDtask.c: At top level:
-MainFiles/LCDtask.c(397): warning: 'hsl2rgb' defined but not used
-MainFiles/LCDtask.c(149): warning: 'buffer' defined but not used
-linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 5 Warning(s).
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
 Load "C:\\ARMCode\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
 Full Chip Erase Done.
 Programming Done.
