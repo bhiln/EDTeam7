@@ -11,14 +11,14 @@
 %    3. Open the serial connection to the WiFly 
 %
 
-editSensorData();
+% editSensorData();
 
 % Create a Sensor object, paramter is the initial distance to 
 % the wall
 obj = Sensor(5.0);
-editObj = editSensor();
+% editObj = editSensor();
 
-disp(editObj);
+% disp(editObj);
 %set(editObj.edit2, 'String', 2.0);
 
 % Create and start the sensorSimTimer object
