@@ -19,6 +19,7 @@
 #include "vtUtilities.h"
 #include "LCDtask.h"
 #include "string.h"
+#include "myTimers.h"
 
 /*------------------------------------------------------------------------------
  * Preprocessor Commands
@@ -35,6 +36,8 @@
 #else
 #define lcdSTACK_SIZE		(baseStack*configMINIMAL_STACK_SIZE)
 #endif
+
+#define IR0_READS			16
 
 /*------------------------------------------------------------------------------
  * Private Data Structures
@@ -131,8 +134,6 @@ void copyMsgString(char *target,vtLCDMsg *lcdBuffer,int targetMaxLen)
  * LCD Task
  */
 
-static unsigned short hsl2rgb(float H, float S, float L);
-
 #define SCREEN_WIDTH 		320
 #define SCREEN_HEIGHT 		240
 #define SMALL_PIX_WIDTH 	6
@@ -141,12 +142,9 @@ static unsigned short hsl2rgb(float H, float S, float L);
 #define LARGE_PIX_HEIGHT	24
 
 #define X_OFFSET			SMALL_PIX_WIDTH*6
-#define Y_OFFSET			LARGE_PIX_HEIGHT + SMALL_PIX_HEIGHT			
-
-// Buffer in which to store the memory read from the LCD
-#define MAX_RADIUS 15
-#define BUF_LEN (((MAX_RADIUS*2) + 1)*((MAX_RADIUS*2) + 1))
-static unsigned short int buffer[BUF_LEN];
+#define Y_OFFSET			LARGE_PIX_HEIGHT + SMALL_PIX_HEIGHT
+#define X_WIDTH				SCREEN_WIDTH - SMALL_PIX_WIDTH*10
+#define Y_WIDTH				SCREEN_HEIGHT - LARGE_PIX_HEIGHT*2 - SMALL_PIX_HEIGHT*6 + 3			
 
 typedef enum
 {
@@ -214,10 +212,10 @@ void drawLCDTabs(Tabs tab)
 			GLCD_DisplayString(graphTitleLine, graphTitleOffset, 1, (unsigned char*)graphTitle);
 
 			// Draw vertical plot line.
-			GLCD_ClearWindow(X_OFFSET, Y_OFFSET, 1, SCREEN_HEIGHT - LARGE_PIX_HEIGHT*2 - SMALL_PIX_HEIGHT*6 + 3, Green);
+			GLCD_ClearWindow(X_OFFSET, Y_OFFSET, 1, Y_WIDTH, Green);
 
 			// Draw horizontal plot line.
-			GLCD_ClearWindow(X_OFFSET - 2, SCREEN_HEIGHT - LARGE_PIX_HEIGHT - SMALL_PIX_HEIGHT*5, SCREEN_WIDTH - SMALL_PIX_WIDTH*10, 1, Green);
+			GLCD_ClearWindow(X_OFFSET - 2, SCREEN_HEIGHT - LARGE_PIX_HEIGHT - SMALL_PIX_HEIGHT*5, X_WIDTH, 1, Green);
 
 			// Draw X label.
 			GLCD_DisplayString(graphLabelXLine, graphLabelXOffset, 0, (unsigned char*)graphLabelX);
@@ -227,8 +225,8 @@ void drawLCDTabs(Tabs tab)
 			for(i = 0; i < strlen(graphLabelY); i++)
 				GLCD_DisplayChar(i + graphLabelYOffset, graphlabelYCol, 0, (unsigned char)graphLabelY[i]);
 
-			int xTicks[8];
-			for(i = 0; i < 8; i++)
+			int xTicks[9];
+			for(i = 0; i < 9; i++)
 				xTicks[i] = 8 - i;
 			
 			int yTicks[6];
@@ -250,21 +248,13 @@ void drawLCDTabs(Tabs tab)
 				}	
 			}
 			
-			for(i = 0; i < 8; i++) {
+			for(i = 0; i < 9; i++) {
 				unsigned int ln = (SCREEN_HEIGHT - LARGE_PIX_HEIGHT - SMALL_PIX_HEIGHT*4)/SMALL_PIX_HEIGHT;
 				int x = xTicks[i];
 				unsigned char z = (unsigned char)((unsigned int)'0' + x%10);
-				GLCD_DisplayChar(ln, 5 + 6*i, 0, '-');
-				GLCD_DisplayChar(ln, 6 + 6*i, 0, z);	
+				GLCD_DisplayChar(ln, 5 + 5*i, 0, '-');
+				GLCD_DisplayChar(ln, 6 + 5*i, 0, z);	
 			}
-			
-			/*unsigned int* xMapped;
-			unsigned int* yMapped;
-			unsigned int x = 10;
-			unsigned int y = 10;
-			mapPixGraph(x, y, xMapped, yMapped); 
-			GLCD_ClearWindow(x, y, 1, 30, Green);*/
-
 			break;
 		}
 		default:
@@ -274,16 +264,17 @@ void drawLCDTabs(Tabs tab)
 	} 
 }
 
-// This is the actual task that is run
+// This is the actual task that is run.
 static portTASK_FUNCTION(vLCDUpdateTask, pvParameters)
 {
 	unsigned short screenColor = 0;
 	unsigned short tscr;
 	unsigned timerCount = 0;
-
-	float hue = 0;
-	float sat = 0.2;
-	float light = 0.2;
+	float histBuffer[IR0_READS] = {0};
+	histBuffer[0] = 0.3;
+	histBuffer[7] = 1.5;
+	histBuffer[5] = 2.2;
+	histBuffer[6] = 2.9;
 
 	vtLCDMsg msgBuffer;
 	vtLCDStruct *lcdPtr = (vtLCDStruct *) pvParameters;
@@ -353,8 +344,40 @@ static portTASK_FUNCTION(vLCDUpdateTask, pvParameters)
 		switch(getMsgType(&msgBuffer))
 		{
 
-		case LCDMsgTypePrint: {
+		case LCDMsgTypePrint:
+		{
+			char lineBuffer[lcdCHAR_IN_LINE + 1];
+			char currentVoltage[lcdCHAR_IN_LINE + 1];
 
+			copyMsgString(lineBuffer, &msgBuffer, lcdCHAR_IN_LINE);
+			sprintf(currentVoltage, "Current Voltage = %s V", lineBuffer);
+
+			float voltage = strtof(lineBuffer, NULL);
+
+		    // Display the current voltage.
+			unsigned int offset = centerStr(currentVoltage, 0, 1);
+			GLCD_ClearLn(3, 0);
+			GLCD_DisplayString(3, offset, 0, (unsigned char*)currentVoltage);
+
+			voltage = 1;
+			// Clear the old history buffer display.
+			unsigned int i;
+			GLCD_ClearWindow(X_OFFSET + 1, Y_OFFSET, X_WIDTH, Y_WIDTH - 3, Blue);	
+
+			// Add the voltage to the history buffer.
+			for(i = 0; i < IR0_READS - 1; i++)
+				histBuffer[i] = histBuffer[i + 1];
+			
+			histBuffer[IR0_READS - 1] = voltage;
+			// Display the history buffer.
+			for(i = 0; i < IR0_READS; i++)
+			{
+			 	if(histBuffer[i] != 0)
+				{
+					unsigned int col = 11 + 5*i/(IR0_READS/8);
+					GLCD_DisplayChar(4 + 18 - 6*histBuffer[i], col, 0, '-');
+				}	
+			}
 			break;
 		}
 		case LCDMsgTypeTimer: {
@@ -362,17 +385,18 @@ static portTASK_FUNCTION(vLCDUpdateTask, pvParameters)
 			//    unpackTimerMsg() which would unpack the message and get that value
 			// Each timer update will cause a circle to be drawn on the top half of the screen
 			//   as explained below
-			
+
+			// Shift all the data back one second.
 			if (timerCount == 0) {
 
-			} else {
+			}
+			else {
 
 			}
 			
 			timerCount++;
-			if (timerCount >= 40) {	  
-				// every so often, we reset timer count and start again
-				// This isn't for any important reason, it is just to for this example code to do "stuff"
+			if (timerCount >= 1000) {
+				
 				timerCount = 0;
 			}
 			break;
@@ -384,63 +408,4 @@ static portTASK_FUNCTION(vLCDUpdateTask, pvParameters)
 		}
 		}
 	}
-}
-
-// Convert from HSL colormap to RGB values in this weird colormap
-// H: 0 to 360
-// S: 0 to 1
-// L: 0 to 1
-// The LCD has a funky bitmap.  Each pixel is 16 bits (a "short unsigned int")
-//   Red is the most significant 5 bits
-//   Blue is the least significant 5 bits
-//   Green is the middle 6 bits
-static unsigned short hsl2rgb(float H,float S,float L)
-{
-	float C = (1.0 - fabs(2.0*L-1.0))*S;
-	float Hprime = H / 60;
-	unsigned short t = Hprime / 2.0;
-	t *= 2;
-	float X = C * (1-abs((Hprime - t) - 1));
-	unsigned short truncHprime = Hprime;
-	float R1, G1, B1;
-
-	switch(truncHprime) {
-		case 0: {
-			R1 = C; G1 = X; B1 = 0;
-			break;
-		}
-		case 1: {
-			R1 = X; G1 = C; B1 = 0;
-			break;
-		}
-		case 2: {
-			R1 = 0; G1 = C; B1 = X;
-			break;
-		}
-		case 3: {
-			R1 = 0; G1 = X; B1 = C;
-			break;
-		}
-		case 4: {
-			R1 = X; G1 = 0; B1 = C;
-			break;
-		}
-		case 5: {
-			R1 = C; G1 = 0; B1 = X;
-			break;
-		}
-		default: {
-			// make the compiler stop generating warnings
-			R1 = 0; G1 = 0; B1 = 0;
-			VT_HANDLE_FATAL_ERROR(Hprime);
-			break;
-		}
-	}
-	float m = L - 0.5*C;
-	R1 += m; G1 += m; B1 += m;
-	unsigned short red = R1*32; if (red > 31) red = 31;
-	unsigned short green = G1*64; if (green > 63) green = 63;
-	unsigned short blue = B1*32; if (blue > 31) blue = 31;
-	unsigned short color = (red << 11) | (green << 5) | blue;
-	return(color); 
 }
