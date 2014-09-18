@@ -1,4 +1,4 @@
-ObjectFiles/i2ctemp.o: MainFiles/i2cTemp.c \
+ObjectFiles/i2cir0.o: MainFiles/i2cIR0.c \
  c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/stdlib.h \
  c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/machine/ieeefp.h \
  c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/_ansi.h \
@@ -40,4 +40,4 @@ ObjectFiles/i2ctemp.o: MainFiles/i2cTemp.c \
  ../NXPDrivers/include/lpc17xx_i2c.h ../NXPDrivers/include/lpc_types.h \
  ../FreeRTOS/Source/include/projDefs.h MainFiles/LCDtask.h \
  ../FreeRTOS/Source/include/queue.h ../FreeRTOS/Source/include/timers.h \
- MainFiles/i2cTemp.h MainFiles/lcdTask.h MainFiles/I2CTaskMsgTypes.h
+ MainFiles/i2cIR0.h MainFiles/lcdTask.h MainFiles/I2CTaskMsgTypes.h
