@@ -1,0 +1,44 @@
+\begin{thebibliography}{1}
+
+\bibitem{Brooks:1985}
+Rodney~A. Brooks.
+\newblock A robust layered control system for a mobile robot.
+\newblock Technical report, Massachusetts Institute of Technology, Cambridge,
+  MA, USA, 1985.
+
+\bibitem{Discant}
+Anca Discant, Alexandrina Rogozan, Corneliu Rusu, and Abdelaziz Bensrhair.
+\newblock Sensors for obstacle detection - a survey.
+\newblock {\em Electronics Technology}, pages 100--105, 2007.
+
+\bibitem{Calin}
+Calin Dragos.
+\newblock Types of sensors for target detection and tracking.
+\newblock {\em Intro Robotics}, 2013.
+
+\bibitem{Google:2014}
+Google.
+\newblock Protocol buffers, 2014.
+
+\bibitem{Hogle}
+R.~A. Hogle and P.~P. Bonissone.
+\newblock A fuzzy algorithm for path selection in autonomous vehicle
+  navigation.
+\newblock {\em The 23rd IEEE Conference on Decision and Control}, pages
+  898--900, 1984.
+
+\bibitem{Buniyamin}
+Buniyamin N., W.~A. J.~Wan Ngah, N.~Sariff, and Z.~Mohamad.
+\newblock A simple local path planning algorithm for autonomous mobile robots.
+\newblock {\em International Journal of Systems Applications}, 2011.
+
+\bibitem{NSI:2014}
+Inc. Network~Sorcery.
+\newblock Tcp, transmission control protocol, 2012.
+
+\bibitem{Walter:1950}
+W.~Grey Walter.
+\newblock Imitation of life.
+\newblock {\em Scientific American}, 1950.
+
+\end{thebibliography}
