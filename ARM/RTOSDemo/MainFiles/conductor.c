@@ -12,7 +12,7 @@
 /* include files. */
 #include "vtUtilities.h"
 #include "vtI2C.h"
-#include "i2cTemp.h"
+#include "i2cIR0.h"
 #include "I2CTaskMsgTypes.h"
 #include "conductor.h"
 
@@ -31,17 +31,16 @@
 // end of defs
 /* *********************************************** */
 
-/* The i2cTemp task. */
 static portTASK_FUNCTION_PROTO( vConductorUpdateTask, pvParameters );
 
 /*-----------------------------------------------------------*/
 // Public API
-void vStartConductorTask(vtConductorStruct *params,unsigned portBASE_TYPE uxPriority, vtI2CStruct *i2c,vtTempStruct *temperature)
+void vStartConductorTask(vtConductorStruct *params,unsigned portBASE_TYPE uxPriority, vtI2CStruct *i2c, vtIR0Struct* ir0)
 {
 	/* Start the task */
 	portBASE_TYPE retval;
 	params->dev = i2c;
-	params->tempData = temperature;
+	params->ir0Data = ir0;
 	if ((retval = xTaskCreate( vConductorUpdateTask, ( signed char * ) "Conductor", conSTACK_SIZE, (void *) params, uxPriority, ( xTaskHandle * ) NULL )) != pdPASS) {
 		VT_HANDLE_FATAL_ERROR(retval);
 	}
@@ -51,55 +50,51 @@ void vStartConductorTask(vtConductorStruct *params,unsigned portBASE_TYPE uxPrio
 /*-----------------------------------------------------------*/
 
 // This is the actual task that is run
-static portTASK_FUNCTION( vConductorUpdateTask, pvParameters )
+static portTASK_FUNCTION(vConductorUpdateTask, pvParameters)
 {
 	uint8_t rxLen, status;
 	uint8_t Buffer[vtI2CMLen];
 	uint8_t *valPtr = &(Buffer[0]);
-	// Get the parameters
+
+	// Get the parameters.
 	vtConductorStruct *param = (vtConductorStruct *) pvParameters;
-	// Get the I2C device pointer
+
+	// Get the I2C device pointer.
 	vtI2CStruct *devPtr = param->dev;
-	// Get the LCD information pointer
-	vtTempStruct *tempData = param->tempData;
+
+	// Get the LCD information pointer.
+	vtIR0Struct *ir0Data = param->ir0Data;
+
 	uint8_t recvMsgType;
 
 	// Like all good tasks, this should never exit
 	for(;;)
 	{
 		// Wait for a message from an I2C operation
-		if (vtI2CDeQ(devPtr,vtI2CMLen,Buffer,&rxLen,&recvMsgType,&status) != pdTRUE) {
+		if (vtI2CDeQ(devPtr, vtI2CMLen, Buffer, &rxLen, &recvMsgType, &status) != pdTRUE) {
 			VT_HANDLE_FATAL_ERROR(0);
 		}
 
-		// Decide where to send the message 
-		//   This just shows going to one task/queue, but you could easily send to
-		//   other Q/tasks for other message types
-		// This isn't a state machine, it is just acting as a router for messages
-		switch(recvMsgType) {
-		case vtI2CMsgTypeTempInit: {
-			SendTempValueMsg(tempData,recvMsgType,(*valPtr),portMAX_DELAY);
-			break;
+		// Decide where to send the message. This isn't a state machine, it is
+		// just acting as a router for messages
+		switch(recvMsgType)
+		{
+			case vtI2CMsgTypeIR0Init:
+			{
+				SendIR0ValueMsg(ir0Data, recvMsgType, (*valPtr), portMAX_DELAY);
+				break;
+			}
+			case vtI2CMsgTypeIR0Read1:
+			{
+				SendIR0ValueMsg(ir0Data, recvMsgType, (*valPtr), portMAX_DELAY);
+				break;
+			}
+			default:
+			{
+				VT_HANDLE_FATAL_ERROR(recvMsgType);
+				break;
+			}
 		}
-		case vtI2CMsgTypeTempRead1: {
-			SendTempValueMsg(tempData,recvMsgType,(*valPtr),portMAX_DELAY);
-			break;
-		}
-		case vtI2CMsgTypeTempRead2: {
-			SendTempValueMsg(tempData,recvMsgType,(*valPtr),portMAX_DELAY);
-			break;
-		}
-		case vtI2CMsgTypeTempRead3: {
-			SendTempValueMsg(tempData,recvMsgType,(*valPtr),portMAX_DELAY);
-			break;
-		}
-		default: {
-			VT_HANDLE_FATAL_ERROR(recvMsgType);
-			break;
-		}
-		}
-
-
 	}
 }
 
