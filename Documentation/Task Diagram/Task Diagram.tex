@@ -17,11 +17,8 @@
 \subsection*{ARM Task Diagram}
 The following is the task diagram for the ARM board.
 \begin{center}
-	\includegraphics[scale=0.6]{Images/ARMTaskDiagram}
+	\includegraphics[scale=0.5]{Images/ARMTaskDiagram}
 \end{center}
-
-% Node Descriptions
-\subsubsection*{Node Descriptions}
 
 % Monitor Thread
 \paragraph*{I$^2$C Monitor Thread}
@@ -138,14 +135,57 @@ The following is the task diagram for the ARM board.
 \subsection*{Slave Task Diagram}
 
 \begin{center}
-	\includegraphics[scale=0.6]{Images/SlaveTaskDiagram}
+	\includegraphics[scale=0.45]{Images/SlaveTaskDiagram}
 \end{center}
 
 \subsection*{Master Task Diagram}
 
 \begin{center}
-	\includegraphics[scale=0.6]{Images/MasterTaskDiagram}
+	\includegraphics[scale=0.45]{Images/MasterTaskDiagram}
 \end{center}
 
-\end{document}
+\paragraph*{Main Thread}
 
+
+Distributes the message passing between MainLow and MainHigh queues and also handles initiation of all devices, threads, and interrupt handlers. 
+
+\paragraph*{Motor Thread}\mbox{}\\
+Receives signals from Main. Communicates with the Motor Controller.
+
+\paragraph*{UART Interrupt Handler}\mbox{}\\
+Interrupts whenever the UART Physical Device is ready to send or receive a message. 
+
+\paragraph*{I$^2$C Interrupt Handler}\mbox{}\\
+Interrupts whenever the I2C Physical Device is ready to send or receive a message to the other PIC. 
+
+\paragraph*{ADC Interrupt Handler}\mbox{}\\
+Interrupts whenever the ADC is ready to initiate read or receive.
+
+\paragraph*{WiFly Physical Device}\mbox{}\\
+Wireless transmitter/receiver.
+
+\paragraph*{UART Physical Device}\mbox{}\\
+Communicates with the WiFly. 
+
+\paragraph*{I$^2$C Physical Device}\mbox{}\\
+Communicates with the other I2C Physical Device to communicate with the other PIC. 
+
+\paragraph*{Motor Controller Physical Device}\mbox{}\\
+Sends power to the motors. 
+
+\paragraph*{IR Sensors Physical Devices}\mbox{}\\
+Reads the area directly in front of the sensor area.
+
+\paragraph*{ToMainHigh Message Queue}\mbox{}\\
+Handles messages from the I2C Physical Device to Main. 
+
+\paragraph*{FromMainHigh Message Queue}\mbox{}\\
+Handles messages from Main to to I2C Physical Device. 
+
+\paragraph*{ToMainLow Message Queue}\mbox{}\\
+Handles messages from the UART and IR Sensor on the Master and Slave PIC, respectively.
+
+\paragraph*{FromMainLow Message Queue}\mbox{}\\
+Handles messages from Main to the UART and IR Sensor on the Master and Slave PIC, respectively.
+
+\end{document}
