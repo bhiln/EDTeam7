@@ -13,7 +13,7 @@
 
 % Create a Sensor object, paramter is the initial distance to 
 % the wall
-obj = Sensor(5.0);
+obj = Sensor(2);
 
 % Create and start the sensorSimTimer object
 sensorSimTimer = timer;
