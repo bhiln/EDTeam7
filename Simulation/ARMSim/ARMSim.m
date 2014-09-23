@@ -27,17 +27,29 @@ ioARMSimWiFly = serial('COM7','BaudRate',57600);
 ioARMSimWiFly.BytesAvailableFcn = {@callbackARMSimWiFly,h};
 
 % We use the character 'o' as a terminator. You will change this.
-ioARMSimWiFly.terminator = 'o';
+ioARMSimWiFly.terminator = 'x';
 fopen(ioARMSimWiFly);
+% ioARMSimWiFly.ReadAsyncMode = 'manual';
 
 % 3. Create and start the ARMSimTimer object
 % Note that we pass the WiFly serial object to the timer so
 % that we can write to the WiFly from the timer callback
 ARMSimTimer = timer;
-ARMSimTimer.Period         = .2;
+ARMSimTimer.Period         = 1;
 ARMSimTimer.ExecutionMode  = 'fixedRate';
 ARMSimTimer.TimerFcn       = {@callbackARMSimTimer,ioARMSimWiFly};
 ARMSimTimer.BusyMode       = 'drop';
 start(ARMSimTimer);
+
+% last_ba = 0;
+% while (1)
+%     bytesAvailable = ioARMSimWiFly.BytesAvailable;
+%     if (bytesAvailable > last_ba)
+%         [data, count, msg] = fread(ioARMSimWiFly, 1);
+%         fprintf('data length %s', data);
+%     end
+%     last_ba = bytesAvailable;
+%     
+% end
 
 
