@@ -8,7 +8,8 @@
 // I have defined them all here so that they are unique
 
 #define vtI2CMsgTypeIR0Init 1
-#define vtI2CMsgTypeIR0Read1 2
+#define vtI2CMsgTypeIR0ReadByte0 2
+#define vtI2CMsgTypeIR0ReadByte1 3
 
 #define IR0MsgTypeTimer 5 
 #endif

@@ -8,6 +8,7 @@
 #include "vtUtilities.h"
 #include "LCDtask.h"
 #include "myTimers.h"
+#include "debug.h"
 
 /* **************************************************************** */
 // WARNING: Do not print in this file -- the stack is not large enough for this task
@@ -18,12 +19,14 @@
 //
 // how often the timer that sends messages to the LCD task should run
 // Set the task up to run every 100 ms
-#define lcdWRITE_RATE_BASE	( ( portTickType ) 100 / portTICK_RATE_MS)
+#define lcdWRITE_RATE_BASE	( ( portTickType ) LCD_UPDATE_TIME / portTICK_RATE_MS)
 
 // Callback function that is called by the LCDTimer
 //   Sends a message to the queue that is read by the LCD Task
 void LCDTimerCallback(xTimerHandle pxTimer)
 {
+	GPIO_SetValue(0, DEBUG_PIN16);
+	GPIO_ClearValue(0, DEBUG_PIN16);
 	if (pxTimer == NULL) {
 		VT_HANDLE_FATAL_ERROR(0);
 	} else {
@@ -55,13 +58,14 @@ void startTimerForLCD(vtLCDStruct *vtLCDdata) {
 	}
 }
 
-#define IR0_READS			8/8
 #define ir0WRITE_RATE_BASE	(((portTickType) (8000/(IR0_READS*8)))/portTICK_RATE_MS)
 
 // Callback function that is called by the IR0 timer. Sends a message to the
 // queue that is read by the IR0 task.
 void IR0TimerCallback(xTimerHandle pxTimer)
 {
+	GPIO_SetValue(0, DEBUG_PIN15);
+	GPIO_ClearValue(0, DEBUG_PIN15);
 	if (pxTimer == NULL) {
 		VT_HANDLE_FATAL_ERROR(0);
 	} else {

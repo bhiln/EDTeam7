@@ -17,12 +17,14 @@
 #include "task.h"
 #include "projdefs.h"
 #include "semphr.h"
+#include "lpc17xx_gpio.h"
 
 #include "vtUtilities.h"
 #include "vtI2C.h"
 #include "LCDtask.h"
 #include "i2cIR0.h"
 #include "I2CTaskMsgTypes.h"
+#include "debug.h"
 
 /*------------------------------------------------------------------------------
  * Configuration
@@ -104,31 +106,25 @@ int getMsgType(vtIR0Msg *Buffer)
 	return(Buffer->msgType);
 }
 
-uint8_t getValue(vtIR0Msg *Buffer)
-{
-	uint8_t *ptr = (uint8_t *) Buffer->buf;
-	return(*ptr);
-}
+//uint8_t getValue(vtTempMsg *Buffer)
+//{
+//	uint8_t *ptr = (uint8_t *) Buffer->buf;
+//	return(*ptr);
+//}
 
 // I2C commands for the IR0 sensor.
-const uint8_t i2cCmdInit[]= {0xAC,0x00};
-const uint8_t i2cCmdStartConvert[]= {0xEE};
-const uint8_t i2cCmdStopConvert[]= {0x22};
-const uint8_t i2cCmdReadVals[]= {0xAA};
-const uint8_t i2cCmdReadCnt[]= {0xA8};
-const uint8_t i2cCmdReadSlope[]= {0xA9};
+const uint8_t i2cCmdReadIR0Byte0[]= {0xAA};
+const uint8_t i2cCmdReadIR0Byte1[]= {0xA8};
 
 // Definitions of the states for the FSM below.
-const uint8_t fsmStateInit1Sent = 0;
-const uint8_t fsmStateInit2Sent = 1;
-const uint8_t fsmStateIR0Read1 = 2;
-const uint8_t fsmStateIR0Read2 = 3;
-const uint8_t fsmStateIR0Read3 = 4;
+const uint8_t fsmStateReadIR0Byte0 = 0;
+const uint8_t fsmStateReadIR0Byte1 = 1;
 
 // This is the actual task that is run.
 static portTASK_FUNCTION(vi2cIR0UpdateTask, pvParameters)
 {
-	float voltage = 0.5;
+	uint8_t voltageByte0 = 0;
+	uint8_t voltageByte1 = 0;
 
 	// Get the parameters
 	vtIR0Struct *param = (vtIR0Struct *) pvParameters;
@@ -146,15 +142,7 @@ static portTASK_FUNCTION(vi2cIR0UpdateTask, pvParameters)
 	vtIR0Msg msgBuffer;
 	uint8_t currentState;
 
-	// Assumes that the I2C device (and thread) have already been initialized
-	// This task is implemented as a Finite State Machine.  The incoming messages are examined to see
-	//   whether or not the state should change.
-	//
-	// IR0 sensor configuration sequence (DS1621) Address 0x4F
-	if (vtI2CEnQ(devPtr, vtI2CMsgTypeIR0Init, 0x4F, sizeof(i2cCmdInit), i2cCmdInit,0) != pdTRUE) {
-		VT_HANDLE_FATAL_ERROR(0);
-	}
-	currentState = fsmStateInit1Sent;
+	currentState = fsmStateReadIR0Byte0;
 	// Like all good tasks, this should never exit
 	for(;;)
 	{
@@ -165,66 +153,61 @@ static portTASK_FUNCTION(vi2cIR0UpdateTask, pvParameters)
 		// Now, based on the type of the message and the state, we decide on the new state and action to take
 		switch(getMsgType(&msgBuffer))
 		{
-			case vtI2CMsgTypeIR0Init:
+			case IR0MsgTypeTimer:
 			{
-				if (currentState == fsmStateInit1Sent) {
-					currentState = fsmStateInit2Sent;
-					// Must wait 10ms after writing to the temperature sensor's configuration registers(per sensor data sheet)
-					vTaskDelay(10/portTICK_RATE_MS);
-					// Tell it to start converting
-					if (vtI2CEnQ(devPtr,vtI2CMsgTypeIR0Init,0x4F,sizeof(i2cCmdStartConvert),i2cCmdStartConvert,0) != pdTRUE) {
-						VT_HANDLE_FATAL_ERROR(0);
-					}
-	
-				} else 	if (currentState == fsmStateInit2Sent) {
-					currentState = fsmStateIR0Read1;
-	
-				} else {
-					// unexpectedly received this message
+				// Timer messages never change the state, they just cause an action (or not) 
+				if (vtI2CEnQ(devPtr, vtI2CMsgTypeIR0ReadByte0, 0x4F, sizeof(i2cCmdReadIR0Byte0), i2cCmdReadIR0Byte0, 2) != pdTRUE)
+				{
+					VT_HANDLE_FATAL_ERROR(0);
+				}
+				if (vtI2CEnQ(devPtr, vtI2CMsgTypeIR0ReadByte1, 0x4F, sizeof(i2cCmdReadIR0Byte1), i2cCmdReadIR0Byte1, 2) != pdTRUE)
+				{
 					VT_HANDLE_FATAL_ERROR(0);
 				}
 				break;
 			}
-			case IR0MsgTypeTimer: {
-				// Timer messages never change the state, they just cause an action (or not) 
-				if ((currentState != fsmStateInit1Sent) && (currentState != fsmStateInit2Sent)) 
+			case vtI2CMsgTypeIR0ReadByte0:
+			{
+				if (currentState == fsmStateReadIR0Byte0)
 				{
-					if (vtI2CEnQ(devPtr, vtI2CMsgTypeIR0Read1, 0x4F, sizeof(i2cCmdReadVals), i2cCmdReadVals, 2) != pdTRUE)
-					{
-						VT_HANDLE_FATAL_ERROR(0);
-					}
+					currentState = fsmStateReadIR0Byte1;
+					voltageByte0 = msgBuffer.buf[0];
 				}
 				else
 				{
-					// just ignore timer messages until initialization is complete
-				} 
+					// unexpectedly received this message
+				}
 				break;
 			}
-			case vtI2CMsgTypeIR0Read1:
+			case vtI2CMsgTypeIR0ReadByte1:
 			{
-				if (currentState == fsmStateIR0Read1)
-				{
-					currentState = fsmStateIR0Read1;
-					voltage = getValue(&msgBuffer);
+				if (currentState == fsmStateReadIR0Byte1)
+				{  	
+					unsigned int noReply = 0x11;
+					currentState = fsmStateReadIR0Byte0;
+					voltageByte1 = msgBuffer.buf[0];
+					unsigned int voltage = 0;
+					float voltF = 0;
+					voltage = voltageByte0 << 8; // MSB
+					voltage = voltage | voltageByte1;
+					voltage = (float)(voltF);
 					
-					int dec1 = voltage;
-					float f2 = voltage - dec1;
-					int dec2 = trunc(f2*1000);
-
-					//printf("%d.%01d V\n", dec1, dec2);
-					sprintf(lcdBuffer, "%d.%01d", dec1, dec2);
-					printf(lcdBuffer);
+					voltage = voltage/(1023/3.3);
+					if(voltageByte0 == noReply)
+						sprintf(lcdBuffer, "%d", noReply);
+					sprintf(lcdBuffer, "%d", voltage);
+					printf("%d\n", voltage);
 					if (lcdData != NULL)
 					{
 						if (SendLCDPrintMsg(lcdData, strnlen(lcdBuffer, vtLCDMaxLen), lcdBuffer, portMAX_DELAY) != pdTRUE)
 							VT_HANDLE_FATAL_ERROR(0);
 						//if (SendLCDTimerMsg(lcdData, 10/portTICK_RATE_MS, portMAX_DELAY) != pdTRUE)
 							//VT_HANDLE_FATAL_ERROR(0);
-					}
+					}					
 				}
-				else {
+				else
+				{
 					// unexpectedly received this message
-					VT_HANDLE_FATAL_ERROR(0);
 				}
 				break;
 			}	

@@ -84,7 +84,12 @@ static portTASK_FUNCTION(vConductorUpdateTask, pvParameters)
 				SendIR0ValueMsg(ir0Data, recvMsgType, (*valPtr), portMAX_DELAY);
 				break;
 			}
-			case vtI2CMsgTypeIR0Read1:
+			case vtI2CMsgTypeIR0ReadByte0:
+			{
+				SendIR0ValueMsg(ir0Data, recvMsgType, (*valPtr), portMAX_DELAY);
+				break;
+			}
+			case vtI2CMsgTypeIR0ReadByte1:
 			{
 				SendIR0ValueMsg(ir0Data, recvMsgType, (*valPtr), portMAX_DELAY);
 				break;
