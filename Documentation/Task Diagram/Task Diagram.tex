@@ -14,14 +14,178 @@
 
 \input{./Title.tex}
 
-\subsection*{ARM}
+\subsection*{ARM Task Diagram}
+The following is the task diagram for the ARM board.
+\begin{center}
+	\includegraphics[scale=0.5]{Images/ARMTaskDiagram}
+\end{center}
 
-\subsection*{Sensors}
+% Monitor Thread
+\paragraph*{I$^2$C Monitor Thread}
+\begin{enumerate}
+	\item This thread handles all I$^2$C communications.
+	\item Implemented in \texttt{vtI2C.c}.
+	\item Queue: I$^2$C Receive
+	\begin{enumerate}
+		\item This queue contains received messages via I$^2$C and sends them to the Sensor Conductor Thread.
+		\item The received messages will have varying formats depending on the sensors that sent them. These formats will be described in the description for the sensor task diagram.
+	\end{enumerate}
+	\item Queue: I$^2$C Send
+	\begin{enumerate}
+		\item This queue contains sent messages via I$^2$C to the master PIC.
+		\item The sent messages will have varying formats depending on the threads that send them.
+	\end{enumerate}
+\end{enumerate}
 
-\subsection*{Motor}
+% Conductor Thread
+\paragraph*{Sensor Conductor Thread}
+\begin{enumerate}
+	\item This thread routes received I$^2$C data and sends it to the various sensor threads.
+	\item Implemented in \texttt{sensorConductor.c}.
+\end{enumerate}
 
-\bibliographystyle{plain}
-\bibliography{Biblio}
+% IR0 Thread
+\paragraph*{IR0 Thread}
+\begin{enumerate}
+	\item This thread processes received IR0 sensor data and sends it to the Data Conductor Thread.
+	\item Implemented in \texttt{i2cIRO.c}.
+	\item This thread has a timer interrupt handler.
+	\item Queue: IRO Sensor Data
+	\begin{enumerate}
+		\item This queue contains IR0 sensor data received via I$^2$C as well as data from the interrupt handler for this thread.
+		\item The received data will have type \texttt{unsigned int} and will represent the voltage of the IR0 sensor.
+	\end{enumerate}
+\end{enumerate}
+
+% IR1 Thread
+\paragraph*{IR1 Thread}
+\begin{enumerate}
+	\item This thread processes received IR1 sensor data and sends it to the Data Conductor Thread.
+	\item Implemented in \texttt{i2cIR1.c}.
+	\item This thread has a timer interrupt handler.
+	\item Queue: IR1 Sensor Data
+	\begin{enumerate}
+		\item This queue contains IR1 sensor data received via I$^2$C as well as data from the interrupt handler for this thread.
+		\item The received data will have type \texttt{unsigned int} and will represent the voltage of the IR1 sensor.
+	\end{enumerate}
+\end{enumerate}
+
+% Accelerometer Thread
+\paragraph*{Accelerometer Thread}
+\begin{enumerate}
+	\item This thread processes received accelerometer sensor data and sends it to the Data Conductor Thread.
+	\item Implemented in \texttt{i2cAccel.c}.
+	\item This thread has a timer interrupt handler.
+	\item Queue: Accelerometer Sensor Data
+	\begin{enumerate}
+		\item This queue contains accelerometer sensor data received via I$^2$C as well as data from the interrupt handler for this thread.
+		\item The received data will have type \texttt{int} and will represent the voltage of the accelerometer sensor.
+	\end{enumerate}
+\end{enumerate}
+
+% Data Conductor Thread
+\paragraph*{Data Conductor Thread}
+\begin{enumerate}
+	\item This thread routes received sensor data from each sensor thread and sends it to a variety of processing threads. Relevant data is sent to the Locate Thread and LCD Thread.
+	\item Implemented in \texttt{dataConductor.c}.
+	\item Queue: Data Sensor
+	\begin{enumerate}
+		\item This queue contains all preprocessed sensor data.
+		\item The received data will have various types explained in each relevant sensor thread description.
+	\end{enumerate}
+\end{enumerate}
+
+% LCD Thread
+\paragraph*{LCD Thread}
+\begin{enumerate}
+	\item This thread displays the following on the LCD: raw sensor data (Data Conductor Thread), location data (Locate Thread), commands being sent to the motor controller (Command Thread).
+	\item Implemented in \texttt{LCDtask.c}.
+	\item This thread has a timer interrupt handler.
+	\item Queue: Display Data
+	\begin{enumerate}
+		\item This queue contains all data that will be displayed.
+		\item The received data will have various types explained in each relevant thread.
+	\end{enumerate}
+\end{enumerate}
+
+% Locate Thread
+\paragraph*{Locate Thread}
+\begin{enumerate}
+	\item This thread processes all relevant sensor data (IR0 and IR1) and determines the location of the rover which it then sends to the Commander Thread.
+	\item Implemented in \texttt{locateTask.c}.
+	\item Queue: Locate Sensor Data
+	\begin{enumerate}
+		\item This queue contains all sensor data used to find the location of the rover.
+		\item The received data will have various types explained in each relevant thread.
+	\end{enumerate}
+\end{enumerate}
+
+% Commander Thread
+\paragraph*{Commander Thread}
+\begin{enumerate}
+	\item This thread processes the location and determines the next motor movement which it then sends to the I$^2$ Moniter Thread (ultimately sending the command to the Motor PIC.
+	\item Implemented in \texttt{commanderTask.c}.
+	\item Queue: Commander Data
+	\begin{enumerate}
+		\item This queue contains all sensor data used to determine the next movement of the rover.
+		\item The received data will have various types explained in each relevant thread.
+	\end{enumerate}
+\end{enumerate}
+
+\subsection*{Slave Task Diagram}
+
+\begin{center}
+	\includegraphics[scale=0.45]{Images/SlaveTaskDiagram}
+\end{center}
+
+\subsection*{Master Task Diagram}
+
+\begin{center}
+	\includegraphics[scale=0.45]{Images/MasterTaskDiagram}
+\end{center}
+
+\paragraph*{Main Thread}
+
+
+Distributes the message passing between MainLow and MainHigh queues and also handles initiation of all devices, threads, and interrupt handlers. 
+
+\paragraph*{Motor Thread}\mbox{}\\
+Receives signals from Main. Communicates with the Motor Controller.
+
+\paragraph*{UART Interrupt Handler}\mbox{}\\
+Interrupts whenever the UART Physical Device is ready to send or receive a message. 
+
+\paragraph*{I$^2$C Interrupt Handler}\mbox{}\\
+Interrupts whenever the I2C Physical Device is ready to send or receive a message to the other PIC. 
+
+\paragraph*{ADC Interrupt Handler}\mbox{}\\
+Interrupts whenever the ADC is ready to initiate read or receive.
+
+\paragraph*{WiFly Physical Device}\mbox{}\\
+Wireless transmitter/receiver.
+
+\paragraph*{UART Physical Device}\mbox{}\\
+Communicates with the WiFly. 
+
+\paragraph*{I$^2$C Physical Device}\mbox{}\\
+Communicates with the other I2C Physical Device to communicate with the other PIC. 
+
+\paragraph*{Motor Controller Physical Device}\mbox{}\\
+Sends power to the motors. 
+
+\paragraph*{IR Sensors Physical Devices}\mbox{}\\
+Reads the area directly in front of the sensor area.
+
+\paragraph*{ToMainHigh Message Queue}\mbox{}\\
+Handles messages from the I2C Physical Device to Main. 
+
+\paragraph*{FromMainHigh Message Queue}\mbox{}\\
+Handles messages from Main to to I2C Physical Device. 
+
+\paragraph*{ToMainLow Message Queue}\mbox{}\\
+Handles messages from the UART and IR Sensor on the Master and Slave PIC, respectively.
+
+\paragraph*{FromMainLow Message Queue}\mbox{}\\
+Handles messages from Main to the UART and IR Sensor on the Master and Slave PIC, respectively.
 
 \end{document}
-
