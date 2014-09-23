@@ -17,7 +17,7 @@ obj = Sensor(5.0);
 
 % Create and start the sensorSimTimer object
 sensorSimTimer = timer;
-sensorSimTimer.Period         = obj.getTimerPeriod();
+sensorSimTimer.Period         = 1;
 sensorSimTimer.ExecutionMode  = 'fixedRate';
 sensorSimTimer.TimerFcn       = {@callbackSensorSimTimer,obj};
 sensorSimTimer.BusyMode       = 'drop';
