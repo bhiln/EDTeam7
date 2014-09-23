@@ -16,9 +16,14 @@ fprintf('callbackSimWiFly: Received %d bytes. Total of %d bytes read.\n',...
 % We get a sensor value from our simulated sensor and send it back
 % as a string with the terminator 'o'. You will change this.
 sensorValue = objSensor.getSensorReading();
-fprintf('callbackSimWiFly: Simulated sensor value is %f, being sent to ARMSim\n',...
-    sensorValue);
-str = sprintf('%fo',sensorValue);
+
+%get data length
+sensorValue_String = sprintf('%f', sensorValue);
+sensorLength = length(sensorValue_String);
+
+fprintf('callbackSimWiFly: Simulated sensor value is %f, length is %d, being sent to ARMSim\n',...
+    sensorValue, sensorLength);
+str = sprintf('x%d%f', sensorLength, sensorValue);
 fwrite(obj,str);
 
 end
