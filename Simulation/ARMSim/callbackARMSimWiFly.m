@@ -12,7 +12,9 @@ persistent figureAxis;
 % We are in the callback because we received some data. We calculate
 % how much and then read it into a data array.
 bytesAvailable = obj.BytesAvailable;
-[data count msg] = fread(obj, bytesAvailable, 'char');
+[data1, ~, ~] = fread(obj, 2, 'char');
+dataLength = str2num(sprintf('%s', data1(2)));
+[data, ~, ~] = fread(obj, dataLength, 'char');
 valuesReceived = obj.ValuesReceived;
 fprintf('callbackARMSimWiFly: Received data %s, %d bytes. Total of %d bytes read.\n',...
     data, bytesAvailable, valuesReceived);
