@@ -1,0 +1,22 @@
+Threads:
+  Main - Distributes the message passing between MainLow and MainHigh queues and also handles initiation of all devices, threads, and interrupt handlers.
+  Motor Thread - Receives signals from Main. When requested from the ARM, the Motor Thread communicates with the Motor Controller.
+  
+Interrupt Handlers:
+  UART Interrupt Handler - Interrupts whenever the UART Physical Device is ready to send or receive a message.
+  I2C Interrupt Handler - Interrupts whenever the I2C Physical Device is ready to send or receive a message to the other PIC.
+  ADC Interrupt Handler - Interrupts whenever the ADC is ready to initiate read or receive.
+
+Physical Device:
+  WiFly - Wireless transmitter/receiver.
+  UART Physical Device - Communicates with the WiFly.
+  I2C Physical Device - Communicates with the other I2C Physical Device to communicate with the other PIC.
+  Motor Controller - Sends power to the motors.
+  IR Sensor - Reads the area directly in front of the sensor area.
+  
+Message Queues:
+  ToMainHigh - Handles messages from the I2C Physical Device to Main.
+  FromMainHigh - Handles messages from Main to to I2C Physical Device.
+  ToMainLow - Handles messages from the UART Physical Device on the Master PIC and on the Slave PIC,  it handles messages from the IR Sensor.
+  FromMainLow - Handles messages from Main to the UART Physical Device on the Master PIC and from Main to the IR Sensor on the Slave PIC.
+  
