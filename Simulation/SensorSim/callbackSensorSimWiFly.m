@@ -4,10 +4,22 @@ function callbackSensorSimWiFly( obj, event, objSensor )
 % string with the terminator 'o'.). This is just to show how to
 % set up the callbacks and to communicate between the two programs.
 
+% We keep around the number of times this timer has been called
+persistent ntimes;
+
 % We are in the callback because we received some data. We calculate
 % how much and then read it into a data array.
 bytesAvailable = obj.BytesAvailable;
 [data count msg] = fread(obj, bytesAvailable);
+
+% The first time this is called, ntimes does not exist, otherwise
+% we increment it.
+if isempty(ntimes) 
+    ntimes = 1;
+else
+    ntimes = ntimes + 1;
+end
+
 % We print stuff out just to show that it is working.
 valuesReceived = obj.ValuesReceived;
 fprintf('callbackSimWiFly: Received %d bytes. Data: %s. Total of %d bytes read.\n',...
