@@ -24,10 +24,10 @@ ioARMSimWiFly = serial('COM7','BaudRate',57600);
 
 % Note that we will pass the figure handle to the timer callback
 % We will use this handle when we update our data plot
+ioARMSimWiFly.BytesAvailableFcnCount = 6;
+ioARMSimWiFly.BytesAvailableFcnMode = 'byte';
 ioARMSimWiFly.BytesAvailableFcn = {@callbackARMSimWiFly,h};
 
-% We use the character 'o' as a terminator. You will change this.
-ioARMSimWiFly.terminator = 'x';
 fopen(ioARMSimWiFly);
 % ioARMSimWiFly.ReadAsyncMode = 'manual';
 

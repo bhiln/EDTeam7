@@ -12,14 +12,18 @@ persistent figureAxis;
 % We are in the callback because we received some data. We calculate
 % how much and then read it into a data array.
 bytesAvailable = obj.BytesAvailable;
-[data1, ~, ~] = fread(obj, 1, 'char');
+[header, ~, ~] = fread(obj, 1, 'char');
+[index, ~, ~] = fread(obj, 1, 'char');
+[messageType, ~, ~] = fread(obj, 1, 'char');
 %dataLength = str2num(sprintf('%s', data1(2)));
 [data, ~, ~] = fread(obj, 2, 'char');
+[tail, ~, ~] = fread(obj, 1, 'char');
 valuesReceived = obj.ValuesReceived;
 data_String = sprintf('%s', data);
 data_String_Binary = sprintf('%s%s', dec2bin((data_String(1)+0), 8), dec2bin((data_String(2)+0), 8));
 data_Dec = bin2dec(data_String_Binary)/100;
-fprintf('callbackARMSimWiFly: Received binary data %s, dec %d, %d bytes. Total of %d bytes read.\n',...
+fprintf('callbackARMSimWiFly: Received data %s, binary data %s, dec %d, %d bytes. Total of %d bytes read.\n',...
+    sprintf('%s%s%s%s%s', header, index, messageType, data, tail),...
     data_String_Binary, data_Dec, bytesAvailable, valuesReceived);
 
 % We convert the string back into a value. This is, of course, completely
