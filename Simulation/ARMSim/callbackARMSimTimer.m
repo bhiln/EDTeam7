@@ -7,19 +7,8 @@ function callbackARMSimTimer( obj, event, ioWiFly )
 % ioWiFly - ARM WiFly FID - We need to send data over the 
 % WiFly to the SensorSim from this timer
 
-% We keep around the number of times this timer has been called
-persistent ntimes;
-
-% The first time this is called, ntimes does not exist, otherwise
-% we increment it.
-if isempty(ntimes) 
-    ntimes = 1;
-else
-    ntimes = ntimes + 1;
-end
-
 % Add the silly terminator and send the string over WiFly
-str = sprintf('%do',ntimes);
+str = sprintf('b%s%s%se',bin2dec(sprintf('%s', dec2bin(0, 8))), bin2dec(sprintf('%s', dec2bin(49, 8))), bin2dec(sprintf('%s', dec2bin(50, 16))));
 fprintf('ARMSim timer callback: Sending %s over WiFly\n',str);
 fwrite(ioWiFly,str);
 
