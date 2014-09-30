@@ -24,7 +24,7 @@ ioARMSimWiFly = serial('COM7','BaudRate',57600);
 
 % Note that we will pass the figure handle to the timer callback
 % We will use this handle when we update our data plot
-ioARMSimWiFly.BytesAvailableFcnCount = 6;
+ioARMSimWiFly.BytesAvailableFcnCount = 1;
 ioARMSimWiFly.BytesAvailableFcnMode = 'byte';
 ioARMSimWiFly.BytesAvailableFcn = {@callbackARMSimWiFly,h};
 

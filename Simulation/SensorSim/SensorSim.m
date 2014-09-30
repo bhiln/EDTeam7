@@ -29,7 +29,7 @@ start(sensorSimTimer);
 ioSensorSimWiFly=serial('COM6','BaudRate',57600);
 
 % Note that we will pass the Sensor object to the callback
-ioSensorSimWiFly.BytesAvailableFcnCount = 6;
+ioSensorSimWiFly.BytesAvailableFcnCount = 1;
 ioSensorSimWiFly.BytesAvailableFcnMode = 'byte';
 ioSensorSimWiFly.BytesAvailableFcn = {@callbackSensorSimWiFly,obj};
 fopen(ioSensorSimWiFly);
