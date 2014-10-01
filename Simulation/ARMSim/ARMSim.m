@@ -39,7 +39,7 @@ ARMSimTimer.Period         = 1;
 ARMSimTimer.ExecutionMode  = 'fixedRate';
 ARMSimTimer.TimerFcn       = {@callbackARMSimTimer,ioARMSimWiFly};
 ARMSimTimer.BusyMode       = 'drop';
-start(ARMSimTimer);
+%start(ARMSimTimer);
 
 % last_ba = 0;
 % while (1)
