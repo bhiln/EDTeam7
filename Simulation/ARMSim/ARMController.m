@@ -1,8 +1,4 @@
 classdef ARMController < handle
-
-    properties(Constant, GetAccess= 'private')
-        ioWiFly;
-    end
     
     methods(Static = true)
         
@@ -13,6 +9,8 @@ classdef ARMController < handle
         
         function resendLastMessage()
             global lastMessage;
+            global ioWiFly;
+            
             fwrite(ioWiFly,lastMessage);
         end
             
