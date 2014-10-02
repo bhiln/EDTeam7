@@ -54,7 +54,7 @@ fprintf('callbackSimWiFly: Simulated sensor value is %s, ascii is %s, binary is 
 %str = sprintf('x%d%s', sensorLength, sensorValue_String);
 %fwrite(obj,str);
 fwrite(obj,sprintf('%s', ntimes_Char));
-fwrite(obj,sprintf('%s', bin2dec(sprintf('%s', dec2bin(50, 8)))));
+fwrite(obj,sprintf('%s', bin2dec(sprintf('%s', dec2bin(10, 8)))));
 fwrite(obj,sprintf('%s', bin2dec(sensorValue_Binary1)));
 fwrite(obj,sprintf('%s', bin2dec(sensorValue_Binary2)));
 fwrite(obj,bin2dec(sprintf('%s', dec2bin(255, 8))));
