@@ -21,13 +21,12 @@ h = gcf();
 % You will have to change this to agree with your WiFly
 % Note that I have set up the WiFly to have a baud rate of 57600
 ioARMSimWiFly = serial('COM7','BaudRate',57600);
-AC = ARMController(ioARMSimWiFly);
 
 % Note that we will pass the figure handle to the timer callback
 % We will use this handle when we update our data plot
 ioARMSimWiFly.BytesAvailableFcnCount = 1;
 ioARMSimWiFly.BytesAvailableFcnMode = 'byte';
-ioARMSimWiFly.BytesAvailableFcn = {@callbackARMSimWiFly,h,AC};
+ioARMSimWiFly.BytesAvailableFcn = {@callbackARMSimWiFly,h};
 
 fopen(ioARMSimWiFly);
 % ioARMSimWiFly.ReadAsyncMode = 'manual';
