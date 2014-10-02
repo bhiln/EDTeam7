@@ -14,7 +14,7 @@ persistent figureAxis;
 % how much and then read it into a data array.
 bytesAvailable = obj.BytesAvailable;
 [recievedByte, ~, ~] = fread(obj, 1, 'char');
-fprintf('%d\n', recievedByte);
+%fprintf('%d\n', recievedByte);
 if (isempty(dataBuffer))
     dataBuffer = [recievedByte];
 else
@@ -27,8 +27,8 @@ if (length(dataBuffer) > 1 && dataBuffer(length(dataBuffer)-1) == 255 && dataBuf
         data_String = sprintf('%s', data);
         data_String_Binary = sprintf('%s%s', dec2bin((data_String(1)+0), 8), dec2bin((data_String(2)+0), 8));
         data_Dec = bin2dec(data_String_Binary)/100;
-        fprintf('callbackARMSimWiFly: Received data %s, binary data %s, dec %d, %d bytes. Total of %d bytes read.\n',...
-            dataBuffer, data_String_Binary, data_Dec, bytesAvailable, length(dataBuffer));
+        fprintf('callbackARMSimWiFly: Received binary data %s. Total of %d bytes read.\n',...
+            data_String_Binary, length(dataBuffer));
 
         % We convert the string back into a value. This is, of course, completely
         % ridiculous, and your code will not do this.
