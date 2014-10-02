@@ -270,6 +270,8 @@ void main(void) {
 
     // Decide on the priority of the enabled peripheral interrupts
     // 0 is low, 1 is high
+    // Timer0 interrupt
+    INTCON2bits.TMR0IP = 0;
     // Timer1 interrupt
     IPR1bits.TMR1IP = 0;
     // USART RX interrupt
@@ -286,12 +288,15 @@ void main(void) {
     // They *are* changed in the timer interrupt handlers if those timers are
     //   enabled.  They are just there to make the lights blink and can be
     //   disabled.
-    i2c_configure_slave(0x9E);
+    // i2c_configure_slave(0x9E);
+
+    i2c_configure_master(0x9E);
+
 #else
     // If I want to test the temperature sensor from the ARM, I just make
     // sure this PIC does not have the same address and configure the
     // temperature sensor address bits and then just stay in an infinite loop
-    i2c_configure_slave(0x9A);
+    //i2c_configure_slave(0x9A);
 #ifdef __USE18F2680
     LATBbits.LATB1 = 1;
     LATBbits.LATB0 = 1;
@@ -344,6 +349,7 @@ void main(void) {
     TXSTA1bits.SYNC = 0;
     RCSTA1bits.SPEN = 0x1;
     TXSTA1bits.TXEN = 0x1;
+    //PIE1bits.TX1IE = 0x0;
 
     // printf() is available, but is not advisable.  It goes to the UART pin
     // on the PIC and then you must hook something up to that to view it.
@@ -355,6 +361,29 @@ void main(void) {
     // that should get them.  Although the subroutines are not threads, but
     // they can be equated with the tasks in your task diagram if you
     // structure them properly.
+
+    unsigned char imsg[4];
+    unsigned char jmsg[4];
+    unsigned char kmsg[4];
+    imsg[0] = 0x11;
+    imsg[1] = 0x22;
+    imsg[2] = 0x33;
+    imsg[3] = 0x44;
+    jmsg[0] = 0x12;
+    jmsg[1] = 0x23;
+    jmsg[2] = 0x34;
+    jmsg[3] = 0x45;
+    kmsg[0] = 0x13;
+    kmsg[1] = 0x24;
+    kmsg[2] = 0x35;
+    kmsg[3] = 0x46;
+
+    PIE1bits.TX1IE = 0x1;
+    //PIR1bits.SSPIF = 0x1;
+    //SSP1CON2bits.SEN = 1;
+    //i2c_master_send(4, imsg, 0x9E);
+    //i2c_master_send(4, jmsg, 0x7D);
+    //i2c_master_send(4, kmsg, 0x5B);
     while (1) {
         // Call a routine that blocks until either on the incoming
         // messages queues has a message (this may put the processor into
@@ -369,11 +398,11 @@ void main(void) {
         length = ToMainHigh_recvmsg(MSGLEN, &msgtype, (void *) msgbuffer);
         if (length < 0) {
             // no message, check the error code to see if it is concern
-            if (length == MSGQUEUE_EMPTY) {
+            if (length != MSGQUEUE_EMPTY) {
                 // This case be handled by your code.
-                length = 2;
-                msgbuffer[0] = 0x11;
-                msgbuffer[1] = 0x22;
+//                length = 2;
+//                msgbuffer[0] = 0x11;
+//                msgbuffer[1] = 0x22;
 //                for (k = 0; k < MSGLEN; k++) {
 //                    msgbuffer[k] = 0;
 //                }
@@ -381,26 +410,46 @@ void main(void) {
 
         } else {
             switch (msgtype) {
-                case MSGT_TIMER0:
-                {
+                case MSGT_TIMER0: {
                     DEBUG_ON(TIMER0_MSG_RCV);
                     timer0_lthread(&t0thread_data, msgtype, length, msgbuffer);
                     DEBUG_OFF(TIMER0_MSG_RCV);
                     break;
                 };
-                case MSGT_I2C_DATA:
-                {
-                    
+                case MSGT_I2C_SENSOR_DATA: {
+
+                    break;
                 };
-                case MSGT_I2C_DBG:
-                {
+                case MSGT_I2C_QE_DATA: {
+
+                    break;
+                };
+                case MSGT_I2C_DBG: {
                     // Here is where you could handle debugging, if you wanted
                     // keep track of the first byte received for later use (if desired)
                     last_reg_recvd = msgbuffer[0];
                     break;
                 };
-                case MSGT_I2C_RQST:
-                {
+                case MSGT_I2C_MASTER_SEND_COMPLETE: {
+                    DEBUG_ON(I2C_MASTER_SEND);
+                    DEBUG_OFF(I2C_MASTER_SEND);
+                    break;
+                };
+                case MSGT_I2C_MASTER_SEND_FAILED: {
+
+                    break;
+                };
+                case MSGT_I2C_MASTER_RECV_COMPLETE: {
+                    //DEBUG_ON(I2C_MASTER_RCV);
+                    //uart_send(length, msgbuffer);
+                    //DEBUG_OFF(I2C_MASTER_RCV);
+                    break;
+                };
+                case MSGT_I2C_MASTER_RECV_FAILED: {
+
+                    break;
+                };
+                case MSGT_I2C_RQST: {
 
                     // Generally, this is *NOT* how I recommend you handle an I2C slave request
                     // I recommend that you handle it completely inside the i2c interrupt handler
@@ -412,15 +461,15 @@ void main(void) {
                     switch (last_reg_recvd) {
                         case 0xaa:
                         {
-                            TXREG1 = 'o';
+//                            TXREG1 = 'o';
                             length = 2;
-//                            msgbuffer[0] = 0x55;
-//                            msgbuffer[1] = 0x56;
-                            SensorData_recvmsg(i, MSGLEN, &msgtype, (void *) msgbuffer);
-                            unsigned int *msgval;
-                            msgval = (unsigned int *) msgbuffer;
-                            unsigned int val = *msgval;
-                            SensorData_sendmsg(MSGLEN, msgtype, &val);
+                            msgbuffer[0] = 0x55;
+                            msgbuffer[1] = 0x56;
+//                            SensorData_recvmsg(i, MSGLEN, &msgtype, (void *) msgbuffer);
+//                            unsigned int *msgval;
+//                            msgval = (unsigned int *) msgbuffer;
+//                            unsigned int val = *msgval;
+//                            SensorData_sendmsg(MSGLEN, msgtype, &val);
 //                            for (k = 0; k < MSGLEN; k++) {
 //                                msgbuffer[k] = 0;
 //                            }
@@ -429,13 +478,13 @@ void main(void) {
                         case 0xa8:
                         {
                             length = 2;
-//                            msgbuffer[0] = 0x44;
-//                            msgbuffer[1] = 0x46;
-                            SensorData_recvmsg(i, MSGLEN, &msgtype, (void *) msgbuffer);
-                            unsigned int *msgval;
-                            msgval = (unsigned int *) msgbuffer;
-                            unsigned int val = *msgval;
-                            SensorData_sendmsg(MSGLEN, msgtype, &val);
+                            msgbuffer[0] = 0x44;
+                            msgbuffer[1] = 0x46;
+//                            SensorData_recvmsg(i, MSGLEN, &msgtype, (void *) msgbuffer);
+//                            unsigned int *msgval;
+//                            msgval = (unsigned int *) msgbuffer;
+//                            unsigned int val = *msgval;
+//                            SensorData_sendmsg(MSGLEN, msgtype, &val);
 //                            for (k = 0; k < MSGLEN; k++) {
 //                                msgbuffer[k] = 0;
 //                            }
@@ -444,13 +493,13 @@ void main(void) {
                         case 0xa9:
                         {
                             length = 2;
-//                            msgbuffer[0] = 0xA3;
-//                            msgbuffer[1] = 0xA6;
-                            SensorData_recvmsg(i, MSGLEN, &msgtype, (void *) msgbuffer);
-                            unsigned int *msgval;
-                            msgval = (unsigned int *) msgbuffer;
-                            unsigned int val = *msgval;
-                            SensorData_sendmsg(MSGLEN, msgtype, &val);
+                            msgbuffer[0] = 0xA3;
+                            msgbuffer[1] = 0xA6;
+//                            SensorData_recvmsg(i, MSGLEN, &msgtype, (void *) msgbuffer);
+//                            unsigned int *msgval;
+//                            msgval = (unsigned int *) msgbuffer;
+//                            unsigned int val = *msgval;
+//                            SensorData_sendmsg(MSGLEN, msgtype, &val);
 //                            for (k = 0; k < MSGLEN; k++) {
 //                                msgbuffer[k] = 0;
 //                            }
@@ -459,8 +508,7 @@ void main(void) {
                     start_i2c_slave_reply(length, msgbuffer);
                     break;
                 };
-                default:
-                {
+                default: {
                     // Your code should handle this error
                     break;
                 };
@@ -476,29 +524,41 @@ void main(void) {
             }
         } else {
             switch (msgtype) {
-                case MSGT_TIMER1:
-                {
+                case MSGT_TIMER1: {
+                    DEBUG_ON(TIMER1_MSG_RCV);
                     timer1_lthread(&t1thread_data, msgtype, length, msgbuffer);
+                    DEBUG_OFF(TIMER1_MSG_RCV);
                     break;
                 };
-                case MSGT_OVERRUN:
-                case MSGT_UART_DATA:
-                {
-                    SensorData_recvmsg(i, MSGLEN, &msgtype, (void *) msgbuffer);
-                    unsigned int *msgval;
-                    msgval = (unsigned int *) msgbuffer;
-                    unsigned int val = *msgval;
-                    uart_lthread(&uthread_data, msgtype, length, &val);
+                case MSGT_OVERRUN: {
+                    // We've overrun the USART
+                    break;
+                };
+                case MSGT_UART_DATA: {
+                    // Send UART to ARM
+//                    SensorData_recvmsg(i, MSGLEN, &msgtype, (void *) msgbuffer);
+//                    unsigned int *msgval;
+//                    msgval = (unsigned int *) msgbuffer;
+//                    unsigned int val = *msgval;
+//                    uart_lthread(&uthread_data, msgtype, length, &val);
                     //ToMainLow_recvmsg(length, msgtype, val);
 
                     //unsigned char *msgbuf = msgbuffer;
                     //unsigned int* newval = (unsigned int *) msgbuf;
                     //*newval is the ADC result in hex format
-                    //uart_lthread(&uthread_data, msgtype, length, msgbuffer);
+                    uart_lthread(&uthread_data, msgtype, length, msgbuffer);
                     break;
                 };
-                default:
-                {
+                case MSGT_SENSOR_DATA_RQST: {
+
+                    break;
+                };
+                case MSGT_SENSOR_DATA: {
+                    // Send sensor data to UART
+                    SensorData_sendmsg(MSGLEN, MSGT_I2C_RQST, (void *) msgbuffer);
+                    break;
+                };
+                default: {
                     // Your code should handle this error
                     break;
                 };

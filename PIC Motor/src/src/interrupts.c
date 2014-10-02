@@ -2,6 +2,7 @@
 #include "interrupts.h"
 #include "user_interrupts.h"
 #include "messages.h"
+#include "debug.h"
 
 //----------------------------------------------------------------------------
 // Note: This code for processing interrupts is configured to allow for high and
@@ -84,13 +85,18 @@ void InterruptHandlerHigh() {
     // We need to check the interrupt flag of each enabled high-priority interrupt to
     // see which device generated this interrupt.  Then we can call the correct handler.
 
+    
+
     // check to see if we have an I2C interrupt
-    if (PIR1bits.SSPIF) {
+    if (PIR1bits.SSPIF && PIE1bits.SSP1IE) {
         // clear the interrupt flag
         PIR1bits.SSPIF = 0;
         // call the handler
+        //i2c_int_handler();
         //i2c_slave_handler();
-        //i2c_master_handler(); // if we wanted the pic to be master
+        DEBUG_ON(I2C_INT_HANDLER);
+        i2c_master_handler(); // if we wanted the pic to be master
+        DEBUG_OFF(I2C_INT_HANDLER);
     }
 
     // check to see if we have an interrupt on timer 0
@@ -133,9 +139,8 @@ void InterruptHandlerLow() {
         uart_recv_int_handler();
     }
     // check to see if we have an interrupt on USART TX
-    if (PIR1bits.TXIF) {
-        PIR1bits.TXIF = 0; //clear interrupt flag
-        //uart_trans_int_handler();
+    if (PIR1bits.TXIF && PIE1bits.TX1IE) {
+        uart_trans_int_handler();
     }
 }
 
