@@ -73,4 +73,6 @@
 
 #define msgTypeTimerAC00 	44
 
+#define msgTypeTimerLocate 	45
+
 #endif

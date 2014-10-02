@@ -47,7 +47,7 @@ typedef struct __msgIR {
 	uint8_t buf[maxLenIR + 1];
 } msgIR;
 
-int getMsgType(msgIR *Buffer) {return(Buffer->msgType);}
+int getMsgTypeSensor(msgIR *Buffer) {return(Buffer->msgType);}
 
 // Global commands.
 const uint8_t recvNoReply = 0x00;

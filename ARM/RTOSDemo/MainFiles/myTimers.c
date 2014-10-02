@@ -34,6 +34,32 @@ void startTimerLCD(structLCD* dataLCD) {
 	}
 }
 
+void timerCallbackLocate(xTimerHandle pxTimer)
+{
+	if (pxTimer == NULL)
+		VT_HANDLE_FATAL_ERROR(0);
+	else
+	{
+		structLocate* ptr = (structLocate*)pvTimerGetTimerID(pxTimer);
+		if (sendTimerMsgLocate(ptr, LOCATE_WRITE_RATE_BASE, 0) == errQUEUE_FULL)
+			VT_HANDLE_FATAL_ERROR(0);
+	}
+}
+
+void startTimerLocate(structLocate* dataLocate) {
+	if (sizeof(long) != sizeof(structLocate*))
+		VT_HANDLE_FATAL_ERROR(0);
+
+	xTimerHandle timerHandleLocate = xTimerCreate((const signed char*)locateName, LOCATE_WRITE_RATE_BASE, pdTRUE, (void*)dataLocate, LCDTimerCallback);
+	if (timerHandleLocate == NULL)
+		VT_HANDLE_FATAL_ERROR(0);
+	else
+	{
+		if (xTimerStart(timerHandleLocate, 0) != pdPASS)
+			VT_HANDLE_FATAL_ERROR(0);
+	}
+}
+
 // Sensor IR00.
 void timerCallbackIR00(xTimerHandle pxTimer)
 {

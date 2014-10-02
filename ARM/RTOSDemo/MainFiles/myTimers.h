@@ -2,10 +2,14 @@
 #define MY_TIMERS_H
 
 #include "taskLCD.h"
+#include "taskLocate.h"
 #include "taskSensors.h"
 
 #define LCD_UPDATE_TIME		300
-#define lcdWRITE_RATE_BASE	((portTickType) LCD_UPDATE_TIME / portTICK_RATE_MS)
+#define lcdWRITE_RATE_BASE	((portTickType) LCD_UPDATE_TIME/portTICK_RATE_MS)
+
+#define LOCATE_UPDATE_TIME	300
+#define LOCATE_WRITE_RATE_BASE	((portTickType) LOCATE_UPDATE_TIME/portTICK_RATE_MS)
 
 #define IR00_READS		8/8
 #define IR00_WRITE_RATE_BASE	(((portTickType) (8000/(IR00_READS*8)))/portTICK_RATE_MS)
@@ -41,6 +45,7 @@
 #define AC00_WRITE_RATE_BASE	(((portTickType) (8000/(AC00_READS*8)))/portTICK_RATE_MS)
 
 void startTimerLCD(structLCD* dataLCD);
+void startTimerLocate(structLocate* dataLocate);
 void startTimerSensor(uint8_t sensor, structSensor* dataIR00);
 
 #endif

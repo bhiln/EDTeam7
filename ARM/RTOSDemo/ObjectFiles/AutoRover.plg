@@ -2878,3 +2878,481 @@ MainFiles/taskSensors.c(1061): warning: unused variable 'bufferLCD'
 MainFiles/taskSensors.c(1058): warning: unused variable 'dataLCD'
 linking...
 ".\ObjectFiles\AutoRover.elf" - 0 Error(s), 20 Warning(s).
+Clean started: Project: 'RTOSDemo'
+   deleting intermediate output files for target 'AutoRover'
+Build target 'AutoRover'
+compiling list.c...
+compiling queue.c...
+compiling tasks.c...
+compiling port.c...
+compiling timers.c...
+compiling main.c...
+MainFiles/taskLocate.h(33): error: expected ',' or ';' before 'void'
+MainFiles/main.c: In function 'main':
+MainFiles/main.c(130): warning: implicit declaration of function 'startTaskLocate'
+MainFiles/main.c: At top level:
+MainFiles/main.c(228): warning: null character(s) ignored
+compiling vtUtilities.c...
+compiling ParTest.c...
+compiling myTimers.c...
+MainFiles/taskLocate.h(33): error: expected ',' or ';' before 'void'
+compiling taskConductor.c...
+compiling taskLCD.c...
+MainFiles/taskLocate.h(33): error: expected ',' or ';' before 'void'
+MainFiles/taskLCD.c: In function 'updateLCDIR0VoltPlot':
+MainFiles/taskLCD.c(321): warning: comparison with string literal results in unspecified behavior
+MainFiles/taskLCD.c: In function 'updateLCDIR0DistPlot':
+MainFiles/taskLCD.c(446): warning: comparison with string literal results in unspecified behavior
+compiling taskSensors.c...
+MainFiles/taskSensors.c: In function 'updateTaskIR01':
+MainFiles/taskSensors.c(355): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(352): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR10':
+MainFiles/taskSensors.c(433): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(430): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR11':
+MainFiles/taskSensors.c(511): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(508): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR20':
+MainFiles/taskSensors.c(589): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(586): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR21':
+MainFiles/taskSensors.c(667): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(664): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR30':
+MainFiles/taskSensors.c(745): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(742): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR31':
+MainFiles/taskSensors.c(823): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(820): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR40':
+MainFiles/taskSensors.c(901): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(898): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR41':
+MainFiles/taskSensors.c(980): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(977): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskAC00':
+MainFiles/taskSensors.c(1061): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(1058): warning: unused variable 'dataLCD'
+compiling taskLocate.c...
+MainFiles/taskLocate.c(46): error: 'maxLenLocate' undeclared here (not in a function)
+MainFiles/taskLocate.c(51): error: expected identifier or '(' before numeric constant
+MainFiles/taskLocate.c(52): error: expected ';' before 'uint16_t'
+MainFiles/taskLocate.c(64): error: two or more data types in declaration specifiers
+MainFiles/taskLocate.c: In function 'getMsgType':
+MainFiles/taskLocate.c(64): error: incompatible types when returning type 'uint8_t' but 'struct DataSensorLocate' was expected
+MainFiles/taskLocate.c: At top level:
+MainFiles/taskLocate.c(68): error: expected ')' before '*' token
+MainFiles/taskLocate.c(85): error: expected ')' before '*' token
+MainFiles/taskLocate.c(101): error: expected ')' before '*' token
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(120): error: 'DataSensorLocate' undeclared (first use in this function)
+MainFiles/taskLocate.c(120): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/taskLocate.c(120): error: expected ';' before 'dataSensorLocate'
+MainFiles/taskLocate.c(122): error: 'structLocate' undeclared (first use in this function)
+MainFiles/taskLocate.c(122): error: 'param' undeclared (first use in this function)
+MainFiles/taskLocate.c(122): error: expected expression before ')' token
+MainFiles/taskLocate.c(139): error: switch quantity not an integer
+MainFiles/taskLocate.c(146): error: 'msgTypeIR00' undeclared (first use in this function)
+MainFiles/taskLocate.c(148): error: 'dataSensorLocate' undeclared (first use in this function)
+MainFiles/taskLocate.c(148): error: expected identifier before numeric constant
+MainFiles/taskLocate.c(151): error: 'msgTypeIR01' undeclared (first use in this function)
+MainFiles/taskLocate.c(153): error: expected identifier before numeric constant
+MainFiles/taskLocate.c(156): error: 'msgTypeIR10' undeclared (first use in this function)
+MainFiles/taskLocate.c(158): error: expected identifier before numeric constant
+MainFiles/taskLocate.c(161): error: 'msgTypeIR11' undeclared (first use in this function)
+MainFiles/taskLocate.c(163): error: expected identifier before numeric constant
+MainFiles/taskLocate.c(166): error: 'msgTypeIR20' undeclared (first use in this function)
+MainFiles/taskLocate.c(168): error: expected identifier before numeric constant
+MainFiles/taskLocate.c(171): error: 'msgTypeIR21' undeclared (first use in this function)
+MainFiles/taskLocate.c(173): error: expected identifier before numeric constant
+MainFiles/taskLocate.c(175): error: expected ';' before '}' token
+MainFiles/taskLocate.c(176): error: 'msgTypeIR30' undeclared (first use in this function)
+MainFiles/taskLocate.c(178): error: expected identifier before numeric constant
+MainFiles/taskLocate.c(181): error: 'msgTypeIR31' undeclared (first use in this function)
+MainFiles/taskLocate.c(183): error: expected identifier before numeric constant
+MainFiles/taskLocate.c(186): error: 'msgTypeIR40' undeclared (first use in this function)
+MainFiles/taskLocate.c(188): error: expected identifier before numeric constant
+MainFiles/taskLocate.c(191): error: 'msgTypeIR41' undeclared (first use in this function)
+MainFiles/taskLocate.c(193): error: expected identifier before numeric constant
+MainFiles/taskLocate.c(195): error: expected ';' before '}' token
+MainFiles/taskLocate.c(196): error: 'msgTypeAC00' undeclared (first use in this function)
+MainFiles/taskLocate.c(198): error: expected identifier before numeric constant
+MainFiles/taskLocate.c(126): warning: unused variable 'bufferLCD'
+MainFiles/taskLocate.c(123): warning: unused variable 'dataLCD'
+MainFiles/taskLocate.c: At top level:
+MainFiles/taskLocate.c(118): warning: 'updateTaskLocate' defined but not used
+MainFiles/taskLocate.c: In function 'getMsgType':
+MainFiles/taskLocate.c(64): warning: control reaches end of non-void function
+compiling syscalls.c...
+compiling system_LPC17xx.c...
+assembling startup_LPC17xx.s...
+compiling USB_CDC.c...
+compiling usbcontrol.c...
+compiling usbhw_lpc.c...
+compiling usbinit.c...
+compiling usbstdreq.c...
+compiling vtSSP.c...
+compiling GLCD_SPI_LPC1700.c...
+compiling lpc17xx_clkpwr.c...
+compiling lpc17xx_i2c.c...
+../NXPDrivers/source/lpc17xx_i2c.c: In function 'I2C_Init':
+../NXPDrivers/source/lpc17xx_i2c.c(213): warning: 'temp' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_i2c.c: In function 'I2C_SlaveTransferData':
+../NXPDrivers/source/lpc17xx_i2c.c(985): warning: 'CodeStatus' may be used uninitialized in this function
+compiling lpc17xx_libcfg_default.c...
+compiling lpc17xx_pinsel.c...
+compiling lpc17xx_gpio.c...
+compiling lpc17xx_ssp.c...
+../NXPDrivers/source/lpc17xx_ssp.c: In function 'SSP_ReadWrite':
+../NXPDrivers/source/lpc17xx_ssp.c(342): warning: 'rdata8' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(343): warning: 'wdata8' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(344): warning: 'rdata16' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(345): warning: 'wdata16' may be used uninitialized in this function
+compiling vtI2C.c...
+Target not created
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/taskLocate.h(33): error: expected ',' or ';' before 'void'
+MainFiles/main.c: In function 'main':
+MainFiles/main.c(130): warning: implicit declaration of function 'startTaskLocate'
+MainFiles/main.c: At top level:
+MainFiles/main.c(228): warning: null character(s) ignored
+compiling myTimers.c...
+MainFiles/taskLocate.h(33): error: expected ',' or ';' before 'void'
+compiling taskLCD.c...
+MainFiles/taskLocate.h(33): error: expected ',' or ';' before 'void'
+MainFiles/taskLCD.c: In function 'updateLCDIR0VoltPlot':
+MainFiles/taskLCD.c(321): warning: comparison with string literal results in unspecified behavior
+MainFiles/taskLCD.c: In function 'updateLCDIR0DistPlot':
+MainFiles/taskLCD.c(446): warning: comparison with string literal results in unspecified behavior
+compiling taskLocate.c...
+MainFiles/taskLocate.h(33): error: expected ',' or ';' before 'void'
+MainFiles/taskLocate.c(64): error: two or more data types in declaration specifiers
+MainFiles/taskLocate.c: In function 'getMsgType':
+MainFiles/taskLocate.c(64): error: incompatible types when returning type 'uint8_t' but 'struct DataSensorLocate' was expected
+MainFiles/taskLocate.c: In function 'startTaskLocate':
+MainFiles/taskLocate.c(74): error: 'queueLenLocate' undeclared (first use in this function)
+MainFiles/taskLocate.c(74): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/taskLocate.c(79): error: 'dataSensor' undeclared (first use in this function)
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(120): error: 'DataSensorLocate' undeclared (first use in this function)
+MainFiles/taskLocate.c(120): error: expected ';' before 'dataSensorLocate'
+MainFiles/taskLocate.c(139): error: switch quantity not an integer
+MainFiles/taskLocate.c(148): error: 'dataSensorLocate' undeclared (first use in this function)
+MainFiles/taskLocate.c(148): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(153): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(158): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(163): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(168): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(173): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(175): error: expected ';' before '}' token
+MainFiles/taskLocate.c(178): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(183): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(188): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(193): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(195): error: expected ';' before '}' token
+MainFiles/taskLocate.c(198): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(126): warning: unused variable 'bufferLCD'
+MainFiles/taskLocate.c(123): warning: unused variable 'dataLCD'
+MainFiles/taskLocate.c: In function 'getMsgType':
+MainFiles/taskLocate.c(64): warning: control reaches end of non-void function
+Target not created
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/taskLocate.h(33): error: expected ',' or ';' before 'void'
+MainFiles/main.c: In function 'main':
+MainFiles/main.c(130): warning: implicit declaration of function 'startTaskLocate'
+MainFiles/main.c: At top level:
+MainFiles/main.c(228): warning: null character(s) ignored
+compiling myTimers.c...
+MainFiles/taskLocate.h(33): error: expected ',' or ';' before 'void'
+compiling taskLCD.c...
+MainFiles/taskLocate.h(33): error: expected ',' or ';' before 'void'
+MainFiles/taskLCD.c: In function 'updateLCDIR0VoltPlot':
+MainFiles/taskLCD.c(321): warning: comparison with string literal results in unspecified behavior
+MainFiles/taskLCD.c: In function 'updateLCDIR0DistPlot':
+MainFiles/taskLCD.c(446): warning: comparison with string literal results in unspecified behavior
+compiling taskLocate.c...
+MainFiles/taskLocate.h(33): error: expected ',' or ';' before 'void'
+MainFiles/taskLocate.c(64): error: two or more data types in declaration specifiers
+MainFiles/taskLocate.c: In function 'getMsgType':
+MainFiles/taskLocate.c(64): error: incompatible types when returning type 'uint8_t' but 'struct DataSensorLocate' was expected
+MainFiles/taskLocate.c: In function 'startTaskLocate':
+MainFiles/taskLocate.c(74): error: 'queueLenLocate' undeclared (first use in this function)
+MainFiles/taskLocate.c(74): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/taskLocate.c(79): error: 'dataSensor' undeclared (first use in this function)
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(120): error: 'DataSensorLocate' undeclared (first use in this function)
+MainFiles/taskLocate.c(120): error: expected ';' before 'dataSensorLocate'
+MainFiles/taskLocate.c(139): error: switch quantity not an integer
+MainFiles/taskLocate.c(148): error: 'dataSensorLocate' undeclared (first use in this function)
+MainFiles/taskLocate.c(148): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(153): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(158): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(163): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(168): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(173): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(178): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(183): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(188): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(193): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(198): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(126): warning: unused variable 'bufferLCD'
+MainFiles/taskLocate.c(123): warning: unused variable 'dataLCD'
+MainFiles/taskLocate.c: In function 'getMsgType':
+MainFiles/taskLocate.c(64): warning: control reaches end of non-void function
+Target not created
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c(228): warning: null character(s) ignored
+compiling myTimers.c...
+compiling taskLCD.c...
+MainFiles/taskLCD.c: In function 'updateLCDIR0VoltPlot':
+MainFiles/taskLCD.c(321): warning: comparison with string literal results in unspecified behavior
+MainFiles/taskLCD.c: In function 'updateLCDIR0DistPlot':
+MainFiles/taskLCD.c(446): warning: comparison with string literal results in unspecified behavior
+compiling taskLocate.c...
+MainFiles/taskLocate.c(64): error: two or more data types in declaration specifiers
+MainFiles/taskLocate.c: In function 'getMsgType':
+MainFiles/taskLocate.c(64): error: incompatible types when returning type 'uint8_t' but 'struct DataSensorLocate' was expected
+MainFiles/taskLocate.c: In function 'startTaskLocate':
+MainFiles/taskLocate.c(74): error: 'queueLenLocate' undeclared (first use in this function)
+MainFiles/taskLocate.c(74): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/taskLocate.c(79): error: 'dataSensor' undeclared (first use in this function)
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(120): error: 'DataSensorLocate' undeclared (first use in this function)
+MainFiles/taskLocate.c(120): error: expected ';' before 'dataSensorLocate'
+MainFiles/taskLocate.c(139): error: switch quantity not an integer
+MainFiles/taskLocate.c(148): error: 'dataSensorLocate' undeclared (first use in this function)
+MainFiles/taskLocate.c(148): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(153): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(158): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(163): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(168): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(173): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(178): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(183): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(188): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(193): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(198): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(126): warning: unused variable 'bufferLCD'
+MainFiles/taskLocate.c(123): warning: unused variable 'dataLCD'
+MainFiles/taskLocate.c: In function 'getMsgType':
+MainFiles/taskLocate.c(64): warning: control reaches end of non-void function
+Target not created
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c(228): warning: null character(s) ignored
+compiling myTimers.c...
+compiling taskSensors.c...
+MainFiles/taskSensors.c: In function 'updateTaskIR00':
+MainFiles/taskSensors.c(280): warning: implicit declaration of function 'getMsgType'
+MainFiles/taskSensors.c: In function 'updateTaskIR01':
+MainFiles/taskSensors.c(355): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(352): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR10':
+MainFiles/taskSensors.c(433): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(430): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR11':
+MainFiles/taskSensors.c(511): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(508): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR20':
+MainFiles/taskSensors.c(589): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(586): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR21':
+MainFiles/taskSensors.c(667): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(664): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR30':
+MainFiles/taskSensors.c(745): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(742): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR31':
+MainFiles/taskSensors.c(823): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(820): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR40':
+MainFiles/taskSensors.c(901): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(898): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR41':
+MainFiles/taskSensors.c(980): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(977): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskAC00':
+MainFiles/taskSensors.c(1061): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(1058): warning: unused variable 'dataLCD'
+compiling taskLocate.c...
+MainFiles/taskLocate.c(64): error: two or more data types in declaration specifiers
+MainFiles/taskLocate.c: In function 'getMsgTypeLocate':
+MainFiles/taskLocate.c(64): error: incompatible types when returning type 'uint8_t' but 'struct DataSensorLocate' was expected
+MainFiles/taskLocate.c: In function 'startTaskLocate':
+MainFiles/taskLocate.c(74): error: 'queueLenLocate' undeclared (first use in this function)
+MainFiles/taskLocate.c(74): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/taskLocate.c(79): error: 'dataSensor' undeclared (first use in this function)
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(120): error: 'DataSensorLocate' undeclared (first use in this function)
+MainFiles/taskLocate.c(120): error: expected ';' before 'dataSensorLocate'
+MainFiles/taskLocate.c(139): error: switch quantity not an integer
+MainFiles/taskLocate.c(148): error: 'dataSensorLocate' undeclared (first use in this function)
+MainFiles/taskLocate.c(148): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(153): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(158): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(163): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(168): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(173): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(178): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(183): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(188): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(193): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(198): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(126): warning: unused variable 'bufferLCD'
+MainFiles/taskLocate.c(123): warning: unused variable 'dataLCD'
+MainFiles/taskLocate.c: In function 'getMsgTypeLocate':
+MainFiles/taskLocate.c(64): warning: control reaches end of non-void function
+Target not created
+Build target 'AutoRover'
+compiling taskLocate.c...
+MainFiles/taskLocate.c: In function 'startTaskLocate':
+MainFiles/taskLocate.c(74): error: 'queueLenLocate' undeclared (first use in this function)
+MainFiles/taskLocate.c(74): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/taskLocate.c(79): error: 'dataSensor' undeclared (first use in this function)
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(120): error: 'DataSensorLocate' undeclared (first use in this function)
+MainFiles/taskLocate.c(120): error: expected ';' before 'dataSensorLocate'
+MainFiles/taskLocate.c(148): error: 'dataSensorLocate' undeclared (first use in this function)
+MainFiles/taskLocate.c(148): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(153): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(158): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(163): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(168): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(173): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(178): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(183): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(188): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(193): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(198): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(126): warning: unused variable 'bufferLCD'
+MainFiles/taskLocate.c(123): warning: unused variable 'dataLCD'
+Target not created
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c(228): warning: null character(s) ignored
+compiling myTimers.c...
+compiling taskLocate.c...
+MainFiles/taskLocate.c: In function 'startTaskLocate':
+MainFiles/taskLocate.c(79): error: 'dataSensor' undeclared (first use in this function)
+MainFiles/taskLocate.c(79): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(120): error: 'DataSensorLocate' undeclared (first use in this function)
+MainFiles/taskLocate.c(120): error: expected ';' before 'dataSensorLocate'
+MainFiles/taskLocate.c(148): error: 'dataSensorLocate' undeclared (first use in this function)
+MainFiles/taskLocate.c(148): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(153): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(158): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(163): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(168): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(173): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(178): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(183): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(188): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(193): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(198): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(126): warning: unused variable 'bufferLCD'
+MainFiles/taskLocate.c(123): warning: unused variable 'dataLCD'
+Target not created
+Build target 'AutoRover'
+compiling taskLocate.c...
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(120): error: 'DataSensorLocate' undeclared (first use in this function)
+MainFiles/taskLocate.c(120): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/taskLocate.c(120): error: expected ';' before 'dataSensorLocate'
+MainFiles/taskLocate.c(148): error: 'dataSensorLocate' undeclared (first use in this function)
+MainFiles/taskLocate.c(148): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(153): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(158): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(163): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(168): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(173): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(178): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(183): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(188): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(193): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(198): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(126): warning: unused variable 'bufferLCD'
+MainFiles/taskLocate.c(123): warning: unused variable 'dataLCD'
+Target not created
+Build target 'AutoRover'
+compiling taskLocate.c...
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(120): error: 'DataSensorLocate' undeclared (first use in this function)
+MainFiles/taskLocate.c(120): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/taskLocate.c(120): error: expected ';' before 'dataSensorLocate'
+MainFiles/taskLocate.c(148): error: 'dataSensorLocate' undeclared (first use in this function)
+MainFiles/taskLocate.c(148): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(153): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(158): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(163): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(168): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(173): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(178): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(183): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(188): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(193): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(198): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(126): warning: unused variable 'bufferLCD'
+MainFiles/taskLocate.c(123): warning: unused variable 'dataLCD'
+Target not created
+Build target 'AutoRover'
+compiling taskLocate.c...
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(148): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(153): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(158): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(163): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(168): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(173): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(178): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(183): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(188): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(193): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(198): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(126): warning: unused variable 'bufferLCD'
+MainFiles/taskLocate.c(123): warning: unused variable 'dataLCD'
+Target not created
+Build target 'AutoRover'
+compiling taskLocate.c...
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(148): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(153): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(158): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(163): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(168): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(173): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(178): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(183): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(188): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(193): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(198): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(126): warning: unused variable 'bufferLCD'
+MainFiles/taskLocate.c(123): warning: unused variable 'dataLCD'
+Target not created
+Build target 'AutoRover'
+compiling taskLocate.c...
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(153): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(158): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(163): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(168): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(173): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(178): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(183): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(188): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(193): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(198): error: subscripted value is neither array nor pointer
+MainFiles/taskLocate.c(126): warning: unused variable 'bufferLCD'
+MainFiles/taskLocate.c(123): warning: unused variable 'dataLCD'
+Target not created
+Build target 'AutoRover'
+compiling taskLocate.c...
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(126): warning: unused variable 'bufferLCD'
+MainFiles/taskLocate.c(123): warning: unused variable 'dataLCD'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 2 Warning(s).
