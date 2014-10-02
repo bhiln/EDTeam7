@@ -50,12 +50,39 @@ void startTimerLocate(structLocate* dataLocate) {
 	if (sizeof(long) != sizeof(structLocate*))
 		VT_HANDLE_FATAL_ERROR(0);
 
-	xTimerHandle timerHandleLocate = xTimerCreate((const signed char*)locateName, LOCATE_WRITE_RATE_BASE, pdTRUE, (void*)dataLocate, LCDTimerCallback);
+	xTimerHandle timerHandleLocate = xTimerCreate((const signed char*)locateName, LOCATE_WRITE_RATE_BASE, pdTRUE, (void*)dataLocate, timerCallbackLocate);
 	if (timerHandleLocate == NULL)
 		VT_HANDLE_FATAL_ERROR(0);
 	else
 	{
 		if (xTimerStart(timerHandleLocate, 0) != pdPASS)
+			VT_HANDLE_FATAL_ERROR(0);
+	}
+}
+
+void timerCallbackCommand(xTimerHandle pxTimer)
+{
+	if (pxTimer == NULL)
+		VT_HANDLE_FATAL_ERROR(0);
+	else
+	{
+		structCommand* ptr = (structCommand*)pvTimerGetTimerID(pxTimer);
+		if (sendTimerMsgCommand(ptr, COMMAND_WRITE_RATE_BASE, 0) == errQUEUE_FULL)
+			VT_HANDLE_FATAL_ERROR(0);
+	}
+}
+
+void startTimerCommand(structCommand* dataCommand)
+{
+	if (sizeof(long) != sizeof(structCommand*))
+		VT_HANDLE_FATAL_ERROR(0);
+
+	xTimerHandle timerHandleCommand = xTimerCreate((const signed char*)commandName, COMMAND_WRITE_RATE_BASE, pdTRUE, (void*)dataCommand, timerCallbackCommand);
+	if (timerHandleCommand == NULL)
+		VT_HANDLE_FATAL_ERROR(0);
+	else
+	{
+		if (xTimerStart(timerHandleCommand, 0) != pdPASS)
 			VT_HANDLE_FATAL_ERROR(0);
 	}
 }

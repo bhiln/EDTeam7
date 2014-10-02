@@ -68,8 +68,6 @@ static portTASK_FUNCTION(updateTaskLocate, pvParameters);
 void startTaskLocate(structLocate* dataLocate, unsigned portBASE_TYPE uxPriority, structLCD* dataLCD)
 {
 
-	signed char locateName[] = "Locate";
-
 	// Create the queue that will be used to talk to this task.
 	if ((dataLocate->inQ = xQueueCreate(queueLenLocate, sizeof(msgLocate))) == NULL)
 		VT_HANDLE_FATAL_ERROR(0);

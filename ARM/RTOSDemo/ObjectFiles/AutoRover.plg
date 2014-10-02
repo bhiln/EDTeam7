@@ -3356,3 +3356,704 @@ MainFiles/taskLocate.c(126): warning: unused variable 'bufferLCD'
 MainFiles/taskLocate.c(123): warning: unused variable 'dataLCD'
 linking...
 ".\ObjectFiles\AutoRover.elf" - 0 Error(s), 2 Warning(s).
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c: In function 'main':
+MainFiles/main.c(136): error: 'COMMAND_TASK_PRIORITY' undeclared (first use in this function)
+MainFiles/main.c(136): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/main.c(136): warning: passing argument 3 of 'startTaskCommand' from incompatible pointer type
+MainFiles/taskCommand.h(24): error: note: expected 'struct vtI2CStruct *' but argument is of type 'struct structLCD *'
+MainFiles/main.c(136): error: too few arguments to function 'startTaskCommand'
+MainFiles/taskCommand.h(24): error: note: declared here
+MainFiles/main.c: At top level:
+MainFiles/main.c(234): warning: null character(s) ignored
+compiling myTimers.c...
+compiling taskSensors.c...
+MainFiles/taskSensors.c: In function 'updateTaskIR00':
+MainFiles/taskSensors.c(281): warning: implicit declaration of function 'getMsgType'
+MainFiles/taskSensors.c: In function 'updateTaskIR01':
+MainFiles/taskSensors.c(356): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(353): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR10':
+MainFiles/taskSensors.c(434): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(431): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR11':
+MainFiles/taskSensors.c(512): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(509): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR20':
+MainFiles/taskSensors.c(590): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(587): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR21':
+MainFiles/taskSensors.c(668): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(665): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR30':
+MainFiles/taskSensors.c(746): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(743): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR31':
+MainFiles/taskSensors.c(824): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(821): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR40':
+MainFiles/taskSensors.c(902): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(899): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR41':
+MainFiles/taskSensors.c(981): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(978): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskAC00':
+MainFiles/taskSensors.c(1062): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(1059): warning: unused variable 'dataLCD'
+compiling taskLocate.c...
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(124): warning: unused variable 'bufferLCD'
+MainFiles/taskLocate.c(121): warning: unused variable 'dataLCD'
+Target not created
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c: In function 'main':
+MainFiles/main.c(136): error: 'COMMAND_TASK_PRIORITY' undeclared (first use in this function)
+MainFiles/main.c(136): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/main.c(136): warning: passing argument 3 of 'startTaskCommand' from incompatible pointer type
+MainFiles/taskCommand.h(24): error: note: expected 'struct vtI2CStruct *' but argument is of type 'struct structLCD *'
+MainFiles/main.c(136): error: too few arguments to function 'startTaskCommand'
+MainFiles/taskCommand.h(24): error: note: declared here
+MainFiles/main.c: At top level:
+MainFiles/main.c(234): warning: null character(s) ignored
+compiling taskSensors.c...
+MainFiles/taskSensors.c: In function 'updateTaskIR01':
+MainFiles/taskSensors.c(356): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(353): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR10':
+MainFiles/taskSensors.c(434): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(431): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR11':
+MainFiles/taskSensors.c(512): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(509): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR20':
+MainFiles/taskSensors.c(590): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(587): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR21':
+MainFiles/taskSensors.c(668): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(665): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR30':
+MainFiles/taskSensors.c(746): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(743): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR31':
+MainFiles/taskSensors.c(824): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(821): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR40':
+MainFiles/taskSensors.c(902): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(899): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR41':
+MainFiles/taskSensors.c(981): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(978): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskAC00':
+MainFiles/taskSensors.c(1062): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(1059): warning: unused variable 'dataLCD'
+Target not created
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c: In function 'main':
+MainFiles/main.c(137): warning: passing argument 3 of 'startTaskCommand' from incompatible pointer type
+MainFiles/taskCommand.h(24): error: note: expected 'struct vtI2CStruct *' but argument is of type 'struct structLCD *'
+MainFiles/main.c(137): error: too few arguments to function 'startTaskCommand'
+MainFiles/taskCommand.h(24): error: note: declared here
+MainFiles/main.c: At top level:
+MainFiles/main.c(235): warning: null character(s) ignored
+Target not created
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c(235): warning: null character(s) ignored
+linking...
+./objectfiles/main.o: In function `main':
+E:\ARM-Code\RTOSDemo/MainFiles/main.c:137: undefined reference to `startTaskCommand'
+collect2: ld returned 1 exit status
+Target not created
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c(235): warning: null character(s) ignored
+linking...
+./objectfiles/main.o: In function `main':
+E:\ARM-Code\RTOSDemo/MainFiles/main.c:137: undefined reference to `startTaskCommand'
+collect2: ld returned 1 exit status
+Target not created
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c(235): warning: null character(s) ignored
+linking...
+./objectfiles/main.o: In function `main':
+E:\ARM-Code\RTOSDemo/MainFiles/main.c:137: undefined reference to `startTaskCommand'
+collect2: ld returned 1 exit status
+Target not created
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c(235): warning: null character(s) ignored
+compiling taskSensors.c...
+MainFiles/taskSensors.c: In function 'updateTaskIR01':
+MainFiles/taskSensors.c(356): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(353): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR10':
+MainFiles/taskSensors.c(434): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(431): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR11':
+MainFiles/taskSensors.c(512): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(509): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR20':
+MainFiles/taskSensors.c(590): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(587): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR21':
+MainFiles/taskSensors.c(668): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(665): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR30':
+MainFiles/taskSensors.c(746): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(743): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR31':
+MainFiles/taskSensors.c(824): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(821): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR40':
+MainFiles/taskSensors.c(902): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(899): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR41':
+MainFiles/taskSensors.c(981): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(978): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskAC00':
+MainFiles/taskSensors.c(1062): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(1059): warning: unused variable 'dataLCD'
+linking...
+./objectfiles/main.o: In function `main':
+E:\ARM-Code\RTOSDemo/MainFiles/main.c:137: undefined reference to `startTaskCommand'
+collect2: ld returned 1 exit status
+Target not created
+Build target 'AutoRover'
+compiling myTimers.c...
+compiling taskConductor.c...
+compiling taskSensors.c...
+MainFiles/taskSensors.c: In function 'updateTaskIR01':
+MainFiles/taskSensors.c(356): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(353): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR10':
+MainFiles/taskSensors.c(434): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(431): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR11':
+MainFiles/taskSensors.c(512): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(509): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR20':
+MainFiles/taskSensors.c(590): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(587): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR21':
+MainFiles/taskSensors.c(668): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(665): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR30':
+MainFiles/taskSensors.c(746): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(743): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR31':
+MainFiles/taskSensors.c(824): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(821): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR40':
+MainFiles/taskSensors.c(902): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(899): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR41':
+MainFiles/taskSensors.c(981): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(978): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskAC00':
+MainFiles/taskSensors.c(1062): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(1059): warning: unused variable 'dataLCD'
+compiling taskLocate.c...
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(124): warning: unused variable 'bufferLCD'
+MainFiles/taskLocate.c(121): warning: unused variable 'dataLCD'
+linking...
+./objectfiles/main.o: In function `main':
+E:\ARM-Code\RTOSDemo/MainFiles/main.c:137: undefined reference to `startTaskCommand'
+collect2: ld returned 1 exit status
+Target not created
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c(235): warning: null character(s) ignored
+MainFiles/main.c(62): warning: 'dataCommand' defined but not used
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 2 Warning(s).
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c(235): warning: null character(s) ignored
+linking...
+./objectfiles/main.o: In function `main':
+E:\ARM-Code\RTOSDemo/MainFiles/main.c:137: undefined reference to `startTaskCommand'
+collect2: ld returned 1 exit status
+Target not created
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c(235): warning: null character(s) ignored
+compiling myTimers.c...
+MainFiles/myTimers.c: In function 'timerCallbackCommand':
+MainFiles/myTimers.c(70): warning: implicit declaration of function 'sendTimerMsgCommand'
+compiling taskConductor.c...
+compiling taskLCD.c...
+MainFiles/taskLCD.c: In function 'updateLCDIR0VoltPlot':
+MainFiles/taskLCD.c(321): warning: comparison with string literal results in unspecified behavior
+MainFiles/taskLCD.c: In function 'updateLCDIR0DistPlot':
+MainFiles/taskLCD.c(446): warning: comparison with string literal results in unspecified behavior
+compiling taskSensors.c...
+MainFiles/taskSensors.c: In function 'updateTaskIR01':
+MainFiles/taskSensors.c(356): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(353): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR10':
+MainFiles/taskSensors.c(434): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(431): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR11':
+MainFiles/taskSensors.c(512): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(509): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR20':
+MainFiles/taskSensors.c(590): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(587): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR21':
+MainFiles/taskSensors.c(668): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(665): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR30':
+MainFiles/taskSensors.c(746): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(743): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR31':
+MainFiles/taskSensors.c(824): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(821): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR40':
+MainFiles/taskSensors.c(902): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(899): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR41':
+MainFiles/taskSensors.c(981): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(978): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskAC00':
+MainFiles/taskSensors.c(1062): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(1059): warning: unused variable 'dataLCD'
+compiling taskLocate.c...
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(124): warning: unused variable 'bufferLCD'
+MainFiles/taskLocate.c(121): warning: unused variable 'dataLCD'
+linking...
+./objectfiles/main.o: In function `main':
+E:\ARM-Code\RTOSDemo/MainFiles/main.c:137: undefined reference to `startTaskCommand'
+./objectfiles/mytimers.o: In function `timerCallbackCommand':
+E:\ARM-Code\RTOSDemo/MainFiles/myTimers.c:70: undefined reference to `sendTimerMsgCommand'
+collect2: ld returned 1 exit status
+Target not created
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c(235): warning: null character(s) ignored
+compiling myTimers.c...
+MainFiles/I2CTaskMsgTypes.h(78): warning: "msgTypeCommand" redefined
+MainFiles/taskCommand.h(11): error: note: this is the location of the previous definition
+MainFiles/myTimers.c: In function 'timerCallbackCommand':
+MainFiles/myTimers.c(70): warning: implicit declaration of function 'sendTimerMsgCommand'
+Target not created
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c(235): warning: null character(s) ignored
+compiling myTimers.c...
+MainFiles/myTimers.c: In function 'timerCallbackCommand':
+MainFiles/myTimers.c(70): warning: implicit declaration of function 'sendTimerMsgCommand'
+compiling taskConductor.c...
+compiling taskLCD.c...
+MainFiles/taskLCD.c: In function 'updateLCDIR0VoltPlot':
+MainFiles/taskLCD.c(321): warning: comparison with string literal results in unspecified behavior
+MainFiles/taskLCD.c: In function 'updateLCDIR0DistPlot':
+MainFiles/taskLCD.c(446): warning: comparison with string literal results in unspecified behavior
+compiling taskSensors.c...
+MainFiles/taskSensors.c: In function 'updateTaskIR01':
+MainFiles/taskSensors.c(356): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(353): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR10':
+MainFiles/taskSensors.c(434): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(431): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR11':
+MainFiles/taskSensors.c(512): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(509): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR20':
+MainFiles/taskSensors.c(590): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(587): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR21':
+MainFiles/taskSensors.c(668): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(665): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR30':
+MainFiles/taskSensors.c(746): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(743): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR31':
+MainFiles/taskSensors.c(824): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(821): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR40':
+MainFiles/taskSensors.c(902): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(899): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR41':
+MainFiles/taskSensors.c(981): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(978): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskAC00':
+MainFiles/taskSensors.c(1062): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(1059): warning: unused variable 'dataLCD'
+compiling taskLocate.c...
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(124): warning: unused variable 'bufferLCD'
+MainFiles/taskLocate.c(121): warning: unused variable 'dataLCD'
+linking...
+./objectfiles/main.o: In function `main':
+E:\ARM-Code\RTOSDemo/MainFiles/main.c:137: undefined reference to `startTaskCommand'
+./objectfiles/mytimers.o: In function `timerCallbackCommand':
+E:\ARM-Code\RTOSDemo/MainFiles/myTimers.c:70: undefined reference to `sendTimerMsgCommand'
+collect2: ld returned 1 exit status
+Target not created
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c(235): warning: null character(s) ignored
+compiling myTimers.c...
+linking...
+./objectfiles/main.o: In function `main':
+E:\ARM-Code\RTOSDemo/MainFiles/main.c:137: undefined reference to `startTaskCommand'
+./objectfiles/mytimers.o: In function `timerCallbackCommand':
+E:\ARM-Code\RTOSDemo/MainFiles/myTimers.c:70: undefined reference to `sendTimerMsgCommand'
+collect2: ld returned 1 exit status
+Target not created
+Clean started: Project: 'RTOSDemo'
+   deleting intermediate output files for target 'AutoRover'
+Build target 'AutoRover'
+compiling list.c...
+compiling queue.c...
+compiling tasks.c...
+compiling port.c...
+compiling timers.c...
+compiling main.c...
+MainFiles/main.c(235): warning: null character(s) ignored
+compiling vtUtilities.c...
+compiling ParTest.c...
+compiling myTimers.c...
+compiling taskConductor.c...
+compiling taskLCD.c...
+MainFiles/taskLCD.c: In function 'updateLCDIR0VoltPlot':
+MainFiles/taskLCD.c(321): warning: comparison with string literal results in unspecified behavior
+MainFiles/taskLCD.c: In function 'updateLCDIR0DistPlot':
+MainFiles/taskLCD.c(446): warning: comparison with string literal results in unspecified behavior
+compiling taskSensors.c...
+MainFiles/taskSensors.c: In function 'updateTaskIR01':
+MainFiles/taskSensors.c(356): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(353): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR10':
+MainFiles/taskSensors.c(434): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(431): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR11':
+MainFiles/taskSensors.c(512): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(509): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR20':
+MainFiles/taskSensors.c(590): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(587): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR21':
+MainFiles/taskSensors.c(668): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(665): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR30':
+MainFiles/taskSensors.c(746): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(743): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR31':
+MainFiles/taskSensors.c(824): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(821): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR40':
+MainFiles/taskSensors.c(902): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(899): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR41':
+MainFiles/taskSensors.c(981): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(978): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskAC00':
+MainFiles/taskSensors.c(1062): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(1059): warning: unused variable 'dataLCD'
+compiling taskLocate.c...
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(124): warning: unused variable 'bufferLCD'
+MainFiles/taskLocate.c(121): warning: unused variable 'dataLCD'
+compiling syscalls.c...
+compiling system_LPC17xx.c...
+assembling startup_LPC17xx.s...
+compiling USB_CDC.c...
+compiling usbcontrol.c...
+compiling usbhw_lpc.c...
+compiling usbinit.c...
+compiling usbstdreq.c...
+compiling vtSSP.c...
+compiling GLCD_SPI_LPC1700.c...
+compiling lpc17xx_clkpwr.c...
+compiling lpc17xx_i2c.c...
+../NXPDrivers/source/lpc17xx_i2c.c: In function 'I2C_Init':
+../NXPDrivers/source/lpc17xx_i2c.c(213): warning: 'temp' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_i2c.c: In function 'I2C_SlaveTransferData':
+../NXPDrivers/source/lpc17xx_i2c.c(985): warning: 'CodeStatus' may be used uninitialized in this function
+compiling lpc17xx_libcfg_default.c...
+compiling lpc17xx_pinsel.c...
+compiling lpc17xx_gpio.c...
+compiling lpc17xx_ssp.c...
+../NXPDrivers/source/lpc17xx_ssp.c: In function 'SSP_ReadWrite':
+../NXPDrivers/source/lpc17xx_ssp.c(342): warning: 'rdata8' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(343): warning: 'wdata8' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(344): warning: 'rdata16' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(345): warning: 'wdata16' may be used uninitialized in this function
+compiling vtI2C.c...
+linking...
+./objectfiles/main.o: In function `main':
+E:\ARM-Code\RTOSDemo/MainFiles/main.c:137: undefined reference to `startTaskCommand'
+./objectfiles/mytimers.o: In function `timerCallbackCommand':
+E:\ARM-Code\RTOSDemo/MainFiles/myTimers.c:70: undefined reference to `sendTimerMsgCommand'
+collect2: ld returned 1 exit status
+Target not created
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c(236): warning: null character(s) ignored
+compiling myTimers.c...
+compiling taskLCD.c...
+MainFiles/taskLCD.c: In function 'updateLCDIR0VoltPlot':
+MainFiles/taskLCD.c(321): warning: comparison with string literal results in unspecified behavior
+MainFiles/taskLCD.c: In function 'updateLCDIR0DistPlot':
+MainFiles/taskLCD.c(446): warning: comparison with string literal results in unspecified behavior
+linking...
+./objectfiles/main.o: In function `main':
+E:\ARM-Code\RTOSDemo/MainFiles/main.c:138: undefined reference to `startTaskCommand'
+./objectfiles/mytimers.o: In function `timerCallbackCommand':
+E:\ARM-Code\RTOSDemo/MainFiles/myTimers.c:70: undefined reference to `sendTimerMsgCommand'
+collect2: ld returned 1 exit status
+Target not created
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c(236): warning: null character(s) ignored
+MainFiles/main.c(63): warning: 'dataCommand' defined but not used
+linking...
+./objectfiles/mytimers.o: In function `timerCallbackCommand':
+E:\ARM-Code\RTOSDemo/MainFiles/myTimers.c:70: undefined reference to `sendTimerMsgCommand'
+collect2: ld returned 1 exit status
+Target not created
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c(236): warning: null character(s) ignored
+MainFiles/main.c(63): warning: 'dataCommand' defined but not used
+compiling myTimers.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 2 Warning(s).
+Clean started: Project: 'RTOSDemo'
+   deleting intermediate output files for target 'AutoRover'
+Build target 'AutoRover'
+compiling list.c...
+compiling queue.c...
+compiling tasks.c...
+compiling port.c...
+compiling timers.c...
+compiling main.c...
+MainFiles/main.c(236): warning: null character(s) ignored
+MainFiles/main.c(63): warning: 'dataCommand' defined but not used
+compiling vtUtilities.c...
+compiling ParTest.c...
+compiling myTimers.c...
+compiling taskConductor.c...
+compiling taskLCD.c...
+MainFiles/taskLCD.c: In function 'updateLCDIR0VoltPlot':
+MainFiles/taskLCD.c(321): warning: comparison with string literal results in unspecified behavior
+MainFiles/taskLCD.c: In function 'updateLCDIR0DistPlot':
+MainFiles/taskLCD.c(446): warning: comparison with string literal results in unspecified behavior
+compiling taskSensors.c...
+MainFiles/taskSensors.c: In function 'updateTaskIR01':
+MainFiles/taskSensors.c(356): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(353): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR10':
+MainFiles/taskSensors.c(434): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(431): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR11':
+MainFiles/taskSensors.c(512): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(509): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR20':
+MainFiles/taskSensors.c(590): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(587): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR21':
+MainFiles/taskSensors.c(668): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(665): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR30':
+MainFiles/taskSensors.c(746): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(743): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR31':
+MainFiles/taskSensors.c(824): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(821): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR40':
+MainFiles/taskSensors.c(902): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(899): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR41':
+MainFiles/taskSensors.c(981): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(978): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskAC00':
+MainFiles/taskSensors.c(1062): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(1059): warning: unused variable 'dataLCD'
+compiling taskLocate.c...
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(124): warning: unused variable 'bufferLCD'
+MainFiles/taskLocate.c(121): warning: unused variable 'dataLCD'
+compiling syscalls.c...
+compiling system_LPC17xx.c...
+assembling startup_LPC17xx.s...
+compiling USB_CDC.c...
+compiling usbcontrol.c...
+compiling usbhw_lpc.c...
+compiling usbinit.c...
+compiling usbstdreq.c...
+compiling vtSSP.c...
+compiling GLCD_SPI_LPC1700.c...
+compiling lpc17xx_clkpwr.c...
+compiling lpc17xx_i2c.c...
+../NXPDrivers/source/lpc17xx_i2c.c: In function 'I2C_Init':
+../NXPDrivers/source/lpc17xx_i2c.c(213): warning: 'temp' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_i2c.c: In function 'I2C_SlaveTransferData':
+../NXPDrivers/source/lpc17xx_i2c.c(985): warning: 'CodeStatus' may be used uninitialized in this function
+compiling lpc17xx_libcfg_default.c...
+compiling lpc17xx_pinsel.c...
+compiling lpc17xx_gpio.c...
+compiling lpc17xx_ssp.c...
+../NXPDrivers/source/lpc17xx_ssp.c: In function 'SSP_ReadWrite':
+../NXPDrivers/source/lpc17xx_ssp.c(342): warning: 'rdata8' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(343): warning: 'wdata8' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(344): warning: 'rdata16' may be used uninitialized in this function
+../NXPDrivers/source/lpc17xx_ssp.c(345): warning: 'wdata16' may be used uninitialized in this function
+compiling vtI2C.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 32 Warning(s).
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c(236): warning: null character(s) ignored
+MainFiles/main.c(63): warning: 'dataCommand' defined but not used
+compiling myTimers.c...
+linking...
+./objectfiles/mytimers.o: In function `timerCallbackCommand':
+E:\ARM-Code\RTOSDemo/MainFiles/myTimers.c:70: undefined reference to `sendTimerMsgCommand'
+collect2: ld returned 1 exit status
+Target not created
+Build target 'AutoRover'
+compiling taskCommand.c...
+MainFiles/taskCommand.c: In function 'startTaskCommand':
+MainFiles/taskCommand.c(66): error: 'dataCommnd' undeclared (first use in this function)
+MainFiles/taskCommand.c(66): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/taskCommand.c: In function 'updateTaskCommand':
+MainFiles/taskCommand.c(140): error: 'msgTypeDist' undeclared (first use in this function)
+MainFiles/taskCommand.c(144): error: 'msgTypeAngle' undeclared (first use in this function)
+MainFiles/taskCommand.c(145): error: expected ':' or '...' before '{' token
+MainFiles/taskCommand.c(157): warning: passing argument 5 of 'vtI2CEnQ' makes pointer from integer without a cast
+./../vtCode/vtI2C/vtI2C.h(54): error: note: expected 'const uint8_t *' but argument is of type 'uint8_t'
+MainFiles/taskCommand.c(159): error: 'msgTypeCommandSpeed' undeclared (first use in this function)
+MainFiles/taskCommand.c(159): warning: passing argument 5 of 'vtI2CEnQ' makes pointer from integer without a cast
+./../vtCode/vtI2C/vtI2C.h(54): error: note: expected 'const uint8_t *' but argument is of type 'uint8_t'
+MainFiles/taskCommand.c(114): warning: unused variable 'bufferLCD'
+MainFiles/taskCommand.c(111): warning: unused variable 'dataLCD'
+Target not created
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c(236): warning: null character(s) ignored
+MainFiles/main.c(63): warning: 'dataCommand' defined but not used
+compiling myTimers.c...
+compiling taskConductor.c...
+compiling taskLCD.c...
+MainFiles/taskLCD.c: In function 'updateLCDIR0VoltPlot':
+MainFiles/taskLCD.c(321): warning: comparison with string literal results in unspecified behavior
+MainFiles/taskLCD.c: In function 'updateLCDIR0DistPlot':
+MainFiles/taskLCD.c(446): warning: comparison with string literal results in unspecified behavior
+compiling taskSensors.c...
+MainFiles/taskSensors.c: In function 'updateTaskIR01':
+MainFiles/taskSensors.c(356): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(353): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR10':
+MainFiles/taskSensors.c(434): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(431): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR11':
+MainFiles/taskSensors.c(512): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(509): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR20':
+MainFiles/taskSensors.c(590): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(587): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR21':
+MainFiles/taskSensors.c(668): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(665): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR30':
+MainFiles/taskSensors.c(746): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(743): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR31':
+MainFiles/taskSensors.c(824): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(821): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR40':
+MainFiles/taskSensors.c(902): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(899): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR41':
+MainFiles/taskSensors.c(981): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(978): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskAC00':
+MainFiles/taskSensors.c(1062): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(1059): warning: unused variable 'dataLCD'
+compiling taskLocate.c...
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(124): warning: unused variable 'bufferLCD'
+MainFiles/taskLocate.c(121): warning: unused variable 'dataLCD'
+compiling taskCommand.c...
+MainFiles/taskCommand.c: In function 'updateTaskCommand':
+MainFiles/taskCommand.c(157): warning: passing argument 5 of 'vtI2CEnQ' makes pointer from integer without a cast
+./../vtCode/vtI2C/vtI2C.h(54): error: note: expected 'const uint8_t *' but argument is of type 'uint8_t'
+MainFiles/taskCommand.c(159): error: 'msgTypeCommandSpeed' undeclared (first use in this function)
+MainFiles/taskCommand.c(159): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/taskCommand.c(159): warning: passing argument 5 of 'vtI2CEnQ' makes pointer from integer without a cast
+./../vtCode/vtI2C/vtI2C.h(54): error: note: expected 'const uint8_t *' but argument is of type 'uint8_t'
+MainFiles/taskCommand.c(114): warning: unused variable 'bufferLCD'
+MainFiles/taskCommand.c(111): warning: unused variable 'dataLCD'
+Target not created
+Build target 'AutoRover'
+compiling myTimers.c...
+compiling taskConductor.c...
+compiling taskSensors.c...
+MainFiles/taskSensors.c: In function 'updateTaskIR01':
+MainFiles/taskSensors.c(356): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(353): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR10':
+MainFiles/taskSensors.c(434): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(431): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR11':
+MainFiles/taskSensors.c(512): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(509): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR20':
+MainFiles/taskSensors.c(590): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(587): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR21':
+MainFiles/taskSensors.c(668): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(665): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR30':
+MainFiles/taskSensors.c(746): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(743): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR31':
+MainFiles/taskSensors.c(824): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(821): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR40':
+MainFiles/taskSensors.c(902): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(899): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskIR41':
+MainFiles/taskSensors.c(981): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(978): warning: unused variable 'dataLCD'
+MainFiles/taskSensors.c: In function 'updateTaskAC00':
+MainFiles/taskSensors.c(1062): warning: unused variable 'bufferLCD'
+MainFiles/taskSensors.c(1059): warning: unused variable 'dataLCD'
+compiling taskLocate.c...
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(124): warning: unused variable 'bufferLCD'
+MainFiles/taskLocate.c(121): warning: unused variable 'dataLCD'
+compiling taskCommand.c...
+MainFiles/taskCommand.c: In function 'updateTaskCommand':
+MainFiles/taskCommand.c(157): warning: passing argument 5 of 'vtI2CEnQ' makes pointer from integer without a cast
+./../vtCode/vtI2C/vtI2C.h(54): error: note: expected 'const uint8_t *' but argument is of type 'uint8_t'
+MainFiles/taskCommand.c(159): warning: passing argument 5 of 'vtI2CEnQ' makes pointer from integer without a cast
+./../vtCode/vtI2C/vtI2C.h(54): error: note: expected 'const uint8_t *' but argument is of type 'uint8_t'
+MainFiles/taskCommand.c(114): warning: unused variable 'bufferLCD'
+MainFiles/taskCommand.c(111): warning: unused variable 'dataLCD'
+Target not created
+Build target 'AutoRover'
+compiling taskCommand.c...
+MainFiles/taskCommand.c: In function 'updateTaskCommand':
+MainFiles/taskCommand.c(157): warning: passing argument 5 of 'vtI2CEnQ' makes pointer from integer without a cast
+./../vtCode/vtI2C/vtI2C.h(54): error: note: expected 'const uint8_t *' but argument is of type 'uint8_t'
+MainFiles/taskCommand.c(159): warning: passing argument 5 of 'vtI2CEnQ' makes pointer from integer without a cast
+./../vtCode/vtI2C/vtI2C.h(54): error: note: expected 'const uint8_t *' but argument is of type 'uint8_t'
+MainFiles/taskCommand.c(114): warning: unused variable 'bufferLCD'
+MainFiles/taskCommand.c(111): warning: unused variable 'dataLCD'
+Target not created
+Build target 'AutoRover'
+compiling taskCommand.c...
+MainFiles/taskCommand.c: In function 'updateTaskCommand':
+MainFiles/taskCommand.c(114): warning: unused variable 'bufferLCD'
+MainFiles/taskCommand.c(111): warning: unused variable 'dataLCD'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 2 Warning(s).

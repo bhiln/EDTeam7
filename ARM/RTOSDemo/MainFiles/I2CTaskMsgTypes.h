@@ -75,4 +75,10 @@
 
 #define msgTypeTimerLocate 	45
 
+#define msgTypeCommand 		46
+#define msgTypeCommandSpeed	47
+#define msgTypeTimerCommand 	48
+#define msgTypeDist 		49
+#define msgTypeAngle 		50
+
 #endif

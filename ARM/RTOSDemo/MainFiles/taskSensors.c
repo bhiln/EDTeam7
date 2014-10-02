@@ -47,7 +47,6 @@ typedef struct __msgIR {
 	uint8_t buf[maxLenIR + 1];
 } msgIR;
 
-int getMsgTypeSensor(msgIR *Buffer) {return(Buffer->msgType);}
 
 // Global commands.
 const uint8_t recvNoReply = 0x00;
@@ -132,6 +131,8 @@ static portTASK_FUNCTION_PROTO(updateTaskIR31, pvParameters);
 static portTASK_FUNCTION_PROTO(updateTaskIR40, pvParameters);
 static portTASK_FUNCTION_PROTO(updateTaskIR41, pvParameters);
 static portTASK_FUNCTION_PROTO(updateTaskAC00, pvParameters);
+
+int getMsgTypeSensor(msgIR *Buffer) {return(Buffer->msgType);}
 
 void startTaskSensor(uint8_t sensor, structSensor* dataSensor, unsigned portBASE_TYPE uxPriority, vtI2CStruct* devI2C0, structLCD* dataLCD)
 {
@@ -277,7 +278,7 @@ static portTASK_FUNCTION(updateTaskIR00, pvParameters)
 			VT_HANDLE_FATAL_ERROR(0);
 
 		// Now, based on the type of the message and the state, we decide on the new state and action to take.
-		switch(getMsgType(&msgBuffer))
+		switch(getMsgTypeSensor(&msgBuffer))
 		{
 		case msgTypeTimerIR00:
 		{
@@ -367,7 +368,7 @@ static portTASK_FUNCTION(updateTaskIR01, pvParameters)
 			VT_HANDLE_FATAL_ERROR(0);
 
 		// Now, based on the type of the message and the state, we decide on the new state and action to take.
-		switch(getMsgType(&msgBuffer))
+		switch(getMsgTypeSensor(&msgBuffer))
 		{
 		case msgTypeTimerIR01:
 		{
@@ -445,7 +446,7 @@ static portTASK_FUNCTION(updateTaskIR10, pvParameters)
 			VT_HANDLE_FATAL_ERROR(0);
 
 		// Now, based on the type of the message and the state, we decide on the new state and action to take.
-		switch(getMsgType(&msgBuffer))
+		switch(getMsgTypeSensor(&msgBuffer))
 		{
 		case msgTypeTimerIR10:
 		{
@@ -523,7 +524,7 @@ static portTASK_FUNCTION(updateTaskIR11, pvParameters)
 			VT_HANDLE_FATAL_ERROR(0);
 
 		// Now, based on the type of the message and the state, we decide on the new state and action to take.
-		switch(getMsgType(&msgBuffer))
+		switch(getMsgTypeSensor(&msgBuffer))
 		{
 		case msgTypeTimerIR11:
 		{
@@ -601,7 +602,7 @@ static portTASK_FUNCTION(updateTaskIR20, pvParameters)
 			VT_HANDLE_FATAL_ERROR(0);
 
 		// Now, based on the type of the message and the state, we decide on the new state and action to take.
-		switch(getMsgType(&msgBuffer))
+		switch(getMsgTypeSensor(&msgBuffer))
 		{
 		case msgTypeTimerIR20:
 		{
@@ -679,7 +680,7 @@ static portTASK_FUNCTION(updateTaskIR21, pvParameters)
 			VT_HANDLE_FATAL_ERROR(0);
 
 		// Now, based on the type of the message and the state, we decide on the new state and action to take.
-		switch(getMsgType(&msgBuffer))
+		switch(getMsgTypeSensor(&msgBuffer))
 		{
 		case msgTypeTimerIR21:
 		{
@@ -757,7 +758,7 @@ static portTASK_FUNCTION(updateTaskIR30, pvParameters)
 			VT_HANDLE_FATAL_ERROR(0);
 
 		// Now, based on the type of the message and the state, we decide on the new state and action to take.
-		switch(getMsgType(&msgBuffer))
+		switch(getMsgTypeSensor(&msgBuffer))
 		{
 		case msgTypeTimerIR30:
 		{
@@ -835,7 +836,7 @@ static portTASK_FUNCTION(updateTaskIR31, pvParameters)
 			VT_HANDLE_FATAL_ERROR(0);
 
 		// Now, based on the type of the message and the state, we decide on the new state and action to take.
-		switch(getMsgType(&msgBuffer))
+		switch(getMsgTypeSensor(&msgBuffer))
 		{
 		case msgTypeTimerIR31:
 		{
@@ -913,7 +914,7 @@ static portTASK_FUNCTION(updateTaskIR40, pvParameters)
 			VT_HANDLE_FATAL_ERROR(0);
 
 		// Now, based on the type of the message and the state, we decide on the new state and action to take.
-		switch(getMsgType(&msgBuffer))
+		switch(getMsgTypeSensor(&msgBuffer))
 		{
 		case msgTypeTimerIR40:
 		{
@@ -992,7 +993,7 @@ static portTASK_FUNCTION(updateTaskIR41, pvParameters)
 			VT_HANDLE_FATAL_ERROR(0);
 
 		// Now, based on the type of the message and the state, we decide on the new state and action to take.
-		switch(getMsgType(&msgBuffer))
+		switch(getMsgTypeSensor(&msgBuffer))
 		{
 		case msgTypeTimerIR41:
 		{
@@ -1073,7 +1074,7 @@ static portTASK_FUNCTION(updateTaskAC00, pvParameters)
 			VT_HANDLE_FATAL_ERROR(0);
 
 		// Now, based on the type of the message and the state, we decide on the new state and action to take.
-		switch(getMsgType(&msgBuffer))
+		switch(getMsgTypeSensor(&msgBuffer))
 		{
 		case msgTypeTimerAC00:
 		{
