@@ -378,7 +378,7 @@ void main(void) {
     kmsg[2] = 0x35;
     kmsg[3] = 0x46;
 
-//    PIE1bits.TX1IE = 0x1;
+    PIE1bits.TX1IE = 0x1;
     //PIR1bits.SSPIF = 0x1;
     //SSP1CON2bits.SEN = 1;
     //i2c_master_send(4, imsg, 0x9E);
@@ -440,9 +440,9 @@ void main(void) {
                     break;
                 };
                 case MSGT_I2C_MASTER_RECV_COMPLETE: {
-                    DEBUG_ON(I2C_MASTER_RCV);
+                    //DEBUG_ON(I2C_MASTER_RCV);
                     //uart_send(length, msgbuffer);
-                    DEBUG_OFF(I2C_MASTER_RCV);
+                    //DEBUG_OFF(I2C_MASTER_RCV);
                     break;
                 };
                 case MSGT_I2C_MASTER_RECV_FAILED: {

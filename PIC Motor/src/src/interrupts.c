@@ -94,7 +94,9 @@ void InterruptHandlerHigh() {
         // call the handler
         //i2c_int_handler();
         //i2c_slave_handler();
+        DEBUG_ON(I2C_INT_HANDLER);
         i2c_master_handler(); // if we wanted the pic to be master
+        DEBUG_OFF(I2C_INT_HANDLER);
     }
 
     // check to see if we have an interrupt on timer 0

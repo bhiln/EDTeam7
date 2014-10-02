@@ -28,7 +28,7 @@ void timer0_int_handler() {
     LATBbits.LATB0 = !LATBbits.LATB0;
 #endif
 
-    //PIE1bits.TX1IE = 0x1;
+    PIE1bits.TX1IE = 0x1;
     uart_trans_int_handler();
     // reset the timer
     WriteTimer0(0);
@@ -69,7 +69,7 @@ void timer1_int_handler() {
     imsg[2] = 0x33;
     imsg[3] = 0x44;
     
-    i2c_master_send(4, imsg, 0x9E);
+    //i2c_master_send(4, imsg, 0x9E);
     //i2c_master_recv(4, 0x9E);
     result = ReadTimer1();
     DEBUG_ON(TIMER1_MSG_SEND);

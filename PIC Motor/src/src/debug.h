@@ -17,9 +17,9 @@
 #define TIMER1_MSG_RCV LATDbits.LATD5 //
 #define TIMER1_ISR LATDbits.LATD6 //
 #define I2C_MASTER_SEND LATEbits.LATE0 //
-#define I2C_MASTER_RCV LATEbits.LATE1 //
+//#define I2C_MASTER_RCV LATEbits.LATE1 //
 #define I2C_ISR LATEbits.LATE2
-#define I2C_INT_HANDLER LATAbits.LATA2
+#define I2C_INT_HANDLER LATEbits.LATE1
 #define ADC_ISR LATDbits.LATD2
 #define ADC_START LATDbits.LATD3
 #define ADC_READ LATCbits.LATC0

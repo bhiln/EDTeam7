@@ -169,7 +169,6 @@ void handle_start(unsigned char data_read) {
 
 void i2c_master_handler() {
     //Set debug pin high to show interrupt has occurred
-    DEBUG_ON(I2C_INT_HANDLER);
     switch (ic_ptr->status) {
         case I2C_STARTED:
         {
@@ -192,7 +191,9 @@ void i2c_master_handler() {
                 if (ic_ptr->outbufind < ic_ptr->outbuflen) {
                     ic_ptr->status = I2C_SEND_DATA;
                     ic_ptr->outbufind++;
+                    DEBUG_ON(I2C_MASTER_SEND);
                     SSP1BUF = ic_ptr->buffer[ic_ptr->outbufind - 1];
+                    DEBUG_OFF(I2C_MASTER_SEND);
                 } else {
                     ToMainHigh_sendmsg(0, MSGT_I2C_MASTER_SEND_COMPLETE, 0);
                     ic_ptr->outbuflen = 0;
@@ -346,6 +347,7 @@ void i2c_master_handler() {
         case I2C_STOPPED:
         {
             ic_ptr->status = I2C_IDLE;
+            DEBUG_OFF(I2C_INT_HANDLER);
             SSP1CON2bits.PEN = 1;
             break;
         };
