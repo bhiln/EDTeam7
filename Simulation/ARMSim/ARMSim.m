@@ -21,13 +21,14 @@ h = gcf();
 % You will have to change this to agree with your WiFly
 % Note that I have set up the WiFly to have a baud rate of 57600
 ioARMSimWiFly = serial('COM7','BaudRate',57600);
+AC = ARMController(ioARMSimWiFly);
 
 % Note that we will pass the figure handle to the timer callback
 % We will use this handle when we update our data plot
-ioARMSimWiFly.BytesAvailableFcn = {@callbackARMSimWiFly,h};
+ioARMSimWiFly.BytesAvailableFcnCount = 1;
+ioARMSimWiFly.BytesAvailableFcnMode = 'byte';
+ioARMSimWiFly.BytesAvailableFcn = {@callbackARMSimWiFly,h,AC};
 
-% We use the character 'o' as a terminator. You will change this.
-ioARMSimWiFly.terminator = 'x';
 fopen(ioARMSimWiFly);
 % ioARMSimWiFly.ReadAsyncMode = 'manual';
 
@@ -39,7 +40,7 @@ ARMSimTimer.Period         = 1;
 ARMSimTimer.ExecutionMode  = 'fixedRate';
 ARMSimTimer.TimerFcn       = {@callbackARMSimTimer,ioARMSimWiFly};
 ARMSimTimer.BusyMode       = 'drop';
-start(ARMSimTimer);
+%start(ARMSimTimer);
 
 % last_ba = 0;
 % while (1)
@@ -51,5 +52,3 @@ start(ARMSimTimer);
 %     last_ba = bytesAvailable;
 %     
 % end
-
-

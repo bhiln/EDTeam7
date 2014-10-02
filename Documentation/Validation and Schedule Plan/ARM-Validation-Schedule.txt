@@ -1,0 +1,48 @@
+The following is the validation schedule for Igor Janjic.
+
+September 30th:
+Communication protocol describing motor commands in the Commander thread
+(commanderTask.h, commanderTask.c) will be written.
+
+October 1st:
+DataConductor thread will be completely written.
+
+October 2nd:
+Skeleton for each sensor thread will be written. All communication from the ARM
+system will be written and working. Dropped I2C requests will be determined and
+counted. The decision algorithms deciding when to send motor commands will be
+filled with stub code until they are written later.
+
+October 7th:
+Algorithms determining the rover's location and ramp locations will be decided.
+Base code for these algorithms will be written.
+
+October 9th:
+Decision algorithms will be functional alowing a demonstration of simulated
+data to correctly show rover location on the map.
+
+October 14th:
+All data processing will be written. Ramp locations will be determinable using
+the developed decision algorithms. Demonstration of decision algorithms with
+simulated data will be performed. Ramp location discovery and rover discovery
+will be demonstrated.
+
+October 17th:
+Movement commands implementing rover motion parallel to a wall will be written.
+
+October 19th:
+Movement commands implementing obstacle avoidance motion will be written.
+Motion parallel will be demonstrated.
+
+November 4th:
+Movement commands implementing navigation around a ramp will be written. Motion
+parallel to a wall will be demonstrated.
+
+November 10th:
+Movement commands implementing navigation across a ramp will be written.
+
+November 15th:
+Preliminary functionality of the rover will be demonstrated.
+
+December 9th:
+Final rover functionality will be demonstrated.

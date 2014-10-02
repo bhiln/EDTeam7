@@ -4,35 +4,64 @@ function callbackSensorSimWiFly( obj, event, objSensor )
 % string with the terminator 'o'.). This is just to show how to
 % set up the callbacks and to communicate between the two programs.
 
+persistent dataBuffer;
+
 % We are in the callback because we received some data. We calculate
 % how much and then read it into a data array.
 bytesAvailable = obj.BytesAvailable;
-[data count msg] = fread(obj, bytesAvailable);
-% We print stuff out just to show that it is working.
-valuesReceived = obj.ValuesReceived;
-fprintf('callbackSimWiFly: Received %d bytes. Data: %s. Total of %d bytes read.\n',...
-    bytesAvailable, data, valuesReceived);
+[recievedByte, ~, ~] = fread(obj, 1, 'char');
+if (isempty(dataBuffer))
+    dataBuffer = [recievedByte];
+else
+    dataBuffer = [dataBuffer, recievedByte];
+end
 
-% We get a sensor value from our simulated sensor and send it back
-% as a string with the terminator 'o'. You will change this.
-sensorValue = objSensor.getSensorReading() * 100;
+if (length(dataBuffer) > 1 && dataBuffer(length(dataBuffer)-1) == 255 && dataBuffer(length(dataBuffer)) == 0)
+    messageType = dataBuffer(2);
+    fprintf('callbackSimWiFly: Received %d bytes. Data: %s. Total of %d bytes read.\n',...
+        bytesAvailable, dataBuffer, length(dataBuffer));
 
-%get data length
-%sensorValue_String = sprintf('%f', sensorValue);
-sensorValue_String_Binary = sprintf('%s', dec2bin(sensorValue, 16));
-sensorValue_Binary1 = sensorValue_String_Binary(1:8);
-sensorValue_Binary2 = sensorValue_String_Binary(9:16);
-sensorValue_String = sprintf('%s%s', bin2dec(sensorValue_Binary1), bin2dec(sensorValue_Binary2));
-sensorLength = length(sensorValue_String);
-
-fprintf('callbackSimWiFly: Simulated sensor value is %s, ascii is %s, binary is %s, length is %d, being sent to ARMSim\n',...
-    sensorValue, sensorValue_String, sensorValue_String_Binary, sensorLength);
-%str = sprintf('x%d%s', sensorLength, sensorValue_String);
-%fwrite(obj,str);
-fwrite(obj,'x');
-fwrite(obj,sprintf('%s', bin2dec(sensorValue_Binary1)));
-fwrite(obj,sprintf('%s', bin2dec(sensorValue_Binary2)));
-%fwrite(obj,sensorValue_Binary2);
+    % Message Handler------------------------------------------------
+    if (messageType == 50)
+        %handle motor instruction
+        fprintf('\n\nGOT MOTOR MESSAGE\n\n');
+        if (dataBuffer(1) == 3)
+            sendAcknowledge(obj, dataBuffer(1)+1);
+        else
+            sendAcknowledge(obj, dataBuffer(1));
+        end
+    end
+    % Message Handler------------------------------------------------
+    
+    dataBuffer = [];
+end
 
 end
 
+function isNextIndex = checkIndex( index )
+
+persistent lastIndex;
+
+if (isempty(lastIndex))
+    lastIndex = index-1;
+end
+if (lastIndex == index-1)
+    isNextIndex = true;
+else
+    %TODO: handle lost packet
+    fprintf('Missed packet\n');
+    isNextIndex = false;
+end
+lastIndex = index;
+end
+
+function sendAcknowledge(obj, messageIndex)
+
+fwrite(obj,bin2dec(sprintf('%s', dec2bin(0, 8))));
+fwrite(obj,bin2dec(sprintf('%s', dec2bin(153, 8))));
+fwrite(obj,bin2dec(sprintf('%s', dec2bin(0, 8))));
+fwrite(obj,bin2dec(sprintf('%s', dec2bin(messageIndex, 8))));
+fwrite(obj,bin2dec(sprintf('%s', dec2bin(255, 8))));
+fwrite(obj,bin2dec(sprintf('%s', dec2bin(0, 8))));
+
+end
