@@ -11,8 +11,8 @@ int timer0_lthread(timer0_thread_struct *tptr, int msgtype, int length, unsigned
     unsigned int *msgval;
 
     msgval = (unsigned int *) msgbuffer;
-    unsigned int val = *msgval;
-    SensorData_sendmsg(sizeof(val), MSGT_SENSOR_DATA, (void*) &val);
+//    unsigned int val = *msgval;
+//    SensorData_sendmsg(sizeof(val), MSGT_SENSOR_DATA, (void*) &val);
 
     //SensorData_recvmsg(MSGLEN, &msgtype, (void *) msgbuffer);
     //unsigned char *msgbuf = msgbuffer;
