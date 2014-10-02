@@ -605,11 +605,7 @@ static portTASK_FUNCTION(updateTaskLCD, pvParameters)
 
 		case LCDMsgTypePrint:
 		{
-			GPIO_SetValue(0, DEBUG_PIN16);
-			GPIO_ClearValue(0, DEBUG_PIN16);
 			updateLCDTabs(curTab, &msgBuffer);
-			GPIO_SetValue(0, DEBUG_PIN16);
-			GPIO_ClearValue(0, DEBUG_PIN16);
 			break;
 		}
 		case LCDMsgTypeTimer: {
