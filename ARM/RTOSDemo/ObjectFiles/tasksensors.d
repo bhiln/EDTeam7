@@ -1,4 +1,4 @@
-ObjectFiles/lcdtask.o: MainFiles/LCDtask.c \
+ObjectFiles/tasksensors.o: MainFiles/taskSensors.c \
  c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/stdlib.h \
  c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/machine/ieeefp.h \
  c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/_ansi.h \
@@ -20,6 +20,8 @@ ObjectFiles/lcdtask.o: MainFiles/LCDtask.c \
  c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/machine/types.h \
  c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/sys/stdio.h \
  c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/include-fixed/math.h \
+ c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/string.h \
+ c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/sys/string.h \
  ../FreeRTOS/Source/include/FreeRTOS.h \
  ../FreeRTOS/Source/include/projdefs.h ../SystemFiles/FreeRTOSConfig.h \
  ../SystemFiles/adapter.h C:/Keil/ARM/INC/NXP/LPC17xx/LPC17xx.h \
@@ -31,13 +33,12 @@ ObjectFiles/lcdtask.o: MainFiles/LCDtask.c \
  ../FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h \
  ../FreeRTOS/Source/include/mpu_wrappers.h \
  ../FreeRTOS/Source/include/task.h ../FreeRTOS/Source/include/list.h \
- ../vtCode/vtLCD/GLCD.h ../vtCode/vtUtilities.h \
- ../NXPDrivers/include/lpc_types.h C:/Keil/ARM/INC/NXP/LPC17xx/lpc17xx.h \
- MainFiles/LCDtask.h ../FreeRTOS/Source/include/queue.h \
- ../FreeRTOS/Source/include/timers.h \
- c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/string.h \
- c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/sys/string.h \
- MainFiles/myTimers.h MainFiles/lcdTask.h MainFiles/i2cIR0.h \
- ../vtCode/vtI2C/vtI2C.h ../NXPDrivers/include/lpc17xx_i2c.h \
- ../NXPDrivers/include/lpc_types.h ../FreeRTOS/Source/include/projDefs.h \
- ../FreeRTOS/Source/include/semphr.h ../FreeRTOS/Source/include/queue.h
+ ../FreeRTOS/Source/include/projdefs.h \
+ ../FreeRTOS/Source/include/semphr.h ../FreeRTOS/Source/include/queue.h \
+ ../NXPDrivers/include/lpc17xx_gpio.h ../NXPDrivers/include/lpc_types.h \
+ ../vtCode/vtUtilities.h ../NXPDrivers/include/lpc_types.h \
+ C:/Keil/ARM/INC/NXP/LPC17xx/lpc17xx.h ../vtCode/vtI2C/vtI2C.h \
+ ../NXPDrivers/include/lpc17xx_i2c.h \
+ ../FreeRTOS/Source/include/projDefs.h MainFiles/taskLCD.h \
+ ../FreeRTOS/Source/include/queue.h ../FreeRTOS/Source/include/timers.h \
+ MainFiles/taskSensors.h MainFiles/I2CTaskMsgTypes.h MainFiles/debug.h
