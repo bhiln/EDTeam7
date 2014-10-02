@@ -43,7 +43,7 @@ typedef struct __msgLocate
 {
 	uint8_t msgType;
 	uint8_t	length;
-	uint8_t buf[maxLenLocate + 1];
+	uint16_t buf[maxLenLocate + 1];
 } msgLocate;
 
 typedef struct __DataSensorLocate

@@ -282,6 +282,8 @@ static portTASK_FUNCTION(updateTaskIR00, pvParameters)
 		{
 		case msgTypeTimerIR00:
 		{
+			GPIO_SetValue(0, DEBUG_PIN16);
+			GPIO_ClearValue(0, DEBUG_PIN16);
 			// Timer messages never change the state, they just cause an action (or not).
 			if (vtI2CEnQ(devI2C0, msgTypeIR00ReadByte0, SLAVE_ADDR, sizeof(queryReadByte0IR00), queryReadByte0IR00, 2) != pdTRUE)
 				VT_HANDLE_FATAL_ERROR(0);

@@ -56,6 +56,12 @@
 #define msgTypeAC00ReadByte0 	32
 #define msgTypeAC00ReadByte1 	33
 
+#define msgTypeCommand 		34
+#define msgTypeCommandSpeed	35
+#define msgTypeTimerCommand 	36
+#define msgTypeDist 		37
+#define msgTypeAngle 		38
+
 #define msgTypeTimerIR00 	34
 #define msgTypeTimerIR01	35
 
@@ -74,11 +80,5 @@
 #define msgTypeTimerAC00 	44
 
 #define msgTypeTimerLocate 	45
-
-#define msgTypeCommand 		46
-#define msgTypeCommandSpeed	47
-#define msgTypeTimerCommand 	48
-#define msgTypeDist 		49
-#define msgTypeAngle 		50
 
 #endif
