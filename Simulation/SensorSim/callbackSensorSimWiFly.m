@@ -22,9 +22,14 @@ if (length(dataBuffer) > 1 && dataBuffer(length(dataBuffer)-1) == 255 && dataBuf
         bytesAvailable, dataBuffer, length(dataBuffer));
 
     % Message Handler------------------------------------------------
-    if (messageType == 70 && checkIndex(dataBuffer(1)))
+    if (messageType == 50)
         %handle motor instruction
-        sendAcknowledge(dataBuffer(1));
+        fprintf('\n\nGOT MOTOR MESSAGE\n\n');
+        if (dataBuffer(1) == 3)
+            sendAcknowledge(obj, dataBuffer(1)+1);
+        else
+            sendAcknowledge(obj, dataBuffer(1));
+        end
     end
     % Message Handler------------------------------------------------
     

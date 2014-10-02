@@ -1,4 +1,4 @@
-function callbackARMSimWiFly( obj, event, h )
+function callbackARMSimWiFly( obj, event, h, AC )
 % Callback for WiFly serial object on ARMSim side
 % One would not actual do the communication in this way (i.e., via
 % string with the terminator 'o'.). This is just to show how to
@@ -14,16 +14,15 @@ persistent figureAxis;
 % how much and then read it into a data array.
 bytesAvailable = obj.BytesAvailable;
 [recievedByte, ~, ~] = fread(obj, 1, 'char');
-fprintf('%d\n', recievedByte);
+%fprintf('%d\n', recievedByte);
 if (isempty(dataBuffer))
     dataBuffer = [recievedByte];
-    fprintf('starting new buffer\n');
 else
     dataBuffer = [dataBuffer, recievedByte];
 end
 
 if (length(dataBuffer) > 1 && dataBuffer(length(dataBuffer)-1) == 255 && dataBuffer(length(dataBuffer)) == 0)
-    if (dataBuffer(2) == 50)
+    if (dataBuffer(2) == 10)
         data = dataBuffer(3:4);
         data_String = sprintf('%s', data);
         data_String_Binary = sprintf('%s%s', dec2bin((data_String(1)+0), 8), dec2bin((data_String(2)+0), 8));
@@ -71,11 +70,17 @@ if (length(dataBuffer) > 1 && dataBuffer(length(dataBuffer)-1) == 255 && dataBuf
             end
             plot(length(dataArray),value,'+');
         end
+    elseif(dataBuffer(2) == 153)
+        if (dataBuffer(4) == AC.getLastMessageID())
+            fprintf('\n\nMESSAGE WAS RECIEVED CORRECTLY: %d, %d\n\n', dataBuffer(4), AC.getLastMessageID());
+        else
+            fprintf('\n\nMESSAGE WAS NOT RECIEVED CORRECTLY: %d, %d\n\n', dataBuffer(4), AC.getLastMessageID());
+        end
+            
     %more message types
     end
     
     clear dataBuffer;
-    fprintf('clearing buffer\n');
 end
 
 end
