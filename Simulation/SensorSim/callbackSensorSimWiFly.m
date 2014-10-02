@@ -23,7 +23,8 @@ if (length(dataBuffer) > 1 && dataBuffer(length(dataBuffer)-1) == 255 && dataBuf
 
     % Message Handler------------------------------------------------
     if (messageType == 70 && checkIndex(dataBuffer(1)))
-        %motor message
+        %handle motor instruction
+        sendAcknowledge(dataBuffer(1));
     end
     % Message Handler------------------------------------------------
     
@@ -48,4 +49,16 @@ else
 end
 lastIndex = index;
 end
+
+function sendAcknowledge(obj, messageIndex)
+
+fwrite(obj,bin2dec(sprintf('%s', dec2bin(0, 8))));
+fwrite(obj,bin2dec(sprintf('%s', dec2bin(153, 8))));
+fwrite(obj,bin2dec(sprintf('%s', dec2bin(0, 8))));
+fwrite(obj,bin2dec(sprintf('%s', dec2bin(messageIndex, 8))));
+fwrite(obj,bin2dec(sprintf('%s', dec2bin(255, 8))));
+fwrite(obj,bin2dec(sprintf('%s', dec2bin(0, 8))));
+
+end
+
 
