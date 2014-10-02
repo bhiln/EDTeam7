@@ -11,6 +11,7 @@
 /* include files. */
 #include "lpc17xx_i2c.h"
 #include "vtUtilities.h"
+#include "debug.h"
 
 #include "lpc17xx_libcfg_default.h"
 #include "lpc17xx_pinsel.h"
@@ -191,6 +192,8 @@ portBASE_TYPE vtI2CDeQ(vtI2CStruct *dev,uint8_t maxRxLen,uint8_t *rxBuf,uint8_t 
 
 // i2c interrupt handler
 static __INLINE void vtI2CIsr(LPC_I2C_TypeDef *devAddr,xSemaphoreHandle *binSemaphore) {
+	GPIO_SetValue(0, DEBUG_PIN18);
+	GPIO_ClearValue(0, DEBUG_PIN18);
 	I2C_MasterHandler(devAddr);
 	if (I2C_MasterTransferComplete(devAddr)) {
 		static signed portBASE_TYPE xHigherPriorityTaskWoken;

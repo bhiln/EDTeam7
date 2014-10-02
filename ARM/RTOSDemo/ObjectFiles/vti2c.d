@@ -35,6 +35,7 @@ ObjectFiles/vti2c.o: ../vtCode/vtI2C/vtI2C.c \
  ../FreeRTOS/Source/include/projDefs.h \
  ../FreeRTOS/Source/include/semphr.h ../FreeRTOS/Source/include/queue.h \
  ../FreeRTOS/Source/include/task.h ../FreeRTOS/Source/include/list.h \
- ../FreeRTOS/Source/include/projdefs.h \
+ ../FreeRTOS/Source/include/projdefs.h MainFiles/debug.h \
+ ../NXPDrivers/include/lpc17xx_gpio.h \
  ../NXPDrivers/include/lpc17xx_libcfg_default.h \
  ../NXPDrivers/include/lpc17xx_pinsel.h
