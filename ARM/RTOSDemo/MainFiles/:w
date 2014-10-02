@@ -1,0 +1,242 @@
+/*------------------------------------------------------------------------------
+ * File:		taskSensors.c
+ * Authors: 		FreeRTOS, Igor Janjic
+ * Description:		Reads the sensor data, processes it, and sends it to the
+ * 			relevant tasks.
+ *----------------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------------------
+ * Includes
+ */
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+
+#include "FreeRTOS.h"
+#include "task.h"
+#include "projdefs.h"
+#include "semphr.h"
+#include "lpc17xx_gpio.h"
+
+#include "vtUtilities.h"
+#include "vtI2C.h"
+#include "taskLCD.h"
+#include "taskSensors.h"
+#include "I2CTaskMsgTypes.h"
+#include "debug.h"
+
+/*------------------------------------------------------------------------------
+ * Configuration
+ */
+// Length of the queue to this task.
+#define queueLenIR 10
+
+// Stack sizes.
+#define BASE_STACK 3
+#if PRINTF_VERSION == 1
+#define I2C_STACK_SIZE		((BASE_STACK+5)*configMINIMAL_STACK_SIZE)
+#else
+#define I2C_STACK_SIZE		(BASE_STACK*configMINIMAL_STACK_SIZE)
+#endif
+
+// Actual data structure that is sent in a message.
+typedef struct __msgIR {
+	uint8_t msgType;
+	uint8_t	length;
+	uint8_t buf[maxLenIR + 1];
+} msgIR;
+
+int getMsgType(msgIR *Buffer) {return(Buffer->msgType);}
+
+// Global commands.
+const uint8_t recvNoReply[] = {0x00};
+
+// I2C commands for the IR00 sensor.
+const uint8_t queryReadByte0IR00[] = {0x0A};
+const uint8_t queryReadByte1IR00[] = {0x08};
+
+// I2C commands for the IR01 sensor.
+const uint8_t queryReadByte0IR01[] = {0x0C};
+const uint8_t queryReadByte1IR01[] = {0x0D};
+
+// I2C commands for the IR10 sensor.
+const uint8_t queryReadByte0IR10[] = {0x1A};
+const uint8_t queryReadByte1IR10[] = {0x1B};
+
+// I2C commands for the IR11 sensor.
+const uint8_t queryReadByte0IR11[] = {0x1C};
+const uint8_t queryReadByte1IR11[] = {0x1D};
+
+// I2C commands for the IR20 sensor.
+const uint8_t queryReadByte0IR20[] = {0x2A};
+const uint8_t queryReadByte1IR20[] = {0x2B};
+
+// I2C commands for the IR21 sensor.
+const uint8_t queryReadByte0IR21[] = {0x2C};
+const uint8_t queryReadByte1IR21[] = {0x2D};
+
+// I2C commands for the IR30 sensor.
+const uint8_t queryReadByte0IR30[] = {0x3A};
+const uint8_t queryReadByte1IR30[] = {0x3B};
+
+// I2C commands for the IR31 sensor.
+const uint8_t queryReadByte0IR31[] = {0x3C};
+const uint8_t queryReadByte1IR31[] = {0x3D};
+
+// I2C commands for the IR40 sensor.
+const uint8_t queryReadByte0IR40[] = {0x4A};
+const uint8_t queryReadByte1IR40[] = {0x4B};
+
+// I2C commands for the IR41 sensor.
+const uint8_t queryReadByte0IR41[] = {0x4C};
+const uint8_t queryReadByte1IR41[] = {0x4D};
+
+// I2C commands for the AC00 sensor.
+const uint8_t queryReadByte0AC00[] = {0x5A};
+const uint8_t queryReadByte1AC00[] = {0x5B};
+const uint8_t queryReadByte2AC00[] = {0x6A};
+const uint8_t queryReadByte3AC00[] = {0x6B};
+const uint8_t queryReadByte4AC00[] = {0x7A};
+const uint8_t queryReadByte5AC00[] = {0x7B};
+
+// Definitions of the states for the FSM for IR00.
+const uint8_t stateReadByte0IR00 = 0;
+const uint8_t stateReadByte1IR00 = 1;
+
+/*------------------------------------------------------------------------------
+ * Sensor IR00.
+ */
+static portTASK_FUNCTION_PROTO(updateTaskIR00, pvParameters);
+
+void startTaskSensor(structSensor* dataIR00, unsigned portBASE_TYPE uxPriority, vtI2CStruct* devI2C0, structLCD* dataLCD)
+{
+	// Create the queue that will be used to talk to this task.
+	if ((dataIR00->inQIR00 = xQueueCreate(queueLenIR, sizeof(msgIR))) == NULL)
+		VT_HANDLE_FATAL_ERROR(0);
+	// Start the task.
+	portBASE_TYPE retval;
+	dataIR00->devI2C0 = devI2C0;
+	dataIR00->dataLCD = dataLCD;
+	if ((retval = xTaskCreate(updateTaskIR00, (signed char*)"IR00", I2C_STACK_SIZE, (void*) dataIR00, uxPriority, (xTaskHandle*)NULL)) != pdPASS)
+		VT_HANDLE_FATAL_ERROR(retval);
+}
+
+portBASE_TYPE sendTimerMsgIR00(structSensor* dataIR00, portTickType ticksElapsed, portTickType ticksToBlock)
+{
+	if (dataIR00 == NULL)
+		VT_HANDLE_FATAL_ERROR(0);
+	
+	msgIR bufferIR00;
+	bufferIR00.length = sizeof(ticksElapsed);
+
+	if (bufferIR00.length > maxLenIR)
+		VT_HANDLE_FATAL_ERROR(bufferIR00.length);
+
+	memcpy(bufferIR00.buf, (char*)&ticksElapsed, sizeof(ticksElapsed));
+	bufferIR00.msgType = msgTypeTimerIR00;
+	return(xQueueSend(dataIR00->inQIR00, (void*) (&bufferIR00),ticksToBlock));
+}
+
+portBASE_TYPE sendValueMsgIR00(structSensor* dataIR00, uint8_t msgType, uint8_t value, portTickType ticksToBlock)
+{
+	msgIR bufferIR00;
+
+	if (dataIR00 == NULL)
+		VT_HANDLE_FATAL_ERROR(0);
+
+	bufferIR00.length = sizeof(value);
+
+	if (bufferIR00.length > maxLenIR)
+		VT_HANDLE_FATAL_ERROR(bufferIR00.length);
+	
+	memcpy(bufferIR00.buf, (char*)&value, sizeof(value));
+	bufferIR00.msgType = msgType;
+	return(xQueueSend(dataIR00->inQ, (void*)(&bufferIR00), ticksToBlock));
+}
+
+static portTASK_FUNCTION(updateTaskIR00, pvParameters)
+{
+	uint8_t voltageByte0IR00 = 0;
+	uint8_t voltageByte1IR00 = 0;
+
+	structSensor* param = (structIR*)pvParameters;
+	vtI2CStruct* devI2C0 = param->devI2C0;
+	structLCD* dataLCD = param->dataLCD;
+	
+	// String buffer for printing.
+	char bufferLCD[maxLenLCD + 1];
+	
+	// Buffer for receiving messages.
+	msgIR msgBuffer;
+
+	uint8_t currentState = stateReadByte0IR00;
+
+	// Like all good tasks, this should never exit.
+	for(;;)
+	{
+		// Wait for a message from either a timer or from an I2C operation.
+		if (xQueueReceive(param->inQ, (void*)&msgBuffer, portMAX_DELAY) != pdTRUE)
+			VT_HANDLE_FATAL_ERROR(0);
+
+		// Now, based on the type of the message and the state, we decide on the new state and action to take.
+		switch(getMsgType(&msgBuffer))
+		{
+			case msgTypeTimerIR00:
+			{
+				// Timer messages never change the state, they just cause an action (or not).
+				if (vtI2CEnQ(devI2C0, msgTypeIR00ReadByte0, SLAVE_ADDR, sizeof(queryReadByte0IR00), queryReadByte0IR00, 2) != pdTRUE)
+					VT_HANDLE_FATAL_ERROR(0);
+				if (vtI2CEnQ(devI2C0, msgTypeIR00ReadByte1, SLAVE_ADDR, sizeof(queryReadByte1IR00), queryReadByte1IR00, 2) != pdTRUE)
+					VT_HANDLE_FATAL_ERROR(0);
+				break;
+			}
+			case msgTypeIR00ReadByte0:
+			{
+				if (currentState == stateReadByte0IR00)
+				{
+					currentState = stateReadByte1IR00;
+					voltageByte0IR00 = msgBuffer.buf[0];
+				}
+				else
+				{
+					// Unexpectedly received this message.
+				}
+				break;
+			}
+			case msgTypeIR00ReadByte1:
+			{
+				if (currentState == stateReadByte1IR00)
+				{  	
+					currentState = stateReadByte0IR00;
+					voltageByte1IR00 = msgBuffer.buf[0];
+
+					unsigned int voltage = 0;
+					float voltF = 0;
+					voltage = voltageByte0IR00 << 8; // MSB
+					voltage = voltage | voltageByte1IR00;
+					voltage = (float)(voltF);
+					
+					voltage = voltage/(1023/3.3);
+					if(voltageByte0IR00 == recvNoReply)
+						sprintf(bufferLCD, "%d", recvNoReply);
+					else
+						sprintf(bufferLCD, "%d", voltage);
+					printf("%d\n", voltage);
+					if (dataLCD != NULL)
+					{
+						if (SendLCDPrintMsg(dataLCD, strnlen(bufferLCD, maxLenLCD), bufferLCD, portMAX_DELAY) != pdTRUE)
+							VT_HANDLE_FATAL_ERROR(0);
+						//if (SendLCDTimerMsg(dataLCD, 10/portTICK_RATE_MS, portMAX_DELAY) != pdTRUE)
+							//VT_HANDLE_FATAL_ERROR(0);
+					}					
+				}
+				else
+				{
+					// unexpectedly received this message
+				}
+				break;
+			}	
+		}
+	}
+}

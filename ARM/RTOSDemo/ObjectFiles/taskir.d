@@ -1,4 +1,4 @@
-ObjectFiles/conductor.o: MainFiles/conductor.c \
+ObjectFiles/taskir.o: MainFiles/taskIR.c \
  c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/stdlib.h \
  c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/machine/ieeefp.h \
  c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/_ansi.h \
@@ -35,10 +35,10 @@ ObjectFiles/conductor.o: MainFiles/conductor.c \
  ../FreeRTOS/Source/include/task.h ../FreeRTOS/Source/include/list.h \
  ../FreeRTOS/Source/include/projdefs.h \
  ../FreeRTOS/Source/include/semphr.h ../FreeRTOS/Source/include/queue.h \
+ ../NXPDrivers/include/lpc17xx_gpio.h ../NXPDrivers/include/lpc_types.h \
  ../vtCode/vtUtilities.h ../NXPDrivers/include/lpc_types.h \
  C:/Keil/ARM/INC/NXP/LPC17xx/lpc17xx.h ../vtCode/vtI2C/vtI2C.h \
- ../NXPDrivers/include/lpc17xx_i2c.h ../NXPDrivers/include/lpc_types.h \
- ../FreeRTOS/Source/include/projDefs.h MainFiles/i2cIR0.h \
- MainFiles/lcdTask.h ../FreeRTOS/Source/include/queue.h \
- ../FreeRTOS/Source/include/timers.h MainFiles/I2CTaskMsgTypes.h \
- MainFiles/conductor.h
+ ../NXPDrivers/include/lpc17xx_i2c.h \
+ ../FreeRTOS/Source/include/projDefs.h MainFiles/taskLCD.h \
+ ../FreeRTOS/Source/include/queue.h ../FreeRTOS/Source/include/timers.h \
+ MainFiles/taskIR.h MainFiles/I2CTaskMsgTypes.h MainFiles/debug.h
