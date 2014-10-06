@@ -43,12 +43,27 @@ typedef struct __msgCommand
 {
 	uint8_t msgType;
 	uint8_t	length;
-	uint8_t objectID;
-	uint8_t buf[maxLenCommand + 1];
+	uint16_t buf[maxLenCommand + 1];
 } msgCommand;
 
+//uint8_t commandIndex[] = {0x00};
+
 const uint8_t commandRLF[] = {0x11};
+const uint8_t commandRRF[] = {0x12};
+const uint8_t commandMFF[] = {0x13};
+const uint8_t commandMBF[] = {0x14};
+
+const uint8_t commandRLC[] = {0x21};
+const uint8_t commandRRC[] = {0x22};
+const uint8_t commandMFC[] = {0x23};
+const uint8_t commandMBC[] = {0x24};
+
 const uint8_t commandSSR[] = {0x31};
+const uint8_t commandSMR[] = {0x32};
+const uint8_t commandSFR[] = {0x33};
+
+uint32_t sentCount = 0;
+uint32_t recvCount = 0;
 
 int getMsgTypeCommand(msgCommand *Buffer) {return(Buffer->msgType);}
 
@@ -116,8 +131,6 @@ static portTASK_FUNCTION(updateTaskCommand, pvParameters)
 	// Buffer for receiving messages.
 	msgCommand msgBuffer;
 
-	uint8_t dataReady = 0;
-
 	// Like all good tasks, this should never exit.
 	for(;;)
 	{
@@ -130,15 +143,28 @@ static portTASK_FUNCTION(updateTaskCommand, pvParameters)
 		{
 			case msgTypeTimerCommand:
 			{
-				if(dataReady == 0)
-					dataReady = 1;
-				else
-					dataReady = 0;
-				break;
+				//if (vtI2CEnQ(devI2C0, msgTypeIR00ReadByte0, SLAVE_ADDR, sizeof(commandIndex), commandIndex, 0) != pdTRUE)
+					//VT_HANDLE_FATAL_ERROR(0);
+				GPIO_SetValue(0, DEBUG_PIN15);
+				GPIO_ClearValue(0, DEBUG_PIN15);
+				if (vtI2CEnQ(devI2C0, msgTypeIR00ReadByte0, SLAVE_ADDR, sizeof(commandRLF), commandRLF, 1) != pdTRUE)
+					VT_HANDLE_FATAL_ERROR(0);
+				sentCount = sentCount++;
 			}
 			// Get all data.
 			case msgTypeDist:
 			{
+				uint8_t blah = msgBuffer.buf[0];
+				if (blah == 0x00)
+				{
+				 	recvCount++;
+				}
+				//commandIndex[0] = commandIndex[0] + 1;
+				if(sentCount != recvCount)
+				{
+				 	GPIO_SetValue(0, DEBUG_PIN17);
+					GPIO_ClearValue(0, DEBUG_PIN17);
+				}
 				break;
 			}
 			case msgTypeAngle:
@@ -149,16 +175,6 @@ static portTASK_FUNCTION(updateTaskCommand, pvParameters)
 			{
 				// error
 			}
-		}
-
-		// Command ready to be sent so send it.	
-		if(dataReady)
-		{
-			if (vtI2CEnQ(devI2C0, msgTypeCommand, SLAVE_ADDR, sizeof(commandRLF), commandRLF, 2) != pdTRUE)
-				VT_HANDLE_FATAL_ERROR(0);
-			if (vtI2CEnQ(devI2C0, msgTypeCommandSpeed, SLAVE_ADDR, sizeof(commandSSR), commandSSR, 2) != pdTRUE)
-				VT_HANDLE_FATAL_ERROR(0);
-
 		}
 	}
 }

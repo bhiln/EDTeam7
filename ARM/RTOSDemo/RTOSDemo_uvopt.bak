@@ -144,7 +144,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
-          <Name>(105=611,204,1280,551,0)(106=524,404,1280,711,0)(107=950,533,1280,711,0)</Name>
+          <Name>(105=611,204,1280,551,0)(106=524,403,1280,710,0)(107=950,532,1280,710,0)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -274,7 +274,7 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>27</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>0</TopLine>
       <CurrentLine>0</CurrentLine>
@@ -300,7 +300,7 @@
 
   <Group>
     <GroupName>MainSource</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <File>
@@ -309,10 +309,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>44</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>100</TopLine>
-      <CurrentLine>108</CurrentLine>
+      <TopLine>126</TopLine>
+      <CurrentLine>135</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\MainFiles/main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>
@@ -351,55 +351,83 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>64</ColumnNumber>
+      <ColumnNumber>23</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>78</TopLine>
-      <CurrentLine>88</CurrentLine>
+      <TopLine>68</TopLine>
+      <CurrentLine>68</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\MainFiles/myTimers.c</PathWithFileName>
       <FilenameWithoutPath>myTimers.c</FilenameWithoutPath>
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>10</FileNumber>
+      <FileNumber>0</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>32</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>82</TopLine>
-      <CurrentLine>92</CurrentLine>
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\MainFiles/conductor.c</PathWithFileName>
-      <FilenameWithoutPath>conductor.c</FilenameWithoutPath>
+      <PathWithFileName>.\MainFiles/taskConductor.c</PathWithFileName>
+      <FilenameWithoutPath>taskConductor.c</FilenameWithoutPath>
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>11</FileNumber>
+      <FileNumber>0</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>12</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>1</TopLine>
-      <CurrentLine>7</CurrentLine>
+      <TopLine>544</TopLine>
+      <CurrentLine>544</CurrentLine>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\MainFiles/i2cIR0.c</PathWithFileName>
-      <FilenameWithoutPath>i2cIR0.c</FilenameWithoutPath>
+      <PathWithFileName>.\MainFiles/taskLCD.c</PathWithFileName>
+      <FilenameWithoutPath>taskLCD.c</FilenameWithoutPath>
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>12</FileNumber>
+      <FileNumber>0</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <ColumnNumber>33</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>1036</TopLine>
+      <CurrentLine>1055</CurrentLine>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\MainFiles/taskSensors.c</PathWithFileName>
+      <FilenameWithoutPath>taskSensors.c</FilenameWithoutPath>
+    </File>
+    <File>
+      <GroupNumber>2</GroupNumber>
+      <FileNumber>0</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <ColumnNumber>45</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>113</TopLine>
+      <CurrentLine>125</CurrentLine>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\MainFiles/taskLocate.c</PathWithFileName>
+      <FilenameWithoutPath>taskLocate.c</FilenameWithoutPath>
+    </File>
+    <File>
+      <GroupNumber>2</GroupNumber>
+      <FileNumber>0</FileNumber>
       <FileType>1</FileType>
       <tvExp>1</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>24</ColumnNumber>
+      <ColumnNumber>7</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>484</TopLine>
-      <CurrentLine>494</CurrentLine>
+      <TopLine>135</TopLine>
+      <CurrentLine>149</CurrentLine>
       <bDave2>0</bDave2>
-      <PathWithFileName>.\MainFiles/lcdTask.c</PathWithFileName>
-      <FilenameWithoutPath>lcdTask.c</FilenameWithoutPath>
+      <PathWithFileName>.\MainFiles/taskCommand.c</PathWithFileName>
+      <FilenameWithoutPath>taskCommand.c</FilenameWithoutPath>
     </File>
   </Group>
 
@@ -657,7 +685,7 @@
 
   <Group>
     <GroupName>I2C</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <File>
@@ -666,7 +694,7 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>17</ColumnNumber>
+      <ColumnNumber>13</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
       <TopLine>0</TopLine>
       <CurrentLine>0</CurrentLine>
@@ -676,42 +704,176 @@
     </File>
   </Group>
 
+  <AlienFiles>
+    <PathWithFilename>E:\ARM-CODE\RTOSDEMO\MAINFILES\myTimers.h</PathWithFilename>
+    <TopLine>7</TopLine>
+    <CurrentLine>16</CurrentLine>
+    <Constant>0</Constant>
+    <WindowPosition>
+      <length>0</length>
+      <flags>0</flags>
+      <showCmd>0</showCmd>
+      <MinPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MinPosition>
+      <MaxPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MaxPosition>
+      <NormalPosition>
+        <Top>0</Top>
+        <Left>0</Left>
+        <Right>0</Right>
+        <Bottom>0</Bottom>
+      </NormalPosition>
+    </WindowPosition>
+  </AlienFiles>
+
+  <AlienFiles>
+    <PathWithFilename>E:\ARM-CODE\RTOSDEMO\MAINFILES\I2CTaskMsgTypes.h</PathWithFilename>
+    <TopLine>48</TopLine>
+    <CurrentLine>48</CurrentLine>
+    <Constant>0</Constant>
+    <WindowPosition>
+      <length>0</length>
+      <flags>0</flags>
+      <showCmd>0</showCmd>
+      <MinPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MinPosition>
+      <MaxPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MaxPosition>
+      <NormalPosition>
+        <Top>0</Top>
+        <Left>0</Left>
+        <Right>0</Right>
+        <Bottom>0</Bottom>
+      </NormalPosition>
+    </WindowPosition>
+  </AlienFiles>
+
+  <AlienFiles>
+    <PathWithFilename>E:\ARM-CODE\RTOSDEMO\MAINFILES\taskCommand.h</PathWithFilename>
+    <TopLine>3</TopLine>
+    <CurrentLine>21</CurrentLine>
+    <Constant>0</Constant>
+    <WindowPosition>
+      <length>0</length>
+      <flags>0</flags>
+      <showCmd>0</showCmd>
+      <MinPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MinPosition>
+      <MaxPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MaxPosition>
+      <NormalPosition>
+        <Top>0</Top>
+        <Left>0</Left>
+        <Right>0</Right>
+        <Bottom>0</Bottom>
+      </NormalPosition>
+    </WindowPosition>
+  </AlienFiles>
+
+  <AlienFiles>
+    <PathWithFilename>E:\ARM-CODE\RTOSDEMO\MAINFILES\debug.h</PathWithFilename>
+    <TopLine>1</TopLine>
+    <CurrentLine>4</CurrentLine>
+    <Constant>0</Constant>
+    <WindowPosition>
+      <length>0</length>
+      <flags>0</flags>
+      <showCmd>0</showCmd>
+      <MinPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MinPosition>
+      <MaxPosition>
+        <xPos>0</xPos>
+        <yPos>0</yPos>
+      </MaxPosition>
+      <NormalPosition>
+        <Top>0</Top>
+        <Left>0</Left>
+        <Right>0</Right>
+        <Bottom>0</Bottom>
+      </NormalPosition>
+    </WindowPosition>
+  </AlienFiles>
+
   <MDIGroups>
     <Orientation>1</Orientation>
     <ActiveMDIGroup>0</ActiveMDIGroup>
     <MDIGroup>
       <Size>100</Size>
-      <ActiveTab>1</ActiveTab>
+      <ActiveTab>2</ActiveTab>
       <Documents>
         <Doc>
-          <Name>.\MainFiles/main.c</Name>
-          <ColumnNumber>0</ColumnNumber>
-          <TopLine>100</TopLine>
-          <CurrentLine>108</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\MainFiles/i2cIR0.c</Name>
-          <ColumnNumber>12</ColumnNumber>
-          <TopLine>1</TopLine>
-          <CurrentLine>7</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\MainFiles/conductor.c</Name>
-          <ColumnNumber>32</ColumnNumber>
-          <TopLine>82</TopLine>
-          <CurrentLine>92</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\MainFiles/lcdTask.c</Name>
+          <Name>E:\ARM-Code\RTOSDemo\MAINFILES\DEBUG.H</Name>
           <ColumnNumber>24</ColumnNumber>
-          <TopLine>484</TopLine>
-          <CurrentLine>494</CurrentLine>
+          <TopLine>1</TopLine>
+          <CurrentLine>4</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\MainFiles/taskSensors.c</Name>
+          <ColumnNumber>33</ColumnNumber>
+          <TopLine>1036</TopLine>
+          <CurrentLine>1055</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\MainFiles/main.c</Name>
+          <ColumnNumber>44</ColumnNumber>
+          <TopLine>126</TopLine>
+          <CurrentLine>135</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\MainFiles/taskCommand.c</Name>
+          <ColumnNumber>7</ColumnNumber>
+          <TopLine>135</TopLine>
+          <CurrentLine>149</CurrentLine>
         </Doc>
         <Doc>
           <Name>.\MainFiles/myTimers.c</Name>
+          <ColumnNumber>23</ColumnNumber>
+          <TopLine>68</TopLine>
+          <CurrentLine>68</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>E:\ARM-Code\RTOSDemo\MAINFILES\MYTIMERS.H</Name>
           <ColumnNumber>64</ColumnNumber>
-          <TopLine>78</TopLine>
-          <CurrentLine>88</CurrentLine>
+          <TopLine>7</TopLine>
+          <CurrentLine>16</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>E:\ARM-Code\RTOSDemo\MAINFILES\I2CTASKMSGTYPES.H</Name>
+          <ColumnNumber>6</ColumnNumber>
+          <TopLine>48</TopLine>
+          <CurrentLine>48</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>E:\ARM-Code\RTOSDemo\MAINFILES\TASKCOMMAND.H</Name>
+          <ColumnNumber>57</ColumnNumber>
+          <TopLine>3</TopLine>
+          <CurrentLine>21</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\MainFiles/taskLCD.c</Name>
+          <ColumnNumber>0</ColumnNumber>
+          <TopLine>544</TopLine>
+          <CurrentLine>544</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\MainFiles/taskLocate.c</Name>
+          <ColumnNumber>45</ColumnNumber>
+          <TopLine>113</TopLine>
+          <CurrentLine>125</CurrentLine>
         </Doc>
       </Documents>
     </MDIGroup>

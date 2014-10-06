@@ -247,6 +247,7 @@ void startTimerSensor(uint8_t sensor, structSensor* dataSensor)
 				if (xTimerStart(timerHandleIR00, 0) != pdPASS)
 					VT_HANDLE_FATAL_ERROR(0);
 			}
+			break;
 		}
 		case sensorIR01:
 		{
@@ -258,6 +259,7 @@ void startTimerSensor(uint8_t sensor, structSensor* dataSensor)
 				if (xTimerStart(timerHandleIR01, 0) != pdPASS)
 					VT_HANDLE_FATAL_ERROR(0);
 			}
+			break;
 		}
 		case sensorIR10:
 		{
@@ -269,6 +271,7 @@ void startTimerSensor(uint8_t sensor, structSensor* dataSensor)
 				if (xTimerStart(timerHandleIR10, 0) != pdPASS)
 					VT_HANDLE_FATAL_ERROR(0);
 			}
+			break;
 		}
 		case sensorIR11:
 		{
@@ -280,6 +283,7 @@ void startTimerSensor(uint8_t sensor, structSensor* dataSensor)
 				if (xTimerStart(timerHandleIR11, 0) != pdPASS)
 					VT_HANDLE_FATAL_ERROR(0);
 			}
+			break;
 		}
 		case sensorIR20:
 		{
@@ -291,6 +295,7 @@ void startTimerSensor(uint8_t sensor, structSensor* dataSensor)
 				if (xTimerStart(timerHandleIR20, 0) != pdPASS)
 					VT_HANDLE_FATAL_ERROR(0);
 			}
+			break;
 		}
 		case sensorIR21:
 		{
@@ -302,6 +307,7 @@ void startTimerSensor(uint8_t sensor, structSensor* dataSensor)
 				if (xTimerStart(timerHandleIR21, 0) != pdPASS)
 					VT_HANDLE_FATAL_ERROR(0);
 			}
+			break;
 		}
 		case sensorIR30:
 		{
@@ -313,6 +319,7 @@ void startTimerSensor(uint8_t sensor, structSensor* dataSensor)
 				if (xTimerStart(timerHandleIR30, 0) != pdPASS)
 					VT_HANDLE_FATAL_ERROR(0);
 			}
+			break;
 		}
 		case sensorIR31:
 		{
@@ -324,6 +331,7 @@ void startTimerSensor(uint8_t sensor, structSensor* dataSensor)
 				if (xTimerStart(timerHandleIR31, 0) != pdPASS)
 					VT_HANDLE_FATAL_ERROR(0);
 			}
+			break;
 		}
 		case sensorIR40:
 		{
@@ -335,6 +343,7 @@ void startTimerSensor(uint8_t sensor, structSensor* dataSensor)
 				if (xTimerStart(timerHandleIR40, 0) != pdPASS)
 					VT_HANDLE_FATAL_ERROR(0);
 			}
+			break;
 		}
 		case sensorIR41:
 		{
@@ -346,6 +355,7 @@ void startTimerSensor(uint8_t sensor, structSensor* dataSensor)
 				if (xTimerStart(timerHandleIR41, 0) != pdPASS)
 					VT_HANDLE_FATAL_ERROR(0);
 			}
+			break;
 		}
 		case sensorAC00:
 		{
@@ -357,6 +367,7 @@ void startTimerSensor(uint8_t sensor, structSensor* dataSensor)
 				if (xTimerStart(timerHandleAC00, 0) != pdPASS)
 					VT_HANDLE_FATAL_ERROR(0);
 			}
+			break;
 		}
 	}
 }
