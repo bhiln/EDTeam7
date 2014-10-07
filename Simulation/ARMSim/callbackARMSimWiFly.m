@@ -21,7 +21,7 @@ else
     dataBuffer = [dataBuffer, recievedByte];
 end
 
-if (length(dataBuffer) > 1 && dataBuffer(length(dataBuffer)-1) == 255 && dataBuffer(length(dataBuffer)) == 0)
+if (dataBuffer(length(dataBuffer)) == 255)
     if (dataBuffer(2) == 10)
         fprintf('plotting\n');
         data = dataBuffer(3:4);
