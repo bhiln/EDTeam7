@@ -29,15 +29,16 @@ byte[20] = sensor_10[1]
 Motor PIC --i2c--> Rover Master PIC (ToMainHigh_MQ) / (MotorDataRecv_MQ)
 -----------------------------------
 byte[0] = message_index_number
-byte[1] = qe_identification_number (left or right)
-byte[2] = motor_data[0]
-byte[3] = motor_data[1]
+byte[1] = motor_left[0]
+byte[2] = motor_left[1]
+byte[3] = motor_right[0]
+byte[4] = motor_right[1]
 
 
 Rover Master PIC --UART--> ARM PIC (sensor data) (FromMainHigh_MQ) / (SensorDataSend_MQ)
 ------------------------------------------------
 byte[0] = message_index_number
-byte[1] = message_type
+byte[1] = message_type (tells the ARM PIC that this is sensor data)
 byte[2] = sensor_1[0]
 byte[3] = sensor_1[1]
 byte[4] = sensor_2[0]
@@ -64,26 +65,31 @@ byte[22] = 0xFF (stop condition byte)
 Rover Master PIC --UART--> ARM PIC (motor data) (FromMainHigh_MQ) / (MotorDataSend_MQ)
 -----------------------------------------------
 byte[0] = message_index_number
-byte[1] = message_type
-byte[2] = qe_identification_number (left or right)
-byte[3] = motor_data[0]
-byte[4] = motor_data[1]
-byte[5] = 0xFF (stop condition byte)
+byte[1] = message_type (tells the ARM PIC that this is quadrature encoder data)
+byte[2] = motor_left[0]
+byte[3] = motor_left[1]
+byte[4] = motor_right[0]
+byte[5] = motor_right[1]
+byte[6] = 0xFF (stop condition byte)
 
 
 ARM PIC --UART--> Rover Master PIC (ToMainLow_MQ)
 ----------------------------------
 byte[0] = message_index_number
-byte[1] = motor_cmd[0] (left motor)
-byte[2] = motor_cmd[1] (right motor)
-byte[3] = 0xFF (stop condition byte)
+byte[1] = motor_left_cmd[0]
+byte[2] = motor_left_cmd[1]
+byte[3] = motor_right_cmd[0]
+byte[4] = motor_right_cmd[1]
+byte[5] = 0xFF (stop condition byte)
 
 
 Rover Master PIC --i2c--> Motor PIC (FromMainHigh_MQ)
 -----------------------------------
 byte[0] = message index number
-byte[1] = motor_cmd[0] (left motor)
-byte[2] = motor_cmd[1] (right motor)
+byte[1] = motor_left_cmd[0]
+byte[2] = motor_left_cmd[1]
+byte[3] = motor_right_cmd[0]
+byte[4] = motor_right_cmd[1]
 
 
 Motor PIC --UART--> Motor Controller (FromMainLow_MQ)
