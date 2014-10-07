@@ -28,6 +28,5 @@ fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(ntimes_Char, 8))));
 fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(50, 8))));
 fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(23, 8))));
 fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(49, 8))));
-fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(127, 8))));
-fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(0, 8))));
+fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(255, 8))));
 end
