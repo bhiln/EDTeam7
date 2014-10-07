@@ -3,13 +3,23 @@
 #include "debug.h"
 
 //Initialize the ADC module
-void ADC_Init()
-{
-    TRISA = 0x0F;       //Set RA0 - RA3 as inputs
-    ANCON0 = 0xF0;      //Set RA0 - RA3 as analog
-    ADCON0 = 0x00;      //ADC is initially idle
-    ADCON1 = 0x92;      //Set acquisition time and conversion clock
-    ADCON0 |= 0x01;     //Enable the ADC
+
+void ADC_Init() {
+    TRISAbits.TRISA0 = 1; //Set RA0 as input
+
+    ANCON0bits.PCFG0 = 0;
+
+    ADCON0bits.VCFG0 = 0;
+    ADCON0bits.VCFG1 = 0;
+    ADCON0bits.CHS = 3;
+
+    ADCON1bits.ADFM = 1;
+    ADCON1bits.ADCAL = 0;
+    ADCON1bits.ACQT = 1;
+    ADCON1bits.ADCS = 6;
+
+    ADCON0bits.ADON = 1;
+
 
     /* Pic 3
     TRISA = 0x0F;       //Set RA0 - RA3 as inputs
@@ -24,7 +34,7 @@ void ADC_Init()
 unsigned int ADC_Read(unsigned char ch)
 {
     if (ch > 13) return 0;      //invalid channel number
-    ADCON0 |= (ch << 2);        //set the channel number to get input from
+    //ADCON0 |= (ch << 2);        //set the channel number to get input from
 
     //Set debug pin high to show ADC acquisition and conversion has started
     DEBUG_ON(ADC_READ);

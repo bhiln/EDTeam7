@@ -190,6 +190,7 @@ void main(void) {
     i2c_comm ic;
     unsigned char msgbuffer[MSGLEN + 1];
     unsigned char i;
+    int k = 0;
     uart_thread_struct uthread_data; // info for uart_lthread
     timer1_thread_struct t1thread_data; // info for timer1_lthread
     timer0_thread_struct t0thread_data; // info for timer0_lthread
@@ -273,6 +274,8 @@ void main(void) {
     IPR1bits.TMR1IP = 0;
     // USART RX interrupt
     IPR1bits.RCIP = 0;
+    // USART TX interrupt
+    IPR1bits.TXIP = 0;
     // I2C interrupt
     IPR1bits.SSPIP = 1;
 
@@ -366,12 +369,16 @@ void main(void) {
         length = ToMainHigh_recvmsg(MSGLEN, &msgtype, (void *) msgbuffer);
         if (length < 0) {
             // no message, check the error code to see if it is concern
-            if (length != MSGQUEUE_EMPTY) {
+            if (length == MSGQUEUE_EMPTY) {
                 // This case be handled by your code.
-//                msgbuffer[0] = 0x11;
-//                start_i2c_slave_reply(length, msgbuffer);
-//                break;
+                length = 2;
+                msgbuffer[0] = 0x11;
+                msgbuffer[1] = 0x22;
+//                for (k = 0; k < MSGLEN; k++) {
+//                    msgbuffer[k] = 0;
+//                }
             }
+
         } else {
             switch (msgtype) {
                 case MSGT_TIMER0:
@@ -405,31 +412,48 @@ void main(void) {
                     switch (last_reg_recvd) {
                         case 0xaa:
                         {
-//                            TXREG1 = 'o';
+                            TXREG1 = 'o';
                             length = 2;
-                            msgbuffer[0] = 0x55;
-                            msgbuffer[1] = 0x56;
-//                            SensorData_recvmsg(i, MSGLEN, &msgtype, (void *) msgbuffer);
-//                            unsigned int *msgval;
-//                            msgval = (unsigned int *) msgbuffer;
-//                            unsigned int val = *msgval;
-//                            SensorData_sendmsg(MSGLEN, msgtype, &val);
-                            //msgbuffer[0] = ToMainHigh_sendmsg();
+//                            msgbuffer[0] = 0x55;
+//                            msgbuffer[1] = 0x56;
+                            SensorData_recvmsg(i, MSGLEN, &msgtype, (void *) msgbuffer);
+                            unsigned int *msgval;
+                            msgval = (unsigned int *) msgbuffer;
+                            unsigned int val = *msgval;
+                            SensorData_sendmsg(MSGLEN, msgtype, &val);
+//                            for (k = 0; k < MSGLEN; k++) {
+//                                msgbuffer[k] = 0;
+//                            }
                             break;
                         }
                         case 0xa8:
                         {
                             length = 2;
-                            msgbuffer[0] = 0x44;
-                            msgbuffer[1] = 0x46;
+//                            msgbuffer[0] = 0x44;
+//                            msgbuffer[1] = 0x46;
+                            SensorData_recvmsg(i, MSGLEN, &msgtype, (void *) msgbuffer);
+                            unsigned int *msgval;
+                            msgval = (unsigned int *) msgbuffer;
+                            unsigned int val = *msgval;
+                            SensorData_sendmsg(MSGLEN, msgtype, &val);
+//                            for (k = 0; k < MSGLEN; k++) {
+//                                msgbuffer[k] = 0;
+//                            }
                             break;
                         }
                         case 0xa9:
                         {
                             length = 2;
-                            msgbuffer[0] = 0xA3;
-                            msgbuffer[1] = 0xA6;
-                            break;
+//                            msgbuffer[0] = 0xA3;
+//                            msgbuffer[1] = 0xA6;
+                            SensorData_recvmsg(i, MSGLEN, &msgtype, (void *) msgbuffer);
+                            unsigned int *msgval;
+                            msgval = (unsigned int *) msgbuffer;
+                            unsigned int val = *msgval;
+                            SensorData_sendmsg(MSGLEN, msgtype, &val);
+//                            for (k = 0; k < MSGLEN; k++) {
+//                                msgbuffer[k] = 0;
+//                            }
                         }
                     };
                     start_i2c_slave_reply(length, msgbuffer);
