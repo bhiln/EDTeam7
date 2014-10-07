@@ -14,7 +14,7 @@ persistent figureAxis;
 % how much and then read it into a data array.
 bytesAvailable = obj.BytesAvailable;
 [recievedByte, ~, ~] = fread(obj, 1, 'char');
-%fprintf('%d\n', recievedByte);
+fprintf('%d\n', recievedByte);
 if (isempty(dataBuffer))
     dataBuffer = [recievedByte];
 else
@@ -23,9 +23,10 @@ end
 
 if (length(dataBuffer) > 1 && dataBuffer(length(dataBuffer)-1) == 255 && dataBuffer(length(dataBuffer)) == 0)
     if (dataBuffer(2) == 10)
+        fprintf('plotting\n');
         data = dataBuffer(3:4);
         data_String = sprintf('%s', data);
-        data_String_Binary = sprintf('%s%s', dec2bin((data_String(1)+0), 8), dec2bin((data_String(2)+0), 8));
+        data_String_Binary = sprintf('%s%s', dec2bin((data_String(1)), 8), dec2bin((data_String(2)), 8));
         data_Dec = bin2dec(data_String_Binary)/100;
         fprintf('callbackARMSimWiFly: Received binary data %s. Total of %d bytes read.\n',...
             data_String_Binary, length(dataBuffer));
@@ -78,10 +79,10 @@ if (length(dataBuffer) > 1 && dataBuffer(length(dataBuffer)-1) == 255 && dataBuf
             fprintf('\n\nMESSAGE WAS NOT RECIEVED CORRECTLY: %d, %d\n\n', dataBuffer(4), AC.getLastMessageID());
             AC.resendLastMessage();
         end
-            
+
     %more message types
     end
-    
+
     clear dataBuffer;
 end
 
@@ -90,11 +91,12 @@ end
 function isNextIndex = checkIndex( index )
 
 persistent lastIndex;
+fprintf('\n\n%d\n\n', lastIndex);
 
 if (isempty(lastIndex))
     lastIndex = index-1;
 end
-if (lastIndex == index-1)
+if (mod((lastIndex+1),256) == index)
     isNextIndex = true;
 else
     %TODO: handle lost packet
