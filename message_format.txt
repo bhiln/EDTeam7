@@ -30,8 +30,8 @@ Motor PIC --i2c--> Rover Master PIC (ToMainHigh_MQ) / (MotorDataRecv_MQ)
 -----------------------------------
 byte[0] = message_index_number
 byte[1] = qe_identification_number (left or right)
-byte[1] = motor_data[0]
-byte[2] = motor_data[1]
+byte[2] = motor_data[0]
+byte[3] = motor_data[1]
 
 
 Rover Master PIC --UART--> ARM PIC (sensor data) (FromMainHigh_MQ) / (SensorDataSend_MQ)
