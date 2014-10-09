@@ -1,4 +1,4 @@
-function callbackSensorSimWiFly( obj, event, objSensor )
+function callbackSensorSimWiFly( obj, event )
 % This is the callback function for the WiFly on the sensor side
 % One would not actual do the communication in this way (i.e., via
 % string with the terminator 'o'.). This is just to show how to
@@ -16,7 +16,7 @@ else
     dataBuffer = [dataBuffer, recievedByte];
 end
 
-if (length(dataBuffer) > 1 && dataBuffer(length(dataBuffer)-1) == 255 && dataBuffer(length(dataBuffer)) == 0)
+if (dataBuffer(length(dataBuffer)) == 255)
     messageType = dataBuffer(2);
     fprintf('callbackSimWiFly: Received %d bytes. Data: %s. Total of %d bytes read.\n',...
         bytesAvailable, dataBuffer, length(dataBuffer));
