@@ -89,7 +89,8 @@ void InterruptHandlerHigh() {
         // clear the interrupt flag
         PIR1bits.SSPIF = 0;
         // call the handler
-        i2c_slave_handler();
+        //i2c_slave_handler();
+        //i2c_master_handler(); // if we wanted the pic to be master
     }
 
     // check to see if we have an interrupt on timer 0
@@ -130,6 +131,11 @@ void InterruptHandlerLow() {
     if (PIR1bits.RCIF) {
         PIR1bits.RCIF = 0; //clear interrupt flag
         uart_recv_int_handler();
+    }
+    // check to see if we have an interrupt on USART TX
+    if (PIR1bits.TXIF) {
+        PIR1bits.TXIF = 0; //clear interrupt flag
+        //uart_trans_int_handler();
     }
 }
 

@@ -3,7 +3,6 @@
 #include "user_interrupts.h"
 #include "messages.h"
 #include "debug.h"
-
 //----------------------------------------------------------------------------
 // Note: This code for processing interrupts is configured to allow for high and
 //       low priority interrupts.  The high priority interrupt can interrupt the
@@ -85,28 +84,35 @@ void InterruptHandlerHigh() {
     // We need to check the interrupt flag of each enabled high-priority interrupt to
     // see which device generated this interrupt.  Then we can call the correct handler.
 
-    
-
     // check to see if we have an I2C interrupt
-    if (PIR1bits.SSPIF && PIE1bits.SSP1IE) {
+    if (PIR1bits.SSPIF) {
         // clear the interrupt flag
         PIR1bits.SSPIF = 0;
         // call the handler
-        //i2c_int_handler();
-        //i2c_slave_handler();
-        DEBUG_ON(I2C_INT_HANDLER);
-        i2c_master_handler(); // if we wanted the pic to be master
-        DEBUG_OFF(I2C_INT_HANDLER);
+        DEBUG_ON(I2C_ISR);
+        i2c_int_handler();
+        DEBUG_OFF(I2C_ISR);
     }
 
     // check to see if we have an interrupt on timer 0
     if (INTCONbits.TMR0IF) {
+        DEBUG_ON(TIMER0_ISR);
         INTCONbits.TMR0IF = 0; // clear this interrupt flag
         // call whatever handler you want (this is "user" defined)
         timer0_int_handler();
+        DEBUG_OFF(TIMER0_ISR);
     }
 
     // here is where you would check other interrupt flags.
+    if (PIR1bits.ADIF) {
+        // clear the interrupt flag
+        DEBUG_OFF(ADC_START);  
+        PIR1bits.ADIF = 0;
+        // call the handler
+        //DEBUG_ON(ADC_START);
+        adc_int_handler();
+        //DEBUG_OFF(ADC_START);
+    }
 
     // The *last* thing I do here is check to see if we can
     // allow the processor to go to sleep
@@ -137,10 +143,6 @@ void InterruptHandlerLow() {
     if (PIR1bits.RCIF) {
         PIR1bits.RCIF = 0; //clear interrupt flag
         uart_recv_int_handler();
-    }
-    // check to see if we have an interrupt on USART TX
-    if (PIR1bits.TXIF && PIE1bits.TX1IE) {
-        uart_trans_int_handler();
     }
 }
 

@@ -4,6 +4,9 @@
 // The maximum length (in bytes) of a message
 #define MSGLEN 10
 
+// Total number of sensors on rover
+#define SENSORQUEUELEN 10
+
 // The maximum number of messages in a single queue
 #define MSGQUEUELEN 4
 
@@ -19,6 +22,12 @@ typedef struct __msg_queue {
     unsigned char cur_write_ind;
     unsigned char cur_read_ind;
 } msg_queue;
+
+typedef struct __sensor_queue {
+    msg queue[SENSORQUEUELEN];
+    unsigned char cur_write_ind;
+    unsigned char cur_read_ind;
+} sensor_queue;
 
 // Error Codes
 // Too many messages in the queue
@@ -37,6 +46,8 @@ typedef struct __msg_queue {
 #define MSG_NOT_IN_HIGH -6
 // This call must be made from the "main()" thread
 #define MSG_NOT_IN_MAIN -7
+// Sensor queue index out of range (must be 0 - 9)
+#define INDEX_OUT_OF_RANGE -8
 
 // This MUST be called before anything else in messages and should
 // be called before interrupts are enabled
@@ -79,6 +90,6 @@ signed char FromMainHigh_sendmsg(unsigned char,unsigned char,void *);
 signed char FromMainHigh_recvmsg(unsigned char,unsigned char *,void *);
 
 signed char SensorData_sendmsg(unsigned char, unsigned char, void *);
-signed char SensorData_recvmsg(unsigned char, unsigned char, unsigned char *, void *);
+signed char SensorData_recvmsg(unsigned char, unsigned char, void *);
 
 #endif

@@ -9,7 +9,7 @@
 #define	ADC_H
 
 void ADC_Init(void);
-unsigned int ADC_Read(unsigned char ch);
+int ADC_Start(unsigned char ch);
 
 #endif	/* ADC_H */
 

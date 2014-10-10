@@ -62,6 +62,5 @@ fwrite(obj,bin2dec(sprintf('%s', dec2bin(153, 8))));
 fwrite(obj,bin2dec(sprintf('%s', dec2bin(0, 8))));
 fwrite(obj,bin2dec(sprintf('%s', dec2bin(messageIndex, 8))));
 fwrite(obj,bin2dec(sprintf('%s', dec2bin(255, 8))));
-fwrite(obj,bin2dec(sprintf('%s', dec2bin(0, 8))));
 
 end

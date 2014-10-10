@@ -3,7 +3,6 @@
 #include "messages.h"
 #include <string.h>
 #include <delays.h>
-#include "my_i2c.h"
 
 // The key to making this code safe for interrupts is that
 // each queue is filled by only one writer and read by one reader.
@@ -12,12 +11,12 @@
 // FromMainQueueLow: Writer is main(), Reader is a low priority interrupt
 // FromMainQueueHigh: Writer is main(), Reader is a high priority interrupt
 
-void init_queue(msg_queue *qptr) {
+void init_queue(msg_queue *qptr, unsigned char length) {
     unsigned char i;
 
     qptr->cur_write_ind = 0;
     qptr->cur_read_ind = 0;
-    for (i = 0; i < MSGQUEUELEN; i++) {
+    for (i = 0; i < length; i++) {
         qptr->queue[i].full = 0;
     }
 }
@@ -142,67 +141,78 @@ signed char ToMainHigh_recvmsg(unsigned char maxlength, unsigned char *msgtype, 
     return (recv_msg(&ToMainHigh_MQ, maxlength, msgtype, data));
 }
 
-static msg_queue SensorData_MQ;
+static sensor_queue SensorData_SQ;
 
-signed char SensorData_sendmsg(unsigned char length, unsigned char msgtype, void *data) {
+signed char SensorData_sendmsg(unsigned char length, unsigned char id, void *data) {
 #ifdef DEBUG
     if (!in_high_int()) {
         return (MSG_NOT_IN_HIGH);
     }
 #endif
-    unsigned char slot;
+
+    if(id > (SENSORQUEUELEN - 1))
+    {
+        return INDEX_OUT_OF_RANGE;
+    }
+
+    //unsigned char slot;
     msg *qmsg;
     size_t tlength = length;
-    msg_queue *qptr = &SensorData_MQ;
+    sensor_queue *qptr = &SensorData_SQ;
 
-    for(int i = 0; i < MSGQUEUELEN; i++)
-    {
-        if(i == (MSGQUEUELEN - 1))
-        {
-            qmsg = &(qptr->queue[i]);
-            qmsg->length = length;
-            memcpy(qmsg->data, data, tlength);
-        }
-        else
-        {
-            qmsg = &(qptr->queue[i]);
-            msg *temp = &(qptr->queue[i + 1]);
-            qmsg->length = temp->length;
-            memcpy(qmsg->data, temp->data, qmsg->length);
-        }
-    }
-    if ((int) msgtype == MSGT_I2C_RQST) {
-        slot = qptr->cur_write_ind;
-        qmsg = &(qptr->queue[slot]);
-        start_i2c_slave_reply(length, (qmsg->data));
-    }
-
-    //slot = qptr->cur_write_ind;
-    //qmsg = &(qptr->queue[slot]);
-    // if the slot isn't empty, then we should return
-    //if (qmsg->full != 0) {
-       // return (MSGQUEUE_FULL);
-    //}
-
-    // now fill in the message
-    //qmsg->length = length;
-    //memcpy(qmsg->data, data, tlength);
+    qmsg = &(qptr->queue[id]);
+    qmsg->length = length;
+    memcpy(qmsg->data, data, tlength);
 
     // This *must* be done after the message is completely inserted
     qmsg->full = 1;
     return (MSGSEND_OKAY);
-    //return (send_msg(&SensorData_MQ, length, msgtype, data));
 }
 
-signed char SensorData_recvmsg(unsigned char start, unsigned char maxlength, unsigned char *msgtype, void *data)
+signed char SensorData_recvmsg(unsigned char maxlength, unsigned char id, void *data)
 {
     #ifdef DEBUG
     if (!in_main()) {
         return (MSG_NOT_IN_MAIN);
     }
 #endif
+     unsigned char slot;
+    //unsigned char	i;
+    //unsigned char	retlength;
+    //unsigned char *msg = (unsigned char *) data;
+    msg *qmsg;
+    size_t tlength;
+    sensor_queue *qptr = &SensorData_SQ;
+
+    qmsg = &(qptr->queue[id]);
+
+    // check to see if anything is available
+    //slot = qptr->cur_read_ind;
+    //qmsg = &(qptr->queue[slot]);
+    if (qmsg->full == 1) {
+        // not enough room in the buffer provided
+        if (qmsg->length > maxlength) {
+            return (MSGBUFFER_TOOSMALL);
+        }
+        // now actually copy the message
+        tlength = qmsg->length;
+        memcpy(data, qmsg->data, tlength);
+        /*
+        for (i=0;i<qmsg->length;i++) {
+                ((unsigned char *) data)[i] = qptr->queue[slot].data[i];
+        }
+         */
+        //qptr->cur_read_ind = (qptr->cur_read_ind + 1) % MSGQUEUELEN;
+        //retlength = qptr->queue[slot].length;
+        //(*msgtype) = qmsg->msgtype;
+        // this must be done after the message is completely extracted
+        qmsg->full = 0;
+        return (tlength);
+    } else {
+        return (MSGQUEUE_EMPTY);
+    }
     //return (recv_msg(&SensorData_MQ, maxlength, msgtype, data));
-    return(recv_msg(&SensorData_MQ, maxlength, msgtype, data));
+    //return(recv_msg(&SensorData_MQ, maxlength, msgtype, data));
 }
 
 #ifndef __XC8
@@ -257,11 +267,11 @@ static unsigned char MQ_Main_Willing_to_block;
 
 void init_queues() {
     MQ_Main_Willing_to_block = 0;
-    init_queue(&ToMainLow_MQ);
-    init_queue(&ToMainHigh_MQ);
-    init_queue(&FromMainLow_MQ);
-    init_queue(&FromMainHigh_MQ);
-    init_queue(&SensorData_MQ);
+    init_queue(&ToMainLow_MQ, MSGQUEUELEN);
+    init_queue(&ToMainHigh_MQ, MSGQUEUELEN);
+    init_queue(&FromMainLow_MQ, MSGQUEUELEN);
+    init_queue(&FromMainHigh_MQ, MSGQUEUELEN);
+    init_queue(&SensorData_SQ, SENSORQUEUELEN);
 }
 
 void enter_sleep_mode(void) {
