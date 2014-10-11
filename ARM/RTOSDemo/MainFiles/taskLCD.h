@@ -18,9 +18,9 @@ typedef struct __structLCD {
 ------------------------------------------------------------------------------*/
 void startTaskLCD(structLCD* lcdData, unsigned portBASE_TYPE uxPriority);
 
-portBASE_TYPE SendLCDTimerMsg(structLCD *lcdData,portTickType ticksElapsed,portTickType ticksToBlock);
+portBASE_TYPE SendLCDTimerMsg(structLCD* lcdData, portTickType ticksElapsed, portTickType ticksToBlock);
 
-portBASE_TYPE SendLCDPrintMsg(structLCD *lcdData,int length,char *pString,portTickType ticksToBlock);
+portBASE_TYPE SendLCDPrintMsg(structLCD* lcdData, int length, char* pString, portTickType ticksToBlock);
 
 void LCDTimerCallback(xTimerHandle);
 

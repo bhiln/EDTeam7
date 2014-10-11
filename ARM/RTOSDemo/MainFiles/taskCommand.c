@@ -48,19 +48,9 @@ typedef struct __msgCommand
 
 //uint8_t commandIndex[] = {0x00};
 
-const uint8_t commandRLF[] = {0x11};
-const uint8_t commandRRF[] = {0x12};
-const uint8_t commandMFF[] = {0x13};
-const uint8_t commandMBF[] = {0x14};
-
-const uint8_t commandRLC[] = {0x21};
-const uint8_t commandRRC[] = {0x22};
-const uint8_t commandMFC[] = {0x23};
-const uint8_t commandMBC[] = {0x24};
-
-const uint8_t commandSSR[] = {0x31};
-const uint8_t commandSMR[] = {0x32};
-const uint8_t commandSFR[] = {0x33};
+const uint8_t commandType = {0x13};
+const uint8_t commandValue = {0x21};
+const uint8_t commandSpeed = {0x22};
 
 uint32_t sentCount = 0;
 uint32_t recvCount = 0;
@@ -81,7 +71,7 @@ void startTaskCommand(structCommand* dataCommand, unsigned portBASE_TYPE uxPrior
 	dataCommand->devI2C0 = devI2C0;
 	dataCommand->dataLCD = dataLCD;
 
-	if ((retval = xTaskCreate(updateTaskCommand, commandName, I2C_STACK_SIZE, (void*)dataCommand, uxPriority, (xTaskHandle*)NULL)) != pdPASS)
+	if ((retval = xTaskCreate(updateTaskCommand, taskNameCommand, I2C_STACK_SIZE, (void*)dataCommand, uxPriority, (xTaskHandle*)NULL)) != pdPASS)
 		VT_HANDLE_FATAL_ERROR(retval);
 }
 
@@ -98,7 +88,7 @@ portBASE_TYPE sendTimerMsgCommand(structCommand* dataCommand, portTickType ticks
 		VT_HANDLE_FATAL_ERROR(bufferCommand.length);
 
 	memcpy(bufferCommand.buf, (char*)&ticksElapsed, sizeof(ticksElapsed));
-	bufferCommand.msgType = msgTypeTimerCommand;
+	bufferCommand.msgType = msgCommandTimer;
 	return(xQueueSend(dataCommand->inQ, (void*) (&bufferCommand),ticksToBlock));
 }
 
@@ -141,33 +131,11 @@ static portTASK_FUNCTION(updateTaskCommand, pvParameters)
 		// Now, based on the type of the message and the state, do different things.
 		switch(getMsgTypeCommand(&msgBuffer))
 		{
-			case msgTypeTimerCommand:
+			case msgCommandTimer:
 			{
-				//if (vtI2CEnQ(devI2C0, msgTypeIR00ReadByte0, SLAVE_ADDR, sizeof(commandIndex), commandIndex, 0) != pdTRUE)
-					//VT_HANDLE_FATAL_ERROR(0);
-				GPIO_SetValue(0, DEBUG_PIN15);
-				GPIO_ClearValue(0, DEBUG_PIN15);
-				if (vtI2CEnQ(devI2C0, msgTypeIR00ReadByte0, SLAVE_ADDR, sizeof(commandRLF), commandRLF, 1) != pdTRUE)
-					VT_HANDLE_FATAL_ERROR(0);
-				sentCount = sentCount++;
-			}
-			// Get all data.
-			case msgTypeDist:
-			{
-				uint8_t blah = msgBuffer.buf[0];
-				if (blah == 0x00)
-				{
-				 	recvCount++;
-				}
-				//commandIndex[0] = commandIndex[0] + 1;
-				if(sentCount != recvCount)
-				{
-				 	GPIO_SetValue(0, DEBUG_PIN17);
-					GPIO_ClearValue(0, DEBUG_PIN17);
-				}
 				break;
 			}
-			case msgTypeAngle:
+			case msgCommandType:
 			{
 				break;
 			}

@@ -15,7 +15,7 @@ typedef struct __structCommand
 	xQueueHandle inQ;
 } structCommand;
 
-signed char commandName[] = "Command";
+signed char taskNameCommand[] = "Command";
 
 void startTaskCommand(structCommand* dataCommand, unsigned portBASE_TYPE uxPriority, vtI2CStruct* devI2C0, structLCD* dataLCD);
 portBASE_TYPE sendTimerMsgCommand(structCommand* dataCommand, portTickType ticksElapsed, portTickType ticksToBlock);

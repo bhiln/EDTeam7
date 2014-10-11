@@ -46,24 +46,10 @@ typedef struct __msgLocate
 	uint16_t buf[maxLenLocate + 1];
 } msgLocate;
 
-typedef struct __DataSensorLocate
-{
-	uint16_t sensorIR00;
-	uint16_t sensorIR01;
-	uint16_t sensorIR10;
-	uint16_t sensorIR11;
-	uint16_t sensorIR20;
-	uint16_t sensorIR21;
-	uint16_t sensorIR30;
-	uint16_t sensorIR31;
-	uint16_t sensorIR40;
-	uint16_t sensorIR41;
-	uint16_t sensorAC00;
-} DataSensorLocate;
-
 int getMsgTypeLocate(msgLocate *Buffer) {return(Buffer->msgType);}
 
 static portTASK_FUNCTION(updateTaskLocate, pvParameters);
+void locateRover();
 
 void startTaskLocate(structLocate* dataLocate, unsigned portBASE_TYPE uxPriority, structLCD* dataLCD)
 {
@@ -76,7 +62,7 @@ void startTaskLocate(structLocate* dataLocate, unsigned portBASE_TYPE uxPriority
 	portBASE_TYPE retval;
 	dataLocate->dataLCD = dataLCD;
 
-	if ((retval = xTaskCreate(updateTaskLocate, locateName, I2C_STACK_SIZE, (void*)dataLocate, uxPriority, (xTaskHandle*)NULL)) != pdPASS)
+	if ((retval = xTaskCreate(updateTaskLocate, taskNameLocate, I2C_STACK_SIZE, (void*)dataLocate, uxPriority, (xTaskHandle*)NULL)) != pdPASS)
 		VT_HANDLE_FATAL_ERROR(retval);
 }
 
@@ -92,7 +78,7 @@ portBASE_TYPE sendTimerMsgLocate(structLocate* dataLocate, portTickType ticksEla
 		VT_HANDLE_FATAL_ERROR(bufferLocate.length);
 
 	memcpy(bufferLocate.buf, (char*)&ticksElapsed, sizeof(ticksElapsed));
-	bufferLocate.msgType = msgTypeTimerLocate;
+	bufferLocate.msgType = msgLocateTimer;
 	return(xQueueSend(dataLocate->inQ, (void*) (&bufferLocate),ticksToBlock));
 }
 
@@ -115,8 +101,6 @@ portBASE_TYPE sendValueMsgLocate(structLocate* dataLocate, uint8_t msgType, uint
 
 static portTASK_FUNCTION(updateTaskLocate, pvParameters)
 {
-	DataSensorLocate dataSensorLocate;
-
 	structLocate* param = (structLocate*)pvParameters;
 	structLCD* dataLCD = param->dataLCD;
 	
@@ -125,82 +109,169 @@ static portTASK_FUNCTION(updateTaskLocate, pvParameters)
 	
 	// Buffer for receiving messages.
 	msgLocate msgBuffer;
-
+	
 	// Like all good tasks, this should never exit.
 	for(;;)
 	{
-		// Wait for a message from either a timer or from an I2C operation.
+		// Wait for a message from either a timer or sensor task.
 		if (xQueueReceive(param->inQ, (void*)&msgBuffer, portMAX_DELAY) != pdTRUE)
 			VT_HANDLE_FATAL_ERROR(0);
 
 		// Now, based on the type of the message and the state, do different things.
 		switch(getMsgTypeLocate(&msgBuffer))
 		{
-			case msgTypeTimerLocate:
+			case msgLocateTimer:
 			{
-				// Send the Command task simulated data.
-				break;
-			}
-			case msgTypeIR00:
-			{
-				dataSensorLocate.sensorIR00 = msgBuffer.buf[0];
-				break;
-			}
-			case msgTypeIR01:
-			{
-				dataSensorLocate.sensorIR01 = msgBuffer.buf[0];
-				break;
-			}
-			case msgTypeIR10:
-			{
-				dataSensorLocate.sensorIR10 = msgBuffer.buf[0];
-				break;
-			}
-			case msgTypeIR11:
-			{
-				dataSensorLocate.sensorIR11 = msgBuffer.buf[0];
-				break;
-			}
-			case msgTypeIR20:
-			{
-				dataSensorLocate.sensorIR20 = msgBuffer.buf[0];
-				break;
-			}
-			case msgTypeIR21:
-			{
-				dataSensorLocate.sensorIR21 = msgBuffer.buf[0];
-				break;
-			}
-			case msgTypeIR30:
-			{
-				dataSensorLocate.sensorIR30 = msgBuffer.buf[0];
-				break;
-			}
-			case msgTypeIR31:
-			{
-				dataSensorLocate.sensorIR31 = msgBuffer.buf[0];
-				break;
-			}
-			case msgTypeIR40:
-			{
-				dataSensorLocate.sensorIR40 = msgBuffer.buf[0];
-				break;
-			}
-			case msgTypeIR41:
-			{
-				dataSensorLocate.sensorIR41 = msgBuffer.buf[0];
-				break;
-			}
-			case msgTypeAC00:
-			{
-				dataSensorLocate.sensorAC00 = msgBuffer.buf[0];
-				break;
-			}
+				locateRover();
+				switch(curStateGoal)
+				{
+				case none:
+				{
+					execNone();
+					break;
+				}
+				case roam:
+				{
+					execRoam();
+					break;
+				}
+				case followWall:
+				{
+					execFollowWall();
+					break;
+				}
+				case turnCornerLeft:
+				{
+					execTurnCornerLeft();
+					break;
+				}
+				case turnCornerRight:
+				{
+					execTurnCornerRight();
+					break;
+				}
+				case turnAround:
+				{
+					execTurnAround();
+					break;
+				}
+				case moveTowardObject:
+				{
+					execMoveTowardObject();
+					break;	
+				}
+				case moveTowardRamp:
+				{
+					execMoveTowardRamp();
+					break;
+				}
+				case alignWithRamp:
+				{
+					execAlignWithRamp();
+					break;
+				}
+				case moveOverRamp:
+				{
+					execMoveOverRamp();
+					break;
+				}
+				default:
+				{
+					// Error...
+					break;
+				}
+				}
 			default:
 			{
-				// error
+				locateData[msgBuffer.msgType] = msgBuffer.buf[1];
+				break;	
+			}
 			}
 		}
 	}
+}
+
+// Populate the datastructure of objects around the rover.
+void locateRover()
+{
+	const float horizSensorDistance = 2;
+	const float vertSensorDistance = 2;
+
+	uint8_t i = 0;
+	for(i = 0; i < NUMBER_SENSORS - 4; i = i + 2)
+	{
+		uint8_t curRoverSide = 0;
+		float distanceSensor0 = locateData[i];
+		float distanceSensor1 = locateData[i + 1];
+
+		Object* curSideObject = &(sideObject[curRoverSide]);
+
+		// Calculate the distance to the object.
+		curSideObject->distance = (distanceSensor0 + distanceSensor1)/2;
+
+		// Calculate the angle to the object.
+		if(distanceSensor0 > distanceSensor1)
+			curSideObject->angle =  90 + atan(abs(distanceSensor0 - distanceSensor1)/horizSensorDistance);	
+		else
+			curSideObject->angle = atan(horizSensorDistance/(abs(distanceSensor0 - distanceSensor1)));
+
+		// Now do the next rover side.
+		curRoverSide = curRoverSide + 1;
+	}
+}
+
+void updateRamp()
+{
+
+}
+
+void execNone()
+{
+
+}
+
+void execRoam()
+{
+
+}
+
+void execFollowWall()
+{
+
+}
+
+void execTurnCornerLeft()
+{
+
+}
+
+void execTurnCornerRight()
+{
+
+}
+
+void execTurnAround()
+{
+
+}
+
+void execMoveTowardObject()
+{
+
+}
+
+void execMoveTowardRamp()
+{
+
+}
+
+void execAlignWithRamp()
+{
+
+}
+
+void execMoveOverRamp()
+{
+
 }
 
