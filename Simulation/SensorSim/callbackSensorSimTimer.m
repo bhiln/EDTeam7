@@ -7,7 +7,6 @@ function callbackSensorSimTimer( timerSim, event, sensorArray, serialObj )
 % obj - SensorSim object, contains information about Sensor
 
 persistent ntimes;
-toSend = [0,0,0,0,0,0,0,0,0,0];
 
 % Advance time on the Sensor (just because we can)
 currentTime = sensorArray(1).updateCurrentTime(timerSim.Period);
