@@ -1,0 +1,3078 @@
+Microchip MPLAB XC8 Compiler V1.33 ()
+
+Linker command line:
+
+--edf=C:\Program Files (x86)\Microchip\xc8\v1.33\dat\en_msgs.txt -cs \
+  -h+dist/UseXC8/debug\PIC_Framework_3.X.debug.sym \
+  --cmf=dist/UseXC8/debug\PIC_Framework_3.X.debug.cmf -z -Q18F45J10 \
+  -oC:\Users\daduang\AppData\Local\Temp\s1ps.6 \
+  -Mdist/UseXC8/debug/PIC_Framework_3.X.debug.map -E1 -ver=XC8 \
+  -ASTACK=01FBh-03ffh -pstack=STACK -ACODE=00h-07FF7h -ACONST=00h-07FF7h \
+  -ASMALLCONST=0400h-04FFhx123,07F00h-07FF7h -AMEDIUMCONST=0400h-07FF7h \
+  -ACOMRAM=01h-07Fh -AABS1=00h-03FFh -ABIGRAM=01h-03FFh \
+  -ARAM=080h-0FFh,0100h-01FFhx3 -ABANK0=080h-0FFh -ABANK1=0100h-01FFh \
+  -ABANK2=0200h-02FFh -ABANK3=0300h-03FFh -ASFR=0F80h-0FFCh \
+  -preset_vec=00h,intcode=08h,intcodelo=018h,powerup,init,end_init \
+  -pramtop=0400h -psmallconst=SMALLCONST -pmediumconst=MEDIUMCONST \
+  -pconst=CONST -AFARRAM=00h-00h -ACONFIG=07FF8h-07FFDh -pconfig=CONFIG \
+  -pjflash_buffer=07800h \
+  -prdata=COMRAM,nvrram=COMRAM,nvbit=COMRAM,rbss=COMRAM,rbit=COMRAM \
+  -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
+  -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
+  -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE \
+  C:\Users\daduang\AppData\Local\Temp\s1ps.obj \
+  dist/UseXC8/debug\PIC_Framework_3.X.debug.obj 
+
+Object code version is 3.11
+
+Machine type is 18F45J10
+
+Call graph: (short form)
+
+
+
+
+                Name                               Link     Load   Length Selector   Space Scale
+C:\Users\daduang\AppData\Local\Temp\s1ps.obj
+                end_init                             BC       BC        4        C       0
+                reset_vec                             0        0        6        0       0
+                config                             7FF8     7FF8        6     7FF8       0
+dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+                intcodelo                            18       18       A4        C       0
+                intcode                               8        8       10        4       0
+                text56                             1C12     1C12        6        C       0
+                text55                             1B3E     1B3E       24        C       0
+                text54                             1C06     1C06        C        C       0
+                text53                             1A06     1A06       2E        C       0
+                text52                             172A     172A       4E        C       0
+                text51                              F6A      F6A       C6        C       0
+                text50                             17B8     17B8       40        C       0
+                text49                              EA4      EA4       C6        C       0
+                text48                             1B1A     1B1A       24        C       0
+                text47                               C0       C0      55A        C       0
+                text46                             1BCA     1BCA       12        C       0
+                text45                             12B8     12B8       90        C       0
+                text44                              940      940      160        C       0
+                intcode_body                       13CA     13CA       80        C       0
+                text42                             1BB8     1BB8       12        C       0
+                text41                             1778     1778       40        C       0
+                text40                             10E2     10E2       AA        C       0
+                text39                             1AF6     1AF6       24        C       0
+                text38                             1BA6     1BA6       12        C       0
+                text37                             1228     1228       90        C       0
+                text36                              BC2      BC2      120        C       0
+                text35                             1B62     1B62       1E        C       0
+                text34                             1AD2     1AD2       24        C       0
+                text33                             1030     1030       B2        C       0
+                text32                              DD2      DD2       D2        C       0
+                text31                             1A5E     1A5E       28        C       0
+                text30                             118C     118C       9C        C       0
+                text28                             1AAC     1AAC       26        C       0
+                text27                             19A6     19A6       32        C       0
+                text26                             1348     1348       82        C       0
+                text25                             16DA     16DA       50        C       0
+                text24                              AA0      AA0      122        C       0
+                text23                             18A8     18A8       36        C       0
+                text22                             1872     1872       36        C       0
+                text21                             1B80     1B80       14        C       0
+                text20                             1974     1974       32        C       0
+                text19                             1BDC     1BDC       10        C       0
+                text18                             17F8     17F8       3E        C       0
+                text17                             1836     1836       3C        C       0
+                text16                             15D6     15D6       5C        C       0
+                text15                             1BFA     1BFA        C        C       0
+                text14                             1A34     1A34       2A        C       0
+                text13                             144A     144A       66        C       0
+                text12                             14B0     14B0       64        C       0
+                text11                             1632     1632       56        C       0
+                text10                             1B94     1B94       12        C       0
+                text9                              19D8     19D8       2E        C       0
+                text8                              1BEC     1BEC        E        C       0
+                text7                               CE2      CE2       F0        C       0
+                text6                              1942     1942       32        C       0
+                text5                              1576     1576       60        C       0
+                text4                              1514     1514       62        C       0
+                text3                              1910     1910       32        C       0
+                text2                              18DE     18DE       32        C       0
+                text1                              1688     1688       52        C       0
+                text0                               61A      61A      326        C       0
+                cstackCOMRAM                          1        1       48        1       1
+                cstackBANK0                          B6       B6       2B       80       1
+                cstackBANK1                         1A2      1A2       59      100       1
+                bssBANK1                            100      100       A2      100       1
+                bssBANK0                             80       80       36       80       1
+                bssCOMRAM                            4B       4B        2        1       1
+                cinit                              1A86     1A86       26        C       0
+                nvBANK0                              E1       E1        2       80       1
+                nvCOMRAM                             49       49        2        1       1
+
+TOTAL           Name                               Link     Load   Length     Space
+        CLASS   STACK          
+
+        CLASS   CODE           
+                end_init                             BC       BC        4         0
+                intcodelo                            18       18       A4         0
+                intcode                               8        8       10         0
+                reset_vec                             0        0        6         0
+                text56                             1C12     1C12        6         0
+                text55                             1B3E     1B3E       24         0
+                text54                             1C06     1C06        C         0
+                text53                             1A06     1A06       2E         0
+                text52                             172A     172A       4E         0
+                text51                              F6A      F6A       C6         0
+                text50                             17B8     17B8       40         0
+                text49                              EA4      EA4       C6         0
+                text48                             1B1A     1B1A       24         0
+                text47                               C0       C0      55A         0
+                text46                             1BCA     1BCA       12         0
+                text45                             12B8     12B8       90         0
+                text44                              940      940      160         0
+                intcode_body                       13CA     13CA       80         0
+                text42                             1BB8     1BB8       12         0
+                text41                             1778     1778       40         0
+                text40                             10E2     10E2       AA         0
+                text39                             1AF6     1AF6       24         0
+                text38                             1BA6     1BA6       12         0
+                text37                             1228     1228       90         0
+                text36                              BC2      BC2      120         0
+                text35                             1B62     1B62       1E         0
+                text34                             1AD2     1AD2       24         0
+                text33                             1030     1030       B2         0
+                text32                              DD2      DD2       D2         0
+                text31                             1A5E     1A5E       28         0
+                text30                             118C     118C       9C         0
+                text28                             1AAC     1AAC       26         0
+                text27                             19A6     19A6       32         0
+                text26                             1348     1348       82         0
+                text25                             16DA     16DA       50         0
+                text24                              AA0      AA0      122         0
+                text23                             18A8     18A8       36         0
+                text22                             1872     1872       36         0
+                text21                             1B80     1B80       14         0
+                text20                             1974     1974       32         0
+                text19                             1BDC     1BDC       10         0
+                text18                             17F8     17F8       3E         0
+                text17                             1836     1836       3C         0
+                text16                             15D6     15D6       5C         0
+                text15                             1BFA     1BFA        C         0
+                text14                             1A34     1A34       2A         0
+                text13                             144A     144A       66         0
+                text12                             14B0     14B0       64         0
+                text11                             1632     1632       56         0
+                text10                             1B94     1B94       12         0
+                text9                              19D8     19D8       2E         0
+                text8                              1BEC     1BEC        E         0
+                text7                               CE2      CE2       F0         0
+                text6                              1942     1942       32         0
+                text5                              1576     1576       60         0
+                text4                              1514     1514       62         0
+                text3                              1910     1910       32         0
+                text2                              18DE     18DE       32         0
+                text1                              1688     1688       52         0
+                text0                               61A      61A      326         0
+                cinit                              1A86     1A86       26         0
+
+        CLASS   CONST          
+
+        CLASS   SMALLCONST     
+
+        CLASS   MEDIUMCONST    
+
+        CLASS   COMRAM         
+                cstackCOMRAM                          1        1       48         1
+                bssCOMRAM                            4B       4B        2         1
+                nvCOMRAM                             49       49        2         1
+
+        CLASS   ABS1           
+
+        CLASS   BIGRAM         
+
+        CLASS   RAM            
+
+        CLASS   BANK0          
+                cstackBANK0                          B6       B6       2B         1
+                bssBANK0                             80       80       36         1
+                nvBANK0                              E1       E1        2         1
+
+        CLASS   BANK1          
+                cstackBANK1                         1A2      1A2       59         1
+                bssBANK1                            100      100       A2         1
+
+        CLASS   BANK2          
+
+        CLASS   BANK3          
+
+        CLASS   SFR            
+
+        CLASS   FARRAM         
+
+        CLASS   CONFIG         
+                config                             7FF8     7FF8        6         0
+
+        CLASS   IDLOC          
+
+
+
+SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class
+
+                reset_vec                      000000  000006  000006         0       0  CODE    
+                cstackCOMRAM                   000001  00004C  00004D         1       1  COMRAM  
+                intcode                        000008  000010  000018         4       0  CODE    
+                intcodelo                      000018  001C00  001C18         C       0  CODE    
+                bssBANK0                       000080  000063  0000E3        80       1  BANK0   
+                bssBANK1                       000100  0000FB  0001FB       100       1  BANK1   
+                config                         007FF8  000006  007FFE      7FF8       0  CONFIG  
+
+
+UNUSED ADDRESS RANGES
+
+        Name                Unused          Largest block    Delta
+        BANK0            000E3-000FF              1D
+        BANK1            001FB-001FF               5
+        BANK2            00200-002FF             100
+        BANK3            00300-003FF             100
+        BIGRAM           0004D-0007F              33
+                         000E3-000FF              1D
+                         001FB-003FF             205
+        CODE             00006-00007               2
+                         01C18-07FF7            63E0
+        COMRAM           0004D-0007F              33
+        CONST            00006-00007               2
+                         01C18-07FF7            63E0
+        MEDIUMCONST      01C18-07FF7            63E0
+        RAM              000E3-000FF              1D
+                         001FB-003FF             100
+        SFR              00F80-00FFC              7D
+        SMALLCONST       01C18-07FF7             100
+        STACK            001FB-003FF             205
+
+                                  Symbol Table
+
+?_ReadTimer1                     cstackCOMRAM  00001
+?___awmod                        cstackCOMRAM  00001
+?___lwmod                        cstackBANK0   000D3
+?_in_high_int                    cstackBANK0   000D3
+?_in_low_int                     cstackBANK0   000D5
+?_in_main                        cstackBANK0   000D7
+?i2___awmod                      cstackCOMRAM  00034
+?i2_in_high_int                  cstackCOMRAM  00034
+?i2_in_low_int                   cstackCOMRAM  00036
+Delay1KTCYx@unit                 cstackBANK0   000D3
+FromMainHigh_sendmsg@data        cstackBANK0   000DF
+FromMainHigh_sendmsg@length      cstackBANK1   001AD
+FromMainHigh_sendmsg@msgtype     cstackBANK0   000DE
+FromMainLow_recvmsg@data         cstackCOMRAM  0001B
+FromMainLow_recvmsg@maxlength    cstackCOMRAM  0001D
+FromMainLow_recvmsg@msgtype      cstackCOMRAM  00019
+FromMainLow_sendmsg@data         cstackBANK0   000DF
+FromMainLow_sendmsg@length       cstackBANK1   001AD
+FromMainLow_sendmsg@msgtype      cstackBANK0   000DE
+OpenTimer0@config                cstackBANK0   000D3
+OpenTimer1@config                cstackBANK0   000D3
+OpenUSART@config                 cstackBANK0   000D8
+OpenUSART@spbrg                  cstackBANK0   000D3
+ReadTimer1@timer                 cstackCOMRAM  00003
+ReadUSART@data                   cstackCOMRAM  00001
+ToMainHigh_recvmsg@data          cstackBANK1   001B0
+ToMainHigh_recvmsg@maxlength     cstackBANK0   000DF
+ToMainHigh_recvmsg@msgtype       cstackBANK1   001AE
+ToMainHigh_sendmsg@data          cstackCOMRAM  00018
+ToMainHigh_sendmsg@length        cstackCOMRAM  0001A
+ToMainHigh_sendmsg@msgtype       cstackCOMRAM  00017
+ToMainLow_recvmsg@data           cstackBANK1   001B0
+ToMainLow_recvmsg@maxlength      cstackBANK0   000DF
+ToMainLow_recvmsg@msgtype        cstackBANK1   001AE
+ToMainLow_sendmsg@data           cstackCOMRAM  00018
+ToMainLow_sendmsg@length         cstackCOMRAM  0001A
+ToMainLow_sendmsg@msgtype        cstackCOMRAM  00017
+WriteTimer0@timer                cstackCOMRAM  00036
+WriteTimer0@timer0               cstackCOMRAM  00034
+WriteTimer1@timer                cstackCOMRAM  00003
+WriteTimer1@timer1               cstackCOMRAM  00001
+_BAUDCONbits                     (abs)         00FB8
+_Delay1KTCYx                     text21        01B80
+_FromMainHigh_MQ                 bssBANK1      00100
+_FromMainHigh_sendmsg            text6         01942
+_FromMainLow_MQ                  bssBANK1      00136
+_FromMainLow_recvmsg             text31        01A5E
+_FromMainLow_sendmsg             text2         018DE
+_INTCON2bits                     (abs)         00FF1
+_INTCONbits                      (abs)         00FF2
+_IPR1bits                        (abs)         00F9F
+_InterruptHandlerHigh            intcode       00008
+_InterruptHandlerLow             intcodelo     00018
+_LATBbits                        (abs)         00F8A
+_LATDbits                        (abs)         00F8C
+_MQ_Main_Willing_to_block        bssCOMRAM     0004B
+_OSCCON                          (abs)         00FD3
+_OSCCONbits                      (abs)         00FD3
+_OSCTUNEbits                     (abs)         00F9B
+_OpenTimer0                      text28        01AAC
+_OpenTimer1                      text27        019A6
+_OpenUSART                       text26        01348
+_PIE1bits                        (abs)         00F9D
+_PIR1bits                        (abs)         00F9E
+_RCONbits                        (abs)         00FD0
+_RCREG                           (abs)         00FAE
+_RCSTA                           (abs)         00FAB
+_RCSTAbits                       (abs)         00FAB
+_ReadTimer1                      text42        01BB8
+_ReadUSART                       text35        01B62
+_SPBRG                           (abs)         00FAF
+_SPBRGH                          (abs)         00FB0
+_SSP1CON1                        (abs)         00FC6
+_SSP1CON1bits                    (abs)         00FC6
+_SSP1CON2                        (abs)         00FC5
+_SSP1STAT                        (abs)         00FC7
+_SSPADD                          (abs)         00FC8
+_SSPBUF                          (abs)         00FC9
+_SSPCON1bits                     (abs)         00FC6
+_SSPCON2bits                     (abs)         00FC5
+_SSPSTATbits                     (abs)         00FC7
+_SleepIfOkay                     text52        0172A
+_T0CON                           (abs)         00FD5
+_T0CONbits                       (abs)         00FD5
+_T1CON                           (abs)         00FCD
+_T1CONbits                       (abs)         00FCD
+_TMR0H                           (abs)         00FD7
+_TMR0L                           (abs)         00FD6
+_TMR1H                           (abs)         00FCF
+_TMR1L                           (abs)         00FCE
+_TRISBbits                       (abs)         00F93
+_TRISCbits                       (abs)         00F94
+_TRISDbits                       (abs)         00F95
+_TXREG                           (abs)         00FAD
+_TXSTA                           (abs)         00FAC
+_TXSTAbits                       (abs)         00FAC
+_ToMainHigh_MQ                   bssBANK0      00080
+_ToMainHigh_recvmsg              text23        018A8
+_ToMainHigh_sendmsg              text39        01AF6
+_ToMainLow_MQ                    bssBANK1      0016C
+_ToMainLow_recvmsg               text22        01872
+_ToMainLow_sendmsg               text34        01AD2
+_USART_Status                    bssCOMRAM     0004C
+_WriteTimer0                     text46        01BCA
+_WriteTimer1                     text38        01BA6
+__CFG_CCP2MX$DEFAULT             (abs)         00000
+__CFG_CP0$OFF                    (abs)         00000
+__CFG_FCMEN$ON                   (abs)         00000
+__CFG_FOSC$HSPLL                 (abs)         00000
+__CFG_FOSC2$ON                   (abs)         00000
+__CFG_IESO$ON                    (abs)         00000
+__CFG_STVREN$OFF                 (abs)         00000
+__CFG_WDTEN$OFF                  (abs)         00000
+__CFG_WDTPS$32768                (abs)         00000
+__CFG_XINST$OFF                  (abs)         00000
+__HRAM                           (abs)         00000
+__Habs1                          abs1          00000
+__Hbank0                         bank0         00000
+__Hbank1                         bank1         00000
+__Hbank2                         bank2         00000
+__Hbank3                         bank3         00000
+__Hbigbss                        bigbss        00000
+__Hbigdata                       bigdata       00000
+__Hbigram                        bigram        00000
+__Hbss                           bss           00000
+__HbssBANK0                      bssBANK0      00000
+__HbssBANK1                      bssBANK1      00000
+__HbssCOMRAM                     bssCOMRAM     00000
+__Hcinit                         cinit         00000
+__Hclrtext                       clrtext       00000
+__Hcomram                        comram        00000
+__Hconfig                        config        07FFE
+__Hconst                         const         00000
+__HcstackBANK0                   cstackBANK0   00000
+__HcstackBANK1                   cstackBANK1   00000
+__HcstackCOMRAM                  cstackCOMRAM  00000
+__Hdata                          data          00000
+__Hend_init                      end_init      000C0
+__Hfarbss                        farbss        00000
+__Hfardata                       fardata       00000
+__Hibigdata                      ibigdata      00000
+__Hidata                         idata         00000
+__Hidloc                         idloc         00000
+__Hifardata                      ifardata      00000
+__Hinit                          init          000BC
+__Hintcode                       intcode       00018
+__Hintcode_body                  intcode_body  00000
+__Hintcodelo                     intcodelo     000BC
+__Hintentry                      intentry      00000
+__Hintret                        intret        00000
+__Hintsave_regs                  intsave_regs  00000
+__Hirdata                        irdata        00000
+__Hjflash_buffer                 jflash_buffer 07800
+__Hmediumconst                   mediumconst   00000
+__HnvBANK0                       nvBANK0       00000
+__HnvCOMRAM                      nvCOMRAM      00000
+__HnvFARRAM                      nvFARRAM      00000
+__Hnvbit                         nvbit         00000
+__Hnvrram                        nvrram        00000
+__Hparam                         rparam        00000
+__Hpowerup                       powerup       000BC
+__Hram                           ram           00000
+__Hramtop                        ramtop        00400
+__Hrbit                          rbit          00000
+__Hrbss                          rbss          00000
+__Hrdata                         rdata         00000
+__Hreset_vec                     reset_vec     00006
+__Hrparam                        rparam        00000
+__Hsfr                           sfr           00000
+__Hsmallconst                    smallconst    00000
+__Hspace_0                       (abs)         07FFE
+__Hspace_1                       (abs)         001FB
+__Hspace_2                       (abs)         00000
+__Hstack                         stack         00000
+__Hstruct                        struct        00000
+__Htemp                          temp          00000
+__Htext                          text          00000
+__Htext0                         text0         00000
+__Htext1                         text1         00000
+__Htext10                        text10        00000
+__Htext11                        text11        00000
+__Htext12                        text12        00000
+__Htext13                        text13        00000
+__Htext14                        text14        00000
+__Htext15                        text15        00000
+__Htext16                        text16        00000
+__Htext17                        text17        00000
+__Htext18                        text18        00000
+__Htext19                        text19        00000
+__Htext2                         text2         00000
+__Htext20                        text20        00000
+__Htext21                        text21        00000
+__Htext22                        text22        00000
+__Htext23                        text23        00000
+__Htext24                        text24        00000
+__Htext25                        text25        00000
+__Htext26                        text26        00000
+__Htext27                        text27        00000
+__Htext28                        text28        00000
+__Htext3                         text3         00000
+__Htext30                        text30        00000
+__Htext31                        text31        00000
+__Htext32                        text32        00000
+__Htext33                        text33        00000
+__Htext34                        text34        00000
+__Htext35                        text35        00000
+__Htext36                        text36        00000
+__Htext37                        text37        00000
+__Htext38                        text38        00000
+__Htext39                        text39        00000
+__Htext4                         text4         00000
+__Htext40                        text40        00000
+__Htext41                        text41        00000
+__Htext42                        text42        00000
+__Htext44                        text44        00000
+__Htext45                        text45        00000
+__Htext46                        text46        00000
+__Htext47                        text47        00000
+__Htext48                        text48        00000
+__Htext49                        text49        00000
+__Htext5                         text5         00000
+__Htext50                        text50        00000
+__Htext51                        text51        00000
+__Htext52                        text52        00000
+__Htext53                        text53        00000
+__Htext54                        text54        00000
+__Htext55                        text55        00000
+__Htext56                        text56        00000
+__Htext6                         text6         00000
+__Htext7                         text7         00000
+__Htext8                         text8         00000
+__Htext9                         text9         00000
+__LRAM                           (abs)         00001
+__Labs1                          abs1          00000
+__Lbank0                         bank0         00000
+__Lbank1                         bank1         00000
+__Lbank2                         bank2         00000
+__Lbank3                         bank3         00000
+__Lbigbss                        bigbss        00000
+__Lbigdata                       bigdata       00000
+__Lbigram                        bigram        00000
+__Lbss                           bss           00000
+__LbssBANK0                      bssBANK0      00000
+__LbssBANK1                      bssBANK1      00000
+__LbssCOMRAM                     bssCOMRAM     00000
+__Lcinit                         cinit         00000
+__Lclrtext                       clrtext       00000
+__Lcomram                        comram        00000
+__Lconfig                        config        07FF8
+__Lconst                         const         00000
+__LcstackBANK0                   cstackBANK0   00000
+__LcstackBANK1                   cstackBANK1   00000
+__LcstackCOMRAM                  cstackCOMRAM  00000
+__Ldata                          data          00000
+__Lend_init                      end_init      000BC
+__Lfarbss                        farbss        00000
+__Lfardata                       fardata       00000
+__Libigdata                      ibigdata      00000
+__Lidata                         idata         00000
+__Lidloc                         idloc         00000
+__Lifardata                      ifardata      00000
+__Linit                          init          000BC
+__Lintcode                       intcode       00008
+__Lintcode_body                  intcode_body  00000
+__Lintcodelo                     intcodelo     00018
+__Lintentry                      intentry      00000
+__Lintret                        intret        00000
+__Lintsave_regs                  intsave_regs  00000
+__Lirdata                        irdata        00000
+__Ljflash_buffer                 jflash_buffer 07800
+__Lmediumconst                   mediumconst   00000
+__LnvBANK0                       nvBANK0       00000
+__LnvCOMRAM                      nvCOMRAM      00000
+__LnvFARRAM                      nvFARRAM      00000
+__Lnvbit                         nvbit         00000
+__Lnvrram                        nvrram        00000
+__Lparam                         rparam        00000
+__Lpowerup                       powerup       000BC
+__Lram                           ram           00000
+__Lramtop                        ramtop        00400
+__Lrbit                          rbit          00000
+__Lrbss                          rbss          00000
+__Lrdata                         rdata         00000
+__Lreset_vec                     reset_vec     00000
+__Lrparam                        rparam        00000
+__Lsfr                           sfr           00000
+__Lsmallconst                    smallconst    00000
+__Lspace_0                       (abs)         00000
+__Lspace_1                       (abs)         00000
+__Lspace_2                       (abs)         00000
+__Lstack                         stack         00000
+__Lstruct                        struct        00000
+__Ltemp                          temp          00000
+__Ltext                          text          00000
+__Ltext0                         text0         00000
+__Ltext1                         text1         00000
+__Ltext10                        text10        00000
+__Ltext11                        text11        00000
+__Ltext12                        text12        00000
+__Ltext13                        text13        00000
+__Ltext14                        text14        00000
+__Ltext15                        text15        00000
+__Ltext16                        text16        00000
+__Ltext17                        text17        00000
+__Ltext18                        text18        00000
+__Ltext19                        text19        00000
+__Ltext2                         text2         00000
+__Ltext20                        text20        00000
+__Ltext21                        text21        00000
+__Ltext22                        text22        00000
+__Ltext23                        text23        00000
+__Ltext24                        text24        00000
+__Ltext25                        text25        00000
+__Ltext26                        text26        00000
+__Ltext27                        text27        00000
+__Ltext28                        text28        00000
+__Ltext3                         text3         00000
+__Ltext30                        text30        00000
+__Ltext31                        text31        00000
+__Ltext32                        text32        00000
+__Ltext33                        text33        00000
+__Ltext34                        text34        00000
+__Ltext35                        text35        00000
+__Ltext36                        text36        00000
+__Ltext37                        text37        00000
+__Ltext38                        text38        00000
+__Ltext39                        text39        00000
+__Ltext4                         text4         00000
+__Ltext40                        text40        00000
+__Ltext41                        text41        00000
+__Ltext42                        text42        00000
+__Ltext44                        text44        00000
+__Ltext45                        text45        00000
+__Ltext46                        text46        00000
+__Ltext47                        text47        00000
+__Ltext48                        text48        00000
+__Ltext49                        text49        00000
+__Ltext5                         text5         00000
+__Ltext50                        text50        00000
+__Ltext51                        text51        00000
+__Ltext52                        text52        00000
+__Ltext53                        text53        00000
+__Ltext54                        text54        00000
+__Ltext55                        text55        00000
+__Ltext56                        text56        00000
+__Ltext6                         text6         00000
+__Ltext7                         text7         00000
+__Ltext8                         text8         00000
+__Ltext9                         text9         00000
+__S0                             (abs)         07FFE
+__S1                             (abs)         001FB
+__S2                             (abs)         00000
+___awmod                         text37        01228
+___awmod@counter                 cstackCOMRAM  00005
+___awmod@dividend                cstackCOMRAM  00001
+___awmod@divisor                 cstackCOMRAM  00003
+___awmod@sign                    cstackCOMRAM  00006
+___extmem_base                   (abs)         20000
+___inthi_sp                      stack         00000
+___intlo_sp                      stack         00000
+___lwmod                         text5         01576
+___lwmod@counter                 cstackBANK0   000D7
+___lwmod@dividend                cstackBANK0   000D3
+___lwmod@divisor                 cstackBANK0   000D5
+___sp                            stack         00000
+__accesstop                      (abs)         00080
+__activetblptr                   (abs)         00002
+__end_of_Delay1KTCYx             text21        01B94
+__end_of_FromMainHigh_sendmsg    text6         01974
+__end_of_FromMainLow_recvmsg     text31        01A86
+__end_of_FromMainLow_sendmsg     text2         01910
+__end_of_InterruptHandlerHigh    intcode_body  0144A
+__end_of_InterruptHandlerLow     intcodelo     000BC
+__end_of_OpenTimer0              text28        01AD2
+__end_of_OpenTimer1              text27        019D8
+__end_of_OpenUSART               text26        013CA
+__end_of_ReadTimer1              text42        01BCA
+__end_of_ReadUSART               text35        01B80
+__end_of_SleepIfOkay             text52        01778
+__end_of_ToMainHigh_recvmsg      text23        018DE
+__end_of_ToMainHigh_sendmsg      text39        01B1A
+__end_of_ToMainLow_recvmsg       text22        018A8
+__end_of_ToMainLow_sendmsg       text34        01AF6
+__end_of_WriteTimer0             text46        01BDC
+__end_of_WriteTimer1             text38        01BB8
+__end_of___awmod                 text37        012B8
+__end_of___lwmod                 text5         015D6
+__end_of__initialization         cinit         01AA2
+__end_of_block_on_To_msgqueues   text16        01632
+__end_of_check_msg               text20        019A6
+__end_of_enable_interrupts       text15        01C06
+__end_of_enter_sleep_mode        text56        01C18
+__end_of_handle_start            text51        01030
+__end_of_i2c_configure_slave     text14        01A5E
+__end_of_i2c_int_handler         text47        0061A
+__end_of_in_high_int             text19        01BEC
+__end_of_in_low_int              text18        01836
+__end_of_in_main                 text17        01872
+__end_of_init_i2c                text13        014B0
+__end_of_init_queue              text12        01514
+__end_of_init_queues             text11        01688
+__end_of_init_timer1_lthread     text10        01BA6
+__end_of_init_uart_recv          text9         01A06
+__end_of_main                    text0         00940
+__end_of_memcpy                  text25        0172A
+__end_of_recv_msg                text24        00BC2
+__end_of_send_msg                text7         00DD2
+__end_of_timer0_int_handler      text44        00AA0
+__end_of_timer0_lthread          text8         01BFA
+__end_of_timer1_int_handler      text36        00CE2
+__end_of_timer1_lthread          text4         01576
+__end_of_uart_lthread            text3         01942
+__end_of_uart_recv_int_handler   text33        010E2
+__end_of_uart_send               text1         016DA
+__end_of_uart_trans_int_handler  text30        01228
+__end_ofi1_memcpy                text41        017B8
+__end_ofi1_recv_msg              text32        00EA4
+__end_ofi1_send_msg              text40        0118C
+__end_ofi2_ToMainHigh_sendmsg    text48        01B3E
+__end_ofi2___awmod               text45        01348
+__end_ofi2_check_msg             text55        01B62
+__end_ofi2_in_high_int           text54        01C12
+__end_ofi2_in_low_int            text53        01A34
+__end_ofi2_memcpy                text50        017F8
+__end_ofi2_send_msg              text49        00F6A
+__initialization                 cinit         01A86
+__mediumconst                    mediumconst   00000
+__pbssBANK0                      bssBANK0      00080
+__pbssBANK1                      bssBANK1      00100
+__pbssCOMRAM                     bssCOMRAM     0004B
+__pcinit                         cinit         01A86
+__pcstackBANK0                   cstackBANK0   000B6
+__pcstackBANK1                   cstackBANK1   001A2
+__pcstackCOMRAM                  cstackCOMRAM  00001
+__pintcode                       intcode       00008
+__pintcode_body                  intcode_body  013CA
+__pintcodelo                     intcodelo     00018
+__pnvBANK0                       nvBANK0       000E1
+__pnvCOMRAM                      nvCOMRAM      00049
+__ptext0                         text0         0061A
+__ptext1                         text1         01688
+__ptext10                        text10        01B94
+__ptext11                        text11        01632
+__ptext12                        text12        014B0
+__ptext13                        text13        0144A
+__ptext14                        text14        01A34
+__ptext15                        text15        01BFA
+__ptext16                        text16        015D6
+__ptext17                        text17        01836
+__ptext18                        text18        017F8
+__ptext19                        text19        01BDC
+__ptext2                         text2         018DE
+__ptext20                        text20        01974
+__ptext21                        text21        01B80
+__ptext22                        text22        01872
+__ptext23                        text23        018A8
+__ptext24                        text24        00AA0
+__ptext25                        text25        016DA
+__ptext26                        text26        01348
+__ptext27                        text27        019A6
+__ptext28                        text28        01AAC
+__ptext3                         text3         01910
+__ptext30                        text30        0118C
+__ptext31                        text31        01A5E
+__ptext32                        text32        00DD2
+__ptext33                        text33        01030
+__ptext34                        text34        01AD2
+__ptext35                        text35        01B62
+__ptext36                        text36        00BC2
+__ptext37                        text37        01228
+__ptext38                        text38        01BA6
+__ptext39                        text39        01AF6
+__ptext4                         text4         01514
+__ptext40                        text40        010E2
+__ptext41                        text41        01778
+__ptext42                        text42        01BB8
+__ptext44                        text44        00940
+__ptext45                        text45        012B8
+__ptext46                        text46        01BCA
+__ptext47                        text47        000C0
+__ptext48                        text48        01B1A
+__ptext49                        text49        00EA4
+__ptext5                         text5         01576
+__ptext50                        text50        017B8
+__ptext51                        text51        00F6A
+__ptext52                        text52        0172A
+__ptext53                        text53        01A06
+__ptext54                        text54        01C06
+__ptext55                        text55        01B3E
+__ptext56                        text56        01C12
+__ptext6                         text6         01942
+__ptext7                         text7         00CE2
+__ptext8                         text8         01BEC
+__ptext9                         text9         019D8
+__ramtop                         ramtop        00400
+__size_of_Delay1KTCYx            (abs)         00000
+__size_of_FromMainHigh_sendmsg   (abs)         00000
+__size_of_FromMainLow_recvmsg    (abs)         00000
+__size_of_FromMainLow_sendmsg    (abs)         00000
+__size_of_InterruptHandlerHigh   (abs)         00000
+__size_of_InterruptHandlerLow    (abs)         00000
+__size_of_OpenTimer0             (abs)         00000
+__size_of_OpenTimer1             (abs)         00000
+__size_of_OpenUSART              (abs)         00000
+__size_of_ReadTimer1             (abs)         00000
+__size_of_ReadUSART              (abs)         00000
+__size_of_SleepIfOkay            (abs)         00000
+__size_of_ToMainHigh_recvmsg     (abs)         00000
+__size_of_ToMainHigh_sendmsg     (abs)         00000
+__size_of_ToMainLow_recvmsg      (abs)         00000
+__size_of_ToMainLow_sendmsg      (abs)         00000
+__size_of_WriteTimer0            (abs)         00000
+__size_of_WriteTimer1            (abs)         00000
+__size_of___awmod                (abs)         00000
+__size_of___lwmod                (abs)         00000
+__size_of_block_on_To_msgqueues  (abs)         00000
+__size_of_check_msg              (abs)         00000
+__size_of_enable_interrupts      (abs)         00000
+__size_of_enter_sleep_mode       (abs)         00000
+__size_of_handle_start           (abs)         00000
+__size_of_i2c_configure_slave    (abs)         00000
+__size_of_i2c_int_handler        (abs)         00000
+__size_of_in_high_int            (abs)         00000
+__size_of_in_low_int             (abs)         00000
+__size_of_in_main                (abs)         00000
+__size_of_init_i2c               (abs)         00000
+__size_of_init_queue             (abs)         00000
+__size_of_init_queues            (abs)         00000
+__size_of_init_timer1_lthread    (abs)         00000
+__size_of_init_uart_recv         (abs)         00000
+__size_of_main                   (abs)         00000
+__size_of_memcpy                 (abs)         00000
+__size_of_recv_msg               (abs)         00000
+__size_of_send_msg               (abs)         00000
+__size_of_timer0_int_handler     (abs)         00000
+__size_of_timer0_lthread         (abs)         00000
+__size_of_timer1_int_handler     (abs)         00000
+__size_of_timer1_lthread         (abs)         00000
+__size_of_uart_lthread           (abs)         00000
+__size_of_uart_recv_int_handler  (abs)         00000
+__size_of_uart_send              (abs)         00000
+__size_of_uart_trans_int_handler (abs)         00000
+__size_ofi1_memcpy               (abs)         00000
+__size_ofi1_recv_msg             (abs)         00000
+__size_ofi1_send_msg             (abs)         00000
+__size_ofi2_ToMainHigh_sendmsg   (abs)         00000
+__size_ofi2___awmod              (abs)         00000
+__size_ofi2_check_msg            (abs)         00000
+__size_ofi2_in_high_int          (abs)         00000
+__size_ofi2_in_low_int           (abs)         00000
+__size_ofi2_memcpy               (abs)         00000
+__size_ofi2_send_msg             (abs)         00000
+__smallconst                     smallconst    00000
+_block_on_To_msgqueues           text16        015D6
+_check_msg                       text20        01974
+_enable_interrupts               text15        01BFA
+_enter_sleep_mode                text56        01C12
+_handle_start                    text51        00F6A
+_i2c_configure_slave             text14        01A34
+_i2c_int_handler                 text47        000C0
+_ic_ptr                          nvBANK0       000E1
+_in_high_int                     text19        01BDC
+_in_low_int                      text18        017F8
+_in_main                         text17        01836
+_init_i2c                        text13        0144A
+_init_queue                      text12        014B0
+_init_queues                     text11        01632
+_init_timer1_lthread             text10        01B94
+_init_uart_recv                  text9         019D8
+_main                            text0         0061A
+_memcpy                          text25        016DA
+_recv_msg                        text24        00AA0
+_send_msg                        text7         00CE2
+_timer0_int_handler              text44        00940
+_timer0_lthread                  text8         01BEC
+_timer1_int_handler              text36        00BC2
+_timer1_lthread                  text4         01514
+_uart_lthread                    text3         01910
+_uart_recv_int_handler           text33        01030
+_uart_send                       text1         01688
+_uart_trans_int_handler          text30        0118C
+_uc_ptr                          nvCOMRAM      00049
+check_msg@qptr                   cstackBANK0   000D3
+end_of_initialization            cinit         01AA2
+handle_start@data_read           cstackCOMRAM  00034
+i1_memcpy                        text41        01778
+i1_recv_msg                      text32        00DD2
+i1_send_msg                      text40        010E2
+i1memcpy@d                       cstackCOMRAM  00007
+i1memcpy@d1                      cstackCOMRAM  00001
+i1memcpy@n                       cstackCOMRAM  00005
+i1memcpy@s                       cstackCOMRAM  00009
+i1memcpy@s1                      cstackCOMRAM  00003
+i1recv_msg@data                  cstackCOMRAM  00010
+i1recv_msg@maxlength             cstackCOMRAM  0000D
+i1recv_msg@msgtype               cstackCOMRAM  0000E
+i1recv_msg@qmsg                  cstackCOMRAM  00017
+i1recv_msg@qptr                  cstackCOMRAM  0000B
+i1recv_msg@slot                  cstackCOMRAM  00014
+i1recv_msg@tlength               cstackCOMRAM  00015
+i1send_msg@data                  cstackCOMRAM  0000F
+i1send_msg@length                cstackCOMRAM  0000D
+i1send_msg@msgtype               cstackCOMRAM  0000E
+i1send_msg@qmsg                  cstackCOMRAM  00015
+i1send_msg@qptr                  cstackCOMRAM  0000B
+i1send_msg@slot                  cstackCOMRAM  00014
+i1send_msg@tlength               cstackCOMRAM  00012
+i2ToMainHigh_sendmsg@data        cstackCOMRAM  00046
+i2ToMainHigh_sendmsg@length      cstackCOMRAM  00048
+i2ToMainHigh_sendmsg@msgtype     cstackCOMRAM  00045
+i2_ToMainHigh_sendmsg            text48        01B1A
+i2___awmod                       text45        012B8
+i2___awmod@counter               cstackCOMRAM  00038
+i2___awmod@dividend              cstackCOMRAM  00034
+i2___awmod@divisor               cstackCOMRAM  00036
+i2___awmod@sign                  cstackCOMRAM  00039
+i2_check_msg                     text55        01B3E
+i2_in_high_int                   text54        01C06
+i2_in_low_int                    text53        01A06
+i2_memcpy                        text50        017B8
+i2_send_msg                      text49        00EA4
+i2c_configure_slave@addr         cstackBANK0   000D3
+i2c_int_handler@data_read        cstackBANK0   000C4
+i2c_int_handler@data_written     cstackBANK0   000BF
+i2c_int_handler@error_buf        cstackBANK0   000BC
+i2c_int_handler@i2c_data         cstackBANK0   000C1
+i2c_int_handler@msg_ready        cstackBANK0   000C3
+i2c_int_handler@msg_to_send      cstackBANK0   000C2
+i2c_int_handler@overrun_error    cstackBANK0   000C0
+i2check_msg@qptr                 cstackCOMRAM  00034
+i2memcpy@d                       cstackCOMRAM  0003A
+i2memcpy@d1                      cstackCOMRAM  00034
+i2memcpy@n                       cstackCOMRAM  00038
+i2memcpy@s                       cstackCOMRAM  0003C
+i2memcpy@s1                      cstackCOMRAM  00036
+i2send_msg@data                  cstackCOMRAM  00042
+i2send_msg@length                cstackCOMRAM  00040
+i2send_msg@msgtype               cstackCOMRAM  00041
+i2send_msg@qmsg                  cstackBANK0   000B9
+i2send_msg@qptr                  cstackCOMRAM  0003E
+i2send_msg@slot                  cstackBANK0   000B8
+i2send_msg@tlength               cstackBANK0   000B6
+init_i2c@ic                      cstackBANK0   000D3
+init_queue@i                     cstackBANK0   000D5
+init_queue@qptr                  cstackBANK0   000D3
+init_timer1_lthread@tptr         cstackBANK0   000D3
+init_uart_recv@uc                cstackBANK0   000D3
+int_func                         intcode_body  013CA
+intlevel0                        text          00000
+intlevel1                        text          00000
+intlevel2                        text          00000
+intlevel3                        text          00000
+main@dur                         cstackBANK1   001B7
+main@ic                          cstackBANK1   001DF
+main@last_reg_recvd              cstackBANK1   001BD
+main@length                      cstackBANK1   001DE
+main@move                        cstackBANK1   001B8
+main@msgbuffer                   cstackBANK1   001BE
+main@msgtype                     cstackBANK1   001CB
+main@t0thread_data               cstackBANK1   001BB
+main@t1thread_data               cstackBANK1   001C9
+main@uc                          cstackBANK1   001CC
+main@uthread_data                cstackBANK1   001B9
+memcpy@d                         cstackBANK0   000D9
+memcpy@d1                        cstackBANK0   000D3
+memcpy@n                         cstackBANK0   000D7
+memcpy@s                         cstackBANK0   000DB
+memcpy@s1                        cstackBANK0   000D5
+recv_msg@data                    cstackBANK1   001A7
+recv_msg@maxlength               cstackBANK1   001A4
+recv_msg@msgtype                 cstackBANK1   001A5
+recv_msg@qmsg                    cstackBANK1   001AC
+recv_msg@qptr                    cstackBANK1   001A2
+recv_msg@slot                    cstackBANK1   001A9
+recv_msg@tlength                 cstackBANK1   001AA
+send_msg@data                    cstackBANK1   001A6
+send_msg@length                  cstackBANK1   001A4
+send_msg@msgtype                 cstackBANK1   001A5
+send_msg@qmsg                    cstackBANK1   001AB
+send_msg@qptr                    cstackBANK1   001A2
+send_msg@slot                    cstackBANK1   001AA
+send_msg@tlength                 cstackBANK1   001A8
+stackhi                          (abs)         003FF
+stacklo                          (abs)         001FB
+start                            init          000BC
+start_initialization             cinit         01A86
+timer0_int_handler@forward       cstackBANK0   000BD
+timer0_int_handler@i             cstackBANK0   000C2
+timer0_int_handler@left          cstackBANK0   000BE
+timer0_int_handler@reverse       cstackBANK0   000C1
+timer0_int_handler@right         cstackBANK0   000BF
+timer0_int_handler@stop          cstackBANK0   000C0
+timer0_int_handler@val           cstackBANK0   000BB
+timer0_lthread@length            cstackBANK0   000D7
+timer0_lthread@msgbuffer         cstackBANK0   000D9
+timer0_lthread@msgtype           cstackBANK0   000D5
+timer0_lthread@msgval            cstackBANK0   000DB
+timer0_lthread@tptr              cstackBANK0   000D3
+timer1_int_handler@forward       cstackCOMRAM  0001D
+timer1_int_handler@i             cstackCOMRAM  00022
+timer1_int_handler@left          cstackCOMRAM  0001E
+timer1_int_handler@result        cstackCOMRAM  0001B
+timer1_int_handler@reverse       cstackCOMRAM  00021
+timer1_int_handler@right         cstackCOMRAM  0001F
+timer1_int_handler@stop          cstackCOMRAM  00020
+timer1_lthread@length            cstackBANK1   001B2
+timer1_lthread@msgbuffer         cstackBANK1   001B4
+timer1_lthread@msgtype           cstackBANK1   001B0
+timer1_lthread@retval            cstackBANK1   001B6
+timer1_lthread@tptr              cstackBANK1   001AE
+uart_lthread@length              cstackBANK0   000D7
+uart_lthread@msgbuffer           cstackBANK0   000D9
+uart_lthread@msgtype             cstackBANK0   000D5
+uart_lthread@uptr                cstackBANK0   000D3
+uart_send@length                 cstackBANK1   001B0
+uart_send@msg_buffer             cstackBANK1   001AE
+
+
+FUNCTION INFORMATION:
+
+ *************** function _main *****************
+ Defined at:
+		line 52 in file "../src/main.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+  ic             28   61[BANK1 ] struct __i2c_comm
+  uc             18   42[BANK1 ] struct __uart_comm
+  msgbuffer      11   28[BANK1 ] unsigned char [11]
+  t1thread_dat    2   39[BANK1 ] struct __timer1_thread_s
+  t0thread_dat    2   25[BANK1 ] struct __timer0_thread_s
+  uthread_data    2   23[BANK1 ] struct __uart_thread_str
+  length          1   60[BANK1 ] char 
+  msgtype         1   41[BANK1 ] unsigned char 
+  last_reg_rec    1   27[BANK1 ] unsigned char 
+  move            1   22[BANK1 ] unsigned char 
+  dur             1   21[BANK1 ] unsigned char 
+  i               1    0        unsigned char 
+  c               1    0        unsigned char 
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       0       0       0       0
+      Locals:         0       0      68       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       0      68       0       0
+Total ram usage:       68 bytes
+ Hardware stack levels required when called:   14
+ This function calls:
+		_OpenTimer0
+		_OpenTimer1
+		_OpenUSART
+		_ToMainHigh_recvmsg
+		_ToMainLow_recvmsg
+		_block_on_To_msgqueues
+		_enable_interrupts
+		_i2c_configure_slave
+		_init_i2c
+		_init_queues
+		_init_timer1_lthread
+		_init_uart_recv
+		_timer0_lthread
+		_timer1_lthread
+		_uart_lthread
+		_uart_send
+ This function is called by:
+		Startup code after reset
+ This function uses a non-reentrant model
+
+
+ *************** function _uart_send *****************
+ Defined at:
+		line 53 in file "../src/my_uart.c"
+ Parameters:    Size  Location     Type
+  length          1    wreg     unsigned char 
+  msg_buffer      2   12[BANK1 ] PTR unsigned char 
+		 -> main@msgbuffer(11), 
+ Auto vars:     Size  Location     Type
+  length          1   14[BANK1 ] unsigned char 
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       0       2       0       0
+      Locals:         0       0       1       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       0       3       0       0
+Total ram usage:        3 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   13
+ This function calls:
+		_FromMainLow_sendmsg
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _FromMainLow_sendmsg *****************
+ Defined at:
+		line 150 in file "../src/messages.c"
+ Parameters:    Size  Location     Type
+  length          1    wreg     unsigned char 
+  msgtype         1   40[BANK0 ] unsigned char 
+  data            2   41[BANK0 ] PTR void 
+		 -> main@msgbuffer(11), 
+ Auto vars:     Size  Location     Type
+  length          1   11[BANK1 ] unsigned char 
+ Return value:  Size  Location     Type
+                  1    wreg      char 
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       3       0       0       0
+      Locals:         0       0       1       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       3       1       0       0
+Total ram usage:        4 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   12
+ This function calls:
+		_send_msg
+ This function is called by:
+		_uart_send
+ This function uses a non-reentrant model
+
+
+ *************** function _uart_lthread *****************
+ Defined at:
+		line 9 in file "../src/uart_thread.c"
+ Parameters:    Size  Location     Type
+  uptr            2   29[BANK0 ] PTR struct __uart_thread
+		 -> main@uthread_data(2), 
+  msgtype         2   31[BANK0 ] int 
+  length          2   33[BANK0 ] int 
+  msgbuffer       2   35[BANK0 ] PTR unsigned char 
+		 -> main@msgbuffer(11), 
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  2   29[BANK0 ] int 
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       8       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       8       0       0       0
+Total ram usage:        8 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   10
+ This function calls:
+		Nothing
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _timer1_lthread *****************
+ Defined at:
+		line 14 in file "../src/timer1_thread.c"
+ Parameters:    Size  Location     Type
+  tptr            2   12[BANK1 ] PTR struct __timer1_thre
+		 -> main@t1thread_data(2), 
+  msgtype         2   14[BANK1 ] int 
+  length          2   16[BANK1 ] int 
+  msgbuffer       2   18[BANK1 ] PTR unsigned char 
+		 -> main@msgbuffer(11), 
+ Auto vars:     Size  Location     Type
+  retval          1   20[BANK1 ] char 
+ Return value:  Size  Location     Type
+                  2   12[BANK1 ] int 
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       0       8       0       0
+      Locals:         0       0       1       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       0       9       0       0
+Total ram usage:        9 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   13
+ This function calls:
+		_FromMainHigh_sendmsg
+		___lwmod
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function ___lwmod *****************
+ Defined at:
+		line 8 in file "C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c"
+ Parameters:    Size  Location     Type
+  dividend        2   29[BANK0 ] unsigned int 
+  divisor         2   31[BANK0 ] unsigned int 
+ Auto vars:     Size  Location     Type
+  counter         1   33[BANK0 ] unsigned char 
+ Return value:  Size  Location     Type
+                  2   29[BANK0 ] unsigned int 
+ Registers used:
+		wreg, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       4       0       0       0
+      Locals:         0       1       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       5       0       0       0
+Total ram usage:        5 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   10
+ This function calls:
+		Nothing
+ This function is called by:
+		_timer1_lthread
+ This function uses a non-reentrant model
+
+
+ *************** function _FromMainHigh_sendmsg *****************
+ Defined at:
+		line 174 in file "../src/messages.c"
+ Parameters:    Size  Location     Type
+  length          1    wreg     unsigned char 
+  msgtype         1   40[BANK0 ] unsigned char 
+  data            2   41[BANK0 ] PTR void 
+		 -> main@t1thread_data(2), 
+ Auto vars:     Size  Location     Type
+  length          1   11[BANK1 ] unsigned char 
+ Return value:  Size  Location     Type
+                  1    wreg      char 
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       3       0       0       0
+      Locals:         0       0       1       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       3       1       0       0
+Total ram usage:        4 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   12
+ This function calls:
+		_send_msg
+ This function is called by:
+		_timer1_lthread
+ This function uses a non-reentrant model
+
+
+ *************** function _send_msg *****************
+ Defined at:
+		line 24 in file "../src/messages.c"
+ Parameters:    Size  Location     Type
+  qptr            2    0[BANK1 ] PTR struct __msg_queue
+		 -> FromMainHigh_MQ(54), FromMainLow_MQ(54), ToMainHigh_MQ(54), ToMainLow_MQ(54), 
+  length          1    2[BANK1 ] unsigned char 
+  msgtype         1    3[BANK1 ] unsigned char 
+  data            2    4[BANK1 ] PTR void 
+		 -> timer1_int_handler@reverse(1), timer1_int_handler@stop(1), timer1_int_handler@right(1), timer1_int_handler@left(1), 
+		 -> timer1_int_handler@forward(1), timer0_int_handler@reverse(1), timer0_int_handler@stop(1), timer0_int_handler@right(1), 
+		 -> timer0_int_handler@left(1), timer0_int_handler@forward(1), NULL(0), i2c_int_handler@error_buf(3), 
+		 -> main@msgbuffer(11), main@t1thread_data(2), main@ic(28), main@uc(18), 
+ Auto vars:     Size  Location     Type
+  qmsg            2    9[BANK1 ] PTR struct __msg
+		 -> FromMainLow_MQ.queue(52), FromMainHigh_MQ.queue(52), ToMainHigh_MQ.queue(52), ToMainLow_MQ.queue(52), 
+		 -> FromMainHigh_MQ(54), FromMainLow_MQ(54), ToMainHigh_MQ(54), ToMainLow_MQ(54), 
+  tlength         2    6[BANK1 ] unsigned int 
+  slot            1    8[BANK1 ] unsigned char 
+ Return value:  Size  Location     Type
+                  1    wreg      char 
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       0       6       0       0
+      Locals:         0       0       5       0       0
+      Temps:          0       1       0       0       0
+      Totals:         0       1      11       0       0
+Total ram usage:       12 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   11
+ This function calls:
+		_memcpy
+ This function is called by:
+		_FromMainLow_sendmsg
+		_FromMainHigh_sendmsg
+ This function uses a non-reentrant model
+
+
+ *************** function _timer0_lthread *****************
+ Defined at:
+		line 9 in file "../src/timer0_thread.c"
+ Parameters:    Size  Location     Type
+  tptr            2   29[BANK0 ] PTR struct __timer0_thre
+		 -> main@t0thread_data(2), 
+  msgtype         2   31[BANK0 ] int 
+  length          2   33[BANK0 ] int 
+  msgbuffer       2   35[BANK0 ] PTR unsigned char 
+		 -> main@msgbuffer(11), 
+ Auto vars:     Size  Location     Type
+  msgval          2   37[BANK0 ] PTR unsigned int 
+		 -> main@msgbuffer(11), 
+ Return value:  Size  Location     Type
+                  2   29[BANK0 ] int 
+ Registers used:
+		wreg, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       8       0       0       0
+      Locals:         0       2       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0      10       0       0       0
+Total ram usage:       10 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   10
+ This function calls:
+		Nothing
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _init_uart_recv *****************
+ Defined at:
+		line 47 in file "../src/my_uart.c"
+ Parameters:    Size  Location     Type
+  uc              2   29[BANK0 ] PTR struct __uart_comm
+		 -> main@uc(18), 
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       2       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       2       0       0       0
+Total ram usage:        2 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   10
+ This function calls:
+		Nothing
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _init_timer1_lthread *****************
+ Defined at:
+		line 6 in file "../src/timer1_thread.c"
+ Parameters:    Size  Location     Type
+  tptr            2   29[BANK0 ] PTR struct __timer1_thre
+		 -> main@t1thread_data(2), 
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr2l, fsr2h
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       2       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       2       0       0       0
+Total ram usage:        2 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   10
+ This function calls:
+		Nothing
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _init_queues *****************
+ Defined at:
+		line 194 in file "../src/messages.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   11
+ This function calls:
+		_init_queue
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _init_queue *****************
+ Defined at:
+		line 14 in file "../src/messages.c"
+ Parameters:    Size  Location     Type
+  qptr            2   29[BANK0 ] PTR struct __msg_queue
+		 -> FromMainHigh_MQ(54), FromMainLow_MQ(54), ToMainHigh_MQ(54), ToMainLow_MQ(54), 
+ Auto vars:     Size  Location     Type
+  i               1   31[BANK0 ] unsigned char 
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       2       0       0       0
+      Locals:         0       1       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       3       0       0       0
+Total ram usage:        3 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   10
+ This function calls:
+		Nothing
+ This function is called by:
+		_init_queues
+ This function uses a non-reentrant model
+
+
+ *************** function _init_i2c *****************
+ Defined at:
+		line 222 in file "../src/my_i2c.c"
+ Parameters:    Size  Location     Type
+  ic              2   29[BANK0 ] PTR struct __i2c_comm
+		 -> main@ic(28), 
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       2       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       2       0       0       0
+Total ram usage:        2 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   10
+ This function calls:
+		Nothing
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _i2c_configure_slave *****************
+ Defined at:
+		line 233 in file "../src/my_i2c.c"
+ Parameters:    Size  Location     Type
+  addr            1    wreg     unsigned char 
+ Auto vars:     Size  Location     Type
+  addr            1   29[BANK0 ] unsigned char 
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       0       0       0       0
+      Locals:         0       1       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       1       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   10
+ This function calls:
+		Nothing
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _enable_interrupts *****************
+ Defined at:
+		line 14 in file "../src/interrupts.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		None
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   10
+ This function calls:
+		Nothing
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _block_on_To_msgqueues *****************
+ Defined at:
+		line 256 in file "../src/messages.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   13
+ This function calls:
+		_Delay1KTCYx
+		_check_msg
+		_in_main
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _in_main *****************
+ Defined at:
+		line 42 in file "../src/interrupts.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  2   33[BANK0 ] int 
+ Registers used:
+		wreg, status,2, status,0, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       2       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       2       0       0       0
+Total ram usage:        2 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   12
+ This function calls:
+		_in_high_int
+		_in_low_int
+ This function is called by:
+		_block_on_To_msgqueues
+ This function uses a non-reentrant model
+
+
+ *************** function _in_low_int *****************
+ Defined at:
+		line 32 in file "../src/interrupts.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  2   31[BANK0 ] int 
+ Registers used:
+		wreg, status,2, status,0, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       2       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       2       0       0       0
+Total ram usage:        2 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   11
+ This function calls:
+		_in_high_int
+ This function is called by:
+		_in_main
+ This function uses a non-reentrant model
+
+
+ *************** function _in_high_int *****************
+ Defined at:
+		line 24 in file "../src/interrupts.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  2   29[BANK0 ] int 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       2       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       2       0       0       0
+Total ram usage:        2 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   10
+ This function calls:
+		Nothing
+ This function is called by:
+		_in_low_int
+		_in_main
+ This function uses a non-reentrant model
+
+
+ *************** function _check_msg *****************
+ Defined at:
+		line 220 in file "../src/messages.c"
+ Parameters:    Size  Location     Type
+  qptr            2   29[BANK0 ] PTR struct __msg_queue
+		 -> ToMainHigh_MQ(54), ToMainLow_MQ(54), 
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      unsigned char 
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       2       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          0       1       0       0       0
+      Totals:         0       3       0       0       0
+Total ram usage:        3 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   10
+ This function calls:
+		Nothing
+ This function is called by:
+		_block_on_To_msgqueues
+ This function uses a non-reentrant model
+
+
+ *************** function _Delay1KTCYx *****************
+ Defined at:
+		line 8 in file "C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\d1ktcyx.c"
+ Parameters:    Size  Location     Type
+  unit            1    wreg     unsigned char 
+ Auto vars:     Size  Location     Type
+  unit            1   29[BANK0 ] unsigned char 
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       0       0       0       0
+      Locals:         0       1       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       1       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   10
+ This function calls:
+		Nothing
+ This function is called by:
+		_block_on_To_msgqueues
+ This function uses a non-reentrant model
+
+
+ *************** function _ToMainLow_recvmsg *****************
+ Defined at:
+		line 112 in file "../src/messages.c"
+ Parameters:    Size  Location     Type
+  maxlength       1    wreg     unsigned char 
+  msgtype         2   12[BANK1 ] PTR unsigned char 
+		 -> main@msgtype(1), 
+  data            2   14[BANK1 ] PTR void 
+		 -> main@msgbuffer(11), 
+ Auto vars:     Size  Location     Type
+  maxlength       1   41[BANK0 ] unsigned char 
+ Return value:  Size  Location     Type
+                  1    wreg      char 
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       0       4       0       0
+      Locals:         0       1       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       1       4       0       0
+Total ram usage:        5 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   12
+ This function calls:
+		_recv_msg
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _ToMainHigh_recvmsg *****************
+ Defined at:
+		line 135 in file "../src/messages.c"
+ Parameters:    Size  Location     Type
+  maxlength       1    wreg     unsigned char 
+  msgtype         2   12[BANK1 ] PTR unsigned char 
+		 -> main@msgtype(1), 
+  data            2   14[BANK1 ] PTR void 
+		 -> main@msgbuffer(11), 
+ Auto vars:     Size  Location     Type
+  maxlength       1   41[BANK0 ] unsigned char 
+ Return value:  Size  Location     Type
+                  1    wreg      char 
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       0       4       0       0
+      Locals:         0       1       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       1       4       0       0
+Total ram usage:        5 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   12
+ This function calls:
+		_recv_msg
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _recv_msg *****************
+ Defined at:
+		line 63 in file "../src/messages.c"
+ Parameters:    Size  Location     Type
+  qptr            2    0[BANK1 ] PTR struct __msg_queue
+		 -> FromMainHigh_MQ(54), FromMainLow_MQ(54), ToMainHigh_MQ(54), ToMainLow_MQ(54), 
+  maxlength       1    2[BANK1 ] unsigned char 
+  msgtype         2    3[BANK1 ] PTR unsigned char 
+		 -> RAM(1023), main@msgtype(1), 
+  data            2    5[BANK1 ] PTR void 
+		 -> NULL(0), main@msgbuffer(11), main@uc(18), 
+ Auto vars:     Size  Location     Type
+  qmsg            2   10[BANK1 ] PTR struct __msg
+		 -> FromMainLow_MQ.queue(52), FromMainHigh_MQ.queue(52), ToMainHigh_MQ.queue(52), ToMainLow_MQ.queue(52), 
+		 -> FromMainHigh_MQ(54), FromMainLow_MQ(54), ToMainHigh_MQ(54), ToMainLow_MQ(54), 
+  tlength         2    8[BANK1 ] unsigned int 
+  slot            1    7[BANK1 ] unsigned char 
+ Return value:  Size  Location     Type
+                  1    wreg      char 
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       0       7       0       0
+      Locals:         0       0       5       0       0
+      Temps:          0       2       0       0       0
+      Totals:         0       2      12       0       0
+Total ram usage:       14 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   11
+ This function calls:
+		_memcpy
+ This function is called by:
+		_ToMainLow_recvmsg
+		_ToMainHigh_recvmsg
+		_FromMainHigh_recvmsg
+ This function uses a non-reentrant model
+
+
+ *************** function _memcpy *****************
+ Defined at:
+		line 11 in file "C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c"
+ Parameters:    Size  Location     Type
+  d1              2   29[BANK0 ] PTR void 
+		 -> FromMainLow_MQ.queue(52), FromMainHigh_MQ.queue(52), ToMainHigh_MQ.queue(52), ToMainLow_MQ.queue(52), 
+		 -> NULL(0), FromMainHigh_MQ(54), FromMainLow_MQ(54), ToMainHigh_MQ(54), 
+		 -> ToMainLow_MQ(54), main@msgbuffer(11), main@uc(18), 
+  s1              2   31[BANK0 ] PTR const void 
+		 -> ToMainLow_MQ.data(10), ToMainHigh_MQ.data(10), FromMainLow_MQ.data(10), FromMainHigh_MQ.data(10), 
+		 -> ToMainLow_MQ.queue.data(10), ToMainHigh_MQ.queue.data(10), FromMainHigh_MQ.queue.data(10), FromMainLow_MQ.queue.data(10), 
+		 -> timer1_int_handler@reverse(1), timer1_int_handler@stop(1), timer1_int_handler@right(1), timer1_int_handler@left(1), 
+		 -> timer1_int_handler@forward(1), timer0_int_handler@reverse(1), timer0_int_handler@stop(1), timer0_int_handler@right(1), 
+		 -> timer0_int_handler@left(1), timer0_int_handler@forward(1), NULL(0), i2c_int_handler@error_buf(3), 
+		 -> FromMainHigh_MQ(54), FromMainLow_MQ(54), ToMainHigh_MQ(54), ToMainLow_MQ(54), 
+		 -> main@msgbuffer(11), main@t1thread_data(2), main@ic(28), main@uc(18), 
+  n               2   33[BANK0 ] unsigned int 
+ Auto vars:     Size  Location     Type
+  s               2   37[BANK0 ] PTR const unsigned char 
+		 -> ToMainLow_MQ.data(10), ToMainHigh_MQ.data(10), FromMainLow_MQ.data(10), FromMainHigh_MQ.data(10), 
+		 -> ToMainLow_MQ.queue.data(10), ToMainHigh_MQ.queue.data(10), FromMainHigh_MQ.queue.data(10), FromMainLow_MQ.queue.data(10), 
+		 -> timer1_int_handler@reverse(1), timer1_int_handler@stop(1), timer1_int_handler@right(1), timer1_int_handler@left(1), 
+		 -> timer1_int_handler@forward(1), timer0_int_handler@reverse(1), timer0_int_handler@stop(1), timer0_int_handler@right(1), 
+		 -> timer0_int_handler@left(1), timer0_int_handler@forward(1), NULL(0), i2c_int_handler@error_buf(3), 
+		 -> FromMainHigh_MQ(54), FromMainLow_MQ(54), ToMainHigh_MQ(54), ToMainLow_MQ(54), 
+		 -> main@msgbuffer(11), main@t1thread_data(2), main@ic(28), main@uc(18), 
+  d               2   35[BANK0 ] PTR unsigned char 
+		 -> FromMainLow_MQ.queue(52), FromMainHigh_MQ.queue(52), ToMainHigh_MQ.queue(52), ToMainLow_MQ.queue(52), 
+		 -> NULL(0), FromMainHigh_MQ(54), FromMainLow_MQ(54), ToMainHigh_MQ(54), 
+		 -> ToMainLow_MQ(54), main@msgbuffer(11), main@uc(18), 
+ Return value:  Size  Location     Type
+                  2   29[BANK0 ] PTR void 
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       6       0       0       0
+      Locals:         0       4       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0      10       0       0       0
+Total ram usage:       10 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   10
+ This function calls:
+		Nothing
+ This function is called by:
+		_send_msg
+		_recv_msg
+ This function uses a non-reentrant model
+
+
+ *************** function _OpenUSART *****************
+ Defined at:
+		line 73 in file "C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\uopen.c"
+ Parameters:    Size  Location     Type
+  config          1    wreg     unsigned char 
+  spbrg           2   29[BANK0 ] unsigned int 
+ Auto vars:     Size  Location     Type
+  config          1   34[BANK0 ] unsigned char 
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       2       0       0       0
+      Locals:         0       1       0       0       0
+      Temps:          0       3       0       0       0
+      Totals:         0       6       0       0       0
+Total ram usage:        6 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   10
+ This function calls:
+		Nothing
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _OpenTimer1 *****************
+ Defined at:
+		line 16 in file "C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1open.c"
+ Parameters:    Size  Location     Type
+  config          1    wreg     unsigned char 
+ Auto vars:     Size  Location     Type
+  config          1   29[BANK0 ] unsigned char 
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       0       0       0       0
+      Locals:         0       1       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       1       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   10
+ This function calls:
+		Nothing
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _OpenTimer0 *****************
+ Defined at:
+		line 18 in file "C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0open.c"
+ Parameters:    Size  Location     Type
+  config          1    wreg     unsigned char 
+ Auto vars:     Size  Location     Type
+  config          1   29[BANK0 ] unsigned char 
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       0       0       0       0
+      Locals:         0       1       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       1       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:   10
+ This function calls:
+		Nothing
+ This function is called by:
+		_main
+ This function uses a non-reentrant model
+
+
+ *************** function _InterruptHandlerLow *****************
+ Defined at:
+		line 124 in file "../src/interrupts.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:         17       0       0       0       0
+      Totals:        17       0       0       0       0
+Total ram usage:       17 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    9
+ This function calls:
+		_timer1_int_handler
+		_uart_recv_int_handler
+		_uart_trans_int_handler
+ This function is called by:
+		Interrupt level 1
+ This function uses a non-reentrant model
+
+
+ *************** function _uart_trans_int_handler *****************
+ Defined at:
+		line 34 in file "../src/my_uart.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          2       0       0       0       0
+      Totals:         2       0       0       0       0
+Total ram usage:        2 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    8
+ This function calls:
+		_FromMainLow_recvmsg
+ This function is called by:
+		_InterruptHandlerLow
+ This function uses a non-reentrant model
+
+
+ *************** function _FromMainLow_recvmsg *****************
+ Defined at:
+		line 159 in file "../src/messages.c"
+ Parameters:    Size  Location     Type
+  maxlength       1    wreg     unsigned char 
+  msgtype         2   24[COMRAM] PTR unsigned char 
+		 -> RAM(1023), 
+  data            2   26[COMRAM] PTR void 
+		 -> NULL(0), main@uc(18), 
+ Auto vars:     Size  Location     Type
+  maxlength       1   28[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+                  1    wreg      char 
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         4       0       0       0       0
+      Locals:         1       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         5       0       0       0       0
+Total ram usage:        5 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    7
+ This function calls:
+		i1_recv_msg
+ This function is called by:
+		_uart_trans_int_handler
+ This function uses a non-reentrant model
+
+
+ *************** function i1_recv_msg *****************
+ Defined at:
+		line 63 in file "../src/messages.c"
+ Parameters:    Size  Location     Type
+  qptr            2   10[COMRAM] PTR struct __msg_queue
+		 -> FromMainHigh_MQ(54), FromMainLow_MQ(54), ToMainHigh_MQ(54), ToMainLow_MQ(54), 
+  maxlength       1   12[COMRAM] unsigned char 
+  msgtype         2   13[COMRAM] PTR unsigned char 
+		 -> RAM(1023), main@msgtype(1), 
+  data            2   15[COMRAM] PTR void 
+		 -> NULL(0), main@msgbuffer(11), main@uc(18), 
+ Auto vars:     Size  Location     Type
+  recv_msg        2   22[COMRAM] PTR struct __msg
+		 -> FromMainLow_MQ.queue(52), FromMainHigh_MQ.queue(52), ToMainHigh_MQ.queue(52), ToMainLow_MQ.queue(52), 
+		 -> FromMainHigh_MQ(54), FromMainLow_MQ(54), ToMainHigh_MQ(54), ToMainLow_MQ(54), 
+  recv_msg        2   20[COMRAM] unsigned int 
+  recv_msg        1   19[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+                  1    wreg      char 
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         7       0       0       0       0
+      Locals:         5       0       0       0       0
+      Temps:          2       0       0       0       0
+      Totals:        14       0       0       0       0
+Total ram usage:       14 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    6
+ This function calls:
+		i1_memcpy
+ This function is called by:
+		_FromMainLow_recvmsg
+ This function uses a non-reentrant model
+
+
+ *************** function _uart_recv_int_handler *****************
+ Defined at:
+		line 12 in file "../src/my_uart.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          1       0       0       0       0
+      Totals:         1       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    8
+ This function calls:
+		_ReadUSART
+		_ToMainLow_sendmsg
+ This function is called by:
+		_InterruptHandlerLow
+ This function uses a non-reentrant model
+
+
+ *************** function _ToMainLow_sendmsg *****************
+ Defined at:
+		line 103 in file "../src/messages.c"
+ Parameters:    Size  Location     Type
+  length          1    wreg     unsigned char 
+  msgtype         1   22[COMRAM] unsigned char 
+  data            2   23[COMRAM] PTR void 
+		 -> NULL(0), main@uc(18), 
+ Auto vars:     Size  Location     Type
+  length          1   25[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+                  1    wreg      char 
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         3       0       0       0       0
+      Locals:         1       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         4       0       0       0       0
+Total ram usage:        4 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    7
+ This function calls:
+		i1_send_msg
+ This function is called by:
+		_uart_recv_int_handler
+ This function uses a non-reentrant model
+
+
+ *************** function _ReadUSART *****************
+ Defined at:
+		line 15 in file "C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\uread.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+  data            1    0[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+                  1    wreg      unsigned char 
+ Registers used:
+		wreg, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       0       0       0       0
+      Locals:         1       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         1       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    5
+ This function calls:
+		Nothing
+ This function is called by:
+		_uart_recv_int_handler
+ This function uses a non-reentrant model
+
+
+ *************** function _timer1_int_handler *****************
+ Defined at:
+		line 63 in file "../src/user_interrupts.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+  result          2   26[COMRAM] unsigned int 
+  i               1   33[COMRAM] unsigned char 
+  reverse         1   32[COMRAM] unsigned char [1]
+  stop            1   31[COMRAM] unsigned char [1]
+  right           1   30[COMRAM] unsigned char [1]
+  left            1   29[COMRAM] unsigned char [1]
+  forward         1   28[COMRAM] unsigned char [1]
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       0       0       0       0
+      Locals:         8       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         8       0       0       0       0
+Total ram usage:        8 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    8
+ This function calls:
+		_ReadTimer1
+		_ToMainHigh_sendmsg
+		_WriteTimer1
+		___awmod
+ This function is called by:
+		_InterruptHandlerLow
+ This function uses a non-reentrant model
+
+
+ *************** function ___awmod *****************
+ Defined at:
+		line 8 in file "C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c"
+ Parameters:    Size  Location     Type
+  dividend        2    0[COMRAM] int 
+  divisor         2    2[COMRAM] int 
+ Auto vars:     Size  Location     Type
+  sign            1    5[COMRAM] unsigned char 
+  counter         1    4[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+                  2    0[COMRAM] int 
+ Registers used:
+		wreg, status,2, status,0, prodl
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         4       0       0       0       0
+      Locals:         2       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         6       0       0       0       0
+Total ram usage:        6 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    5
+ This function calls:
+		Nothing
+ This function is called by:
+		_timer1_int_handler
+ This function uses a non-reentrant model
+
+
+ *************** function _WriteTimer1 *****************
+ Defined at:
+		line 14 in file "C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1write.c"
+ Parameters:    Size  Location     Type
+  timer1          2    0[COMRAM] unsigned int 
+ Auto vars:     Size  Location     Type
+  timer           2    2[COMRAM] struct Timers
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		None
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         2       0       0       0       0
+      Locals:         2       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         4       0       0       0       0
+Total ram usage:        4 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    5
+ This function calls:
+		Nothing
+ This function is called by:
+		_timer1_int_handler
+ This function uses a non-reentrant model
+
+
+ *************** function _ToMainHigh_sendmsg *****************
+ Defined at:
+		line 126 in file "../src/messages.c"
+ Parameters:    Size  Location     Type
+  length          1    wreg     unsigned char 
+  msgtype         1   22[COMRAM] unsigned char 
+  data            2   23[COMRAM] PTR void 
+		 -> timer1_int_handler@reverse(1), timer1_int_handler@stop(1), timer1_int_handler@right(1), timer1_int_handler@left(1), 
+		 -> timer1_int_handler@forward(1), timer0_int_handler@reverse(1), timer0_int_handler@stop(1), timer0_int_handler@right(1), 
+		 -> timer0_int_handler@left(1), timer0_int_handler@forward(1), NULL(0), i2c_int_handler@error_buf(3), 
+		 -> main@ic(28), 
+ Auto vars:     Size  Location     Type
+  length          1   25[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+                  1    wreg      char 
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         3       0       0       0       0
+      Locals:         1       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         4       0       0       0       0
+Total ram usage:        4 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    7
+ This function calls:
+		i1_send_msg
+ This function is called by:
+		_timer1_int_handler
+ This function uses a non-reentrant model
+
+
+ *************** function i1_send_msg *****************
+ Defined at:
+		line 24 in file "../src/messages.c"
+ Parameters:    Size  Location     Type
+  qptr            2   10[COMRAM] PTR struct __msg_queue
+		 -> FromMainHigh_MQ(54), FromMainLow_MQ(54), ToMainHigh_MQ(54), ToMainLow_MQ(54), 
+  length          1   12[COMRAM] unsigned char 
+  msgtype         1   13[COMRAM] unsigned char 
+  data            2   14[COMRAM] PTR void 
+		 -> timer1_int_handler@reverse(1), timer1_int_handler@stop(1), timer1_int_handler@right(1), timer1_int_handler@left(1), 
+		 -> timer1_int_handler@forward(1), timer0_int_handler@reverse(1), timer0_int_handler@stop(1), timer0_int_handler@right(1), 
+		 -> timer0_int_handler@left(1), timer0_int_handler@forward(1), NULL(0), i2c_int_handler@error_buf(3), 
+		 -> main@msgbuffer(11), main@t1thread_data(2), main@ic(28), main@uc(18), 
+ Auto vars:     Size  Location     Type
+  send_msg        2   20[COMRAM] PTR struct __msg
+		 -> FromMainLow_MQ.queue(52), FromMainHigh_MQ.queue(52), ToMainHigh_MQ.queue(52), ToMainLow_MQ.queue(52), 
+		 -> FromMainHigh_MQ(54), FromMainLow_MQ(54), ToMainHigh_MQ(54), ToMainLow_MQ(54), 
+  send_msg        2   17[COMRAM] unsigned int 
+  send_msg        1   19[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+                  1    wreg      char 
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         6       0       0       0       0
+      Locals:         5       0       0       0       0
+      Temps:          1       0       0       0       0
+      Totals:        12       0       0       0       0
+Total ram usage:       12 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    6
+ This function calls:
+		i1_memcpy
+ This function is called by:
+		_ToMainLow_sendmsg
+		_ToMainHigh_sendmsg
+ This function uses a non-reentrant model
+
+
+ *************** function i1_memcpy *****************
+ Defined at:
+		line 11 in file "C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c"
+ Parameters:    Size  Location     Type
+  d1              2    0[COMRAM] PTR void 
+		 -> FromMainLow_MQ.queue(52), FromMainHigh_MQ.queue(52), ToMainHigh_MQ.queue(52), ToMainLow_MQ.queue(52), 
+		 -> NULL(0), FromMainHigh_MQ(54), FromMainLow_MQ(54), ToMainHigh_MQ(54), 
+		 -> ToMainLow_MQ(54), main@msgbuffer(11), main@uc(18), 
+  s1              2    2[COMRAM] PTR const void 
+		 -> ToMainLow_MQ.data(10), ToMainHigh_MQ.data(10), FromMainLow_MQ.data(10), FromMainHigh_MQ.data(10), 
+		 -> ToMainLow_MQ.queue.data(10), ToMainHigh_MQ.queue.data(10), FromMainHigh_MQ.queue.data(10), FromMainLow_MQ.queue.data(10), 
+		 -> timer1_int_handler@reverse(1), timer1_int_handler@stop(1), timer1_int_handler@right(1), timer1_int_handler@left(1), 
+		 -> timer1_int_handler@forward(1), timer0_int_handler@reverse(1), timer0_int_handler@stop(1), timer0_int_handler@right(1), 
+		 -> timer0_int_handler@left(1), timer0_int_handler@forward(1), NULL(0), i2c_int_handler@error_buf(3), 
+		 -> FromMainHigh_MQ(54), FromMainLow_MQ(54), ToMainHigh_MQ(54), ToMainLow_MQ(54), 
+		 -> main@msgbuffer(11), main@t1thread_data(2), main@ic(28), main@uc(18), 
+  n               2    4[COMRAM] unsigned int 
+ Auto vars:     Size  Location     Type
+  memcpy          2    8[COMRAM] PTR const unsigned char 
+		 -> ToMainLow_MQ.data(10), ToMainHigh_MQ.data(10), FromMainLow_MQ.data(10), FromMainHigh_MQ.data(10), 
+		 -> ToMainLow_MQ.queue.data(10), ToMainHigh_MQ.queue.data(10), FromMainHigh_MQ.queue.data(10), FromMainLow_MQ.queue.data(10), 
+		 -> timer1_int_handler@reverse(1), timer1_int_handler@stop(1), timer1_int_handler@right(1), timer1_int_handler@left(1), 
+		 -> timer1_int_handler@forward(1), timer0_int_handler@reverse(1), timer0_int_handler@stop(1), timer0_int_handler@right(1), 
+		 -> timer0_int_handler@left(1), timer0_int_handler@forward(1), NULL(0), i2c_int_handler@error_buf(3), 
+		 -> FromMainHigh_MQ(54), FromMainLow_MQ(54), ToMainHigh_MQ(54), ToMainLow_MQ(54), 
+		 -> main@msgbuffer(11), main@t1thread_data(2), main@ic(28), main@uc(18), 
+  memcpy          2    6[COMRAM] PTR unsigned char 
+		 -> FromMainLow_MQ.queue(52), FromMainHigh_MQ.queue(52), ToMainHigh_MQ.queue(52), ToMainLow_MQ.queue(52), 
+		 -> NULL(0), FromMainHigh_MQ(54), FromMainLow_MQ(54), ToMainHigh_MQ(54), 
+		 -> ToMainLow_MQ(54), main@msgbuffer(11), main@uc(18), 
+ Return value:  Size  Location     Type
+                  2    0[COMRAM] PTR void 
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         6       0       0       0       0
+      Locals:         4       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:        10       0       0       0       0
+Total ram usage:       10 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    5
+ This function calls:
+		Nothing
+ This function is called by:
+		i1_send_msg
+		i1_recv_msg
+ This function uses a non-reentrant model
+
+
+ *************** function _ReadTimer1 *****************
+ Defined at:
+		line 15 in file "C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1read.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+  timer           2    2[COMRAM] struct Timers
+ Return value:  Size  Location     Type
+                  2    0[COMRAM] unsigned int 
+ Registers used:
+		None
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         2       0       0       0       0
+      Locals:         2       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         4       0       0       0       0
+Total ram usage:        4 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    5
+ This function calls:
+		Nothing
+ This function is called by:
+		_timer1_int_handler
+ This function uses a non-reentrant model
+
+
+ *************** function _InterruptHandlerHigh *****************
+ Defined at:
+		line 85 in file "../src/interrupts.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          0      14       0       0       0
+      Totals:         0      14       0       0       0
+Total ram usage:       14 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    4
+ This function calls:
+		_SleepIfOkay
+		_i2c_int_handler
+		_timer0_int_handler
+ This function is called by:
+		Interrupt level 2
+ This function uses a non-reentrant model
+
+
+ *************** function _timer0_int_handler *****************
+ Defined at:
+		line 16 in file "../src/user_interrupts.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+  val             2    5[BANK0 ] unsigned int 
+  i               1   12[BANK0 ] unsigned char 
+  reverse         1   11[BANK0 ] unsigned char [1]
+  stop            1   10[BANK0 ] unsigned char [1]
+  right           1    9[BANK0 ] unsigned char [1]
+  left            1    8[BANK0 ] unsigned char [1]
+  forward         1    7[BANK0 ] unsigned char [1]
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       0       0       0       0
+      Locals:         0       8       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       8       0       0       0
+Total ram usage:        8 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    3
+ This function calls:
+		_WriteTimer0
+		i2_ToMainHigh_sendmsg
+		i2___awmod
+ This function is called by:
+		_InterruptHandlerHigh
+ This function uses a non-reentrant model
+
+
+ *************** function i2___awmod *****************
+ Defined at:
+		line 8 in file "C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c"
+ Parameters:    Size  Location     Type
+  dividend        2   51[COMRAM] int 
+  divisor         2   53[COMRAM] int 
+ Auto vars:     Size  Location     Type
+  __awmod         1   56[COMRAM] unsigned char 
+  __awmod         1   55[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+                  2   51[COMRAM] int 
+ Registers used:
+		wreg, status,2, status,0, prodl
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         4       0       0       0       0
+      Locals:         2       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         6       0       0       0       0
+Total ram usage:        6 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_timer0_int_handler
+ This function uses a non-reentrant model
+
+
+ *************** function _WriteTimer0 *****************
+ Defined at:
+		line 16 in file "C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0write.c"
+ Parameters:    Size  Location     Type
+  timer0          2   51[COMRAM] unsigned int 
+ Auto vars:     Size  Location     Type
+  timer           2   53[COMRAM] struct Timers
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		None
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         2       0       0       0       0
+      Locals:         2       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         4       0       0       0       0
+Total ram usage:        4 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_timer0_int_handler
+ This function uses a non-reentrant model
+
+
+ *************** function _i2c_int_handler *****************
+ Defined at:
+		line 54 in file "../src/my_i2c.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+  error_buf       3    6[BANK0 ] unsigned char [3]
+  data_read       1   14[BANK0 ] unsigned char 
+  msg_ready       1   13[BANK0 ] unsigned char 
+  msg_to_send     1   12[BANK0 ] unsigned char 
+  i2c_data        1   11[BANK0 ] unsigned char 
+  overrun_erro    1   10[BANK0 ] unsigned char 
+  data_written    1    9[BANK0 ] unsigned char 
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       0       0       0       0
+      Locals:         0       9       0       0       0
+      Temps:          0       1       0       0       0
+      Totals:         0      10       0       0       0
+Total ram usage:       10 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    3
+ This function calls:
+		_handle_start
+		i2_ToMainHigh_sendmsg
+ This function is called by:
+		_InterruptHandlerHigh
+ This function uses a non-reentrant model
+
+
+ *************** function i2_ToMainHigh_sendmsg *****************
+ Defined at:
+		line 126 in file "../src/messages.c"
+ Parameters:    Size  Location     Type
+  length          1    wreg     unsigned char 
+  msgtype         1   68[COMRAM] unsigned char 
+  data            2   69[COMRAM] PTR void 
+		 -> timer1_int_handler@reverse(1), timer1_int_handler@stop(1), timer1_int_handler@right(1), timer1_int_handler@left(1), 
+		 -> timer1_int_handler@forward(1), timer0_int_handler@reverse(1), timer0_int_handler@stop(1), timer0_int_handler@right(1), 
+		 -> timer0_int_handler@left(1), timer0_int_handler@forward(1), NULL(0), i2c_int_handler@error_buf(3), 
+		 -> main@ic(28), 
+ Auto vars:     Size  Location     Type
+  length          1   71[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+                  1    wreg      char 
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         3       0       0       0       0
+      Locals:         1       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         4       0       0       0       0
+Total ram usage:        4 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    2
+ This function calls:
+		i2_send_msg
+ This function is called by:
+		_i2c_int_handler
+		_timer0_int_handler
+ This function uses a non-reentrant model
+
+
+ *************** function i2_send_msg *****************
+ Defined at:
+		line 24 in file "../src/messages.c"
+ Parameters:    Size  Location     Type
+  qptr            2   61[COMRAM] PTR struct __msg_queue
+		 -> FromMainHigh_MQ(54), FromMainLow_MQ(54), ToMainHigh_MQ(54), ToMainLow_MQ(54), 
+  length          1   63[COMRAM] unsigned char 
+  msgtype         1   64[COMRAM] unsigned char 
+  data            2   65[COMRAM] PTR void 
+		 -> timer1_int_handler@reverse(1), timer1_int_handler@stop(1), timer1_int_handler@right(1), timer1_int_handler@left(1), 
+		 -> timer1_int_handler@forward(1), timer0_int_handler@reverse(1), timer0_int_handler@stop(1), timer0_int_handler@right(1), 
+		 -> timer0_int_handler@left(1), timer0_int_handler@forward(1), NULL(0), i2c_int_handler@error_buf(3), 
+		 -> main@msgbuffer(11), main@t1thread_data(2), main@ic(28), main@uc(18), 
+ Auto vars:     Size  Location     Type
+  send_msg        2    3[BANK0 ] PTR struct __msg
+		 -> FromMainLow_MQ.queue(52), FromMainHigh_MQ.queue(52), ToMainHigh_MQ.queue(52), ToMainLow_MQ.queue(52), 
+		 -> FromMainHigh_MQ(54), FromMainLow_MQ(54), ToMainHigh_MQ(54), ToMainLow_MQ(54), 
+  send_msg        2    0[BANK0 ] unsigned int 
+  send_msg        1    2[BANK0 ] unsigned char 
+ Return value:  Size  Location     Type
+                  1    wreg      char 
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         6       0       0       0       0
+      Locals:         0       5       0       0       0
+      Temps:          1       0       0       0       0
+      Totals:         7       5       0       0       0
+Total ram usage:       12 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    1
+ This function calls:
+		i2_memcpy
+ This function is called by:
+		i2_ToMainHigh_sendmsg
+ This function uses a non-reentrant model
+
+
+ *************** function i2_memcpy *****************
+ Defined at:
+		line 11 in file "C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c"
+ Parameters:    Size  Location     Type
+  d1              2   51[COMRAM] PTR void 
+		 -> FromMainLow_MQ.queue(52), FromMainHigh_MQ.queue(52), ToMainHigh_MQ.queue(52), ToMainLow_MQ.queue(52), 
+		 -> NULL(0), FromMainHigh_MQ(54), FromMainLow_MQ(54), ToMainHigh_MQ(54), 
+		 -> ToMainLow_MQ(54), main@msgbuffer(11), main@uc(18), 
+  s1              2   53[COMRAM] PTR const void 
+		 -> ToMainLow_MQ.data(10), ToMainHigh_MQ.data(10), FromMainLow_MQ.data(10), FromMainHigh_MQ.data(10), 
+		 -> ToMainLow_MQ.queue.data(10), ToMainHigh_MQ.queue.data(10), FromMainHigh_MQ.queue.data(10), FromMainLow_MQ.queue.data(10), 
+		 -> timer1_int_handler@reverse(1), timer1_int_handler@stop(1), timer1_int_handler@right(1), timer1_int_handler@left(1), 
+		 -> timer1_int_handler@forward(1), timer0_int_handler@reverse(1), timer0_int_handler@stop(1), timer0_int_handler@right(1), 
+		 -> timer0_int_handler@left(1), timer0_int_handler@forward(1), NULL(0), i2c_int_handler@error_buf(3), 
+		 -> FromMainHigh_MQ(54), FromMainLow_MQ(54), ToMainHigh_MQ(54), ToMainLow_MQ(54), 
+		 -> main@msgbuffer(11), main@t1thread_data(2), main@ic(28), main@uc(18), 
+  n               2   55[COMRAM] unsigned int 
+ Auto vars:     Size  Location     Type
+  memcpy          2   59[COMRAM] PTR const unsigned char 
+		 -> ToMainLow_MQ.data(10), ToMainHigh_MQ.data(10), FromMainLow_MQ.data(10), FromMainHigh_MQ.data(10), 
+		 -> ToMainLow_MQ.queue.data(10), ToMainHigh_MQ.queue.data(10), FromMainHigh_MQ.queue.data(10), FromMainLow_MQ.queue.data(10), 
+		 -> timer1_int_handler@reverse(1), timer1_int_handler@stop(1), timer1_int_handler@right(1), timer1_int_handler@left(1), 
+		 -> timer1_int_handler@forward(1), timer0_int_handler@reverse(1), timer0_int_handler@stop(1), timer0_int_handler@right(1), 
+		 -> timer0_int_handler@left(1), timer0_int_handler@forward(1), NULL(0), i2c_int_handler@error_buf(3), 
+		 -> FromMainHigh_MQ(54), FromMainLow_MQ(54), ToMainHigh_MQ(54), ToMainLow_MQ(54), 
+		 -> main@msgbuffer(11), main@t1thread_data(2), main@ic(28), main@uc(18), 
+  memcpy          2   57[COMRAM] PTR unsigned char 
+		 -> FromMainLow_MQ.queue(52), FromMainHigh_MQ.queue(52), ToMainHigh_MQ.queue(52), ToMainLow_MQ.queue(52), 
+		 -> NULL(0), FromMainHigh_MQ(54), FromMainLow_MQ(54), ToMainHigh_MQ(54), 
+		 -> ToMainLow_MQ(54), main@msgbuffer(11), main@uc(18), 
+ Return value:  Size  Location     Type
+                  2   51[COMRAM] PTR void 
+ Registers used:
+		wreg, fsr1l, fsr1h, fsr2l, fsr2h, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         6       0       0       0       0
+      Locals:         4       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:        10       0       0       0       0
+Total ram usage:       10 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		i2_send_msg
+ This function uses a non-reentrant model
+
+
+ *************** function _handle_start *****************
+ Defined at:
+		line 29 in file "../src/my_i2c.c"
+ Parameters:    Size  Location     Type
+  data_read       1    wreg     unsigned char 
+ Auto vars:     Size  Location     Type
+  data_read       1   51[COMRAM] unsigned char 
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       0       0       0       0
+      Locals:         1       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         1       0       0       0       0
+Total ram usage:        1 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_i2c_int_handler
+ This function uses a non-reentrant model
+
+
+ *************** function _SleepIfOkay *****************
+ Defined at:
+		line 226 in file "../src/messages.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    2
+ This function calls:
+		_enter_sleep_mode
+		i2_check_msg
+		i2_in_high_int
+		i2_in_low_int
+ This function is called by:
+		_InterruptHandlerHigh
+ This function uses a non-reentrant model
+
+
+ *************** function i2_in_low_int *****************
+ Defined at:
+		line 32 in file "../src/interrupts.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  2   53[COMRAM] int 
+ Registers used:
+		wreg, status,2, status,0, cstack
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         2       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         2       0       0       0       0
+Total ram usage:        2 bytes
+ Hardware stack levels used:    1
+ Hardware stack levels required when called:    1
+ This function calls:
+		i2_in_high_int
+ This function is called by:
+		_SleepIfOkay
+ This function uses a non-reentrant model
+
+
+ *************** function i2_in_high_int *****************
+ Defined at:
+		line 24 in file "../src/interrupts.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  2   51[COMRAM] int 
+ Registers used:
+		wreg, status,2
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         2       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         2       0       0       0       0
+Total ram usage:        2 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_SleepIfOkay
+		i2_in_low_int
+ This function uses a non-reentrant model
+
+
+ *************** function i2_check_msg *****************
+ Defined at:
+		line 220 in file "../src/messages.c"
+ Parameters:    Size  Location     Type
+  qptr            2   51[COMRAM] PTR struct __msg_queue
+		 -> ToMainHigh_MQ(54), ToMainLow_MQ(54), 
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+                  1    wreg      unsigned char 
+ Registers used:
+		wreg, fsr2l, fsr2h, status,2, status,0, prodl, prodh
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         2       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          1       0       0       0       0
+      Totals:         3       0       0       0       0
+Total ram usage:        3 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_SleepIfOkay
+ This function uses a non-reentrant model
+
+
+ *************** function _enter_sleep_mode *****************
+ Defined at:
+		line 202 in file "../src/messages.c"
+ Parameters:    Size  Location     Type
+		None
+ Auto vars:     Size  Location     Type
+		None
+ Return value:  Size  Location     Type
+		None               void
+ Registers used:
+		None
+ Tracked objects:
+		On entry : 
+		On exit  : 
+		Unchanged: 
+ Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3
+      Params:         0       0       0       0       0
+      Locals:         0       0       0       0       0
+      Temps:          0       0       0       0       0
+      Totals:         0       0       0       0       0
+Total ram usage:        0 bytes
+ Hardware stack levels used:    1
+ This function calls:
+		Nothing
+ This function is called by:
+		_SleepIfOkay
+ This function uses a non-reentrant model
+
+
+
+MODULE INFORMATION
+
+Module		Function		Class		Link	Load	Size
+C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c
+		_memcpy        		CODE           	16DA	0000	80
+
+C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c estimated size: 80
+
+../src/timer0_thread.c
+		_timer0_lthread		CODE           	1BEC	0000	14
+
+../src/timer0_thread.c estimated size: 14
+
+C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c
+		___lwmod       		CODE           	1576	0000	96
+
+C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c estimated size: 96
+
+C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c
+		___awmod       		CODE           	1228	0000	144
+
+C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c estimated size: 144
+
+../src/user_interrupts.c
+		_timer0_int_han		CODE           	0940	0000	352
+		_timer1_int_han		CODE           	0BC2	0000	288
+
+../src/user_interrupts.c estimated size: 640
+
+C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\uopen.c
+		_OpenUSART     		CODE           	1348	0000	130
+
+C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\uopen.c estimated size: 130
+
+C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1write.c
+		_WriteTimer1   		CODE           	1BA6	0000	18
+
+C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1write.c estimated size: 18
+
+C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\d1ktcyx.c
+		_Delay1KTCYx   		CODE           	1B80	0000	20
+
+C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\d1ktcyx.c estimated size: 20
+
+../src/my_i2c.c
+		_handle_start  		CODE           	0F6A	0000	198
+		_i2c_configure_		CODE           	1A34	0000	42
+		_init_i2c      		CODE           	144A	0000	102
+		_i2c_int_handle		CODE           	00C0	0000	1370
+
+../src/my_i2c.c estimated size: 1712
+
+C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1open.c
+		_OpenTimer1    		CODE           	19A6	0000	50
+
+C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1open.c estimated size: 50
+
+../src/timer1_thread.c
+		_timer1_lthread		CODE           	1514	0000	98
+		_init_timer1_lt		CODE           	1B94	0000	18
+
+../src/timer1_thread.c estimated size: 116
+
+../src/interrupts.c
+		_enable_interru		CODE           	1BFA	0000	12
+		_in_low_int    		CODE           	17F8	0000	62
+		_in_main       		CODE           	1836	0000	60
+		_in_high_int   		CODE           	1BDC	0000	16
+		_InterruptHandl		CODE           	0018	0000	164
+		_InterruptHandl		CODE           	0008	0000	5186
+
+../src/interrupts.c estimated size: 5500
+
+shared
+		i1_send_msg    		CODE           	10E2	0000	170
+		i2_send_msg    		CODE           	0EA4	0000	198
+		i2_ToMainHigh_s		CODE           	1B1A	0000	36
+		i2_in_high_int 		CODE           	1C06	0000	12
+		i1_recv_msg    		CODE           	0DD2	0000	210
+		__initializatio		CODE           	1A86	0000	28
+		i2___awmod     		CODE           	12B8	0000	144
+		i2_in_low_int  		CODE           	1A06	0000	46
+		i1_memcpy      		CODE           	1778	0000	64
+		i2_memcpy      		CODE           	17B8	0000	64
+		i2_check_msg   		CODE           	1B3E	0000	36
+
+shared estimated size: 1008
+
+C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\uread.c
+		_ReadUSART     		CODE           	1B62	0000	30
+
+C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\uread.c estimated size: 30
+
+../src/messages.c
+		_ToMainHigh_sen		CODE           	1AF6	0000	36
+		_ToMainHigh_rec		CODE           	18A8	0000	54
+		_block_on_To_ms		CODE           	15D6	0000	92
+		_check_msg     		CODE           	1974	0000	50
+		_FromMainLow_se		CODE           	18DE	0000	50
+		_ToMainLow_send		CODE           	1AD2	0000	36
+		_ToMainLow_recv		CODE           	1872	0000	54
+		_FromMainLow_re		CODE           	1A5E	0000	40
+		_FromMainHigh_s		CODE           	1942	0000	50
+		_enter_sleep_mo		CODE           	1C12	0000	6
+		_send_msg      		CODE           	0CE2	0000	240
+		_init_queue    		CODE           	14B0	0000	100
+		_init_queues   		CODE           	1632	0000	86
+		_recv_msg      		CODE           	0AA0	0000	290
+		_SleepIfOkay   		CODE           	172A	0000	78
+
+../src/messages.c estimated size: 1262
+
+C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0write.c
+		_WriteTimer0   		CODE           	1BCA	0000	18
+
+C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0write.c estimated size: 18
+
+C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0open.c
+		_OpenTimer0    		CODE           	1AAC	0000	38
+
+C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0open.c estimated size: 38
+
+../src/my_uart.c
+		_uart_trans_int		CODE           	118C	0000	156
+		_init_uart_recv		CODE           	19D8	0000	46
+		_uart_recv_int_		CODE           	1030	0000	178
+		_uart_send     		CODE           	1688	0000	82
+
+../src/my_uart.c estimated size: 462
+
+C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1read.c
+		_ReadTimer1    		CODE           	1BB8	0000	18
+
+C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1read.c estimated size: 18
+
+../src/main.c
+		_main          		CODE           	061A	0000	806
+
+../src/main.c estimated size: 806
+
+../src/uart_thread.c
+		_uart_lthread  		CODE           	1910	0000	50
+
+../src/uart_thread.c estimated size: 50
+
