@@ -1,7 +1,7 @@
 #ifndef DEBUG_H
 #define DEBUG_H
 
-#define SLAVE_ADDR		0x9E
+#define SLAVE_ADDR			0x4F
 
 #define DEBUG_PIN15 		0x00008000
 #define DEBUG_PIN16 		0x00010000

@@ -3,8 +3,13 @@
 
 #include "taskLCD.h"
 #include "taskLocate.h"
-#include "taskCommand.h"
+//#include "taskCommand.h"
 #include "taskSensors.h"
+
+signed char timerNameLCD[] = "LCD Timer";
+signed char timerNameLocate[] = "Locate Timer";
+signed char timerNameCommand[] = "Command Timer";
+signed char timerNameSensors[] = "Sensors Timer";
 
 #define LCD_UPDATE_TIME		300
 #define lcdWRITE_RATE_BASE	((portTickType) LCD_UPDATE_TIME/portTICK_RATE_MS)
@@ -19,9 +24,10 @@
 #define SENSOR_READS		8/8
 #define SENSOR_WRITE_RATE_BASE	(((portTickType) (8000/(SENSOR_READS*8)))/portTICK_RATE_MS)
 
+									  
+void startTimerSensors(structSensors* dataSensors);
 void startTimerLCD(structLCD* dataLCD);
 void startTimerLocate(structLocate* dataLocate);
-void startTimerCommand(structCommand* dataCommand);
-void startTimerSensor(structSensor* dataSensor);
+//void startTimerCommand(structCommand* dataCommand);
 
 #endif

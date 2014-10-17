@@ -7,8 +7,6 @@ typedef struct __structLCD {
 	xQueueHandle inQ; 
 } structLCD;
 
-#define maxLenLCD 20
-
 /*------------------------------------------------------------------------------
  * Description:
  *    Starts the LCD task.

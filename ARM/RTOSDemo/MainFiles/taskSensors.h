@@ -1,26 +1,24 @@
 #ifndef TASK_SENSORS_H
 #define TASK_SENSORS_H
 
-#include "vtI2C.h"
+#include "defs.h"
 #include "taskLCD.h"
 #include "taskLocate.h"
-
-// Maximum length of a message that can be received by any IR task.
-#define maxLenSensor (sizeof(portTickType))
-
-signed char taskNameSensor[] = "Sensor"; 
+#include "vtI2C.h"
 
 // Structure used to pass parameters to the task.
-typedef struct __structSensor {
-	vtI2CStruct* devI2C0;
-	structLCD* dataLCD;
+typedef struct __structSensors {
+	vtI2CStruct*  devI2C0;
+	structLCD*    dataLCD;
 	structLocate* dataLocate;
-	xQueueHandle inQ;
-} structSensor;
+	xQueueHandle  inQ;
+} structSensors;
 
-// Sensor task.
-void startTaskSensor(structSensor* dataSensor, unsigned portBASE_TYPE uxPriority, vtI2CStruct* devI2C, structLCD* dataLCD);
-portBASE_TYPE sendTimerMsgSensor(structSensor* dataSensor, uint8_t msgType, portTickType ticksElapsed, portTickType ticksToBlock);
-portBASE_TYPE sendValueMsgSensor(structSensor* dataSensor, uint8_t msgType, uint16_t value, portTickType ticksToBlock);
+// Sensors task.
+void startTaskSensors(structSensors* dataSensors, unsigned portBASE_TYPE uxPriority, vtI2CStruct* devI2C0, structLCD* dataLCD);
+portBASE_TYPE sendTimerMsgSensors(structSensors* dataSensors, portTickType ticksElapsed, portTickType ticksToBlock);
+portBASE_TYPE sendValueMsgSensors(structSensors* dataSensors, uint8_t msgType, uint8_t* value, portTickType ticksToBlock);
+
+void sendI2CSensorsQuery();
 
 #endif

@@ -11,7 +11,6 @@
 /* include files. */
 #include "lpc17xx_i2c.h"
 #include "vtUtilities.h"
-#include "debug.h"
 
 #include "lpc17xx_libcfg_default.h"
 #include "lpc17xx_pinsel.h"
@@ -54,7 +53,7 @@ static portTASK_FUNCTION_PROTO( vI2CMonitorTask, pvParameters );
 // Public API Functions
 //
 // Note: This will startup an I2C thread, once for each call to this routine
-int vtI2CInit(vtI2CStruct *devPtr, uint8_t i2cDevNum, unsigned portBASE_TYPE taskPriority, uint32_t i2cSpeed)
+int vtI2CInit(vtI2CStruct *devPtr,uint8_t i2cDevNum,unsigned portBASE_TYPE taskPriority,uint32_t i2cSpeed)
 {
 	PINSEL_CFG_Type PinCfg;
 
@@ -67,7 +66,7 @@ int vtI2CInit(vtI2CStruct *devPtr, uint8_t i2cDevNum, unsigned portBASE_TYPE tas
 			devStaticPtr[0] = devPtr; // Setup the permanent variable for use by the interrupt handler
 			devPtr->devAddr = LPC_I2C0;
 			// Start with the interrupts disabled *and* make sure we have the priority correct
-			NVIC_SetPriority(I2C0_IRQn, vtI2CIntPriority);	
+			NVIC_SetPriority(I2C0_IRQn,vtI2CIntPriority);	
 			NVIC_DisableIRQ(I2C0_IRQn);
 			// Init I2C pin connect
 			PinCfg.OpenDrain = 0;
@@ -192,8 +191,6 @@ portBASE_TYPE vtI2CDeQ(vtI2CStruct *dev,uint8_t maxRxLen,uint8_t *rxBuf,uint8_t 
 
 // i2c interrupt handler
 static __INLINE void vtI2CIsr(LPC_I2C_TypeDef *devAddr,xSemaphoreHandle *binSemaphore) {
-	GPIO_SetValue(0, DEBUG_PIN18);
-	GPIO_ClearValue(0, DEBUG_PIN18);
 	I2C_MasterHandler(devAddr);
 	if (I2C_MasterTransferComplete(devAddr)) {
 		static signed portBASE_TYPE xHigherPriorityTaskWoken;

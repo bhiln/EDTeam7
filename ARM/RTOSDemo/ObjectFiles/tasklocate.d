@@ -39,7 +39,7 @@ ObjectFiles/tasklocate.o: MainFiles/taskLocate.c \
  ../vtCode/vtUtilities.h ../NXPDrivers/include/lpc_types.h \
  C:/Keil/ARM/INC/NXP/LPC17xx/lpc17xx.h MainFiles/taskLCD.h \
  ../FreeRTOS/Source/include/queue.h ../FreeRTOS/Source/include/timers.h \
- MainFiles/taskLocate.h ../vtCode/vtI2C/vtI2C.h \
+ MainFiles/taskLocate.h MainFiles/defs.h ../vtCode/vtI2C/vtI2C.h \
  ../NXPDrivers/include/lpc17xx_i2c.h \
  ../FreeRTOS/Source/include/projDefs.h MainFiles/I2CTaskMsgTypes.h \
  MainFiles/debug.h

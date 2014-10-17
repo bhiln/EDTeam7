@@ -50,7 +50,7 @@ void startTimerLocate(structLocate* dataLocate) {
 	if (sizeof(long) != sizeof(structLocate*))
 		VT_HANDLE_FATAL_ERROR(0);
 
-	xTimerHandle timerHandleLocate = xTimerCreate((const signed char*)taskNameLocate, LOCATE_WRITE_RATE_BASE, pdTRUE, (void*)dataLocate, timerCallbackLocate);
+	xTimerHandle timerHandleLocate = xTimerCreate((const signed char*)timerNameLocate, LOCATE_WRITE_RATE_BASE, pdTRUE, (void*)dataLocate, timerCallbackLocate);
 	if (timerHandleLocate == NULL)
 		VT_HANDLE_FATAL_ERROR(0);
 	else
@@ -60,32 +60,32 @@ void startTimerLocate(structLocate* dataLocate) {
 	}
 }
 
-void timerCallbackCommand(xTimerHandle pxTimer)
-{
-	if (pxTimer == NULL)
-		VT_HANDLE_FATAL_ERROR(0);
-	else
-	{
-		structCommand* ptr = (structCommand*)pvTimerGetTimerID(pxTimer);
-		if (sendTimerMsgCommand(ptr, COMMAND_WRITE_RATE_BASE, 0) == errQUEUE_FULL)
-			VT_HANDLE_FATAL_ERROR(0);
-	}
-}
-
-void startTimerCommand(structCommand* dataCommand)
-{
-	if (sizeof(long) != sizeof(structCommand*))
-		VT_HANDLE_FATAL_ERROR(0);
-
-	xTimerHandle timerHandleCommand = xTimerCreate((const signed char*)taskNameCommand, COMMAND_WRITE_RATE_BASE, pdTRUE, (void*)dataCommand, timerCallbackCommand);
-	if (timerHandleCommand == NULL)
-		VT_HANDLE_FATAL_ERROR(0);
-	else
-	{
-		if (xTimerStart(timerHandleCommand, 0) != pdPASS)
-			VT_HANDLE_FATAL_ERROR(0);
-	}
-}
+//void timerCallbackCommand(xTimerHandle pxTimer)
+//{
+//	if (pxTimer == NULL)
+//		VT_HANDLE_FATAL_ERROR(0);
+//	else
+//	{
+//		structCommand* ptr = (structCommand*)pvTimerGetTimerID(pxTimer);
+//		if (sendTimerMsgCommand(ptr, COMMAND_WRITE_RATE_BASE, 0) == errQUEUE_FULL)
+//			VT_HANDLE_FATAL_ERROR(0);
+//	}
+//}
+//
+//void startTimerCommand(structCommand* dataCommand)
+//{
+//	if (sizeof(long) != sizeof(structCommand*))
+//		VT_HANDLE_FATAL_ERROR(0);
+//
+//	xTimerHandle timerHandleCommand = xTimerCreate((const signed char*)timerNameCommand, COMMAND_WRITE_RATE_BASE, pdTRUE, (void*)dataCommand, timerCallbackCommand);
+//	if (timerHandleCommand == NULL)
+//		VT_HANDLE_FATAL_ERROR(0);
+//	else
+//	{
+//		if (xTimerStart(timerHandleCommand, 0) != pdPASS)
+//			VT_HANDLE_FATAL_ERROR(0);
+//	}
+//}
 
 void timerCallbackSensor(xTimerHandle pxTimer)
 {
@@ -93,18 +93,18 @@ void timerCallbackSensor(xTimerHandle pxTimer)
 		VT_HANDLE_FATAL_ERROR(0);
 	else
 	{
-		structSensor *ptr = (structSensor*) pvTimerGetTimerID(pxTimer);
-		if (sendTimerMsgSensor(ptr, msgSensorTimer, SENSOR_WRITE_RATE_BASE, 0) == errQUEUE_FULL)
+		structSensors *ptr = (structSensors*) pvTimerGetTimerID(pxTimer);
+		if (sendTimerMsgSensors(ptr, SENSOR_WRITE_RATE_BASE, 0) == errQUEUE_FULL)
 			VT_HANDLE_FATAL_ERROR(0);
 	}
 }
 
-void startTimerSensor(structSensor* dataSensor)
+void startTimerSensors(structSensors* dataSensors)
 {
-	if (sizeof(long) != sizeof(structSensor*))
+	if (sizeof(long) != sizeof(structSensors*))
 		VT_HANDLE_FATAL_ERROR(0);
 
-	xTimerHandle timerHandleSensor = xTimerCreate((const signed char*)taskNameSensor, SENSOR_WRITE_RATE_BASE, pdTRUE, (void*)dataSensor, timerCallbackSensor);
+	xTimerHandle timerHandleSensor = xTimerCreate((const signed char*)timerNameSensors, SENSOR_WRITE_RATE_BASE, pdTRUE, (void*)dataSensors, timerCallbackSensor);
 	if (timerHandleSensor == NULL)
 		VT_HANDLE_FATAL_ERROR(0);
 	else

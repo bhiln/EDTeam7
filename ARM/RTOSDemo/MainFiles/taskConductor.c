@@ -22,11 +22,11 @@
 
 static portTASK_FUNCTION_PROTO(updateTaskConductor, pvParameters);
 
-void startTaskConductor(structConductor* params, unsigned portBASE_TYPE uxPriority, vtI2CStruct* devI2C0, structSensor* dataSensor)
+void startTaskConductor(structConductor* params, unsigned portBASE_TYPE uxPriority, vtI2CStruct* devI2C0, structSensors* dataSensors)
 {
 	portBASE_TYPE retval;
 	params->devI2C0 = devI2C0;
-	params->dataSensor = dataSensor;
+	params->dataSensors = dataSensors;
 
 	if ((retval = xTaskCreate(updateTaskConductor, taskNameConductor, CONDUCTOR_STACK_SIZE, (void*)params, uxPriority, (xTaskHandle*) NULL )) != pdPASS) {
 		VT_HANDLE_FATAL_ERROR(retval);
@@ -39,8 +39,8 @@ static portTASK_FUNCTION(updateTaskConductor, pvParameters)
 	uint8_t status;
 	uint8_t bufferI2C[vtI2CMLen];
 
-	// Get the value array from I2C.
-	uint8_t* value = &(bufferI2C[0]);
+	// Get the values from I2C.
+	uint8_t* values = &(bufferI2C[0]);
 
 	// Get the parameters.
 	structConductor* param = (structConductor*)pvParameters;
@@ -49,7 +49,7 @@ static portTASK_FUNCTION(updateTaskConductor, pvParameters)
 	vtI2CStruct* devI2C0 = param->devI2C0;
 	
 	// Get sensor data pointers.
-	structSensor* dataSensor = param->dataSensor;
+	structSensors* dataSensors = param->dataSensors;
 
 	// The received message type.
 	uint8_t recvMsgType;
@@ -67,12 +67,10 @@ static portTASK_FUNCTION(updateTaskConductor, pvParameters)
 		switch(recvMsgType)
 		{
 			// Sensor task.
-			case msgSensorIR00 | msgSensorIR01 | msgSensorIR10 | msgSensorIR11 | msgSensorIR20 | msgSensorIR21 |
-			     msgSensorIR30 | msgSensorIR31 | msgSensorIR40 | msgSensorIR41 | msgSensorAC00:
+            case msgTypeSensors: 
 			{
-				// Put the value in a 16 byte int and send it.
-				uint16_t sensorData = (value[0] << 8) | value[1];
-				sendValueMsgSensor(dataSensor, recvMsgType, sensorData, portMAX_DELAY);
+				// Send the values to the sensor task.
+				sendValueMsgSensors(dataSensors, recvMsgType, values, portMAX_DELAY);
 				break;
 			}
 			default:
