@@ -10833,11 +10833,11 @@ typedef struct __msg {
 unsigned char full;
 unsigned char length;
 unsigned char msgtype;
-unsigned char data[30];
+unsigned char data[26];
 } msg;
 
 typedef struct __msg_queue {
-msg queue[10];
+msg queue[4];
 unsigned char cur_write_ind;
 unsigned char cur_read_ind;
 } msg_queue;
@@ -10879,10 +10879,10 @@ signed char FromMainHigh_recvmsg(unsigned char,unsigned char *,void *);
 
 # 10 "../src/my_uart.h"
 typedef struct __uart_comm {
-unsigned char buffer[30];
+unsigned char buffer[6];
 unsigned char buflen;
 unsigned char bufind;
-unsigned char outbuffer[30];
+unsigned char outbuffer[6];
 unsigned char outbuflen;
 unsigned char outbufind;
 unsigned char msg_count;
@@ -10894,35 +10894,69 @@ void uart_trans_int_handler(void);
 void uart_recv_int_handler(void);
 void uart_send(unsigned char,unsigned char *);
 
-# 10 "../src/my_uart.c"
+# 7 "../src/my_i2c.h"
+typedef struct __i2c_comm {
+unsigned char buffer[26];
+unsigned char buflen;
+unsigned char bufind;
+unsigned char event_count;
+unsigned char status;
+unsigned char error_code;
+unsigned char error_count;
+unsigned char outbuffer[26];
+unsigned char outbuflen;
+unsigned char outbufind;
+unsigned char slave_addr;
+unsigned char sensor_addr;
+unsigned char motor_addr;
+unsigned char msg_count;
+} i2c_comm;
+
+# 45
+void init_i2c(i2c_comm *);
+void i2c_int_handler(void);
+void i2c_master_int_handler(void);
+void i2c_slave_int_handler(void);
+void start_i2c_slave_reply(unsigned char,unsigned char *);
+void i2c_configure_slave(unsigned char);
+void i2c_configure_master(unsigned char,unsigned char);
+unsigned char i2c_master_send(unsigned char,unsigned char,unsigned char *);
+unsigned char i2c_master_recv(unsigned char,unsigned char);
+
+# 11 "../src/my_uart.c"
 static uart_comm *uc_ptr;
 
 void uart_recv_int_handler() {
+{ LATAbits.LATA3 = 1;};
 unsigned char error_msg;
 if ((PIR1bits.RC1IF)) {
+{ LATAbits.LATA2 = 1;};
+
 uc_ptr->buffer[uc_ptr->buflen] = Read1USART();
 
 uc_ptr->buflen++;
 
-if (uc_ptr->buflen == 6 && uc_ptr->buffer[uc_ptr->buflen-1] == 0xFF) {
-
-
+if (uc_ptr->buflen == 5) {
 ToMainLow_sendmsg(uc_ptr->buflen, 31, (void *) uc_ptr->buffer);
 uc_ptr->buflen = 0;
-
-# 42
 }
-ToMainLow_sendmsg(uc_ptr->buflen, 31, (void *) uc_ptr->buffer);
+unsigned char length, forward[1], left[1], right[1], stop[1], reverse[1], readin[1];
+forward[0] = 0x0A;
+left[0] = 0x0B;
+right[0] = 0x0C;
+stop[0] = 0x0D;
+reverse[0] = 0x0E;
+readin[0] = Read1USART();
 
+
+length = ToMainLow_sendmsg(1, 31, readin);
+{ LATAbits.LATA2 = 0;};
+
+# 69
 }
 
-if (USART1_Status.OVERRUN_ERROR == 1) {
-
-
-RCSTAbits.CREN = 0;
-RCSTAbits.CREN = 1;
-ToMainLow_sendmsg(0, 30, (void *) 0);
-}
+# 78
+{ LATAbits.LATA3 = 0;};
 }
 
 void uart_trans_int_handler() {
@@ -10985,5 +11019,5 @@ PIE1bits.TXIE = 1;
 { LATAbits.LATA3 = 0;};
 }
 
-# 125
+# 150
 }

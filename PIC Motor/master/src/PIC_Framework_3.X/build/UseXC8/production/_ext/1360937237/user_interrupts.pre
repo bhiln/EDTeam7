@@ -10838,11 +10838,11 @@ typedef struct __msg {
 unsigned char full;
 unsigned char length;
 unsigned char msgtype;
-unsigned char data[30];
+unsigned char data[26];
 } msg;
 
 typedef struct __msg_queue {
-msg queue[10];
+msg queue[4];
 unsigned char cur_write_ind;
 unsigned char cur_read_ind;
 } msg_queue;
@@ -10884,10 +10884,10 @@ signed char FromMainHigh_recvmsg(unsigned char,unsigned char *,void *);
 
 # 10 "../src/my_uart.h"
 typedef struct __uart_comm {
-unsigned char buffer[30];
+unsigned char buffer[6];
 unsigned char buflen;
 unsigned char bufind;
-unsigned char outbuffer[30];
+unsigned char outbuffer[6];
 unsigned char outbuflen;
 unsigned char outbufind;
 unsigned char msg_count;
@@ -10901,14 +10901,14 @@ void uart_send(unsigned char,unsigned char *);
 
 # 7 "../src/my_i2c.h"
 typedef struct __i2c_comm {
-unsigned char buffer[30];
+unsigned char buffer[26];
 unsigned char buflen;
 unsigned char bufind;
 unsigned char event_count;
 unsigned char status;
 unsigned char error_code;
 unsigned char error_count;
-unsigned char outbuffer[30];
+unsigned char outbuffer[26];
 unsigned char outbuflen;
 unsigned char outbufind;
 unsigned char slave_addr;
@@ -10941,35 +10941,7 @@ if (length == sizeof (val)) {
 ToMainHigh_sendmsg(sizeof (val), 10, (void *) &val);
 }
 
-unsigned char i;
-unsigned char forward[1], left[1], right[1], stop[1], reverse[1];
-forward[0] = 0x0A;
-left[0] = 0x0B;
-right[0] = 0x0C;
-stop[0] = 0x0D;
-reverse[0] = 0x0E;
-
-if (i % 5 == 0) {
-ToMainLow_sendmsg(1, 31, forward);
-i = 0;
-}
-if (i % 5 == 1) {
-ToMainLow_sendmsg(1, 31, left);
-i = 1;
-}
-if (i % 5 == 2) {
-ToMainLow_sendmsg(1, 31, right);
-i = 2;
-}
-if (i % 5 == 3) {
-ToMainLow_sendmsg(1, 31, stop);
-i = 3;
-}
-if (i % 5 == 4) {
-ToMainLow_sendmsg(1, 31, reverse);
-i = 4;
-}
-i++;
+# 59
 }
 
 
@@ -10978,10 +10950,9 @@ i++;
 void timer1_int_handler() {
 unsigned int result;
 
-# 74
+# 75
 result = ReadTimer1();
-ToMainLow_sendmsg(0, 11, (void *) 0);
 
-# 109
+# 110
 WriteTimer1(0);
 }

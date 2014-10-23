@@ -1,6 +1,6 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "10 ../src/messages.h
-[s S1131 `uc 1 `uc 1 `uc 1 `uc -> 30 `i ]
+[s S1131 `uc 1 `uc 1 `uc 1 `uc -> 26 `i ]
 [n S1131 __msg full length msgtype data ]
 "17
 [s S1132 `S1131 -> 4 `i `uc 1 `uc 1 ]
@@ -8340,7 +8340,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;messages.h: 11: unsigned char full;
 [; ;messages.h: 12: unsigned char length;
 [; ;messages.h: 13: unsigned char msgtype;
-[; ;messages.h: 14: unsigned char data[30];
+[; ;messages.h: 14: unsigned char data[26];
 [; ;messages.h: 15: } msg;
 [; ;messages.h: 17: typedef struct __msg_queue {
 [; ;messages.h: 18: msg queue[4];

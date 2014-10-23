@@ -10833,11 +10833,11 @@ typedef struct __msg {
 unsigned char full;
 unsigned char length;
 unsigned char msgtype;
-unsigned char data[30];
+unsigned char data[26];
 } msg;
 
 typedef struct __msg_queue {
-msg queue[10];
+msg queue[4];
 unsigned char cur_write_ind;
 unsigned char cur_read_ind;
 } msg_queue;
@@ -10879,14 +10879,14 @@ signed char FromMainHigh_recvmsg(unsigned char,unsigned char *,void *);
 
 # 7 "../src/my_i2c.h"
 typedef struct __i2c_comm {
-unsigned char buffer[30];
+unsigned char buffer[26];
 unsigned char buflen;
 unsigned char bufind;
 unsigned char event_count;
 unsigned char status;
 unsigned char error_code;
 unsigned char error_count;
-unsigned char outbuffer[30];
+unsigned char outbuffer[26];
 unsigned char outbuflen;
 unsigned char outbufind;
 unsigned char slave_addr;
@@ -10929,7 +10929,7 @@ SSPADD = 0x77;
 
 ic_ptr->sensor_addr = sensor_addr;
 ic_ptr->motor_addr = motor_addr;
-ic_ptr->buflen = 30;
+ic_ptr->buflen = 26;
 
 SSPCON1bits.SSPEN = 1;
 }
@@ -11029,6 +11029,7 @@ SSP1CON2bits.SEN = 1;
 ic_ptr->status = 0x1;
 ToMainHigh_sendmsg(0, 53, 0);
 SSP1CON2bits.PEN = 1;
+
 }
 break;
 };
@@ -11107,11 +11108,13 @@ SSP1CON2bits.PEN = 1;
 break;
 };
 
-# 269
+# 270
 }
 }
 
-# 276
+
+
+
 void init_i2c(i2c_comm *ic) {
 ic_ptr = ic;
 ic_ptr->buflen = 0;

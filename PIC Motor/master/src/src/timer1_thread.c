@@ -18,8 +18,8 @@ int timer1_lthread(timer1_thread_struct *tptr, int msgtype, int length, unsigned
     // Every tenth message we get from timer1 we
     // send something to the High Priority Interrupt
     if ((tptr->msgcount % 10) == 9) {
-//        retval = FromMainHigh_sendmsg(sizeof (tptr->msgcount), MSGT_MAIN1, (void *) &(tptr->msgcount));
-        retval = FromMainHigh_sendmsg(sizeof (tptr->msgcount), MSGT_UART_DATA, (void *) &(tptr->msgcount));
+        retval = FromMainHigh_sendmsg(sizeof (tptr->msgcount), MSGT_MAIN1, (void *) &(tptr->msgcount));
+//        retval = FromMainHigh_sendmsg(sizeof (tptr->msgcount), MSGT_UART_DATA, (void *) &(tptr->msgcount));
         if (retval < 0) {
             // We would handle the error here
         }

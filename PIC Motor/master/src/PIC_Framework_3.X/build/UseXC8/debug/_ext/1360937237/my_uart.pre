@@ -10833,7 +10833,7 @@ typedef struct __msg {
 unsigned char full;
 unsigned char length;
 unsigned char msgtype;
-unsigned char data[30];
+unsigned char data[26];
 } msg;
 
 typedef struct __msg_queue {
@@ -10879,10 +10879,10 @@ signed char FromMainHigh_recvmsg(unsigned char,unsigned char *,void *);
 
 # 10 "../src/my_uart.h"
 typedef struct __uart_comm {
-unsigned char buffer[23];
+unsigned char buffer[6];
 unsigned char buflen;
 unsigned char bufind;
-unsigned char outbuffer[23];
+unsigned char outbuffer[6];
 unsigned char outbuflen;
 unsigned char outbufind;
 unsigned char msg_count;
@@ -10898,31 +10898,22 @@ void uart_send(unsigned char,unsigned char *);
 static uart_comm *uc_ptr;
 
 void uart_recv_int_handler() {
+{ LATAbits.LATA3 = 1;};
 unsigned char error_msg;
 if ((PIR1bits.RC1IF)) {
-uc_ptr->buffer[uc_ptr->buflen] = Read1USART();
+{ LATAbits.LATA2 = 1;};
 
-uc_ptr->buflen++;
+# 26
+unsigned char length, forward[1];
+forward[0] = 0x0A;
+length = ToMainLow_sendmsg(1, 31, forward);
+{ LATAbits.LATA2 = 0;};
 
-if (uc_ptr->buflen == 6 && uc_ptr->buffer[uc_ptr->buflen-1] == 0xFF) {
-
-
-ToMainLow_sendmsg(uc_ptr->buflen, 31, (void *) uc_ptr->buffer);
-uc_ptr->buflen = 0;
-
-# 42
-}
-ToMainLow_sendmsg(uc_ptr->buflen, 31, (void *) uc_ptr->buffer);
-
+# 61
 }
 
-if (USART1_Status.OVERRUN_ERROR == 1) {
-
-
-RCSTAbits.CREN = 0;
-RCSTAbits.CREN = 1;
-ToMainLow_sendmsg(0, 30, (void *) 0);
-}
+# 70
+{ LATAbits.LATA3 = 0;};
 }
 
 void uart_trans_int_handler() {
@@ -10985,5 +10976,5 @@ PIE1bits.TXIE = 1;
 { LATAbits.LATA3 = 0;};
 }
 
-# 125
+# 142
 }

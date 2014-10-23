@@ -25,36 +25,37 @@ void timer0_int_handler() {
     if (length == sizeof (val)) {
         ToMainHigh_sendmsg(sizeof (val), MSGT_TIMER0, (void *) &val);
     }
-
-    unsigned char i;
-    unsigned char forward[1], left[1], right[1], stop[1], reverse[1];
-    forward[0] = 0x0A;
-    left[0] = 0x0B;
-    right[0] = 0x0C;
-    stop[0] = 0x0D;
-    reverse[0] = 0x0E;
-
-    if (i % 5 == 0) {
-        ToMainLow_sendmsg(1, MSGT_UART_DATA, forward);
-        i = 0;
-    }
-    if (i % 5 == 1) {
-        ToMainLow_sendmsg(1, MSGT_UART_DATA, left);
-        i = 1;
-    }
-    if (i % 5 == 2) {
-        ToMainLow_sendmsg(1, MSGT_UART_DATA, right);
-        i = 2;
-    }
-    if (i % 5 == 3) {
-        ToMainLow_sendmsg(1, MSGT_UART_DATA, stop);
-        i = 3;
-    }
-    if (i % 5 == 4) {
-        ToMainLow_sendmsg(1, MSGT_UART_DATA, reverse);
-        i = 4;
-    }
-    i++;
+//
+//    unsigned char i;
+//    unsigned char forward[1], left[1], right[1], stop[1], reverse[1];
+//    forward[0] = 0x0A;
+//    left[0] = 0x0B;
+//    right[0] = 0x0C;
+//    stop[0] = 0x0D;
+//    reverse[0] = 0x0E;
+//
+//    if (i % 5 == 0) {
+//        ToMainHigh_sendmsg(1, MSGT_I2C_MOTOR_CMD, forward);
+//        i = 0;
+//    }
+//    if (i % 5 == 1) {
+//        ToMainHigh_sendmsg(1, MSGT_I2C_MOTOR_CMD, left);
+//        i = 1;
+//    }
+//    if (i % 5 == 2) {
+//        ToMainHigh_sendmsg(1, MSGT_I2C_MOTOR_CMD, right);
+//        i = 2;
+//    }
+//    if (i % 5 == 3) {
+//        ToMainHigh_sendmsg(1, MSGT_I2C_MOTOR_CMD, stop);
+//        i = 3;
+//    }
+//    if (i % 5 == 4) {
+//        ToMainHigh_sendmsg(1, MSGT_I2C_MOTOR_CMD, reverse);
+//        i = 4;
+//    }
+//    i++;
+//    ToMainHigh_sendmsg(sizeof (val), MSGT_TIMER0, (void *) &val);
 }
 
 // A function called by the interrupt handler
@@ -72,7 +73,7 @@ void timer1_int_handler() {
 
     // read the timer and then send an empty message to main()
     result = ReadTimer1();
-    ToMainLow_sendmsg(0, MSGT_TIMER1, (void *) 0);
+//    ToMainLow_sendmsg(0, MSGT_TIMER1, (void *) 0);
 
 //    if (i % 4 == 0) {
 //        i2c_master_send(0x9A, 1, forward);

@@ -239,10 +239,49 @@ void main(void) {
                     break;
                 };
                 case MSGT_I2C_MOTOR_CMD:
-//                {
+                {
+                    last_reg_recvd = msgbuffer[0];
+                    switch (last_reg_recvd) {
+//                    switch (msgbuffer[0]) {
+                        case 0x0A: // forward
+                        {
+                            length = 1;
+                            msgbuffer[0] = 0x0A;
+                            i2c_master_send(0x9A, length, msgbuffer);
+                            break;
+                        }
+                        case 0x0B: // turn left
+                        {
+                            length = 1;
+                            msgbuffer[0] = 0x0B;
+                            i2c_master_send(0x9A, length, msgbuffer);
+                            break;
+                        }
+                        case 0x0C: // turn right
+                        {
+                            length = 1;
+                            msgbuffer[0] = 0x0C;
+                            i2c_master_send(0x9A, length, msgbuffer);
+                            break;
+                        }
+                        case 0x0D: // stop
+                        {
+                            length = 1;
+                            msgbuffer[0] = 0x0D;
+                            i2c_master_send(0x9A, length, msgbuffer);
+                            break;
+                        }
+                        case 0x0E: // reverse
+                        {
+                            length = 1;
+                            msgbuffer[0] = 0x0E;
+                            i2c_master_send(0x9A, length, msgbuffer);
+                            break;
+                        }
+                    };
 //                    start_i2c_slave_reply(length, msgbuffer);
-//                    break;
-//                };
+                    break;
+                };
                 default:
                 {
                     // Your code should handle this error
@@ -258,7 +297,8 @@ void main(void) {
             if (length != MSGQUEUE_EMPTY) {
                 // Your code should handle this situation
             }
-        } else {
+        }
+        else {
             switch (msgtype) {
                 case MSGT_TIMER1:
                 {
@@ -272,6 +312,7 @@ void main(void) {
                 };
                 case MSGT_UART_DATA:
                 {
+                    
                     last_reg_recvd = msgbuffer[0];
 //                    motor_cmd_right = msgbuffer[1];
 //                    motor_cmd_left = msgbuffer[3];
@@ -346,6 +387,7 @@ void main(void) {
                             break;
                         }
                     };
+//                    DEBUG_OFF(UART_TX);
 //                    uart_lthread(&uthread_data, msgtype, length, msgbuffer);
                     break;
                 };

@@ -10896,11 +10896,11 @@ typedef struct __msg {
 unsigned char full;
 unsigned char length;
 unsigned char msgtype;
-unsigned char data[30];
+unsigned char data[26];
 } msg;
 
 typedef struct __msg_queue {
-msg queue[10];
+msg queue[4];
 unsigned char cur_write_ind;
 unsigned char cur_read_ind;
 } msg_queue;
@@ -10962,8 +10962,8 @@ tptr->msgcount++;
 
 
 if ((tptr->msgcount % 10) == 9) {
+retval = FromMainHigh_sendmsg(sizeof (tptr->msgcount), 20, (void *) &(tptr->msgcount));
 
-retval = FromMainHigh_sendmsg(sizeof (tptr->msgcount), 31, (void *) &(tptr->msgcount));
 if (retval < 0) {
 
 }

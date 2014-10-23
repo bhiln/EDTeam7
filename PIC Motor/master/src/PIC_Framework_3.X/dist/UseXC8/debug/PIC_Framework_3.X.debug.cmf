@@ -11,83 +11,79 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\daduang\AppData\Local\Temp\s35g.obj
+$C:\Users\daduang\AppData\Local\Temp\s3as.obj
 end_init CODE 0 CA CA 4 1
 reset_vec CODE 0 0 0 6 1
 config CONFIG 0 FFF8 FFF8 8 1
 $dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 intcodelo CODE 0 18 18 B2 1
 intcode CODE 0 8 8 10 1
-text58 CODE 0 1E28 1E28 6 1
-text57 CODE 0 1BA2 1BA2 32 1
-text56 CODE 0 1E00 1E00 10 1
-text55 CODE 0 19E6 19E6 3E 1
-text54 CODE 0 1426 1426 94 1
-text53 CODE 0 18D0 18D0 50 1
-text52 CODE 0 C16 C16 11E 1
-text51 CODE 0 1B08 1B08 36 1
-text50 CODE 0 E20 E20 EC 1
-text49 CODE 0 1C5E 1C5E 2E 1
-text48 CODE 0 CE CE 49A 1
-intcode_body CODE 0 15BA 15BA 76 1
-text46 CODE 0 1968 1968 40 1
-text45 CODE 0 FF2 FF2 D2 1
-text44 CODE 0 1CE0 1CE0 28 1
-text43 CODE 0 123C 123C AA 1
-text42 CODE 0 1D52 1D52 24 1
-text41 CODE 0 1DDE 1DDE 12 1
-text40 CODE 0 1920 1920 48 1
-text39 CODE 0 1DCC 1DCC 12 1
-text38 CODE 0 1D2E 1D2E 24 1
-text37 CODE 0 1DBA 1DBA 12 1
-text36 CODE 0 1C8C 1C8C 2C 1
-text35 CODE 0 1D76 1D76 1E 1
-text34 CODE 0 F0C F0C E6 1
-text33 CODE 0 1CB8 1CB8 28 1
-text32 CODE 0 1188 1188 B4 1
-text30 CODE 0 1630 1630 70 1
-text29 CODE 0 1D08 1D08 26 1
-text28 CODE 0 1A60 1A60 3C 1
-text27 CODE 0 1880 1880 50 1
-text26 CODE 0 AF8 AF8 11E 1
-text25 CODE 0 1AD2 1AD2 36 1
-text24 CODE 0 1A9C 1A9C 36 1
-text23 CODE 0 1D94 1D94 14 1
-text22 CODE 0 1B70 1B70 32 1
-text21 CODE 0 1DF0 1DF0 10 1
-text20 CODE 0 19A8 19A8 3E 1
-text19 CODE 0 1A24 1A24 3C 1
-text18 CODE 0 12E6 12E6 A6 1
-text17 CODE 0 1E1E 1E1E A 1
-text16 CODE 0 153A 153A 80 1
-text15 CODE 0 D34 D34 EC 1
-text14 CODE 0 1C30 1C30 2E 1
-text13 CODE 0 138C 138C 9A 1
-text12 CODE 0 16A0 16A0 66 1
-text11 CODE 0 1706 1706 64 1
-text10 CODE 0 14BA 14BA 80 1
-text9 CODE 0 1DA8 1DA8 12 1
-text8 CODE 0 1C02 1C02 2E 1
-text7 CODE 0 1E10 1E10 E 1
-text6 CODE 0 176A 176A 60 1
-text5 CODE 0 17CA 17CA 5E 1
-text4 CODE 0 1B3E 1B3E 32 1
-text3 CODE 0 1BD4 1BD4 2E 1
-text2 CODE 0 10C4 10C4 C4 1
-text1 CODE 0 95E 95E 19A 1
-text0 CODE 0 568 568 3F6 1
+text57 CODE 0 1D8A 1D8A 6 1
+text56 CODE 0 1B0E 1B0E 32 1
+text55 CODE 0 1D62 1D62 10 1
+text54 CODE 0 1952 1952 3E 1
+text53 CODE 0 13AC 13AC 94 1
+text52 CODE 0 17FE 17FE 50 1
+text51 CODE 0 C82 C82 11E 1
+text50 CODE 0 1A74 1A74 36 1
+text49 CODE 0 E8C E8C EC 1
+text48 CODE 0 1BCA 1BCA 2E 1
+text47 CODE 0 CE CE 49A 1
+intcode_body CODE 0 1540 1540 76 1
+text45 CODE 0 1896 1896 40 1
+text44 CODE 0 F78 F78 D2 1
+text43 CODE 0 1C20 1C20 28 1
+text42 CODE 0 11C2 11C2 AA 1
+text41 CODE 0 1CB8 1CB8 24 1
+text40 CODE 0 1D40 1D40 12 1
+text39 CODE 0 184E 184E 48 1
+text38 CODE 0 1D2E 1D2E 12 1
+text37 CODE 0 1D1C 1D1C 12 1
+text36 CODE 0 1CDC 1CDC 1A 1
+text35 CODE 0 1C94 1C94 24 1
+text34 CODE 0 1C6E 1C6E 26 1
+text33 CODE 0 1BF8 1BF8 28 1
+text32 CODE 0 110E 110E B4 1
+text30 CODE 0 15B6 15B6 70 1
+text29 CODE 0 1C48 1C48 26 1
+text28 CODE 0 19CC 19CC 3C 1
+text27 CODE 0 17AE 17AE 50 1
+text26 CODE 0 B64 B64 11E 1
+text25 CODE 0 1A3E 1A3E 36 1
+text24 CODE 0 1A08 1A08 36 1
+text23 CODE 0 1CF6 1CF6 14 1
+text22 CODE 0 1ADC 1ADC 32 1
+text21 CODE 0 1D52 1D52 10 1
+text20 CODE 0 1914 1914 3E 1
+text19 CODE 0 1990 1990 3C 1
+text18 CODE 0 126C 126C A6 1
+text17 CODE 0 1D80 1D80 A 1
+text16 CODE 0 14C0 14C0 80 1
+text15 CODE 0 DA0 DA0 EC 1
+text14 CODE 0 1B9C 1B9C 2E 1
+text13 CODE 0 1312 1312 9A 1
+text12 CODE 0 1626 1626 66 1
+text11 CODE 0 168C 168C 64 1
+text10 CODE 0 1440 1440 80 1
+text9 CODE 0 1D0A 1D0A 12 1
+text8 CODE 0 1B6E 1B6E 2E 1
+text7 CODE 0 1D72 1D72 E 1
+text6 CODE 0 16F0 16F0 60 1
+text5 CODE 0 1750 1750 5E 1
+text4 CODE 0 1AAA 1AAA 32 1
+text3 CODE 0 1B40 1B40 2E 1
+text2 CODE 0 104A 104A C4 1
+text1 CODE 0 9CA 9CA 19A 1
+text0 CODE 0 568 568 462 1
 cstackCOMRAM COMRAM 1 1 1 34 1
 cstackBANK0 BANK0 1 60 60 53 1
-cstackBANK1 BANK1 1 100 100 B9 1
-bssBANK7 BANK7 1 700 700 86 1
-bssBANK6 BANK6 1 600 600 86 1
-bssBANK5 BANK5 1 500 500 86 1
-bssBANK4 BANK4 1 400 400 86 1
-bssBANK3 BANK3 1 300 300 86 1
-bssBANK2 BANK2 1 200 200 86 1
+cstackBANK1 BANK1 1 100 100 81 1
+bssBANK4 BANK4 1 400 400 76 1
+bssBANK3 BANK3 1 300 300 EC 1
+bssBANK2 BANK2 1 200 200 EC 1
+bssBANK1 BANK1 1 181 181 76 1
 bssBANK0 BANK0 1 B5 B5 1 1
-bssCOMRAM COMRAM 1 37 37 1 1
-cinit CODE 0 1828 1828 58 1
+cinit CODE 0 18D6 18D6 3E 1
 nvBANK0 BANK0 1 B3 B3 2 1
 nvCOMRAM COMRAM 1 35 35 2 1
 # %UNUSED Section
@@ -97,46 +93,40 @@ nvCOMRAM COMRAM 1 35 35 2 1
 # Addresses given in the range are in hexadecimal and units of delta.
 %UNUSED
 BANK0 000B6-000FF 1
-BANK1 001B9-001FF 1
+BANK1 001F7-001FF 1
 BANK10 00A00-00AFF 1
 BANK11 00B00-00BFF 1
 BANK12 00C00-00CFF 1
 BANK13 00D00-00DFF 1
 BANK14 00E00-00EBF 1
-BANK2 00286-002FF 1
-BANK3 00386-003FF 1
-BANK4 00486-004FF 1
-BANK5 00586-005FF 1
-BANK6 00686-006FF 1
-BANK7 00786-007FF 1
+BANK2 002EC-002FF 1
+BANK3 003EC-003FF 1
+BANK4 00476-004FF 1
+BANK5 00500-005FF 1
+BANK6 00600-006FF 1
+BANK7 00700-007FF 1
 BANK8 00800-008FF 1
 BANK9 00900-009FF 1
-BIGRAM 00038-0005F 1
+BIGRAM 00037-0005F 1
 BIGRAM 000B6-000FF 1
-BIGRAM 001B9-001FF 1
-BIGRAM 00286-002FF 1
-BIGRAM 00386-003FF 1
-BIGRAM 00486-004FF 1
-BIGRAM 00586-005FF 1
-BIGRAM 00686-006FF 1
-BIGRAM 00786-00EBF 1
+BIGRAM 001F7-001FF 1
+BIGRAM 002EC-002FF 1
+BIGRAM 003EC-003FF 1
+BIGRAM 00476-00EBF 1
 CODE 00006-00007 1
-CODE 01E2E-0FFF7 1
-COMRAM 00038-0005F 1
+CODE 01D90-0FFF7 1
+COMRAM 00037-0005F 1
 CONST 00006-00007 1
-CONST 01E2E-0FFF7 1
-MEDIUMCONST 01E2E-0FFF7 1
+CONST 01D90-0FFF7 1
+MEDIUMCONST 01D90-0FFF7 1
 RAM 000B6-000FF 1
-RAM 001B9-001FF 1
-RAM 00286-002FF 1
-RAM 00386-003FF 1
-RAM 00486-004FF 1
-RAM 00586-005FF 1
-RAM 00686-006FF 1
-RAM 00786-00EBF 1
+RAM 001F7-001FF 1
+RAM 002EC-002FF 1
+RAM 003EC-003FF 1
+RAM 00476-00EBF 1
 SFR 00EC0-00FFC 1
-SMALLCONST 01E2E-0FFF7 1
-STACK 00A00-00EBF 1
+SMALLCONST 01D90-0FFF7 1
+STACK 00476-009FF 1
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -167,69 +157,69 @@ $dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 "C:\master\src/src/interrupts.c":138 7A intcodelo CODE
 "C:\master\src/src/interrupts.c":139 80 intcodelo CODE
 "C:\master\src/src/interrupts.c":141 84 intcodelo CODE
-"C:\master\src/src/my_i2c.c":140 CE text48 CODE
-"C:\master\src/src/my_i2c.c":143 CE text48 CODE
-"C:\master\src/src/my_i2c.c":163 D0 text48 CODE
-"C:\master\src/src/my_i2c.c":164 12E text48 CODE
-"C:\master\src/src/my_i2c.c":165 144 text48 CODE
-"C:\master\src/src/my_i2c.c":166 162 text48 CODE
-"C:\master\src/src/my_i2c.c":167 164 text48 CODE
-"C:\master\src/src/my_i2c.c":168 17A text48 CODE
-"C:\master\src/src/my_i2c.c":172 17E text48 CODE
-"C:\master\src/src/my_i2c.c":175 17E text48 CODE
-"C:\master\src/src/my_i2c.c":176 182 text48 CODE
-"C:\master\src/src/my_i2c.c":177 198 text48 CODE
-"C:\master\src/src/my_i2c.c":178 19A text48 CODE
-"C:\master\src/src/my_i2c.c":179 19C text48 CODE
-"C:\master\src/src/my_i2c.c":180 19E text48 CODE
-"C:\master\src/src/my_i2c.c":181 1B4 text48 CODE
-"C:\master\src/src/my_i2c.c":182 1CC text48 CODE
-"C:\master\src/src/my_i2c.c":189 1D0 text48 CODE
-"C:\master\src/src/my_i2c.c":190 22A text48 CODE
-"C:\master\src/src/my_i2c.c":191 240 text48 CODE
-"C:\master\src/src/my_i2c.c":192 272 text48 CODE
-"C:\master\src/src/my_i2c.c":193 286 text48 CODE
-"C:\master\src/src/my_i2c.c":194 288 text48 CODE
-"C:\master\src/src/my_i2c.c":195 28A text48 CODE
-"C:\master\src/src/my_i2c.c":196 28C text48 CODE
-"C:\master\src/src/my_i2c.c":197 28E text48 CODE
-"C:\master\src/src/my_i2c.c":198 2A4 text48 CODE
-"C:\master\src/src/my_i2c.c":199 2A6 text48 CODE
-"C:\master\src/src/my_i2c.c":200 2A8 text48 CODE
-"C:\master\src/src/my_i2c.c":207 2AC text48 CODE
-"C:\master\src/src/my_i2c.c":208 2C2 text48 CODE
-"C:\master\src/src/my_i2c.c":209 2C4 text48 CODE
-"C:\master\src/src/my_i2c.c":210 2C6 text48 CODE
-"C:\master\src/src/my_i2c.c":215 2C8 text48 CODE
-"C:\master\src/src/my_i2c.c":216 2DE text48 CODE
-"C:\master\src/src/my_i2c.c":217 308 text48 CODE
-"C:\master\src/src/my_i2c.c":218 30A text48 CODE
-"C:\master\src/src/my_i2c.c":227 30C text48 CODE
-"C:\master\src/src/my_i2c.c":228 322 text48 CODE
-"C:\master\src/src/my_i2c.c":229 338 text48 CODE
-"C:\master\src/src/my_i2c.c":231 33A text48 CODE
-"C:\master\src/src/my_i2c.c":234 33A text48 CODE
-"C:\master\src/src/my_i2c.c":235 33E text48 CODE
-"C:\master\src/src/my_i2c.c":236 340 text48 CODE
-"C:\master\src/src/my_i2c.c":237 378 text48 CODE
-"C:\master\src/src/my_i2c.c":238 3AC text48 CODE
-"C:\master\src/src/my_i2c.c":239 3C2 text48 CODE
-"C:\master\src/src/my_i2c.c":240 3D6 text48 CODE
-"C:\master\src/src/my_i2c.c":241 412 text48 CODE
-"C:\master\src/src/my_i2c.c":242 43E text48 CODE
-"C:\master\src/src/my_i2c.c":243 456 text48 CODE
-"C:\master\src/src/my_i2c.c":244 46C text48 CODE
-"C:\master\src/src/my_i2c.c":245 482 text48 CODE
-"C:\master\src/src/my_i2c.c":246 484 text48 CODE
-"C:\master\src/src/my_i2c.c":247 486 text48 CODE
-"C:\master\src/src/my_i2c.c":248 4B8 text48 CODE
-"C:\master\src/src/my_i2c.c":249 4CE text48 CODE
-"C:\master\src/src/my_i2c.c":250 4D0 text48 CODE
-"C:\master\src/src/my_i2c.c":253 4D4 text48 CODE
-"C:\master\src/src/my_i2c.c":254 506 text48 CODE
-"C:\master\src/src/my_i2c.c":255 51C text48 CODE
-"C:\master\src/src/my_i2c.c":256 51E text48 CODE
-"C:\master\src/src/my_i2c.c":143 522 text48 CODE
+"C:\master\src/src/my_i2c.c":140 CE text47 CODE
+"C:\master\src/src/my_i2c.c":143 CE text47 CODE
+"C:\master\src/src/my_i2c.c":163 D0 text47 CODE
+"C:\master\src/src/my_i2c.c":164 12E text47 CODE
+"C:\master\src/src/my_i2c.c":165 144 text47 CODE
+"C:\master\src/src/my_i2c.c":166 162 text47 CODE
+"C:\master\src/src/my_i2c.c":167 164 text47 CODE
+"C:\master\src/src/my_i2c.c":168 17A text47 CODE
+"C:\master\src/src/my_i2c.c":172 17E text47 CODE
+"C:\master\src/src/my_i2c.c":175 17E text47 CODE
+"C:\master\src/src/my_i2c.c":176 182 text47 CODE
+"C:\master\src/src/my_i2c.c":177 198 text47 CODE
+"C:\master\src/src/my_i2c.c":178 19A text47 CODE
+"C:\master\src/src/my_i2c.c":179 19C text47 CODE
+"C:\master\src/src/my_i2c.c":180 19E text47 CODE
+"C:\master\src/src/my_i2c.c":181 1B4 text47 CODE
+"C:\master\src/src/my_i2c.c":182 1CC text47 CODE
+"C:\master\src/src/my_i2c.c":190 1D0 text47 CODE
+"C:\master\src/src/my_i2c.c":191 22A text47 CODE
+"C:\master\src/src/my_i2c.c":192 240 text47 CODE
+"C:\master\src/src/my_i2c.c":193 272 text47 CODE
+"C:\master\src/src/my_i2c.c":194 286 text47 CODE
+"C:\master\src/src/my_i2c.c":195 288 text47 CODE
+"C:\master\src/src/my_i2c.c":196 28A text47 CODE
+"C:\master\src/src/my_i2c.c":197 28C text47 CODE
+"C:\master\src/src/my_i2c.c":198 28E text47 CODE
+"C:\master\src/src/my_i2c.c":199 2A4 text47 CODE
+"C:\master\src/src/my_i2c.c":200 2A6 text47 CODE
+"C:\master\src/src/my_i2c.c":201 2A8 text47 CODE
+"C:\master\src/src/my_i2c.c":208 2AC text47 CODE
+"C:\master\src/src/my_i2c.c":209 2C2 text47 CODE
+"C:\master\src/src/my_i2c.c":210 2C4 text47 CODE
+"C:\master\src/src/my_i2c.c":211 2C6 text47 CODE
+"C:\master\src/src/my_i2c.c":216 2C8 text47 CODE
+"C:\master\src/src/my_i2c.c":217 2DE text47 CODE
+"C:\master\src/src/my_i2c.c":218 308 text47 CODE
+"C:\master\src/src/my_i2c.c":219 30A text47 CODE
+"C:\master\src/src/my_i2c.c":228 30C text47 CODE
+"C:\master\src/src/my_i2c.c":229 322 text47 CODE
+"C:\master\src/src/my_i2c.c":230 338 text47 CODE
+"C:\master\src/src/my_i2c.c":232 33A text47 CODE
+"C:\master\src/src/my_i2c.c":235 33A text47 CODE
+"C:\master\src/src/my_i2c.c":236 33E text47 CODE
+"C:\master\src/src/my_i2c.c":237 340 text47 CODE
+"C:\master\src/src/my_i2c.c":238 378 text47 CODE
+"C:\master\src/src/my_i2c.c":239 3AC text47 CODE
+"C:\master\src/src/my_i2c.c":240 3C2 text47 CODE
+"C:\master\src/src/my_i2c.c":241 3D6 text47 CODE
+"C:\master\src/src/my_i2c.c":242 412 text47 CODE
+"C:\master\src/src/my_i2c.c":243 43E text47 CODE
+"C:\master\src/src/my_i2c.c":244 456 text47 CODE
+"C:\master\src/src/my_i2c.c":245 46C text47 CODE
+"C:\master\src/src/my_i2c.c":246 482 text47 CODE
+"C:\master\src/src/my_i2c.c":247 484 text47 CODE
+"C:\master\src/src/my_i2c.c":248 486 text47 CODE
+"C:\master\src/src/my_i2c.c":249 4B8 text47 CODE
+"C:\master\src/src/my_i2c.c":250 4CE text47 CODE
+"C:\master\src/src/my_i2c.c":251 4D0 text47 CODE
+"C:\master\src/src/my_i2c.c":254 4D4 text47 CODE
+"C:\master\src/src/my_i2c.c":255 506 text47 CODE
+"C:\master\src/src/my_i2c.c":256 51C text47 CODE
+"C:\master\src/src/my_i2c.c":257 51E text47 CODE
+"C:\master\src/src/my_i2c.c":143 522 text47 CODE
 "C:\master\src/src/main.c":71 568 text0 CODE
 "C:\master\src/src/main.c":86 568 text0 CODE
 "C:\master\src/src/main.c":87 56C text0 CODE
@@ -273,538 +263,519 @@ $dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 "C:\master\src/src/main.c":167 63C text0 CODE
 "C:\master\src/src/main.c":168 642 text0 CODE
 "C:\master\src/src/main.c":169 648 text0 CODE
-"C:\master\src/src/main.c":170 64E text0 CODE
-"C:\master\src/src/main.c":173 652 text0 CODE
-"C:\master\src/src/main.c":174 658 text0 CODE
-"C:\master\src/src/main.c":175 65E text0 CODE
-"C:\master\src/src/main.c":176 664 text0 CODE
-"C:\master\src/src/main.c":177 66A text0 CODE
-"C:\master\src/src/main.c":178 670 text0 CODE
-"C:\master\src/src/main.c":181 674 text0 CODE
-"C:\master\src/src/main.c":185 67A text0 CODE
-"C:\master\src/src/main.c":190 696 text0 CODE
-"C:\master\src/src/main.c":200 698 text0 CODE
-"C:\master\src/src/main.c":207 69C text0 CODE
-"C:\master\src/src/main.c":208 6C6 text0 CODE
-"C:\master\src/src/main.c":215 6CE text0 CODE
-"C:\master\src/src/main.c":217 6CE text0 CODE
-"C:\master\src/src/main.c":220 6D0 text0 CODE
-"C:\master\src/src/main.c":221 712 text0 CODE
-"C:\master\src/src/main.c":222 714 text0 CODE
-"C:\master\src/src/main.c":225 716 text0 CODE
-"C:\master\src/src/main.c":229 716 text0 CODE
-"C:\master\src/src/main.c":230 71A text0 CODE
-"C:\master\src/src/main.c":246 71C text0 CODE
-"C:\master\src/src/main.c":247 734 text0 CODE
-"C:\master\src/src/main.c":214 736 text0 CODE
-"C:\master\src/src/main.c":263 75E text0 CODE
-"C:\master\src/src/main.c":264 788 text0 CODE
-"C:\master\src/src/main.c":273 790 text0 CODE
-"C:\master\src/src/main.c":274 7D2 text0 CODE
-"C:\master\src/src/main.c":278 7D4 text0 CODE
-"C:\master\src/src/main.c":279 816 text0 CODE
-"C:\master\src/src/main.c":281 818 text0 CODE
-"C:\master\src/src/main.c":283 818 text0 CODE
-"C:\master\src/src/main.c":284 81C text0 CODE
-"C:\master\src/src/main.c":286 820 text0 CODE
-"C:\master\src/src/main.c":287 834 text0 CODE
-"C:\master\src/src/main.c":288 83A text0 CODE
-"C:\master\src/src/main.c":289 840 text0 CODE
-"C:\master\src/src/main.c":290 85A text0 CODE
-"C:\master\src/src/main.c":292 85C text0 CODE
-"C:\master\src/src/main.c":293 870 text0 CODE
-"C:\master\src/src/main.c":294 876 text0 CODE
-"C:\master\src/src/main.c":295 87C text0 CODE
-"C:\master\src/src/main.c":296 896 text0 CODE
-"C:\master\src/src/main.c":298 898 text0 CODE
-"C:\master\src/src/main.c":299 8AC text0 CODE
-"C:\master\src/src/main.c":300 8B2 text0 CODE
-"C:\master\src/src/main.c":301 8B8 text0 CODE
-"C:\master\src/src/main.c":302 8D2 text0 CODE
-"C:\master\src/src/main.c":304 8D4 text0 CODE
-"C:\master\src/src/main.c":305 8E2 text0 CODE
-"C:\master\src/src/main.c":306 8E8 text0 CODE
-"C:\master\src/src/main.c":307 8EE text0 CODE
-"C:\master\src/src/main.c":308 908 text0 CODE
-"C:\master\src/src/main.c":310 90A text0 CODE
-"C:\master\src/src/main.c":311 91E text0 CODE
-"C:\master\src/src/main.c":312 924 text0 CODE
-"C:\master\src/src/main.c":313 92A text0 CODE
-"C:\master\src/src/main.c":314 944 text0 CODE
-"C:\master\src/src/main.c":270 946 text0 CODE
-"C:\master\src/src/my_uart.c":90 95E text1 CODE
-"C:\master\src/src/my_uart.c":91 962 text1 CODE
-"C:\master\src/src/my_uart.c":92 964 text1 CODE
-"C:\master\src/src/my_uart.c":94 96E text1 CODE
-"C:\master\src/src/my_uart.c":95 97E text1 CODE
-"C:\master\src/src/my_uart.c":96 990 text1 CODE
-"C:\master\src/src/my_uart.c":97 9CA text1 CODE
-"C:\master\src/src/my_uart.c":98 9E0 text1 CODE
-"C:\master\src/src/my_uart.c":99 9F6 text1 CODE
-"C:\master\src/src/my_uart.c":100 A1A text1 CODE
-"C:\master\src/src/my_uart.c":101 A28 text1 CODE
-"C:\master\src/src/my_uart.c":102 A2A text1 CODE
-"C:\master\src/src/my_uart.c":103 A2C text1 CODE
-"C:\master\src/src/my_uart.c":105 A38 text1 CODE
-"C:\master\src/src/my_uart.c":106 A48 text1 CODE
-"C:\master\src/src/my_uart.c":107 A5A text1 CODE
-"C:\master\src/src/my_uart.c":108 A94 text1 CODE
-"C:\master\src/src/my_uart.c":109 AAA text1 CODE
-"C:\master\src/src/my_uart.c":110 AC0 text1 CODE
-"C:\master\src/src/my_uart.c":111 AE4 text1 CODE
-"C:\master\src/src/my_uart.c":112 AF2 text1 CODE
-"C:\master\src/src/my_uart.c":113 AF4 text1 CODE
-"C:\master\src/src/messages.c":63 AF8 text26 CODE
-"C:\master\src/src/messages.c":72 AF8 text26 CODE
-"C:\master\src/src/messages.c":73 B10 text26 CODE
-"C:\master\src/src/messages.c":74 B2A text26 CODE
-"C:\master\src/src/messages.c":76 B38 text26 CODE
-"C:\master\src/src/messages.c":77 B54 text26 CODE
-"C:\master\src/src/messages.c":80 B58 text26 CODE
-"C:\master\src/src/messages.c":81 B7C text26 CODE
-"C:\master\src/src/messages.c":87 BB0 text26 CODE
-"C:\master\src/src/messages.c":89 BE2 text26 CODE
-"C:\master\src/src/messages.c":91 C00 text26 CODE
-"C:\master\src/src/messages.c":92 C0C text26 CODE
-"C:\master\src/src/messages.c":94 C12 text26 CODE
-"C:\master\src/src/messages.c":63 C16 text52 CODE
-"C:\master\src/src/messages.c":72 C16 text52 CODE
-"C:\master\src/src/messages.c":73 C2E text52 CODE
-"C:\master\src/src/messages.c":74 C48 text52 CODE
-"C:\master\src/src/messages.c":76 C56 text52 CODE
-"C:\master\src/src/messages.c":77 C72 text52 CODE
-"C:\master\src/src/messages.c":80 C76 text52 CODE
-"C:\master\src/src/messages.c":81 C9A text52 CODE
-"C:\master\src/src/messages.c":87 CCE text52 CODE
-"C:\master\src/src/messages.c":89 D00 text52 CODE
-"C:\master\src/src/messages.c":91 D1E text52 CODE
-"C:\master\src/src/messages.c":92 D2A text52 CODE
-"C:\master\src/src/messages.c":94 D30 text52 CODE
-"C:\master\src/src/messages.c":24 D34 text15 CODE
-"C:\master\src/src/messages.c":28 D34 text15 CODE
-"C:\master\src/src/messages.c":38 D3E text15 CODE
-"C:\master\src/src/messages.c":39 D56 text15 CODE
-"C:\master\src/src/messages.c":41 D70 text15 CODE
-"C:\master\src/src/messages.c":42 D7E text15 CODE
-"C:\master\src/src/messages.c":46 D82 text15 CODE
-"C:\master\src/src/messages.c":47 D9A text15 CODE
-"C:\master\src/src/messages.c":55 DB2 text15 CODE
-"C:\master\src/src/messages.c":56 DDE text15 CODE
-"C:\master\src/src/messages.c":59 E10 text15 CODE
-"C:\master\src/src/messages.c":60 E1C text15 CODE
-"C:\master\src/src/messages.c":24 E20 text50 CODE
-"C:\master\src/src/messages.c":28 E20 text50 CODE
-"C:\master\src/src/messages.c":38 E2A text50 CODE
-"C:\master\src/src/messages.c":39 E42 text50 CODE
-"C:\master\src/src/messages.c":41 E5C text50 CODE
-"C:\master\src/src/messages.c":42 E6A text50 CODE
-"C:\master\src/src/messages.c":46 E6E text50 CODE
-"C:\master\src/src/messages.c":47 E86 text50 CODE
-"C:\master\src/src/messages.c":55 E9E text50 CODE
-"C:\master\src/src/messages.c":56 ECA text50 CODE
-"C:\master\src/src/messages.c":59 EFC text50 CODE
-"C:\master\src/src/messages.c":60 F08 text50 CODE
-"C:\master\src/src/my_uart.c":12 F0C text34 CODE
-"C:\master\src/src/my_uart.c":14 F0C text34 CODE
-"C:\master\src/src/my_uart.c":15 F10 text34 CODE
-"C:\master\src/src/my_uart.c":17 F36 text34 CODE
-"C:\master\src/src/my_uart.c":19 F44 text34 CODE
-"C:\master\src/src/my_uart.c":22 F8A text34 CODE
-"C:\master\src/src/my_uart.c":23 FA8 text34 CODE
-"C:\master\src/src/my_uart.c":43 FB8 text34 CODE
-"C:\master\src/src/my_uart.c":47 FD6 text34 CODE
-"C:\master\src/src/my_uart.c":50 FDA text34 CODE
-"C:\master\src/src/my_uart.c":51 FDC text34 CODE
-"C:\master\src/src/my_uart.c":52 FDE text34 CODE
-"C:\master\src/src/messages.c":63 FF2 text45 CODE
-"C:\master\src/src/messages.c":72 FF2 text45 CODE
-"C:\master\src/src/messages.c":73 1002 text45 CODE
-"C:\master\src/src/messages.c":74 1012 text45 CODE
-"C:\master\src/src/messages.c":76 1020 text45 CODE
-"C:\master\src/src/messages.c":77 1034 text45 CODE
-"C:\master\src/src/messages.c":80 1038 text45 CODE
-"C:\master\src/src/messages.c":81 104E text45 CODE
-"C:\master\src/src/messages.c":87 1076 text45 CODE
-"C:\master\src/src/messages.c":89 1098 text45 CODE
-"C:\master\src/src/messages.c":91 10B0 text45 CODE
-"C:\master\src/src/messages.c":92 10BC text45 CODE
-"C:\master\src/src/messages.c":94 10C0 text45 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":8 10C4 text2 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":13 10C4 text2 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":14 10CA text2 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":15 10E0 text2 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":16 10EC text2 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":18 10F2 text2 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":19 1108 text2 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":20 1114 text2 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":21 111E text2 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":22 1124 text2 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":23 1126 text2 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":24 112E text2 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":22 1132 text2 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":27 1138 text2 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":28 114C text2 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":29 115C text2 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":30 1164 text2 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":32 116A text2 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":33 1172 text2 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":34 117E text2 CODE
-"C:\master\src/src/my_uart.c":56 1188 text32 CODE
-"C:\master\src/src/my_uart.c":57 1188 text32 CODE
-"C:\master\src/src/my_uart.c":59 118A text32 CODE
-"C:\master\src/src/my_uart.c":70 119E text32 CODE
-"C:\master\src/src/my_uart.c":71 11C4 text32 CODE
-"C:\master\src/src/my_uart.c":72 11C8 text32 CODE
-"C:\master\src/src/my_uart.c":73 11EC text32 CODE
-"C:\master\src/src/my_uart.c":74 11FA text32 CODE
-"C:\master\src/src/my_uart.c":75 1224 text32 CODE
-"C:\master\src/src/my_uart.c":76 1226 text32 CODE
-"C:\master\src/src/my_uart.c":77 1236 text32 CODE
-"C:\master\src/src/my_uart.c":81 1238 text32 CODE
-"C:\master\src/src/my_uart.c":82 123A text32 CODE
-"C:\master\src/src/messages.c":24 123C text43 CODE
-"C:\master\src/src/messages.c":28 123C text43 CODE
-"C:\master\src/src/messages.c":38 1242 text43 CODE
-"C:\master\src/src/messages.c":39 1252 text43 CODE
-"C:\master\src/src/messages.c":41 1262 text43 CODE
-"C:\master\src/src/messages.c":42 1270 text43 CODE
-"C:\master\src/src/messages.c":46 1274 text43 CODE
-"C:\master\src/src/messages.c":47 1284 text43 CODE
-"C:\master\src/src/messages.c":55 1294 text43 CODE
-"C:\master\src/src/messages.c":56 12B4 text43 CODE
-"C:\master\src/src/messages.c":59 12D6 text43 CODE
-"C:\master\src/src/messages.c":60 12E2 text43 CODE
-"C:\master\src/src/messages.c":312 12E6 text18 CODE
-"C:\master\src/src/messages.c":313 12E6 text18 CODE
-"C:\master\src/src/messages.c":319 12F6 text18 CODE
-"C:\master\src/src/messages.c":321 12FC text18 CODE
-"C:\master\src/src/messages.c":322 1316 text18 CODE
-"C:\master\src/src/messages.c":328 131E text18 CODE
-"C:\master\src/src/messages.c":329 1338 text18 CODE
-"C:\master\src/src/messages.c":335 1340 text18 CODE
-"C:\master\src/src/messages.c":336 135A text18 CODE
-"C:\master\src/src/messages.c":342 1362 text18 CODE
-"C:\master\src/src/messages.c":343 137C text18 CODE
-"C:\master\src/src/messages.c":349 1384 text18 CODE
-"C:\master\src/src/my_i2c.c":50 138C text13 CODE
-"C:\master\src/src/my_i2c.c":52 1390 text13 CODE
-"C:\master\src/src/my_i2c.c":55 1394 text13 CODE
-"C:\master\src/src/my_i2c.c":56 13AC text13 CODE
-"C:\master\src/src/my_i2c.c":57 13C4 text13 CODE
-"C:\master\src/src/my_i2c.c":58 13DA text13 CODE
-"C:\master\src/src/my_i2c.c":59 13F4 text13 CODE
-"C:\master\src/src/my_i2c.c":60 140A text13 CODE
-"C:\master\src/src/my_i2c.c":61 1422 text13 CODE
-"C:\master\src/src/messages.c":276 1426 text54 CODE
-"C:\master\src/src/messages.c":278 1426 text54 CODE
-"C:\master\src/src/messages.c":283 142E text54 CODE
-"C:\master\src/src/messages.c":288 143E text54 CODE
-"C:\master\src/src/messages.c":295 144E text54 CODE
-"C:\master\src/src/messages.c":298 1468 text54 CODE
-"C:\master\src/src/messages.c":301 1482 text54 CODE
-"C:\master\src/src/messages.c":304 149C text54 CODE
-"C:\master\src/src/messages.c":307 14B4 text54 CODE
-"C:\master\src/src/messages.c":308 14B8 text54 CODE
-"C:\master\src/src/messages.c":242 14BA text10 CODE
-"C:\master\src/src/messages.c":243 14BA text10 CODE
-"C:\master\src/src/messages.c":244 14C0 text10 CODE
-"C:\master\src/src/messages.c":245 14D4 text10 CODE
-"C:\master\src/src/messages.c":246 14E8 text10 CODE
-"C:\master\src/src/messages.c":247 14FC text10 CODE
-"C:\master\src/src/messages.c":248 1510 text10 CODE
-"C:\master\src/src/messages.c":249 1524 text10 CODE
-"C:\master\src/src/messages.c":250 1538 text10 CODE
-"C:\master\src/src/my_i2c.c":16 153A text16 CODE
-"C:\master\src/src/my_i2c.c":18 153E text16 CODE
-"C:\master\src/src/my_i2c.c":19 1554 text16 CODE
-"C:\master\src/src/my_i2c.c":20 1558 text16 CODE
-"C:\master\src/src/my_i2c.c":21 155C text16 CODE
-"C:\master\src/src/my_i2c.c":22 1560 text16 CODE
-"C:\master\src/src/my_i2c.c":24 1564 text16 CODE
-"C:\master\src/src/my_i2c.c":25 1566 text16 CODE
-"C:\master\src/src/my_i2c.c":27 1568 text16 CODE
-"C:\master\src/src/my_i2c.c":28 156A text16 CODE
-"C:\master\src/src/my_i2c.c":29 156C text16 CODE
-"C:\master\src/src/my_i2c.c":31 1570 text16 CODE
-"C:\master\src/src/my_i2c.c":32 1588 text16 CODE
-"C:\master\src/src/my_i2c.c":33 15A0 text16 CODE
-"C:\master\src/src/my_i2c.c":35 15B6 text16 CODE
-"C:\master\src/src/my_i2c.c":36 15B8 text16 CODE
-"C:\master\src/src/interrupts.c":85 15BA intcode_body CODE
-"C:\master\src/src/interrupts.c":90 15E6 intcode_body CODE
-"C:\master\src/src/interrupts.c":92 15EC intcode_body CODE
-"C:\master\src/src/interrupts.c":94 15EE intcode_body CODE
-"C:\master\src/src/interrupts.c":104 15F2 intcode_body CODE
-"C:\master\src/src/interrupts.c":105 15F6 intcode_body CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":124 1630 text30 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":126 1634 text30 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":127 1638 text30 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":129 163C text30 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":130 1640 text30 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":132 1642 text30 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":134 1648 text30 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":135 164A text30 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":138 164C text30 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":139 1650 text30 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":141 1652 text30 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":142 1658 text30 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":143 165C text30 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":144 165C text30 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":146 165E text30 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":147 1662 text30 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":149 1664 text30 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":150 1668 text30 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":154 166A text30 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":155 1670 text30 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":156 1674 text30 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":157 1674 text30 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":159 1676 text30 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":160 167C text30 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":161 1680 text30 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":162 1680 text30 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":164 1682 text30 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":165 1686 text30 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":167 169A text30 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":168 169C text30 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":169 169E text30 CODE
-"C:\master\src/src/my_i2c.c":276 16A0 text12 CODE
-"C:\master\src/src/my_i2c.c":277 16A0 text12 CODE
-"C:\master\src/src/my_i2c.c":278 16AC text12 CODE
-"C:\master\src/src/my_i2c.c":279 16C2 text12 CODE
-"C:\master\src/src/my_i2c.c":280 16D8 text12 CODE
-"C:\master\src/src/my_i2c.c":281 16EE text12 CODE
-"C:\master\src/src/my_i2c.c":282 1704 text12 CODE
-"C:\master\src/src/messages.c":14 1706 text11 CODE
-"C:\master\src/src/messages.c":17 1706 text11 CODE
-"C:\master\src/src/messages.c":18 171C text11 CODE
-"C:\master\src/src/messages.c":19 1732 text11 CODE
-"C:\master\src/src/messages.c":20 1742 text11 CODE
-"C:\master\src/src/messages.c":19 175C text11 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":8 176A text6 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":13 176A text6 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":14 1774 text6 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":15 177A text6 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":16 177C text6 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":17 1784 text6 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":15 1788 text6 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":20 178E text6 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":21 17A2 text6 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":22 17B2 text6 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":23 17BA text6 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":24 17C0 text6 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":25 17C0 text6 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":26 17C8 text6 CODE
-"C:\master\src/src/timer1_thread.c":14 17CA text5 CODE
-"C:\master\src/src/timer1_thread.c":17 17CA text5 CODE
-"C:\master\src/src/timer1_thread.c":20 17D8 text5 CODE
-"C:\master\src/src/timer1_thread.c":22 180A text5 CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5474 1828 cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5476 1828 cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5479 1828 cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5525 1828 cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5526 182C cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5527 182E cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5528 182E cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5529 1830 cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5530 1832 cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5533 1834 cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5534 1838 cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5535 183A cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5536 183A cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5537 183C cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5538 183E cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5541 1840 cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5542 1844 cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5543 1846 cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5544 1846 cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5545 1848 cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5546 184A cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5549 184C cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5550 1850 cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5551 1852 cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5552 1852 cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5553 1854 cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5554 1856 cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5557 1858 cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5558 185C cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5559 185E cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5560 185E cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5561 1860 cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5562 1862 cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5565 1864 cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5566 1868 cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5567 186A cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5568 186A cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5569 186C cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5570 186E cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5573 1870 cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5574 1872 cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5577 1874 cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5583 1876 cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5585 1876 cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5586 1878 cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5587 187A cinit CODE
-"C:\Users\daduang\AppData\Local\Temp\s35g.":5588 187C cinit CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":11 1880 text27 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":24 1880 text27 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":25 188C text27 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":26 1898 text27 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":27 189A text27 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":26 18BA text27 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":32 18CC text27 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":26 18CE text27 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":11 18D0 text53 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":24 18D0 text53 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":25 18DC text53 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":26 18E8 text53 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":27 18EA text53 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":26 190A text53 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":32 191C text53 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":26 191E text53 CODE
-"C:\master\src/src/user_interrupts.c":17 1920 text40 CODE
-"C:\master\src/src/user_interrupts.c":22 1920 text40 CODE
-"C:\master\src/src/user_interrupts.c":24 192C text40 CODE
-"C:\master\src/src/user_interrupts.c":25 194A text40 CODE
-"C:\master\src/src/user_interrupts.c":26 1954 text40 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":11 1968 text46 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":24 1968 text46 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":25 1970 text46 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":26 1978 text46 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":27 197A text46 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":26 1996 text46 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":32 19A4 text46 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":26 19A6 text46 CODE
-"C:\master\src/src/interrupts.c":32 19A8 text20 CODE
-"C:\master\src/src/interrupts.c":33 19A8 text20 CODE
-"C:\master\src/src/interrupts.c":34 19AC text20 CODE
-"C:\master\src/src/interrupts.c":35 19BA text20 CODE
-"C:\master\src/src/interrupts.c":36 19CA text20 CODE
-"C:\master\src/src/interrupts.c":38 19D8 text20 CODE
-"C:\master\src/src/interrupts.c":32 19E6 text55 CODE
-"C:\master\src/src/interrupts.c":33 19E6 text55 CODE
-"C:\master\src/src/interrupts.c":34 19EA text55 CODE
-"C:\master\src/src/interrupts.c":35 19F8 text55 CODE
-"C:\master\src/src/interrupts.c":36 1A08 text55 CODE
-"C:\master\src/src/interrupts.c":38 1A16 text55 CODE
-"C:\master\src/src/interrupts.c":42 1A24 text19 CODE
-"C:\master\src/src/interrupts.c":43 1A24 text19 CODE
-"C:\master\src/src/interrupts.c":44 1A44 text19 CODE
-"C:\master\src/src/interrupts.c":46 1A52 text19 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1open.c":43 1A60 text28 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1open.c":45 1A64 text28 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1open.c":47 1A6C text28 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1open.c":49 1A7E text28 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1open.c":50 1A82 text28 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1open.c":52 1A86 text28 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1open.c":54 1A88 text28 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1open.c":55 1A8E text28 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1open.c":56 1A92 text28 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1open.c":57 1A92 text28 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1open.c":88 1A94 text28 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1open.c":89 1A96 text28 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1open.c":91 1A98 text28 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1open.c":93 1A9A text28 CODE
-"C:\master\src/src/messages.c":112 1A9C text24 CODE
-"C:\master\src/src/messages.c":118 1AA0 text24 CODE
-"C:\master\src/src/messages.c":135 1AD2 text25 CODE
-"C:\master\src/src/messages.c":141 1AD6 text25 CODE
-"C:\master\src/src/messages.c":231 1B08 text51 CODE
-"C:\master\src/src/messages.c":237 1B0C text51 CODE
-"C:\master\src/src/uart_thread.c":9 1B3E text4 CODE
-"C:\master\src/src/uart_thread.c":10 1B3E text4 CODE
-"C:\master\src/src/uart_thread.c":12 1B4A text4 CODE
-"C:\master\src/src/uart_thread.c":15 1B56 text4 CODE
-"C:\master\src/src/messages.c":270 1B70 text22 CODE
-"C:\master\src/src/messages.c":271 1B70 text22 CODE
-"C:\master\src/src/messages.c":270 1BA2 text57 CODE
-"C:\master\src/src/messages.c":271 1BA2 text57 CODE
-"C:\master\src/src/messages.c":198 1BD4 text3 CODE
-"C:\master\src/src/messages.c":204 1BD8 text3 CODE
-"C:\master\src/src/my_uart.c":84 1C02 text8 CODE
-"C:\master\src/src/my_uart.c":85 1C02 text8 CODE
-"C:\master\src/src/my_uart.c":86 1C0E text8 CODE
-"C:\master\src/src/my_uart.c":87 1C1E text8 CODE
-"C:\master\src/src/my_uart.c":88 1C2E text8 CODE
-"C:\master\src/src/messages.c":222 1C30 text14 CODE
-"C:\master\src/src/messages.c":228 1C34 text14 CODE
-"C:\master\src/src/messages.c":126 1C5E text49 CODE
-"C:\master\src/src/messages.c":132 1C62 text49 CODE
-"C:\master\src/src/user_interrupts.c":33 1C8C text36 CODE
-"C:\master\src/src/user_interrupts.c":38 1C8C text36 CODE
-"C:\master\src/src/user_interrupts.c":39 1C98 text36 CODE
-"C:\master\src/src/user_interrupts.c":42 1CAA text36 CODE
-"C:\master\src/src/user_interrupts.c":43 1CB6 text36 CODE
-"C:\master\src/src/messages.c":207 1CB8 text33 CODE
-"C:\master\src/src/messages.c":213 1CBA text33 CODE
-"C:\master\src/src/messages.c":231 1CE0 text44 CODE
-"C:\master\src/src/messages.c":237 1CE2 text44 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0open.c":18 1D08 text29 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0open.c":20 1D0C text29 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0open.c":21 1D14 text29 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0open.c":22 1D18 text29 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0open.c":23 1D1C text29 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0open.c":25 1D1E text29 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0open.c":26 1D24 text29 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0open.c":27 1D28 text29 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0open.c":28 1D28 text29 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0open.c":30 1D2A text29 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0open.c":31 1D2C text29 CODE
-"C:\master\src/src/messages.c":103 1D2E text38 CODE
-"C:\master\src/src/messages.c":109 1D30 text38 CODE
-"C:\master\src/src/messages.c":126 1D52 text42 CODE
-"C:\master\src/src/messages.c":132 1D54 text42 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1read.c":17 1D76 text35 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1read.c":21 1D76 text35 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1read.c":23 1D7A text35 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1read.c":25 1D7E text35 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1read.c":26 1D80 text35 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1read.c":27 1D82 text35 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1read.c":28 1D84 text35 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1read.c":30 1D84 text35 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1read.c":31 1D86 text35 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1read.c":33 1D88 text35 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1read.c":34 1D8A text35 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1read.c":36 1D8C text35 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1read.c":38 1D90 text35 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\d1ktcyx.c":8 1D94 text23 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\d1ktcyx.c":10 1D98 text23 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\d1ktcyx.c":11 1D98 text23 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\d1ktcyx.c":12 1DA0 text23 CODE
-"C:\master\src/src/timer1_thread.c":6 1DA8 text9 CODE
-"C:\master\src/src/timer1_thread.c":7 1DA8 text9 CODE
-"C:\master\src/src/timer1_thread.c":8 1DB8 text9 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1write.c":14 1DBA text37 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1write.c":18 1DBA text37 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1write.c":20 1DC2 text37 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1write.c":21 1DC6 text37 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1write.c":22 1DCA text37 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1read.c":15 1DCC text39 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1read.c":19 1DCC text39 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1read.c":20 1DD0 text39 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1read.c":22 1DD4 text39 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1read.c":23 1DDC text39 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0write.c":16 1DDE text41 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0write.c":20 1DDE text41 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0write.c":22 1DE6 text41 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0write.c":23 1DEA text41 CODE
-"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0write.c":24 1DEE text41 CODE
-"C:\master\src/src/interrupts.c":24 1DF0 text21 CODE
-"C:\master\src/src/interrupts.c":25 1DF0 text21 CODE
-"C:\master\src/src/interrupts.c":24 1E00 text56 CODE
-"C:\master\src/src/interrupts.c":25 1E00 text56 CODE
-"C:\master\src/src/timer0_thread.c":9 1E10 text7 CODE
-"C:\master\src/src/timer0_thread.c":12 1E10 text7 CODE
-"C:\master\src/src/timer0_thread.c":16 1E1C text7 CODE
-"C:\master\src/src/interrupts.c":15 1E1E text17 CODE
-"C:\master\src/src/interrupts.c":18 1E1E text17 CODE
-"C:\master\src/src/interrupts.c":19 1E20 text17 CODE
-"C:\master\src/src/interrupts.c":20 1E22 text17 CODE
-"C:\master\src/src/interrupts.c":21 1E24 text17 CODE
-"C:\master\src/src/interrupts.c":22 1E26 text17 CODE
-"C:\master\src/src/messages.c":252 1E28 text58 CODE
-"C:\master\src/src/messages.c":254 1E28 text58 CODE
-"C:\master\src/src/messages.c":263 1E2A text58 CODE
-"C:\master\src/src/messages.c":266 1E2C text58 CODE
+"C:\master\src/src/main.c":188 64E text0 CODE
+"C:\master\src/src/main.c":192 64E text0 CODE
+"C:\master\src/src/main.c":199 652 text0 CODE
+"C:\master\src/src/main.c":200 67C text0 CODE
+"C:\master\src/src/main.c":207 684 text0 CODE
+"C:\master\src/src/main.c":209 684 text0 CODE
+"C:\master\src/src/main.c":212 686 text0 CODE
+"C:\master\src/src/main.c":213 6C8 text0 CODE
+"C:\master\src/src/main.c":214 6CA text0 CODE
+"C:\master\src/src/main.c":217 6CC text0 CODE
+"C:\master\src/src/main.c":221 6CC text0 CODE
+"C:\master\src/src/main.c":222 6D0 text0 CODE
+"C:\master\src/src/main.c":238 6D2 text0 CODE
+"C:\master\src/src/main.c":239 6EA text0 CODE
+"C:\master\src/src/main.c":241 6EC text0 CODE
+"C:\master\src/src/main.c":243 6EC text0 CODE
+"C:\master\src/src/main.c":244 6F0 text0 CODE
+"C:\master\src/src/main.c":248 6F2 text0 CODE
+"C:\master\src/src/main.c":249 6F8 text0 CODE
+"C:\master\src/src/main.c":250 6FE text0 CODE
+"C:\master\src/src/main.c":251 718 text0 CODE
+"C:\master\src/src/main.c":255 71A text0 CODE
+"C:\master\src/src/main.c":256 720 text0 CODE
+"C:\master\src/src/main.c":257 726 text0 CODE
+"C:\master\src/src/main.c":258 740 text0 CODE
+"C:\master\src/src/main.c":262 742 text0 CODE
+"C:\master\src/src/main.c":263 748 text0 CODE
+"C:\master\src/src/main.c":264 74E text0 CODE
+"C:\master\src/src/main.c":265 768 text0 CODE
+"C:\master\src/src/main.c":269 76A text0 CODE
+"C:\master\src/src/main.c":270 770 text0 CODE
+"C:\master\src/src/main.c":271 776 text0 CODE
+"C:\master\src/src/main.c":272 790 text0 CODE
+"C:\master\src/src/main.c":276 792 text0 CODE
+"C:\master\src/src/main.c":277 798 text0 CODE
+"C:\master\src/src/main.c":278 79E text0 CODE
+"C:\master\src/src/main.c":279 7B8 text0 CODE
+"C:\master\src/src/main.c":244 7BA text0 CODE
+"C:\master\src/src/main.c":206 7DE text0 CODE
+"C:\master\src/src/main.c":294 806 text0 CODE
+"C:\master\src/src/main.c":295 830 text0 CODE
+"C:\master\src/src/main.c":305 838 text0 CODE
+"C:\master\src/src/main.c":306 87A text0 CODE
+"C:\master\src/src/main.c":310 87C text0 CODE
+"C:\master\src/src/main.c":311 8BE text0 CODE
+"C:\master\src/src/main.c":313 8C0 text0 CODE
+"C:\master\src/src/main.c":316 8C0 text0 CODE
+"C:\master\src/src/main.c":352 8C4 text0 CODE
+"C:\master\src/src/main.c":356 8C6 text0 CODE
+"C:\master\src/src/main.c":357 8CC text0 CODE
+"C:\master\src/src/main.c":358 8D2 text0 CODE
+"C:\master\src/src/main.c":359 8EC text0 CODE
+"C:\master\src/src/main.c":363 8EE text0 CODE
+"C:\master\src/src/main.c":364 8F4 text0 CODE
+"C:\master\src/src/main.c":365 8FA text0 CODE
+"C:\master\src/src/main.c":366 914 text0 CODE
+"C:\master\src/src/main.c":370 916 text0 CODE
+"C:\master\src/src/main.c":371 91C text0 CODE
+"C:\master\src/src/main.c":372 922 text0 CODE
+"C:\master\src/src/main.c":373 93C text0 CODE
+"C:\master\src/src/main.c":377 93E text0 CODE
+"C:\master\src/src/main.c":378 944 text0 CODE
+"C:\master\src/src/main.c":379 94A text0 CODE
+"C:\master\src/src/main.c":380 964 text0 CODE
+"C:\master\src/src/main.c":384 966 text0 CODE
+"C:\master\src/src/main.c":385 96C text0 CODE
+"C:\master\src/src/main.c":386 972 text0 CODE
+"C:\master\src/src/main.c":387 98C text0 CODE
+"C:\master\src/src/main.c":352 98E text0 CODE
+"C:\master\src/src/main.c":302 9B2 text0 CODE
+"C:\master\src/src/my_uart.c":107 9CA text1 CODE
+"C:\master\src/src/my_uart.c":108 9CE text1 CODE
+"C:\master\src/src/my_uart.c":109 9D0 text1 CODE
+"C:\master\src/src/my_uart.c":111 9DA text1 CODE
+"C:\master\src/src/my_uart.c":112 9EA text1 CODE
+"C:\master\src/src/my_uart.c":113 9FC text1 CODE
+"C:\master\src/src/my_uart.c":114 A36 text1 CODE
+"C:\master\src/src/my_uart.c":115 A4C text1 CODE
+"C:\master\src/src/my_uart.c":116 A62 text1 CODE
+"C:\master\src/src/my_uart.c":117 A86 text1 CODE
+"C:\master\src/src/my_uart.c":118 A94 text1 CODE
+"C:\master\src/src/my_uart.c":119 A96 text1 CODE
+"C:\master\src/src/my_uart.c":120 A98 text1 CODE
+"C:\master\src/src/my_uart.c":122 AA4 text1 CODE
+"C:\master\src/src/my_uart.c":123 AB4 text1 CODE
+"C:\master\src/src/my_uart.c":124 AC6 text1 CODE
+"C:\master\src/src/my_uart.c":125 B00 text1 CODE
+"C:\master\src/src/my_uart.c":126 B16 text1 CODE
+"C:\master\src/src/my_uart.c":127 B2C text1 CODE
+"C:\master\src/src/my_uart.c":128 B50 text1 CODE
+"C:\master\src/src/my_uart.c":129 B5E text1 CODE
+"C:\master\src/src/my_uart.c":130 B60 text1 CODE
+"C:\master\src/src/messages.c":63 B64 text26 CODE
+"C:\master\src/src/messages.c":72 B64 text26 CODE
+"C:\master\src/src/messages.c":73 B7C text26 CODE
+"C:\master\src/src/messages.c":74 B96 text26 CODE
+"C:\master\src/src/messages.c":76 BA4 text26 CODE
+"C:\master\src/src/messages.c":77 BC0 text26 CODE
+"C:\master\src/src/messages.c":80 BC4 text26 CODE
+"C:\master\src/src/messages.c":81 BE8 text26 CODE
+"C:\master\src/src/messages.c":87 C1C text26 CODE
+"C:\master\src/src/messages.c":89 C4E text26 CODE
+"C:\master\src/src/messages.c":91 C6C text26 CODE
+"C:\master\src/src/messages.c":92 C78 text26 CODE
+"C:\master\src/src/messages.c":94 C7E text26 CODE
+"C:\master\src/src/messages.c":63 C82 text51 CODE
+"C:\master\src/src/messages.c":72 C82 text51 CODE
+"C:\master\src/src/messages.c":73 C9A text51 CODE
+"C:\master\src/src/messages.c":74 CB4 text51 CODE
+"C:\master\src/src/messages.c":76 CC2 text51 CODE
+"C:\master\src/src/messages.c":77 CDE text51 CODE
+"C:\master\src/src/messages.c":80 CE2 text51 CODE
+"C:\master\src/src/messages.c":81 D06 text51 CODE
+"C:\master\src/src/messages.c":87 D3A text51 CODE
+"C:\master\src/src/messages.c":89 D6C text51 CODE
+"C:\master\src/src/messages.c":91 D8A text51 CODE
+"C:\master\src/src/messages.c":92 D96 text51 CODE
+"C:\master\src/src/messages.c":94 D9C text51 CODE
+"C:\master\src/src/messages.c":24 DA0 text15 CODE
+"C:\master\src/src/messages.c":28 DA0 text15 CODE
+"C:\master\src/src/messages.c":38 DAA text15 CODE
+"C:\master\src/src/messages.c":39 DC2 text15 CODE
+"C:\master\src/src/messages.c":41 DDC text15 CODE
+"C:\master\src/src/messages.c":42 DEA text15 CODE
+"C:\master\src/src/messages.c":46 DEE text15 CODE
+"C:\master\src/src/messages.c":47 E06 text15 CODE
+"C:\master\src/src/messages.c":55 E1E text15 CODE
+"C:\master\src/src/messages.c":56 E4A text15 CODE
+"C:\master\src/src/messages.c":59 E7C text15 CODE
+"C:\master\src/src/messages.c":60 E88 text15 CODE
+"C:\master\src/src/messages.c":24 E8C text49 CODE
+"C:\master\src/src/messages.c":28 E8C text49 CODE
+"C:\master\src/src/messages.c":38 E96 text49 CODE
+"C:\master\src/src/messages.c":39 EAE text49 CODE
+"C:\master\src/src/messages.c":41 EC8 text49 CODE
+"C:\master\src/src/messages.c":42 ED6 text49 CODE
+"C:\master\src/src/messages.c":46 EDA text49 CODE
+"C:\master\src/src/messages.c":47 EF2 text49 CODE
+"C:\master\src/src/messages.c":55 F0A text49 CODE
+"C:\master\src/src/messages.c":56 F36 text49 CODE
+"C:\master\src/src/messages.c":59 F68 text49 CODE
+"C:\master\src/src/messages.c":60 F74 text49 CODE
+"C:\master\src/src/messages.c":63 F78 text44 CODE
+"C:\master\src/src/messages.c":72 F78 text44 CODE
+"C:\master\src/src/messages.c":73 F88 text44 CODE
+"C:\master\src/src/messages.c":74 F98 text44 CODE
+"C:\master\src/src/messages.c":76 FA6 text44 CODE
+"C:\master\src/src/messages.c":77 FBA text44 CODE
+"C:\master\src/src/messages.c":80 FBE text44 CODE
+"C:\master\src/src/messages.c":81 FD4 text44 CODE
+"C:\master\src/src/messages.c":87 FFC text44 CODE
+"C:\master\src/src/messages.c":89 101E text44 CODE
+"C:\master\src/src/messages.c":91 1036 text44 CODE
+"C:\master\src/src/messages.c":92 1042 text44 CODE
+"C:\master\src/src/messages.c":94 1046 text44 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":8 104A text2 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":13 104A text2 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":14 1050 text2 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":15 1066 text2 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":16 1072 text2 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":18 1078 text2 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":19 108E text2 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":20 109A text2 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":21 10A4 text2 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":22 10AA text2 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":23 10AC text2 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":24 10B4 text2 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":22 10B8 text2 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":27 10BE text2 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":28 10D2 text2 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":29 10E2 text2 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":30 10EA text2 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":32 10F0 text2 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":33 10F8 text2 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\awmod.c":34 1104 text2 CODE
+"C:\master\src/src/my_uart.c":73 110E text32 CODE
+"C:\master\src/src/my_uart.c":74 110E text32 CODE
+"C:\master\src/src/my_uart.c":76 1110 text32 CODE
+"C:\master\src/src/my_uart.c":87 1124 text32 CODE
+"C:\master\src/src/my_uart.c":88 114A text32 CODE
+"C:\master\src/src/my_uart.c":89 114E text32 CODE
+"C:\master\src/src/my_uart.c":90 1172 text32 CODE
+"C:\master\src/src/my_uart.c":91 1180 text32 CODE
+"C:\master\src/src/my_uart.c":92 11AA text32 CODE
+"C:\master\src/src/my_uart.c":93 11AC text32 CODE
+"C:\master\src/src/my_uart.c":94 11BC text32 CODE
+"C:\master\src/src/my_uart.c":98 11BE text32 CODE
+"C:\master\src/src/my_uart.c":99 11C0 text32 CODE
+"C:\master\src/src/messages.c":24 11C2 text42 CODE
+"C:\master\src/src/messages.c":28 11C2 text42 CODE
+"C:\master\src/src/messages.c":38 11C8 text42 CODE
+"C:\master\src/src/messages.c":39 11D8 text42 CODE
+"C:\master\src/src/messages.c":41 11E8 text42 CODE
+"C:\master\src/src/messages.c":42 11F6 text42 CODE
+"C:\master\src/src/messages.c":46 11FA text42 CODE
+"C:\master\src/src/messages.c":47 120A text42 CODE
+"C:\master\src/src/messages.c":55 121A text42 CODE
+"C:\master\src/src/messages.c":56 123A text42 CODE
+"C:\master\src/src/messages.c":59 125C text42 CODE
+"C:\master\src/src/messages.c":60 1268 text42 CODE
+"C:\master\src/src/messages.c":312 126C text18 CODE
+"C:\master\src/src/messages.c":313 126C text18 CODE
+"C:\master\src/src/messages.c":319 127C text18 CODE
+"C:\master\src/src/messages.c":321 1282 text18 CODE
+"C:\master\src/src/messages.c":322 129C text18 CODE
+"C:\master\src/src/messages.c":328 12A4 text18 CODE
+"C:\master\src/src/messages.c":329 12BE text18 CODE
+"C:\master\src/src/messages.c":335 12C6 text18 CODE
+"C:\master\src/src/messages.c":336 12E0 text18 CODE
+"C:\master\src/src/messages.c":342 12E8 text18 CODE
+"C:\master\src/src/messages.c":343 1302 text18 CODE
+"C:\master\src/src/messages.c":349 130A text18 CODE
+"C:\master\src/src/my_i2c.c":50 1312 text13 CODE
+"C:\master\src/src/my_i2c.c":52 1316 text13 CODE
+"C:\master\src/src/my_i2c.c":55 131A text13 CODE
+"C:\master\src/src/my_i2c.c":56 1332 text13 CODE
+"C:\master\src/src/my_i2c.c":57 134A text13 CODE
+"C:\master\src/src/my_i2c.c":58 1360 text13 CODE
+"C:\master\src/src/my_i2c.c":59 137A text13 CODE
+"C:\master\src/src/my_i2c.c":60 1390 text13 CODE
+"C:\master\src/src/my_i2c.c":61 13A8 text13 CODE
+"C:\master\src/src/messages.c":276 13AC text53 CODE
+"C:\master\src/src/messages.c":278 13AC text53 CODE
+"C:\master\src/src/messages.c":283 13B4 text53 CODE
+"C:\master\src/src/messages.c":288 13C4 text53 CODE
+"C:\master\src/src/messages.c":295 13D4 text53 CODE
+"C:\master\src/src/messages.c":298 13EE text53 CODE
+"C:\master\src/src/messages.c":301 1408 text53 CODE
+"C:\master\src/src/messages.c":304 1422 text53 CODE
+"C:\master\src/src/messages.c":307 143A text53 CODE
+"C:\master\src/src/messages.c":308 143E text53 CODE
+"C:\master\src/src/messages.c":242 1440 text10 CODE
+"C:\master\src/src/messages.c":243 1440 text10 CODE
+"C:\master\src/src/messages.c":244 1446 text10 CODE
+"C:\master\src/src/messages.c":245 145A text10 CODE
+"C:\master\src/src/messages.c":246 146E text10 CODE
+"C:\master\src/src/messages.c":247 1482 text10 CODE
+"C:\master\src/src/messages.c":248 1496 text10 CODE
+"C:\master\src/src/messages.c":249 14AA text10 CODE
+"C:\master\src/src/messages.c":250 14BE text10 CODE
+"C:\master\src/src/my_i2c.c":16 14C0 text16 CODE
+"C:\master\src/src/my_i2c.c":18 14C4 text16 CODE
+"C:\master\src/src/my_i2c.c":19 14DA text16 CODE
+"C:\master\src/src/my_i2c.c":20 14DE text16 CODE
+"C:\master\src/src/my_i2c.c":21 14E2 text16 CODE
+"C:\master\src/src/my_i2c.c":22 14E6 text16 CODE
+"C:\master\src/src/my_i2c.c":24 14EA text16 CODE
+"C:\master\src/src/my_i2c.c":25 14EC text16 CODE
+"C:\master\src/src/my_i2c.c":27 14EE text16 CODE
+"C:\master\src/src/my_i2c.c":28 14F0 text16 CODE
+"C:\master\src/src/my_i2c.c":29 14F2 text16 CODE
+"C:\master\src/src/my_i2c.c":31 14F6 text16 CODE
+"C:\master\src/src/my_i2c.c":32 150E text16 CODE
+"C:\master\src/src/my_i2c.c":33 1526 text16 CODE
+"C:\master\src/src/my_i2c.c":35 153C text16 CODE
+"C:\master\src/src/my_i2c.c":36 153E text16 CODE
+"C:\master\src/src/interrupts.c":85 1540 intcode_body CODE
+"C:\master\src/src/interrupts.c":90 156C intcode_body CODE
+"C:\master\src/src/interrupts.c":92 1572 intcode_body CODE
+"C:\master\src/src/interrupts.c":94 1574 intcode_body CODE
+"C:\master\src/src/interrupts.c":104 1578 intcode_body CODE
+"C:\master\src/src/interrupts.c":105 157C intcode_body CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":124 15B6 text30 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":126 15BA text30 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":127 15BE text30 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":129 15C2 text30 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":130 15C6 text30 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":132 15C8 text30 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":134 15CE text30 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":135 15D0 text30 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":138 15D2 text30 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":139 15D6 text30 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":141 15D8 text30 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":142 15DE text30 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":143 15E2 text30 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":144 15E2 text30 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":146 15E4 text30 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":147 15E8 text30 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":149 15EA text30 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":150 15EE text30 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":154 15F0 text30 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":155 15F6 text30 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":156 15FA text30 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":157 15FA text30 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":159 15FC text30 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":160 1602 text30 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":161 1606 text30 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":162 1606 text30 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":164 1608 text30 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":165 160C text30 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":167 1620 text30 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":168 1622 text30 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\USART\u1open.c":169 1624 text30 CODE
+"C:\master\src/src/my_i2c.c":276 1626 text12 CODE
+"C:\master\src/src/my_i2c.c":277 1626 text12 CODE
+"C:\master\src/src/my_i2c.c":278 1632 text12 CODE
+"C:\master\src/src/my_i2c.c":279 1648 text12 CODE
+"C:\master\src/src/my_i2c.c":280 165E text12 CODE
+"C:\master\src/src/my_i2c.c":281 1674 text12 CODE
+"C:\master\src/src/my_i2c.c":282 168A text12 CODE
+"C:\master\src/src/messages.c":14 168C text11 CODE
+"C:\master\src/src/messages.c":17 168C text11 CODE
+"C:\master\src/src/messages.c":18 16A2 text11 CODE
+"C:\master\src/src/messages.c":19 16B8 text11 CODE
+"C:\master\src/src/messages.c":20 16C8 text11 CODE
+"C:\master\src/src/messages.c":19 16E2 text11 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":8 16F0 text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":13 16F0 text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":14 16FA text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":15 1700 text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":16 1702 text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":17 170A text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":15 170E text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":20 1714 text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":21 1728 text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":22 1738 text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":23 1740 text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":24 1746 text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":25 1746 text6 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\lwmod.c":26 174E text6 CODE
+"C:\master\src/src/timer1_thread.c":14 1750 text5 CODE
+"C:\master\src/src/timer1_thread.c":17 1750 text5 CODE
+"C:\master\src/src/timer1_thread.c":20 175E text5 CODE
+"C:\master\src/src/timer1_thread.c":22 1790 text5 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":11 17AE text27 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":24 17AE text27 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":25 17BA text27 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":26 17C6 text27 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":27 17C8 text27 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":26 17E8 text27 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":32 17FA text27 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":26 17FC text27 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":11 17FE text52 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":24 17FE text52 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":25 180A text52 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":26 1816 text52 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":27 1818 text52 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":26 1838 text52 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":32 184A text52 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":26 184C text52 CODE
+"C:\master\src/src/user_interrupts.c":17 184E text39 CODE
+"C:\master\src/src/user_interrupts.c":22 184E text39 CODE
+"C:\master\src/src/user_interrupts.c":24 185A text39 CODE
+"C:\master\src/src/user_interrupts.c":25 1878 text39 CODE
+"C:\master\src/src/user_interrupts.c":26 1882 text39 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":11 1896 text45 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":24 1896 text45 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":25 189E text45 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":26 18A6 text45 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":27 18A8 text45 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":26 18C4 text45 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":32 18D2 text45 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\common\memcpy.c":26 18D4 text45 CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5467 18D6 cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5469 18D6 cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5472 18D6 cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5506 18D6 cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5507 18DA cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5508 18DC cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5509 18DC cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5510 18DE cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5511 18E0 cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5514 18E2 cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5515 18E6 cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5516 18E8 cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5517 18E8 cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5518 18EA cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5519 18EC cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5522 18EE cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5523 18F2 cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5524 18F4 cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5525 18F4 cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5526 18F6 cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5527 18F8 cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5530 18FA cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5531 18FE cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5532 1900 cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5533 1900 cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5534 1902 cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5535 1904 cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5538 1906 cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5539 1908 cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5545 190A cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5547 190A cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5548 190C cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5549 190E cinit CODE
+"C:\Users\daduang\AppData\Local\Temp\s3as.":5550 1910 cinit CODE
+"C:\master\src/src/interrupts.c":32 1914 text20 CODE
+"C:\master\src/src/interrupts.c":33 1914 text20 CODE
+"C:\master\src/src/interrupts.c":34 1918 text20 CODE
+"C:\master\src/src/interrupts.c":35 1926 text20 CODE
+"C:\master\src/src/interrupts.c":36 1936 text20 CODE
+"C:\master\src/src/interrupts.c":38 1944 text20 CODE
+"C:\master\src/src/interrupts.c":32 1952 text54 CODE
+"C:\master\src/src/interrupts.c":33 1952 text54 CODE
+"C:\master\src/src/interrupts.c":34 1956 text54 CODE
+"C:\master\src/src/interrupts.c":35 1964 text54 CODE
+"C:\master\src/src/interrupts.c":36 1974 text54 CODE
+"C:\master\src/src/interrupts.c":38 1982 text54 CODE
+"C:\master\src/src/interrupts.c":42 1990 text19 CODE
+"C:\master\src/src/interrupts.c":43 1990 text19 CODE
+"C:\master\src/src/interrupts.c":44 19B0 text19 CODE
+"C:\master\src/src/interrupts.c":46 19BE text19 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1open.c":43 19CC text28 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1open.c":45 19D0 text28 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1open.c":47 19D8 text28 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1open.c":49 19EA text28 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1open.c":50 19EE text28 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1open.c":52 19F2 text28 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1open.c":54 19F4 text28 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1open.c":55 19FA text28 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1open.c":56 19FE text28 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1open.c":57 19FE text28 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1open.c":88 1A00 text28 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1open.c":89 1A02 text28 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1open.c":91 1A04 text28 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1open.c":93 1A06 text28 CODE
+"C:\master\src/src/messages.c":112 1A08 text24 CODE
+"C:\master\src/src/messages.c":118 1A0C text24 CODE
+"C:\master\src/src/messages.c":135 1A3E text25 CODE
+"C:\master\src/src/messages.c":141 1A42 text25 CODE
+"C:\master\src/src/messages.c":231 1A74 text50 CODE
+"C:\master\src/src/messages.c":237 1A78 text50 CODE
+"C:\master\src/src/uart_thread.c":9 1AAA text4 CODE
+"C:\master\src/src/uart_thread.c":10 1AAA text4 CODE
+"C:\master\src/src/uart_thread.c":12 1AB6 text4 CODE
+"C:\master\src/src/uart_thread.c":15 1AC2 text4 CODE
+"C:\master\src/src/messages.c":270 1ADC text22 CODE
+"C:\master\src/src/messages.c":271 1ADC text22 CODE
+"C:\master\src/src/messages.c":270 1B0E text56 CODE
+"C:\master\src/src/messages.c":271 1B0E text56 CODE
+"C:\master\src/src/messages.c":198 1B40 text3 CODE
+"C:\master\src/src/messages.c":204 1B44 text3 CODE
+"C:\master\src/src/my_uart.c":101 1B6E text8 CODE
+"C:\master\src/src/my_uart.c":102 1B6E text8 CODE
+"C:\master\src/src/my_uart.c":103 1B7A text8 CODE
+"C:\master\src/src/my_uart.c":104 1B8A text8 CODE
+"C:\master\src/src/my_uart.c":105 1B9A text8 CODE
+"C:\master\src/src/messages.c":222 1B9C text14 CODE
+"C:\master\src/src/messages.c":228 1BA0 text14 CODE
+"C:\master\src/src/messages.c":126 1BCA text48 CODE
+"C:\master\src/src/messages.c":132 1BCE text48 CODE
+"C:\master\src/src/messages.c":207 1BF8 text33 CODE
+"C:\master\src/src/messages.c":213 1BFA text33 CODE
+"C:\master\src/src/messages.c":231 1C20 text43 CODE
+"C:\master\src/src/messages.c":237 1C22 text43 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0open.c":18 1C48 text29 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0open.c":20 1C4C text29 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0open.c":21 1C54 text29 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0open.c":22 1C58 text29 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0open.c":23 1C5C text29 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0open.c":25 1C5E text29 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0open.c":26 1C64 text29 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0open.c":27 1C68 text29 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0open.c":28 1C68 text29 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0open.c":30 1C6A text29 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0open.c":31 1C6C text29 CODE
+"C:\master\src/src/my_uart.c":12 1C6E text34 CODE
+"C:\master\src/src/my_uart.c":13 1C6E text34 CODE
+"C:\master\src/src/my_uart.c":15 1C70 text34 CODE
+"C:\master\src/src/my_uart.c":16 1C74 text34 CODE
+"C:\master\src/src/my_uart.c":27 1C76 text34 CODE
+"C:\master\src/src/my_uart.c":28 1C7A text34 CODE
+"C:\master\src/src/my_uart.c":29 1C8E text34 CODE
+"C:\master\src/src/my_uart.c":70 1C90 text34 CODE
+"C:\master\src/src/my_uart.c":71 1C92 text34 CODE
+"C:\master\src/src/messages.c":103 1C94 text35 CODE
+"C:\master\src/src/messages.c":109 1C96 text35 CODE
+"C:\master\src/src/messages.c":126 1CB8 text41 CODE
+"C:\master\src/src/messages.c":132 1CBA text41 CODE
+"C:\master\src/src/user_interrupts.c":64 1CDC text36 CODE
+"C:\master\src/src/user_interrupts.c":75 1CDC text36 CODE
+"C:\master\src/src/user_interrupts.c":110 1CE8 text36 CODE
+"C:\master\src/src/user_interrupts.c":111 1CF4 text36 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\d1ktcyx.c":8 1CF6 text23 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\d1ktcyx.c":10 1CFA text23 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\d1ktcyx.c":11 1CFA text23 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\d1ktcyx.c":12 1D02 text23 CODE
+"C:\master\src/src/timer1_thread.c":6 1D0A text9 CODE
+"C:\master\src/src/timer1_thread.c":7 1D0A text9 CODE
+"C:\master\src/src/timer1_thread.c":8 1D1A text9 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1write.c":14 1D1C text37 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1write.c":18 1D1C text37 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1write.c":20 1D24 text37 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1write.c":21 1D28 text37 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1write.c":22 1D2C text37 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1read.c":15 1D2E text38 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1read.c":19 1D2E text38 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1read.c":20 1D32 text38 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1read.c":22 1D36 text38 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t1read.c":23 1D3E text38 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0write.c":16 1D40 text40 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0write.c":20 1D40 text40 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0write.c":22 1D48 text40 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0write.c":23 1D4C text40 CODE
+"C:\Program Files (x86)\Microchip\xc8\v1.33\sources\pic18\plib\Timers\t0write.c":24 1D50 text40 CODE
+"C:\master\src/src/interrupts.c":24 1D52 text21 CODE
+"C:\master\src/src/interrupts.c":25 1D52 text21 CODE
+"C:\master\src/src/interrupts.c":24 1D62 text55 CODE
+"C:\master\src/src/interrupts.c":25 1D62 text55 CODE
+"C:\master\src/src/timer0_thread.c":9 1D72 text7 CODE
+"C:\master\src/src/timer0_thread.c":12 1D72 text7 CODE
+"C:\master\src/src/timer0_thread.c":16 1D7E text7 CODE
+"C:\master\src/src/interrupts.c":15 1D80 text17 CODE
+"C:\master\src/src/interrupts.c":18 1D80 text17 CODE
+"C:\master\src/src/interrupts.c":19 1D82 text17 CODE
+"C:\master\src/src/interrupts.c":20 1D84 text17 CODE
+"C:\master\src/src/interrupts.c":21 1D86 text17 CODE
+"C:\master\src/src/interrupts.c":22 1D88 text17 CODE
+"C:\master\src/src/messages.c":252 1D8A text57 CODE
+"C:\master\src/src/messages.c":254 1D8A text57 CODE
+"C:\master\src/src/messages.c":263 1D8C text57 CODE
+"C:\master\src/src/messages.c":266 1D8E text57 CODE
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -823,17 +794,18 @@ __size_of_ToMainHigh_sendmsg 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.deb
 __CFG_XINST$OFF 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i1recv_msg@maxlength D 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i2recv_msg@maxlength 6C 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_ofi1_send_msg 12E6 0 CODE 0 text43 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_ofi1_send_msg 126C 0 CODE 0 text42 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+main@forward 100 0 BANK1 1 cstackBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i1send_msg@tlength 12 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i2send_msg@tlength 71 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_i2c_master_int_handler 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_ToMainHigh_MQ 200 0 BANK2 1 bssBANK2 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_ToMainHigh_MQ 181 0 BANK1 1 bssBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i1recv_msg@tlength 15 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i2recv_msg@tlength 74 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __S0 10000 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__S1 786 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__S1 476 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __S2 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_ofi2_send_msg F0C 0 CODE 0 text50 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_ofi2_send_msg F78 0 CODE 0 text49 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __CFG_DSWDTPS$G2 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _SSP1STATbits FC7 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hintentry 0 0 ABS 0 intentry dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
@@ -842,28 +814,27 @@ ToMainLow_recvmsg@maxlength AC 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Frame
 i1memcpy@d 7 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i2memcpy@d 66 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_init_i2c 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_ToMainHigh_sendmsg 1D76 0 CODE 0 text42 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_timer1_lthread 1828 0 CODE 0 text5 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_init_timer1_lthread 1DA8 0 CODE 0 text9 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_USART1_Status 37 0 COMRAM 1 bssCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-timer1_int_handler@result 1B 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_ToMainHigh_recvmsg 1B08 0 CODE 0 text25 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_ToMainHigh_sendmsg 1CDC 0 CODE 0 text41 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_timer1_lthread 17AE 0 CODE 0 text5 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_init_timer1_lthread 1D0A 0 CODE 0 text9 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+uart_recv_int_handler@forward 1C 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+timer1_int_handler@result 5 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_ToMainHigh_recvmsg 1A74 0 CODE 0 text25 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_FromMainHigh_recvmsg 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_ToMainHigh_recvmsg 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _main 568 0 CODE 0 text0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-Read1USART@data 1 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-___sp 0 0 STACK 2 stack C:\Users\daduang\AppData\Local\Temp\s35g.obj
-_timer0_int_handler 1920 0 CODE 0 text40 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+___sp 0 0 STACK 2 stack C:\Users\daduang\AppData\Local\Temp\s3as.obj
+_timer0_int_handler 184E 0 CODE 0 text39 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 init_i2c@ic 90 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_timer1_int_handler 1C8C 0 CODE 0 text36 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_ofi2_ToMainHigh_sendmsg 1C8C 0 CODE 0 text49 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-start CA 0 CODE 0 init C:\Users\daduang\AppData\Local\Temp\s35g.obj
+_timer1_int_handler 1CDC 0 CODE 0 text36 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_ofi2_ToMainHigh_sendmsg 1BF8 0 CODE 0 text48 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+start CA 0 CODE 0 init C:\Users\daduang\AppData\Local\Temp\s3as.obj
 _MQ_Main_Willing_to_block B5 0 BANK0 1 bssBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i1memcpy@d1 1 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i2memcpy@d1 60 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_FromMainHigh_MQ 600 0 BANK6 1 bssBANK6 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_timer0_int_handler 1968 0 CODE 0 text40 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_ofi2_FromMainHigh_recvmsg 1B3E 0 CODE 0 text51 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_FromMainHigh_MQ 300 0 BANK3 1 bssBANK3 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_timer0_int_handler 1896 0 CODE 0 text39 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_ofi2_FromMainHigh_recvmsg 1AAA 0 CODE 0 text50 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _TMR0H FD7 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _TMR1H FCF 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _TMR0L FD6 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
@@ -883,7 +854,7 @@ i1send_msg@msgtype E 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X
 i2send_msg@msgtype 6D 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i1recv_msg@qmsg 17 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i2recv_msg@qmsg 76 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_FromMainLow_recvmsg 1CB8 0 CODE 0 text33 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_FromMainLow_recvmsg 1BF8 0 CODE 0 text33 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __CFG_WDTPS$32768 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hconfig 10000 0 CONFIG 0 config dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lconfig FFF8 0 CONFIG 0 config dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
@@ -900,25 +871,22 @@ WriteTimer0@timer 3 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.
 __Hbigram 0 0 ABS 0 bigram dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 WriteTimer0@timer0 1 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lbigram 0 0 ABS 0 bigram dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-main@imsg 124 0 BANK1 1 cstackBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-main@jmsg 12A 0 BANK1 1 cstackBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i1memcpy@n 5 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i2memcpy@n 64 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-i2_check_msg 1BA2 0 CODE 0 text57 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+i2_check_msg 1B0E 0 CODE 0 text56 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 timer0_int_handler@msgtype 20 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_enter_sleep_mode 1E28 0 CODE 0 text58 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_enter_sleep_mode 1D8A 0 CODE 0 text57 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hram 0 0 ABS 0 ram dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lram 0 0 ABS 0 ram dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hcomram 0 0 ABS 0 comram dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lcomram 0 0 ABS 0 comram dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_send_msg D34 0 CODE 0 text15 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_send_msg DA0 0 CODE 0 text15 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 ?_in_main 94 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hsfr 0 0 ABS 0 sfr dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lsfr 0 0 ABS 0 sfr dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-main@umsg 130 0 BANK1 1 cstackBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+main@umsg 124 0 BANK1 1 cstackBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hbss 0 0 RAM 1 bss dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_recv_msg AF8 0 CODE 0 text26 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__size_of_Read1USART 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_recv_msg B64 0 CODE 0 text26 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lbss 0 0 RAM 1 bss dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i1send_msg@length D 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i2send_msg@length 6C 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
@@ -927,18 +895,19 @@ __Lnvrram 0 0 COMRAM 1 nvrram dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 WriteTimer1@timer 3 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_timer1_int_handler 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 WriteTimer1@timer1 1 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_RCREG1 FAF 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+main@left 101 0 BANK1 1 cstackBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_enter_sleep_mode 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _RCSTA1 FAC 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 Open1USART@config 95 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _TXREG1 FAE 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _SPBRG1 FB0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _TXSTA1 FAD 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_ofi2_in_high_int 1E10 0 CODE 0 text56 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+main@reverse 104 0 BANK1 1 cstackBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_ofi2_in_high_int 1D72 0 CODE 0 text55 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 uart_lthread@length 94 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _PIE1bits F9D 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 init_queue@i 92 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_init_timer1_lthread 1DBA 0 CODE 0 text9 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_init_timer1_lthread 1D1C 0 CODE 0 text9 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _PIR1bits F9E 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _IPR1bits F9F 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _LATAbits F89 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
@@ -950,12 +919,13 @@ _SSPADD FC8 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lintsave_regs 0 0 BIGRAM 1 intsave_regs dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i2c_configure_master@sensor_addr 91 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _RCONbits FD0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+main@stop 103 0 BANK1 1 cstackBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i1memcpy@s 9 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i2memcpy@s 68 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hbigbss 0 0 BIGRAM 1 bigbss dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lbigbss 0 0 BIGRAM 1 bigbss dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hintret 0 0 ABS 0 intret dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-i2_in_high_int 1E00 0 CODE 0 text56 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+i2_in_high_int 1D62 0 CODE 0 text55 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lintret 0 0 ABS 0 intret dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hramtop F00 0 RAM 0 ramtop dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lramtop F00 0 RAM 0 ramtop dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
@@ -968,55 +938,54 @@ __Lmediumconst 0 0 MEDIUMCONST 0 mediumconst dist/UseXC8/debug\PIC_Framework_3.X
 __Hfarbss 0 0 FARRAM 0 farbss dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lfarbss 0 0 FARRAM 0 farbss dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 main@uthread_data 120 0 BANK1 1 cstackBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-i2_in_low_int 19E6 0 CODE 0 text55 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_timer0_lthread 1E10 0 CODE 0 text7 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+i2_in_low_int 1952 0 CODE 0 text54 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_timer0_lthread 1D72 0 CODE 0 text7 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hintcode 18 0 CODE 0 intcode dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lintcode 8 0 CODE 0 intcode dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_timer1_lthread 17CA 0 CODE 0 text5 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_timer1_lthread 1750 0 CODE 0 text5 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hfardata 0 0 FARRAM 0 fardata dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lfardata 0 0 FARRAM 0 fardata dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-main@test 136 0 BANK1 1 cstackBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _T1GCON F9A 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __CFG_CPUDIV$OSC1 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __pintcode 8 0 CODE 0 intcode dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _OSCCON FD3 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Habs1 0 0 ABS 0 abs1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Labs1 0 0 ABS 0 abs1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-main@msgbuffer 100 0 BANK1 1 cstackBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+uart_recv_int_handler@length 1B 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+main@msgbuffer 105 0 BANK1 1 cstackBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i2ToMainHigh_sendmsg@data 77 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __HnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 send_msg@slot A3 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __LnvFARRAM 0 0 FARRAM 0 nvFARRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 FromMainHigh_sendmsg@data A7 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 recv_msg@slot A3 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-i1_memcpy 1968 0 CODE 0 text46 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-i2_memcpy 18D0 0 CODE 0 text53 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+i1_memcpy 1896 0 CODE 0 text45 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+i2_memcpy 17FE 0 CODE 0 text52 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __HnvCOMRAM 0 0 ABS 0 nvCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __LnvCOMRAM 0 0 ABS 0 nvCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __pnvCOMRAM 35 0 COMRAM 1 nvCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_uart_send 95E 0 CODE 0 text1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_uart_send 9CA 0 CODE 0 text1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_ofi2_FromMainHigh_recvmsg 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-main@msgtype 13B 0 BANK1 1 cstackBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+main@msgtype 12D 0 BANK1 1 cstackBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_in_high_int 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_block_on_To_msgqueues 12E6 0 CODE 0 text18 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_block_on_To_msgqueues 126C 0 CODE 0 text18 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i1memcpy@s1 3 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i2memcpy@s1 62 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 FromMainLow_sendmsg@data A7 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_Delay1KTCYx 1DA8 0 CODE 0 text23 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_enable_interrupts 1E28 0 CODE 0 text17 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-main@ic 171 0 BANK1 1 cstackBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of___awmod 1188 0 CODE 0 text2 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-main@uc 13D 0 BANK1 1 cstackBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_ofi1_recv_msg 10C4 0 CODE 0 text45 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_Delay1KTCYx 1D0A 0 CODE 0 text23 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_enable_interrupts 1D8A 0 CODE 0 text17 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+main@ic 141 0 BANK1 1 cstackBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of___awmod 110E 0 CODE 0 text2 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+main@uc 12E 0 BANK1 1 cstackBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_ofi1_recv_msg 104A 0 CODE 0 text44 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hdata 0 0 ABS 0 data dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ldata 0 0 ABS 0 data dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 send_msg@qmsg A4 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 recv_msg@qmsg A6 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_block_on_To_msgqueues 138C 0 CODE 0 text18 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_ofi2_recv_msg D34 0 CODE 0 text52 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-stackhi EBF 0 ABS 0 - C:\Users\daduang\AppData\Local\Temp\s35g.obj
-main@motor_cmd_left 139 0 BANK1 1 cstackBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_check_msg 1B70 0 CODE 0 text22 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_block_on_To_msgqueues 1312 0 CODE 0 text18 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_ofi2_recv_msg DA0 0 CODE 0 text51 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+stackhi 9FF 0 ABS 0 - C:\Users\daduang\AppData\Local\Temp\s3as.obj
+_check_msg 1ADC 0 CODE 0 text22 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __HcstackBANK0 0 0 ABS 0 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __LcstackBANK0 0 0 ABS 0 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __pcstackBANK0 60 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
@@ -1024,7 +993,7 @@ ___awmod@sign 95 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug
 __size_of_send_msg 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htemp 0 0 COMRAM 1 temp dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltemp 0 0 COMRAM 1 temp dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-stacklo A00 0 ABS 0 - C:\Users\daduang\AppData\Local\Temp\s35g.obj
+stacklo 476 0 ABS 0 - C:\Users\daduang\AppData\Local\Temp\s3as.obj
 __Hrbit 0 0 COMRAM 1 rbit dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lrbit 0 0 COMRAM 1 rbit dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hinit CA 0 CODE 0 init dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
@@ -1032,25 +1001,25 @@ __Linit CA 0 CODE 0 init dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hintcodelo CA 0 CODE 0 intcodelo dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lintcodelo 18 0 CODE 0 intcodelo dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hrbss 0 0 COMRAM 1 rbss dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_main 95E 0 CODE 0 text0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_main 9CA 0 CODE 0 text0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lrbss 0 0 COMRAM 1 rbss dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __pintcodelo 18 0 CODE 0 intcodelo dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _ic_ptr B3 0 BANK0 1 nvBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 FromMainHigh_recvmsg@maxlength 1D 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _uc_ptr 35 0 COMRAM 1 nvCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_check_msg 1BA2 0 CODE 0 text22 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_check_msg 1B0E 0 CODE 0 text22 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext 0 0 ABS 0 text dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext 0 0 ABS 0 text dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_memcpy 1880 0 CODE 0 text27 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_memcpy 17AE 0 CODE 0 text27 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_Delay1KTCYx 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i1send_msg@qptr B 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i2send_msg@qptr 6A 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_ofi1_send_msg 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_i2c_master_int_handler CE 0 CODE 0 text48 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-end_of_initialization 1876 0 CODE 0 cinit dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_i2c_master_int_handler CE 0 CODE 0 text47 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+end_of_initialization 190A 0 CODE 0 cinit dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 ToMainHigh_sendmsg@length 1A 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 init_queue@qptr 90 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_uart_lthread 1B3E 0 CODE 0 text4 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_uart_lthread 1AAA 0 CODE 0 text4 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 FromMainLow_sendmsg@msgtype A6 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i1recv_msg@qptr B 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i2recv_msg@qptr 6A 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
@@ -1059,30 +1028,30 @@ send_msg@qptr 9A 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug
 recv_msg@qptr 9A 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __HnvBANK0 0 0 ABS 0 nvBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __LnvBANK0 0 0 ABS 0 nvBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_in_low_int 19E6 0 CODE 0 text20 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_in_low_int 1952 0 CODE 0 text20 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __pnvBANK0 B3 0 BANK0 1 nvBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_ofi2_send_msg 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _SSPCON1 FC6 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _SSPCON2 FC5 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 init_uart_recv@uc 90 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_ToMainLow_sendmsg 1D2E 0 CODE 0 text38 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_ToMainLow_sendmsg 1C94 0 CODE 0 text35 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+main@right 102 0 BANK1 1 cstackBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_timer1_lthread 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_OpenTimer0 1D08 0 CODE 0 text29 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_uart_trans_int_handler 1188 0 CODE 0 text32 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_OpenTimer0 1C48 0 CODE 0 text29 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_uart_trans_int_handler 110E 0 CODE 0 text32 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i2ToMainHigh_sendmsg@msgtype 76 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 uart_lthread@msgtype 92 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 FromMainHigh_sendmsg@msgtype A6 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _TRISAbits F92 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_RCSTAbits FAC 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _TRISBbits F93 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _TRISCbits F94 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _TRISEbits F96 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _T0CONbits FD5 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _T1CONbits FCD 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_ReadTimer1 1DCC 0 CODE 0 text39 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_SleepIfOkay 1426 0 CODE 0 text54 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_ToMainHigh_sendmsg 1D52 0 CODE 0 text42 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_OpenTimer1 1A60 0 CODE 0 text28 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_ReadTimer1 1D2E 0 CODE 0 text38 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_SleepIfOkay 13AC 0 CODE 0 text53 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_ToMainHigh_sendmsg 1CB8 0 CODE 0 text41 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_OpenTimer1 19CC 0 CODE 0 text28 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_uart_recv_int_handler 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 ?i2_in_high_int 60 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _SSP1BUF FC9 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
@@ -1099,7 +1068,7 @@ __Lifardata 0 0 CODE 0 ifardata dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 recv_msg@data 9F 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hbank0 0 0 ABS 0 bank0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lbank0 0 0 ABS 0 bank0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_i2c_configure_master 153A 0 CODE 0 text16 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_i2c_configure_master 14C0 0 CODE 0 text16 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hbank1 0 0 ABS 0 bank1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lbank1 0 0 ABS 0 bank1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_ToMainLow_sendmsg 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
@@ -1124,9 +1093,8 @@ __Hbank6 0 0 ABS 0 bank6 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lbank6 0 0 ABS 0 bank6 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hbank7 0 0 ABS 0 bank7 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lbank7 0 0 ABS 0 bank7 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-main@motor_cmd_right 13A 0 BANK1 1 cstackBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hbank8 0 0 ABS 0 bank8 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_timer1_int_handler 1CB8 0 CODE 0 text36 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_timer1_int_handler 1CF6 0 CODE 0 text36 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lbank8 0 0 ABS 0 bank8 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext0 0 0 ABS 0 text0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext0 0 0 ABS 0 text0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
@@ -1141,73 +1109,69 @@ _INTCON2bits FF1 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext2 0 0 ABS 0 text2 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 timer0_lthread@tptr 90 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext2 0 0 ABS 0 text2 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext1 95E 0 CODE 0 text1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext1 9CA 0 CODE 0 text1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 timer1_lthread@tptr AA 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext3 0 0 ABS 0 text3 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext3 0 0 ABS 0 text3 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext2 10C4 0 CODE 0 text2 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext2 104A 0 CODE 0 text2 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 ToMainLow_sendmsg@msgtype 17 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 ToMainHigh_sendmsg@data 18 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext4 0 0 ABS 0 text4 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext4 0 0 ABS 0 text4 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext3 1BD4 0 CODE 0 text3 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext3 1B40 0 CODE 0 text3 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_ToMainLow_recvmsg 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext5 0 0 ABS 0 text5 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_SleepIfOkay 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext5 0 0 ABS 0 text5 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext4 1B3E 0 CODE 0 text4 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext4 1AAA 0 CODE 0 text4 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext6 0 0 ABS 0 text6 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext6 0 0 ABS 0 text6 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext5 17CA 0 CODE 0 text5 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_FromMainLow_sendmsg 1C02 0 CODE 0 text3 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext5 1750 0 CODE 0 text5 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_FromMainLow_sendmsg 1B6E 0 CODE 0 text3 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext7 0 0 ABS 0 text7 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext7 0 0 ABS 0 text7 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext6 176A 0 CODE 0 text6 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__HbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__LbssCOMRAM 0 0 ABS 0 bssCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext6 16F0 0 CODE 0 text6 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext8 0 0 ABS 0 text8 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext8 0 0 ABS 0 text8 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext7 1E10 0 CODE 0 text7 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext7 1D72 0 CODE 0 text7 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 send_msg@tlength A1 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__pbssCOMRAM 37 0 COMRAM 1 bssCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_uart_trans_int_handler 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext9 0 0 ABS 0 text9 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __HcstackBANK1 0 0 ABS 0 cstackBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext9 0 0 ABS 0 text9 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __LcstackBANK1 0 0 ABS 0 cstackBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext8 1C02 0 CODE 0 text8 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext8 1B6E 0 CODE 0 text8 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 recv_msg@tlength A4 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_ReadTimer1 1DDE 0 CODE 0 text39 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext9 1DA8 0 CODE 0 text9 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_ReadTimer1 1D40 0 CODE 0 text38 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext9 1D0A 0 CODE 0 text9 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __pcstackBANK1 100 0 BANK1 1 cstackBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hclrtext 0 0 ABS 0 clrtext dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lclrtext 0 0 ABS 0 clrtext dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_timer0_int_handler 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_WriteTimer0 1DF0 0 CODE 0 text41 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_WriteTimer1 1DCC 0 CODE 0 text37 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_Read1USART 1D76 0 CODE 0 text35 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_WriteTimer0 1D52 0 CODE 0 text40 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_WriteTimer1 1D2E 0 CODE 0 text37 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 uart_lthread@msgbuffer 96 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_WriteTimer0 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_Open1USART 1630 0 CODE 0 text30 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_Open1USART 15B6 0 CODE 0 text30 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_WriteTimer1 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 ToMainHigh_sendmsg@msgtype 17 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 FromMainHigh_recvmsg@data 1B 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_i2c_master_send 1426 0 CODE 0 text13 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_i2c_master_send 13AC 0 CODE 0 text13 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_ofi2_in_low_int 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_MotorData_MQ 500 0 BANK5 1 bssBANK5 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_ToMainLow_sendmsg 1D52 0 CODE 0 text38 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_MotorData_MQ 376 0 BANK3 1 bssBANK3 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_ToMainLow_sendmsg 1CB8 0 CODE 0 text35 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __CFG_T1DIG$OFF 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _OSCTUNEbits F9B 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_memcpy 18D0 0 CODE 0 text27 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of__initialization 1876 0 CODE 0 cinit dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_in_main 1A60 0 CODE 0 text19 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_memcpy 17FE 0 CODE 0 text27 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of__initialization 190A 0 CODE 0 cinit dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_in_main 19CC 0 CODE 0 text19 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _BAUDCONbits F7E 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_ToMainLow_recvmsg 1AD2 0 CODE 0 text24 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_ToMainLow_recvmsg 1A3E 0 CODE 0 text24 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 memcpy@d 96 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _InterruptHandlerLow 18 0 CODE 0 intcodelo dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_FromMainLow_recvmsg 1CE0 0 CODE 0 text33 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_FromMainLow_recvmsg 1C20 0 CODE 0 text33 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _SSPSTATbits FC7 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_init_queues 14BA 0 CODE 0 text10 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_init_queues 1440 0 CODE 0 text10 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i2FromMainHigh_recvmsg@data 7A 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 uart_send@msg_buffer AA 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i2c_master_send@length AA 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
@@ -1216,86 +1180,86 @@ memcpy@n 94 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i2c_configure_master@motor_addr 90 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __CFG_WPCFG$OFF 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _InterruptHandlerHigh 8 0 CODE 0 intcode dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_i2c_configure_master 15BA 0 CODE 0 text16 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_i2c_configure_master 1540 0 CODE 0 text16 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hidata 0 0 CODE 0 idata dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lidata 0 0 CODE 0 idata dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 memcpy@s 98 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hrdata 0 0 COMRAM 1 rdata dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lrdata 0 0 COMRAM 1 rdata dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_in_high_int 1DF0 0 CODE 0 text21 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_in_high_int 1D52 0 CODE 0 text21 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 ToMainLow_recvmsg@data AA 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hidloc 0 0 IDLOC 0 idloc dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lidloc 0 0 IDLOC 0 idloc dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __CFG_STVREN$OFF 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hstack 0 0 STACK 2 stack dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lstack 0 0 STACK 2 stack dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-int_func 15BA 0 CODE 0 intcode_body dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+int_func 1540 0 CODE 0 intcode_body dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 send_msg@length 9C 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_init_queue 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-___awmod 10C4 0 CODE 0 text2 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-___lwmod 176A 0 CODE 0 text6 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+___awmod 104A 0 CODE 0 text2 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+___lwmod 16F0 0 CODE 0 text6 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hparam 0 0 ABS 0 param0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lparam 0 0 ABS 0 param0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hspace_0 10000 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __HcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lspace_0 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-i1_send_msg 123C 0 CODE 0 text43 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-i2_send_msg E20 0 CODE 0 text50 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+i1_send_msg 11C2 0 CODE 0 text42 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+i2_send_msg E8C 0 CODE 0 text49 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __LcstackCOMRAM 0 0 ABS 0 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_InterruptHandlerHigh 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_FromMainLow_recvmsg 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 ToMainLow_recvmsg@msgtype A8 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __CFG_IESO$ON 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __pcstackCOMRAM 1 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_in_main 1A24 0 CODE 0 text19 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_init_queue 1706 0 CODE 0 text11 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__Hspace_1 786 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_in_main 1990 0 CODE 0 text19 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_init_queue 168C 0 CODE 0 text11 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__Hspace_1 476 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lspace_1 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hsmallconst 0 0 SMALLCONST 0 smallconst dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lsmallconst 0 0 SMALLCONST 0 smallconst dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-i1_recv_msg FF2 0 CODE 0 text45 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-i2_recv_msg C16 0 CODE 0 text52 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+i1_recv_msg F78 0 CODE 0 text44 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+i2_recv_msg C82 0 CODE 0 text51 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hspace_2 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lspace_2 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hnvbit 0 0 COMRAM 1 nvbit dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lnvbit 0 0 COMRAM 1 nvbit dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hcinit 0 0 ABS 0 cinit dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lcinit 0 0 ABS 0 cinit dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__pcinit 1828 0 CODE 0 cinit dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__pcinit 18D6 0 CODE 0 cinit dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __CFG_DSBOREN$OFF 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-main@length 13C 0 BANK1 1 cstackBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ramtop F00 0 RAM 0 ramtop C:\Users\daduang\AppData\Local\Temp\s35g.obj
-__mediumconst 0 0 MEDIUMCONST 0 mediumconst C:\Users\daduang\AppData\Local\Temp\s35g.obj
+main@length 140 0 BANK1 1 cstackBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ramtop F00 0 RAM 0 ramtop C:\Users\daduang\AppData\Local\Temp\s3as.obj
+__mediumconst 0 0 MEDIUMCONST 0 mediumconst C:\Users\daduang\AppData\Local\Temp\s3as.obj
 ?_in_low_int 92 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_init_queues 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_main 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_ofi2_in_low_int 1A24 0 CODE 0 text55 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_ToMainLow_recvmsg 1A9C 0 CODE 0 text24 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_ofi2_in_low_int 1990 0 CODE 0 text54 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_ToMainLow_recvmsg 1A08 0 CODE 0 text24 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hconst 0 0 CODE 0 const dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lconst 0 0 CODE 0 const dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_Open1USART 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i1send_msg@data F 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i2send_msg@data 6E 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_i2c_master_int_handler 568 0 CODE 0 text48 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_i2c_master_int_handler 568 0 CODE 0 text47 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 uart_lthread@uptr 90 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 Open1USART@spbrg 90 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i1recv_msg@data 10 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i2recv_msg@data 6F 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 FromMainHigh_recvmsg@msgtype 19 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_FromMainHigh_sendmsg 1C5E 0 CODE 0 text14 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_FromMainHigh_sendmsg 1BCA 0 CODE 0 text14 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __CFG_DSWDTEN$OFF 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i2check_msg@qptr 60 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_check_msg 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_FromMainHigh_recvmsg 1CE0 0 CODE 0 text44 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_uart_lthread 1B70 0 CODE 0 text4 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_FromMainHigh_recvmsg 1C20 0 CODE 0 text43 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_uart_lthread 1ADC 0 CODE 0 text4 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_in_main 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_uart_trans_int_handler 123C 0 CODE 0 text32 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_uart_trans_int_handler 11C2 0 CODE 0 text32 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 ToMainHigh_recvmsg@maxlength AC 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 check_msg@qptr 90 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_Delay1KTCYx 1D94 0 CODE 0 text23 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_init_uart_recv 1C02 0 CODE 0 text8 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_in_high_int 1E00 0 CODE 0 text21 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_init_uart_recv 1C30 0 CODE 0 text8 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_Delay1KTCYx 1CF6 0 CODE 0 text23 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_init_uart_recv 1B6E 0 CODE 0 text8 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_in_high_int 1D62 0 CODE 0 text21 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_init_uart_recv 1B9C 0 CODE 0 text8 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __HbssBANK0 0 0 ABS 0 bssBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __LbssBANK0 0 0 ABS 0 bssBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __CFG_WPEND$PAGE_WPFP 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
@@ -1303,60 +1267,62 @@ __Hbank10 0 0 ABS 0 bank10 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __pbssBANK0 B5 0 BANK0 1 bssBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lbank10 0 0 ABS 0 bank10 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_timer0_lthread 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_Read1USART 1D94 0 CODE 0 text35 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 FromMainLow_recvmsg@maxlength 1D 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_uart_recv_int_handler FF2 0 CODE 0 text34 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_uart_recv_int_handler 1C94 0 CODE 0 text34 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 timer0_lthread@msgval 98 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hbank11 0 0 ABS 0 bank11 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lbank11 0 0 ABS 0 bank11 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_uart_send AF8 0 CODE 0 text1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_ToMainLow_MQ 300 0 BANK3 1 bssBANK3 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_uart_send B64 0 CODE 0 text1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_ToMainLow_MQ 276 0 BANK2 1 bssBANK2 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __CFG_FCMEN$OFF 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hbank12 0 0 ABS 0 bank12 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lbank12 0 0 ABS 0 bank12 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_ofi2_ToMainHigh_sendmsg 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hbank13 0 0 ABS 0 bank13 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lbank13 0 0 ABS 0 bank13 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_timer0_lthread 1E1E 0 CODE 0 text7 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__HbssBANK1 0 0 ABS 0 bssBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__LbssBANK1 0 0 ABS 0 bssBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_timer0_lthread 1D80 0 CODE 0 text7 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __end_of_InterruptHandlerLow CA 0 CODE 0 intcodelo dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hbank14 0 0 ABS 0 bank14 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__pbssBANK1 181 0 BANK1 1 bssBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lbank14 0 0 ABS 0 bank14 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext10 0 0 ABS 0 text10 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext10 0 0 ABS 0 text10 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_OpenTimer0 1D2E 0 CODE 0 text29 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_OpenTimer1 1A9C 0 CODE 0 text28 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_enter_sleep_mode 1E2E 0 CODE 0 text58 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_OpenTimer0 1C6E 0 CODE 0 text29 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_OpenTimer1 1A08 0 CODE 0 text28 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_enter_sleep_mode 1D90 0 CODE 0 text57 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_uart_lthread 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext20 0 0 ABS 0 text20 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext20 0 0 ABS 0 text20 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext10 14BA 0 CODE 0 text10 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext10 1440 0 CODE 0 text10 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext30 0 0 ABS 0 text30 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext11 0 0 ABS 0 text11 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext30 0 0 ABS 0 text30 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext11 0 0 ABS 0 text11 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __CFG_PLLDIV$3 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext20 19A8 0 CODE 0 text20 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext20 1914 0 CODE 0 text20 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 ToMainHigh_recvmsg@data AA 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext40 0 0 ABS 0 text40 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext21 0 0 ABS 0 text21 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 recv_msg@maxlength 9C 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext40 0 0 ABS 0 text40 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext21 0 0 ABS 0 text21 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext11 1706 0 CODE 0 text11 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext30 1630 0 CODE 0 text30 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext11 168C 0 CODE 0 text11 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext30 15B6 0 CODE 0 text30 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext50 0 0 ABS 0 text50 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext12 0 0 ABS 0 text12 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext50 0 0 ABS 0 text50 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext12 0 0 ABS 0 text12 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext21 1DF0 0 CODE 0 text21 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext40 1920 0 CODE 0 text40 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_uart_recv_int_handler F0C 0 CODE 0 text34 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext21 1D52 0 CODE 0 text21 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext40 1D40 0 CODE 0 text40 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_uart_recv_int_handler 1C6E 0 CODE 0 text34 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext41 0 0 ABS 0 text41 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext22 0 0 ABS 0 text22 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext41 0 0 ABS 0 text41 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext22 0 0 ABS 0 text22 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext12 16A0 0 CODE 0 text12 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext50 E20 0 CODE 0 text50 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext12 1626 0 CODE 0 text12 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext50 1A74 0 CODE 0 text50 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __CFG_IOL1WAY$ON 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext51 0 0 ABS 0 text51 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext32 0 0 ABS 0 text32 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
@@ -1365,17 +1331,17 @@ __Ltext51 0 0 ABS 0 text51 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext32 0 0 ABS 0 text32 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext13 0 0 ABS 0 text13 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __HbssBANK2 0 0 ABS 0 bssBANK2 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext22 1B70 0 CODE 0 text22 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext41 1DDE 0 CODE 0 text41 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext22 1ADC 0 CODE 0 text22 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext41 1CB8 0 CODE 0 text41 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __LbssBANK2 0 0 ABS 0 bssBANK2 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _RCSTA1bits FAC 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext42 0 0 ABS 0 text42 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext23 0 0 ABS 0 text23 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext42 0 0 ABS 0 text42 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext23 0 0 ABS 0 text23 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext13 138C 0 CODE 0 text13 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext32 1188 0 CODE 0 text32 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext51 1B08 0 CODE 0 text51 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext13 1312 0 CODE 0 text13 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext32 110E 0 CODE 0 text32 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext51 C82 0 CODE 0 text51 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __pbssBANK2 200 0 BANK2 1 bssBANK2 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _TXSTA1bits FAD 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext52 0 0 ABS 0 text52 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
@@ -1384,52 +1350,52 @@ __Htext14 0 0 ABS 0 text14 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext52 0 0 ABS 0 text52 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext33 0 0 ABS 0 text33 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext14 0 0 ABS 0 text14 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext23 1D94 0 CODE 0 text23 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext42 1D52 0 CODE 0 text42 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_i2c_master_send 138C 0 CODE 0 text13 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext23 1CF6 0 CODE 0 text23 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext42 11C2 0 CODE 0 text42 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_i2c_master_send 1312 0 CODE 0 text13 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 main@t0thread_data 122 0 BANK1 1 cstackBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext43 0 0 ABS 0 text43 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext24 0 0 ABS 0 text24 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext43 0 0 ABS 0 text43 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext24 0 0 ABS 0 text24 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext14 1C30 0 CODE 0 text14 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext33 1CB8 0 CODE 0 text33 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext52 C16 0 CODE 0 text52 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-main@t1thread_data 137 0 BANK1 1 cstackBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext14 1B9C 0 CODE 0 text14 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext33 1BF8 0 CODE 0 text33 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext52 17FE 0 CODE 0 text52 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+main@t1thread_data 12B 0 BANK1 1 cstackBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext53 0 0 ABS 0 text53 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext34 0 0 ABS 0 text34 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext15 0 0 ABS 0 text15 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext53 0 0 ABS 0 text53 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext34 0 0 ABS 0 text34 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext15 0 0 ABS 0 text15 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext24 1A9C 0 CODE 0 text24 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext43 123C 0 CODE 0 text43 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext24 1A08 0 CODE 0 text24 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext43 1C20 0 CODE 0 text43 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext44 0 0 ABS 0 text44 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext25 0 0 ABS 0 text25 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_WriteTimer0 1DDE 0 CODE 0 text41 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_WriteTimer0 1D40 0 CODE 0 text40 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext44 0 0 ABS 0 text44 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext25 0 0 ABS 0 text25 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext15 D34 0 CODE 0 text15 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext34 F0C 0 CODE 0 text34 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext53 18D0 0 CODE 0 text53 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_FromMainLow_MQ 700 0 BANK7 1 bssBANK7 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-___inthi_sp 0 0 STACK 2 stack C:\Users\daduang\AppData\Local\Temp\s35g.obj
+__ptext15 DA0 0 CODE 0 text15 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext34 1C6E 0 CODE 0 text34 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext53 13AC 0 CODE 0 text53 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_FromMainLow_MQ 400 0 BANK4 1 bssBANK4 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+___inthi_sp 0 0 STACK 2 stack C:\Users\daduang\AppData\Local\Temp\s3as.obj
 __Htext54 0 0 ABS 0 text54 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext35 0 0 ABS 0 text35 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext16 0 0 ABS 0 text16 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext54 0 0 ABS 0 text54 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext35 0 0 ABS 0 text35 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext16 0 0 ABS 0 text16 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext25 1AD2 0 CODE 0 text25 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext44 1CE0 0 CODE 0 text44 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext25 1A3E 0 CODE 0 text25 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext44 F78 0 CODE 0 text44 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i2ToMainHigh_sendmsg@length 79 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext45 0 0 ABS 0 text45 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext26 0 0 ABS 0 text26 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext45 0 0 ABS 0 text45 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext26 0 0 ABS 0 text26 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext16 153A 0 CODE 0 text16 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext35 1D76 0 CODE 0 text35 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext54 1426 0 CODE 0 text54 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext16 14C0 0 CODE 0 text16 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext35 1C94 0 CODE 0 text35 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext54 1952 0 CODE 0 text54 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext55 0 0 ABS 0 text55 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_ofi2_check_msg 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext36 0 0 ABS 0 text36 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
@@ -1438,42 +1404,42 @@ __Ltext55 0 0 ABS 0 text55 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext36 0 0 ABS 0 text36 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext17 0 0 ABS 0 text17 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __HbssBANK3 0 0 ABS 0 bssBANK3 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext26 AF8 0 CODE 0 text26 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext45 FF2 0 CODE 0 text45 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext26 B64 0 CODE 0 text26 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext45 1896 0 CODE 0 text45 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __LbssBANK3 0 0 ABS 0 bssBANK3 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 FromMainHigh_sendmsg@length A9 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__Htext46 0 0 ABS 0 text46 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext27 0 0 ABS 0 text27 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__Ltext46 0 0 ABS 0 text46 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext27 0 0 ABS 0 text27 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext17 1E1E 0 CODE 0 text17 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext36 1C8C 0 CODE 0 text36 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext55 19E6 0 CODE 0 text55 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext17 1D80 0 CODE 0 text17 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext36 1CDC 0 CODE 0 text36 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext55 1D62 0 CODE 0 text55 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __pbssBANK3 300 0 BANK3 1 bssBANK3 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 ___awmod@divisor 92 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext56 0 0 ABS 0 text56 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext37 0 0 ABS 0 text37 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext18 0 0 ABS 0 text18 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of___lwmod 17CA 0 CODE 0 text6 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of___lwmod 1750 0 CODE 0 text6 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext56 0 0 ABS 0 text56 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext37 0 0 ABS 0 text37 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 ToMainHigh_recvmsg@msgtype A8 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext18 0 0 ABS 0 text18 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext27 1880 0 CODE 0 text27 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext46 1968 0 CODE 0 text46 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext27 17AE 0 CODE 0 text27 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 ___lwmod@divisor 92 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__Htext47 0 0 ABS 0 text47 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext28 0 0 ABS 0 text28 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__Ltext47 0 0 ABS 0 text47 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext28 0 0 ABS 0 text28 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext18 12E6 0 CODE 0 text18 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext37 1DBA 0 CODE 0 text37 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext56 1E00 0 CODE 0 text56 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext18 126C 0 CODE 0 text18 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext37 1D1C 0 CODE 0 text37 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext56 1B0E 0 CODE 0 text56 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext57 0 0 ABS 0 text57 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext38 0 0 ABS 0 text38 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext19 0 0 ABS 0 text19 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext57 0 0 ABS 0 text57 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext38 0 0 ABS 0 text38 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext19 0 0 ABS 0 text19 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext28 1A60 0 CODE 0 text28 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext28 19CC 0 CODE 0 text28 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext47 CE 0 CODE 0 text47 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_i2c_master_send 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_i2c_configure_master 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_ofi1_memcpy 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
@@ -1482,82 +1448,70 @@ __Htext48 0 0 ABS 0 text48 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext29 0 0 ABS 0 text29 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext48 0 0 ABS 0 text48 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext29 0 0 ABS 0 text29 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext19 1A24 0 CODE 0 text19 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext19 1990 0 CODE 0 text19 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __ptext38 1D2E 0 CODE 0 text38 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext57 1BA2 0 CODE 0 text57 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-___intlo_sp 0 0 STACK 2 stack C:\Users\daduang\AppData\Local\Temp\s35g.obj
-__Htext58 0 0 ABS 0 text58 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext57 1D8A 0 CODE 0 text57 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+___intlo_sp 0 0 STACK 2 stack C:\Users\daduang\AppData\Local\Temp\s3as.obj
 __Htext39 0 0 ABS 0 text39 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__Ltext58 0 0 ABS 0 text58 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext39 0 0 ABS 0 text39 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext29 1D08 0 CODE 0 text29 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext48 CE 0 CODE 0 text48 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext29 1C48 0 CODE 0 text29 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext48 1BCA 0 CODE 0 text48 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 timer0_lthread@msgtype 92 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 timer1_lthread@msgtype AC 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Htext49 0 0 ABS 0 text49 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ltext49 0 0 ABS 0 text49 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext39 1DCC 0 CODE 0 text39 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext58 1E28 0 CODE 0 text58 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext39 184E 0 CODE 0 text39 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _T1GCONbits F9A 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _OSCCONbits FD3 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __HbssBANK4 0 0 ABS 0 bssBANK4 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__ptext49 1C5E 0 CODE 0 text49 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__ptext49 E8C 0 CODE 0 text49 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __LbssBANK4 0 0 ABS 0 bssBANK4 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 _INTCONbits FF2 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 ?_ReadTimer1 1 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __pbssBANK4 400 0 BANK4 1 bssBANK4 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_send_msg E20 0 CODE 0 text15 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_send_msg E8C 0 CODE 0 text15 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hend_init CE 0 CODE 0 end_init dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lend_init CA 0 CODE 0 end_init dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 FromMainLow_recvmsg@data 1B 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_ofi2_memcpy 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_WriteTimer1 1DBA 0 CODE 0 text37 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_FromMainHigh_recvmsg 1D08 0 CODE 0 text44 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-i2_FromMainHigh_recvmsg 1B08 0 CODE 0 text51 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_init_queue 176A 0 CODE 0 text11 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_WriteTimer1 1D1C 0 CODE 0 text37 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_FromMainHigh_recvmsg 1C48 0 CODE 0 text43 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+i2_FromMainHigh_recvmsg 1A74 0 CODE 0 text50 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_init_queue 16F0 0 CODE 0 text11 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 memcpy@d1 90 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_InterruptHandlerHigh 1630 0 CODE 0 intcode_body dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__HbssBANK5 0 0 ABS 0 bssBANK5 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__LbssBANK5 0 0 ABS 0 bssBANK5 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__pbssBANK5 500 0 BANK5 1 bssBANK5 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_InterruptHandlerHigh 15B6 0 CODE 0 intcode_body dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hjflash_buffer F800 0 CODE 0 jflash_buffer dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Ljflash_buffer F800 0 CODE 0 jflash_buffer dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 send_msg@msgtype 9D 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_init_queues 153A 0 CODE 0 text10 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_init_queues 14C0 0 CODE 0 text10 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 recv_msg@msgtype 9D 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __CFG_CP0$OFF 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__smallconst 0 0 SMALLCONST 0 smallconst C:\Users\daduang\AppData\Local\Temp\s35g.obj
+__smallconst 0 0 SMALLCONST 0 smallconst C:\Users\daduang\AppData\Local\Temp\s3as.obj
 __CFG_WPFP$PAGE_63 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__HbssBANK6 0 0 ABS 0 bssBANK6 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__LbssBANK6 0 0 ABS 0 bssBANK6 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i2FromMainHigh_recvmsg@maxlength 7C 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hreset_vec 6 0 CODE 0 reset_vec dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__pbssBANK6 600 0 BANK6 1 bssBANK6 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lreset_vec 0 0 CODE 0 reset_vec dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_in_low_int 19A8 0 CODE 0 text20 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_in_low_int 1914 0 CODE 0 text20 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_FromMainHigh_sendmsg 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_enable_interrupts 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 memcpy@s1 92 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__HbssBANK7 0 0 ABS 0 bssBANK7 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__LbssBANK7 0 0 ABS 0 bssBANK7 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__pbssBANK7 700 0 BANK7 1 bssBANK7 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__accesstop 60 0 ABS 0 - C:\Users\daduang\AppData\Local\Temp\s35g.obj
-__end_of_recv_msg C16 0 CODE 0 text26 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__accesstop 60 0 ABS 0 - C:\Users\daduang\AppData\Local\Temp\s3as.obj
+__end_of_recv_msg C82 0 CODE 0 text26 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hparam0 0 0 ABS 0 param0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lparam0 0 0 ABS 0 param0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Hintcode_body 0 0 ABS 0 intcode_body dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __Lintcode_body 0 0 ABS 0 intcode_body dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__pintcode_body 15BA 0 CODE 0 intcode_body dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__pintcode_body 1540 0 CODE 0 intcode_body dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_ofi1_recv_msg 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_enable_interrupts 1E1E 0 CODE 0 text17 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-intlevel0 0 0 CODE 0 text C:\Users\daduang\AppData\Local\Temp\s35g.obj
+_enable_interrupts 1D80 0 CODE 0 text17 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+intlevel0 0 0 CODE 0 text C:\Users\daduang\AppData\Local\Temp\s3as.obj
 __size_of_block_on_To_msgqueues 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 FromMainLow_recvmsg@msgtype 19 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-intlevel1 0 0 CODE 0 text C:\Users\daduang\AppData\Local\Temp\s35g.obj
+intlevel1 0 0 CODE 0 text C:\Users\daduang\AppData\Local\Temp\s3as.obj
 __CFG_WPDIS$OFF 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-intlevel2 0 0 CODE 0 text C:\Users\daduang\AppData\Local\Temp\s35g.obj
-intlevel3 0 0 CODE 0 text C:\Users\daduang\AppData\Local\Temp\s35g.obj
-_FromMainLow_sendmsg 1BD4 0 CODE 0 text3 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+intlevel2 0 0 CODE 0 text C:\Users\daduang\AppData\Local\Temp\s3as.obj
+intlevel3 0 0 CODE 0 text C:\Users\daduang\AppData\Local\Temp\s3as.obj
+_FromMainLow_sendmsg 1B40 0 CODE 0 text3 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_ofi2_recv_msg 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __CFG_DSWDTOSC$T1OSCREF 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 ToMainLow_sendmsg@length 1A 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
@@ -1568,20 +1522,20 @@ __size_of___lwmod 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i1send_msg@slot 14 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i2send_msg@slot 73 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_init_timer1_lthread 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_SleepIfOkay 14BA 0 CODE 0 text54 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_SleepIfOkay 1440 0 CODE 0 text53 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i1recv_msg@slot 14 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 i2recv_msg@slot 73 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_ToMainHigh_recvmsg 1AD2 0 CODE 0 text25 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-start_initialization 1828 0 CODE 0 cinit dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_Open1USART 16A0 0 CODE 0 text30 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_of_init_i2c 1706 0 CODE 0 text12 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_ofi1_memcpy 19A8 0 CODE 0 text46 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-main@last_reg_recvd 11F 0 BANK1 1 cstackBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_ofi2_memcpy 1920 0 CODE 0 text53 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_ToMainHigh_recvmsg 1A3E 0 CODE 0 text25 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+start_initialization 18D6 0 CODE 0 cinit dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_Open1USART 1626 0 CODE 0 text30 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_of_init_i2c 168C 0 CODE 0 text12 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_ofi1_memcpy 18D6 0 CODE 0 text45 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+main@last_reg_recvd 12A 0 BANK1 1 cstackBANK1 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_ofi2_memcpy 184E 0 CODE 0 text52 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of___awmod 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_ReadTimer1 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_init_i2c 16A0 0 CODE 0 text12 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__initialization 1828 0 CODE 0 cinit dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_init_i2c 1626 0 CODE 0 text12 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__initialization 18D6 0 CODE 0 cinit dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __size_of_in_low_int 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __CFG_LPT1OSC$OFF 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 ___awmod@dividend 90 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
@@ -1589,12 +1543,12 @@ timer0_int_handler@val 22 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framewor
 ___lwmod@dividend 90 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 __activetblptr 2 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 ___awmod@counter 94 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-__end_ofi2_check_msg 1BD4 0 CODE 0 text57 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+__end_ofi2_check_msg 1B40 0 CODE 0 text56 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 ___lwmod@counter 94 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_SensorData_MQ 400 0 BANK4 1 bssBANK4 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_SensorData_MQ 200 0 BANK2 1 bssBANK2 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 timer0_int_handler@length 1E 0 COMRAM 1 cstackCOMRAM dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-i2_ToMainHigh_sendmsg 1C5E 0 CODE 0 text49 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
-_FromMainHigh_sendmsg 1C30 0 CODE 0 text14 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+i2_ToMainHigh_sendmsg 1BCA 0 CODE 0 text48 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
+_FromMainHigh_sendmsg 1B9C 0 CODE 0 text14 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 timer0_lthread@length 94 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 timer1_lthread@length AE 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 Delay1KTCYx@unit 90 0 BANK0 1 cstackBANK0 dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
@@ -1625,14 +1579,11 @@ __size_of_memcpy 0 0 ABS 0 - dist/UseXC8/debug\PIC_Framework_3.X.debug.obj
 %SEGMENTS
 reset_vec 0 0 0 6 1
 intcode 0 8 8 10 1
-intcodelo 0 18 18 1E16 1
+intcodelo 0 18 18 1D78 1
 config 0 FFF8 FFF8 8 1
-cstackCOMRAM 1 1 1 37 1
+cstackCOMRAM 1 1 1 36 1
 cstackBANK0 1 60 60 56 1
-cstackBANK1 1 100 100 B9 1
-bssBANK2 1 200 200 86 1
-bssBANK3 1 300 300 86 1
-bssBANK4 1 400 400 86 1
-bssBANK5 1 500 500 86 1
-bssBANK6 1 600 600 86 1
-bssBANK7 1 700 700 86 1
+bssBANK2 1 200 200 EC 1
+bssBANK3 1 300 300 EC 1
+cstackBANK1 1 100 100 F7 1
+bssBANK4 1 400 400 76 1

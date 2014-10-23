@@ -7,9 +7,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _ToMainHigh_sendmsg `(c ~T0 @X0 0 ef3`uc`uc`*v ]
 "187 C:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\timers.h
 [v _ReadTimer1 `(ui ~T0 @X0 0 ef ]
-"57 ../src/messages.h
-[v _ToMainLow_sendmsg `(c ~T0 @X0 0 ef3`uc`uc`*v ]
-"188 C:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\timers.h
+"188
 [v _WriteTimer1 `(v ~T0 @X0 0 ef1`ui ]
 [; ;htc.h: 21: extern const char __xc8_OPTIM_SPEED;
 [; ;htc.h: 24: extern void __builtin_software_breakpoint(void);
@@ -8322,7 +8320,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;messages.h: 11: unsigned char full;
 [; ;messages.h: 12: unsigned char length;
 [; ;messages.h: 13: unsigned char msgtype;
-[; ;messages.h: 14: unsigned char data[30];
+[; ;messages.h: 14: unsigned char data[26];
 [; ;messages.h: 15: } msg;
 [; ;messages.h: 17: typedef struct __msg_queue {
 [; ;messages.h: 18: msg queue[4];
@@ -8345,10 +8343,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;messages.h: 92: signed char FromMainHigh_sendmsg(unsigned char,unsigned char,void *);
 [; ;messages.h: 93: signed char FromMainHigh_recvmsg(unsigned char,unsigned char *,void *);
 [; ;my_uart.h: 10: typedef struct __uart_comm {
-[; ;my_uart.h: 11: unsigned char buffer[23];
+[; ;my_uart.h: 11: unsigned char buffer[6];
 [; ;my_uart.h: 12: unsigned char buflen;
 [; ;my_uart.h: 13: unsigned char bufind;
-[; ;my_uart.h: 14: unsigned char outbuffer[23];
+[; ;my_uart.h: 14: unsigned char outbuffer[6];
 [; ;my_uart.h: 15: unsigned char outbuflen;
 [; ;my_uart.h: 16: unsigned char outbufind;
 [; ;my_uart.h: 17: unsigned char msg_count;
@@ -8359,14 +8357,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;my_uart.h: 23: void uart_recv_int_handler(void);
 [; ;my_uart.h: 24: void uart_send(unsigned char,unsigned char *);
 [; ;my_i2c.h: 7: typedef struct __i2c_comm {
-[; ;my_i2c.h: 8: unsigned char buffer[30];
+[; ;my_i2c.h: 8: unsigned char buffer[26];
 [; ;my_i2c.h: 9: unsigned char buflen;
 [; ;my_i2c.h: 10: unsigned char bufind;
 [; ;my_i2c.h: 11: unsigned char event_count;
 [; ;my_i2c.h: 12: unsigned char status;
 [; ;my_i2c.h: 13: unsigned char error_code;
 [; ;my_i2c.h: 14: unsigned char error_count;
-[; ;my_i2c.h: 15: unsigned char outbuffer[30];
+[; ;my_i2c.h: 15: unsigned char outbuffer[26];
 [; ;my_i2c.h: 16: unsigned char outbuflen;
 [; ;my_i2c.h: 17: unsigned char outbufind;
 [; ;my_i2c.h: 18: unsigned char slave_addr;
@@ -8413,29 +8411,26 @@ Version 3.2 HI-TECH Software Intermediate Code
 }
 [e :U 1136 ]
 [; ;user_interrupts.c: 27: }
-[; ;user_interrupts.c: 28: }
-"28
+[; ;user_interrupts.c: 59: }
+"59
 [e :UE 1135 ]
 }
-"33
+"64
 [v _timer1_int_handler `(v ~T0 @X0 1 ef ]
 {
-[; ;user_interrupts.c: 33: void timer1_int_handler() {
+[; ;user_interrupts.c: 64: void timer1_int_handler() {
 [e :U _timer1_int_handler ]
 [f ]
-"34
+"65
 [v _result `ui ~T0 @X0 1 a ]
-[; ;user_interrupts.c: 34: unsigned int result;
-[; ;user_interrupts.c: 38: result = ReadTimer1();
-"38
+[; ;user_interrupts.c: 65: unsigned int result;
+[; ;user_interrupts.c: 75: result = ReadTimer1();
+"75
 [e = _result ( _ReadTimer1 ..  ]
-[; ;user_interrupts.c: 39: ToMainLow_sendmsg(0, 11, (void *) 0);
-"39
-[e ( _ToMainLow_sendmsg (3 , , -> -> 0 `i `uc -> -> 11 `i `uc -> -> 0 `i `*v ]
-[; ;user_interrupts.c: 42: WriteTimer1(0);
-"42
+[; ;user_interrupts.c: 110: WriteTimer1(0);
+"110
 [e ( _WriteTimer1 (1 -> -> 0 `i `ui ]
-[; ;user_interrupts.c: 43: }
-"43
+[; ;user_interrupts.c: 111: }
+"111
 [e :UE 1137 ]
 }
