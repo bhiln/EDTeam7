@@ -2,10 +2,10 @@
 #define __messages
 
 // The maximum length (in bytes) of a message
-#define MSGLEN 30
+#define MSGLEN 26
 
 // The maximum number of messages in a single queue
-#define MSGQUEUELEN 10
+#define MSGQUEUELEN 4
 
 typedef struct __msg {
     unsigned char full;

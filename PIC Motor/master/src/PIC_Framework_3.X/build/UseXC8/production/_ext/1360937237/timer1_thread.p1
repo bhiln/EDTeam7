@@ -8343,10 +8343,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;messages.h: 11: unsigned char full;
 [; ;messages.h: 12: unsigned char length;
 [; ;messages.h: 13: unsigned char msgtype;
-[; ;messages.h: 14: unsigned char data[30];
+[; ;messages.h: 14: unsigned char data[26];
 [; ;messages.h: 15: } msg;
 [; ;messages.h: 17: typedef struct __msg_queue {
-[; ;messages.h: 18: msg queue[10];
+[; ;messages.h: 18: msg queue[4];
 [; ;messages.h: 19: unsigned char cur_write_ind;
 [; ;messages.h: 20: unsigned char cur_read_ind;
 [; ;messages.h: 21: } msg_queue;
@@ -8404,9 +8404,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "20
 [e $ ! == % . *U _tptr 0 -> -> 10 `i `ui -> -> 9 `i `ui 1137  ]
 {
-[; ;timer1_thread.c: 22: retval = FromMainHigh_sendmsg(sizeof (tptr->msgcount), 31, (void *) &(tptr->msgcount));
-"22
-[e = _retval ( _FromMainHigh_sendmsg (3 , , -> -> # . *U _tptr 0 `ui `uc -> -> 31 `i `uc -> &U . *U _tptr 0 `*v ]
+[; ;timer1_thread.c: 21: retval = FromMainHigh_sendmsg(sizeof (tptr->msgcount), 20, (void *) &(tptr->msgcount));
+"21
+[e = _retval ( _FromMainHigh_sendmsg (3 , , -> -> # . *U _tptr 0 `ui `uc -> -> 20 `i `uc -> &U . *U _tptr 0 `*v ]
 [; ;timer1_thread.c: 23: if (retval < 0) {
 "23
 [e $ ! < -> _retval `i -> 0 `i 1138  ]

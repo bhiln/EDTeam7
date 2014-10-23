@@ -10838,7 +10838,7 @@ typedef struct __msg {
 unsigned char full;
 unsigned char length;
 unsigned char msgtype;
-unsigned char data[30];
+unsigned char data[26];
 } msg;
 
 typedef struct __msg_queue {
@@ -10884,10 +10884,10 @@ signed char FromMainHigh_recvmsg(unsigned char,unsigned char *,void *);
 
 # 10 "../src/my_uart.h"
 typedef struct __uart_comm {
-unsigned char buffer[23];
+unsigned char buffer[6];
 unsigned char buflen;
 unsigned char bufind;
-unsigned char outbuffer[23];
+unsigned char outbuffer[6];
 unsigned char outbuflen;
 unsigned char outbufind;
 unsigned char msg_count;
@@ -10901,14 +10901,14 @@ void uart_send(unsigned char,unsigned char *);
 
 # 7 "../src/my_i2c.h"
 typedef struct __i2c_comm {
-unsigned char buffer[30];
+unsigned char buffer[26];
 unsigned char buflen;
 unsigned char bufind;
 unsigned char event_count;
 unsigned char status;
 unsigned char error_code;
 unsigned char error_count;
-unsigned char outbuffer[30];
+unsigned char outbuffer[26];
 unsigned char outbuflen;
 unsigned char outbufind;
 unsigned char slave_addr;
@@ -10940,6 +10940,8 @@ length = FromMainHigh_recvmsg(sizeof(val), (unsigned char *)&msgtype, (void *) &
 if (length == sizeof (val)) {
 ToMainHigh_sendmsg(sizeof (val), 10, (void *) &val);
 }
+
+# 59
 }
 
 
@@ -10948,11 +10950,9 @@ ToMainHigh_sendmsg(sizeof (val), 10, (void *) &val);
 void timer1_int_handler() {
 unsigned int result;
 
-
-
+# 75
 result = ReadTimer1();
-ToMainLow_sendmsg(0, 11, (void *) 0);
 
-
+# 110
 WriteTimer1(0);
 }

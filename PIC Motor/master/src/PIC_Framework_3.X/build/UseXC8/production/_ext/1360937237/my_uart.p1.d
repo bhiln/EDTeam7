@@ -3,5 +3,6 @@
  ../src/my_uart.c  \
 ../src/debug.h  \
 ../src/my_uart.h  \
+../src/my_i2c.h  \
 ../src/maindefs.h  \
 ../src/messages.h 

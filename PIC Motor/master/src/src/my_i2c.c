@@ -180,6 +180,7 @@ void i2c_master_int_handler() {
                 ic_ptr->status = I2C_IDLE;
                 ToMainHigh_sendmsg(0, MSGT_I2C_MASTER_RECV_FAILED, 0);
                 SSP1CON2bits.PEN = 1;
+                // use LED to show NACK in main case
             }
             break;
         };
@@ -268,7 +269,6 @@ void i2c_master_int_handler() {
 //        };
     }
 }
-
 
 // set up the data structures for this i2c code
 // should be called once before any i2c routines are called

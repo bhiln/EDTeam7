@@ -5,8 +5,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _FromMainHigh_recvmsg `(c ~T0 @X0 0 ef3`uc`*uc`*v ]
 "64
 [v _ToMainHigh_sendmsg `(c ~T0 @X0 0 ef3`uc`uc`*v ]
-"57
-[v _ToMainLow_sendmsg `(c ~T0 @X0 0 ef3`uc`uc`*v ]
 "187 C:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\timers.h
 [v _ReadTimer1 `(ui ~T0 @X0 0 ef ]
 "188
@@ -8322,10 +8320,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;messages.h: 11: unsigned char full;
 [; ;messages.h: 12: unsigned char length;
 [; ;messages.h: 13: unsigned char msgtype;
-[; ;messages.h: 14: unsigned char data[30];
+[; ;messages.h: 14: unsigned char data[26];
 [; ;messages.h: 15: } msg;
 [; ;messages.h: 17: typedef struct __msg_queue {
-[; ;messages.h: 18: msg queue[10];
+[; ;messages.h: 18: msg queue[4];
 [; ;messages.h: 19: unsigned char cur_write_ind;
 [; ;messages.h: 20: unsigned char cur_read_ind;
 [; ;messages.h: 21: } msg_queue;
@@ -8345,10 +8343,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;messages.h: 92: signed char FromMainHigh_sendmsg(unsigned char,unsigned char,void *);
 [; ;messages.h: 93: signed char FromMainHigh_recvmsg(unsigned char,unsigned char *,void *);
 [; ;my_uart.h: 10: typedef struct __uart_comm {
-[; ;my_uart.h: 11: unsigned char buffer[30];
+[; ;my_uart.h: 11: unsigned char buffer[6];
 [; ;my_uart.h: 12: unsigned char buflen;
 [; ;my_uart.h: 13: unsigned char bufind;
-[; ;my_uart.h: 14: unsigned char outbuffer[30];
+[; ;my_uart.h: 14: unsigned char outbuffer[6];
 [; ;my_uart.h: 15: unsigned char outbuflen;
 [; ;my_uart.h: 16: unsigned char outbufind;
 [; ;my_uart.h: 17: unsigned char msg_count;
@@ -8359,14 +8357,14 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;my_uart.h: 23: void uart_recv_int_handler(void);
 [; ;my_uart.h: 24: void uart_send(unsigned char,unsigned char *);
 [; ;my_i2c.h: 7: typedef struct __i2c_comm {
-[; ;my_i2c.h: 8: unsigned char buffer[30];
+[; ;my_i2c.h: 8: unsigned char buffer[26];
 [; ;my_i2c.h: 9: unsigned char buflen;
 [; ;my_i2c.h: 10: unsigned char bufind;
 [; ;my_i2c.h: 11: unsigned char event_count;
 [; ;my_i2c.h: 12: unsigned char status;
 [; ;my_i2c.h: 13: unsigned char error_code;
 [; ;my_i2c.h: 14: unsigned char error_count;
-[; ;my_i2c.h: 15: unsigned char outbuffer[30];
+[; ;my_i2c.h: 15: unsigned char outbuffer[26];
 [; ;my_i2c.h: 16: unsigned char outbuflen;
 [; ;my_i2c.h: 17: unsigned char outbufind;
 [; ;my_i2c.h: 18: unsigned char slave_addr;
@@ -8412,128 +8410,27 @@ Version 3.2 HI-TECH Software Intermediate Code
 "27
 }
 [e :U 1136 ]
-"29
-[v _i `uc ~T0 @X0 1 a ]
-"30
-[v _forward `uc ~T0 @X0 -> -> 1 `i `ux a ]
-[v _left `uc ~T0 @X0 -> -> 1 `i `ux a ]
-[v _right `uc ~T0 @X0 -> -> 1 `i `ux a ]
-[v _stop `uc ~T0 @X0 -> -> 1 `i `ux a ]
-[v _reverse `uc ~T0 @X0 -> -> 1 `i `ux a ]
 [; ;user_interrupts.c: 27: }
-[; ;user_interrupts.c: 29: unsigned char i;
-[; ;user_interrupts.c: 30: unsigned char forward[1], left[1], right[1], stop[1], reverse[1];
-[; ;user_interrupts.c: 31: forward[0] = 0x0A;
-"31
-[e = *U + &U _forward * -> -> -> 0 `i `ui `ux -> -> # *U &U _forward `ui `ux -> -> 10 `i `uc ]
-[; ;user_interrupts.c: 32: left[0] = 0x0B;
-"32
-[e = *U + &U _left * -> -> -> 0 `i `ui `ux -> -> # *U &U _left `ui `ux -> -> 11 `i `uc ]
-[; ;user_interrupts.c: 33: right[0] = 0x0C;
-"33
-[e = *U + &U _right * -> -> -> 0 `i `ui `ux -> -> # *U &U _right `ui `ux -> -> 12 `i `uc ]
-[; ;user_interrupts.c: 34: stop[0] = 0x0D;
-"34
-[e = *U + &U _stop * -> -> -> 0 `i `ui `ux -> -> # *U &U _stop `ui `ux -> -> 13 `i `uc ]
-[; ;user_interrupts.c: 35: reverse[0] = 0x0E;
-"35
-[e = *U + &U _reverse * -> -> -> 0 `i `ui `ux -> -> # *U &U _reverse `ui `ux -> -> 14 `i `uc ]
-[; ;user_interrupts.c: 37: if (i % 5 == 0) {
-"37
-[e $ ! == % -> _i `i -> 5 `i -> 0 `i 1137  ]
-{
-[; ;user_interrupts.c: 38: ToMainLow_sendmsg(1, 31, forward);
-"38
-[e ( _ToMainLow_sendmsg (3 , , -> -> 1 `i `uc -> -> 31 `i `uc -> &U _forward `*v ]
-[; ;user_interrupts.c: 39: i = 0;
-"39
-[e = _i -> -> 0 `i `uc ]
-"40
-}
-[e :U 1137 ]
-[; ;user_interrupts.c: 40: }
-[; ;user_interrupts.c: 41: if (i % 5 == 1) {
-"41
-[e $ ! == % -> _i `i -> 5 `i -> 1 `i 1138  ]
-{
-[; ;user_interrupts.c: 42: ToMainLow_sendmsg(1, 31, left);
-"42
-[e ( _ToMainLow_sendmsg (3 , , -> -> 1 `i `uc -> -> 31 `i `uc -> &U _left `*v ]
-[; ;user_interrupts.c: 43: i = 1;
-"43
-[e = _i -> -> 1 `i `uc ]
-"44
-}
-[e :U 1138 ]
-[; ;user_interrupts.c: 44: }
-[; ;user_interrupts.c: 45: if (i % 5 == 2) {
-"45
-[e $ ! == % -> _i `i -> 5 `i -> 2 `i 1139  ]
-{
-[; ;user_interrupts.c: 46: ToMainLow_sendmsg(1, 31, right);
-"46
-[e ( _ToMainLow_sendmsg (3 , , -> -> 1 `i `uc -> -> 31 `i `uc -> &U _right `*v ]
-[; ;user_interrupts.c: 47: i = 2;
-"47
-[e = _i -> -> 2 `i `uc ]
-"48
-}
-[e :U 1139 ]
-[; ;user_interrupts.c: 48: }
-[; ;user_interrupts.c: 49: if (i % 5 == 3) {
-"49
-[e $ ! == % -> _i `i -> 5 `i -> 3 `i 1140  ]
-{
-[; ;user_interrupts.c: 50: ToMainLow_sendmsg(1, 31, stop);
-"50
-[e ( _ToMainLow_sendmsg (3 , , -> -> 1 `i `uc -> -> 31 `i `uc -> &U _stop `*v ]
-[; ;user_interrupts.c: 51: i = 3;
-"51
-[e = _i -> -> 3 `i `uc ]
-"52
-}
-[e :U 1140 ]
-[; ;user_interrupts.c: 52: }
-[; ;user_interrupts.c: 53: if (i % 5 == 4) {
-"53
-[e $ ! == % -> _i `i -> 5 `i -> 4 `i 1141  ]
-{
-[; ;user_interrupts.c: 54: ToMainLow_sendmsg(1, 31, reverse);
-"54
-[e ( _ToMainLow_sendmsg (3 , , -> -> 1 `i `uc -> -> 31 `i `uc -> &U _reverse `*v ]
-[; ;user_interrupts.c: 55: i = 4;
-"55
-[e = _i -> -> 4 `i `uc ]
-"56
-}
-[e :U 1141 ]
-[; ;user_interrupts.c: 56: }
-[; ;user_interrupts.c: 57: i++;
-"57
-[e ++ _i -> -> 1 `i `uc ]
-[; ;user_interrupts.c: 58: }
-"58
+[; ;user_interrupts.c: 59: }
+"59
 [e :UE 1135 ]
 }
-"63
+"64
 [v _timer1_int_handler `(v ~T0 @X0 1 ef ]
 {
-[; ;user_interrupts.c: 63: void timer1_int_handler() {
+[; ;user_interrupts.c: 64: void timer1_int_handler() {
 [e :U _timer1_int_handler ]
 [f ]
-"64
+"65
 [v _result `ui ~T0 @X0 1 a ]
-[; ;user_interrupts.c: 64: unsigned int result;
-[; ;user_interrupts.c: 74: result = ReadTimer1();
-"74
-[e = _result ( _ReadTimer1 ..  ]
-[; ;user_interrupts.c: 75: ToMainLow_sendmsg(0, 11, (void *) 0);
+[; ;user_interrupts.c: 65: unsigned int result;
+[; ;user_interrupts.c: 75: result = ReadTimer1();
 "75
-[e ( _ToMainLow_sendmsg (3 , , -> -> 0 `i `uc -> -> 11 `i `uc -> -> 0 `i `*v ]
-[; ;user_interrupts.c: 109: WriteTimer1(0);
-"109
-[e ( _WriteTimer1 (1 -> -> 0 `i `ui ]
-[; ;user_interrupts.c: 110: }
+[e = _result ( _ReadTimer1 ..  ]
+[; ;user_interrupts.c: 110: WriteTimer1(0);
 "110
-[e :UE 1142 ]
+[e ( _WriteTimer1 (1 -> -> 0 `i `ui ]
+[; ;user_interrupts.c: 111: }
+"111
+[e :UE 1137 ]
 }

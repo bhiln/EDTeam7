@@ -10908,11 +10908,11 @@ typedef struct __msg {
 unsigned char full;
 unsigned char length;
 unsigned char msgtype;
-unsigned char data[30];
+unsigned char data[26];
 } msg;
 
 typedef struct __msg_queue {
-msg queue[10];
+msg queue[4];
 unsigned char cur_write_ind;
 unsigned char cur_read_ind;
 } msg_queue;
@@ -10954,10 +10954,10 @@ signed char FromMainHigh_recvmsg(unsigned char,unsigned char *,void *);
 
 # 10 "../src/my_uart.h"
 typedef struct __uart_comm {
-unsigned char buffer[30];
+unsigned char buffer[6];
 unsigned char buflen;
 unsigned char bufind;
-unsigned char outbuffer[30];
+unsigned char outbuffer[6];
 unsigned char outbuflen;
 unsigned char outbufind;
 unsigned char msg_count;
@@ -10971,14 +10971,14 @@ void uart_send(unsigned char,unsigned char *);
 
 # 7 "../src/my_i2c.h"
 typedef struct __i2c_comm {
-unsigned char buffer[30];
+unsigned char buffer[26];
 unsigned char buflen;
 unsigned char bufind;
 unsigned char event_count;
 unsigned char status;
 unsigned char error_code;
 unsigned char error_count;
-unsigned char outbuffer[30];
+unsigned char outbuffer[26];
 unsigned char outbuflen;
 unsigned char outbufind;
 unsigned char slave_addr;
@@ -11080,7 +11080,7 @@ unsigned char motor_cmd_left;
 unsigned char motor_cmd_right;
 uart_comm uc;
 i2c_comm ic;
-unsigned char msgbuffer[30 + 1];
+unsigned char msgbuffer[26 + 1];
 unsigned char i;
 uart_thread_struct uthread_data;
 timer1_thread_struct t1thread_data;
@@ -11175,7 +11175,7 @@ while (1) {
 block_on_To_msgqueues();
 
 # 199
-length = ToMainHigh_recvmsg(30, &msgtype, (void *) msgbuffer);
+length = ToMainHigh_recvmsg(26, &msgtype, (void *) msgbuffer);
 if (length < 0) {
 
 if (length != -4) {
@@ -11212,42 +11212,8 @@ uart_send(length, msgbuffer);
 break;
 };
 case 46:
-
-
-
-
-default:
-{
-
-break;
-};
-};
-}
-
-
-length = ToMainLow_recvmsg(30, &msgtype, (void *) msgbuffer);
-if (length < 0) {
-
-if (length != -4) {
-
-}
-} else {
-switch (msgtype) {
-case 11:
-{
-timer1_lthread(&t1thread_data, msgtype, length, msgbuffer);
-break;
-};
-case 30:
-{
-uart_lthread(&uthread_data, msgtype, length, msgbuffer);
-break;
-};
-case 31:
 {
 last_reg_recvd = msgbuffer[0];
-
-# 311
 switch (last_reg_recvd) {
 
 case 0x0A:
@@ -11286,6 +11252,82 @@ i2c_master_send(0x9A, length, msgbuffer);
 break;
 }
 };
+
+break;
+};
+default:
+{
+
+break;
+};
+};
+}
+
+
+length = ToMainLow_recvmsg(26, &msgtype, (void *) msgbuffer);
+if (length < 0) {
+
+if (length != -4) {
+
+}
+}
+else {
+switch (msgtype) {
+case 11:
+{
+timer1_lthread(&t1thread_data, msgtype, length, msgbuffer);
+break;
+};
+case 30:
+{
+uart_lthread(&uthread_data, msgtype, length, msgbuffer);
+break;
+};
+case 31:
+{
+
+last_reg_recvd = msgbuffer[0];
+
+# 352
+switch (last_reg_recvd) {
+
+case 0x0A:
+{
+length = 1;
+msgbuffer[0] = 0x0A;
+i2c_master_send(0x9A, length, msgbuffer);
+break;
+}
+case 0x0B:
+{
+length = 1;
+msgbuffer[0] = 0x0B;
+i2c_master_send(0x9A, length, msgbuffer);
+break;
+}
+case 0x0C:
+{
+length = 1;
+msgbuffer[0] = 0x0C;
+i2c_master_send(0x9A, length, msgbuffer);
+break;
+}
+case 0x0D:
+{
+length = 1;
+msgbuffer[0] = 0x0D;
+i2c_master_send(0x9A, length, msgbuffer);
+break;
+}
+case 0x0E:
+{
+length = 1;
+msgbuffer[0] = 0x0E;
+i2c_master_send(0x9A, length, msgbuffer);
+break;
+}
+};
+
 
 break;
 };

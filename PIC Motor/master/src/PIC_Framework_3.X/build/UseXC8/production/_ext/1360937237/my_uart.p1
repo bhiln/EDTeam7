@@ -1,60 +1,8 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "10 ../src/my_uart.h
-[s S1133 `uc -> 30 `i `uc 1 `uc 1 `uc -> 30 `i `uc 1 `uc 1 `uc 1 `uc 1 ]
+[s S1133 `uc -> 6 `i `uc 1 `uc 1 `uc -> 6 `i `uc 1 `uc 1 `uc 1 `uc 1 ]
 [n S1133 __uart_comm buffer buflen bufind outbuffer outbuflen outbufind msg_count cmd_count ]
-"9112 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic18f46j50.h
-[s S610 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S610 . TMR1IF TMR2IF CCP1IF SSP1IF TX1IF RC1IF ADIF PMPIF ]
-"9122
-[s S611 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S611 . . SSPIF TXIF RCIF ]
-"9128
-[s S612 :7 `uc 1 :1 `uc 1 ]
-[n S612 . . PSPIF ]
-"9111
-[u S609 `S610 1 `S611 1 `S612 1 ]
-[n S609 . . . . ]
-"9133
-[v _PIR1bits `VS609 ~T0 @X0 0 e@3998 ]
-"244 C:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\usart.h
-[v _Read1USART `(uc ~T0 @X0 0 ef ]
-"57 ../src/messages.h
-[v _ToMainLow_sendmsg `(c ~T0 @X0 0 ef3`uc`uc`*v ]
-"204 C:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\usart.h
-[s S1128 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :4 `uc 1 ]
-[n S1128 . RX_NINE TX_NINE FRAME_ERROR OVERRUN_ERROR fill ]
-"200
-[u S1127 `uc 1 `S1128 1 ]
-[n S1127 USART1 val . ]
-"212
-[v _USART1_Status `S1127 ~T0 @X0 0 e ]
-"10228 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic18f46j50.h
-[s S670 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S670 . RX9D OERR FERR ADDEN CREN SREN RX9 SPEN ]
-"10238
-[s S671 :1 `uc 1 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S671 . RCD8 . ADEN . RC9 ]
-"10245
-[s S672 :6 `uc 1 :1 `uc 1 ]
-[n S672 . . NOT_RC8 ]
-"10249
-[s S673 :6 `uc 1 :1 `uc 1 ]
-[n S673 . . nRC8 ]
-"10253
-[s S674 :6 `uc 1 :1 `uc 1 ]
-[n S674 . . RC8_9 ]
-"10257
-[s S675 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S675 . RX9D1 OERR1 FERR1 ADDEN1 CREN1 SREN1 RX91 SPEN1 ]
-"10267
-[s S676 :5 `uc 1 :1 `uc 1 ]
-[n S676 . . SRENA ]
-"10227
-[u S669 `S670 1 `S671 1 `S672 1 `S673 1 `S674 1 `S675 1 `S676 1 ]
-[n S669 . . . . . . . . ]
-"10272
-[v _RCSTAbits `VS669 ~T0 @X0 0 e@4012 ]
-"7472
+"7472 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic18f46j50.h
 [s S506 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S506 . LATA0 LATA1 LATA2 LATA3 . LATA5 LATA6 LATA7 ]
 "7482
@@ -86,7 +34,25 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S505 . . . . . . . . . . ]
 "7514
 [v _LATAbits `VS505 ~T0 @X0 0 e@3977 ]
-"10402
+"9112
+[s S610 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S610 . TMR1IF TMR2IF CCP1IF SSP1IF TX1IF RC1IF ADIF PMPIF ]
+"9122
+[s S611 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S611 . . SSPIF TXIF RCIF ]
+"9128
+[s S612 :7 `uc 1 :1 `uc 1 ]
+[n S612 . . PSPIF ]
+"9111
+[u S609 `S610 1 `S611 1 `S612 1 ]
+[n S609 . . . . ]
+"9133
+[v _PIR1bits `VS609 ~T0 @X0 0 e@3998 ]
+"244 C:\Program Files (x86)\Microchip\xc8\v1.33\include\plib\usart.h
+[v _Read1USART `(uc ~T0 @X0 0 ef ]
+"57 ../src/messages.h
+[v _ToMainLow_sendmsg `(c ~T0 @X0 0 ef3`uc`uc`*v ]
+"10402 C:\Program Files (x86)\Microchip\xc8\v1.33\include\pic18f46j50.h
 [s S678 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
 [n S678 . TX9D TRMT BRGH SENDB SYNC TXEN TX9 CSRC ]
 "10412
@@ -8435,10 +8401,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;messages.h: 11: unsigned char full;
 [; ;messages.h: 12: unsigned char length;
 [; ;messages.h: 13: unsigned char msgtype;
-[; ;messages.h: 14: unsigned char data[30];
+[; ;messages.h: 14: unsigned char data[26];
 [; ;messages.h: 15: } msg;
 [; ;messages.h: 17: typedef struct __msg_queue {
-[; ;messages.h: 18: msg queue[10];
+[; ;messages.h: 18: msg queue[4];
 [; ;messages.h: 19: unsigned char cur_write_ind;
 [; ;messages.h: 20: unsigned char cur_read_ind;
 [; ;messages.h: 21: } msg_queue;
@@ -8458,10 +8424,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;messages.h: 92: signed char FromMainHigh_sendmsg(unsigned char,unsigned char,void *);
 [; ;messages.h: 93: signed char FromMainHigh_recvmsg(unsigned char,unsigned char *,void *);
 [; ;my_uart.h: 10: typedef struct __uart_comm {
-[; ;my_uart.h: 11: unsigned char buffer[30];
+[; ;my_uart.h: 11: unsigned char buffer[6];
 [; ;my_uart.h: 12: unsigned char buflen;
 [; ;my_uart.h: 13: unsigned char bufind;
-[; ;my_uart.h: 14: unsigned char outbuffer[30];
+[; ;my_uart.h: 14: unsigned char outbuffer[6];
 [; ;my_uart.h: 15: unsigned char outbuflen;
 [; ;my_uart.h: 16: unsigned char outbufind;
 [; ;my_uart.h: 17: unsigned char msg_count;
@@ -8471,283 +8437,338 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;my_uart.h: 22: void uart_trans_int_handler(void);
 [; ;my_uart.h: 23: void uart_recv_int_handler(void);
 [; ;my_uart.h: 24: void uart_send(unsigned char,unsigned char *);
-"10 ../src/my_uart.c
+[; ;my_i2c.h: 7: typedef struct __i2c_comm {
+[; ;my_i2c.h: 8: unsigned char buffer[26];
+[; ;my_i2c.h: 9: unsigned char buflen;
+[; ;my_i2c.h: 10: unsigned char bufind;
+[; ;my_i2c.h: 11: unsigned char event_count;
+[; ;my_i2c.h: 12: unsigned char status;
+[; ;my_i2c.h: 13: unsigned char error_code;
+[; ;my_i2c.h: 14: unsigned char error_count;
+[; ;my_i2c.h: 15: unsigned char outbuffer[26];
+[; ;my_i2c.h: 16: unsigned char outbuflen;
+[; ;my_i2c.h: 17: unsigned char outbufind;
+[; ;my_i2c.h: 18: unsigned char slave_addr;
+[; ;my_i2c.h: 19: unsigned char sensor_addr;
+[; ;my_i2c.h: 20: unsigned char motor_addr;
+[; ;my_i2c.h: 21: unsigned char msg_count;
+[; ;my_i2c.h: 22: } i2c_comm;
+[; ;my_i2c.h: 45: void init_i2c(i2c_comm *);
+[; ;my_i2c.h: 46: void i2c_int_handler(void);
+[; ;my_i2c.h: 47: void i2c_master_int_handler(void);
+[; ;my_i2c.h: 48: void i2c_slave_int_handler(void);
+[; ;my_i2c.h: 49: void start_i2c_slave_reply(unsigned char,unsigned char *);
+[; ;my_i2c.h: 50: void i2c_configure_slave(unsigned char);
+[; ;my_i2c.h: 51: void i2c_configure_master(unsigned char,unsigned char);
+[; ;my_i2c.h: 52: unsigned char i2c_master_send(unsigned char,unsigned char,unsigned char *);
+[; ;my_i2c.h: 53: unsigned char i2c_master_recv(unsigned char,unsigned char);
+"11 ../src/my_uart.c
 [v _uc_ptr `*S1133 ~T0 @X0 1 s ]
-[; ;my_uart.c: 10: static uart_comm *uc_ptr;
-"12
+[; ;my_uart.c: 11: static uart_comm *uc_ptr;
+"13
 [v _uart_recv_int_handler `(v ~T0 @X0 1 ef ]
 {
-[; ;my_uart.c: 12: void uart_recv_int_handler() {
+[; ;my_uart.c: 13: void uart_recv_int_handler() {
 [e :U _uart_recv_int_handler ]
 [f ]
-"13
-[v _error_msg `uc ~T0 @X0 1 a ]
-[; ;my_uart.c: 13: unsigned char error_msg;
-[; ;my_uart.c: 14: if ((PIR1bits.RC1IF)) {
+[; ;my_uart.c: 14: { LATAbits.LATA3 = 1;};
 "14
-[e $ ! != -> . . _PIR1bits 0 5 `i -> -> -> 0 `i `Vuc `i 1135  ]
 {
-[; ;my_uart.c: 15: uc_ptr->buffer[uc_ptr->buflen] = Read1USART();
+[e = . . _LATAbits 0 3 -> -> 1 `i `uc ]
+}
 "15
-[e = *U + &U . *U _uc_ptr 0 * -> . *U _uc_ptr 1 `ux -> -> # *U &U . *U _uc_ptr 0 `ui `ux ( _Read1USART ..  ]
-[; ;my_uart.c: 17: uc_ptr->buflen++;
+[v _error_msg `uc ~T0 @X0 1 a ]
+[; ;my_uart.c: 15: unsigned char error_msg;
+[; ;my_uart.c: 16: if ((PIR1bits.RC1IF)) {
+"16
+[e $ ! != -> . . _PIR1bits 0 5 `i -> -> -> 0 `i `Vuc `i 1136  ]
+{
+[; ;my_uart.c: 17: { LATAbits.LATA2 = 1;};
 "17
-[e ++ . *U _uc_ptr 1 -> -> 1 `i `uc ]
-[; ;my_uart.c: 19: if (uc_ptr->buflen == 6 && uc_ptr->buffer[uc_ptr->buflen-1] == 0xFF) {
-"19
-[e $ ! && == -> . *U _uc_ptr 1 `i -> 6 `i == -> *U + &U . *U _uc_ptr 0 * -> -> - -> . *U _uc_ptr 1 `i -> 1 `i `ui `ux -> -> # *U &U . *U _uc_ptr 0 `ui `ux `i -> 255 `i 1136  ]
-{
-[; ;my_uart.c: 22: ToMainLow_sendmsg(uc_ptr->buflen, 31, (void *) uc_ptr->buffer);
-"22
-[e ( _ToMainLow_sendmsg (3 , , . *U _uc_ptr 1 -> -> 31 `i `uc -> &U . *U _uc_ptr 0 `*v ]
-[; ;my_uart.c: 23: uc_ptr->buflen = 0;
-"23
-[e = . *U _uc_ptr 1 -> -> 0 `i `uc ]
-"42
-}
-[e :U 1136 ]
-[; ;my_uart.c: 42: }
-[; ;my_uart.c: 43: ToMainLow_sendmsg(uc_ptr->buflen, 31, (void *) uc_ptr->buffer);
-"43
-[e ( _ToMainLow_sendmsg (3 , , . *U _uc_ptr 1 -> -> 31 `i `uc -> &U . *U _uc_ptr 0 `*v ]
-"45
-}
-[e :U 1135 ]
-[; ;my_uart.c: 45: }
-[; ;my_uart.c: 47: if (USART1_Status.OVERRUN_ERROR == 1) {
-"47
-[e $ ! == -> . . _USART1_Status 1 3 `i -> 1 `i 1137  ]
-{
-[; ;my_uart.c: 50: RCSTAbits.CREN = 0;
-"50
-[e = . . _RCSTAbits 0 4 -> -> 0 `i `uc ]
-[; ;my_uart.c: 51: RCSTAbits.CREN = 1;
-"51
-[e = . . _RCSTAbits 0 4 -> -> 1 `i `uc ]
-[; ;my_uart.c: 52: ToMainLow_sendmsg(0, 30, (void *) 0);
-"52
-[e ( _ToMainLow_sendmsg (3 , , -> -> 0 `i `uc -> -> 30 `i `uc -> -> 0 `i `*v ]
-"53
-}
-[e :U 1137 ]
-[; ;my_uart.c: 53: }
-[; ;my_uart.c: 54: }
-"54
-[e :UE 1134 ]
-}
-"56
-[v _uart_trans_int_handler `(v ~T0 @X0 1 ef ]
-{
-[; ;my_uart.c: 56: void uart_trans_int_handler() {
-[e :U _uart_trans_int_handler ]
-[f ]
-[; ;my_uart.c: 57: { LATAbits.LATA2 = 1;};
-"57
 {
 [e = . . _LATAbits 0 2 -> -> 1 `i `uc ]
 }
-[; ;my_uart.c: 59: if (uc_ptr->outbuflen == 3) {
-"59
-[e $ ! == -> . *U _uc_ptr 4 `i -> 3 `i 1139  ]
+[; ;my_uart.c: 19: uc_ptr->buffer[uc_ptr->buflen] = Read1USART();
+"19
+[e = *U + &U . *U _uc_ptr 0 * -> . *U _uc_ptr 1 `ux -> -> # *U &U . *U _uc_ptr 0 `ui `ux ( _Read1USART ..  ]
+[; ;my_uart.c: 21: uc_ptr->buflen++;
+"21
+[e ++ . *U _uc_ptr 1 -> -> 1 `i `uc ]
+[; ;my_uart.c: 23: if (uc_ptr->buflen == 5) {
+"23
+[e $ ! == -> . *U _uc_ptr 1 `i -> 5 `i 1137  ]
 {
-[; ;my_uart.c: 60: if (TXSTA1bits.TRMT == 1) {
-"60
-[e $ ! == -> . . _TXSTA1bits 0 1 `i -> 1 `i 1140  ]
-{
-[; ;my_uart.c: 61: if (uc_ptr->outbufind < uc_ptr->outbuflen) {
-"61
-[e $ ! < -> . *U _uc_ptr 5 `i -> . *U _uc_ptr 4 `i 1141  ]
-{
-[; ;my_uart.c: 62: uc_ptr->outbufind++;
-"62
-[e ++ . *U _uc_ptr 5 -> -> 1 `i `uc ]
-[; ;my_uart.c: 63: TXREG1 = uc_ptr->outbuffer[uc_ptr->outbufind - 1];
-"63
-[e = _TXREG1 *U + &U . *U _uc_ptr 3 * -> -> - -> . *U _uc_ptr 5 `i -> 1 `i `ui `ux -> -> # *U &U . *U _uc_ptr 3 `ui `ux ]
-"64
+[; ;my_uart.c: 24: ToMainLow_sendmsg(uc_ptr->buflen, 31, (void *) uc_ptr->buffer);
+"24
+[e ( _ToMainLow_sendmsg (3 , , . *U _uc_ptr 1 -> -> 31 `i `uc -> &U . *U _uc_ptr 0 `*v ]
+[; ;my_uart.c: 25: uc_ptr->buflen = 0;
+"25
+[e = . *U _uc_ptr 1 -> -> 0 `i `uc ]
+"26
 }
-[; ;my_uart.c: 64: } else {
-[e $U 1142  ]
-[e :U 1141 ]
-{
-[; ;my_uart.c: 65: uc_ptr->outbuflen = 0;
-"65
-[e = . *U _uc_ptr 4 -> -> 0 `i `uc ]
-[; ;my_uart.c: 66: PIE1bits.TX1IE = 0;
-"66
-[e = . . _PIE1bits 0 4 -> -> 0 `i `uc ]
-"67
-}
-[e :U 1142 ]
-"68
-}
-[e :U 1140 ]
-"69
-}
-[; ;my_uart.c: 67: }
-[; ;my_uart.c: 68: }
-[; ;my_uart.c: 69: } else {
-[e $U 1143  ]
-[e :U 1139 ]
-{
-[; ;my_uart.c: 70: FromMainLow_recvmsg(uc_ptr->outbuflen, (void *) 41, (void *) uc_ptr->outbuffer);
-"70
-[e ( _FromMainLow_recvmsg (3 , , . *U _uc_ptr 4 -> -> -> 41 `i `*v `*uc -> &U . *U _uc_ptr 3 `*v ]
-[; ;my_uart.c: 71: if (TXSTA1bits.TRMT == 1) {
-"71
-[e $ ! == -> . . _TXSTA1bits 0 1 `i -> 1 `i 1144  ]
-{
-[; ;my_uart.c: 72: if (uc_ptr->outbufind < uc_ptr->outbuflen) {
-"72
-[e $ ! < -> . *U _uc_ptr 5 `i -> . *U _uc_ptr 4 `i 1145  ]
-{
-[; ;my_uart.c: 73: uc_ptr->outbufind++;
-"73
-[e ++ . *U _uc_ptr 5 -> -> 1 `i `uc ]
-[; ;my_uart.c: 74: TXREG1 = uc_ptr->outbuffer[uc_ptr->outbufind - 1];
-"74
-[e = _TXREG1 *U + &U . *U _uc_ptr 3 * -> -> - -> . *U _uc_ptr 5 `i -> 1 `i `ui `ux -> -> # *U &U . *U _uc_ptr 3 `ui `ux ]
-"75
-}
-[; ;my_uart.c: 75: } else {
-[e $U 1146  ]
-[e :U 1145 ]
-{
-[; ;my_uart.c: 76: uc_ptr->outbuflen = 0;
-"76
-[e = . *U _uc_ptr 4 -> -> 0 `i `uc ]
-[; ;my_uart.c: 77: PIE1bits.TX1IE = 0;
-"77
-[e = . . _PIE1bits 0 4 -> -> 0 `i `uc ]
-"78
-}
-[e :U 1146 ]
-"79
-}
-[e :U 1144 ]
-"80
-}
-[e :U 1143 ]
-[; ;my_uart.c: 78: }
-[; ;my_uart.c: 79: }
-[; ;my_uart.c: 80: }
-[; ;my_uart.c: 81: { LATAbits.LATA2 = 0;};
-"81
+[e :U 1137 ]
+"27
+[v _length `uc ~T0 @X0 1 a ]
+[v _forward `uc ~T0 @X0 -> -> 1 `i `ux a ]
+[v _left `uc ~T0 @X0 -> -> 1 `i `ux a ]
+[v _right `uc ~T0 @X0 -> -> 1 `i `ux a ]
+[v _stop `uc ~T0 @X0 -> -> 1 `i `ux a ]
+[v _reverse `uc ~T0 @X0 -> -> 1 `i `ux a ]
+[v _readin `uc ~T0 @X0 -> -> 1 `i `ux a ]
+[; ;my_uart.c: 26: }
+[; ;my_uart.c: 27: unsigned char length, forward[1], left[1], right[1], stop[1], reverse[1], readin[1];
+[; ;my_uart.c: 28: forward[0] = 0x0A;
+"28
+[e = *U + &U _forward * -> -> -> 0 `i `ui `ux -> -> # *U &U _forward `ui `ux -> -> 10 `i `uc ]
+[; ;my_uart.c: 29: left[0] = 0x0B;
+"29
+[e = *U + &U _left * -> -> -> 0 `i `ui `ux -> -> # *U &U _left `ui `ux -> -> 11 `i `uc ]
+[; ;my_uart.c: 30: right[0] = 0x0C;
+"30
+[e = *U + &U _right * -> -> -> 0 `i `ui `ux -> -> # *U &U _right `ui `ux -> -> 12 `i `uc ]
+[; ;my_uart.c: 31: stop[0] = 0x0D;
+"31
+[e = *U + &U _stop * -> -> -> 0 `i `ui `ux -> -> # *U &U _stop `ui `ux -> -> 13 `i `uc ]
+[; ;my_uart.c: 32: reverse[0] = 0x0E;
+"32
+[e = *U + &U _reverse * -> -> -> 0 `i `ui `ux -> -> # *U &U _reverse `ui `ux -> -> 14 `i `uc ]
+[; ;my_uart.c: 33: readin[0] = Read1USART();
+"33
+[e = *U + &U _readin * -> -> -> 0 `i `ui `ux -> -> # *U &U _readin `ui `ux ( _Read1USART ..  ]
+[; ;my_uart.c: 36: length = ToMainLow_sendmsg(1, 31, readin);
+"36
+[e = _length -> ( _ToMainLow_sendmsg (3 , , -> -> 1 `i `uc -> -> 31 `i `uc -> &U _readin `*v `uc ]
+[; ;my_uart.c: 37: { LATAbits.LATA2 = 0;};
+"37
 {
 [e = . . _LATAbits 0 2 -> -> 0 `i `uc ]
 }
-[; ;my_uart.c: 82: }
+"69
+}
+[e :U 1136 ]
+[; ;my_uart.c: 69: }
+[; ;my_uart.c: 78: { LATAbits.LATA3 = 0;};
+"78
+{
+[e = . . _LATAbits 0 3 -> -> 0 `i `uc ]
+}
+[; ;my_uart.c: 79: }
+"79
+[e :UE 1135 ]
+}
+"81
+[v _uart_trans_int_handler `(v ~T0 @X0 1 ef ]
+{
+[; ;my_uart.c: 81: void uart_trans_int_handler() {
+[e :U _uart_trans_int_handler ]
+[f ]
+[; ;my_uart.c: 82: { LATAbits.LATA2 = 1;};
 "82
+{
+[e = . . _LATAbits 0 2 -> -> 1 `i `uc ]
+}
+[; ;my_uart.c: 84: if (uc_ptr->outbuflen == 3) {
+"84
+[e $ ! == -> . *U _uc_ptr 4 `i -> 3 `i 1139  ]
+{
+[; ;my_uart.c: 85: if (TXSTA1bits.TRMT == 1) {
+"85
+[e $ ! == -> . . _TXSTA1bits 0 1 `i -> 1 `i 1140  ]
+{
+[; ;my_uart.c: 86: if (uc_ptr->outbufind < uc_ptr->outbuflen) {
+"86
+[e $ ! < -> . *U _uc_ptr 5 `i -> . *U _uc_ptr 4 `i 1141  ]
+{
+[; ;my_uart.c: 87: uc_ptr->outbufind++;
+"87
+[e ++ . *U _uc_ptr 5 -> -> 1 `i `uc ]
+[; ;my_uart.c: 88: TXREG1 = uc_ptr->outbuffer[uc_ptr->outbufind - 1];
+"88
+[e = _TXREG1 *U + &U . *U _uc_ptr 3 * -> -> - -> . *U _uc_ptr 5 `i -> 1 `i `ui `ux -> -> # *U &U . *U _uc_ptr 3 `ui `ux ]
+"89
+}
+[; ;my_uart.c: 89: } else {
+[e $U 1142  ]
+[e :U 1141 ]
+{
+[; ;my_uart.c: 90: uc_ptr->outbuflen = 0;
+"90
+[e = . *U _uc_ptr 4 -> -> 0 `i `uc ]
+[; ;my_uart.c: 91: PIE1bits.TX1IE = 0;
+"91
+[e = . . _PIE1bits 0 4 -> -> 0 `i `uc ]
+"92
+}
+[e :U 1142 ]
+"93
+}
+[e :U 1140 ]
+"94
+}
+[; ;my_uart.c: 92: }
+[; ;my_uart.c: 93: }
+[; ;my_uart.c: 94: } else {
+[e $U 1143  ]
+[e :U 1139 ]
+{
+[; ;my_uart.c: 95: FromMainLow_recvmsg(uc_ptr->outbuflen, (void *) 41, (void *) uc_ptr->outbuffer);
+"95
+[e ( _FromMainLow_recvmsg (3 , , . *U _uc_ptr 4 -> -> -> 41 `i `*v `*uc -> &U . *U _uc_ptr 3 `*v ]
+[; ;my_uart.c: 96: if (TXSTA1bits.TRMT == 1) {
+"96
+[e $ ! == -> . . _TXSTA1bits 0 1 `i -> 1 `i 1144  ]
+{
+[; ;my_uart.c: 97: if (uc_ptr->outbufind < uc_ptr->outbuflen) {
+"97
+[e $ ! < -> . *U _uc_ptr 5 `i -> . *U _uc_ptr 4 `i 1145  ]
+{
+[; ;my_uart.c: 98: uc_ptr->outbufind++;
+"98
+[e ++ . *U _uc_ptr 5 -> -> 1 `i `uc ]
+[; ;my_uart.c: 99: TXREG1 = uc_ptr->outbuffer[uc_ptr->outbufind - 1];
+"99
+[e = _TXREG1 *U + &U . *U _uc_ptr 3 * -> -> - -> . *U _uc_ptr 5 `i -> 1 `i `ui `ux -> -> # *U &U . *U _uc_ptr 3 `ui `ux ]
+"100
+}
+[; ;my_uart.c: 100: } else {
+[e $U 1146  ]
+[e :U 1145 ]
+{
+[; ;my_uart.c: 101: uc_ptr->outbuflen = 0;
+"101
+[e = . *U _uc_ptr 4 -> -> 0 `i `uc ]
+[; ;my_uart.c: 102: PIE1bits.TX1IE = 0;
+"102
+[e = . . _PIE1bits 0 4 -> -> 0 `i `uc ]
+"103
+}
+[e :U 1146 ]
+"104
+}
+[e :U 1144 ]
+"105
+}
+[e :U 1143 ]
+[; ;my_uart.c: 103: }
+[; ;my_uart.c: 104: }
+[; ;my_uart.c: 105: }
+[; ;my_uart.c: 106: { LATAbits.LATA2 = 0;};
+"106
+{
+[e = . . _LATAbits 0 2 -> -> 0 `i `uc ]
+}
+[; ;my_uart.c: 107: }
+"107
 [e :UE 1138 ]
 }
-"84
+"109
 [v _init_uart_recv `(v ~T0 @X0 1 ef1`*S1133 ]
 {
-[; ;my_uart.c: 84: void init_uart_recv(uart_comm *uc) {
+[; ;my_uart.c: 109: void init_uart_recv(uart_comm *uc) {
 [e :U _init_uart_recv ]
 [v _uc `*S1133 ~T0 @X0 1 r1 ]
 [f ]
-[; ;my_uart.c: 85: uc_ptr = uc;
-"85
+[; ;my_uart.c: 110: uc_ptr = uc;
+"110
 [e = _uc_ptr _uc ]
-[; ;my_uart.c: 86: uc_ptr->buflen = 0;
-"86
+[; ;my_uart.c: 111: uc_ptr->buflen = 0;
+"111
 [e = . *U _uc_ptr 1 -> -> 0 `i `uc ]
-[; ;my_uart.c: 87: uc_ptr->cmd_count = 0;
-"87
+[; ;my_uart.c: 112: uc_ptr->cmd_count = 0;
+"112
 [e = . *U _uc_ptr 7 -> -> 0 `i `uc ]
-[; ;my_uart.c: 88: }
-"88
+[; ;my_uart.c: 113: }
+"113
 [e :UE 1147 ]
 }
-"90
+"115
 [v _uart_send `(v ~T0 @X0 1 ef2`uc`*uc ]
 {
-[; ;my_uart.c: 90: void uart_send(unsigned char length, unsigned char *msg_buffer) {
+[; ;my_uart.c: 115: void uart_send(unsigned char length, unsigned char *msg_buffer) {
 [e :U _uart_send ]
 [v _length `uc ~T0 @X0 1 r1 ]
 [v _msg_buffer `*uc ~T0 @X0 1 r2 ]
 [f ]
-[; ;my_uart.c: 91: { LATAbits.LATA3 = 1;};
-"91
+[; ;my_uart.c: 116: { LATAbits.LATA3 = 1;};
+"116
 {
 [e = . . _LATAbits 0 3 -> -> 1 `i `uc ]
 }
-[; ;my_uart.c: 92: if (length == 23) {
-"92
+[; ;my_uart.c: 117: if (length == 23) {
+"117
 [e $ ! == -> _length `i -> 23 `i 1149  ]
 {
-[; ;my_uart.c: 94: uc_ptr->outbufind = 0;
-"94
+[; ;my_uart.c: 119: uc_ptr->outbufind = 0;
+"119
 [e = . *U _uc_ptr 5 -> -> 0 `i `uc ]
-[; ;my_uart.c: 95: uc_ptr->outbuflen = length;
-"95
+[; ;my_uart.c: 120: uc_ptr->outbuflen = length;
+"120
 [e = . *U _uc_ptr 4 _length ]
-[; ;my_uart.c: 96: msg_buffer[0] = uc_ptr->msg_count % 255;
-"96
+[; ;my_uart.c: 121: msg_buffer[0] = uc_ptr->msg_count % 255;
+"121
 [e = *U + _msg_buffer * -> -> 0 `i `x -> -> # *U _msg_buffer `i `x -> % -> . *U _uc_ptr 6 `i -> 255 `i `uc ]
-[; ;my_uart.c: 97: msg_buffer[1] = 0x8;
-"97
+[; ;my_uart.c: 122: msg_buffer[1] = 0x8;
+"122
 [e = *U + _msg_buffer * -> -> 1 `i `x -> -> # *U _msg_buffer `i `x -> -> 8 `i `uc ]
-[; ;my_uart.c: 98: msg_buffer[22] = 0xFF;
-"98
+[; ;my_uart.c: 123: msg_buffer[22] = 0xFF;
+"123
 [e = *U + _msg_buffer * -> -> 22 `i `x -> -> # *U _msg_buffer `i `x -> -> 255 `i `uc ]
-[; ;my_uart.c: 99: FromMainLow_sendmsg(uc_ptr->outbuflen, 41, (void *) msg_buffer);
-"99
+[; ;my_uart.c: 124: FromMainLow_sendmsg(uc_ptr->outbuflen, 41, (void *) msg_buffer);
+"124
 [e ( _FromMainLow_sendmsg (3 , , . *U _uc_ptr 4 -> -> 41 `i `uc -> _msg_buffer `*v ]
-[; ;my_uart.c: 100: uc_ptr->msg_count++;
-"100
+[; ;my_uart.c: 125: uc_ptr->msg_count++;
+"125
 [e ++ . *U _uc_ptr 6 -> -> 1 `i `uc ]
-[; ;my_uart.c: 101: PIE1bits.TXIE = 1;
-"101
+[; ;my_uart.c: 126: PIE1bits.TXIE = 1;
+"126
 [e = . . _PIE1bits 1 2 -> -> 1 `i `uc ]
-[; ;my_uart.c: 102: { LATAbits.LATA3 = 0;};
-"102
+[; ;my_uart.c: 127: { LATAbits.LATA3 = 0;};
+"127
 {
 [e = . . _LATAbits 0 3 -> -> 0 `i `uc ]
 }
-"103
+"128
 }
-[; ;my_uart.c: 103: } else if (length == 7) {
+[; ;my_uart.c: 128: } else if (length == 7) {
 [e $U 1150  ]
 [e :U 1149 ]
 [e $ ! == -> _length `i -> 7 `i 1151  ]
 {
-[; ;my_uart.c: 105: uc_ptr->outbufind = 0;
-"105
+[; ;my_uart.c: 130: uc_ptr->outbufind = 0;
+"130
 [e = . *U _uc_ptr 5 -> -> 0 `i `uc ]
-[; ;my_uart.c: 106: uc_ptr->outbuflen = length;
-"106
+[; ;my_uart.c: 131: uc_ptr->outbuflen = length;
+"131
 [e = . *U _uc_ptr 4 _length ]
-[; ;my_uart.c: 107: msg_buffer[0] = uc_ptr->msg_count % 255;
-"107
+[; ;my_uart.c: 132: msg_buffer[0] = uc_ptr->msg_count % 255;
+"132
 [e = *U + _msg_buffer * -> -> 0 `i `x -> -> # *U _msg_buffer `i `x -> % -> . *U _uc_ptr 6 `i -> 255 `i `uc ]
-[; ;my_uart.c: 108: msg_buffer[1] = 0x4;
-"108
+[; ;my_uart.c: 133: msg_buffer[1] = 0x4;
+"133
 [e = *U + _msg_buffer * -> -> 1 `i `x -> -> # *U _msg_buffer `i `x -> -> 4 `i `uc ]
-[; ;my_uart.c: 109: msg_buffer[6] = 0xFF;
-"109
+[; ;my_uart.c: 134: msg_buffer[6] = 0xFF;
+"134
 [e = *U + _msg_buffer * -> -> 6 `i `x -> -> # *U _msg_buffer `i `x -> -> 255 `i `uc ]
-[; ;my_uart.c: 110: FromMainLow_sendmsg(uc_ptr->outbuflen, 41, (void *) msg_buffer);
-"110
+[; ;my_uart.c: 135: FromMainLow_sendmsg(uc_ptr->outbuflen, 41, (void *) msg_buffer);
+"135
 [e ( _FromMainLow_sendmsg (3 , , . *U _uc_ptr 4 -> -> 41 `i `uc -> _msg_buffer `*v ]
-[; ;my_uart.c: 111: uc_ptr->msg_count++;
-"111
+[; ;my_uart.c: 136: uc_ptr->msg_count++;
+"136
 [e ++ . *U _uc_ptr 6 -> -> 1 `i `uc ]
-[; ;my_uart.c: 112: PIE1bits.TXIE = 1;
-"112
+[; ;my_uart.c: 137: PIE1bits.TXIE = 1;
+"137
 [e = . . _PIE1bits 1 2 -> -> 1 `i `uc ]
-[; ;my_uart.c: 113: { LATAbits.LATA3 = 0;};
-"113
+[; ;my_uart.c: 138: { LATAbits.LATA3 = 0;};
+"138
 {
 [e = . . _LATAbits 0 3 -> -> 0 `i `uc ]
 }
-"114
+"139
 }
 [e :U 1151 ]
-"125
+"150
 [e :U 1150 ]
-[; ;my_uart.c: 114: }
-[; ;my_uart.c: 125: }
+[; ;my_uart.c: 139: }
+[; ;my_uart.c: 150: }
 [e :UE 1148 ]
 }
