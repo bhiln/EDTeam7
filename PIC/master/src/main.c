@@ -75,6 +75,9 @@ void main(void) {
     unsigned char last_reg_recvd;
     unsigned char motor_cmd_left;
     unsigned char motor_cmd_right;
+    unsigned char speed;
+    unsigned char distance;
+    unsigned char command;
     uart_comm uc;
     i2c_comm ic;
     unsigned char msgbuffer[MSGLEN + 1];
@@ -313,7 +316,9 @@ void main(void) {
                 case MSGT_UART_DATA:
                 {
                     
-                    last_reg_recvd = msgbuffer[0];
+                    command = msgbuffer[2];
+                    speed = msgbuffer[4];
+                    distance = msgbuffer[3];
 //                    motor_cmd_right = msgbuffer[1];
 //                    motor_cmd_left = msgbuffer[3];
 //
@@ -349,7 +354,7 @@ void main(void) {
 //                    }
 
 
-                    switch (last_reg_recvd) {
+                    switch (command) {
 //                    switch (msgbuffer[0]) {
                         case 0x0A: // forward
                         {

@@ -26,16 +26,29 @@ void uart_recv_int_handler() {
 //            uc_ptr->buflen = 0;
 //        }
         unsigned char length, forward[1], left[1], right[1], stop[1], reverse[1], readin[1];
+        unsigned char msgCountEcho[3];
         forward[0] = 0x0A;
         left[0] = 0x0B;
         right[0] = 0x0C;
         stop[0] = 0x0D;
         reverse[0] = 0x0E;
-        readin[0] = Read1USART();
+        readin[uc_ptr->cmd_count] = Read1USART();
+
+        if (readin[uc_ptr->cmd_count] == 0xFF){
+            ToMainLow_sendmsg(1, MSGT_UART_DATA, readin);
+            msgCountEcho[0] = 11;
+            msgCountEcho[1] = readin[0];
+            msgCountEcho[2] = 255;
+            uart_send(3, msgCountEcho);
+            uc_ptr->cmd_count = 0;
+        }
+        else{
+            uc_ptr->cmd_count++;
+        }
 
 //        i2c_master_send(0x9A, 1, readin);
 //        length = ToMainLow_sendmsg(1, MSGT_UART_DATA, readin);
-        ToMainLow_sendmsg(1, MSGT_UART_DATA, readin);
+        
         DEBUG_OFF(UART_TX);
         // check if a message should be sent
 //        if (uc_ptr->buflen == 6 && uc_ptr->buffer[uc_ptr->buflen-1] == 0xFF) {
