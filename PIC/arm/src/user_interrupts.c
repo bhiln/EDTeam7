@@ -63,6 +63,7 @@ void timer0_int_handler() {
 // This one does the action I wanted for this program on a timer1 interrupt
 
 void timer1_int_handler() {
+//    DEBUG_ON();
     unsigned int result;
 
     // read the timer and then send an empty message to main()

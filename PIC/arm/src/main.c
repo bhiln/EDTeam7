@@ -156,10 +156,9 @@ void main(void) {
     // enable high-priority interrupts and low-priority interrupts
     enable_interrupts();
 
+    DEBUG_OFF(I2C_SLAVE_REPLY);
     //Initialize
     TRISEbits.TRISE0 = 0x0;
-    LATEbits.LE0 = 0x0;
-    LATEbits.LE0 = 0x1;
 
     TRISCbits.TRISC7 = 0x1; // input RX
     TRISCbits.TRISC6 = 0x0; // output TX
@@ -215,19 +214,41 @@ void main(void) {
                 };
                 case MSGT_I2C_RQST:
                 {
+                    DEBUG_ON(I2C_SLAVE_REPLY);
 //                    rqst = FromMainLow_recvmsg(length, MSGT_I2C_DATA, (void *) msgbuffer);
 //                    if (rqst > 0) {
 //                        start_i2c_slave_reply(2, msgbuffer);
 //                    }
 
-                    unsigned char forward[2];
-                    length = 2;
-                    forward[0] = 0x0A;
-                    forward[1] = 0x0B;
+                    unsigned char forward[22];
+                    length = 22;
+                    forward[0] = 0x11;
+                    forward[1] = 0x12;
+                    forward[2] = 0x13;
+                    forward[3] = 0x14;
+                    forward[4] = 0x15;
+                    forward[5] = 0x16;
+                    forward[6] = 0x17;
+                    forward[7] = 0x18;
+                    forward[8] = 0x19;
+                    forward[9] = 0xAA;
+                    forward[10] = 0xBB;
+                    forward[11] = 0xCC;
+                    forward[12] = 0xDD;
+                    forward[13] = 0xEE;
+                    forward[14] = 0x21;
+                    forward[15] = 0x22;
+                    forward[16] = 0x23;
+                    forward[17] = 0x24;
+                    forward[18] = 0x25;
+                    forward[19] = 0x26;
+                    forward[20] = 0x27;
+                    forward[21] = 0x28;
                     // Send UART to ARM
 //                    ToMainHigh_recvmsg(5, MSGT_I2C_DATA, msgbuffer);
-//                    start_i2c_slave_reply(5, msgbuffer);
-                    start_i2c_slave_reply(length, forward);
+//                    start_i2c_slave_reply(length, msgbuffer);
+                    start_i2c_slave_reply(22, forward);
+                    DEBUG_OFF(I2C_SLAVE_REPLY);
                     break;
                 };
                 case MSGT_I2C_SLAVE_RECV_COMPLETE:
@@ -280,13 +301,13 @@ void main(void) {
 //                    uart_lthread(&uthread_data, msgtype, length, msgbuffer);
                     // Send UART data to high priority MQ
                     unsigned char uartmsg;
-                    ToMainLow_recvmsg(length, MSGT_UART_DATA, (void *) msgbuffer);
+                    // ToMainLow_recvmsg(length, MSGT_UART_DATA, (void *) msgbuffer);
                     uartmsg = msgbuffer;
-                    FromMainLow_sendmsg(length, MSGT_I2C_DATA, uartmsg);
+                    ToMainHigh_sendmsg(length, MSGT_I2C_RQST, uartmsg);
                     break;
                 };
                 case MSGT_UART_CMD: {
-                    ToMainLow_recvmsg(length, MSGT_UART_CMD, (void *) msgbuffer);
+                    // ToMainLow_recvmsg(length, MSGT_UART_CMD, (void *) msgbuffer);
                     // Send Motor Commands to UART
                     uart_send(1, msgbuffer);
                     break;
