@@ -19,9 +19,6 @@ ObjectFiles/taskconductor.o: MainFiles/taskConductor.c \
  c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/sys/types.h \
  c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/machine/types.h \
  c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/sys/stdio.h \
- c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/include-fixed/math.h \
- c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/string.h \
- c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/sys/string.h \
  ../FreeRTOS/Source/include/FreeRTOS.h \
  ../FreeRTOS/Source/include/projdefs.h ../SystemFiles/FreeRTOSConfig.h \
  ../SystemFiles/adapter.h C:/Keil/ARM/INC/NXP/LPC17xx/LPC17xx.h \
@@ -39,6 +36,6 @@ ObjectFiles/taskconductor.o: MainFiles/taskConductor.c \
  C:/Keil/ARM/INC/NXP/LPC17xx/lpc17xx.h ../vtCode/vtI2C/vtI2C.h \
  ../NXPDrivers/include/lpc17xx_i2c.h ../NXPDrivers/include/lpc_types.h \
  ../FreeRTOS/Source/include/projDefs.h MainFiles/taskSensors.h \
- MainFiles/taskLCD.h ../FreeRTOS/Source/include/queue.h \
- ../FreeRTOS/Source/include/timers.h MainFiles/I2CTaskMsgTypes.h \
- MainFiles/taskConductor.h
+ MainFiles/defs.h MainFiles/taskLCD.h ../FreeRTOS/Source/include/queue.h \
+ ../FreeRTOS/Source/include/timers.h MainFiles/taskLocate.h \
+ MainFiles/I2CTaskMsgTypes.h MainFiles/taskConductor.h

@@ -609,11 +609,6 @@ static portTASK_FUNCTION(updateTaskLCD, pvParameters)
 			break;
 		}
 		case LCDMsgTypeTimer: {
-			// Note: if I cared how long the timer update was I would call my routine
-			//    unpackTimerMsg() which would unpack the message and get that value
-			// Each timer update will cause a circle to be drawn on the top half of the screen
-			//   as explained below
-
 			// Shift all the data back one second.
 			if (timerCount == 0) {
 				  	

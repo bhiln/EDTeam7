@@ -347,19 +347,29 @@
               <FilePath>.\MainFiles/myTimers.c</FilePath>
             </File>
             <File>
-              <FileName>conductor.c</FileName>
+              <FileName>taskConductor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\MainFiles/conductor.c</FilePath>
+              <FilePath>.\MainFiles/taskConductor.c</FilePath>
             </File>
             <File>
-              <FileName>i2cIR0.c</FileName>
+              <FileName>taskLCD.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\MainFiles/i2cIR0.c</FilePath>
+              <FilePath>.\MainFiles/taskLCD.c</FilePath>
             </File>
             <File>
-              <FileName>lcdTask.c</FileName>
+              <FileName>taskSensors.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\MainFiles/lcdTask.c</FilePath>
+              <FilePath>.\MainFiles/taskSensors.c</FilePath>
+            </File>
+            <File>
+              <FileName>taskLocate.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\MainFiles/taskLocate.c</FilePath>
+            </File>
+            <File>
+              <FileName>taskCommand.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\MainFiles/taskCommand.c</FilePath>
             </File>
           </Files>
         </Group>

@@ -1,8 +1,9 @@
 #ifndef TASK_COMMAND_H
 #define TASK_COMMAND_H
 
+#include "defs.h"
+//#include "taskLCD.h"
 #include "vtI2C.h"
-#include "taskLCD.h"
 
 // Maximum length of a message that can be received by any IR task.
 #define maxLenCommand (sizeof(portTickType))
@@ -14,8 +15,6 @@ typedef struct __structCommand
 	structLCD* dataLCD;
 	xQueueHandle inQ;
 } structCommand;
-
-signed char commandName[] = "Command";
 
 void startTaskCommand(structCommand* dataCommand, unsigned portBASE_TYPE uxPriority, vtI2CStruct* devI2C0, structLCD* dataLCD);
 portBASE_TYPE sendTimerMsgCommand(structCommand* dataCommand, portTickType ticksElapsed, portTickType ticksToBlock);

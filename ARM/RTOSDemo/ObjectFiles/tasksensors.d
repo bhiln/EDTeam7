@@ -41,4 +41,5 @@ ObjectFiles/tasksensors.o: MainFiles/taskSensors.c \
  ../NXPDrivers/include/lpc17xx_i2c.h \
  ../FreeRTOS/Source/include/projDefs.h MainFiles/taskLCD.h \
  ../FreeRTOS/Source/include/queue.h ../FreeRTOS/Source/include/timers.h \
- MainFiles/taskSensors.h MainFiles/I2CTaskMsgTypes.h MainFiles/debug.h
+ MainFiles/taskSensors.h MainFiles/defs.h MainFiles/taskLocate.h \
+ MainFiles/I2CTaskMsgTypes.h MainFiles/debug.h

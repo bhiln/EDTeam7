@@ -37,9 +37,9 @@ ObjectFiles/tasklcd.o: MainFiles/taskLCD.c \
  ../FreeRTOS/Source/include/timers.h \
  c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/string.h \
  c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/sys/string.h \
- MainFiles/myTimers.h MainFiles/taskLocate.h ../vtCode/vtI2C/vtI2C.h \
- ../NXPDrivers/include/lpc17xx_i2c.h ../NXPDrivers/include/lpc_types.h \
- ../FreeRTOS/Source/include/projDefs.h \
+ MainFiles/myTimers.h MainFiles/taskLocate.h MainFiles/defs.h \
+ ../vtCode/vtI2C/vtI2C.h ../NXPDrivers/include/lpc17xx_i2c.h \
+ ../NXPDrivers/include/lpc_types.h ../FreeRTOS/Source/include/projDefs.h \
  ../FreeRTOS/Source/include/semphr.h ../FreeRTOS/Source/include/queue.h \
- MainFiles/taskCommand.h MainFiles/taskSensors.h MainFiles/debug.h \
+ MainFiles/taskSensors.h MainFiles/debug.h \
  ../NXPDrivers/include/lpc17xx_gpio.h

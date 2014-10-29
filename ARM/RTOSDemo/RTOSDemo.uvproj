@@ -361,16 +361,6 @@
               <FileType>1</FileType>
               <FilePath>.\MainFiles/taskSensors.c</FilePath>
             </File>
-            <File>
-              <FileName>taskLocate.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\MainFiles/taskLocate.c</FilePath>
-            </File>
-            <File>
-              <FileName>taskCommand.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\MainFiles/taskCommand.c</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>

@@ -13,23 +13,41 @@
 
 % Create a Sensor object, paramter is the initial distance to 
 % the wall
-obj = Sensor(5.0);
+frontLeft = Sensor(5.0);
+frontRight = Sensor(5.0);
+frontTop = Sensor(5.0);
+frontBottom = Sensor(5.0);
+leftFront = Sensor(5.0);
+leftBack = Sensor(5.0);
+rightFront = Sensor(5.0);
+rightBack = Sensor(5.0);
+backLeft = Sensor(5.0);
+backRight = Sensor(5.0);
 
 % Connect to WiFly and setup serial callback
 % You will have to change this to agree with your WiFly
 % Note that I have set up the WiFly to have a baud rate of 57600
-ioSensorSimWiFly=serial('COM6','BaudRate',57600);
+ioSensorSimWiFly=serial('COM4','BaudRate',57600);
 
 % Note that we will pass the Sensor object to the callback
 ioSensorSimWiFly.BytesAvailableFcnCount = 1;
 ioSensorSimWiFly.BytesAvailableFcnMode = 'byte';
-ioSensorSimWiFly.BytesAvailableFcn = {@callbackSensorSimWiFly,obj};
+ioSensorSimWiFly.BytesAvailableFcn = {@callbackSensorSimWiFly};
 fopen(ioSensorSimWiFly);
 
 % Create and start the sensorSimTimer object
 sensorSimTimer = timer;
-sensorSimTimer.Period         = .5;
+sensorSimTimer.Period         = 2;
 sensorSimTimer.ExecutionMode  = 'fixedRate';
-sensorSimTimer.TimerFcn       = {@callbackSensorSimTimer,obj,ioSensorSimWiFly};
+sensorSimTimer.TimerFcn       = {@callbackSensorSimTimer,[frontLeft,...
+                                                         frontRight,...
+                                                         frontTop,...
+                                                         frontBottom,...
+                                                         leftFront,...
+                                                         leftBack,...
+                                                         rightFront,...
+                                                         rightBack,...
+                                                         backLeft,...
+                                                         backRight],ioSensorSimWiFly};
 sensorSimTimer.BusyMode       = 'drop';
 start(sensorSimTimer);

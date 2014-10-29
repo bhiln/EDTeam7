@@ -1,4 +1,4 @@
-function callbackSensorSimWiFly( obj, event, objSensor )
+function callbackSensorSimWiFly( obj, event )
 % This is the callback function for the WiFly on the sensor side
 % One would not actual do the communication in this way (i.e., via
 % string with the terminator 'o'.). This is just to show how to
@@ -10,31 +10,32 @@ persistent dataBuffer;
 % how much and then read it into a data array.
 bytesAvailable = obj.BytesAvailable;
 [recievedByte, ~, ~] = fread(obj, 1, 'char');
-if (isempty(dataBuffer))
-    dataBuffer = [recievedByte];
-else
-    dataBuffer = [dataBuffer, recievedByte];
-end
+fprintf('%d\n', recievedByte);
+%if (isempty(dataBuffer))
+%    dataBuffer = [recievedByte];
+%else
+%    dataBuffer = [dataBuffer, recievedByte];
+%end
 
-if (length(dataBuffer) > 1 && dataBuffer(length(dataBuffer)-1) == 255 && dataBuffer(length(dataBuffer)) == 0)
-    messageType = dataBuffer(2);
-    fprintf('callbackSimWiFly: Received %d bytes. Data: %s. Total of %d bytes read.\n',...
-        bytesAvailable, dataBuffer, length(dataBuffer));
+%if (dataBuffer(length(dataBuffer)) == 255)
+%    messageType = dataBuffer(2);
+%    fprintf('callbackSimWiFly: Received %d bytes. Data: %s. Total of %d bytes read.\n',...
+%        bytesAvailable, dataBuffer, length(dataBuffer));
 
     % Message Handler------------------------------------------------
-    if (messageType == 50)
-        %handle motor instruction
-        fprintf('\n\nGOT MOTOR MESSAGE\n\n');
-        if (dataBuffer(1) == 3)
-            sendAcknowledge(obj, dataBuffer(1)+1);
-        else
-            sendAcknowledge(obj, dataBuffer(1));
-        end
-    end
+%    if (messageType == 50)
+%        %handle motor instruction
+%        fprintf('\n\nGOT MOTOR MESSAGE\n\n');
+%        if (dataBuffer(1) == 3)
+%            sendAcknowledge(obj, dataBuffer(1)+1);
+%        else
+%            sendAcknowledge(obj, dataBuffer(1));
+%        end
+%    end
     % Message Handler------------------------------------------------
     
-    dataBuffer = [];
-end
+%    dataBuffer = [];
+%end
 
 end
 
@@ -62,6 +63,5 @@ fwrite(obj,bin2dec(sprintf('%s', dec2bin(153, 8))));
 fwrite(obj,bin2dec(sprintf('%s', dec2bin(0, 8))));
 fwrite(obj,bin2dec(sprintf('%s', dec2bin(messageIndex, 8))));
 fwrite(obj,bin2dec(sprintf('%s', dec2bin(255, 8))));
-fwrite(obj,bin2dec(sprintf('%s', dec2bin(0, 8))));
 
 end
