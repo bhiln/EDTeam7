@@ -61,6 +61,7 @@ end
 %fwrite(obj,str);
 
 fwrite(serialObj,bin2dec(sprintf('%s', dec2bin(255, 8))));
+fwrite(serialObj,bin2dec(sprintf('%s', dec2bin(0, 8))));
 
 end
 

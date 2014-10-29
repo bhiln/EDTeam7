@@ -21,7 +21,7 @@ dataBuffer = [];
 % 2. Connect to WiFly and setup serial callback
 % You will have to change this to agree with your WiFly
 % Note that I have set up the WiFly to have a baud rate of 57600
-ioARMSimWiFly = serial('COM7','BaudRate',57600);
+ioARMSimWiFly = serial('COM5','BaudRate',57600);
 AC = ARMController(ioARMSimWiFly);
 
 % Note that we will pass the figure handle to the timer callback
@@ -31,6 +31,7 @@ ioARMSimWiFly.BytesAvailableFcnMode = 'byte';
 ioARMSimWiFly.BytesAvailableFcn = {@callbackARMSimWiFly,h,AC,dataBuffer};
 
 fopen(ioARMSimWiFly);
+commandGUI(ioARMSimWiFly);
 % ioARMSimWiFly.ReadAsyncMode = 'manual';
 
 % 3. Create and start the ARMSimTimer object
