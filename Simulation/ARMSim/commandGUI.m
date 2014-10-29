@@ -22,14 +22,14 @@ right = uicontrol('Style','pushbutton','String','Right','Position',[280,185,70,2
 right15 = uicontrol('Style','pushbutton','String','Right15','Position',[280,150,70,25],'Callback',{@right15button_Callback});
 stop = uicontrol('Style','pushbutton','String','Stop','Position',[200,185,70,25],'Callback',{@stopbutton_Callback});
 
-speedSlider = uicontrol('Style','slider','Max',63,'Min',0,'Position',[300,50,100,25]);
+speedSlider = uicontrol('Style','slider','Max',63,'Min',0,'SliderStep',[1/64,10/64],'Position',[300,50,100,25]);
 speedSliderListener = handle.listener(speedSlider,'ActionEvent',@speedSliderCallback);
-getSpeed = @() get(speedSlider, 'Value');
+getSpeed = @() round(get(speedSlider, 'Value'));
 speedText = uicontrol('Style','text','String','Speed:','Position',[300,90,40,15]);
 speedValueText = uicontrol('Style','text','String',getSpeed(),'Position',[340,90,60,15]);
 
 distanceEdit = uicontrol('Style','edit','Position',[210,50,50,25]);
-getDistance = @() str2num(get(distanceEdit, 'String'));
+getDistance = @() round(str2num(get(distanceEdit, 'String')));
 distanceText = uicontrol('Style','text','String','Distance','Position',[210,90,50,15]);
   
     function speedSliderCallback(~,~)
