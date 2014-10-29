@@ -10,31 +10,32 @@ persistent dataBuffer;
 % how much and then read it into a data array.
 bytesAvailable = obj.BytesAvailable;
 [recievedByte, ~, ~] = fread(obj, 1, 'char');
-if (isempty(dataBuffer))
-    dataBuffer = [recievedByte];
-else
-    dataBuffer = [dataBuffer, recievedByte];
-end
+fprintf('%d\n', recievedByte);
+%if (isempty(dataBuffer))
+%    dataBuffer = [recievedByte];
+%else
+%    dataBuffer = [dataBuffer, recievedByte];
+%end
 
-if (dataBuffer(length(dataBuffer)) == 255)
-    messageType = dataBuffer(2);
-    fprintf('callbackSimWiFly: Received %d bytes. Data: %s. Total of %d bytes read.\n',...
-        bytesAvailable, dataBuffer, length(dataBuffer));
+%if (dataBuffer(length(dataBuffer)) == 255)
+%    messageType = dataBuffer(2);
+%    fprintf('callbackSimWiFly: Received %d bytes. Data: %s. Total of %d bytes read.\n',...
+%        bytesAvailable, dataBuffer, length(dataBuffer));
 
     % Message Handler------------------------------------------------
-    if (messageType == 50)
-        %handle motor instruction
-        fprintf('\n\nGOT MOTOR MESSAGE\n\n');
-        if (dataBuffer(1) == 3)
-            sendAcknowledge(obj, dataBuffer(1)+1);
-        else
-            sendAcknowledge(obj, dataBuffer(1));
-        end
-    end
+%    if (messageType == 50)
+%        %handle motor instruction
+%        fprintf('\n\nGOT MOTOR MESSAGE\n\n');
+%        if (dataBuffer(1) == 3)
+%            sendAcknowledge(obj, dataBuffer(1)+1);
+%        else
+%            sendAcknowledge(obj, dataBuffer(1));
+%        end
+%    end
     % Message Handler------------------------------------------------
     
-    dataBuffer = [];
-end
+%    dataBuffer = [];
+%end
 
 end
 
