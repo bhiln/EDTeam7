@@ -1,4 +1,4 @@
-function commandGUI( ioWiFly )
+function ntimes = commandGUI( ioWiFly )
 %COMMANDGUI Summary of this function goes here
 %   Detailed explanation goes here
 
