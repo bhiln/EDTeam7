@@ -22,7 +22,7 @@ end
 
 if (recievedByte == 255)
     %fprintf('len);
-    if (dataBuffer(1) == 11)
+    if (dataBuffer(1) == 51)
         if (dataBuffer(2) ~= AC.getLastMessageID())
             fprintf('\n\nMISSED MOTOR MESSAGE: %d\n\n', AC.getLastMessageID());
         else
@@ -30,6 +30,7 @@ if (recievedByte == 255)
         %    AC.setConfirmed(dataBuffer(2));
         end
     end
+    
     dataBuffer = [];
 end
 
