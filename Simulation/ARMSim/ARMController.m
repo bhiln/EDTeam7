@@ -2,7 +2,7 @@ classdef ARMController < handle
     
     methods(Static = true)
         
-        function [ toReturn ] = getLastMessageIDt()
+        function [ toReturn ] = getLastMessageID()
             global ntimes;
             toReturn = ntimes-1;
         end
@@ -35,7 +35,7 @@ classdef ARMController < handle
             ioWiFly = ioW;
             ntimes = 0;
             
-            f = figure('Visible','on','Position',[360,500,450,285]);
+            f = figure('Name','Rover Motor Controller','Visible','on','Position',[360,500,450,285]);
             %h = rectangle('Position',[x,50,20,40])
 
             % Construct the components.
@@ -49,13 +49,13 @@ classdef ARMController < handle
             right15 = uicontrol('Style','pushbutton','String','Right15','Position',[280,150,70,25],'Callback',{@right15button_Callback});
             stop = uicontrol('Style','pushbutton','String','Stop','Position',[200,185,70,25],'Callback',{@stopbutton_Callback});
 
-            speedSlider = uicontrol('Style','slider','Max',63,'Min',0,'SliderStep',[1/64,10/64],'Position',[300,50,100,25]);
+            speedSlider = uicontrol('Style','slider','Max',63,'Min',0,'SliderStep',[1/64,10/64],'Value',35,'Position',[300,50,100,25]);
             speedSliderListener = handle.listener(speedSlider,'ActionEvent',@speedSliderCallback);
             getSpeed = @() round(get(speedSlider, 'Value'));
             speedText = uicontrol('Style','text','String','Speed:','Position',[300,90,40,15]);
             speedValueText = uicontrol('Style','text','String',getSpeed(),'Position',[340,90,60,15]);
 
-            distanceEdit = uicontrol('Style','edit','Position',[210,50,50,25]);
+            distanceEdit = uicontrol('Style','edit','String','5','Position',[210,50,50,25]);
             getDistance = @() round(str2num(get(distanceEdit, 'String')));
             distanceText = uicontrol('Style','text','String','Distance','Position',[210,90,50,15]);
 
@@ -68,7 +68,8 @@ classdef ARMController < handle
                 % Display surf plot of the currently selected data.
                     %indexToSend = ntimes
                     %global confirmed;
-                    sendForward(indexToSend);
+                    %sendForward(indexToSend);
+                    sendForward();
                     pause(0.1);
                     %while (ismember(confirmed, indexToSend))
                     %    sendForward(indexToSend);
@@ -79,113 +80,77 @@ classdef ARMController < handle
                 end
 
                 function forwardbutton_Callback(source,eventdata) 
-                % Display surf plot of the currently selected data.
                     sendForward();
                 end
 
                 function backwardsstepbutton_Callback(source,eventdata) 
-                % Display surf plot of the currently selected data.
                     sendBackwards();
                     pause(0.1);
                     sendStop();
                 end
 
                 function backwardsbutton_Callback(source,eventdata) 
-                % Display surf plot of the currently selected data.
                     sendBackwards();
                 end
 
                 function stopbutton_Callback(source,eventdata) 
-                % Display surf plot of the currently selected data.
                     sendStop();
                 end
 
                 function left90button_Callback(source,eventdata) 
-                % Display surf plot of the currently selected data.
                     sendLeft();
                     pause(0.81);
                     sendStop();
                 end
 
                 function left15button_Callback(source,eventdata) 
-                % Display surf plot of the currently selected data.
                     sendLeft();
                     pause(0.2);
                     sendStop();
                 end
 
                 function right90button_Callback(source,eventdata) 
-                % Display surf plot of the currently selected data.
                     sendRight();
                     pause(0.81);
                     sendStop()
                 end
 
                 function right15button_Callback(source,eventdata) 
-                % Display surf plot of the currently selected data.
                     sendRight();
                     pause(0.2);
                     sendStop();
                 end
 
-                function sendForward(num)
-                    ntimes_Char = bin2dec(sprintf('%s', dec2bin(num, 8)));
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(num, 8))));
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(50, 8))));
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(10, 8))));
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(getDistance(), 8))));
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(getSpeed(), 8))));
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(255, 8))));
+                function sendForward()
+                    sendMotorCommand(10)
                 end
 
                 function sendBackwards()
-                    ntimes_Char = bin2dec(sprintf('%s', dec2bin(ntimes, 8)));
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(ntimes_Char, 8))));
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(50, 8))));
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(14, 8))));
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(getDistance(), 8))));
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(getSpeed(), 8))));
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(255, 8))));
-
-                    ntimes = ntimes + 1;
+                    sendMotorCommand(14)
                 end
 
                 function sendLeft()
-                    ntimes_Char = bin2dec(sprintf('%s', dec2bin(ntimes, 8)));
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(ntimes_Char, 8))));
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(50, 8))));
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(11, 8))));
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(getDistance(), 8))));
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(getSpeed(), 8))));
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(255, 8))));
-
-                    ntimes = ntimes + 1;
+                    sendMotorCommand(11)
                 end
 
                 function sendRight()
-                    ntimes_Char = bin2dec(sprintf('%s', dec2bin(ntimes, 8)));
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(ntimes_Char, 8))));
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(50, 8))));
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(12, 8))));
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(getDistance(), 8))));
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(getSpeed(), 8))));
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(255, 8))));
-
-                    ntimes = ntimes + 1;
+                    sendMotorCommand(12)
                 end
 
                 function sendStop()
-                    ntimes_Char = bin2dec(sprintf('%s', dec2bin(ntimes, 8)));
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(ntimes_Char, 8))));
+                    sendMotorCommand(13)
+                end
+                
+                function sendMotorCommand(command)
+                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(ntimes, 8))));
                     fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(50, 8))));
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(13, 8))));
+                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(command, 8))));
                     fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(getDistance(), 8))));
                     fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(getSpeed(), 8))));
                     fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(255, 8))));
-
+                    
                     ntimes = ntimes + 1;
                 end
-
         end
     end
 end
