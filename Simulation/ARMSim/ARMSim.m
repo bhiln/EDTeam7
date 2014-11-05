@@ -16,22 +16,23 @@
 % so that we can update the figure when we receive new sensor data
 figure(1);
 h = gcf();
-dataBuffer = [];
+%dataBuffer = [];
 
 % 2. Connect to WiFly and setup serial callback
 % You will have to change this to agree with your WiFly
 % Note that I have set up the WiFly to have a baud rate of 57600
 ioARMSimWiFly = serial('COM5','BaudRate',57600);
 AC = ARMController(ioARMSimWiFly);
+%ntimes = commandGUI(ioARMSimWiFly);
 
 % Note that we will pass the figure handle to the timer callback
 % We will use this handle when we update our data plot
 ioARMSimWiFly.BytesAvailableFcnCount = 1;
 ioARMSimWiFly.BytesAvailableFcnMode = 'byte';
-ioARMSimWiFly.BytesAvailableFcn = {@callbackARMSimWiFly,h,AC,dataBuffer};
+ioARMSimWiFly.BytesAvailableFcn = {@callbackARMSimWiFly,h,AC};
 
 fopen(ioARMSimWiFly);
-commandGUI(ioARMSimWiFly);
+
 % ioARMSimWiFly.ReadAsyncMode = 'manual';
 
 % 3. Create and start the ARMSimTimer object

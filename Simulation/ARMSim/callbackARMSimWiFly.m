@@ -1,4 +1,4 @@
-function callbackARMSimWiFly( obj, event, h, AC, dataBuffer )
+function callbackARMSimWiFly( obj, event, h, AC )
 % Callback for WiFly serial object on ARMSim side
 % One would not actual do the communication in this way (i.e., via
 % string with the terminator 'o'.). This is just to show how to
@@ -7,16 +7,29 @@ function callbackARMSimWiFly( obj, event, h, AC, dataBuffer )
 % Keep around a persistent array that we add data to as we receive it.
 % We also keep around the current plot axis data.
 %global dataBuffer;
+persistent dataBuffer;
 
 % We are in the callback because we received some data. We calculate
 % how much and then read it into a data array.
 bytesAvailable = obj.BytesAvailable;
 [recievedByte, ~, ~] = fread(obj, 1, 'char');
 fprintf('%d\n', recievedByte);
-if (isempty(dataBuffer))
+if (length(dataBuffer) == 0)
     dataBuffer = [recievedByte];
 else
     dataBuffer = [dataBuffer, recievedByte];
+end
+
+if (recievedByte == 255)
+    %fprintf('len);
+    if (dataBuffer(1) == 11)
+        if (dataBuffer(2) ~= AC.getLastMessageID())
+            fprintf('\n\nMISSED MOTOR MESSAGE: %d\n\n', AC.getLastMessageID());
+        else
+            AC.setConfirmed(dataBuffer(2));
+        end
+    end
+    dataBuffer = [];
 end
 
 end
