@@ -38,15 +38,20 @@ void timer0_int_handler() {
 //    }
 //
 //    unsigned char i;
-//    unsigned char forward[1], left[1], right[1], stop[1], reverse[1];
-//    forward[0] = 0x0A;
+//    unsigned char forward[6], left[1], right[1], stop[1], reverse[1];
+//    forward[0] = 0x00;
+//    forward[1] = 0x11;
+//    forward[2] = 0x0D;
+//    forward[3] = 0x33;
+//    forward[4] = 0x44;
+//    forward[5] = 0xFF;
 //    left[0] = 0x0B;
 //    right[0] = 0x0C;
 //    stop[0] = 0x0D;
 //    reverse[0] = 0x0E;
 //
 //    if (i % 5 == 0) {
-//        ToMainHigh_sendmsg(1, MSGT_I2C_MOTOR_CMD, forward);
+//        ToMainHigh_sendmsg(6, MSGT_I2C_MOTOR_CMD, forward);
 //        i = 0;
 //    }
 //    if (i % 5 == 1) {
@@ -86,6 +91,17 @@ void timer1_int_handler() {
     result = ReadTimer1();
 //    ToMainLow_sendmsg(0, MSGT_TIMER1, (void *) 0);
 
+//    unsigned char forward[6];
+//    forward[0] = 0x0D;
+//    forward[1] = 0x0A;
+//    forward[2] = 0x0A;
+//    forward[3] = 0x0A;
+//    forward[4] = 0x0A;
+//    forward[5] = 0xFF;
+
+//    ToMainLow_sendmsg(6, MSGT_UART_DATA, forward);
+
+//    i2c_master_send(0x9A, 1, forward);
 //    if (i % 4 == 0) {
 //        i2c_master_send(0x9A, 1, forward);
 ////        ToMainLow_sendmsg(1, MSGT_UART_DATA, forward);

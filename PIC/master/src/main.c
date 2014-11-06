@@ -209,11 +209,7 @@ void main(void) {
             switch (msgtype) {
                 case MSGT_TIMER0:
                 {
-                    DEBUG_ON(TIMER0_ISR);
-//                    i2c_master_recv(0x9E, 23); // receive sensor data
-//                    i2c_master_recv(0x9A, 7); // receive motor data
                     timer0_lthread(&t0thread_data, msgtype, length, msgbuffer);
-                    DEBUG_OFF(TIMER0_ISR);
                     break;
                 };
                 case MSGT_I2C_DATA:
@@ -248,36 +244,46 @@ void main(void) {
 //                    switch (msgbuffer[0]) {
                         case 0x0A: // forward
                         {
-                            length = 1;
-                            msgbuffer[0] = 0x0A;
+                            length = 3;
+                            msgbuffer[0] = 0x0A; // command
+                            msgbuffer[1] = distance; // distance
+                            msgbuffer[2] = speed; // speed
                             i2c_master_send(0x9A, length, msgbuffer);
                             break;
                         }
                         case 0x0B: // turn left
                         {
-                            length = 1;
-                            msgbuffer[0] = 0x0B;
+                            length = 3;
+                            msgbuffer[0] = 0x0B; // command
+                            msgbuffer[1] = distance; // distance
+                            msgbuffer[2] = speed; // speed
                             i2c_master_send(0x9A, length, msgbuffer);
                             break;
                         }
                         case 0x0C: // turn right
                         {
-                            length = 1;
-                            msgbuffer[0] = 0x0C;
+                            length = 3;
+                            msgbuffer[0] = 0x0C; // command
+                            msgbuffer[1] = distance; // distance
+                            msgbuffer[2] = speed; // speed
                             i2c_master_send(0x9A, length, msgbuffer);
                             break;
                         }
                         case 0x0D: // stop
                         {
-                            length = 1;
-                            msgbuffer[0] = 0x0D;
+                            length = 3;
+                            msgbuffer[0] = 0x0D; // command
+                            msgbuffer[1] = distance; // distance
+                            msgbuffer[2] = speed; // speed
                             i2c_master_send(0x9A, length, msgbuffer);
                             break;
                         }
                         case 0x0E: // reverse
                         {
-                            length = 1;
-                            msgbuffer[0] = 0x0E;
+                            length = 3;
+                            msgbuffer[0] = 0x0E; // command
+                            msgbuffer[1] = distance; // distance
+                            msgbuffer[2] = speed; // speed
                             i2c_master_send(0x9A, length, msgbuffer);
                             break;
                         }
@@ -315,85 +321,58 @@ void main(void) {
                 };
                 case MSGT_UART_DATA:
                 {
-                    
+//                    last_reg_recvd = msgbuffer[0];
                     command = msgbuffer[2];
-                    speed = msgbuffer[4];
                     distance = msgbuffer[3];
-//                    motor_cmd_right = msgbuffer[1];
-//                    motor_cmd_left = msgbuffer[3];
-//
-//                    if (motor_cmd_left == 0x0A && motor_cmd_right == 0x0A) { // forward
-//                        length = 1;
-//                        msgbuffer[0] = 0x0A;
-//                        i2c_master_send(0x9A, length, msgbuffer);
-//                        break;
-//                    }
-//                    else if (motor_cmd_left == 0x0B && motor_cmd_right == 0x0A) { // turn left
-//                        length = 1;
-//                        msgbuffer[0] = 0x0B;
-//                        i2c_master_send(0x9A, length, msgbuffer);
-//                        break;
-//                    }
-//                    else if (motor_cmd_left == 0x0A && motor_cmd_right == 0x0B) { // turn right
-//                        length = 1;
-//                        msgbuffer[0] = 0x0C;
-//                        i2c_master_send(0x9A, length, msgbuffer);
-//                        break;
-//                    }
-//                    else if (motor_cmd_left == 0x00 || motor_cmd_right == 0x00) { // stop
-//                        length = 1;
-//                        msgbuffer[0] = 0x0D;
-//                        i2c_master_send(0x9A, length, msgbuffer);
-//                        break;
-//                    }
-//                    else if (motor_cmd_left == 0x0B && motor_cmd_right == 0x0B) { // reverse
-//                        length = 1;
-//                        msgbuffer[0] = 0x0E;
-//                        i2c_master_send(0x9A, length, msgbuffer);
-//                        break;
-//                    }
-
+                    speed = msgbuffer[4];
 
                     switch (command) {
-//                    switch (msgbuffer[0]) {
                         case 0x0A: // forward
                         {
-                            length = 1;
-                            msgbuffer[0] = 0x0A;
+                            length = 3;
+                            msgbuffer[0] = 0x0A; // command
+                            msgbuffer[1] = distance; // distance
+                            msgbuffer[2] = speed; // speed
                             i2c_master_send(0x9A, length, msgbuffer);
                             break;
                         }
                         case 0x0B: // turn left
                         {
-                            length = 1;
-                            msgbuffer[0] = 0x0B;
+                            length = 3;
+                            msgbuffer[0] = 0x0B; // command
+                            msgbuffer[1] = distance; // distance
+                            msgbuffer[2] = speed; // speed
                             i2c_master_send(0x9A, length, msgbuffer);
                             break;
                         }
                         case 0x0C: // turn right
                         {
-                            length = 1;
-                            msgbuffer[0] = 0x0C;
+                            length = 3;
+                            msgbuffer[0] = 0x0C; // command
+                            msgbuffer[1] = distance; // distance
+                            msgbuffer[2] = speed; // speed
                             i2c_master_send(0x9A, length, msgbuffer);
                             break;
                         }
                         case 0x0D: // stop
                         {
-                            length = 1;
-                            msgbuffer[0] = 0x0D;
+                            length = 3;
+                            msgbuffer[0] = 0x0D; // command
+                            msgbuffer[1] = distance; // distance
+                            msgbuffer[2] = speed; // speed
                             i2c_master_send(0x9A, length, msgbuffer);
                             break;
                         }
                         case 0x0E: // reverse
                         {
-                            length = 1;
-                            msgbuffer[0] = 0x0E;
+                            length = 3;
+                            msgbuffer[0] = 0x0E; // command
+                            msgbuffer[1] = distance; // distance
+                            msgbuffer[2] = speed; // speed
                             i2c_master_send(0x9A, length, msgbuffer);
                             break;
                         }
                     };
-//                    DEBUG_OFF(UART_TX);
-//                    uart_lthread(&uthread_data, msgtype, length, msgbuffer);
                     break;
                 };
                 default:

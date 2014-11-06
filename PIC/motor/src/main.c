@@ -1,5 +1,6 @@
 #include "maindefs.h"
 #include <stdio.h>
+#include <math.h>
 #ifndef __XC8
 #include <usart.h>
 #include <i2c.h>
@@ -50,16 +51,16 @@
 #endif
 
 void main(void) {
-    char c;
     signed char length;
     unsigned char msgtype;
     unsigned char last_reg_recvd;
+    unsigned char command = 0x0D;
+    unsigned char move = 0;
+    unsigned char distance = 0;
+    unsigned char speed = 0;
     uart_comm uc;
     i2c_comm ic;
     unsigned char msgbuffer[MSGLEN + 1];
-    unsigned char i;
-    unsigned char dur = 64;
-    unsigned char move = 0;
     uart_thread_struct uthread_data; // info for uart_lthread
     timer1_thread_struct t1thread_data; // info for timer1_lthread
     timer0_thread_struct t0thread_data; // info for timer0_lthread
@@ -80,13 +81,13 @@ void main(void) {
     init_queues();
 
     // initialize Timers
-    OpenTimer0(TIMER_INT_ON & T0_16BIT & T0_SOURCE_INT & T0_PS_1_16);
+    OpenTimer0(TIMER_INT_ON & T0_8BIT & T0_SOURCE_EXT & T0_PS_1_1 & T0_EDGE_FALL & T0_EDGE_RISE);
     OpenTimer1(TIMER_INT_ON & T1_PS_1_8 & T1_16BIT_RW & T1_SOURCE_INT & T1_OSC1EN_OFF & T1_SYNC_EXT_OFF);
 
     // Decide on the priority of the enabled peripheral interrupts
     // 0 is low, 1 is high
     // Timer0 interrupt
-    INTCON2bits.TMR0IP = 0;
+//    INTCON2bits.TMR0IP = 0;
     // Timer1 interrupt
     IPR1bits.TMR1IP = 0;
     // USART RX interrupt
@@ -126,6 +127,7 @@ void main(void) {
     TRISDbits.TRISD6 = 0x0; // output debug pin
     TRISCbits.TRISC7 = 0x1; // input RX
     TRISCbits.TRISC6 = 0x0; // output TX
+    TRISBbits.TRISB5 = 0x1; // RB5 = T0CKI
 
     // printf() is available, but is not advisable.  It goes to the UART pin
     // on the PIC and then you must hook something up to that to view it.
@@ -134,8 +136,8 @@ void main(void) {
 
 DEBUG_OFF(I2C_INT_HANDLER);
 DEBUG_OFF(I2C_SLAVE_RECV);
-DEBUG_OFF(UART_TX);
-DEBUG_OFF(UART_RX);
+DEBUG_OFF(TIMER0);
+DEBUG_OFF(TIMER1);
 
     // loop forever
     // This loop is responsible for "handing off" messages to the subroutines
@@ -163,13 +165,23 @@ DEBUG_OFF(UART_RX);
             switch (msgtype) {
                 case MSGT_TIMER0:
                 {
+                    DEBUG_ON(TIMER1);
+                    move++;
+                    if ((move % distance) == 0) {
+                        length = 2;
+                        msgbuffer[0] = 0x40; // 64; // 0x40;
+                        msgbuffer[1] = 0xC0; // 192; // 0xC0;
+                        uart_send(length, msgbuffer); // send motor command to motor controller
+                        break;
+                    }
                     timer0_lthread(&t0thread_data, msgtype, length, msgbuffer);
+                    DEBUG_OFF(TIMER1);
                     break;
                 };
                 case MSGT_I2C_DATA:
                 {
                     break;
-                }
+                };
                 case MSGT_I2C_DBG:
                 {
                     // Here is where you could handle debugging, if you wanted
@@ -179,38 +191,43 @@ DEBUG_OFF(UART_RX);
                 };
                 case MSGT_I2C_SLAVE_RECV_COMPLETE:
                 {
-                    // [0-127] [128-255] - [left] [right] - mode 3
-                    // [address] [command] [data] [checksum] - mode 4
-                    last_reg_recvd = msgbuffer[0];
-                    switch (last_reg_recvd) {
-//                    switch (msgbuffer[0]) {
+                    //   [0-127] - [left]  (64 is stop)
+                    // [128-255] - [right] (192 is stop)
+                    command = msgbuffer[0];
+                    distance = msgbuffer[1];
+                    speed = msgbuffer[2];
+                    switch (command) {
                         case 0x0A: // forward
                         {
                             length = 2;
-                            msgbuffer[0] = 0x60; // 96; // 0x60;
-                            msgbuffer[1] = 0xE0; // 224; // 0xE0;
+                            move = 0;
+                            msgbuffer[0] = (64 + speed); // 0x60; // 96; // 0x60;
+                            msgbuffer[1] = (192 + speed); // 0xE0; // 224; // 0xE0;
                             uart_send(length, msgbuffer); // send motor command to motor controller
                             break;
                         }
                         case 0x0B: // turn left
                         {
                             length = 2;
-                            msgbuffer[0] = 0x20; // 32; // 0x20;
-                            msgbuffer[1] = 0xE0; // 224; // 0xE0;
+                            move = 0;
+                            msgbuffer[0] = (64 - speed); // 0x20; // 32; // 0x20;
+                            msgbuffer[1] = (192 + speed); // 0xE0; // 224; // 0xE0;
                             uart_send(length, msgbuffer); // send motor command to motor controller
                             break;
                         }
                         case 0x0C: // turn right
                         {
                             length = 2;
-                            msgbuffer[0] = 0x60; // 96; // 0x60;
-                            msgbuffer[1] = 0xA0; // 160; // 0xA0;
+                            move = 0;
+                            msgbuffer[0] = (64 + speed); // 0x60; // 96; // 0x60;
+                            msgbuffer[1] = (192 - speed); // 0xA0; // 160; // 0xA0;
                             uart_send(length, msgbuffer); // send motor command to motor controller
                             break;
                         }
                         case 0x0D: // stop
                         {
                             length = 2;
+                            move = 0;
                             msgbuffer[0] = 0x40; // 64; // 0x40;
                             msgbuffer[1] = 0xC0; // 192; // 0xC0;
                             uart_send(length, msgbuffer); // send motor command to motor controller
@@ -219,14 +236,15 @@ DEBUG_OFF(UART_RX);
                         case 0x0E: // reverse
                         {
                             length = 2;
-                            msgbuffer[0] = 0x20; // 32; // 0x20;
-                            msgbuffer[1] = 0xA0; // 160; // 0xA0;
+                            move = 0;
+                            msgbuffer[0] = (64 - speed); // 0x20; // 32; // 0x20;
+                            msgbuffer[1] = (192 - speed); // 0xA0; // 160; // 0xA0;
                             uart_send(length, msgbuffer); // send motor command to motor controller
                             break;
                         }
                     };
                     break;
-                }
+                };
                 case MSGT_I2C_RQST:
                 {
                     // Generally, this is *NOT* how I recommend you handle an I2C slave request

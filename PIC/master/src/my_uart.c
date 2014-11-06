@@ -11,10 +11,8 @@
 static uart_comm *uc_ptr;
 
 void uart_recv_int_handler() {
-    DEBUG_ON(UART_RX);
     unsigned char error_msg;
     if (DataRdy1USART()) {
-        DEBUG_ON(UART_TX);
 //        uc_ptr->buffer[uc_ptr->buflen] = Read1USART();
 //        uc_ptr->buffer[uc_ptr->buflen] = Read1USART();
 //
@@ -25,20 +23,26 @@ void uart_recv_int_handler() {
 //            ToMainLow_sendmsg(uc_ptr->buflen, MSGT_UART_DATA, (void *) uc_ptr->buffer);
 //            uc_ptr->buflen = 0;
 //        }
-        unsigned char length, forward[1], left[1], right[1], stop[1], reverse[1], readin[1];
+        unsigned char length, forward[6], left[1], right[1], stop[1], reverse[1], readin[6];
         unsigned char msgCountEcho[3];
         forward[0] = 0x0A;
+        forward[1] = 0x11;
+        forward[2] = 0x0D;
+        forward[3] = 0x33;
+        forward[4] = 0x44;
+        forward[5] = 0xFF;
         left[0] = 0x0B;
         right[0] = 0x0C;
         stop[0] = 0x0D;
         reverse[0] = 0x0E;
         readin[uc_ptr->cmd_count] = Read1USART();
+//        readin[0] = Read1USART();
 
         if (readin[uc_ptr->cmd_count] == 0xFF){
-            ToMainLow_sendmsg(1, MSGT_UART_DATA, readin);
-            msgCountEcho[0] = 11;
+            ToMainLow_sendmsg(uc_ptr->cmd_count, MSGT_UART_DATA, readin);
+            msgCountEcho[0] = 0x33;
             msgCountEcho[1] = readin[0];
-            msgCountEcho[2] = 255;
+            msgCountEcho[2] = 0xFF;
             uart_send(3, msgCountEcho);
             uc_ptr->cmd_count = 0;
         }
@@ -46,10 +50,12 @@ void uart_recv_int_handler() {
             uc_ptr->cmd_count++;
         }
 
+
+
+            
 //        i2c_master_send(0x9A, 1, readin);
 //        length = ToMainLow_sendmsg(1, MSGT_UART_DATA, readin);
         
-        DEBUG_OFF(UART_TX);
         // check if a message should be sent
 //        if (uc_ptr->buflen == 6 && uc_ptr->buffer[uc_ptr->buflen-1] == 0xFF) {
 //        if (uc_ptr->buflen == 5) {
@@ -90,23 +96,22 @@ void uart_recv_int_handler() {
         RCSTAbits.CREN = 1;
         ToMainLow_sendmsg(0, MSGT_OVERRUN, (void *) 0);
     }
-    DEBUG_OFF(UART_RX);
 }
 
 void uart_trans_int_handler() {
     DEBUG_ON(UART_TX);
     // error message
-    if (uc_ptr->outbuflen == 3) {
-        if (TXSTA1bits.TRMT == 1) {
-            if (uc_ptr->outbufind < uc_ptr->outbuflen) {
-                uc_ptr->outbufind++;
-                TXREG1 = uc_ptr->outbuffer[uc_ptr->outbufind - 1];
-            } else {
-                uc_ptr->outbuflen = 0;
-                PIE1bits.TX1IE = 0;
-            }
-        }
-    } else {
+//    if (uc_ptr->outbuflen == 3) {
+//        if (TXSTA1bits.TRMT == 1) {
+//            if (uc_ptr->outbufind < uc_ptr->outbuflen) {
+//                uc_ptr->outbufind++;
+//                TXREG1 = uc_ptr->outbuffer[uc_ptr->outbufind - 1];
+//            } else {
+//                uc_ptr->outbuflen = 0;
+//                PIE1bits.TX1IE = 0;
+//            }
+//        }
+//    } else {
         FromMainLow_recvmsg(uc_ptr->outbuflen, (void *) MSGT_I2C_DATA, (void *) uc_ptr->outbuffer);
         if (TXSTA1bits.TRMT == 1) {
             if (uc_ptr->outbufind < uc_ptr->outbuflen) {
@@ -117,7 +122,7 @@ void uart_trans_int_handler() {
                 PIE1bits.TX1IE = 0;
             }
         }
-    }
+//    }
     DEBUG_OFF(UART_TX);
 }
 
@@ -133,11 +138,11 @@ void uart_send(unsigned char length, unsigned char *msg_buffer) {
         // sensor data
         uc_ptr->outbufind = 0;
         uc_ptr->outbuflen = length;
-        msg_buffer[0] = uc_ptr->msg_count % 255;
-        msg_buffer[1] = 0x8; // tells the ARM PIC that this is sensor data
-        msg_buffer[22] = 0xFF;
+//        msg_buffer[0] = uc_ptr->msg_count % 255;
+//        msg_buffer[1] = 0x8; // tells the ARM PIC that this is sensor data
+//        msg_buffer[22] = 0xFF;
         FromMainLow_sendmsg(uc_ptr->outbuflen, MSGT_I2C_DATA, (void *) msg_buffer);
-        uc_ptr->msg_count++;
+//        uc_ptr->msg_count++;
         PIE1bits.TXIE = 1;
         DEBUG_OFF(UART_RX);
 //    } else if (length == 7) {
