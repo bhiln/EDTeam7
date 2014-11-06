@@ -40,17 +40,21 @@ classdef ARMController < handle
 
             % Construct the components.
             forward = uicontrol('Style','pushbutton','String','Forward','Position',[200,220,70,25],'Callback',{@forwardbutton_Callback});
-            forwardstep = uicontrol('Style','pushbutton','String','Forward Step','Position',[200,250,70,25],'Callback',{@forwardstepbutton_Callback});
+            %forwardstep = uicontrol('Style','pushbutton','String','Forward Step','Position',[200,250,70,25],'Callback',{@forwardstepbutton_Callback});
             backwards = uicontrol('Style','pushbutton','String','Backwards','Position',[200,150,70,25],'Callback',{@backwardsbutton_Callback});
-            backwardsstep = uicontrol('Style','pushbutton','String','Backwards Step','Position',[200,120,70,25],'Callback',{@backwardsstepbutton_Callback});
-            left = uicontrol('Style','pushbutton','String','Left','Position',[120,185,70,25],'Callback',{@left90button_Callback});
-            left15 = uicontrol('Style','pushbutton','String','Left15','Position',[120,150,70,25],'Callback',{@left15button_Callback});
-            right = uicontrol('Style','pushbutton','String','Right','Position',[280,185,70,25],'Callback',{@right90button_Callback});
-            right15 = uicontrol('Style','pushbutton','String','Right15','Position',[280,150,70,25],'Callback',{@right15button_Callback});
+            %backwardsstep = uicontrol('Style','pushbutton','String','Backwards Step','Position',[200,120,70,25],'Callback',{@backwardsstepbutton_Callback});
+            left = uicontrol('Style','pushbutton','String','Left','Position',[120,185,70,25],'Callback',{@leftbutton_Callback});
+            %left15 = uicontrol('Style','pushbutton','String','Left15','Position',[120,150,70,25],'Callback',{@left15button_Callback});
+            right = uicontrol('Style','pushbutton','String','Right','Position',[280,185,70,25],'Callback',{@rightbutton_Callback});
+            %right15 = uicontrol('Style','pushbutton','String','Right15','Position',[280,150,70,25],'Callback',{@right15button_Callback});
             stop = uicontrol('Style','pushbutton','String','Stop','Position',[200,185,70,25],'Callback',{@stopbutton_Callback});
 
             speedSlider = uicontrol('Style','slider','Max',63,'Min',0,'SliderStep',[1/64,10/64],'Value',35,'Position',[300,50,100,25]);
-            speedSliderListener = handle.listener(speedSlider,'ActionEvent',@speedSliderCallback);
+            try % R2013b and older
+                speedSliderListener = addlistener(speedSlider,'ActionEvent',@speedSliderCallback);
+            catch % R2014a and newer
+                speedSliderListener = addlistener(speedSlider,'ContinuousValueChange',@speedSliderCallback);
+            end
             getSpeed = @() round(get(speedSlider, 'Value'));
             speedText = uicontrol('Style','text','String','Speed:','Position',[300,90,40,15]);
             speedValueText = uicontrol('Style','text','String',getSpeed(),'Position',[340,90,60,15]);
@@ -58,36 +62,51 @@ classdef ARMController < handle
             distanceEdit = uicontrol('Style','edit','String','5','Position',[210,50,50,25]);
             getDistance = @() round(str2num(get(distanceEdit, 'String')));
             distanceText = uicontrol('Style','text','String','Distance','Position',[210,90,50,15]);
+            
+            angleSlider = uicontrol('Style','slider','Max',180,'Min',0,'SliderStep',[1/180,10/180],'Value',45,'Position',[80,50,100,25]);
+            try % R2013b and older
+                angleSliderListener = addlistener(angleSlider,'ActionEvent',@angleSliderCallback);
+            catch % R2014a and newer
+                angleSliderListener = addlistener(angleSlider,'ContinuousValueChange',@angleSliderCallback);
+            end
+            getAngle = @() round(get(angleSlider, 'Value'));
+            angleText = uicontrol('Style','text','String','Turn Angle:','Position',[80,90,75,15]);
+            angleValueText = uicontrol('Style','text','String',getAngle()*2,'Position',[155,90,22,15]);
 
                 function speedSliderCallback(~,~)
                     delete(speedValueText);
                     speedValueText = uicontrol('Style','text','String',getSpeed(),'Position',[340,90,60,15]);
                 end
-
-                function forwardstepbutton_Callback(source,eventdata) 
-                % Display surf plot of the currently selected data.
-                    %indexToSend = ntimes
-                    %global confirmed;
-                    %sendForward(indexToSend);
-                    sendForward();
-                    pause(0.1);
-                    %while (ismember(confirmed, indexToSend))
-                    %    sendForward(indexToSend);
-                    %    pause(0.1);
-                    %end
-                    %confirmed = confirmed(confirmed~=indexToSend);
-                    sendStop();
+                
+                function angleSliderCallback(~,~)
+                    delete(angleValueText);
+                    angleValueText = uicontrol('Style','text','String',getAngle()*2,'Position',[155,90,22,15]);
                 end
+
+%                 function forwardstepbutton_Callback(source,eventdata) 
+%                 % Display surf plot of the currently selected data.
+%                     %indexToSend = ntimes
+%                     %global confirmed;
+%                     %sendForward(indexToSend);
+%                     sendForward();
+%                     pause(0.1);
+%                     %while (ismember(confirmed, indexToSend))
+%                     %    sendForward(indexToSend);
+%                     %    pause(0.1);
+%                     %end
+%                     %confirmed = confirmed(confirmed~=indexToSend);
+%                     sendStop();
+%                 end
 
                 function forwardbutton_Callback(source,eventdata) 
                     sendForward();
                 end
 
-                function backwardsstepbutton_Callback(source,eventdata) 
-                    sendBackwards();
-                    pause(0.1);
-                    sendStop();
-                end
+%                 function backwardsstepbutton_Callback(source,eventdata) 
+%                     sendBackwards();
+%                     pause(0.1);
+%                     sendStop();
+%                 end
 
                 function backwardsbutton_Callback(source,eventdata) 
                     sendBackwards();
@@ -97,29 +116,29 @@ classdef ARMController < handle
                     sendStop();
                 end
 
-                function left90button_Callback(source,eventdata) 
+                function leftbutton_Callback(source,eventdata) 
                     sendLeft();
-                    pause(0.81);
-                    sendStop();
+%                     pause(0.81);
+%                     sendStop();
                 end
 
-                function left15button_Callback(source,eventdata) 
-                    sendLeft();
-                    pause(0.2);
-                    sendStop();
-                end
+%                 function left15button_Callback(source,eventdata) 
+%                     sendLeft();
+%                     pause(0.2);
+%                     sendStop();
+%                 end
 
-                function right90button_Callback(source,eventdata) 
+                function rightbutton_Callback(source,eventdata) 
                     sendRight();
-                    pause(0.81);
-                    sendStop()
+%                     pause(0.81);
+%                     sendStop()
                 end
 
-                function right15button_Callback(source,eventdata) 
-                    sendRight();
-                    pause(0.2);
-                    sendStop();
-                end
+%                 function right15button_Callback(source,eventdata) 
+%                     sendRight();
+%                     pause(0.2);
+%                     sendStop();
+%                 end
 
                 function sendForward()
                     sendMotorCommand(10)
@@ -145,7 +164,12 @@ classdef ARMController < handle
                     fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(ntimes, 8))));
                     fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(50, 8))));
                     fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(command, 8))));
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(getDistance(), 8))));
+                    
+                    if ((command == 11) || (command == 12))
+                        fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(getAngle(), 8))));
+                    else
+                        fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(getDistance(), 8))));
+                    end
                     fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(getSpeed(), 8))));
                     fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(255, 8))));
                     

@@ -11,11 +11,11 @@ persistent dataBuffer;
 bytesAvailable = obj.BytesAvailable;
 [recievedByte, ~, ~] = fread(obj, 1, 'char');
 fprintf('%d\n', recievedByte);
-%if (isempty(dataBuffer))
-%    dataBuffer = [recievedByte];
-%else
-%    dataBuffer = [dataBuffer, recievedByte];
-%end
+if (isempty(dataBuffer))
+   dataBuffer = [recievedByte];
+else
+   dataBuffer = [dataBuffer, recievedByte];
+end
 
 %if (dataBuffer(length(dataBuffer)) == 255)
 %    messageType = dataBuffer(2);
