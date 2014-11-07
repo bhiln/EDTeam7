@@ -91,21 +91,6 @@ unsigned char i2c_master_recv(unsigned char addr, unsigned char length) {
     return (0);
 }
 
-//void start_i2c_slave_reply(unsigned char length, unsigned char *msg) {
-//
-//    for (ic_ptr->outbuflen = 0; ic_ptr->outbuflen < length; ic_ptr->outbuflen++) {
-//        ic_ptr->outbuffer[ic_ptr->outbuflen] = msg[ic_ptr->outbuflen];
-//    }
-//    ic_ptr->outbuflen = length;
-//    ic_ptr->outbufind = 1; // point to the second byte to be sent
-//
-//    // put the first byte into the I2C peripheral
-//    SSPBUF = ic_ptr->outbuffer[0];
-//    // we must be ready to go at this point, because we'll be releasing the I2C
-//    // peripheral which will soon trigger an interrupt
-//    SSPCON1bits.CKP = 1;
-//}
-
 // an internal subroutine used in the slave version of the i2c_int_handler
 
 void handle_start(unsigned char data_read) {
@@ -219,7 +204,6 @@ void i2c_master_int_handler() {
             break;
         };
 
-        
         // Start send data case state
         // Sends the address to slave PIC with write bit
         case I2C_SEND_START:
@@ -258,15 +242,6 @@ void i2c_master_int_handler() {
             }
             break;
         };
-
-//        // Case statements reached end
-//        case I2C_STOPPED:
-//        {
-//            PIR1bits.SSP1IF = 0;
-//            ic_ptr->status = I2C_IDLE;
-//            SSP1CON2bits.PEN = 1;
-//            break;
-//        };
     }
 }
 

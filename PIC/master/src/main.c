@@ -69,19 +69,15 @@
 #endif
 
 void main(void) {
-    char c;
     signed char length;
     unsigned char msgtype;
     unsigned char last_reg_recvd;
-    unsigned char motor_cmd_left;
-    unsigned char motor_cmd_right;
     unsigned char speed;
     unsigned char distance;
     unsigned char command;
     uart_comm uc;
     i2c_comm ic;
     unsigned char msgbuffer[MSGLEN + 1];
-    unsigned char i;
     uart_thread_struct uthread_data; // info for uart_lthread
     timer1_thread_struct t1thread_data; // info for timer1_lthread
     timer0_thread_struct t0thread_data; // info for timer0_lthread
@@ -156,32 +152,8 @@ void main(void) {
     // It is also slow and is blocking, so it will perturb your code's operation
     // Here is how it looks: printf("Hello\r\n");
 
-    unsigned char umsg[6];
-    umsg[0] = 0x03;
-    umsg[1] = 0x00;
-    umsg[2] = 0x0A;
-    umsg[3] = 0x00;
-    umsg[4] = 0x0A;
-    umsg[5] = 0xFF;
-
-    unsigned char forward[1], left[1], right[1], stop[1], reverse[1];
-    forward[0] = 0x0A;
-    left[0] = 0x0B;
-    right[0] = 0x0C;
-    stop[0] = 0x0D;
-    reverse[0] = 0x0E;
-
-//    i2c_master_send(0x9A, 1, forward);
-//    i2c_master_send(0x9A, 1, left);
-//    i2c_master_send(0x9A, 1, right);
-//    i2c_master_send(0x9A, 1, stop);
-//    i2c_master_send(0x9A, 1, reverse);
-//
-//    for(;;) {}
-
-//    i2c_master_recv(0x9A, 6); // receive test msg from slave pic
-//    i2c_master_recv(0x9A, 6); // receive test msg from slave pic
-//    uart_send(6, umsg); // send test msg to uart
+    DEBUG_OFF(UART_TX);
+    DEBUG_OFF(UART_RX);
 
     // loop forever
     // This loop is responsible for "handing off" messages to the subroutines
@@ -241,7 +213,6 @@ void main(void) {
                 {
                     last_reg_recvd = msgbuffer[0];
                     switch (last_reg_recvd) {
-//                    switch (msgbuffer[0]) {
                         case 0x0A: // forward
                         {
                             length = 3;
@@ -288,7 +259,6 @@ void main(void) {
                             break;
                         }
                     };
-//                    start_i2c_slave_reply(length, msgbuffer);
                     break;
                 };
                 default:
@@ -321,7 +291,6 @@ void main(void) {
                 };
                 case MSGT_UART_DATA:
                 {
-//                    last_reg_recvd = msgbuffer[0];
                     command = msgbuffer[2];
                     distance = msgbuffer[3];
                     speed = msgbuffer[4];

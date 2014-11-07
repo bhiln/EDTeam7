@@ -11,26 +11,24 @@
 #include "messages.h"
 #include "debug.h"
 
+static tmr0_comm *t0_ptr;
+
 // A function called by the interrupt handler
 // This one does the action I wanted for this program on a timer0 interrupt
 
 void timer0_int_handler() {
-    DEBUG_ON(TIMER0);
-    unsigned int val = 0;
-    int length, msgtype;
-
     // reset the timer
-    WriteTimer0(127);
+    WriteTimer0(200); // figure out how many ticks to go one inch
 
-    // try to receive a message and, if we get one, echo it back
-//    length = FromMainHigh_recvmsg(sizeof(val), (unsigned char *)&msgtype, (void *) &val);
-//    if (length == sizeof (val)) {
-//    /    ToMainHigh_sendmsg(sizeof (val), MSGT_TIMER0, (void *) &val);
-//    }
-    unsigned char test[1];
-    test[0] = 0;
-    ToMainHigh_sendmsg(0, MSGT_TIMER0, (void *) test);
-    DEBUG_OFF(TIMER0);
+    t0_ptr->count++;
+    if ((t0_ptr->count % t0_ptr->distance) == 0) {
+        unsigned char length = 2;
+        unsigned char msg[2];
+        t0_ptr->count = 0;
+        msg[0] = 0x40;
+        msg[1] = 0xC0;
+        uart_send(length, msg);
+    }
 }
 
 // A function called by the interrupt handler
@@ -45,4 +43,10 @@ void timer1_int_handler() {
 
     // reset the timer
     WriteTimer1(0);
+}
+
+void init_tmr0(tmr0_comm *t0) {
+    t0_ptr = t0;
+    t0_ptr->count = 0;
+    t0_ptr->distance = 0;
 }

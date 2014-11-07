@@ -71,7 +71,7 @@ classdef ARMController < handle
             end
             getAngle = @() round(get(angleSlider, 'Value'));
             angleText = uicontrol('Style','text','String','Turn Angle:','Position',[80,90,75,15]);
-            angleValueText = uicontrol('Style','text','String',getAngle()*2,'Position',[155,90,22,15]);
+            angleValueText = uicontrol('Style','text','String',getAngle(),'Position',[155,90,22,15]);
 
                 function speedSliderCallback(~,~)
                     delete(speedValueText);
@@ -80,7 +80,7 @@ classdef ARMController < handle
                 
                 function angleSliderCallback(~,~)
                     delete(angleValueText);
-                    angleValueText = uicontrol('Style','text','String',getAngle()*2,'Position',[155,90,22,15]);
+                    angleValueText = uicontrol('Style','text','String',getAngle(),'Position',[155,90,22,15]);
                 end
 
 %                 function forwardstepbutton_Callback(source,eventdata) 

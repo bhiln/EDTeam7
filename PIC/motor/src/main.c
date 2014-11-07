@@ -14,6 +14,7 @@
 #include "messages.h"
 #include "my_uart.h"
 #include "my_i2c.h"
+#include "user_interrupts.h"
 #include "uart_thread.h"
 #include "timer1_thread.h"
 #include "timer0_thread.h"
@@ -55,11 +56,10 @@ void main(void) {
     unsigned char msgtype;
     unsigned char last_reg_recvd;
     unsigned char command = 0x0D;
-    unsigned char move = 0;
-    unsigned char distance = 0;
     unsigned char speed = 0;
     uart_comm uc;
     i2c_comm ic;
+    tmr0_comm t0;
     unsigned char msgbuffer[MSGLEN + 1];
     uart_thread_struct uthread_data; // info for uart_lthread
     timer1_thread_struct t1thread_data; // info for timer1_lthread
@@ -73,6 +73,9 @@ void main(void) {
 
     // initialize the i2c code
     init_i2c(&ic);
+
+    // initialize the tmr0 interrupt code
+    init_tmr0(&t0);
 
     // init the timer1 lthread
     init_timer1_lthread(&t1thread_data);
@@ -165,17 +168,7 @@ DEBUG_OFF(TIMER1);
             switch (msgtype) {
                 case MSGT_TIMER0:
                 {
-                    DEBUG_ON(TIMER1);
-                    move++;
-                    if ((move % distance) == 0) {
-                        length = 2;
-                        msgbuffer[0] = 0x40; // 64; // 0x40;
-                        msgbuffer[1] = 0xC0; // 192; // 0xC0;
-                        uart_send(length, msgbuffer); // send motor command to motor controller
-                        break;
-                    }
                     timer0_lthread(&t0thread_data, msgtype, length, msgbuffer);
-                    DEBUG_OFF(TIMER1);
                     break;
                 };
                 case MSGT_I2C_DATA:
@@ -193,52 +186,51 @@ DEBUG_OFF(TIMER1);
                 {
                     //   [0-127] - [left]  (64 is stop)
                     // [128-255] - [right] (192 is stop)
+                    t0.count = 0;
                     command = msgbuffer[0];
-                    distance = msgbuffer[1];
                     speed = msgbuffer[2];
                     switch (command) {
                         case 0x0A: // forward
                         {
                             length = 2;
-                            move = 0;
-                            msgbuffer[0] = (64 + speed); // 0x60; // 96; // 0x60;
-                            msgbuffer[1] = (192 + speed); // 0xE0; // 224; // 0xE0;
+                            t0.distance = msgbuffer[1];
+                            msgbuffer[0] = (64 + speed);
+                            msgbuffer[1] = (192 + speed);
                             uart_send(length, msgbuffer); // send motor command to motor controller
                             break;
                         }
                         case 0x0B: // turn left
                         {
                             length = 2;
-                            move = 0;
-                            msgbuffer[0] = (64 - speed); // 0x20; // 32; // 0x20;
-                            msgbuffer[1] = (192 + speed); // 0xE0; // 224; // 0xE0;
+                            t0.distance = msgbuffer[1];
+                            msgbuffer[0] = (64 - speed);
+                            msgbuffer[1] = (192 + speed);
                             uart_send(length, msgbuffer); // send motor command to motor controller
                             break;
                         }
                         case 0x0C: // turn right
                         {
                             length = 2;
-                            move = 0;
-                            msgbuffer[0] = (64 + speed); // 0x60; // 96; // 0x60;
-                            msgbuffer[1] = (192 - speed); // 0xA0; // 160; // 0xA0;
+                            t0.distance = msgbuffer[1];
+                            msgbuffer[0] = (64 + speed);
+                            msgbuffer[1] = (192 - speed);
                             uart_send(length, msgbuffer); // send motor command to motor controller
                             break;
                         }
                         case 0x0D: // stop
                         {
                             length = 2;
-                            move = 0;
-                            msgbuffer[0] = 0x40; // 64; // 0x40;
-                            msgbuffer[1] = 0xC0; // 192; // 0xC0;
+                            msgbuffer[0] = 64;
+                            msgbuffer[1] = 192;
                             uart_send(length, msgbuffer); // send motor command to motor controller
                             break;
                         }
                         case 0x0E: // reverse
                         {
                             length = 2;
-                            move = 0;
-                            msgbuffer[0] = (64 - speed); // 0x20; // 32; // 0x20;
-                            msgbuffer[1] = (192 - speed); // 0xA0; // 160; // 0xA0;
+                            t0.distance = (msgbuffer[1] + 1);
+                            msgbuffer[0] = (64 - speed);
+                            msgbuffer[1] = (192 - speed);
                             uart_send(length, msgbuffer); // send motor command to motor controller
                             break;
                         }

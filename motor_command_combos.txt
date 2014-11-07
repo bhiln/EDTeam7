@@ -1,0 +1,89 @@
+Motor command combinations
+
+travels forward/backward approx 1 foot
+	speed: 16 (1 ft/sec)
+	distance: 40
+
+travels forward/backward approx 1 foot
+	speed: 24 (1.5 ft/sec)
+	distance 38
+
+travels forward/backward approx 1 foot
+	speed: 32 (2 ft/sec)
+	distance: 36
+
+travels backward approx 1 foot
+	speed: 32 (2 ft/sec)
+	distance: 35
+
+travels forward approx 1 foot
+	speed: 40 (2.5 ft/sec)
+	distance: 34
+
+travels backward approx 1 foot
+	speed: 40 (2.5 ft/sec)
+	distance: 33
+
+travels forward approx 1 foot
+	speed: 48 (3 ft/sec)
+	distance: 33
+
+travels backward approx 1 foot
+	speed: 48 (3 ft/sec)
+	distance: 32
+
+travels forward approx 1 foot
+	speed: 64 (4 ft/sec)
+	distance: 34
+
+travels backward approx 1 foot
+	speed: 64 (4 ft/sec)
+	distance: 26
+
+turn left 5 degrees
+	speed: 32 (2 ft/sec)
+	angle: 2
+
+turn right 4 degrees
+	speed: 32 (2 ft/sec)
+	angle: 2
+
+turn left 15 degrees
+	speed: 32 (2 ft/sec)
+	angle: 6
+
+turn right 15 degrees
+	speed: 32 (2 ft/sec)
+	angle: 7
+
+turn left 30 degrees
+	speed: 32 (2 ft/sec)
+	angle: 14
+
+turn right 30 degrees
+	speed: 32 (2 ft/sec)
+	angle: 17
+
+turn left 45 degrees
+	speed: 32 (2 ft/sec)
+	angle: 21
+
+turn right 45 degrees
+	speed: 32 (2 ft/sec)
+	angle: 25
+
+turn left 90 degrees
+	speed: 32 (2 ft/sec)
+	angle: 43
+
+turn right 90 degrees
+	speed: 32 (2 ft/sec)
+	angle: 52
+
+turn left 180 degrees
+	speed: 32 (2 ft/sec)
+	angle: 90
+
+turn right 180 degrees
+	speed: 32 (2 ft/sec)
+	angle: 104
