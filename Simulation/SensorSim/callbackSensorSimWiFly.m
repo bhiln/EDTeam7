@@ -17,25 +17,25 @@ else
    dataBuffer = [dataBuffer, recievedByte];
 end
 
-%if (dataBuffer(length(dataBuffer)) == 255)
-%    messageType = dataBuffer(2);
-%    fprintf('callbackSimWiFly: Received %d bytes. Data: %s. Total of %d bytes read.\n',...
-%        bytesAvailable, dataBuffer, length(dataBuffer));
+if (dataBuffer(length(dataBuffer)) == 255)
+    messageType = dataBuffer(2);
+    fprintf('callbackSimWiFly: Received %d bytes. Data: %s. Total of %d bytes read.\n',...
+        bytesAvailable, dataBuffer, length(dataBuffer));
 
     % Message Handler------------------------------------------------
-%    if (messageType == 50)
-%        %handle motor instruction
-%        fprintf('\n\nGOT MOTOR MESSAGE\n\n');
-%        if (dataBuffer(1) == 3)
-%            sendAcknowledge(obj, dataBuffer(1)+1);
-%        else
-%            sendAcknowledge(obj, dataBuffer(1));
-%        end
-%    end
+    if (messageType == 50)
+        %handle motor instruction
+        fprintf('\n\nGOT MOTOR MESSAGE\n\n');
+        if (dataBuffer(1) == 3)
+            sendAcknowledge(obj, dataBuffer(1)+1);
+        else
+            sendAcknowledge(obj, dataBuffer(1));
+        end
+    end
     % Message Handler------------------------------------------------
     
-%    dataBuffer = [];
-%end
+    dataBuffer = [];
+end
 
 end
 
@@ -58,9 +58,7 @@ end
 
 function sendAcknowledge(obj, messageIndex)
 
-fwrite(obj,bin2dec(sprintf('%s', dec2bin(0, 8))));
-fwrite(obj,bin2dec(sprintf('%s', dec2bin(153, 8))));
-fwrite(obj,bin2dec(sprintf('%s', dec2bin(0, 8))));
+fwrite(obj,bin2dec(sprintf('%s', dec2bin(51, 8))));
 fwrite(obj,bin2dec(sprintf('%s', dec2bin(messageIndex, 8))));
 fwrite(obj,bin2dec(sprintf('%s', dec2bin(255, 8))));
 

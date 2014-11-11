@@ -57,7 +57,7 @@ classdef ARMController < handle
             end
             getSpeed = @() round(get(speedSlider, 'Value'));
             speedText = uicontrol('Style','text','String','Speed:','Position',[300,90,40,15]);
-            speedValueText = uicontrol('Style','text','String',getSpeed(),'Position',[340,90,60,15]);
+            speedValueText = uicontrol('Style','text','String',getSpeed()/16,'Position',[340,90,60,15]);
 
             distanceEdit = uicontrol('Style','edit','String','5','Position',[210,50,50,25]);
             getDistance = @() round(str2num(get(distanceEdit, 'String')));
@@ -75,7 +75,7 @@ classdef ARMController < handle
 
                 function speedSliderCallback(~,~)
                     delete(speedValueText);
-                    speedValueText = uicontrol('Style','text','String',getSpeed(),'Position',[340,90,60,15]);
+                    speedValueText = uicontrol('Style','text','String',getSpeed()/16,'Position',[340,90,60,15]);
                 end
                 
                 function angleSliderCallback(~,~)
