@@ -29,6 +29,11 @@ if (recievedByte == 255)
             fprintf('RECIEVED CORRECT ECHO: %d\n', dataBuffer(2));
         %    AC.setConfirmed(dataBuffer(2));
         end
+    else if (dataBuffer(1) == 52)
+        if (dataBuffer(2) == AC.getLastMessageID())
+            fprintf('ROVER HAS FINISHED MOVING: %d\n', AC.getLastMessageID());
+            AC.setConfirmed(true);
+        end
     end
     
     dataBuffer = [];

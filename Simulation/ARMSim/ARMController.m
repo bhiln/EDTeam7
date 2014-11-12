@@ -7,6 +7,13 @@ classdef ARMController < handle
             toReturn = ntimes-1;
         end
         
+        function [ toReturn ] = setConfirmed(ta)
+            global confirmed;
+            confirmed = ta;
+            fprintf('CONFIRMED\n');
+            toReturn = confirmed;
+        end
+        
         function resendLastMessage()
             global lastMessage;
             global ioWiFly;
@@ -22,12 +29,7 @@ classdef ARMController < handle
     
     methods
         
-        function toReturn = setConfirmed( c )
-            global confirmed;
-            confirmed = [confirmed, c];
-            fprintf('CONFIRMED\n');
-            toReturn = true;
-        end
+        
         
         function obj = ARMController(ioW)
             global ioWiFly;
@@ -57,7 +59,7 @@ classdef ARMController < handle
             end
             getSpeed = @() round(get(speedSlider, 'Value'));
             speedText = uicontrol('Style','text','String','Speed:','Position',[300,90,40,15]);
-            speedValueText = uicontrol('Style','text','String',getSpeed()/16,'Position',[340,90,60,15]);
+            speedValueText = uicontrol('Style','text','String',(ceil((getSpeed()/16)*10)/10),'Position',[340,90,60,15]);
 
             distanceEdit = uicontrol('Style','edit','String','5','Position',[210,50,50,25]);
             getDistance = @() round(str2num(get(distanceEdit, 'String')));
@@ -75,7 +77,7 @@ classdef ARMController < handle
 
                 function speedSliderCallback(~,~)
                     delete(speedValueText);
-                    speedValueText = uicontrol('Style','text','String',getSpeed()/16,'Position',[340,90,60,15]);
+                    speedValueText = uicontrol('Style','text','String',(ceil((getSpeed()/16)*10)/10),'Position',[340,90,60,15]);
                 end
                 
                 function angleSliderCallback(~,~)
