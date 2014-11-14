@@ -2,7 +2,6 @@
 #include "interrupts.h"
 #include "user_interrupts.h"
 #include "messages.h"
-#include "debug.h"
 
 //----------------------------------------------------------------------------
 // Note: This code for processing interrupts is configured to allow for high and
@@ -126,11 +125,13 @@ void InterruptHandlerLow() {
         PIR1bits.TMR1IF = 0; //clear interrupt flag
         timer1_int_handler();
     }
+
     // check to see if we have an interrupt on USART RX
     if (PIR1bits.RCIF) {
         PIR1bits.RCIF = 0; //clear interrupt flag
         uart_recv_int_handler();
     }
+
     // check to see if we have an interrupt on USART TX
     if (PIR1bits.TXIF && PIE1bits.TX1IE) {
         uart_trans_int_handler();

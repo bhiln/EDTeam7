@@ -5,7 +5,6 @@
 #include <plib/i2c.h>
 #endif
 #include "my_i2c.h"
-#include "debug.h"
 
 static i2c_comm *ic_ptr;
 
@@ -22,6 +21,7 @@ void start_i2c_slave_reply(unsigned char length, unsigned char *msg) {
     // we must be ready to go at this point, because we'll be releasing the I2C
     // peripheral which will soon trigger an interrupt
     SSPCON1bits.CKP = 1;
+
 }
 
 // an internal subroutine used in the slave version of the i2c_int_handler
@@ -48,6 +48,12 @@ void handle_start(unsigned char data_read) {
         ic_ptr->status = I2C_STARTED;
     }
 }
+
+// this is the interrupt handler for i2c -- it is currently built for slave mode
+// -- to add master mode, you should determine (at the top of the interrupt handler)
+//    which mode you are in and call the appropriate subroutine.  The existing code
+//    below should be moved into its own "i2c_slave_handler()" routine and the new
+//    master code should be in a subroutine called "i2c_master_handler()"
 
 void i2c_int_handler() {
     unsigned char i2c_data;
@@ -198,7 +204,7 @@ void i2c_int_handler() {
 
     if (msg_ready) {
         ic_ptr->buffer[ic_ptr->buflen] = ic_ptr->event_count;
-        ToMainHigh_sendmsg(ic_ptr->buflen + 1, MSGT_I2C_SLAVE_RECV_COMPLETE, (void *) ic_ptr->buffer);
+        ToMainHigh_sendmsg(ic_ptr->buflen + 1, MSGT_I2C_DATA, (void *) ic_ptr->buffer);
         ic_ptr->buflen = 0;
     } else if (ic_ptr->error_count >= I2C_ERR_THRESHOLD) {
         error_buf[0] = ic_ptr->error_count;
@@ -208,8 +214,44 @@ void i2c_int_handler() {
         ic_ptr->error_count = 0;
     }
     if (msg_to_send) {
+//        unsigned char send_msg[6];
+//        unsigned char send_length;
+        signed char send;
+//        send_msg[0] = 0x1;
+//        send_msg[1] = 0x2;
+//        send_msg[2] = 0x3;
+//        send_msg[3] = 0x4;
+//        send_msg[4] = 0x5;
+//        send_msg[5] = 0x6;
         // send to the queue to *ask* for the data to be sent out
-        ToMainHigh_sendmsg(0, MSGT_I2C_RQST, (void *) ic_ptr->buffer);
+        send = SensorData_recvmsg(ic_ptr->outbuflen, (void *) MSGT_I2C_RQST, (void *) ic_ptr->outbuffer);
+        if (send < 0) {
+            ic_ptr->outbuffer[0] = 0x0;
+            ic_ptr->outbuffer[1] = 0x0;
+            ic_ptr->outbuffer[2] = 0x0;
+            ic_ptr->outbuffer[3] = 0x0;
+            ic_ptr->outbuffer[4] = 0x0;
+            ic_ptr->outbuffer[5] = 0x0;
+            ic_ptr->outbuffer[6] = 0x0;
+            ic_ptr->outbuffer[7] = 0x0;
+            ic_ptr->outbuffer[8] = 0x0;
+            ic_ptr->outbuffer[9] = 0x0;
+            ic_ptr->outbuffer[10] = 0x0;
+            ic_ptr->outbuffer[11] = 0x0;
+            ic_ptr->outbuffer[12] = 0x0;
+            ic_ptr->outbuffer[13] = 0x0;
+            ic_ptr->outbuffer[14] = 0x0;
+            ic_ptr->outbuffer[15] = 0x0;
+            ic_ptr->outbuffer[16] = 0x0;
+            ic_ptr->outbuffer[17] = 0x0;
+            ic_ptr->outbuffer[18] = 0x0;
+            ic_ptr->outbuffer[19] = 0x0;
+            ic_ptr->outbuffer[20] = 0x0;
+            ic_ptr->outbuffer[21] = 0x0;
+        }
+//        send_length = ic_ptr->outbuflen;
+        start_i2c_slave_reply(22, ic_ptr->outbuffer);
+//        ToMainHigh_sendmsg(0, MSGT_I2C_RQST, (void *) ic_ptr->buffer);
         msg_to_send = 0;
     }
 }
@@ -231,19 +273,50 @@ void init_i2c(i2c_comm *ic) {
 void i2c_configure_slave(unsigned char addr) {
 
     // ensure the two lines are set for input (we are a slave)
+#ifdef __USE18F26J50
+    //THIS CODE LOOKS WRONG, SHOULDN'T IT BE USING THE TRIS BITS???
+    PORTBbits.SCL1 = 1;
+    PORTBbits.SDA1 = 1;
+#else
+#ifdef __USE18F46J50
     TRISBbits.TRISB4 = 1; //RB4 = SCL1
     TRISBbits.TRISB5 = 1; //RB5 = SDA1
+#else
+    TRISCbits.TRISC3 = 1;
+    TRISCbits.TRISC4 = 1;
+#endif
+#endif
 
     // set the address
     SSPADD = addr;
+    //OpenI2C(SLAVE_7,SLEW_OFF); // replaced w/ code below
     SSPSTAT = 0x0;
     SSPCON1 = 0x0;
     SSPCON2 = 0x0;
     SSPCON1 |= 0x0E; // enable Slave 7-bit w/ start/stop interrupts
     SSPSTAT |= SLEW_OFF;
 
+#ifdef I2C_V3
+    I2C1_SCL = 1;
+    I2C1_SDA = 1;
+#else 
+#ifdef I2C_V1
+    I2C_SCL = 1;
+    I2C_SDA = 1;
+#else
+#ifdef __USE18F26J50
     PORTBbits.SCL1 = 1;
     PORTBbits.SDA1 = 1;
+#else
+#ifdef __USE18F46J50
+    PORTBbits.SCL1 = 1;
+    PORTBbits.SDA1 = 1;
+#else
+    __dummyXY=35;// Something is messed up with the #ifdefs; this line is designed to invoke a compiler error
+#endif
+#endif
+#endif
+#endif
     
     // enable clock-stretching
     SSPCON2bits.SEN = 1;

@@ -17,6 +17,8 @@ static tmr0_comm *t0_ptr;
 // This one does the action I wanted for this program on a timer0 interrupt
 
 void timer0_int_handler() {
+    // untested
+//    unsigned char done[1];
     // reset the timer
     WriteTimer0(200); // figure out how many ticks to go one inch
 
@@ -25,10 +27,16 @@ void timer0_int_handler() {
         unsigned char length = 2;
         unsigned char msg[2];
         t0_ptr->count = 0;
+        // untested
+//        done[0] = 0x34;
+//        ToMainHigh_sendmsg(1, MSGT_I2C_RQST, done);
         msg[0] = 0x40;
         msg[1] = 0xC0;
         uart_send(length, msg);
     }
+    // untested
+//    done[0] = 0x0;
+//    ToMainHigh_sendmsg(1, MSGT_I2C_RQST, done);
 }
 
 // A function called by the interrupt handler

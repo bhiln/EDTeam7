@@ -3,7 +3,7 @@
 
 #include "messages.h"
 
-#define MAXUARTBUF 4
+#define MAXUARTBUF 26
 #if (MAXUARTBUF > MSGLEN)
 #define MAXUARTBUF MSGLEN
 #endif
@@ -15,7 +15,6 @@ typedef struct __uart_comm {
     unsigned char outbuflen;
     unsigned char outbufind;
     unsigned char msg_count;
-    unsigned char cmd_count;
 } uart_comm;
 
 void init_uart_recv(uart_comm *);

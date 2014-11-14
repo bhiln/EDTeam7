@@ -1,7 +1,6 @@
 #include "maindefs.h"
 #include <stdio.h>
 #include "timer0_thread.h"
-#include "messages.h"
 
 // This is a "logical" thread that processes messages from TIMER0
 // It is not a "real" thread because there is only the single main thread
@@ -11,5 +10,7 @@ int timer0_lthread(timer0_thread_struct *tptr, int msgtype, int length, unsigned
     unsigned int *msgval;
 
     msgval = (unsigned int *) msgbuffer;
+
     // Here is where we would do something with the message
+
 }

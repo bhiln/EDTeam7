@@ -16,12 +16,9 @@
 #include "uart_thread.h"
 #include "timer1_thread.h"
 #include "timer0_thread.h"
-#include "ADC.h"
-#include "debug.h"
 
-// Setup configuration registers
-// ARM PIC (slave)
-#ifdef __USE18F46J50
+
+// PIC18F46J50 Configuration Bit Settings
 
 // CONFIG1L
 #pragma config WDTEN = OFF      // Watchdog Timer (Disabled - Controlled by SWDTEN bit)
@@ -67,19 +64,16 @@
 // CONFIG4H
 #pragma config WPDIS = OFF      // Write Protect Disable bit (WPFP<5:0>/WPEND region ignored)
 
-#endif
 
 void main(void) {
     char c;
     signed char length;
-    signed char rqst;
     unsigned char msgtype;
     unsigned char last_reg_recvd;
     uart_comm uc;
     i2c_comm ic;
     unsigned char msgbuffer[MSGLEN + 1];
     unsigned char i;
-    int k = 0;
     uart_thread_struct uthread_data; // info for uart_lthread
     timer1_thread_struct t1thread_data; // info for timer1_lthread
     timer0_thread_struct t0thread_data; // info for timer0_lthread
@@ -98,18 +92,6 @@ void main(void) {
 
     // initialize message queues before enabling any interrupts
     init_queues();
-
-    // how to set up PORTA for input (for the V4 board with the PIC2680)
-    /*
-            PORTA = 0x0;	// clear the port
-            LATA = 0x0;		// clear the output latch
-            ADCON1 = 0x0F;	// turn off the A2D function on these pins
-            // Only for 40-pin version of this chip CMCON = 0x07;	// turn the comparator off
-            TRISA = 0x0F;	// set RA3-RA0 to inputs
-     */
-
-    //Initialize the ADC module
-    ADC_Init();
 
     // initialize Timers
     OpenTimer0(TIMER_INT_ON & T0_16BIT & T0_SOURCE_INT & T0_PS_1_128);
@@ -135,14 +117,13 @@ void main(void) {
     // They *are* changed in the timer interrupt handlers if those timers are
     //   enabled.  They are just there to make the lights blink and can be
     //   disabled.
-     i2c_configure_slave(0x9E);
-
+    i2c_configure_slave(0x9E);
 #else
     // If I want to test the temperature sensor from the ARM, I just make
     // sure this PIC does not have the same address and configure the
     // temperature sensor address bits and then just stay in an infinite loop
     i2c_configure_slave(0x9A);
-    
+    for (;;);
 #endif
 
     // must specifically enable the I2C interrupts
@@ -156,10 +137,8 @@ void main(void) {
     // enable high-priority interrupts and low-priority interrupts
     enable_interrupts();
 
-    DEBUG_OFF(I2C_SLAVE_REPLY);
-    //Initialize
-    TRISEbits.TRISE0 = 0x0;
-
+    TRISAbits.TRISA2 = 0x0;
+    TRISAbits.TRISA3 = 0x0;
     TRISCbits.TRISC7 = 0x1; // input RX
     TRISCbits.TRISC6 = 0x0; // output TX
 
@@ -167,7 +146,7 @@ void main(void) {
     SPBRG1 = 0xCF;
 
     TXSTA1bits.BRGH = 1;
-    BAUDCON1bits.BRG16 = 1;
+    BAUDCONbits.BRG16 = 1;
     TXSTA1bits.SYNC = 0;
     RCSTA1bits.SPEN = 0x1;
     TXSTA1bits.TXEN = 0x1;
@@ -177,12 +156,12 @@ void main(void) {
     // It is also slow and is blocking, so it will perturb your code's operation
     // Here is how it looks: printf("Hello\r\n");
 
+
     // loop forever
     // This loop is responsible for "handing off" messages to the subroutines
     // that should get them.  Although the subroutines are not threads, but
     // they can be equated with the tasks in your task diagram if you
     // structure them properly.
-
     while (1) {
         // Call a routine that blocks until either on the incoming
         // messages queues has a message (this may put the processor into
@@ -202,11 +181,14 @@ void main(void) {
             }
         } else {
             switch (msgtype) {
-                case MSGT_TIMER0: {
+                case MSGT_TIMER0:
+                {
                     timer0_lthread(&t0thread_data, msgtype, length, msgbuffer);
                     break;
                 };
-                case MSGT_I2C_DBG: {
+                case MSGT_I2C_DATA:
+                case MSGT_I2C_DBG:
+                {
                     // Here is where you could handle debugging, if you wanted
                     // keep track of the first byte received for later use (if desired)
                     last_reg_recvd = msgbuffer[0];
@@ -214,63 +196,43 @@ void main(void) {
                 };
                 case MSGT_I2C_RQST:
                 {
-                    DEBUG_ON(I2C_SLAVE_REPLY);
-//                    rqst = FromMainLow_recvmsg(length, MSGT_I2C_DATA, (void *) msgbuffer);
-//                    if (rqst > 0) {
-//                        start_i2c_slave_reply(2, msgbuffer);
-//                    }
-
-                    unsigned char forward[22];
-                    length = 22;
-                    forward[0] = 0x11;
-                    forward[1] = 0x12;
-                    forward[2] = 0x13;
-                    forward[3] = 0x14;
-                    forward[4] = 0x15;
-                    forward[5] = 0x16;
-                    forward[6] = 0x17;
-                    forward[7] = 0x18;
-                    forward[8] = 0x19;
-                    forward[9] = 0xAA;
-                    forward[10] = 0xBB;
-                    forward[11] = 0xCC;
-                    forward[12] = 0xDD;
-                    forward[13] = 0xEE;
-                    forward[14] = 0x21;
-                    forward[15] = 0x22;
-                    forward[16] = 0x23;
-                    forward[17] = 0x24;
-                    forward[18] = 0x25;
-                    forward[19] = 0x26;
-                    forward[20] = 0x27;
-                    forward[21] = 0x28;
-                    // Send UART to ARM
-//                    ToMainHigh_recvmsg(5, MSGT_I2C_DATA, msgbuffer);
+                    // Generally, this is *NOT* how I recommend you handle an I2C slave request
+                    // I recommend that you handle it completely inside the i2c interrupt handler
+                    // by reading the data from a queue (i.e., you would not send a message, as is done
+                    // now, from the i2c interrupt handler to main to ask for data).
+                    //
+                    // The last byte received is the "register" that is trying to be read
+                    // The response is dependent on the register.
+//                    switch (last_reg_recvd) {
+//                        case 0xaa:
+//                        {
+                            length = 6;
+                            msgbuffer[0] = 0x1;
+                            msgbuffer[1] = 0x22;
+                            msgbuffer[2] = 0x33;
+                            msgbuffer[3] = 0x44;
+                            msgbuffer[4] = 0x55;
+                            msgbuffer[5] = 0x66;
+//                            break;
+//                        }
+//                        case 0xa8:
+//                        {
+//                            length = 1;
+//                            msgbuffer[0] = 0x3A;
+//                            break;
+//                        }
+//                        case 0xa9:
+//                        {
+//                            length = 1;
+//                            msgbuffer[0] = 0xA3;
+//                            break;
+//                        }
+//                    };
 //                    start_i2c_slave_reply(length, msgbuffer);
-                    start_i2c_slave_reply(22, forward);
-                    DEBUG_OFF(I2C_SLAVE_REPLY);
                     break;
                 };
-                case MSGT_I2C_SLAVE_RECV_COMPLETE:
+                default:
                 {
-                    // have case statements for motor commands
-                    // FromMainHigh_sendmsg(6, MSGT_UART_CMD, msgbuffer);
-
-//                    unsigned char forward[5];
-//                    length = 5;
-//                    forward[0] = 0x0A;
-//                    forward[1] = 0x0B;
-//                    forward[2] = 0x0C;
-//                    forward[3] = 0x0D;
-//                    forward[4] = 0x0E;
-//                    start_i2c_slave_reply(length, forward);
-//                    FromMainLow_recvmsg(length, MSGT_I2C_DATA, (void *) msgbuffer);
-//                    start_i2c_slave_reply(2, msgbuffer);
-                    // Send Motor Commands to UART
-//                    uart_send(1, msgbuffer);
-                    break;
-                }
-                default: {
                     // Your code should handle this error
                     break;
                 };
@@ -286,33 +248,25 @@ void main(void) {
             }
         } else {
             switch (msgtype) {
-                case MSGT_TIMER1: {
+                case MSGT_TIMER1:
+                {
                     timer1_lthread(&t1thread_data, msgtype, length, msgbuffer);
                     break;
                 };
-                case MSGT_OVERRUN: {
-                    // We've overrun the USART
-                    break;
-                };
-                case MSGT_UART_DATA: {
-//                    ToMainLow_recvmsg(length, MSGT_UART_DATA, msgbuffer);
-                    // Send Motor Commands to UART
-//                    uart_send(1, msgbuffer);
+                case MSGT_OVERRUN:
+                case MSGT_UART_DATA:
+                {
+                    SensorData_sendmsg(length, MSGT_I2C_RQST, (void *) msgbuffer);
 //                    uart_lthread(&uthread_data, msgtype, length, msgbuffer);
-                    // Send UART data to high priority MQ
-                    unsigned char uartmsg;
-                    // ToMainLow_recvmsg(length, MSGT_UART_DATA, (void *) msgbuffer);
-                    uartmsg = msgbuffer;
-                    ToMainHigh_sendmsg(length, MSGT_I2C_RQST, uartmsg);
                     break;
                 };
-                case MSGT_UART_CMD: {
-                    // ToMainLow_recvmsg(length, MSGT_UART_CMD, (void *) msgbuffer);
-                    // Send Motor Commands to UART
-                    uart_send(1, msgbuffer);
+                case MSGT_UART_SEND: {
+                    // Send ARM Motor Commands in low priority MQ to Rover Master UART
+                    uart_send(length, msgbuffer);
                     break;
                 }
-                default: {
+                default:
+                {
                     // Your code should handle this error
                     break;
                 };
