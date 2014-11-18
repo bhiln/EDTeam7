@@ -12,19 +12,24 @@ static uart_comm *uc_ptr;
 
 void uart_recv_int_handler() {
     if (DataRdy1USART()) {
-        unsigned char readin[6], msgCountEcho[3];
+        unsigned char readin[7], msgCountEcho[4];
         readin[uc_ptr->cmd_count] = Read1USART();
 
-        if (readin[uc_ptr->cmd_count] == 0xFF){
+        if (readin[uc_ptr->cmd_count] == 0xFE) {
+            uc_ptr->cmd_count = 0;
+        }
+        else if (readin[uc_ptr->cmd_count] == 0xFF){
             ToMainLow_sendmsg(uc_ptr->cmd_count, MSGT_UART_DATA, readin);
-            msgCountEcho[0] = 0x33;
-            msgCountEcho[1] = readin[0];
-            msgCountEcho[2] = 0xFF;
-            uart_send(3, msgCountEcho);
+            msgCountEcho[0] = 0xFE;
+            msgCountEcho[1] = 0x33;
+            msgCountEcho[2] = readin[0];
+            msgCountEcho[3] = 0xFF;
+            uart_send(4, msgCountEcho);
             uc_ptr->cmd_count = 0;
         }
         else {
             uc_ptr->cmd_count++;
+
         }
     }
     if (USART1_Status.OVERRUN_ERROR == 1) {
