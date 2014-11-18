@@ -14,8 +14,10 @@
 % 1. Open up a matlab plot window and get its handle
 % We will pass the handle to the callback for the WiFly
 % so that we can update the figure when we receive new sensor data
-figure(1);
-h = gcf();
+%figure(1);
+%h = gcf();
+h = 1;
+
 %dataBuffer = [];
 
 % 2. Connect to WiFly and setup serial callback

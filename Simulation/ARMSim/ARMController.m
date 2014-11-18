@@ -4,7 +4,7 @@ classdef ARMController < handle
         
         function [ toReturn ] = getLastMessageID()
             global ntimes;
-            toReturn = ntimes-1;
+            toReturn = ntimes;
         end
         
         function [ toReturn ] = setConfirmed(ta)
@@ -34,11 +34,19 @@ classdef ARMController < handle
         function obj = ARMController(ioW)
             global ioWiFly;
             global ntimes;
+            global confirmed;
+            global x;
+            global y;
+            global alpha
             ioWiFly = ioW;
             ntimes = 0;
+            confirmed = -99;
+            x = [-10,-7,-7,-10,-10];
+            y = [-2,-2,2,2,-2];
+            alpha = 0;
             
-            f = figure('Name','Rover Motor Controller','Visible','on','Position',[360,500,450,285]);
-            %h = rectangle('Position',[x,50,20,40])
+            f = figure(1);
+            set(f,'Name','Rover Motor Controller','Position',[360,500,450,285],'numbertitle','Off');
 
             % Construct the components.
             forward = uicontrol('Style','pushbutton','String','Forward','Position',[200,220,70,25],'Callback',{@forwardbutton_Callback});
@@ -52,11 +60,7 @@ classdef ARMController < handle
             stop = uicontrol('Style','pushbutton','String','Stop','Position',[200,185,70,25],'Callback',{@stopbutton_Callback});
 
             speedSlider = uicontrol('Style','slider','Max',63,'Min',0,'SliderStep',[1/64,10/64],'Value',35,'Position',[300,50,100,25]);
-            try % R2013b and older
-                speedSliderListener = addlistener(speedSlider,'ActionEvent',@speedSliderCallback);
-            catch % R2014a and newer
-                speedSliderListener = addlistener(speedSlider,'ContinuousValueChange',@speedSliderCallback);
-            end
+            speedSliderListener = addlistener(speedSlider,'ContinuousValueChange',@speedSliderCallback);
             getSpeed = @() round(get(speedSlider, 'Value'));
             speedText = uicontrol('Style','text','String','Speed:','Position',[300,90,40,15]);
             speedValueText = uicontrol('Style','text','String',(ceil((getSpeed()/16)*10)/10),'Position',[340,90,60,15]);
@@ -66,15 +70,48 @@ classdef ARMController < handle
             distanceText = uicontrol('Style','text','String','Distance','Position',[210,90,50,15]);
             
             angleSlider = uicontrol('Style','slider','Max',180,'Min',0,'SliderStep',[1/180,10/180],'Value',45,'Position',[80,50,100,25]);
-            try % R2013b and older
-                angleSliderListener = addlistener(angleSlider,'ActionEvent',@angleSliderCallback);
-            catch % R2014a and newer
-                angleSliderListener = addlistener(angleSlider,'ContinuousValueChange',@angleSliderCallback);
-            end
+            angleSliderListener = addlistener(angleSlider,'ContinuousValueChange',@angleSliderCallback);
             getAngle = @() round(get(angleSlider, 'Value'));
             angleText = uicontrol('Style','text','String','Turn Angle:','Position',[80,90,75,15]);
             angleValueText = uicontrol('Style','text','String',getAngle()*2,'Position',[155,90,22,15]);
+            
+            % Filename
+            filename = 'Map1.txt';
 
+            % Read the Map
+            [XY, Ramp_Center, Ramp_Entrance, Ramp_Exit, Target] = Read_Map_File(filename);
+
+            % Use figure 1
+            h = figure(2);
+            clf(h);
+
+            % Plot the Map outline
+            Plot_Map(h, XY);
+
+            % Plot the Ramps on the Map
+            Plot_Ramps(h, Ramp_Center, Ramp_Entrance, Ramp_Exit);
+
+            % Show the Target
+            Plot_Target(h, Target);
+
+            R(1,:)=x-(x(1)+3);R(2,:)=y-(y(1)+2);
+            alpha=0*4*pi/360;
+            XY=[cos(alpha) -sin(alpha);sin(alpha) cos(alpha)]*R;
+            XY(1,:) = XY(1,:)+(x(1)+2);
+            XY(2,:) = XY(2,:)+(y(1)+3);
+            hold on;
+            plot(XY(1,:),XY(2,:),'r');
+            hold off;
+%             r = rectangle('Position',[1,1,2,2]);
+
+%             rotate2d(r, pi);
+%             hand = plot(xx,yy,'r.'); 
+%             hold on 
+%             rectangle('Position',[1,1,2,2]);
+%             plot(verticies);
+%             axis([0 100 0 100])
+%             r = rectangle()
+            
                 function speedSliderCallback(~,~)
                     delete(speedValueText);
                     speedValueText = uicontrol('Style','text','String',(ceil((getSpeed()/16)*10)/10),'Position',[340,90,60,15]);
@@ -144,6 +181,7 @@ classdef ARMController < handle
 
                 function sendForward()
                     sendMotorCommand(10)
+                    %xpos = xpos + 1;
                 end
 
                 function sendBackwards()
@@ -163,19 +201,53 @@ classdef ARMController < handle
                 end
                 
                 function sendMotorCommand(command)
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(ntimes, 8))));
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(50, 8))));
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(command, 8))));
-                    
-                    if ((command == 11) || (command == 12))
-                        fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(getAngle(), 8))));
-                    else
-                        fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(getDistance(), 8))));
+
+                    while (1)
+                        if (confirmed == ntimes)
+                            ntimes = mod(ntimes + 1, 254);
+                            figure(2);
+                            plot(XY(1,:),XY(2,:),'w');
+                            R(1,:)=x-(x(1)+3);R(2,:)=y-(y(1)+2);
+                            if (command == 11)
+                                alpha= alpha+(getAngle()*4*pi/360);
+                                fprintf('left: %d\n',alpha);
+                            end
+                            if (command == 12)
+                                alpha= alpha-(getAngle()*4*pi/360);
+                                fprintf('right: %d\n',alpha);
+                            end
+                            XY=[cos(alpha) -sin(alpha);sin(alpha) cos(alpha)]*R;
+                            XY(1,:) = XY(1,:)+(x(1)+3);
+                            XY(2,:) = XY(2,:)+(y(1)+2);
+                            if (command == 10)
+                                XY(1,:) = XY(1,:)+(getDistance()*cos((getAngle()*4*pi/360)));
+                                XY(2,:) = XY(2,:)+(getDistance()*sin((getAngle()*4*pi/360)));
+                            end
+                            if (command == 14)
+                                XY(1,:) = XY(1,:)-(getDistance()*cos((getAngle()*4*pi/360)));
+                                XY(2,:) = XY(2,:)-(getDistance()*sin((getAngle()*4*pi/360)));
+                            end
+                            hold on;
+                            plot(XY(1,:),XY(2,:),'r');
+                            axis([0 100 0 100]);
+                            break;
+                        end
+                        fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(254, 8))));
+                        fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(ntimes, 8))));
+                        fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(50, 8))));
+                        fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(command, 8))));
+
+                        if ((command == 11) || (command == 12))
+                            fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(getAngle(), 8))));
+                        else
+                            fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(getDistance(), 8))));
+                        end
+                        fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(getSpeed(), 8))));
+                        fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(255, 8))));
+                        
+                        pause(0.2);
+                        
                     end
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(getSpeed(), 8))));
-                    fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(255, 8))));
-                    
-                    ntimes = ntimes + 1;
                 end
         end
     end

@@ -17,7 +17,7 @@ else
    dataBuffer = [dataBuffer, recievedByte];
 end
 
-if (dataBuffer(length(dataBuffer)) == 255)
+if (recievedByte == 255)
     messageType = dataBuffer(2);
     fprintf('callbackSimWiFly: Received %d bytes. Data: %s. Total of %d bytes read.\n',...
         bytesAvailable, dataBuffer, length(dataBuffer));
@@ -26,14 +26,19 @@ if (dataBuffer(length(dataBuffer)) == 255)
     if (messageType == 50)
         %handle motor instruction
         fprintf('\n\nGOT MOTOR MESSAGE\n\n');
-        if (dataBuffer(1) == 3)
-            sendAcknowledge(obj, dataBuffer(1)+1);
-        else
-            sendAcknowledge(obj, dataBuffer(1));
-        end
+        sendAcknowledge(obj, dataBuffer(1));
+%         if (dataBuffer(1) == 3)
+%             sendAcknowledge(obj, dataBuffer(1)+1);
+%         else
+%             sendAcknowledge(obj, dataBuffer(1));
+%         end
     end
     % Message Handler------------------------------------------------
     
+    dataBuffer = [];
+end
+
+if (recievedByte == 254)
     dataBuffer = [];
 end
 
@@ -58,8 +63,11 @@ end
 
 function sendAcknowledge(obj, messageIndex)
 
+fwrite(obj,bin2dec(sprintf('%s', dec2bin(254, 8))));
 fwrite(obj,bin2dec(sprintf('%s', dec2bin(51, 8))));
 fwrite(obj,bin2dec(sprintf('%s', dec2bin(messageIndex, 8))));
 fwrite(obj,bin2dec(sprintf('%s', dec2bin(255, 8))));
+
+fprintf('SeNDING MESSAGE');
 
 end

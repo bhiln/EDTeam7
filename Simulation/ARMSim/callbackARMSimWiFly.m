@@ -27,15 +27,20 @@ if (recievedByte == 255)
             fprintf('\n\nMISSED MOTOR MESSAGE: %d\n\n', AC.getLastMessageID());
         else
             fprintf('RECIEVED CORRECT ECHO: %d\n', dataBuffer(2));
-        %    AC.setConfirmed(dataBuffer(2));
+            AC.setConfirmed(dataBuffer(2));
         end
-    else if (dataBuffer(1) == 52)
+    end
+    if (dataBuffer(1) == 52)
         if (dataBuffer(2) == AC.getLastMessageID())
             fprintf('ROVER HAS FINISHED MOVING: %d\n', AC.getLastMessageID());
-            AC.setConfirmed(true);
+%             AC.setConfirmed(true);
         end
     end
     
+    dataBuffer = [];
+end
+
+if (recievedByte == 254)
     dataBuffer = [];
 end
 
@@ -44,21 +49,20 @@ end
 
 
 function isNextIndex = checkIndex( index )
+    persistent lastIndex;
+    fprintf('\n\n%d\n\n', lastIndex);
 
-persistent lastIndex;
-fprintf('\n\n%d\n\n', lastIndex);
-
-if (isempty(lastIndex))
-    lastIndex = index-1;
-end
-if (mod((lastIndex+1),256) == index)
-    isNextIndex = true;
-else
-    %TODO: handle lost packet
-    fprintf('Missed packet\n');
-    isNextIndex = false;
-end
-lastIndex = index;
+    if (isempty(lastIndex))
+        lastIndex = index-1;
+    end
+    if (lastIndex+1 == index)
+        isNextIndex = true;
+    else
+        %TODO: handle lost packet
+        fprintf('Missed packet\n');
+        isNextIndex = false;
+    end
+    lastIndex = index;
 end
 
 function callbackProcessSensor( obj, event )

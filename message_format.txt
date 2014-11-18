@@ -68,7 +68,7 @@ byte[22] = 0xFF (stop condition byte)
 
 Rover Master PIC --UART--> ARM PIC (motor data) (FromMainHigh_MQ) / (MotorDataSend_MQ)
 -----------------------------------------------
-byte[0] = message_index_number
+byte[0] = message_index_number % 254
 byte[1] = message_type (tells the Rover Master PIC that this is motor data)
 byte[2] = motor_command (tells the Rover Master PIC how to move)
 byte[3] = move_distance
