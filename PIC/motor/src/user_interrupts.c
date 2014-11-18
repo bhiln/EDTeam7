@@ -9,23 +9,34 @@
 #endif
 #include "user_interrupts.h"
 #include "messages.h"
+#include "debug.h"
+
+static tmr0_comm *t0_ptr;
 
 // A function called by the interrupt handler
 // This one does the action I wanted for this program on a timer0 interrupt
 
 void timer0_int_handler() {
-    unsigned int val = 0;
-    int length, msgtype;
-
+    // untested
+//    unsigned char done[1];
     // reset the timer
-    WriteTimer0(0);
+    WriteTimer0(200); // figure out how many ticks to go one inch
 
-    // try to receive a message and, if we get one, echo it back
-    length = FromMainHigh_recvmsg(sizeof(val), (unsigned char *)&msgtype, (void *) &val);
-    if (length == sizeof (val)) {
-        ToMainHigh_sendmsg(sizeof (val), MSGT_TIMER0, (void *) &val);
+    t0_ptr->count++;
+    if ((t0_ptr->count % t0_ptr->distance) == 0) {
+        unsigned char length = 2;
+        unsigned char msg[2];
+        t0_ptr->count = 0;
+        // untested
+//        done[0] = 0x34;
+//        ToMainHigh_sendmsg(1, MSGT_I2C_RQST, done);
+        msg[0] = 0x40;
+        msg[1] = 0xC0;
+        uart_send(length, msg);
     }
-    ToMainHigh_sendmsg(sizeof (val), MSGT_TIMER0, (void *) &val);
+    // untested
+//    done[0] = 0x0;
+//    ToMainHigh_sendmsg(1, MSGT_I2C_RQST, done);
 }
 
 // A function called by the interrupt handler
@@ -35,10 +46,15 @@ void timer1_int_handler() {
     unsigned int result;
 
     // read the timer and then send an empty message to main()
-
     result = ReadTimer1();
-    ToMainLow_sendmsg(0, MSGT_TIMER1, (void *) 0);
+//    ToMainLow_sendmsg(0, MSGT_TIMER1, (void *) 0);
 
     // reset the timer
     WriteTimer1(0);
+}
+
+void init_tmr0(tmr0_comm *t0) {
+    t0_ptr = t0;
+    t0_ptr->count = 0;
+    t0_ptr->distance = 0;
 }

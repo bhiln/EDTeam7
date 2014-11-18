@@ -130,13 +130,17 @@ void InterruptHandlerLow() {
 
     // check to see if we have an interrupt on USART RX
     if (PIR1bits.RCIF) {
+        DEBUG_ON(UART_RX);
         PIR1bits.RCIF = 0; //clear interrupt flag
         uart_recv_int_handler();
+        DEBUG_OFF(UART_RX);
     }
     
     // check to see if we have an interrupt on USART TX
     if (PIR1bits.TXIF && PIE1bits.TXIE) {
+        DEBUG_ON(UART_TX);
         uart_trans_int_handler();
+        DEBUG_OFF(UART_TX);
     }
 }
 

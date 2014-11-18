@@ -15,8 +15,8 @@
 #define TIMER1_ISR LATEbits.LATE2       // DEBUG4
 //#define I2C_MASTER_SEND LATAbits.LATA2  // DEBUG7
 //#define I2C_MASTER_RECV LATAbits.LATA3   // DEBUG5
-#define UART_TX LATAbits.LATA2  // DEBUG7
-#define UART_RX LATAbits.LATA3   // DEBUG5
+#define UART_TX LATAbits.LATA3  // DEBUG7
+#define UART_RX LATAbits.LATA2   // DEBUG5
 
 #ifdef DO_DEBUG
 #define DEBUG_ON(a) {\
