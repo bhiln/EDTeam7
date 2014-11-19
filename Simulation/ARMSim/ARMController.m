@@ -38,12 +38,16 @@ classdef ARMController < handle
             global x;
             global y;
             global alpha
+            global XY;
+            global R;
+            global stop;
             ioWiFly = ioW;
             ntimes = 0;
             confirmed = -99;
-            x = [-10,-7,-7,-10,-10];
-            y = [-2,-2,2,2,-2];
+            x = [-10,-8,-8,-10,-10];
+            y = [-2,-2,0,0,-2];
             alpha = 0;
+            stop = false;
             
             f = figure(1);
             set(f,'Name','Rover Motor Controller','Position',[360,500,450,285],'numbertitle','Off');
@@ -54,7 +58,7 @@ classdef ARMController < handle
             backwards = uicontrol('Style','pushbutton','String','Backwards','Position',[200,150,70,25],'Callback',{@backwardsbutton_Callback});
             %backwardsstep = uicontrol('Style','pushbutton','String','Backwards Step','Position',[200,120,70,25],'Callback',{@backwardsstepbutton_Callback});
             left = uicontrol('Style','pushbutton','String','Left','Position',[120,185,70,25],'Callback',{@leftbutton_Callback});
-            %left15 = uicontrol('Style','pushbutton','String','Left15','Position',[120,150,70,25],'Callback',{@left15button_Callback});
+            leftSquare = uicontrol('Style','pushbutton','String','Left Square','Position',[120,150,70,25],'Callback',{@leftSbutton_Callback});
             right = uicontrol('Style','pushbutton','String','Right','Position',[280,185,70,25],'Callback',{@rightbutton_Callback});
             %right15 = uicontrol('Style','pushbutton','String','Right15','Position',[280,150,70,25],'Callback',{@right15button_Callback});
             stop = uicontrol('Style','pushbutton','String','Stop','Position',[200,185,70,25],'Callback',{@stopbutton_Callback});
@@ -94,11 +98,9 @@ classdef ARMController < handle
             % Show the Target
             Plot_Target(h, Target);
 
-            R(1,:)=x-(x(1)+3);R(2,:)=y-(y(1)+2);
-            alpha=0*4*pi/360;
+            R(1,:)=x;R(2,:)=y;
+            alpha=0;
             XY=[cos(alpha) -sin(alpha);sin(alpha) cos(alpha)]*R;
-            XY(1,:) = XY(1,:)+(x(1)+2);
-            XY(2,:) = XY(2,:)+(y(1)+3);
             hold on;
             plot(XY(1,:),XY(2,:),'r');
             hold off;
@@ -113,11 +115,13 @@ classdef ARMController < handle
 %             r = rectangle()
             
                 function speedSliderCallback(~,~)
+                    figure(1);
                     delete(speedValueText);
                     speedValueText = uicontrol('Style','text','String',(ceil((getSpeed()/16)*10)/10),'Position',[340,90,60,15]);
                 end
                 
                 function angleSliderCallback(~,~)
+                    figure(1);
                     delete(angleValueText);
                     angleValueText = uicontrol('Style','text','String',getAngle()*2,'Position',[155,90,22,15]);
                 end
@@ -161,6 +165,9 @@ classdef ARMController < handle
 %                     sendStop();
                 end
 
+                function leftSbutton_Callback(source,eventdata)
+                    sendSquare();
+                end
 %                 function left15button_Callback(source,eventdata) 
 %                     sendLeft();
 %                     pause(0.2);
@@ -198,16 +205,51 @@ classdef ARMController < handle
 
                 function sendStop()
                     sendMotorCommand(13)
+                    stop = true;
+                end
+                
+                function sendSquare()
+                    stop = false;
+                    while (stop == false)
+                        sendMotorCommand(10)
+                        pause(4-(ceil((getSpeed()/16)*10)/10));
+                        sendMotorCommand(11)
+                        pause(4-(ceil((getSpeed()/16)*10)/10));
+                        sendMotorCommand(10)
+                        pause(4-(ceil((getSpeed()/16)*10)/10));
+                        sendMotorCommand(11)
+                        pause(4-(ceil((getSpeed()/16)*10)/10));
+                        sendMotorCommand(10)
+                        pause(4-(ceil((getSpeed()/16)*10)/10));
+                        sendMotorCommand(11)
+                        pause(4-(ceil((getSpeed()/16)*10)/10));
+                        sendMotorCommand(10)
+                        pause(4-(ceil((getSpeed()/16)*10)/10));
+                        sendMotorCommand(11)
+                        pause(4-(ceil((getSpeed()/16)*10)/10));
+                    end
                 end
                 
                 function sendMotorCommand(command)
 
+                    
+                    
                     while (1)
                         if (confirmed == ntimes)
                             ntimes = mod(ntimes + 1, 254);
                             figure(2);
-                            plot(XY(1,:),XY(2,:),'w');
-                            R(1,:)=x-(x(1)+3);R(2,:)=y-(y(1)+2);
+                            hold on;
+                            plot(XY(1,:),XY(2,:),'c');
+                            hold off;
+                            if (command == 10)
+                                x = x+((getDistance()/25)*cos(alpha));
+                                y = y+((getDistance()/25)*sin(alpha));
+                            end
+                            if (command == 14)
+                                x = x-((getDistance()/25)*cos(alpha));
+                                y = y-((getDistance()/25)*sin(alpha));
+                            end
+                            R(1,:)=x-(x(1)+1);R(2,:)=y-(y(1)+1);
                             if (command == 11)
                                 alpha= alpha+(getAngle()*4*pi/360);
                                 fprintf('left: %d\n',alpha);
@@ -217,19 +259,12 @@ classdef ARMController < handle
                                 fprintf('right: %d\n',alpha);
                             end
                             XY=[cos(alpha) -sin(alpha);sin(alpha) cos(alpha)]*R;
-                            XY(1,:) = XY(1,:)+(x(1)+3);
-                            XY(2,:) = XY(2,:)+(y(1)+2);
-                            if (command == 10)
-                                XY(1,:) = XY(1,:)+(getDistance()*cos((getAngle()*4*pi/360)));
-                                XY(2,:) = XY(2,:)+(getDistance()*sin((getAngle()*4*pi/360)));
-                            end
-                            if (command == 14)
-                                XY(1,:) = XY(1,:)-(getDistance()*cos((getAngle()*4*pi/360)));
-                                XY(2,:) = XY(2,:)-(getDistance()*sin((getAngle()*4*pi/360)));
-                            end
+                            XY(1,:) = XY(1,:)+(x(1)-1);
+                            XY(2,:) = XY(2,:)+(y(1)-1);
+                           
                             hold on;
                             plot(XY(1,:),XY(2,:),'r');
-                            axis([0 100 0 100]);
+                            hold off;
                             break;
                         end
                         fwrite(ioWiFly,bin2dec(sprintf('%s', dec2bin(254, 8))));
