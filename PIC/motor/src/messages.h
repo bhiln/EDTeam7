@@ -78,4 +78,11 @@ signed char FromMainLow_recvmsg(unsigned char,unsigned char *,void *);
 signed char FromMainHigh_sendmsg(unsigned char,unsigned char,void *);
 signed char FromMainHigh_recvmsg(unsigned char,unsigned char *,void *);
 
+// Queue:
+// The "MotorData" queue is a message queue from the "main()"
+// thread to the high priority interrupt handlers.  The send is called
+// in the "main()" thread and the receive from the interrupt handlers.
+signed char MotorData_sendmsg(unsigned char,unsigned char,void *);
+signed char MotorData_recvmsg(unsigned char,unsigned char *,void *);
+
 #endif

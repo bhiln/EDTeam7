@@ -210,7 +210,17 @@ void i2c_int_handler() {
         ic_ptr->error_count = 0;
     }
     if (msg_to_send) {
+        signed char send = 0;
         // send to the queue to *ask* for the data to be sent out
+//        send = MotorData_recvmsg(ic_ptr->outbuflen, (void *) MSGT_I2C_RQST, (void *) ic_ptr->outbuffer);
+//        if (send > 0) {
+//            start_i2c_slave_reply(3, ic_ptr->outbuffer);
+//        }
+//        if (send == 4) {
+            
+//        }
+//        send_length = ic_ptr->outbuflen;
+        
         ToMainHigh_sendmsg(0, MSGT_I2C_RQST, (void *) ic_ptr->buffer);
         msg_to_send = 0;
     }

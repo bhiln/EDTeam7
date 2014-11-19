@@ -303,6 +303,7 @@ void main(void) {
                             msgbuffer[1] = distance; // distance
                             msgbuffer[2] = speed; // speed
                             i2c_master_send(0x9A, length, msgbuffer);
+//                            i2c_master_recv(0x9A, 4);
                             break;
                         }
                         case 0x0B: // turn left

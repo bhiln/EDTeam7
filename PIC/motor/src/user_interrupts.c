@@ -21,15 +21,19 @@ void timer0_int_handler() {
 //    unsigned char done[1];
     // reset the timer
     WriteTimer0(200); // figure out how many ticks to go one inch
-
+    
     t0_ptr->count++;
     if ((t0_ptr->count % t0_ptr->distance) == 0) {
         unsigned char length = 2;
-        unsigned char msg[2];
+        unsigned char msg[2], reply[3];
         t0_ptr->count = 0;
         // untested
 //        done[0] = 0x34;
 //        ToMainHigh_sendmsg(1, MSGT_I2C_RQST, done);
+//        reply[0] = 0xFE;
+//        reply[1] = 0x34;
+//        reply[2] = 0xFF;
+//        MotorData_sendmsg(3, MSGT_I2C_RQST, (void *) reply);
         msg[0] = 0x40;
         msg[1] = 0xC0;
         uart_send(length, msg);

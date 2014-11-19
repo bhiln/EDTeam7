@@ -38,16 +38,15 @@
 #endif
 
 // Message type definitions
-#define MSGT_MAIN1 10
-#define MSGT_TIMER0 20
-#define MSGT_I2C_DBG 21
-#define MSGT_I2C_RQST 22
-#define MSGT_I2C_SLAVE_RECV_COMPLETE 23
-#define MSGT_I2C_DATA 24
-#define MSGT_TIMER1 30
-#define	MSGT_OVERRUN 31
-#define MSGT_UART_DATA 32
-#define MSGT_UART_CMD 33
+#define MSGT_TIMER0 10
+#define MSGT_TIMER1 11
+#define MSGT_MAIN1 20
+#define	MSGT_OVERRUN 30
+#define MSGT_UART_DATA 31
+#define MSGT_UART_SEND 32
+#define MSGT_I2C_DBG 41
+#define	MSGT_I2C_DATA 40
+#define MSGT_I2C_RQST 42
 
 #endif
 

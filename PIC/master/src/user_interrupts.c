@@ -12,20 +12,28 @@
 #include "debug.h"
 #include "my_i2c.h"
 
+unsigned char i = 0;
 // A function called by the interrupt handler
 // This one does the action I wanted for this program on a timer0 interrupt
 
 void timer0_int_handler() {
-    unsigned char i;
     
-    if (i % 2 == 0) {
-        // sensor
-        i2c_master_recv(0x9E, 4);
-    } // else if (i % 2 = 1) {
-        // motor
-//        i2c_master_recv(0x9A, 4);
+//    if (i % 3 == 0) {
+////        i = 0;
+//        // sensor
+//        i2c_master_recv(0x9E, 4);
 //    }
-    i++;
+//    if (i % 999 == 0) {
+//        i = 1;
+//         motor
+//        i2c_master_recv(0x9A, 3);
+//    }
+//    if (i % 3 == 2) {
+////        i = 1;
+//        // motor
+//        uart_recv_int_handler();
+//    }
+//    i = (i+1)%1000;
 
     // reset the timer
     WriteTimer0(0);

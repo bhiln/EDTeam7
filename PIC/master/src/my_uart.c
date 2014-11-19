@@ -18,7 +18,7 @@ void uart_recv_int_handler() {
         if (readin[uc_ptr->cmd_count] == 0xFE) {
             uc_ptr->cmd_count = 0;
         }
-        else if (readin[uc_ptr->cmd_count] == 0xFF){
+        else if (readin[uc_ptr->cmd_count] == 0xFF) {
             ToMainLow_sendmsg(uc_ptr->cmd_count, MSGT_UART_DATA, readin);
             msgCountEcho[0] = 0xFE;
             msgCountEcho[1] = 0x33;

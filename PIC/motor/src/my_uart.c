@@ -32,7 +32,7 @@ void uart_recv_int_handler() {
 }
 
 void uart_trans_int_handler() {
-    FromMainLow_recvmsg(uc_ptr->outbuflen, MSGT_I2C_SLAVE_RECV_COMPLETE, (void *) uc_ptr->outbuffer);
+    FromMainLow_recvmsg(uc_ptr->outbuflen, (void *) MSGT_I2C_SLAVE_RECV_COMPLETE, (void *) uc_ptr->outbuffer);
     if (TXSTAbits.TRMT == 1) {
         if (uc_ptr->outbufind < uc_ptr->outbuflen) {
             uc_ptr->outbufind++;
