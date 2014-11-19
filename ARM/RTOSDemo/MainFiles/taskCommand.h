@@ -1,12 +1,47 @@
+/*------------------------------------------------------------------------------
+ * File:            taskCommand.h
+ * Authors:         FreeRTOS, Igor Janjic
+ * Description:     Specification file for the command task.
+ *----------------------------------------------------------------------------*/
+
 #ifndef TASK_COMMAND_H
 #define TASK_COMMAND_H
 
-#include "defs.h"
-//#include "taskLCD.h"
+/*------------------------------------------------------------------------------
+ * Includes
+ **/
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+
+#include "FreeRTOS.h"
+#include "lpc17xx_gpio.h"
+#include "projdefs.h"
+#include "semphr.h"
+#include "task.h"
+
+#include "vtUtilities.h"
 #include "vtI2C.h"
 
-// Maximum length of a message that can be received by any IR task.
-#define maxLenCommand (sizeof(portTickType))
+#include "debug.h"
+#include "defs.h"
+#include "taskLCD.h"
+
+/*------------------------------------------------------------------------------
+ * Definitions
+ **/
+
+// Length of the queue to this task.
+#define queueLenCommand     10
+
+// Maximum length of the buffer for this task.
+#define bufLenCommand       3
+
+/*------------------------------------------------------------------------------
+ * Task Data Structures
+ **/
 
 // Structure used to pass parameters to the task.
 typedef struct __structCommand
@@ -16,8 +51,22 @@ typedef struct __structCommand
 	xQueueHandle inQ;
 } structCommand;
 
+// Actual data structure that is sent in a message.
+typedef struct __msgCommand
+{
+	uint8_t type;
+	uint8_t	length;
+	uint8_t buf[bufLenCommand];
+} msgCommand;
+
+/*------------------------------------------------------------------------------
+ * Command API
+ **/
+
 void startTaskCommand(structCommand* dataCommand, unsigned portBASE_TYPE uxPriority, vtI2CStruct* devI2C0, structLCD* dataLCD);
-portBASE_TYPE sendTimerMsgCommand(structCommand* dataCommand, portTickType ticksElapsed, portTickType ticksToBlock);
-portBASE_TYPE sendValueMsgCommand(structCommand* dataCommand, uint8_t msgType, uint16_t value, portTickType ticksToBlock);
+void sendTimerMsgCommand(structCommand* dataCommand, portTickType ticksElapsed, portTickType ticksToBlock);
+void sendValueMsgCommand(structCommand* dataCommand, uint8_t type, uint8_t* value, portTickType ticksToBlock);
+
+bool execCommand(vtI2CStruct* devI2C0, uint8_t type, uint8_t value, uint8_t speed);
 
 #endif

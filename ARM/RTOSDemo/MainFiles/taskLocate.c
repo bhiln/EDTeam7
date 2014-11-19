@@ -1,187 +1,183 @@
 /*------------------------------------------------------------------------------
- * File:		taskLocate.c
+ * File:	    	taskLocate.c
  * Authors: 		FreeRTOS, Igor Janjic
- * Description:		Determines location of rover and ramps.
+ * Description:		Implementation file for locate task. Determines location of
+ *                  rover and ramps.
  **---------------------------------------------------------------------------*/
 
-/*------------------------------------------------------------------------------
- * Includes
- **/
-#include <stdlib.h>
-#include <stdio.h>
-#include <math.h>
-#include <string.h>
-
-#include "FreeRTOS.h"
-#include "task.h"
-#include "projdefs.h"
-#include "semphr.h"
-#include "lpc17xx_gpio.h"
-
-#include "vtUtilities.h"
-#include "taskLCD.h"
 #include "taskLocate.h"
-#include "I2CTaskMsgTypes.h"
-#include "debug.h"
 
-/*------------------------------------------------------------------------------
- * Configuration
- **/
+static portTASK_FUNCTION_PROTO(updateTaskLocate, pvParameters);
 
- // Length of the queue to this task.
-#define queueLenLocate 10
-
-// Stack sizes.
-#define BASE_STACK 3
-#if PRINTF_VERSION == 1
-#define I2C_STACK_SIZE		((BASE_STACK+5)*configMINIMAL_STACK_SIZE)
-#else
-#define I2C_STACK_SIZE		(BASE_STACK*configMINIMAL_STACK_SIZE)
-#endif
-
-// Actual data structure that is sent in a message.
-typedef struct __msgLocate
+void startTaskLocate(structLocate* dataLocate, unsigned portBASE_TYPE uxPriority, structLCD* dataLCD, structCommand* dataCommand)
 {
-	uint8_t msgType;
-	uint8_t	length;
-	uint16_t buf[maxLenLocate + 1];
-} msgLocate;
+    // Create the queue that will be used to talk to this task.
+    dataLocate->inQ = xQueueCreate(queueLenLocate, sizeof(msgLocate));
+    if(dataLocate->inQ == NULL)
+    {
+        sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_DEBUG, maxLenLCD, errorQueueCreateLocate, portMAX_DELAY);
+        VT_HANDLE_FATAL_ERROR(0);
+    }
 
-/*------------------------------------------------------------------------------
- * Task Functions
- **/
-
-int getMsgTypeLocate(msgLocate *Buffer) {return(Buffer->msgType);}
-
-static portTASK_FUNCTION(updateTaskLocate, pvParameters);
-
-void startTaskLocate(structLocate* dataLocate, unsigned portBASE_TYPE uxPriority, vtI2CStruct* devI2C0, structLCD* dataLCD)
-{
-	// Create the queue that will be used to talk to this task.
-	if ((dataLocate->inQ = xQueueCreate(queueLenLocate, sizeof(msgLocate))) == NULL)
-		VT_HANDLE_FATAL_ERROR(0);
-
-	// Create the task.
-	portBASE_TYPE retval;
-    dataLocate->devI2C0 = devI2C0;  
-	dataLocate->dataLCD  = dataLCD;
-
-	if ((retval = xTaskCreate(updateTaskLocate, taskNameLocate, I2C_STACK_SIZE, (void*)dataLocate, uxPriority, (xTaskHandle*)NULL)) != pdPASS)
-		VT_HANDLE_FATAL_ERROR(retval);
+    // Create the task.
+    dataLocate->dataLCD = dataLCD;
+    dataLocate->dataCommand = dataCommand;
+    
+    portBASE_TYPE retval = xTaskCreate(updateTaskLocate, taskNameLocate, LOCATE_STACK_SIZE, (void*)dataLocate, uxPriority, (xTaskHandle*)NULL);
+    if(retval != pdPASS)
+    {
+        sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_DEBUG, maxLenLCD, errorTaskCreateLocate, portMAX_DELAY);
+        VT_HANDLE_FATAL_ERROR(retval);
+    }
 }
 
-portBASE_TYPE sendTimerMsgLocate(structLocate* dataLocate, portTickType ticksElapsed, portTickType ticksToBlock)
+void sendTimerMsgLocate(structLocate* dataLocate, portTickType ticksElapsed, portTickType ticksToBlock)
 {
-	if (dataLocate == NULL)
-		VT_HANDLE_FATAL_ERROR(0);
-	
-	msgLocate bufferLocate;
-	bufferLocate.length = sizeof(ticksElapsed);
+    msgLocate msg;
+    msg.length = sizeof(ticksElapsed);
 
-	if (bufferLocate.length > maxLenLocate)
-		VT_HANDLE_FATAL_ERROR(bufferLocate.length);
+    memcpy(msg.buf, &ticksElapsed, msg.length);
+    msg.type = MSG_TYPE_TIMER_LOCATE;
 
-	memcpy(bufferLocate.buf, (char*)&ticksElapsed, sizeof(ticksElapsed));
-	bufferLocate.msgType = msgTypeLocateTimer;
-	return(xQueueSend(dataLocate->inQ, (void*) (&bufferLocate),ticksToBlock));
+    portBASE_TYPE retval = xQueueSend(dataLocate->inQ, (void*)(&msg), ticksToBlock);
+    if(retval != pdTRUE)
+    {
+        sendValueMsgLCD(dataLocate->dataLCD, MSG_TYPE_LCD_DEBUG, maxLenLCD, errorQueueSendLocate, portMAX_DELAY);
+        VT_HANDLE_FATAL_ERROR(retval);
+    }
 }
 
-portBASE_TYPE sendValueMsgLocate(structLocate* dataLocate, uint8_t msgType, uint16_t* value, portTickType ticksToBlock)
+void sendValueMsgLocate(structLocate* dataLocate, uint8_t type, float* value, portTickType ticksToBlock)
 {
-	msgLocate bufferLocate;
+    msgLocate msg;
+    msg.length = sizeof(float)*bufLenLocate;
 
-	if (dataLocate == NULL)
-		VT_HANDLE_FATAL_ERROR(0);
+    memcpy(msg.buf, value, msg.length);
+    msg.type = type;
+    portBASE_TYPE retval = xQueueSend(dataLocate->inQ, (void*)(&msg), ticksToBlock);
+    if(retval != pdTRUE)
+    {
+        sendValueMsgLCD(dataLocate->dataLCD, MSG_TYPE_LCD_DEBUG, maxLenLCD, errorQueueSendLocate, portMAX_DELAY);
+        VT_HANDLE_FATAL_ERROR(retval);
+    }
 
-	bufferLocate.length = sizeof(value);
-
-	if (bufferLocate.length > maxLenLocate)
-		VT_HANDLE_FATAL_ERROR(bufferLocate.length);
-	
-	memcpy(bufferLocate.buf, (char*)&value, sizeof(value));
-	bufferLocate.msgType = msgType;
-	return(xQueueSend(dataLocate->inQ, (void*)(&bufferLocate), ticksToBlock));
 }
 
 static portTASK_FUNCTION(updateTaskLocate, pvParameters)
 {
     // Task parameters.
-	structLocate* param   = (structLocate*)pvParameters;
-    vtI2CStruct*  devI2C0 = param->devI2C0;
-	structLCD*    dataLCD = param->dataLCD;
-	
-	// String buffer for printing.
-	char bufferLCD[maxLenLCD + 1];
+	structLocate*  param       = (structLocate*)pvParameters;
+    structCommand* dataCommand = param->dataCommand;
+	structLCD*     dataLCD     = param->dataLCD;
 	
 	// Buffer for receiving messages.
-	msgLocate msgBuffer;
+	msgLocate msg;
 
-    // Current states of the rover.
-    States curStates;
+    // Initialize map.
+    Map map = {
+        .map = {
+            .allocated = false,
+            .rows = MAP_RADIUS_INIT,
+            .cols = MAP_RADIUS_INIT
+        },
+        .radix = {
+            .allocated = false,
+            .n = 2
+        },
+        .thresh = {
+            .allocated = false,
+            .n = 2
+        },
+        .grow = false
+    };
+    createMatrix(&(map.map));
+    createVector(&(map.radix));
+    createVector(&(map.thresh));
+    map.radix.buf[0] = (MAP_RADIUS_MAX - 1)/2;
+    map.radix.buf[1] = (MAP_RADIUS_MAX - 1)/2;
+    map.thresh.buf[0] = 0.0;
+    map.thresh.buf[1] = 0.0;
 
-	// Initial states of the rover.
-	StateMotion      initialStateMotion      = stop;
-	StatePrimeGoal   initialStatePrimeGoal   = none;
-	StateScanSecGoal initialStateScanSecGoal = scanInit;
-    StateRoamSecGoal initialStateRoamSecGoal = roamInit;
+    // Initialize rover.
+    Rover rover = {
+        .curStates = {
+            .curStateMotion       = initialStateMotion,
+            .curStatePrimeGoal    = initialStatePrimeGoal,
+            .curStateScanSecGoal  = initialStateScanSecGoal,
+            .curStateRoamSecGoal  = initialStateRoamSecGoal,
+            .curStateGoSecGoal    = initialStateGoSecGoal,
+            .curStateAlignSecGoal = initialStateAlignSecGoal,
+            .curStateRampSecGoal  = initialStateRampSecGoal
+        },
+        .curObstacles = {
+            .allocated = false,
+            .rows = 2,
+            .cols = 4
+        },
+        .curCorners = {
+            .allocated = false,
+            .rows = 2,
+            .cols = 4
+        },
+        .curRamps = {
+            .allocated = false,
+            .rows = 2,
+            .cols = 3
+        },
+        .curTarget = {
+            .allocated = false,
+            .n = 4
+        },
+        .orient = 0.0,
+        .mapped = false,
+        .ack    = false
+    };
+    createMatrix(&(rover.curObstacles));
+    createMatrix(&(rover.curCorners));
+    createMatrix(&(rover.curRamps));
+    createVector(&(rover.curTarget));
 
-	curStates.curStateMotion      = initialStateMotion;
-    curStates.curStatePrimeGoal   = initialStatePrimeGoal;
-	curStates.curStateScanSecGoal = initialStateScanSecGoal;
-	curStates.curStateRoamSecGoal = initialStateRoamSecGoal;
-			
-    // Closest objects on each side of the rover.
-    uint16_t curObjs[SIDE_LEN][OBJ_LEN];
-
-    // Ramp at the front of the rover.
-    uint16_t curRamp[OBJ_LEN];
-
-    // Current target ramp.
-    uint16_t targetRamp[OBJ_LEN];
-
-    // Ack that the ARM PIC sends back.
-    bool ack = false;
-    
-	// Like all good tasks, this should never exit.
+    // Like all good tasks, this should never exit.
 	for(;;)
 	{
-		// Wait for a message from either a timer or sensor task.
-		if (xQueueReceive(param->inQ, (void*)&msgBuffer, portMAX_DELAY) != pdTRUE)
-			VT_HANDLE_FATAL_ERROR(0);
+        // Wait for a message from the queue.
+        portBASE_TYPE retQueue = xQueueReceive(param->inQ, (void*)&msg, portMAX_DELAY);
+        if (retQueue != pdTRUE)
+        {
+            sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_DEBUG, maxLenLCD, errorQueueReceiveLocate, portMAX_DELAY);
+            VT_HANDLE_FATAL_ERROR(retQueue);
+        }
 
-		// Now, based on the type of the message and the state, do different things.
-		switch(getMsgTypeLocate(&msgBuffer))
+	    // Now, based on the type of the message and the state, do different things.
+		switch(msg.type)
 		{
-		case msgTypeLocateTimer:
+		case MSG_TYPE_TIMER_LOCATE:
 		{
-            // Determine the primary goal of the rover.
-            curStates.curStatePrimeGoal = initialStatePrimeGoal;
-
-            switch(curStates.curStatePrimeGoal)
+            switch(rover.curStates.curStatePrimeGoal)
             {
             case scan:
             {
-                execScan(devI2C0, &curStates, curObjs, curRamp, targetRamp, &ack);
+                //execScan(devI2C0);
                 break; 
             }
             case roam:
             {
-                execRoam(devI2C0, &curStates, curObjs, curRamp, targetRamp, &ack);
+                //execRoam(devI2C0);
                 break;
             }
             case go:
             {
-                execGo(devI2C0, &curStates, curObjs, curRamp, &ack);
+                //execGo(devI2C0);
                 break;
             }
             case align:
             {
-                execAlign(devI2C0, &curStates, curObjs, curRamp, &ack);
+                //execAlign(devI2C0);
                 break;
             }
             case ramp:
             {
-                execRamp(devI2C0, &curStates, curObjs, curRamp, &ack);               
+                //execRamp(devI2C0);               
                 break;
             }
 			case none:
@@ -190,21 +186,31 @@ static portTASK_FUNCTION(updateTaskLocate, pvParameters)
 			}
             default:
             {
-                execDefault();
+                //execDefault();
                 break;	
             }
 	        }
+			break;
         }
-        case msgTypeLocate:
+        case MSG_TYPE_LOCATE:
         {
-			//locateObjs(curObjs, msgBuffer.buf);
-            //locateRamp(curRamp, msgBuffer.buf);
+            float data[8];
+            uint8_t i;
+            for(i = 0; i < 8; i++)
+                data[i] = msg.buf[i + 2];
+
+            updateData(&rover, &map, data);
+
+            // Map updated data to global coordinates, allocating space if
+            // need be.   
+            mapData(&rover, &map);
+             
             break;
         }
-        case msgTypeCommand:
+        case MSG_TYPE_ACK:
         {
-            // Grab the acknowledgement.
-            //ack = (bool)msgBuffer.buf[1];
+            // Grab the acknowledgement from the motor controller.
+            rover.ack = (bool)msg.buf[0];
             break;
         }
         default:
@@ -214,268 +220,111 @@ static portTASK_FUNCTION(updateTaskLocate, pvParameters)
         }
         }
     }
+
 }
 
-/*------------------------------------------------------------------------------
- * State Functions
- **/
-
-void execScan(vtI2CStruct* devI2C0, States* curStates, uint16_t curObj[SIDE_LEN][OBJ_LEN], uint16_t curRamp[OBJ_LEN], uint16_t targetRamp[OBJ_LEN], bool* ack)
+void updateData(Rover* rover, Map* map, float* data)
 {
-    switch(curStates->curStateScanSecGoal)
-    {
-    case scanInit:
-    {
-        // Send the command to initialize scanning.
-        uint8_t command[CMD_LEN];
-        uint8_t type = CMD_TR; 
-        uint8_t value = 0;
-        uint8_t speed = 25;
+    // Update the current obstacles.
+    float B[4];
+    uint8_t i;
+    for(i = 0; i < 7; i = i + 2)
+        B[i] = (data[i] + data[i + 1])/2;
 
-        command[CMD_TYPE]  = type;
-        command[CMD_VALUE] = value;
-        command[CMD_SPEED] = speed;
-        
-        bool xCommandSuccess = false;
-        xCommandSuccess = execCommand(devI2C0, type, value, speed);
-        if(xCommandSuccess)
-            curStates->curStateScanSecGoal = scanExec;
-        break;
-    }
-    case scanExec:
+    float IR1 = B[0]; 
+    rover->curObstacles.rowVectors[0].buf[0] = 0;
+    rover->curObstacles.rowVectors[1].buf[0] = IR1;
+
+    float IR2 = B[1]; 
+    rover->curObstacles.rowVectors[0].buf[1] = -1*IR2;
+    rover->curObstacles.rowVectors[1].buf[1] = 0;
+
+    float IR3 = B[2]; 
+    rover->curObstacles.rowVectors[0].buf[2] = 0;
+    rover->curObstacles.rowVectors[1].buf[2] = -1*IR3;
+
+    float IR4 = B[3]; 
+    rover->curObstacles.rowVectors[0].buf[3] = IR4;
+    rover->curObstacles.rowVectors[1].buf[3] = 0;
+
+    // Update the current ramps.
+}
+
+void mapData(Rover* rover, Map* map)
+{
+    // Rotates the data to the normal coordinate system.
+    Matrix T = {
+        .allocated = false,
+        .rows = 2,
+        .cols = 2
+    };
+    Matrix result = {
+        .allocated = false,
+        .rows = 2,
+        .cols = 4
+    };
+    createMatrix(&T);
+    createMatrix(&result);
+    T.rowVectors[0].buf[0] = cos(rover->orient);
+    T.rowVectors[0].buf[1] = sin(rover->orient)*(-1);
+    T.rowVectors[1].buf[0] = sin(rover->orient);
+    T.rowVectors[1].buf[1] = cos(rover->orient);
+
+    // Map front sensors.
+    uint16_t direction = 0;
+	uint16_t i;
+    for(i = 0; i < 4; i++)
     {
-        // Check to see if a ramp was found.
-        if(anyRamps(curRamp))
+        multiplyMatrix2Vector(&(result.rowVectors[direction]), &T, &(rover->curObstacles.rowVectors[direction])); 
+        if(result.rowVectors[i].buf[0] < SENS_DIST_CUTOFF && result.rowVectors[i].buf[1] < SENS_DIST_CUTOFF)
         {
-            targetRamp[OBJ_DIST]  = curRamp[OBJ_DIST];
-            targetRamp[OBJ_ANGLE] = curRamp[OBJ_ANGLE];
+            int r = (int)(round(result.rowVectors[i].buf[1]));    
+            int c = (int)(round(result.rowVectors[i].buf[0])); 
+
+            // Convert to global coordinates.
+            int rp = r + map->radix.buf[0];
+            int cp = c + map->radix.buf[1];
+
+            // See if the new point fits on the map, otherwise reallocate.
+            if(rp < 0) 
+            {
+                recreateMatrix(&(map->map), SIDE_BACK);
+                rp = rp + 2*(map->radix.buf[0]);
+                cp = cp;
+                map->radix.buf[0] = 3*(map->radix.buf[0]);
+                map->radix.buf[1] = map->radix.buf[1]; 
+            }
+            if(rp > map->map.rows)
+            {
+                recreateMatrix(&(map->map), SIDE_FRONT);
+                rp = rp;
+                cp = cp;
+                map->radix.buf[0] = map->radix.buf[0];
+                map->radix.buf[1] = map->radix.buf[1];
+            }
+            if(cp < 0)
+            {
+                recreateMatrix(&(map->map), SIDE_LEFT);
+                rp = rp;
+                cp = cp + 2*(map->radix.buf[0]);
+                map->radix.buf[0] = map->radix.buf[0];
+                map->radix.buf[1] = 3*(map->radix.buf[1]);
+
+            }
+            if(cp > map->map.cols)
+            {
+                recreateMatrix(&(map->map), SIDE_RIGHT);
+                map->radix.buf[0] = map->radix.buf[0];
+                map->radix.buf[1] = map->radix.buf[1];
+            }
         }
-
-        // Change the local secondary state if the command was completed.
-        if(*ack)
-            curStates->curStateScanSecGoal = scanComp;
-        break;
     }
-    case scanComp:
+
+    // Fit the new data to the map.
+    for(i = 0; i < 4; i++)
     {
-        // Change the primary state.
-        if(targetRamp[OBJ_DIST] > 0)
-            curStates->curStatePrimeGoal = go;
-        else
-            curStates->curStatePrimeGoal = roam;
-
-        // Change the local secondary state.
-        curStates->curStateScanSecGoal = scanInit;
-
-        *ack = false;
-        break; 
+        uint16_t r = (uint16_t)(round(result.rowVectors[0].buf[i]));
+        uint16_t c = (uint16_t)(round(result.rowVectors[1].buf[i]));
+        map->map.rowVectors[r].buf[c] = 1.0;
     }
-    default:
-    {
-        // Error...
-        break;
-    }
-    }
-}
-
-void execRoam(vtI2CStruct* devI2C0, States* curStates, uint16_t curObjs[SIDE_LEN][OBJ_LEN], uint16_t curRamp[OBJ_LEN], uint16_t targetRamp[OBJ_LEN], bool* ack)
-{
-    static bool (*roamType)(vtI2CStruct*, uint16_t[SIDE_LEN][OBJ_LEN]);
-    static bool roamStop = false;
-    switch(curStates->curStateRoamSecGoal)
-    {
-    case roamInit:
-    {
-        // Get the closest object to the rover and the side it's on.
-        uint8_t side;
-        uint16_t closestObject[OBJ_LEN];
-        getClosestCurObj(&side, closestObject, curObjs);
-
-        // Determine the roam type.
-        uint8_t thresh = 2;
-        if(closestObject[OBJ_DIST] < thresh)
-            roamType = &execMoveAlong;
-        else
-            roamType = &execMoveZigzag;
-
-        // Start roaming.
-        roamStop = roamType(devI2C0, curObjs);
-
-        // Change local secondary state.
-        curStates->curStateRoamSecGoal = roamExec; 
-        break;
-    }
-    case roamExec:
-    {
-        if(*ack && !roamStop)
-        {
-            *ack = false;
-            roamStop = roamType(devI2C0, curObjs);
-        }
-        if(*ack && roamStop)
-        {
-            // Change the local secondary state.
-            curStates->curStateRoamSecGoal = roamComp;
-        }
-
-        // Check to see if a ramp was found.
-        if(anyRamps(curRamp))
-        {
-            targetRamp[OBJ_DIST]  = curRamp[OBJ_DIST];
-            targetRamp[OBJ_ANGLE] = curRamp[OBJ_ANGLE];
-            roamStop = true;
-        }
-        break;
-    }
-    case roamComp:
-    {
-        // Change the primary state.
-        if(targetRamp[OBJ_DIST] > 0)
-            curStates->curStatePrimeGoal = go;
-        else
-            curStates->curStatePrimeGoal = scan;
-
-        // Change the local secondary state.
-        curStates->curStateRoamSecGoal = roamInit;
-        break;
-    }
-    default:
-    {
-        // Error.
-        break;
-    }
-    }
-}
-
-void execGo(vtI2CStruct* devI2C0, States* curStates, uint16_t curObjs[SIDE_LEN][OBJ_LEN], uint16_t curRamp[OBJ_LEN], bool* ack)
-{
-    switch(curStates->curStateGoSecGoal)
-    {
-    default:
-    {
-        // Error...
-        break;
-    }
-    } 
-}
-
-void execAlign(vtI2CStruct* devI2C0, States* curStates, uint16_t curObjs[SIDE_LEN][OBJ_LEN], uint16_t curRamp[OBJ_LEN], bool* ack)
-{
-    switch(curStates->curStateAlignSecGoal)
-    {
-    default:
-    {
-        // Error...
-        break;
-    }
-    }
-}
-
-void execRamp(vtI2CStruct* devI2C0, States* curStates, uint16_t curObjs[SIDE_LEN][OBJ_LEN], uint16_t curRamp[OBJ_LEN], bool* ack)
-{
-    switch(curStates->curStateRampSecGoal)
-    {
-       	default:
-		{
-		 	// Error...
-			break;
-		}
-    }
-}
-
-void execDefault()
-{
-    // Error:
-}
-
-/*------------------------------------------------------------------------------
- * Helper Functions
- **/
-
-bool execMoveAlong(vtI2CStruct* devI2C0, uint16_t curObjs[SIDE_LEN][OBJ_LEN])
-{
-    bool moveAlongStop = false;
-
-    // Get the closest object.
-    uint8_t side;
-    uint16_t closestObj[OBJ_LEN];
-    getClosestCurObj(&side, closestObj, curObjs);
-
-    // Determine the wall to move along.
-    return moveAlongStop; 
-}
-
-bool execMoveZigzag(vtI2CStruct* devI2C0, uint16_t curObjs[SIDE_LEN][OBJ_LEN])
-{
-    bool moveZigzagStop = false;
-    return moveZigzagStop;
-}
-
-bool execCommand(vtI2CStruct* devI2C0, uint8_t type, uint8_t value, uint8_t speed)
-{
-    GPIO_SetValue  (0, DEBUG_PIN16);
-    GPIO_ClearValue(0, DEBUG_PIN16);
-
-    uint8_t command[CMD_LEN];
-    command[CMD_TYPE]  = type;
-    command[CMD_VALUE] = value;
-    command[CMD_SPEED] = speed;
-
-    // Send an I2C moveBackward command to slave.
-    portBASE_TYPE retI2C = vtI2CEnQ(devI2C0, msgTypeCommand, SLAVE_ADDR, sizeof(command), command, 1);
-    return (retI2C == pdTRUE);
-}
-
-void locateObjs(uint16_t curObjs[SIDE_LEN][OBJ_LEN], uint16_t* locateData)
-{
-    uint8_t curRoverSide = 0;
-	const float horizSensorDistance = 2;
-
-	uint8_t i = 0;
-    uint8_t notCareSensors = 3; // Last 3 don't affect current close objects.
-	for(i = 0; i < SENS_LEN - notCareSensors - 1; i = i + 2)
-	{
-		float distanceSensor0 = locateData[i];
-		float distanceSensor1 = locateData[i + 1];
-
-		// Calculate the distance to the object.
-		curObjs[curRoverSide][OBJ_DIST] = (distanceSensor0 + distanceSensor1)/2;
-
-		// Calculate the angle to the object.
-		if(distanceSensor0 > distanceSensor1)
-			curObjs[curRoverSide][OBJ_ANGLE] =  90 + atan(abs(distanceSensor0 - distanceSensor1)/horizSensorDistance);	
-		else
-			curObjs[curRoverSide][OBJ_ANGLE] = atan(horizSensorDistance/(abs(distanceSensor0 - distanceSensor1)));
-
-		// Now do the next rover side.
-		if(curRoverSide < SIDE_LEN)
-                curRoverSide = curRoverSide + 1;
-	}
-}
-
-void locateRamp(uint16_t* curRamp, uint16_t* locateData)
-{
-    uint8_t  thresh = 2;
-    uint16_t distanceSensorIR400 = locateData[SENS_IR40];
-    uint16_t distanceSENSORIR401 = locateData[SENS_IR41];
-
-    // Is there a ramp in front of us?
-    if(distanceSensorIR400 - distanceSENSORIR401 > thresh)
-    {
-        // Choose the sensor closer to the floor.
-        curRamp[OBJ_DIST]  = distanceSensorIR400;
-        curRamp[OBJ_ANGLE] = 0;
-    }
-}
-
-bool anyRamps(uint16_t* curRamp)
-{
-    // Check the ramp data for a nonzero.
-    return curRamp[OBJ_DIST] > 0;  
-}
-
-void getClosestCurObj(uint8_t* side, uint16_t closestObj[OBJ_LEN], uint16_t curObjs[SIDE_LEN][OBJ_LEN])
-{
-    // Determine the closest side containing an object.
-
 }

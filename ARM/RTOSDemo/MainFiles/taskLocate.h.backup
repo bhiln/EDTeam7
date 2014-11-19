@@ -1,0 +1,235 @@
+/*------------------------------------------------------------------------------
+ * File:	    	taskLocate.c
+ * Authors: 		FreeRTOS, Igor Janjic
+ * Description:		Specification file for locate task. Determines location of
+ *                  rover and ramps.
+ *----------------------------------------------------------------------------*/
+
+#ifndef TASK_LOCATE_H
+#define TASK_LOCATE_H
+
+/*------------------------------------------------------------------------------
+ * Includes
+ **/
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+#include <string.h>
+
+#include "FreeRTOS.h"
+#include "task.h"
+#include "projdefs.h"
+#include "semphr.h"
+#include "lpc17xx_gpio.h"
+
+#include "vtI2C.h"
+#include "vtUtilities.h"
+
+#include "defs.h"
+#include "taskLCD.h"
+
+/*------------------------------------------------------------------------------
+ * Definitions
+ **/
+
+ // Length of the queue to this task.
+#define queueLenLocate  10
+
+// Maximum length of a message that can be received by the task.
+#define bufLenLocate    11
+
+/*------------------------------------------------------------------------------
+ * Data Structures
+ **/
+
+// Structure used to pass parameters to the task.
+typedef struct __structLocate
+{
+    vtI2CStruct* devI2C0;
+	structLCD*   dataLCD;
+	xQueueHandle inQ;
+} structLocate;
+
+// Actual data structure that is sent in a message.
+typedef struct __msgLocate
+{
+	uint8_t msgType;
+	uint8_t	length;
+	uint16_t buf[bufLenLocate];
+} msgLocate;
+
+/*------------------------------------------------------------------------------
+ * State Enumerations
+ **/
+
+// Enum of the possible states of rover motion.
+typedef enum 
+{
+	stop,
+	moveForward,
+	moveBackward,
+	turnLeft,
+	turnRight
+} StateMotion;
+
+// Enum of the possible states of prime goal.
+typedef enum
+{
+    scan,
+    roam,
+    go,
+    align,
+    ramp,
+	none,
+} StatePrimeGoal;
+
+typedef enum
+{
+    scanInit,
+    scanExec,
+    scanComp,
+	scanError
+} StateScanSecGoal;
+
+typedef enum
+{
+    roamInit,
+    roamExec,
+    roamComp,
+	roamError
+} StateRoamSecGoal;
+
+typedef enum
+{
+  	goInit,
+	goExec,
+	goComp,
+	goError
+} StateGoSecGoal;
+
+typedef enum
+{
+   	alignInit,
+	alignExec,
+	alignComp,
+	alignError
+} StateAlignSecGoal;
+
+typedef enum
+{
+   	rampInit,
+	rampExec,
+	rampComp,
+	rampError
+} StateRampSecGoal;
+
+/*------------------------------------------------------------------------------
+ * Data Structures
+ **/
+
+typedef struct __States
+{
+    StateMotion       curStateMotion;
+    StatePrimeGoal    curStatePrimeGoal;
+    StateScanSecGoal  curStateScanSecGoal;
+    StateRoamSecGoal  curStateRoamSecGoal;
+	StateGoSecGoal    curStateGoSecGoal;
+	StateAlignSecGoal curStateAlignSecGoal;
+	StateRampSecGoal  curStateRampSecGoal;
+} States;
+
+// Current states of the rover.
+States curStates;
+
+// Initial states of the rover.
+static const StateMotion       initialStateMotion       = stop;
+static const StatePrimeGoal    initialStatePrimeGoal    = scan;
+static const StateScanSecGoal  initialStateScanSecGoal  = scanInit;
+static const StateRoamSecGoal  initialStateRoamSecGoal  = roamInit;
+static const StateGoSecGoal    initialStateGoSecGoal    = goInit;
+static const StateAlignSecGoal initialStateAlignSecGoal = alignInit;
+static const StateRampSecGoal  initialStateRampSecGoal  = rampInit;
+
+// Corner Locations and angles.
+static uint16_t curCorns[CORN_LEN][OBJ_LEN];
+
+// Closest objects on each side of the rover.
+static uint16_t curObjs[SIDE_LEN][OBJ_LEN];
+
+// History of the closest objects on each side of the rover.
+static uint16_t objsHist[HIST_LEN][SIDE_LEN][OBJ_LEN];
+
+// Ramp at the front of the rover.
+static uint16_t curRamp[OBJ_LEN];
+
+// Current target ramp.
+static uint16_t targetRamp[OBJ_LEN];
+
+// True if the environment has been mapped.
+static bool mapped;
+
+// Ack that the ARM PIC sends back.
+static bool ack;
+    
+/*------------------------------------------------------------------------------
+ * Task API
+ **/
+
+void startTaskLocate(structLocate* dataLocate, unsigned portBASE_TYPE uxPriority, vtI2CStruct* devI2C0, structLCD* dataLCD);
+portBASE_TYPE sendTimerMsgLocate(structLocate* dataLocate, portTickType ticksElapsed, portTickType ticksToBlock);
+portBASE_TYPE sendValueMsgLocate(structLocate* dataLocate, uint8_t msgType, uint16_t* value, portTickType ticksToBlock);
+
+
+/*------------------------------------------------------------------------------
+ * State Functions
+ **/
+
+void execScan(vtI2CStruct* devI2C0);
+void execRoam(vtI2CStruct* devI2C0);
+void execGo(vtI2CStruct* devI2C0);
+void execAlign(vtI2CStruct* devI2C0);
+void execRamp(vtI2CStruct* devI2C0);
+void execDefault();
+
+/*------------------------------------------------------------------------------
+ * Helper Functions
+ **/
+
+// Secondary state execution functions.
+bool execMoveAlong(vtI2CStruct* devI2C0);
+bool execParallelize(vtI2CStruct* devI2C0);
+bool execMoveZigzag(vtI2CStruct* devI2C0);
+bool execTurnCorner(vtI2CStruct* devI2C0);
+bool execTurnAround(vtI2CStruct* devI2C0);
+bool execMoveToward(vtI2CStruct* devI2C0);
+bool execMoveTowardRamp(vtI2CStruct* devI2C0);
+
+// Motion command function.
+bool execCommand(vtI2CStruct* devI2C0, uint16_t type, uint16_t value, uint16_t speed);
+
+// Locates nearest corners.
+void locateCorns(uint16_t* locateData);
+
+// Locate nearest rover objects.
+void locateObjs(uint16_t* locateData);
+
+// Locate ramps on map.
+void locateRamp(uint16_t* locateData);
+
+// Update corners.
+void updateCorns(uint16_t* locateData);
+
+// Update ramp based on current command.
+void updateRamp(uint16_t cmd[CMD_LEN]);
+
+// Returns true if there are any ramps nearby.
+bool anyRamps();
+
+// Returns true if the rover is parallel on the side of interest.
+bool isParallel(uint8_t side);
+
+// Get the closest object near the rover.
+void getClosestCurObj(uint8_t* side, uint16_t closestObj[OBJ_LEN]);
+
+#endif

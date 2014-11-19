@@ -1,4 +1,5 @@
 ObjectFiles/tasksensors.o: MainFiles/taskSensors.c \
+ MainFiles/taskSensors.h \
  c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/stdlib.h \
  c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/machine/ieeefp.h \
  c:\program\ files\codesourcery\sourcery\ g++\ lite\bin\../lib/gcc/arm-none-eabi/4.5.2/../../../../arm-none-eabi/include/_ansi.h \
@@ -32,14 +33,14 @@ ObjectFiles/tasksensors.o: MainFiles/taskSensors.c \
  ../SystemFiles/system_LPC17xx.h ../FreeRTOS/Source/include/portable.h \
  ../FreeRTOS/Source/portable/GCC/ARM_CM3/portmacro.h \
  ../FreeRTOS/Source/include/mpu_wrappers.h \
- ../FreeRTOS/Source/include/task.h ../FreeRTOS/Source/include/list.h \
+ ../NXPDrivers/include/lpc17xx_gpio.h ../NXPDrivers/include/lpc_types.h \
  ../FreeRTOS/Source/include/projdefs.h \
  ../FreeRTOS/Source/include/semphr.h ../FreeRTOS/Source/include/queue.h \
- ../NXPDrivers/include/lpc17xx_gpio.h ../NXPDrivers/include/lpc_types.h \
+ ../FreeRTOS/Source/include/task.h ../FreeRTOS/Source/include/list.h \
  ../vtCode/vtUtilities.h ../NXPDrivers/include/lpc_types.h \
  C:/Keil/ARM/INC/NXP/LPC17xx/lpc17xx.h ../vtCode/vtI2C/vtI2C.h \
  ../NXPDrivers/include/lpc17xx_i2c.h \
- ../FreeRTOS/Source/include/projDefs.h MainFiles/taskLCD.h \
- ../FreeRTOS/Source/include/queue.h ../FreeRTOS/Source/include/timers.h \
- MainFiles/taskSensors.h MainFiles/defs.h MainFiles/taskLocate.h \
- MainFiles/I2CTaskMsgTypes.h MainFiles/debug.h
+ ../FreeRTOS/Source/include/projDefs.h MainFiles/debug.h MainFiles/defs.h \
+ MainFiles/taskLCD.h ../FreeRTOS/Source/include/timers.h \
+ ../FreeRTOS/Source/include/queue.h ../vtCode/vtLCD/GLCD.h \
+ MainFiles/taskLocate.h MainFiles/matrix.h MainFiles/taskCommand.h

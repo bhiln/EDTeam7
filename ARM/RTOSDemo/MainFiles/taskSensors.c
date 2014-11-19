@@ -1,157 +1,153 @@
 /*------------------------------------------------------------------------------
- * File:        taskSensors.c
+ * File:            taskSensors.c
  * Authors:         FreeRTOS, Igor Janjic
  * Description:     Reads the sensor data, processes it, and sends it to the
- *          relevant tasks.
+ *                  relevant tasks.
  *----------------------------------------------------------------------------*/
 
-/*------------------------------------------------------------------------------
- * Includes
- */
-#include <stdlib.h>
-#include <stdio.h>
-#include <math.h>
-#include <string.h>
-
-#include "FreeRTOS.h"
-#include "task.h"
-#include "projdefs.h"
-#include "semphr.h"
-#include "lpc17xx_gpio.h"
-
-#include "vtUtilities.h"
-#include "vtI2C.h"
-#include "taskLCD.h"
 #include "taskSensors.h"
-#include "taskLocate.h"
-#include "I2CTaskMsgTypes.h"
-#include "debug.h"
-
-/*------------------------------------------------------------------------------
- * Configuration
- **/
-
-// Length of the queue to this task.
-#define queueLenSensors 10
-
-// Stack sizes.
-#define BASE_STACK 3
-#if PRINTF_VERSION == 1
-#define I2C_STACK_SIZE      ((BASE_STACK+5)*configMINIMAL_STACK_SIZE)
-#else
-#define I2C_STACK_SIZE      (BASE_STACK*configMINIMAL_STACK_SIZE)
-#endif
-
-// Actual data structure that is sent in a message.
-typedef struct __msgSensors {
-    uint8_t msgType;
-    uint8_t length;
-    uint16_t buf[maxLenSensors + 1];
-} msgSensors;
-
-// I2C commands for reading sensor data.
-const uint8_t recvNoReply = 0x00;
-const uint8_t queryReadSensors[] = {0x0A};
 
 static portTASK_FUNCTION_PROTO(updateTaskSensors, pvParameters);
 
-int getMsgTypeSensors(msgSensors *Buffer) {return(Buffer->msgType);}
-
-void startTaskSensors(structSensors* dataSensors, unsigned portBASE_TYPE uxPriority, vtI2CStruct* devI2C0, structLCD* dataLCD)
+void startTaskSensors(structSensors* dataSensors, unsigned portBASE_TYPE uxPriority, vtI2CStruct* devI2C0, structLCD* dataLCD, structLocate* dataLocate)
 {
     // Create the queue that will be used to talk to this task.
-    if ((dataSensors->inQ = xQueueCreate(queueLenSensors, sizeof(msgSensors))) == NULL)
+    dataSensors->inQ = xQueueCreate(queueLenSensors, sizeof(msgSensors));
+    if(dataSensors->inQ == NULL)
+    {
+        sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_DEBUG, maxLenLCD, errorQueueCreateSensors, portMAX_DELAY);
         VT_HANDLE_FATAL_ERROR(0);
+    }
 
     // Create the task.
-    portBASE_TYPE retval;
-    dataSensors->devI2C0 = devI2C0;
-    dataSensors->dataLCD = dataLCD;
+    dataSensors->devI2C0    = devI2C0;
+    dataSensors->dataLCD    = dataLCD;
+    dataSensors->dataLocate = dataLocate;
     
-    if ((retval = xTaskCreate(updateTaskSensors, taskNameSensors, I2C_STACK_SIZE, (void*)dataSensors, uxPriority, (xTaskHandle*)NULL)) != pdPASS)
+    portBASE_TYPE retval = xTaskCreate(updateTaskSensors, taskNameSensors, SENSORS_STACK_SIZE, (void*)dataSensors, uxPriority, (xTaskHandle*)NULL);
+    if(retval != pdPASS)
+    {
+        sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_DEBUG, maxLenLCD, errorTaskCreateSensors, portMAX_DELAY);
         VT_HANDLE_FATAL_ERROR(retval);
+    }
 }
 
-portBASE_TYPE sendTimerMsgSensors(structSensors* dataSensors, portTickType ticksElapsed, portTickType ticksToBlock)
+void sendTimerMsgSensors(structSensors* dataSensors, portTickType ticksElapsed, portTickType ticksToBlock)
 {
-    if (dataSensors == NULL)
-        VT_HANDLE_FATAL_ERROR(0);
-    
-    msgSensors bufferSensors;
-    bufferSensors.length = sizeof(ticksElapsed);
+    msgSensors msg;
+    msg.length = sizeof(ticksElapsed);
 
-    if (bufferSensors.length > maxLenSensors)
-        VT_HANDLE_FATAL_ERROR(bufferSensors.length);
+    memcpy(msg.buf, &ticksElapsed, msg.length);
+    msg.type = MSG_TYPE_TIMER_SENSORS;
 
-    memcpy(bufferSensors.buf, (char*)&ticksElapsed, sizeof(ticksElapsed));
-    bufferSensors.msgType = msgTypeSensorsTimer;
-    return(xQueueSend(dataSensors->inQ, (void*) (&bufferSensors),ticksToBlock));
+    portBASE_TYPE retval = xQueueSend(dataSensors->inQ, (void*)(&msg), ticksToBlock);
+    if(retval != pdTRUE)
+    {
+        sendValueMsgLCD(dataSensors->dataLCD, MSG_TYPE_LCD_DEBUG, maxLenLCD, errorQueueSendSensors, portMAX_DELAY);
+        VT_HANDLE_FATAL_ERROR(retval);
+    }
 }
 
-portBASE_TYPE sendValueMsgSensors(structSensors* dataSensors, uint8_t msgType, uint8_t* value, portTickType ticksToBlock)
+void sendValueMsgSensors(structSensors* dataSensors, uint8_t type, uint8_t* value, portTickType ticksToBlock)
 {
-    msgSensors bufferSensors;
+    msgSensors msg;
+    msg.length = sizeof(uint8_t)*bufLenSensors;
 
-    if (dataSensors == NULL)
-        VT_HANDLE_FATAL_ERROR(0);
-
-    bufferSensors.length = sizeof(value);
-
-    if (bufferSensors.length > maxLenSensors)
-        VT_HANDLE_FATAL_ERROR(bufferSensors.length);
-    
-    memcpy(bufferSensors.buf, (char*)&value, sizeof(value));
-    bufferSensors.msgType = msgType;
-    return(xQueueSend(dataSensors->inQ, (void*)(&bufferSensors), ticksToBlock));
+    memcpy(msg.buf, value, msg.length);
+    msg.type = type;
+    portBASE_TYPE retval = xQueueSend(dataSensors->inQ, (void*)(&msg), ticksToBlock);
+    if(retval != pdTRUE)
+    {
+        sendValueMsgLCD(dataSensors->dataLCD, MSG_TYPE_LCD_DEBUG, maxLenLCD, errorQueueSendSensors, portMAX_DELAY);
+        VT_HANDLE_FATAL_ERROR(retval);
+    }
 }
 
 static portTASK_FUNCTION(updateTaskSensors, pvParameters)
 {
-    // Get pointers to sensor message fields.
-    structSensors* param = (structSensors*)pvParameters;
-    vtI2CStruct* devI2C0 = param->devI2C0;
-    structLCD* dataLCD = param->dataLCD;
-    structLocate* dataLocate = param->dataLocate;
-    
-    // String buffer for printing.
-    char bufferLCD[maxLenLCD + 1];
+    // Get pointers to parameter fields.
+    structSensors* param      = (structSensors*)pvParameters;
+    vtI2CStruct*   devI2C0    = param->devI2C0;
+    structLCD*     dataLCD    = param->dataLCD;
+    structLocate*  dataLocate = param->dataLocate;
     
     // Buffer for receiving messages.
-    msgSensors msgBuffer;
+    msgSensors msg;
 
     // Like all good tasks, this should never exit.
     for(;;)
     {
         // Wait for a message from the queue.
-        if (xQueueReceive(param->inQ, (void*)&msgBuffer, portMAX_DELAY) != pdTRUE)
-            VT_HANDLE_FATAL_ERROR(0);
+        portBASE_TYPE retQueue = xQueueReceive(param->inQ, (void*)&msg, portMAX_DELAY);
+        if (retQueue != pdTRUE)
+        {
+            sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_DEBUG, maxLenLCD, errorQueueReceiveSensors, portMAX_DELAY);
+            VT_HANDLE_FATAL_ERROR(retQueue);
+        }
         
         // Now, based on the type of the message and the state, we decide on the new state and action to take.
-        switch(getMsgTypeSensors(&msgBuffer))
+        switch(msg.type)
         {
-        case msgTypeSensorsTimer:
+        case MSG_TYPE_TIMER_SENSORS:
         {
-            // Debug Pin15
-            GPIO_SetValue  (0, DEBUG_PIN15);
-            GPIO_ClearValue(0, DEBUG_PIN15);
             // Query for all sensor data.
-			portBASE_TYPE retI2C = vtI2CEnQ(devI2C0, msgTypeSensors, SLAVE_ADDR, sizeof(queryReadSensors), queryReadSensors, 22);
+            portBASE_TYPE retI2C = vtI2CEnQ(devI2C0, MSG_TYPE_SENSORS, SLAVE_ADDR, 0, 0, bufLenSensors);
             if(retI2C != pdTRUE)
-           		VT_HANDLE_FATAL_ERROR(0);
-			break;
+            {
+                sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_DEBUG, maxLenLCD, errorI2CEnqueSensors, portMAX_DELAY);
+                VT_HANDLE_FATAL_ERROR(retI2C);
+            }
+            break;
         }
-        case msgTypeSensors:
+        case MSG_TYPE_SENSORS:
         {
-            // Convert the IR voltage to a distance.
-            uint16_t processedSensorsData[SENS_LEN] = {0};
+            char     sensorsMsg[maxLenLCD];
+            uint16_t sensorsRaw[SENS_LEN];
+            uint16_t sensorsProcessedI[SENS_LEN];
+            float    sensorsProcessedF[SENS_LEN];
+                
+            // Combine the two bytes of sensor data into a single value.
+            uint8_t i;
+            for(i = 0; i < bufLenSensors - 2; i = i + 2)
+            {
+                int j = 0;
+                uint8_t byte0 = msg.buf[i];
+                uint8_t byte1 = msg.buf[i + 1];
+                uint16_t curSensorRaw = byte1 << 8;
+                curSensorRaw = curSensorRaw | byte0;
+                sensorsRaw[j] = curSensorRaw;
+                j++;
+            }
+
+            // Convert the IR sensor data into distances.
+            for(i = 0; i < SENS_LEN - 1; i++)
+            {
+                sensorsProcessedF[i] = 47.25530465*sensorsRaw[i]*sensorsRaw[i] - 193.4144014*sensorsRaw[i] + 216.5086058;
+                uint8_t intPart = 10*(uint8_t)sensorsProcessedF[i];
+                uint8_t decPart = (uint8_t)(sensorsProcessedF[i]*10);
+                sensorsProcessedI[i] = (uint16_t)(intPart + decPart);
+            }
+
+            // Convert the accelerometer sensor data into a meaningful value.
+            sensorsProcessedF[10] = sensorsRaw[10];
+
+            // Convert the sensor distances to a string.
+            sprintf(sensorsMsg, "%03d%03d%03d%03d%03d%03d%03d%03d%03d%03d%03d", 
+                    sensorsProcessedI[0], sensorsProcessedI[1],
+                    sensorsProcessedI[2], sensorsProcessedI[3],
+                    sensorsProcessedI[4], sensorsProcessedI[5],
+                    sensorsProcessedI[6], sensorsProcessedI[7],
+                    sensorsProcessedI[8], sensorsProcessedI[9],
+                    sensorsProcessedI[10]);
+
+            sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_SENSORS, maxLenLCD, sensorsMsg, portMAX_DELAY);
+           	sendValueMsgLocate(dataLocate, MSG_TYPE_LOCATE, sensorsProcessedF, portMAX_DELAY);
             
-            // Send the processed sensor data to the locate task.
-            //sendValueMsgLocate(dataLocate, msgSensors, processedSensorsData, portMAX_DELAY);
             break;
         }
         default:
         {
-            // error
+            VT_HANDLE_FATAL_ERROR(0);
             break;
         }
         }

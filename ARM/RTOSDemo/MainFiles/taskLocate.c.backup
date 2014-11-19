@@ -1,0 +1,482 @@
+/*------------------------------------------------------------------------------
+ * File:	    	taskLocate.c
+ * Authors: 		FreeRTOS, Igor Janjic
+ * Description:		Implementation file for locate task. Determines location of
+ *                  rover and ramps.
+ **---------------------------------------------------------------------------*/
+
+#include "taskLocate.h"
+
+static portTASK_FUNCTION(updateTaskLocate, pvParameters);
+
+void startTaskLocate(structLocate* dataLocate, unsigned portBASE_TYPE uxPriority, vtI2CStruct* devI2C0, structLCD* dataLCD)
+{
+	// Create the queue that will be used to talk to this task.
+	if ((dataLocate->inQ = xQueueCreate(queueLenLocate, sizeof(msgLocate))) == NULL)
+		VT_HANDLE_FATAL_ERROR(0);
+
+	// Create the task.
+    dataLocate->devI2C0  = devI2C0;  
+	dataLocate->dataLCD  = dataLCD;
+
+	portBASE_TYPE retval;
+	if ((retval = xTaskCreate(updateTaskLocate, taskNameLocate, LOCATE_STACK_SIZE, (void*)dataLocate, uxPriority, (xTaskHandle*)NULL)) != pdPASS)
+		VT_HANDLE_FATAL_ERROR(retval);
+}
+
+portBASE_TYPE sendTimerMsgLocate(structLocate* dataLocate, portTickType ticksElapsed, portTickType ticksToBlock)
+{
+	msgLocate msg;
+	msg.length = sizeof(ticksElapsed);
+
+	memcpy(msg.buf, &ticksElapsed, msg.length);
+	msg.msgType = MSG_TYPE_TIMER_LOCATE;
+	return(xQueueSend(dataLocate->inQ, (void*)(&msg), ticksToBlock));
+}
+
+portBASE_TYPE sendValueMsgLocate(structLocate* dataLocate, uint8_t msgType, uint16_t* value, portTickType ticksToBlock)
+{
+	msgLocate msg;
+	msg.length = sizeof(uint16_t)*bufLenLocate;
+
+ 	memcpy(msg.buf, value, msg.length);
+	msg.msgType = msgType;
+	return(xQueueSend(dataLocate->inQ, (void*)(&msg), ticksToBlock));
+}
+
+static portTASK_FUNCTION(updateTaskLocate, pvParameters)
+{
+    // Task parameters.
+	structLocate* param   = (structLocate*)pvParameters;
+    vtI2CStruct*  devI2C0 = param->devI2C0;
+	structLCD*    dataLCD = param->dataLCD;
+	
+	// String buffer for printing.
+	char bufferLCD[maxLenLCD + 1];
+	
+	// Buffer for receiving messages.
+	msgLocate msg;
+
+    // Initialize global variables.
+	curStates.curStateMotion       = initialStateMotion;
+    curStates.curStatePrimeGoal    = initialStatePrimeGoal;
+	curStates.curStateScanSecGoal  = initialStateScanSecGoal;
+	curStates.curStateRoamSecGoal  = initialStateRoamSecGoal;
+	curStates.curStateGoSecGoal    = initialStateGoSecGoal;
+	curStates.curStateAlignSecGoal = initialStateAlignSecGoal;
+	curStates.curStateRampSecGoal  = initialStateRampSecGoal;
+
+    mapped = false;
+    ack    = false;
+
+    // Like all good tasks, this should never exit.
+	for(;;)
+	{
+		// Wait for a message from either a timer or sensor task.
+		if (xQueueReceive(param->inQ, (void*)&msg, portMAX_DELAY) != pdTRUE)
+			VT_HANDLE_FATAL_ERROR(0);
+
+        // Now, based on the type of the message and the state, do different things.
+		switch(msg.msgType)
+		{
+		case MSG_TYPE_TIMER_LOCATE:
+		{
+            switch(curStates.curStatePrimeGoal)
+            {
+            case scan:
+            {
+                //execScan(devI2C0);
+                break; 
+            }
+            case roam:
+            {
+                //execRoam(devI2C0);
+                break;
+            }
+            case go:
+            {
+                //execGo(devI2C0);
+                break;
+            }
+            case align:
+            {
+                //execAlign(devI2C0);
+                break;
+            }
+            case ramp:
+            {
+                //execRamp(devI2C0);               
+                break;
+            }
+			case none:
+			{
+			   	break;
+			}
+            default:
+            {
+                //execDefault();
+                break;	
+            }
+	        }
+			break;
+        }
+        case MSG_TYPE_LOCATE:
+        {
+            // Update the currrent rover objects.
+			//locateObjs(msg.buf);
+
+            // Update the current ramp.
+            //locateRamp(msg.buf);
+
+            break;
+        }
+        case MSG_TYPE_CMD:
+        {
+            // Grab the acknowledgement from the motor controller.
+            //ack = (bool)msg.buf[0];
+            break;
+        }
+        default:
+        {
+            // Error...
+            break;
+        }
+        }
+    }
+}
+
+/*------------------------------------------------------------------------------
+ * State Functions
+ **/
+
+void execScan(vtI2CStruct* devI2C0)
+{
+    switch(curStates.curStateScanSecGoal)
+    {
+    case scanInit:
+    {
+        // Send the command to initialize scanning.
+        uint16_t command[CMD_LEN];
+        uint16_t type = CMD_TR; 
+        uint16_t value = 0;
+        uint16_t speed = 25;
+
+        command[CMD_TYPE]  = type;
+        command[CMD_VALUE] = value;
+        command[CMD_SPEED] = speed;
+        
+        bool xCommandSuccess = false;
+        xCommandSuccess = execCommand(devI2C0, type, value, speed);
+        if(xCommandSuccess)
+            curStates.curStateScanSecGoal = scanExec;
+        break;
+    }
+    case scanExec:
+    {
+        // Check to see if a ramp was found.
+        if(anyRamps())
+        {
+            targetRamp[OBJ_DIST]  = curRamp[OBJ_DIST];
+            targetRamp[OBJ_ANGLE] = curRamp[OBJ_ANGLE];
+        }
+
+        // Change the local secondary state if the command was completed.
+        if(ack)
+            curStates.curStateScanSecGoal = scanComp;
+        break;
+    }
+    case scanComp:
+    {
+        // Change the primary state.
+        if(targetRamp[OBJ_DIST] > 0)
+            curStates.curStatePrimeGoal = go;
+        else
+            curStates.curStatePrimeGoal = roam;
+
+        // Change the local secondary state.
+        curStates.curStateScanSecGoal = scanInit;
+
+        ack = false;
+        break; 
+    }
+	case scanError:
+	{
+		break;
+	}
+    default:
+    {
+        // Error...
+        break;
+    }
+    }
+}
+
+void execRoam(vtI2CStruct* devI2C0)
+{
+    static bool roamStop = false;
+    static bool (*roamType)(vtI2CStruct*);
+
+    switch(curStates.curStateRoamSecGoal)
+    {
+    case roamInit:
+    {
+        // Get the closest object to the rover and the side it's on.
+        uint8_t side;
+        uint16_t closestObject[OBJ_LEN];
+        getClosestCurObj(&side, closestObject);
+
+        // Determine the roam type.
+        uint8_t thresh = 2;
+        if(closestObject[OBJ_DIST] < thresh)
+            roamType = &execMoveAlong;
+        else
+            roamType = &execMoveZigzag;
+
+        // Start roaming.
+        roamStop = roamType(devI2C0);
+
+        // Change local secondary state.
+        curStates.curStateRoamSecGoal = roamExec; 
+        break;
+    }
+    case roamExec:
+    {
+        if(ack && !roamStop)
+        {
+            ack = false;
+            roamStop = roamType(devI2C0);
+        }
+        if(ack && roamStop)
+        {
+            // Change the local secondary state.
+            curStates.curStateRoamSecGoal = roamComp;
+        }
+
+        // Check to see if a ramp was found.
+        if(anyRamps(curRamp))
+        {
+            targetRamp[OBJ_DIST]  = curRamp[OBJ_DIST];
+            targetRamp[OBJ_ANGLE] = curRamp[OBJ_ANGLE];
+            roamStop = true;
+        }
+        break;
+    }
+    case roamComp:
+    {
+        // Change the primary state.
+        if(targetRamp[OBJ_DIST] > 0)
+            curStates.curStatePrimeGoal = go;
+        else
+            curStates.curStatePrimeGoal = scan;
+
+        // Change the local secondary state.
+        curStates.curStateRoamSecGoal = roamInit;
+        break;
+    }
+	case roamError:
+	{
+		break;
+	}
+    default:
+    {
+        // Error.
+        break;
+    }
+    }
+}
+
+void execGo(vtI2CStruct* devI2C0)
+{
+    switch(curStates.curStateGoSecGoal)
+    {
+    default:
+    {
+        // Error...
+        break;
+    }
+    } 
+}
+
+void execAlign(vtI2CStruct* devI2C0)
+{
+    switch(curStates.curStateAlignSecGoal)
+    {
+    default:
+    {
+        // Error...
+        break;
+    }
+    }
+}
+
+void execRamp(vtI2CStruct* devI2C0)
+{
+    switch(curStates.curStateRampSecGoal)
+    {
+    default:
+    {
+        // Error...
+        break;
+    }
+    }
+}
+
+void execDefault()
+{
+    // Error:
+}
+
+/*------------------------------------------------------------------------------
+ * Helper Functions
+ **/
+
+bool execMoveAlong(vtI2CStruct* devI2C0)
+{
+    bool moveAlongStop = false;
+
+    // Get the closest object.
+    uint8_t side;
+    uint16_t closestObj[OBJ_LEN];
+    getClosestCurObj(&side, closestObj);
+
+    if(isParallel(side))
+    {
+        // Construct the command which depends on the object distance to the
+        // front of the rover.
+        uint16_t frontObj[OBJ_LEN];
+        frontObj[OBJ_DIST]  = curObjs[SIDE_FRONT][OBJ_DIST];
+        frontObj[OBJ_ANGLE] = curObjs[SIDE_FRONT][OBJ_ANGLE];
+
+        // Calculate the distance needed for the command.
+        uint16_t thresh   = 5; // Measure wall to rover distance needed
+        uint16_t cmdType  = CMD_MF;
+        uint16_t cmdValue = frontObj[OBJ_DIST] - thresh;
+        uint16_t cmdSpeed = 1;
+
+        // Execute the command.
+        if(curObjs[SIDE_FRONT][OBJ_DIST] < 2*thresh)
+            moveAlongStop = true;
+        else
+            moveAlongStop = execCommand(devI2C0, cmdType, cmdValue, cmdSpeed);
+    }
+    else
+    {
+        // Execute parallelize.
+        execParallelize(devI2C0);
+    }
+    return moveAlongStop; 
+}
+
+bool execParallelize(vtI2CStruct* devI2C0)
+{
+ 	return false;
+}
+
+bool execMoveZigzag(vtI2CStruct* devI2C0)
+{
+    bool moveZigzagStop = false;
+    return moveZigzagStop;
+}
+
+bool execCommand(vtI2CStruct* devI2C0, uint16_t type, uint16_t value, uint16_t speed)
+{
+    uint8_t cmd[CMD_LEN];
+    cmd[CMD_TYPE]  = type;
+    cmd[CMD_VALUE] = value;
+    cmd[CMD_SPEED] = speed;
+
+    // Send an I2C command to slave.
+    portBASE_TYPE retI2C = pdTRUE;
+    retI2C = vtI2CEnQ(devI2C0, MSG_TYPE_CMD, SLAVE_ADDR, sizeof((uint8_t*)cmd), (uint8_t*)cmd, 1);
+
+    // Update the current ramp location.
+    updateRamp(cmd); 
+
+    return (retI2C == pdTRUE);
+}
+
+void locateObjs(uint16_t* locateData)
+{
+    uint8_t curRoverSide = 0;
+	const float horizSensorDistance = 2;
+
+	uint8_t i = 0;
+    uint8_t notCareSensors = 3; // Last 3 don't affect current close objects.
+	for(i = 0; i < SENS_LEN - notCareSensors - 1; i = i + 2)
+	{
+		float distanceSensor0 = locateData[i];
+		float distanceSensor1 = locateData[i + 1];
+
+		// Calculate the distance to the object.
+		curObjs[curRoverSide][OBJ_DIST] = (distanceSensor0 + distanceSensor1)/2;
+
+		// Calculate the angle to the object.
+		if(distanceSensor0 > distanceSensor1)
+			curObjs[curRoverSide][OBJ_ANGLE] =  90 + atan(abs(distanceSensor0 - distanceSensor1)/horizSensorDistance);	
+		else
+			curObjs[curRoverSide][OBJ_ANGLE] = atan(horizSensorDistance/(abs(distanceSensor0 - distanceSensor1)));
+
+		// Now do the next rover side.
+		if(curRoverSide < SIDE_LEN)
+                curRoverSide = curRoverSide + 1;
+	}
+}
+
+void locateRamp(uint16_t* locateData)
+{
+    // Ignore locateData and simulate.
+
+    uint16_t processedSensorsData[SENS_LEN] = {0};
+    
+    uint8_t  thresh = 2;
+    uint16_t distanceSensorIR400 = locateData[SENS_IR40];
+    uint16_t distanceSENSORIR401 = locateData[SENS_IR41];
+
+    // Is there a ramp in front of us?
+    if(distanceSensorIR400 - distanceSENSORIR401 > thresh)
+    {
+        // Choose the sensor closer to the floor.
+        curRamp[OBJ_DIST]  = distanceSensorIR400;
+        curRamp[OBJ_ANGLE] = 0;
+    }
+}
+
+void updateRamp(uint16_t cmd[CMD_LEN])
+{
+   // Given the current distance and angle of the ramp,  
+}
+
+bool anyRamps()
+{
+    // Check the ramp data for a nonzero.
+    return curRamp[OBJ_DIST] > 0;  
+}
+
+bool isParallel(uint8_t side)
+{
+    bool parallel = false;
+    uint16_t thresh = 5;
+    if(abs(curObjs[side][OBJ_ANGLE] - 90) > thresh)
+        parallel = true;
+    return parallel;
+}
+
+
+void getClosestCurObj(uint8_t* side, uint16_t closestObj[OBJ_LEN])
+{
+    // Determine the closest side containing an object.
+    uint8_t min = 0;
+    closestObj[OBJ_DIST]  = curObjs[min][OBJ_DIST];
+    closestObj[OBJ_ANGLE] = curObjs[min][OBJ_ANGLE];
+
+    uint8_t i;
+    for(i = 0; i < SIDE_LEN; i++)
+    {
+        if(curObjs[i][OBJ_DIST] < closestObj[OBJ_DIST])
+        {
+            min = i;
+            closestObj[OBJ_DIST]  = curObjs[min][OBJ_DIST];
+            closestObj[OBJ_ANGLE] = curObjs[min][OBJ_ANGLE];
+        }
+    }
+}

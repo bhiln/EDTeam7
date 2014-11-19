@@ -342,9 +342,14 @@
               <FilePath>../FreeRTOS/Demo/CORTEX_LPC1768_GCC_Rowley/ParTest.c</FilePath>
             </File>
             <File>
-              <FileName>myTimers.c</FileName>
+              <FileName>taskLCD.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\MainFiles/myTimers.c</FilePath>
+              <FilePath>.\MainFiles/taskLCD.c</FilePath>
+            </File>
+            <File>
+              <FileName>taskCommand.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\MainFiles/taskCommand.c</FilePath>
             </File>
             <File>
               <FileName>taskConductor.c</FileName>
@@ -352,14 +357,19 @@
               <FilePath>.\MainFiles/taskConductor.c</FilePath>
             </File>
             <File>
-              <FileName>taskLCD.c</FileName>
+              <FileName>taskLocate.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\MainFiles/taskLCD.c</FilePath>
+              <FilePath>.\MainFiles/taskLocate.c</FilePath>
             </File>
             <File>
               <FileName>taskSensors.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\MainFiles/taskSensors.c</FilePath>
+            </File>
+            <File>
+              <FileName>taskTimers.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\MainFiles/taskTimers.c</FilePath>
             </File>
           </Files>
         </Group>

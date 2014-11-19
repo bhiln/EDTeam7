@@ -1,34 +1,25 @@
-#include <stdlib.h>
-#include <stdio.h>
+/*------------------------------------------------------------------------------
+ * File:		taskConductor.c
+ * Authors: 	FreeRTOS, Igor Janjic
+ * Description:	Implementation file for conductor class. Routes I2C messages to
+ *              their appropriate targets.
+ *----------------------------------------------------------------------------*/
 
-#include "FreeRTOS.h"
-#include "task.h"
-#include "projdefs.h"
-#include "semphr.h"
-
-#include "vtUtilities.h"
-#include "vtI2C.h"
-#include "taskSensors.h"
-#include "I2CTaskMsgTypes.h"
 #include "taskConductor.h"
-
-#define INSPECT_STACK 	1
-#define BASE_STACK 	2
-#if PRINTF_VERSION == 1
-#define CONDUCTOR_STACK_SIZE	((BASE_STACK+5)*configMINIMAL_STACK_SIZE)
-#else
-#define CONDUCTOR_STACK_SIZE	(BASE_STACK*configMINIMAL_STACK_SIZE)
-#endif
 
 static portTASK_FUNCTION_PROTO(updateTaskConductor, pvParameters);
 
-void startTaskConductor(structConductor* params, unsigned portBASE_TYPE uxPriority, vtI2CStruct* devI2C0, structSensors* dataSensors)
+void startTaskConductor(structConductor* params, unsigned portBASE_TYPE uxPriority, vtI2CStruct* devI2C0, structLCD* dataLCD, structSensors* dataSensors, structLocate* dataLocate)
 {
-	portBASE_TYPE retval;
-	params->devI2C0 = devI2C0;
+	params->devI2C0     = devI2C0;
+    params->dataLCD     = dataLCD;
 	params->dataSensors = dataSensors;
+    params->dataLocate  = dataLocate;
 
-	if ((retval = xTaskCreate(updateTaskConductor, taskNameConductor, CONDUCTOR_STACK_SIZE, (void*)params, uxPriority, (xTaskHandle*) NULL )) != pdPASS) {
+    portBASE_TYPE retval = xTaskCreate(updateTaskConductor, taskNameConductor, CONDUCTOR_STACK_SIZE, (void*)params, uxPriority, (xTaskHandle*)NULL);
+	if(retval != pdPASS)
+    {
+        sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_DEBUG, maxLenLCD, errorTaskCreateConductor, portMAX_DELAY);
 		VT_HANDLE_FATAL_ERROR(retval);
 	}
 }
@@ -40,16 +31,14 @@ static portTASK_FUNCTION(updateTaskConductor, pvParameters)
 	uint8_t bufferI2C[vtI2CMLen];
 
 	// Get the values from I2C.
-	uint8_t* values = &(bufferI2C[0]);
+	uint8_t* values = bufferI2C;
 
-	// Get the parameters.
-	structConductor* param = (structConductor*)pvParameters;
-
-	// Get the I2C device pointer.
-	vtI2CStruct* devI2C0 = param->devI2C0;
-	
-	// Get sensor data pointers.
-	structSensors* dataSensors = param->dataSensors;
+	// Get pointers to paramter fields.
+	structConductor* param       = (structConductor*)pvParameters;
+	vtI2CStruct*     devI2C0     = param->devI2C0;
+    structLCD*       dataLCD     = param->dataLCD;
+	structSensors*   dataSensors = param->dataSensors;
+    structLocate*    dataLocate  = param->dataLocate;
 
 	// The received message type.
 	uint8_t recvMsgType;
@@ -58,24 +47,54 @@ static portTASK_FUNCTION(updateTaskConductor, pvParameters)
 	for(;;)
 	{
 		// Wait for a message from an I2C operation.
-		if (vtI2CDeQ(devI2C0, vtI2CMLen, bufferI2C, &rxLen, &recvMsgType, &status) != pdTRUE)
-			VT_HANDLE_FATAL_ERROR(0);
+        portBASE_TYPE retI2C = vtI2CDeQ(devI2C0, vtI2CMLen, bufferI2C, &rxLen, &recvMsgType, &status);
+		if(retI2C != pdTRUE)
+        {
+            sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_DEBUG, maxLenLCD, errorI2CDequeConductor, portMAX_DELAY);
+		    VT_HANDLE_FATAL_ERROR(retI2C);
+        }
 
-		// If the I2C message is dropped, handle it.
+        // Log that there is an error with I2C slave.
+        if(rxLen == 0) 
+            sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_DEBUG, maxLenLCD, errorI2C, portMAX_DELAY);
 
 		// Decide where to send the message.
 		switch(recvMsgType)
 		{
 			// Sensor task.
-            case msgTypeSensors: 
+            case MSG_TYPE_SENSORS: 
 			{
-				// Send the values to the sensor task.
-				sendValueMsgSensors(dataSensors, recvMsgType, values, portMAX_DELAY);
+                // If rxLen > 0, then we received a message succesfully.
+                if(rxLen > 0)
+                {
+                    // If values[0] is 0, then we have no sensor data.
+                    if(values[0] == 0)
+                    {
+                        sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_DEBUG, maxLenLCD, debugNoRcvdSensorData, portMAX_DELAY);
+                    }
+                    // If values[0] is 1, then we have new sensor data.
+                    else if(values[0] == 1)
+                    {
+                        sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_DEBUG, maxLenLCD, debugRcvdSensorData, portMAX_DELAY);
+                        sendValueMsgSensors(dataSensors, recvMsgType, values, portMAX_DELAY);
+                    }
+                }
 				break;
 			}
+            case MSG_TYPE_ACK:
+			{
+                if(values[0] == 0)
+                    sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_DEBUG, maxLenLCD, debugNoRcvdAck, portMAX_DELAY);
+                else if (values[0] == 1)
+                {
+                    sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_DEBUG, maxLenLCD, debugRcvdAck, portMAX_DELAY);
+                    sendValueMsgLocate(dataLocate, recvMsgType, (float*)values, portMAX_DELAY);
+                }
+				break;
+            }
 			default:
 			{
-				VT_HANDLE_FATAL_ERROR(recvMsgType);
+				VT_HANDLE_FATAL_ERROR(0);
 				break;
 			}
 		}
