@@ -212,16 +212,19 @@ void i2c_int_handler() {
     if (msg_to_send) {
         signed char send = 0;
         // send to the queue to *ask* for the data to be sent out
-//        send = MotorData_recvmsg(ic_ptr->outbuflen, (void *) MSGT_I2C_RQST, (void *) ic_ptr->outbuffer);
-//        if (send > 0) {
-//            start_i2c_slave_reply(3, ic_ptr->outbuffer);
-//        }
+        send = MotorData_recvmsg(ic_ptr->outbuflen, (void *) MSGT_I2C_RQST, (void *) ic_ptr->outbuffer);
+        if (send == 3) {
+            ic_ptr->outbuffer[0] = 0x1;
+            ic_ptr->outbuffer[1] = 0x2;
+            ic_ptr->outbuffer[2] = 0x3;
+        }
+        start_i2c_slave_reply(3, ic_ptr->outbuffer);
 //        if (send == 4) {
             
 //        }
 //        send_length = ic_ptr->outbuflen;
         
-        ToMainHigh_sendmsg(0, MSGT_I2C_RQST, (void *) ic_ptr->buffer);
+//        ToMainHigh_sendmsg(0, MSGT_I2C_RQST, (void *) ic_ptr->buffer);
         msg_to_send = 0;
     }
 }

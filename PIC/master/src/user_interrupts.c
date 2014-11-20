@@ -18,22 +18,22 @@ unsigned char i = 0;
 
 void timer0_int_handler() {
     
-//    if (i % 3 == 0) {
-////        i = 0;
-//        // sensor
-//        i2c_master_recv(0x9E, 4);
-//    }
-//    if (i % 999 == 0) {
+    if (i % 2 == 0) {
+//        i = 0;
+        // sensor
+        i2c_master_recv(0x9E, 20);
+    }
+    if (i % 2 == 1) {
 //        i = 1;
 //         motor
-//        i2c_master_recv(0x9A, 3);
-//    }
+        i2c_master_recv(0x9A, 3);
+    }
 //    if (i % 3 == 2) {
 ////        i = 1;
 //        // motor
 //        uart_recv_int_handler();
 //    }
-//    i = (i+1)%1000;
+    i++;
 
     // reset the timer
     WriteTimer0(0);

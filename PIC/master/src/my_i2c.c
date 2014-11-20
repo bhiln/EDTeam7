@@ -28,8 +28,8 @@ void i2c_configure_master(unsigned char sensor_addr, unsigned char motor_addr) {
     SSPSTATbits.CKE = 0;
     SSPADD = 0x77;
 
-    ic_ptr->sensor_addr = sensor_addr;
-    ic_ptr->motor_addr = motor_addr;
+    ic_ptr->sensor_addr = sensor_addr; // (sensor_addr >> 1);
+    ic_ptr->motor_addr = motor_addr; // (motor_addr >> 1);
     ic_ptr->buflen = MAXI2CBUF;
 
     SSPCON1bits.SSPEN = 1;

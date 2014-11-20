@@ -155,6 +155,8 @@ void main(void) {
     DEBUG_OFF(UART_TX);
     DEBUG_OFF(UART_RX);
 
+//    i2c_master_recv(0x9E, 20);
+    
     // loop forever
     // This loop is responsible for "handing off" messages to the subroutines
     // that should get them.  Although the subroutines are not threads, but
