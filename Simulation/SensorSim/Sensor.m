@@ -28,7 +28,7 @@ classdef Sensor < handle
         function obj = Sensor(dist)
             % obj = SensorSim
             obj.distance = dist; % initial distance to wall
-            obj.spread = 0.25;
+            obj.spread = .5;
             obj.currentTime = 0.0;
         end
         

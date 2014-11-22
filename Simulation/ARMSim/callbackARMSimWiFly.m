@@ -99,14 +99,12 @@ if (recievedByte == 255)
         end
     end
     if (dataBuffer(1) == 52)
-        if (dataBuffer(2) == AC.getLastMessageID())
-            fprintf('MOVING STATUS UPDATE: %d\n', AC.getLastMessageID());
-            AC.roverStep();
-        end
+        fprintf('MOVING STATUS UPDATE: %d\n', dataBuffer(2));
+        AC.roverStep();
     end
     if (dataBuffer(1) == 53)
         if (dataBuffer(2) == AC.getLastMessageID())
-            fprintf('ROVER HAS FINISHED MOVING: %d\n', AC.getLastMessageID());
+            fprintf('ROVER HAS FINISHED MOVING: %d\n', dataBuffer(2));
             AC.setDone(true);
         end
     end

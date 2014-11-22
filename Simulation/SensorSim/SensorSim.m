@@ -37,7 +37,7 @@ fopen(ioSensorSimWiFly);
 
 % Create and start the sensorSimTimer object
 sensorSimTimer = timer;
-sensorSimTimer.Period         = 2;
+sensorSimTimer.Period         = .5;
 sensorSimTimer.ExecutionMode  = 'fixedRate';
 sensorSimTimer.TimerFcn       = {@callbackSensorSimTimer,[frontLeft,...
                                                          frontRight,...
