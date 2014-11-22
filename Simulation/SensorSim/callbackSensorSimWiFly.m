@@ -27,6 +27,15 @@ if (recievedByte == 255)
         %handle motor instruction
         fprintf('\n\nGOT MOTOR MESSAGE\n\n');
         sendAcknowledge(obj, dataBuffer(1));
+        
+        counter = 0;
+        while (counter < dataBuffer(4))
+            sendStatusUpdate(obj, dataBuffer(1));
+            pause(.1);
+            counter = counter + 1;
+        end
+        
+        sendDone(obj, dataBuffer(1));
 %         if (dataBuffer(1) == 3)
 %             sendAcknowledge(obj, dataBuffer(1)+1);
 %         else
@@ -68,6 +77,28 @@ fwrite(obj,bin2dec(sprintf('%s', dec2bin(51, 8))));
 fwrite(obj,bin2dec(sprintf('%s', dec2bin(messageIndex, 8))));
 fwrite(obj,bin2dec(sprintf('%s', dec2bin(255, 8))));
 
-fprintf('SeNDING MESSAGE');
+fprintf('SENDING MESSAGE\n');
+
+end
+
+function sendStatusUpdate(obj, messageIndex)
+
+fwrite(obj,bin2dec(sprintf('%s', dec2bin(254, 8))));
+fwrite(obj,bin2dec(sprintf('%s', dec2bin(52, 8))));
+fwrite(obj,bin2dec(sprintf('%s', dec2bin(messageIndex, 8))));
+fwrite(obj,bin2dec(sprintf('%s', dec2bin(255, 8))));
+
+fprintf('SENDING UPDATE\n');
+
+end
+
+function sendDone(obj, messageIndex)
+
+fwrite(obj,bin2dec(sprintf('%s', dec2bin(254, 8))));
+fwrite(obj,bin2dec(sprintf('%s', dec2bin(53, 8))));
+fwrite(obj,bin2dec(sprintf('%s', dec2bin(messageIndex, 8))));
+fwrite(obj,bin2dec(sprintf('%s', dec2bin(255, 8))));
+
+fprintf('SENDING DONE\n');
 
 end
