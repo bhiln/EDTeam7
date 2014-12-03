@@ -414,9 +414,9 @@ classdef ARMController < handle
                 stop = false;
                 while (stop == false)
                     sendMotorCommand(10)
-                    pause(4-(ceil((getSpeed()/16)*10)/10));
+                    while (done == false); end;
                     sendMotorCommand(11)
-                    pause(4-(ceil((getSpeed()/16)*10)/10));
+                    while (done == false); end;
                 end
             end        
             

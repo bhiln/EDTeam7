@@ -13,7 +13,7 @@ persistent dataBuffer;
 % how much and then read it into a data array.
 bytesAvailable = obj.BytesAvailable;
 [recievedByte, ~, ~] = fread(obj, 1, 'char');
-%fprintf('%d\n', recievedByte);
+fprintf('%d\n', recievedByte);
 if (length(dataBuffer) == 0)
     dataBuffer = [recievedByte];
 else
@@ -103,10 +103,8 @@ if (recievedByte == 255)
         AC.roverStep();
     end
     if (dataBuffer(1) == 53)
-        if (dataBuffer(2) == AC.getLastMessageID())
-            fprintf('ROVER HAS FINISHED MOVING: %d\n', dataBuffer(2));
-            AC.setDone(true);
-        end
+        fprintf('ROVER HAS FINISHED MOVING: %d\n', dataBuffer(2));
+        AC.setDone(true);
     end
     
     dataBuffer = [];
