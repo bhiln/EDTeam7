@@ -21,7 +21,7 @@ void timer0_int_handler() {
     if (i % 2 == 0) {
 //        i = 0;
         // sensor
-        i2c_master_recv(0x9E, 20);
+        i2c_master_recv(0x9E, 23);
     }
     if (i % 2 == 1) {
 //        i = 1;
