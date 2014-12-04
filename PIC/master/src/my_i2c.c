@@ -53,9 +53,13 @@ unsigned char i2c_master_send(unsigned char addr, unsigned char length, unsigned
         return (-1);
     }
     if (ic_ptr->status == I2C_IDLE) {
+        unsigned char temp[3];
+        temp[0] = msg[0];
+        temp[1] = msg[1];
+        temp[2] = msg[2];
         ic_ptr->slave_addr = addr;
         ic_ptr->status = I2C_SEND_START; // set status to start motor transmission
-        FromMainHigh_sendmsg(length, MSGT_I2C_MOTOR_CMD, (void *) msg); // puts msg into FromMainHigh_MQ
+        FromMainHigh_sendmsg(length, MSGT_I2C_MOTOR_CMD, msg); // puts msg into FromMainHigh_MQ
         ic_ptr->outbufind = 0;
         ic_ptr->outbuflen = length;
         SSP1CON2bits.SEN = 1; // go to i2c_master_int_handler
@@ -82,10 +86,12 @@ unsigned char i2c_master_recv(unsigned char addr, unsigned char length) {
         return (-1);
     }
     if (ic_ptr->status == I2C_IDLE) {
+        DEBUG_ON(I2C_MASTER);
         ic_ptr->slave_addr = addr;
         ic_ptr->buflen = length;
         ic_ptr->bufind = 0;
         ic_ptr->status = I2C_RECV_START; // set status to start receiving data from slave devices
+        DEBUG_OFF(I2C_MASTER);
         SSP1CON2bits.SEN = 1; // go to i2c_master_int_handler
     }
     return (0);
@@ -146,8 +152,10 @@ void i2c_master_int_handler() {
         {
             //PIR1bits.SSP1IF = 0;
             if (ic_ptr->slave_addr == ic_ptr->sensor_addr || ic_ptr->slave_addr == ic_ptr->motor_addr) {
+                DEBUG_ON(I2C_START);
                 ic_ptr->status = I2C_RECV_ACK;
                 SSP1BUF = ((ic_ptr->slave_addr)) + 1;
+                DEBUG_OFF(I2C_START);
             } else {
                 ic_ptr->status = I2C_IDLE;
                 SSP1CON2bits.PEN = 1;
@@ -158,8 +166,10 @@ void i2c_master_int_handler() {
         {
             //PIR1bits.SSP1IF = 0;
             if (SSP1CON2bits.ACKSTAT == 0) {
+                DEBUG_ON(I2C_ACK);
                 ic_ptr->status = I2C_RECV_DATA;
                 SSP1CON2bits.RCEN = 1;
+                DEBUG_OFF(I2C_ACK);
                 SSP1CON2bits.SEN = 1; // do i need this enable bit?
             } else {
                 ic_ptr->status = I2C_IDLE;
@@ -172,15 +182,18 @@ void i2c_master_int_handler() {
         case I2C_RECV_DATA:
         {
             //PIR1bits.SSP1IF = 0;
-            if (ic_ptr->bufind != (ic_ptr->buflen - 1)) {
+            if (ic_ptr->bufind < (ic_ptr->buflen - 1)) {
+                DEBUG_ON(I2C_RECV);
                 ic_ptr->status = I2C_RECV_RCEN;
                 ic_ptr->buffer[ic_ptr->bufind] = SSP1BUF;
                 ic_ptr->bufind++;
                 SSP1CON2bits.ACKEN = 1;
                 SSP1CON2bits.ACKDT = 0;
+                DEBUG_OFF(I2C_RECV);
                 SSP1CON2bits.SEN = 1;  // do i need this enable bit?
             } else {
                 ic_ptr->status = I2C_RECV_STOP;
+                ic_ptr->buffer[ic_ptr->bufind] = SSP1BUF;
                 SSP1CON2bits.ACKEN = 1;
                 SSP1CON2bits.ACKDT = 1;
                 SSP1CON2bits.SEN = 1;  // do i need this enable bit?
@@ -197,9 +210,11 @@ void i2c_master_int_handler() {
         };
         case I2C_RECV_STOP:
         {
+            DEBUG_ON(I2C_STOP);
             //PIR1bits.SSP1IF = 0;
             ic_ptr->status = I2C_IDLE;
             ToMainHigh_sendmsg(ic_ptr->buflen, MSGT_I2C_MASTER_RECV_COMPLETE, (void *) ic_ptr->buffer);
+            DEBUG_OFF(I2C_STOP);
             SSP1CON2bits.PEN = 1;
             break;
         };
@@ -216,9 +231,13 @@ void i2c_master_int_handler() {
         case I2C_SEND_DATA: // Motor send state
         {
             //PIR1bits.SSP1IF = 0; // clear IF
-            if (SSP1CON2bits.ACKDT == 0) {
+            if (SSP1CON2bits.ACKDT == 1) {
                 SSP1CON2bits.ACKSTAT = 0; // clear ACK bit
                 FromMainHigh_recvmsg(ic_ptr->outbuflen, (void *) MSGT_I2C_MOTOR_CMD, (void *) ic_ptr->outbuffer);
+                unsigned char temp[3];
+                temp[0] = ic_ptr->outbuffer[0];
+                temp[1] = ic_ptr->outbuffer[1];
+                temp[2] = ic_ptr->outbuffer[2];
                 if (ic_ptr->outbufind < ic_ptr->outbuflen) {
                     ic_ptr->status = I2C_SEND_DATA;
                     ic_ptr->outbufind++;

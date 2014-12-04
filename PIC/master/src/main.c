@@ -133,10 +133,14 @@ void main(void) {
     TRISEbits.TRISE0 = 0x0;
     TRISEbits.TRISE1 = 0x0;
     TRISEbits.TRISE2 = 0x0;
-    TRISAbits.TRISA2 = 0x0;
-    TRISAbits.TRISA3 = 0x0;
-    TRISCbits.TRISC7 = 0x1; // input RX
-    TRISCbits.TRISC6 = 0x0; // output TX
+    TRISBbits.TRISB0 = 0x0; // debug pin
+    TRISBbits.TRISB1 = 0x0; // debug pin
+    TRISBbits.TRISB2 = 0x0; // debug pin
+    TRISBbits.TRISB3 = 0x0; // debug pin
+    TRISAbits.TRISA2 = 0x0; // led0
+    TRISAbits.TRISA3 = 0x0; // led1
+    TRISCbits.TRISC7 = 0x1; // input UART RX
+    TRISCbits.TRISC6 = 0x0; // output UART TX
 
     SPBRGH1 = 0x00;
     SPBRG1 = 0xCF;
@@ -152,10 +156,20 @@ void main(void) {
     // It is also slow and is blocking, so it will perturb your code's operation
     // Here is how it looks: printf("Hello\r\n");
 
-    DEBUG_OFF(UART_TX);
-    DEBUG_OFF(UART_RX);
+//    DEBUG_OFF(UART_TX);
+//    DEBUG_OFF(UART_RX);
+    DEBUG_OFF(I2C_START);
+    DEBUG_OFF(I2C_ACK);
+    DEBUG_OFF(I2C_RECV);
+    DEBUG_OFF(I2C_STOP);
 
 //    i2c_master_recv(0x9E, 20);
+//    unsigned char i2cmsg[3];
+//    unsigned char i2clen = 3;
+//    i2cmsg[0] = 0x0B; // command
+//    i2cmsg[1] = 20; // distance
+//    i2cmsg[2] = 32; // speed
+//    i2c_master_send(0x9A, i2clen, i2cmsg);
     
     // loop forever
     // This loop is responsible for "handing off" messages to the subroutines
@@ -208,13 +222,21 @@ void main(void) {
                 case MSGT_I2C_MASTER_RECV_COMPLETE:
                 {
                     // Send sensor/QE data to ARM
-                    uart_send(length, msgbuffer);
+                    if (length == 3) { // motor data
+                        uart_send(length, msgbuffer);
+                    }
+                    if (length == 23) { // sensor data
+                        msgbuffer[22] = 0xFF;
+                        uart_send(length, msgbuffer);
+                    }
                     break;
                 };
                 case MSGT_I2C_MOTOR_CMD:
                 {
-                    last_reg_recvd = msgbuffer[0];
-                    switch (last_reg_recvd) {
+                    command = msgbuffer[2];
+                    distance = msgbuffer[3];
+                    speed = msgbuffer[4];
+                    switch (command) {
                         case 0x0A: // forward
                         {
                             length = 3;

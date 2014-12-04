@@ -36,10 +36,10 @@
  **/
 
 // Length of the queue to this task.
-#define queueLenSensors     10
+#define QUEUE_LEN_SENS          10
 
 // Maximum length of the buffer for this task.
-#define bufLenSensors       22
+#define QUEUE_BUF_LEN_SENS      22
 
 /*------------------------------------------------------------------------------
  * Task Data Structures
@@ -59,7 +59,7 @@ typedef struct __msgSensors
 {
     uint8_t type;
     uint8_t length;
-    uint8_t buf[bufLenSensors];
+    uint8_t buf[QUEUE_BUF_LEN_SENS];
 } msgSensors;
 
 /*------------------------------------------------------------------------------

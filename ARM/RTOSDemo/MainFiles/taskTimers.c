@@ -13,12 +13,11 @@ void LCDTimerCallback(xTimerHandle pxTimer)
 	else
 	{
 		structLCD *ptr = (structLCD*)pvTimerGetTimerID(pxTimer);
-		if (sendTimerMsgLCD(ptr, lcdWRITE_RATE_BASE, 0) == errQUEUE_FULL)
-			VT_HANDLE_FATAL_ERROR(0);
+		sendTimerMsgLCD(ptr, lcdWRITE_RATE_BASE, 0);
 	}
 }
 
-void startTimerLCD(structLCD* dataLCD)
+void startTimerLCD(structLCD* dataLCD)											
 {
 	if (sizeof(long) != sizeof(structLCD*))
 		VT_HANDLE_FATAL_ERROR(0);

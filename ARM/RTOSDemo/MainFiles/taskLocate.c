@@ -12,10 +12,10 @@ static portTASK_FUNCTION_PROTO(updateTaskLocate, pvParameters);
 void startTaskLocate(structLocate* dataLocate, unsigned portBASE_TYPE uxPriority, structLCD* dataLCD, structCommand* dataCommand)
 {
     // Create the queue that will be used to talk to this task.
-    dataLocate->inQ = xQueueCreate(queueLenLocate, sizeof(msgLocate));
+    dataLocate->inQ = xQueueCreate(QUEUE_LEN_LOCATE, sizeof(msgLocate));
     if(dataLocate->inQ == NULL)
     {
-        sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_DEBUG, maxLenLCD, errorQueueCreateLocate, portMAX_DELAY);
+        sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, errorQueueCreateLocate, portMAX_DELAY);
         VT_HANDLE_FATAL_ERROR(0);
     }
 
@@ -26,7 +26,7 @@ void startTaskLocate(structLocate* dataLocate, unsigned portBASE_TYPE uxPriority
     portBASE_TYPE retval = xTaskCreate(updateTaskLocate, taskNameLocate, LOCATE_STACK_SIZE, (void*)dataLocate, uxPriority, (xTaskHandle*)NULL);
     if(retval != pdPASS)
     {
-        sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_DEBUG, maxLenLCD, errorTaskCreateLocate, portMAX_DELAY);
+        sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, errorTaskCreateLocate, portMAX_DELAY);
         VT_HANDLE_FATAL_ERROR(retval);
     }
 }
@@ -42,7 +42,7 @@ void sendTimerMsgLocate(structLocate* dataLocate, portTickType ticksElapsed, por
     portBASE_TYPE retval = xQueueSend(dataLocate->inQ, (void*)(&msg), ticksToBlock);
     if(retval != pdTRUE)
     {
-        sendValueMsgLCD(dataLocate->dataLCD, MSG_TYPE_LCD_DEBUG, maxLenLCD, errorQueueSendLocate, portMAX_DELAY);
+        sendValueMsgLCD(dataLocate->dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, errorQueueSendLocate, portMAX_DELAY);
         VT_HANDLE_FATAL_ERROR(retval);
     }
 }
@@ -50,14 +50,14 @@ void sendTimerMsgLocate(structLocate* dataLocate, portTickType ticksElapsed, por
 void sendValueMsgLocate(structLocate* dataLocate, uint8_t type, float* value, portTickType ticksToBlock)
 {
     msgLocate msg;
-    msg.length = sizeof(float)*bufLenLocate;
+    msg.length = sizeof(float)*QUEUE_BUF_LEN_LOCATE;
 
     memcpy(msg.buf, value, msg.length);
     msg.type = type;
     portBASE_TYPE retval = xQueueSend(dataLocate->inQ, (void*)(&msg), ticksToBlock);
     if(retval != pdTRUE)
     {
-        sendValueMsgLCD(dataLocate->dataLCD, MSG_TYPE_LCD_DEBUG, maxLenLCD, errorQueueSendLocate, portMAX_DELAY);
+        sendValueMsgLCD(dataLocate->dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, errorQueueSendLocate, portMAX_DELAY);
         VT_HANDLE_FATAL_ERROR(retval);
     }
 
@@ -76,15 +76,18 @@ static portTASK_FUNCTION(updateTaskLocate, pvParameters)
     // Initialize map.
     Map map = {
         .map = {
-            .allocated = false,
+			.rowVectors = NULL,
             .rows = MAP_RADIUS_INIT,
-            .cols = MAP_RADIUS_INIT
+            .cols = MAP_RADIUS_INIT,
+            .allocated = false
         },
         .radix = {
-            .allocated = false,
-            .n = 2
+			.buf = NULL,
+            .n = 2,
+          	.allocated = false,
         },
         .thresh = {
+			.buf = NULL,
             .allocated = false,
             .n = 2
         },
@@ -101,36 +104,48 @@ static portTASK_FUNCTION(updateTaskLocate, pvParameters)
     // Initialize rover.
     Rover rover = {
         .curStates = {
-            .curStateMotion       = initialStateMotion,
+           	.curStateMotion       = initialStateMotion,
             .curStatePrimeGoal    = initialStatePrimeGoal,
             .curStateScanSecGoal  = initialStateScanSecGoal,
-            .curStateRoamSecGoal  = initialStateRoamSecGoal,
+           	.curStateRoamSecGoal  = initialStateRoamSecGoal,
             .curStateGoSecGoal    = initialStateGoSecGoal,
             .curStateAlignSecGoal = initialStateAlignSecGoal,
             .curStateRampSecGoal  = initialStateRampSecGoal
         },
         .curObstacles = {
-            .allocated = false,
+			.rowVectors = NULL,
             .rows = 2,
-            .cols = 4
+            .cols = 4,
+            .allocated = false
         },
         .curCorners = {
-            .allocated = false,
+			.rowVectors = NULL,
             .rows = 2,
-            .cols = 4
+            .cols = 4,
+            .allocated = false
         },
         .curRamps = {
-            .allocated = false,
+			.rowVectors = NULL,
             .rows = 2,
-            .cols = 3
+            .cols = 3,		
+            .allocated = false
         },
         .curTarget = {
-            .allocated = false,
-            .n = 4
+			.buf = NULL,
+            .n = 2,	
+            .allocated = false
         },
-        .orient = 0.0,
-        .mapped = false,
-        .ack    = false
+		.curRawObst = {
+			.buf = NULL,
+			.n = 8,
+			.allocated = false
+		},
+		.curRawRamp = {
+			.buf = NULL,
+			.n = 8,
+			.allocated = false
+		},
+        .orient = 0.0
     };
     createMatrix(&(rover.curObstacles));
     createMatrix(&(rover.curCorners));
@@ -140,11 +155,12 @@ static portTASK_FUNCTION(updateTaskLocate, pvParameters)
     // Like all good tasks, this should never exit.
 	for(;;)
 	{
+        toggleLED(PIN_LED_3);
         // Wait for a message from the queue.
         portBASE_TYPE retQueue = xQueueReceive(param->inQ, (void*)&msg, portMAX_DELAY);
         if (retQueue != pdTRUE)
         {
-            sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_DEBUG, maxLenLCD, errorQueueReceiveLocate, portMAX_DELAY);
+            sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, errorQueueReceiveLocate, portMAX_DELAY);
             VT_HANDLE_FATAL_ERROR(retQueue);
         }
 
@@ -153,7 +169,7 @@ static portTASK_FUNCTION(updateTaskLocate, pvParameters)
 		{
 		case MSG_TYPE_TIMER_LOCATE:
 		{
-            switch(rover.curStates.curStatePrimeGoal)
+           	switch(rover.curStates.curStatePrimeGoal)
             {
             case scan:
             {
@@ -203,14 +219,14 @@ static portTASK_FUNCTION(updateTaskLocate, pvParameters)
 
             // Map updated data to global coordinates, allocating space if
             // need be.   
-            mapData(&rover, &map);
+            //mapData(&rover, &map);
              
             break;
         }
         case MSG_TYPE_ACK:
         {
             // Grab the acknowledgement from the motor controller.
-            rover.ack = (bool)msg.buf[0];
+            //rover.ack = (bool)msg.buf[0];
             break;
         }
         default:
@@ -263,8 +279,8 @@ void mapData(Rover* rover, Map* map)
         .rows = 2,
         .cols = 4
     };
-    createMatrix(&T);
-    createMatrix(&result);
+    //createMatrix(&T);
+    //createMatrix(&result);
     T.rowVectors[0].buf[0] = cos(rover->orient);
     T.rowVectors[0].buf[1] = sin(rover->orient)*(-1);
     T.rowVectors[1].buf[0] = sin(rover->orient);

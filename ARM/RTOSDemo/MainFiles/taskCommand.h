@@ -34,10 +34,10 @@
  **/
 
 // Length of the queue to this task.
-#define queueLenCommand     10
+#define QUEUE_LEN_CMD           10
 
 // Maximum length of the buffer for this task.
-#define bufLenCommand       3
+#define QUEUE_BUF_LEN_CMD       3
 
 /*------------------------------------------------------------------------------
  * Task Data Structures
@@ -56,7 +56,7 @@ typedef struct __msgCommand
 {
 	uint8_t type;
 	uint8_t	length;
-	uint8_t buf[bufLenCommand];
+	uint8_t buf[QUEUE_BUF_LEN_CMD];
 } msgCommand;
 
 /*------------------------------------------------------------------------------
@@ -67,6 +67,6 @@ void startTaskCommand(structCommand* dataCommand, unsigned portBASE_TYPE uxPrior
 void sendTimerMsgCommand(structCommand* dataCommand, portTickType ticksElapsed, portTickType ticksToBlock);
 void sendValueMsgCommand(structCommand* dataCommand, uint8_t type, uint8_t* value, portTickType ticksToBlock);
 
-bool execCommand(vtI2CStruct* devI2C0, uint8_t type, uint8_t value, uint8_t speed);
+bool execCommand(vtI2CStruct* devI2C0, structLCD* dataLCD, uint8_t type, uint8_t value, uint8_t speed);
 
 #endif

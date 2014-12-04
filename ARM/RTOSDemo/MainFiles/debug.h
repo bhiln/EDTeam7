@@ -6,42 +6,29 @@
  **/
 
 #include "lpc17xx_gpio.h"
-
 #include "defs.h"
 
-/*------------------------------------------------------------------------------
- * Definitions
- **/
-
-#define DEBUG_PORT          0
-#define DEBUG_PIN15 		0x00008000
-#define DEBUG_PIN16 		0x00010000
-#define DEBUG_PIN17 		0x00020000
-#define DEBUG_PIN18 		0x00040000
-
-/*------------------------------------------------------------------------------
- * Global Variables
- **/
-
 // Debug information.
-char debugInitSystem[]         = "Initializing system";
-char debugInitLEDs[]           = "Initializing LEDs";
-char debugInitHardware[]       = "Initializing hardware";
-char debugStartTaskLCD[]       = "Starting task LCD";
-char debugStartTaskI2C[]       = "Starting task I2C";
-char debugStartTaskSensors[]   = "Starting task SENORS";
-char debugStartTaskLocate[]    = "Starting task LOCATE";
-char debugStartTaskCommand[]   = "Starting task COMMAND";
-char debugStartTaskConductor[] = "Starting task CONDUCTOR";
-char debugInitScheduler[]      = "Initializing SCHEDULER";
-char debugStartTimerLCD[]      = "Starting timer LCD";
-char debugStartTimerSensors[]  = "Starting timer SENSORS";
-char debugStartTimerLocate[]   = "Starting timer LOCATE";
-char debugStartTimerCommand[]  = "Starting timer COMMAND";
-char debugRcvdSensorData[]     = "Received new sensor data from slave";
-char debugNoRcvdSensorData[]   = "No new sensor data from slave";
-char debugRcvdAck[]            = "Received command acki from slave";
-char debugNoRcvdAck[]          = "No command ack from slave";
+char debugInitSystem[]            = "Initializing system";
+char debugInitLEDs[]              = "Initializing LEDs";
+char debugInitHardware[]          = "Initializing hardware";
+char debugStartTaskLCD[]          = "Starting task LCD";
+char debugStartTaskI2C[]          = "Starting task I2C";
+char debugStartTaskSensors[]      = "Starting task SENORS";
+char debugStartTaskLocate[]       = "Starting task LOCATE";
+char debugStartTaskCommand[]      = "Starting task COMMAND";
+char debugStartTaskConductor[]    = "Starting task CONDUCTOR";
+char debugInitScheduler[]         = "Initializing SCHEDULER";
+char debugStartTimerLCD[]         = "Starting timer LCD";
+char debugStartTimerSensors[]     = "Starting timer SENSORS";
+char debugStartTimerLocate[]      = "Starting timer LOCATE";
+char debugStartTimerCommand[]     = "Starting timer COMMAND";
+char debugRcvdSensorData[]        = "Received new sensor data";
+char debugNoRcvdSensorData[]      = "No new sensor data";
+char debugRcvdAck[]               = "Received command ack";
+char debugNoRcvdAck[]             = "No command ack";
+char debugSensorsQuery[]          = "Sending sensors query";
+char debugCommand[]               = "Sending command";
 
 // Error information.
 char errorTaskCreateI2C[]         = "Error: task create I2C";
@@ -71,17 +58,102 @@ char errorI2C[]                   = "Error: bad I2C connection";
 bool writeDebug(uint32_t pin, uint8_t value)
 {
     bool succ = false;
-    if((pin == DEBUG_PIN15) || (pin == DEBUG_PIN16) || (pin == DEBUG_PIN17) || (pin == DEBUG_PIN18))
+    if((pin == PIN_DEBUG_0) || (pin == PIN_DEBUG_1) || (pin == PIN_DEBUG_2) || (pin == PIN_DEBUG_3))
     {
         uint8_t i;
         for(i = 0; i < value; i++)
         {
-            GPIO_SetValue  (0, pin);
-            GPIO_ClearValue(0, pin);
+            GPIO_SetValue  (PORT_DEBUG, pin);
+            GPIO_ClearValue(PORT_DEBUG, pin);
         }
         succ = true;
     }
     return succ;
+}
+
+void toggleLED(uint32_t pinLED)
+{
+    static bool stateLED[8] = {false};
+
+    switch(pinLED)
+    {
+    case PIN_LED_0:
+    {
+        if(stateLED[0])
+            GPIO_ClearValue(PORT_LED_0, pinLED);
+        else
+            GPIO_SetValue(PORT_LED_0, pinLED);
+        stateLED[0] = !stateLED[0];
+        break;
+    }
+    case PIN_LED_1:
+    {
+        if(stateLED[1])
+            GPIO_ClearValue(PORT_LED_1, pinLED);
+        else
+            GPIO_SetValue(PORT_LED_1, pinLED);
+        stateLED[1] = !stateLED[1];
+        break;
+    }
+    case PIN_LED_2:
+    {
+        if(stateLED[2])
+            GPIO_ClearValue(PORT_LED_2, pinLED);
+        else
+            GPIO_SetValue(PORT_LED_2, pinLED);
+        stateLED[2] = !stateLED[2];
+        break;
+    }
+    case PIN_LED_3:
+    {
+        if(stateLED[3])
+            GPIO_ClearValue(PORT_LED_3, pinLED);
+        else
+            GPIO_SetValue(PORT_LED_3, pinLED);
+        stateLED[3] = !stateLED[3];
+        break;
+    }
+    case PIN_LED_4:
+    {
+        if(stateLED[4])
+            GPIO_ClearValue(PORT_LED_4, pinLED);
+        else
+            GPIO_SetValue(PORT_LED_4, pinLED);
+        stateLED[4] = !stateLED[4];
+        break;
+    }
+    case PIN_LED_5:
+    {
+        if(stateLED[5])
+            GPIO_ClearValue(PORT_LED_5, pinLED);
+        else
+            GPIO_SetValue(PORT_LED_5, pinLED);
+        stateLED[5] = !stateLED[5];
+        break;
+    }
+    case PIN_LED_6:
+    {
+        if(stateLED[6])
+            GPIO_ClearValue(PORT_LED_6, pinLED);
+        else
+            GPIO_SetValue(PORT_LED_6, pinLED);
+        stateLED[6] = !stateLED[6];
+        break;
+    }
+    case PIN_LED_7:
+    {
+        if(stateLED[7])
+            GPIO_ClearValue(PORT_LED_7, pinLED);
+        else
+            GPIO_SetValue(PORT_LED_7, pinLED);
+        stateLED[7] = !stateLED[7];
+        break;
+    }
+    default:
+    {
+	    // Error...
+    }
+    }
 }
 
 #endif

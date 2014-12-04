@@ -19,7 +19,9 @@ void startTaskConductor(structConductor* params, unsigned portBASE_TYPE uxPriori
     portBASE_TYPE retval = xTaskCreate(updateTaskConductor, taskNameConductor, CONDUCTOR_STACK_SIZE, (void*)params, uxPriority, (xTaskHandle*)NULL);
 	if(retval != pdPASS)
     {
-        sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_DEBUG, maxLenLCD, errorTaskCreateConductor, portMAX_DELAY);
+        char eventsMsg[QUEUE_BUF_LEN_LCD];
+        sprintf(eventsMsg, "Error: failed creating %s", taskNameConductor);
+        sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
 		VT_HANDLE_FATAL_ERROR(retval);
 	}
 }
@@ -46,58 +48,70 @@ static portTASK_FUNCTION(updateTaskConductor, pvParameters)
 	// Like all good tasks, this should never exit.
 	for(;;)
 	{
+        toggleLED(PIN_LED_1);  
+
+        char eventsMsg[QUEUE_BUF_LEN_LCD];
+
 		// Wait for a message from an I2C operation.
         portBASE_TYPE retI2C = vtI2CDeQ(devI2C0, vtI2CMLen, bufferI2C, &rxLen, &recvMsgType, &status);
 		if(retI2C != pdTRUE)
         {
-            sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_DEBUG, maxLenLCD, errorI2CDequeConductor, portMAX_DELAY);
+            sprintf(eventsMsg, "Error: cannot dequeue from %s", taskNameI2C);
+            sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
 		    VT_HANDLE_FATAL_ERROR(retI2C);
         }
 
-        // Log that there is an error with I2C slave.
+        // Log that there is an error with I2C, since we are expecting a message.
         if(rxLen == 0) 
-            sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_DEBUG, maxLenLCD, errorI2C, portMAX_DELAY);
+        {
+            sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, errorI2C, portMAX_DELAY);
+        }
 
-		// Decide where to send the message.
-		switch(recvMsgType)
-		{
-			// Sensor task.
-            case MSG_TYPE_SENSORS: 
-			{
-                // If rxLen > 0, then we received a message succesfully.
-                if(rxLen > 0)
+        // Otherwise route it.
+        else
+        {
+		    // Decide where to send the message.
+		    switch(recvMsgType)
+            {
+                // Sensor task.
+                case MSG_TYPE_SENSORS: 
                 {
                     // If values[0] is 0, then we have no sensor data.
                     if(values[0] == 0)
                     {
-                        sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_DEBUG, maxLenLCD, debugNoRcvdSensorData, portMAX_DELAY);
+                        sprintf(eventsMsg, "No received sensor data");
+                        sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
                     }
+
                     // If values[0] is 1, then we have new sensor data.
                     else if(values[0] == 1)
                     {
-                        sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_DEBUG, maxLenLCD, debugRcvdSensorData, portMAX_DELAY);
+                        sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, debugRcvdSensorData, portMAX_DELAY);
                         sendValueMsgSensors(dataSensors, recvMsgType, values, portMAX_DELAY);
                     }
+                    break;
                 }
-				break;
-			}
-            case MSG_TYPE_ACK:
-			{
-                if(values[0] == 0)
-                    sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_DEBUG, maxLenLCD, debugNoRcvdAck, portMAX_DELAY);
-                else if (values[0] == 1)
+                case MSG_TYPE_ACK:
                 {
-                    sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_DEBUG, maxLenLCD, debugRcvdAck, portMAX_DELAY);
-                    sendValueMsgLocate(dataLocate, recvMsgType, (float*)values, portMAX_DELAY);
+                    // If values[0] = 0, then we have no ack.
+                    if(values[0] == 0)
+                        sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, debugNoRcvdAck, portMAX_DELAY);
+                    
+                    // If values[0] = 1, then we have an ack.
+                    else if (values[0] == 1)
+                    {
+                        sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, debugRcvdAck, portMAX_DELAY);
+                        sendValueMsgLocate(dataLocate, recvMsgType, (float*)values, portMAX_DELAY);
+                    }
+                    break;
                 }
-				break;
+                default:
+                {
+                    VT_HANDLE_FATAL_ERROR(0);
+                    break;
+                }
             }
-			default:
-			{
-				VT_HANDLE_FATAL_ERROR(0);
-				break;
-			}
-		}
+        }
 	}
 }
 

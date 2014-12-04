@@ -34,10 +34,10 @@
  **/
 
  // Length of the queue to this task.
-#define queueLenLocate  10
+#define QUEUE_LEN_LOCATE  10
 
 // Maximum length of a message that can be received by the task.
-#define bufLenLocate    11
+#define QUEUE_BUF_LEN_LOCATE    11
 
 /*------------------------------------------------------------------------------
  * Data Structures
@@ -56,7 +56,7 @@ typedef struct __msgLocate
 {
 	uint8_t msgType;
 	uint8_t	length;
-	uint16_t buf[bufLenLocate];
+	uint16_t buf[QUEUE_BUF_LEN_LOCATE];
 } msgLocate;
 
 /*------------------------------------------------------------------------------

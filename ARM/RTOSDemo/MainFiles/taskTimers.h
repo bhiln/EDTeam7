@@ -43,15 +43,6 @@
 #define SENSOR_WRITE_RATE_BASE	(((portTickType) (8000/(SENSOR_READS*8)))/portTICK_RATE_MS)
 
 /*------------------------------------------------------------------------------
- * Global Variables
- **/
-
-signed char timerNameLCD[]     = "LCD Timer";
-signed char timerNameLocate[]  = "Locate Timer";
-signed char timerNameCommand[] = "Command Timer";
-signed char timerNameSensors[] = "Sensors Timer";
-
-/*------------------------------------------------------------------------------
  * Functions
  **/
 

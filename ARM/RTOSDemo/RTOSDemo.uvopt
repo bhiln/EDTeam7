@@ -159,76 +159,46 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>UL2CM3</Key>
-          <Name>-UM0189FCE -O1998 -S0 -C0 -N00("ARM CoreSight SW-DP") -D00(2BA01477) -L00(0) -TO3 -TC100000000 -TP21 -TDS804F -TDT0 -TDC10 -TIE1 -TIP0 -FO23 -FD10000000 -FC800 -FN1 -FF0LPC_IAP_512 -FS00 -FL080000</Name>
+          <Name>-UM0191FCE -O1998 -S0 -C0 -N00("ARM CoreSight SW-DP") -D00(2BA01477) -L00(0) -TO3 -TC100000000 -TP21 -TDS804F -TDT0 -TDC10 -TIE1 -TIP0 -FO23 -FD10000000 -FC800 -FN1 -FF0LPC_IAP_512 -FS00 -FL080000</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
       <Breakpoint>
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>251</LineNumber>
+          <LineNumber>86</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>27992</Address>
+          <Address>10986</Address>
           <ByteObject>0</ByteObject>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>E:\ARM-CODE\VTCODE\VTI2C\vtI2C.c</Filename>
+          <Filename>E:\AUTO-ROVER\ARM\RTOSDEMO\MAINFILES\taskLCD.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression></Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>234</LineNumber>
+          <LineNumber>193</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>27866</Address>
+          <Address>10902</Address>
           <ByteObject>0</ByteObject>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>E:\ARM-CODE\VTCODE\VTI2C\vtI2C.c</Filename>
+          <Filename>E:\AUTO-ROVER\ARM\RTOSDEMO\MAINFILES\taskLCD.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression></Expression>
         </Bp>
         <Bp>
           <Number>2</Number>
           <Type>0</Type>
-          <LineNumber>162</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>28590</Address>
-          <ByteObject>0</ByteObject>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>E:\ARM-CODE\VTCODE\VTI2C\vtI2C.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-        <Bp>
-          <Number>3</Number>
-          <Type>0</Type>
-          <LineNumber>158</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>28568</Address>
-          <ByteObject>0</ByteObject>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>E:\ARM-CODE\VTCODE\VTI2C\vtI2C.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-        <Bp>
-          <Number>4</Number>
-          <Type>0</Type>
           <LineNumber>263</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>28064</Address>
+          <Address>35308</Address>
           <ByteObject>0</ByteObject>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
@@ -237,6 +207,21 @@
           <Filename></Filename>
           <ExecCommand></ExecCommand>
           <Expression>\\AutoRover\../vtCode/vtI2C/vtI2C.c\263</Expression>
+        </Bp>
+        <Bp>
+          <Number>3</Number>
+          <Type>0</Type>
+          <LineNumber>53</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>10912</Address>
+          <ByteObject>0</ByteObject>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename></Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\AutoRover\MainFiles/taskLCD.c\53</Expression>
         </Bp>
       </Breakpoint>
       <MemoryWindow1>
@@ -388,8 +373,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>207</TopLine>
-      <CurrentLine>213</CurrentLine>
+      <TopLine>60</TopLine>
+      <CurrentLine>68</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\MainFiles/main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>
@@ -428,73 +413,73 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>3</ColumnNumber>
+      <ColumnNumber>6</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>109</TopLine>
-      <CurrentLine>109</CurrentLine>
+      <TopLine>186</TopLine>
+      <CurrentLine>193</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\MainFiles/taskLCD.c</PathWithFileName>
       <FilenameWithoutPath>taskLCD.c</FilenameWithoutPath>
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>0</FileNumber>
+      <FileNumber>10</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>18</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\MainFiles/taskCommand.c</PathWithFileName>
       <FilenameWithoutPath>taskCommand.c</FilenameWithoutPath>
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>0</FileNumber>
+      <FileNumber>11</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>26</ColumnNumber>
+      <ColumnNumber>19</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>77</TopLine>
-      <CurrentLine>91</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>20</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\MainFiles/taskConductor.c</PathWithFileName>
       <FilenameWithoutPath>taskConductor.c</FilenameWithoutPath>
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>0</FileNumber>
+      <FileNumber>12</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>211</TopLine>
+      <CurrentLine>211</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\MainFiles/taskLocate.c</PathWithFileName>
       <FilenameWithoutPath>taskLocate.c</FilenameWithoutPath>
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>0</FileNumber>
+      <FileNumber>13</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>152</TopLine>
-      <CurrentLine>158</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>18</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\MainFiles/taskSensors.c</PathWithFileName>
       <FilenameWithoutPath>taskSensors.c</FilenameWithoutPath>
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
-      <FileNumber>0</FileNumber>
+      <FileNumber>14</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -506,6 +491,20 @@
       <PathWithFileName>.\MainFiles/taskTimers.c</PathWithFileName>
       <FilenameWithoutPath>taskTimers.c</FilenameWithoutPath>
     </File>
+    <File>
+      <GroupNumber>2</GroupNumber>
+      <FileNumber>15</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <ColumnNumber>0</ColumnNumber>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <TopLine>0</TopLine>
+      <CurrentLine>0</CurrentLine>
+      <bDave2>0</bDave2>
+      <PathWithFileName>.\MainFiles/matrix.c</PathWithFileName>
+      <FilenameWithoutPath>matrix.c</FilenameWithoutPath>
+    </File>
   </Group>
 
   <Group>
@@ -515,7 +514,7 @@
     <cbSel>0</cbSel>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>10</FileNumber>
+      <FileNumber>16</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -529,7 +528,7 @@
     </File>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>11</FileNumber>
+      <FileNumber>17</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -543,7 +542,7 @@
     </File>
     <File>
       <GroupNumber>3</GroupNumber>
-      <FileNumber>12</FileNumber>
+      <FileNumber>18</FileNumber>
       <FileType>2</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -564,7 +563,7 @@
     <cbSel>0</cbSel>
     <File>
       <GroupNumber>4</GroupNumber>
-      <FileNumber>13</FileNumber>
+      <FileNumber>19</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -578,7 +577,7 @@
     </File>
     <File>
       <GroupNumber>4</GroupNumber>
-      <FileNumber>14</FileNumber>
+      <FileNumber>20</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -592,7 +591,7 @@
     </File>
     <File>
       <GroupNumber>4</GroupNumber>
-      <FileNumber>15</FileNumber>
+      <FileNumber>21</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -606,7 +605,7 @@
     </File>
     <File>
       <GroupNumber>4</GroupNumber>
-      <FileNumber>16</FileNumber>
+      <FileNumber>22</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -620,7 +619,7 @@
     </File>
     <File>
       <GroupNumber>4</GroupNumber>
-      <FileNumber>17</FileNumber>
+      <FileNumber>23</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -636,12 +635,12 @@
 
   <Group>
     <GroupName>LCD</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>18</FileNumber>
+      <FileNumber>24</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -655,14 +654,14 @@
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
-      <FileNumber>19</FileNumber>
+      <FileNumber>25</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>0</ColumnNumber>
+      <ColumnNumber>16</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>967</TopLine>
+      <CurrentLine>977</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>../vtCode/vtLCD/GLCD_SPI_LPC1700.c</PathWithFileName>
       <FilenameWithoutPath>GLCD_SPI_LPC1700.c</FilenameWithoutPath>
@@ -671,12 +670,12 @@
 
   <Group>
     <GroupName>Drivers</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <File>
       <GroupNumber>6</GroupNumber>
-      <FileNumber>20</FileNumber>
+      <FileNumber>26</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -690,7 +689,7 @@
     </File>
     <File>
       <GroupNumber>6</GroupNumber>
-      <FileNumber>21</FileNumber>
+      <FileNumber>27</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -704,7 +703,7 @@
     </File>
     <File>
       <GroupNumber>6</GroupNumber>
-      <FileNumber>22</FileNumber>
+      <FileNumber>28</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -718,7 +717,7 @@
     </File>
     <File>
       <GroupNumber>6</GroupNumber>
-      <FileNumber>23</FileNumber>
+      <FileNumber>29</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -732,7 +731,7 @@
     </File>
     <File>
       <GroupNumber>6</GroupNumber>
-      <FileNumber>24</FileNumber>
+      <FileNumber>30</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -746,7 +745,7 @@
     </File>
     <File>
       <GroupNumber>6</GroupNumber>
-      <FileNumber>25</FileNumber>
+      <FileNumber>31</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -762,12 +761,12 @@
 
   <Group>
     <GroupName>I2C</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <File>
       <GroupNumber>7</GroupNumber>
-      <FileNumber>26</FileNumber>
+      <FileNumber>32</FileNumber>
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
@@ -783,60 +782,8 @@
 
   <AlienFiles>
     <PathWithFilename>E:\AUTO-ROVER\ARM\RTOSDEMO\MAINFILES\taskLCD.h</PathWithFilename>
-    <TopLine>90</TopLine>
-    <CurrentLine>96</CurrentLine>
-    <Constant>0</Constant>
-    <WindowPosition>
-      <length>0</length>
-      <flags>0</flags>
-      <showCmd>0</showCmd>
-      <MinPosition>
-        <xPos>0</xPos>
-        <yPos>0</yPos>
-      </MinPosition>
-      <MaxPosition>
-        <xPos>0</xPos>
-        <yPos>0</yPos>
-      </MaxPosition>
-      <NormalPosition>
-        <Top>0</Top>
-        <Left>0</Left>
-        <Right>0</Right>
-        <Bottom>0</Bottom>
-      </NormalPosition>
-    </WindowPosition>
-  </AlienFiles>
-
-  <AlienFiles>
-    <PathWithFilename>E:\AUTO-ROVER\ARM\RTOSDEMO\MAINFILES\taskConductor.h</PathWithFilename>
-    <TopLine>42</TopLine>
-    <CurrentLine>48</CurrentLine>
-    <Constant>0</Constant>
-    <WindowPosition>
-      <length>0</length>
-      <flags>0</flags>
-      <showCmd>0</showCmd>
-      <MinPosition>
-        <xPos>0</xPos>
-        <yPos>0</yPos>
-      </MinPosition>
-      <MaxPosition>
-        <xPos>0</xPos>
-        <yPos>0</yPos>
-      </MaxPosition>
-      <NormalPosition>
-        <Top>0</Top>
-        <Left>0</Left>
-        <Right>0</Right>
-        <Bottom>0</Bottom>
-      </NormalPosition>
-    </WindowPosition>
-  </AlienFiles>
-
-  <AlienFiles>
-    <PathWithFilename>E:\AUTO-ROVER\ARM\RTOSDEMO\MAINFILES\taskCommand.h</PathWithFilename>
-    <TopLine>50</TopLine>
-    <CurrentLine>60</CurrentLine>
+    <TopLine>56</TopLine>
+    <CurrentLine>56</CurrentLine>
     <Constant>0</Constant>
     <WindowPosition>
       <length>0</length>
@@ -864,55 +811,37 @@
     <ActiveMDIGroup>0</ActiveMDIGroup>
     <MDIGroup>
       <Size>100</Size>
-      <ActiveTab>3</ActiveTab>
+      <ActiveTab>1</ActiveTab>
       <Documents>
-        <Doc>
-          <Name>E:\Auto-Rover\ARM\RTOSDemo\MAINFILES\TASKCOMMAND.H</Name>
-          <ColumnNumber>37</ColumnNumber>
-          <TopLine>50</TopLine>
-          <CurrentLine>60</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>../FreeRTOS/Demo/CORTEX_LPC1768_GCC_Rowley/ParTest.c</Name>
-          <ColumnNumber>0</ColumnNumber>
-          <TopLine>1</TopLine>
-          <CurrentLine>1</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\MainFiles/main.c</Name>
-          <ColumnNumber>0</ColumnNumber>
-          <TopLine>207</TopLine>
-          <CurrentLine>213</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\MainFiles/taskConductor.c</Name>
-          <ColumnNumber>26</ColumnNumber>
-          <TopLine>77</TopLine>
-          <CurrentLine>91</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>E:\Auto-Rover\ARM\RTOSDemo\MAINFILES\TASKCONDUCTOR.H</Name>
-          <ColumnNumber>0</ColumnNumber>
-          <TopLine>42</TopLine>
-          <CurrentLine>48</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\MainFiles/taskLCD.c</Name>
-          <ColumnNumber>3</ColumnNumber>
-          <TopLine>109</TopLine>
-          <CurrentLine>109</CurrentLine>
-        </Doc>
         <Doc>
           <Name>E:\Auto-Rover\ARM\RTOSDemo\MAINFILES\TASKLCD.H</Name>
           <ColumnNumber>0</ColumnNumber>
-          <TopLine>90</TopLine>
-          <CurrentLine>96</CurrentLine>
+          <TopLine>56</TopLine>
+          <CurrentLine>56</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\MainFiles/taskLCD.c</Name>
+          <ColumnNumber>6</ColumnNumber>
+          <TopLine>186</TopLine>
+          <CurrentLine>193</CurrentLine>
         </Doc>
         <Doc>
           <Name>.\MainFiles/taskSensors.c</Name>
           <ColumnNumber>0</ColumnNumber>
-          <TopLine>152</TopLine>
-          <CurrentLine>158</CurrentLine>
+          <TopLine>1</TopLine>
+          <CurrentLine>18</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\MainFiles/taskCommand.c</Name>
+          <ColumnNumber>0</ColumnNumber>
+          <TopLine>1</TopLine>
+          <CurrentLine>18</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\MainFiles/main.c</Name>
+          <ColumnNumber>0</ColumnNumber>
+          <TopLine>60</TopLine>
+          <CurrentLine>68</CurrentLine>
         </Doc>
       </Documents>
     </MDIGroup>

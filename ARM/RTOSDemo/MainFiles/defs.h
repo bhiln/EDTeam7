@@ -1,22 +1,66 @@
 #ifndef DEFS_H
 #define DEFS_H
 
+
 /*------------------------------------------------------------------------------
- * Misc. Definitions
+ * Custom Data Types
  **/
 
-// Joystick pins.
-#define JOYSTICK_PORT           1
-#define JOYSTICK_LEFT           (1 << 26)
-#define JOYSTICK_RIGHT          (1 << 24)
-#define JOYSTICK_UP             (1 << 23)
-#define JOYSTICK_DOWN           (1 << 25)
-#define JOYSTICK_SELECT         (1 << 20)
-
-// Defined data types.
 typedef uint8_t bool;
 #define true  1
 #define false 0
+
+/*------------------------------------------------------------------------------
+ * SLAVES
+ **/
+
+#define SLAVE_ADDR      0x4F
+
+/*------------------------------------------------------------------------------
+ * GPIO
+ **/
+
+// LED pins.
+#define PORT_LED_0      1
+#define PORT_LED_1      1
+#define PORT_LED_2      1
+#define PORT_LED_3      2
+#define PORT_LED_4      2
+#define PORT_LED_5      2
+#define PORT_LED_6      2
+#define PORT_LED_7      2
+#define PIN_LED_0       (1 << 28)
+#define PIN_LED_1       (1 << 29)
+#define PIN_LED_2       (1 << 31)
+#define PIN_LED_3       (1 << 2)  
+#define PIN_LED_4       (1 << 3)
+#define PIN_LED_5       (1 << 4)
+#define PIN_LED_6       (1 << 5)
+#define PIN_LED_7       (1 << 6)
+
+// Debug pins.
+#define PORT_DEBUG      0
+#define PIN_DEBUG_0 	(1 << 15)
+#define PIN_DEBUG_1 	(1 << 16)
+#define PIN_DEBUG_2 	(1 << 17)
+#define PIN_DEBUG_3 	(1 << 18)
+
+// Joystick pins.
+#define PORT_JOY        1
+#define PIN_JOY_LEFT    (1 << 26)
+#define PIN_JOY_RIGHT   (1 << 24)
+#define PIN_JOY_UP      (1 << 23)
+#define PIN_JOY_DOWN    (1 << 25)
+#define PIN_JOY_SEL     (1 << 20)
+
+// Pushbutton INT0
+#define PORT_PUSH       2
+#define PIN_PUSH        (1 << 10)
+
+
+/*------------------------------------------------------------------------------
+ * STACK
+ **/
 
 // Defines a command for monitering the stack size to make sure that the stack
 // does not overflow. 
@@ -41,8 +85,6 @@ typedef uint8_t bool;
 #define COMMAND_STACK_SIZE      (BASE_STACK_SIZE*configMINIMAL_STACK_SIZE)
 #endif
 
-// Address of the ARM PIC.
-#define SLAVE_ADDR	            0x4F
 
 /*------------------------------------------------------------------------------
  * Message Types
@@ -52,10 +94,19 @@ typedef uint8_t bool;
 #define MSG_TYPE_LOCATE         1
 #define MSG_TYPE_CMD	        2
 #define MSG_TYPE_ACK            3   
-#define MSG_TYPE_LCD_DEBUG      4
-#define MSG_TYPE_LCD_SENSORS    5
-#define MSG_TYPE_LCD_CMDS       6
-#define MSG_TYPE_LCD_ROVER      7
+#define MSG_TYPE_LCD_MOTION     4
+#define MSG_TYPE_LCD_GOAL_PRIME 5
+#define MSG_TYPE_LCD_GOAL_SEC   6
+#define MSG_TYPE_LCD_POS_ROVER  7
+#define MSG_TYPE_LCD_POS_RAMP   8
+#define MSG_TYPE_LCD_SIZE_MAP   9
+#define MSG_TYPE_LCD_SLAVE_ADDR 10
+#define MSG_TYPE_LCD_CONNECT    11
+#define MSG_TYPE_LCD_CMD        12
+#define MSG_TYPE_LCD_SENS_DATA  13
+#define MSG_TYPE_LCD_EVENTS     14
+#define MSG_TYPE_LCD_SENSORS    15
+#define MSG_TYPE_LCD_MAP        16
 
 #define MSG_TYPE_TIMER_LCD      10
 #define MSG_TYPE_TIMER_SENSORS	11
@@ -81,16 +132,20 @@ typedef uint8_t bool;
 #define SENS_AC00           10
 
 // Command message protocol.
-#define CMD_LEN             3
-#define CMD_TYPE            0
-#define CMD_VALUE           1
-#define CMD_SPEED           2
+#define CMD_LEN             7
+#define CMD_INIT            0
+#define CMD_INDEX           1
+#define CMD_MSG_TYPE        2
+#define CMD_TYPE            3
+#define CMD_VALUE           4
+#define CMD_SPEED           5
+#define CMD_TERM            6
 
-#define CMD_STOP            0x00
-#define CMD_MF              0x01
-#define CMD_MB              0x02
-#define CMD_TL              0x03
-#define CMD_TR              0x04
+#define CMD_MF              0x0A
+#define CMD_TL              0x0B
+#define CMD_TR              0x0C
+#define CMD_STOP            0x0D
+#define CMD_MB              0x0E
 
 // Object protocol.
 #define OBJ_LEN             2
@@ -115,11 +170,17 @@ typedef uint8_t bool;
  **/
 
 // Name of the task.
-signed char taskNameLCD[]       = "LCD";
-signed char taskNameSensors[]   = "Sensor"; 
-signed char taskNameLocate[]    = "Locate";
-signed char taskNameConductor[] = "Conductor"; 
-signed char taskNameCommand[]   = "Command";
+signed char taskNameI2C[]       = "I2C task";
+signed char taskNameLCD[]       = "LCD Task";
+signed char taskNameSensors[]   = "SENSORS task"; 
+signed char taskNameLocate[]    = "LOCATE task";
+signed char taskNameConductor[] = "CONDUCTOR task"; 
+signed char taskNameCommand[]   = "COMMAND task";
+signed char taskNameScheduler[] = "SCHEDULER task";
 
+signed char timerNameLCD[]      = "LCD timer";
+signed char timerNameLocate[]   = "LOCATE timer";
+signed char timerNameCommand[]  = "COMMAND timer";
+signed char timerNameSensors[]  = "SENSORS timer";
 
 #endif
