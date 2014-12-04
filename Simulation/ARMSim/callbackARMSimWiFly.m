@@ -104,6 +104,7 @@ if (recievedByte == 255)
     end
     if (dataBuffer(1) == 53)
         fprintf('ROVER HAS FINISHED MOVING: %d\n', dataBuffer(2));
+        AC.roverFinish();
         AC.setDone(true);
     end
     

@@ -198,6 +198,109 @@ classdef ARMController < handle
             replotSensorData();
         end
         
+        function roverFinish()
+            global ntimes;
+            global XY;
+            global origX;
+            global origY;
+            global x;
+            global y;
+            global alpha;
+            global origAlpha;
+            global command;
+            global getAngle;
+            global frontLeft;
+            global frontRight;
+            global leftFront;
+            global leftBack;
+            global rightFront;
+            global rightBack;
+            global backLeft;
+            global backRight;
+            global frontPointer;
+            global irSensors;
+            global getDistance;
+            
+            function replotSensorData()
+
+                function [ toReturn ] = getIRSensorValue(sensorNum)
+                    value = irSensors(sensorNum);
+                    analogVolt = (value/310);
+                    toReturn = 5.5085320959466787e+002 * analogVolt^0 ...
+                                + -1.0261454415387730e+003 * analogVolt^1 ...
+                                + 7.1555982778098962e+002 * analogVolt^2 ...
+                                + -2.1128075555690111e+002 * analogVolt^3 ...
+                                + 2.2264016814490361e+001 * analogVolt^4;
+                end
+
+                global irReady;
+                if (irReady)
+                    fprintf('SENSOR0: %d\n', getIRSensorValue(1));
+                    figure(2);
+                    hold on;
+
+                    set(frontLeft,'XData',[XY(1,3) XY(1,3)+(cos(alpha)*getIRSensorValue(1))],'YData',[XY(2,3), XY(2,3)+(sin(alpha)*getIRSensorValue(1))]);
+                    plot(XY(1,3)+(cos(alpha)*getIRSensorValue(1)),XY(2,3)+(sin(alpha)*getIRSensorValue(1)),'x');
+
+                    set(frontRight,'XData',[XY(1,2) XY(1,2)+(cos(alpha)*getIRSensorValue(2))],'YData',[XY(2,2) XY(2,2)+(sin(alpha)*getIRSensorValue(2))]);
+                    plot(XY(1,2)+(cos(alpha)*getIRSensorValue(2)),XY(2,2)+(sin(alpha)*getIRSensorValue(2)),'x');
+
+                    set(leftFront,'XData',[XY(1,3) XY(1,3)-(sin(alpha)*getIRSensorValue(5))],'YData',[XY(2,3) XY(2,3)+(cos(alpha)*getIRSensorValue(5))]);
+                    plot(XY(1,3)-(sin(alpha)*getIRSensorValue(5)),XY(2,3)+(cos(alpha)*getIRSensorValue(5)),'x');
+
+                    set(leftBack,'XData',[XY(1,4) XY(1,4)-(sin(alpha)*getIRSensorValue(6))],'YData',[XY(2,4) XY(2,4)+(cos(alpha)*getIRSensorValue(6))]);
+                    plot(XY(1,4)-(sin(alpha)*getIRSensorValue(6)),XY(2,4)+(cos(alpha)*getIRSensorValue(6)),'x');
+
+                    set(rightFront,'XData',[XY(1,2) XY(1,2)+(sin(alpha)*getIRSensorValue(7))],'YData',[XY(2,2) XY(2,2)-(cos(alpha)*getIRSensorValue(7))]);
+                    plot(XY(1,2)+(sin(alpha)*getIRSensorValue(7)),XY(2,2)-(cos(alpha)*getIRSensorValue(7)),'x');
+
+                    set(rightBack,'XData',[XY(1,1) XY(1,1)+(sin(alpha)*getIRSensorValue(8))],'YData',[XY(2,1) XY(2,1)-(cos(alpha)*getIRSensorValue(8))]);
+                    plot(XY(1,1)+(sin(alpha)*getIRSensorValue(8)),XY(2,1)-(cos(alpha)*getIRSensorValue(8)),'x');
+
+                    set(backLeft,'XData',[XY(1,4) XY(1,4)-(cos(alpha)*getIRSensorValue(9))],'YData',[XY(2,4), XY(2,4)-(sin(alpha)*getIRSensorValue(9))]);
+                    plot(XY(1,4)-(cos(alpha)*getIRSensorValue(9)),XY(2,4)-(sin(alpha)*getIRSensorValue(9)),'x');
+
+                    set(backRight,'XData',[XY(1,1) XY(1,1)-(cos(alpha)*getIRSensorValue(10))],'YData',[XY(2,1), XY(2,1)-(sin(alpha)*getIRSensorValue(10))]);
+                    plot(XY(1,1)-(cos(alpha)*getIRSensorValue(10)),XY(2,1)-(sin(alpha)*getIRSensorValue(10)),'x');
+
+                    hold off;
+                end
+            end
+        
+            
+            figure(2);
+            hold on;
+            plot(XY(1,:),XY(2,:),'c');
+            hold off;
+            if (command == 10)
+                x = origX+((getDistance()*2/25)*cos(alpha));
+                y = origY+((getDistance()*2/25)*sin(alpha));
+            end
+            if (command == 14)
+                x = origX-((getDistance()*2/25)*cos(alpha));
+                y = origY-((getDistance()*2/25)*sin(alpha));
+            end
+            R(1,:)=x-(x(1)+1);R(2,:)=y-(y(1)+1);
+            if (command == 11)
+                alpha= origAlpha+(getAngle()*4*pi/360);
+                fprintf('left: %d\n',alpha);
+            end
+            if (command == 12)
+                alpha= origAlpha-(getAngle()*4*pi/360);
+                fprintf('right: %d\n',alpha);
+            end
+            XY=[cos(alpha) -sin(alpha);sin(alpha) cos(alpha)]*R;
+            XY(1,:) = XY(1,:)+(x(1)-1);
+            XY(2,:) = XY(2,:)+(y(1)-1);
+
+            hold on;
+            plot(XY(1,:),XY(2,:),'r');
+            set(frontPointer, 'XData',[((XY(1,2)+XY(1,3))/2) ((XY(1,2)+XY(1,3))/2)+(2*cos(alpha))],'YData',[((XY(2,2)+XY(2,3))/2) ((XY(2,2)+XY(2,3))/2)+(2*sin(alpha))]);
+            hold off;
+            
+            replotSensorData();
+        end
+        
         function tr = test()
             tr = true;
         end
@@ -230,6 +333,7 @@ classdef ARMController < handle
             global backRight;
             global frontPointer;
             global getAngle;
+            global getDistance;
             ioWiFly = ioW;
             ntimes = 0;
             confirmed = -99;
@@ -422,6 +526,13 @@ classdef ARMController < handle
             
             function sendMotorCommand(c)
                 global command;
+                global origX;
+                global origY;
+                global origAlpha;
+                
+                origX = x;
+                origY = y;
+                origAlpha = alpha;
                 
                 done = false;
                 
