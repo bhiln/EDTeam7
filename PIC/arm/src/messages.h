@@ -2,7 +2,7 @@
 #define __messages
 
 // The maximum length (in bytes) of a message
-#define MSGLEN 28
+#define MSGLEN 26
 
 // The maximum number of messages in a single queue
 #define MSGQUEUELEN 4
@@ -78,7 +78,11 @@ signed char FromMainLow_recvmsg(unsigned char,unsigned char *,void *);
 signed char FromMainHigh_sendmsg(unsigned char,unsigned char,void *);
 signed char FromMainHigh_recvmsg(unsigned char,unsigned char *,void *);
 
-signed char SensorData_sendmsg(unsigned char, unsigned char, void *);
-signed char SensorData_recvmsg(unsigned char, unsigned char, unsigned char *, void *);
+// Queue:
+// The "SensorData" queue is a message queue from the "main()"
+// thread to the high priority interrupt handlers.  The send is called
+// in the "main()" thread and the receive from the interrupt handlers.
+signed char SensorData_sendmsg(unsigned char,unsigned char,void *);
+signed char SensorData_recvmsg(unsigned char,unsigned char *,void *);
 
 #endif

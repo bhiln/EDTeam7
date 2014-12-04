@@ -168,7 +168,7 @@ DEBUG_OFF(TIMER1);
             switch (msgtype) {
                 case MSGT_TIMER0:
                 {
-                    timer0_lthread(&t0thread_data, msgtype, length, msgbuffer);
+//                    timer0_lthread(&t0thread_data, msgtype, length, msgbuffer);
                     break;
                 };
                 case MSGT_I2C_DATA:
@@ -246,6 +246,12 @@ DEBUG_OFF(TIMER1);
                     //
                     // The last byte received is the "register" that is trying to be read
                     // The response is dependent on the register.
+
+//                    length = MotorData_recvmsg(MSGLEN, &msgtype, (void *) msgbuffer);
+//                    if (length > 0) {
+//                        start_i2c_slave_reply(3, msgbuffer);
+//                        break;
+//                    }
                     break;
                 };
                 default:

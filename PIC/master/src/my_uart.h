@@ -3,7 +3,7 @@
 
 #include "messages.h"
 
-#define MAXUARTBUF 6
+#define MAXUARTBUF 26
 #if (MAXUARTBUF > MSGLEN)
 #define MAXUARTBUF MSGLEN
 #endif
@@ -19,8 +19,8 @@ typedef struct __uart_comm {
 } uart_comm;
 
 void init_uart_recv(uart_comm *);
-void uart_trans_int_handler(void);
 void uart_recv_int_handler(void);
 void uart_send(unsigned char,unsigned char *);
+void uart_trans_int_handler(void);
 
 #endif

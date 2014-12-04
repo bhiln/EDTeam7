@@ -189,6 +189,26 @@ signed char FromMainHigh_recvmsg(unsigned char maxlength, unsigned char *msgtype
     return (recv_msg(&FromMainHigh_MQ, maxlength, msgtype, data));
 }
 
+static msg_queue MotorData_MQ;
+
+signed char MotorData_sendmsg(unsigned char length, unsigned char msgtype, void *data) {
+#ifdef DEBUG
+    if (!in_low_int()) {
+        return (MSG_NOT_IN_LOW);
+    }
+#endif
+    return (send_msg(&MotorData_MQ, length, msgtype, data));
+}
+
+signed char MotorData_recvmsg(unsigned char maxlength, unsigned char *msgtype, void *data) {
+#ifdef DEBUG
+    if (!in_low_int()) {
+        return (MSG_NOT_IN_LOW);
+    }
+#endif
+    return (recv_msg(&MotorData_MQ, maxlength, msgtype, data));
+}
+
 static unsigned char MQ_Main_Willing_to_block;
 
 void init_queues() {
@@ -197,6 +217,7 @@ void init_queues() {
     init_queue(&ToMainHigh_MQ);
     init_queue(&FromMainLow_MQ);
     init_queue(&FromMainHigh_MQ);
+    init_queue(&MotorData_MQ);
 }
 
 void enter_sleep_mode(void) {

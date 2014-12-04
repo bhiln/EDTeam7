@@ -87,12 +87,14 @@ void InterruptHandlerHigh() {
     // see which device generated this interrupt.  Then we can call the correct handler.
 
     // check to see if we have an I2C interrupt
-    if (PIR1bits.SSPIF && PIE1bits.SSP1IE) {
+    if (PIR1bits.SSPIF) {
         // clear the I2C ISR Flag interrupt flag
         PIR1bits.SSPIF = 0;
         // call the handler
         i2c_master_int_handler();
     }
+
+    
 
     // here is where you would check other interrupt flags.
 
@@ -121,7 +123,7 @@ void InterruptHandlerLow() {
         // call whatever handler you want (this is "user" defined)
         timer0_int_handler();
     }
-    
+
     // check to see if we have an interrupt on timer 1
     if (PIR1bits.TMR1IF) {
         PIR1bits.TMR1IF = 0; //clear interrupt flag
@@ -130,17 +132,17 @@ void InterruptHandlerLow() {
 
     // check to see if we have an interrupt on USART RX
     if (PIR1bits.RCIF) {
-        DEBUG_ON(UART_RX);
+//        DEBUG_ON(UART_RX);
         PIR1bits.RCIF = 0; //clear interrupt flag
         uart_recv_int_handler();
-        DEBUG_OFF(UART_RX);
+//        DEBUG_OFF(UART_RX);
     }
     
     // check to see if we have an interrupt on USART TX
     if (PIR1bits.TXIF && PIE1bits.TXIE) {
-        DEBUG_ON(UART_TX);
+//        DEBUG_ON(UART_TX);
         uart_trans_int_handler();
-        DEBUG_OFF(UART_TX);
+//        DEBUG_OFF(UART_TX);
     }
 }
 

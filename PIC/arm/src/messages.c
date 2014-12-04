@@ -3,7 +3,6 @@
 #include "messages.h"
 #include <string.h>
 #include <delays.h>
-#include "my_i2c.h"
 
 // The key to making this code safe for interrupts is that
 // each queue is filled by only one writer and read by one reader.
@@ -142,69 +141,6 @@ signed char ToMainHigh_recvmsg(unsigned char maxlength, unsigned char *msgtype, 
     return (recv_msg(&ToMainHigh_MQ, maxlength, msgtype, data));
 }
 
-static msg_queue SensorData_MQ;
-
-signed char SensorData_sendmsg(unsigned char length, unsigned char msgtype, void *data) {
-#ifdef DEBUG
-    if (!in_high_int()) {
-        return (MSG_NOT_IN_HIGH);
-    }
-#endif
-    unsigned char slot;
-    msg *qmsg;
-    size_t tlength = length;
-    msg_queue *qptr = &SensorData_MQ;
-
-    for(int i = 0; i < MSGQUEUELEN; i++)
-    {
-        if(i == (MSGQUEUELEN - 1))
-        {
-            qmsg = &(qptr->queue[i]);
-            qmsg->length = length;
-            memcpy(qmsg->data, data, tlength);
-        }
-        else
-        {
-            qmsg = &(qptr->queue[i]);
-            msg *temp = &(qptr->queue[i + 1]);
-            qmsg->length = temp->length;
-            memcpy(qmsg->data, temp->data, qmsg->length);
-        }
-    }
-    if ((int) msgtype == MSGT_I2C_RQST) {
-        slot = qptr->cur_write_ind;
-        qmsg = &(qptr->queue[slot]);
-        start_i2c_slave_reply(length, (qmsg->data));
-    }
-
-    //slot = qptr->cur_write_ind;
-    //qmsg = &(qptr->queue[slot]);
-    // if the slot isn't empty, then we should return
-    //if (qmsg->full != 0) {
-       // return (MSGQUEUE_FULL);
-    //}
-
-    // now fill in the message
-    //qmsg->length = length;
-    //memcpy(qmsg->data, data, tlength);
-
-    // This *must* be done after the message is completely inserted
-    qmsg->full = 1;
-    return (MSGSEND_OKAY);
-    //return (send_msg(&SensorData_MQ, length, msgtype, data));
-}
-
-signed char SensorData_recvmsg(unsigned char start, unsigned char maxlength, unsigned char *msgtype, void *data)
-{
-    #ifdef DEBUG
-    if (!in_main()) {
-        return (MSG_NOT_IN_MAIN);
-    }
-#endif
-    //return (recv_msg(&SensorData_MQ, maxlength, msgtype, data));
-    return(recv_msg(&SensorData_MQ, maxlength, msgtype, data));
-}
-
 #ifndef __XC8
 #pragma udata msgqueue3
 #endif
@@ -251,6 +187,26 @@ signed char FromMainHigh_recvmsg(unsigned char maxlength, unsigned char *msgtype
     }
 #endif
     return (recv_msg(&FromMainHigh_MQ, maxlength, msgtype, data));
+}
+
+static msg_queue SensorData_MQ;
+
+signed char SensorData_sendmsg(unsigned char length, unsigned char msgtype, void *data) {
+#ifdef DEBUG
+    if (!in_main()) {
+        return (MSG_NOT_IN_MAIN);
+    }
+#endif
+    return (send_msg(&SensorData_MQ, length, msgtype, data));
+}
+
+signed char SensorData_recvmsg(unsigned char maxlength, unsigned char *msgtype, void *data) {
+#ifdef DEBUG
+    if (!in_high_int()) {
+        return (MSG_NOT_IN_HIGH);
+    }
+#endif
+    return (recv_msg(&SensorData_MQ, maxlength, msgtype, data));
 }
 
 static unsigned char MQ_Main_Willing_to_block;

@@ -22,6 +22,74 @@ end
 
 if (recievedByte == 255)
     %fprintf('len);
+    if (dataBuffer(1) == 10)
+        AC.setIRReady(false);
+        
+        x=uint8(dataBuffer(3)); % first byte
+        y=uint8(dataBuffer(2)); % second byte
+        bytepack=uint16(x);
+        bytepack=bitshift(bytepack,8);
+        AC.setIRSensor(1, bitor(bytepack,uint16(y)));
+        
+        x=uint8(dataBuffer(5)); % first byte
+        y=uint8(dataBuffer(4)); % second byte
+        bytepack=uint16(x);
+        bytepack=bitshift(bytepack,8);
+        AC.setIRSensor(2, bitor(bytepack,uint16(y)));
+        
+        x=uint8(dataBuffer(7)); % first byte
+        y=uint8(dataBuffer(6)); % second byte
+        bytepack=uint16(x);
+        bytepack=bitshift(bytepack,8);
+        AC.setIRSensor(3, bitor(bytepack,uint16(y)));
+        
+        x=uint8(dataBuffer(9)); % first byte
+        y=uint8(dataBuffer(8)); % second byte
+        bytepack=uint16(x);
+        bytepack=bitshift(bytepack,8);
+        AC.setIRSensor(4, bitor(bytepack,uint16(y)));
+        
+        x=uint8(dataBuffer(11)); % first byte
+        y=uint8(dataBuffer(10)); % second byte
+        bytepack=uint16(x);
+        bytepack=bitshift(bytepack,8);
+        AC.setIRSensor(5, bitor(bytepack,uint16(y)));
+        
+        x=uint8(dataBuffer(13)); % first byte
+        y=uint8(dataBuffer(12)); % second byte
+        bytepack=uint16(x);
+        bytepack=bitshift(bytepack,8);
+        AC.setIRSensor(6, bitor(bytepack,uint16(y)));
+        
+        x=uint8(dataBuffer(15)); % first byte
+        y=uint8(dataBuffer(14)); % second byte
+        bytepack=uint16(x);
+        bytepack=bitshift(bytepack,8);
+        AC.setIRSensor(7, bitor(bytepack,uint16(y)));
+        
+        x=uint8(dataBuffer(17)); % first byte
+        y=uint8(dataBuffer(16)); % second byte
+        bytepack=uint16(x);
+        bytepack=bitshift(bytepack,8);
+        AC.setIRSensor(8, bitor(bytepack,uint16(y)));
+        
+        x=uint8(dataBuffer(19)); % first byte
+        y=uint8(dataBuffer(18)); % second byte
+        bytepack=uint16(x);
+        bytepack=bitshift(bytepack,8);
+        AC.setIRSensor(9, bitor(bytepack,uint16(y)));
+        
+        x=uint8(dataBuffer(21)); % first byte
+        y=uint8(dataBuffer(20)); % second byte
+        bytepack=uint16(x);
+        bytepack=bitshift(bytepack,8);
+        AC.setIRSensor(10, bitor(bytepack,uint16(y)));
+        
+        AC.setIRReady(true);
+        
+        fprintf('RECIEVED SENSOR DATA\n');
+        AC.plotSensorData();
+    end
     if (dataBuffer(1) == 51)
         if (dataBuffer(2) ~= AC.getLastMessageID())
             fprintf('\n\nMISSED MOTOR MESSAGE: %d\n\n', AC.getLastMessageID());
@@ -31,10 +99,12 @@ if (recievedByte == 255)
         end
     end
     if (dataBuffer(1) == 52)
-        if (dataBuffer(2) == AC.getLastMessageID())
-            fprintf('ROVER HAS FINISHED MOVING: %d\n', AC.getLastMessageID());
-%             AC.setConfirmed(true);
-        end
+        fprintf('MOVING STATUS UPDATE: %d\n', dataBuffer(2));
+        AC.roverStep();
+    end
+    if (dataBuffer(1) == 53)
+        fprintf('ROVER HAS FINISHED MOVING: %d\n', dataBuffer(2));
+        AC.setDone(true);
     end
     
     dataBuffer = [];
