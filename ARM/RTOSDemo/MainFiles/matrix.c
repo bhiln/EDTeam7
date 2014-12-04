@@ -29,12 +29,12 @@ void createMatrix(Matrix* A)
     A->allocated = true;
     
     // Initialize all elements to 0.
-    uint16_t j;
-    for(i = 0; i < r; i++)
-    {
-        for(j = 0; j < c; j++)
-            A->rowVectors[i].buf[j] = 0.0;
-    }
+    //uint16_t j;
+    //for(i = 0; i < r; i++)
+    //{
+        //for(j = 0; j < c; j++)
+            //A->rowVectors[i].buf[j] = 0.0;
+    //}
 }
 
 void createVector(Vector* x)
@@ -42,7 +42,7 @@ void createVector(Vector* x)
     if(x == NULL)
         return;
 
-    if(!x->allocated)
+    if(x->allocated)
         return;
 
     x->buf = malloc(x->n * sizeof(float));
@@ -50,7 +50,6 @@ void createVector(Vector* x)
 
     if(x->buf)
         x->allocated = true;
-    return true;
 }
 
 void freeMatrix(Matrix* A)
@@ -179,8 +178,9 @@ void dotProduct(float result, Vector* x, Vector* y)
         return;
 
     result = 0.0;
+	uint16_t n = x->n;
     uint16_t i;
-    for(i = 0; i < z->n; i++)
+    for(i = 0; i < n; i++)
         result += x->buf[i] * y->buf[i];
 }
 

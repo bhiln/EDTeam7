@@ -12,7 +12,6 @@
 #include <stdio.h>
 #include <math.h>
 
-#include "defs.h"
 #include "debug.h"
 
 typedef struct __Vector

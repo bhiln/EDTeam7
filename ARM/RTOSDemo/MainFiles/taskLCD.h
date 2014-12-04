@@ -32,10 +32,10 @@
  **/
 
 // Length of the queue to this task.
-#define queueLenLCD 	    15
+#define QUEUE_LEN_LCD 	    15
 
 // Maximum length of the buffer for this task.
-#define maxLenLCD           50
+#define QUEUE_BUF_LEN_LCD   50
 
 // Screen properties.
 #define SCREEN_WIDTH 		320
@@ -51,10 +51,6 @@
 #define LINES_SMALL         30
 #define LINES_LARGE         30
 
-// Tab properties
-#define TAB_INIT_LINE       4
-#define TAB_LINES           LINES_SMALL - TAB_INIT_LINE
-
 /*------------------------------------------------------------------------------
  * Data Structures
  **/
@@ -67,20 +63,65 @@ typedef struct __msgLCD
 {
 	uint8_t type;
 	uint8_t	length;
-	uint8_t buf[maxLenLCD + 1];
+	uint8_t buf[QUEUE_BUF_LEN_LCD];
 } msgLCD;
 
 
 typedef enum
 {
-    debug,
+    info,
+    events,
 	sensors,
-	cmds,
-    rover
-} Tabs;
+	map
+} Tab;
+
+typedef struct __TabInfo
+{
+    char* motion;
+    char* goalPrime;
+    char* goalSec;
+    char* posRover;
+    char* posRamp;
+    char* sizeMap;
+    char* slaveAddr;
+    char* connect;
+    char* cmd;
+    char* sensorData;
+} TabInfo;
+
+typedef struct __TabEvents
+{
+    uint8_t initLine;
+    uint8_t totalLines;
+    uint8_t curLine;
+    uint16_t curIndex;
+    char** header;
+    char** body;
+} TabEvents;
+
+typedef struct __TabSensors
+{
+    uint8_t nig;
+} TabSensors;
+
+typedef struct __TabMap
+{
+    uint8_t nag;
+} TabMap;
+
+typedef struct __TabData
+{
+    Tab         curTab;
+    TabInfo     tabInfo;
+	TabEvents  	tabEvents;
+	TabSensors	tabSensors;
+	TabMap		tabMap;
+} TabData;
 
 // Index of the current message for the corresponding tab.
 unsigned int debugIndex;
+
+// Index of the sensor message.
 unsigned int sensorsIndex;
 
 // Line of the current message for the corresponding tab..
@@ -91,27 +132,24 @@ unsigned int debugCurLine;
  **/
 
 void startTaskLCD(structLCD* dataLCD, unsigned portBASE_TYPE uxPriority);
-portBASE_TYPE sendTimerMsgLCD(structLCD* dataLCD, portTickType ticksElapsed, portTickType ticksToBlock); 
-portBASE_TYPE sendValueMsgLCD(structLCD* dataLCD, uint8_t type, uint8_t length, char* value, portTickType ticksToBlock);
+void sendTimerMsgLCD(structLCD* dataLCD, portTickType ticksElapsed, portTickType ticksToBlock); 
+void sendValueMsgLCD(structLCD* dataLCD, uint8_t type, uint8_t length, char* value, portTickType ticksToBlock);
 
 /*------------------------------------------------------------------------------
  * Functions
  **/
 
-void drawTabs(Tabs tab);
-void updateTab(Tabs tab, msgLCD* msg);
+void drawInfo(TabInfo* tabInfo);
+void drawEvents(TabEvents* tabEvents);
+void drawSensors(TabSensors* tabSensors);
+void drawMap(TabMap* tabMap);
 
-void drawDebug();
-void drawSensors();
-void drawCmds();
-void drawRover();
 
-void updateDebug(msgLCD* msg);
-void updateSensors(msgLCD* msg);
-void updateCmds(msgLCD* msg);
-void updateRover(msgLCD* msg);
+void updateInfo(TabData* tabData, msgLCD* msg, uint8_t type);
+void updateEvents(TabData* tabData, msgLCD* msg);
+void updateSensors(TabData* tabData, msgLCD* msg);
+void updateMap(TabData* tabData, msgLCD* msg);
 
 unsigned int centerStr(unsigned char* uncentStr, uint8_t fontInd, uint8_t alignInd);
-void parseSensorsMsg(unsigned char parsedSensorsMsg[11][5], unsigned char* sensorsMsg);
 
 #endif

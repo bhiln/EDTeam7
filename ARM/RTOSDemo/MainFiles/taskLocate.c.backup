@@ -12,7 +12,7 @@ static portTASK_FUNCTION(updateTaskLocate, pvParameters);
 void startTaskLocate(structLocate* dataLocate, unsigned portBASE_TYPE uxPriority, vtI2CStruct* devI2C0, structLCD* dataLCD)
 {
 	// Create the queue that will be used to talk to this task.
-	if ((dataLocate->inQ = xQueueCreate(queueLenLocate, sizeof(msgLocate))) == NULL)
+	if ((dataLocate->inQ = xQueueCreate(QUEUE_LEN_LOCATE, sizeof(msgLocate))) == NULL)
 		VT_HANDLE_FATAL_ERROR(0);
 
 	// Create the task.
@@ -37,7 +37,7 @@ portBASE_TYPE sendTimerMsgLocate(structLocate* dataLocate, portTickType ticksEla
 portBASE_TYPE sendValueMsgLocate(structLocate* dataLocate, uint8_t msgType, uint16_t* value, portTickType ticksToBlock)
 {
 	msgLocate msg;
-	msg.length = sizeof(uint16_t)*bufLenLocate;
+	msg.length = sizeof(uint16_t)*QUEUE_BUF_LEN_LOCATE;
 
  	memcpy(msg.buf, value, msg.length);
 	msg.msgType = msgType;
@@ -52,7 +52,7 @@ static portTASK_FUNCTION(updateTaskLocate, pvParameters)
 	structLCD*    dataLCD = param->dataLCD;
 	
 	// String buffer for printing.
-	char bufferLCD[maxLenLCD + 1];
+	char bufferLCD[QUEUE_BUF_LEN_LCD + 1];
 	
 	// Buffer for receiving messages.
 	msgLocate msg;
