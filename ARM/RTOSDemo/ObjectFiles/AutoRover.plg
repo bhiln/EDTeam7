@@ -14,18 +14,73 @@ compiling tasks.c...
 compiling port.c...
 compiling timers.c...
 compiling main.c...
+MainFiles/main.c: In function 'main':
+MainFiles/main.c(98): error: 'debugStartTaskI2C' undeclared (first use in this function)
+MainFiles/main.c(98): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/main.c: At top level:
 MainFiles/main.c(231): warning: null character(s) ignored
 compiling vtUtilities.c...
 compiling ParTest.c...
 compiling taskLCD.c...
 compiling taskCommand.c...
+MainFiles/taskCommand.c: In function 'updateTaskCommand':
+MainFiles/taskCommand.c(89): error: expected ',' or ';' before 'uint8_t'
+MainFiles/taskCommand.c(91): error: expected ',' or ';' before 'uint8_t'
+MainFiles/taskCommand.c(125): error: 'defaultValueJoyLeft' undeclared (first use in this function)
+MainFiles/taskCommand.c(125): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/taskCommand.c(125): warning: passing argument 3 of 'execCommand' makes integer from pointer without a cast
+MainFiles/taskCommand.h(70): error: note: expected 'uint8_t' but argument is of type 'uint8_t *'
+MainFiles/taskCommand.c(125): error: too many arguments to function 'execCommand'
+MainFiles/taskCommand.h(70): error: note: declared here
+MainFiles/taskCommand.c(127): error: 'defaultSpeedJoyLeft' undeclared (first use in this function)
+MainFiles/taskCommand.c(133): error: 'defaultValueJoyRight' undeclared (first use in this function)
+MainFiles/taskCommand.c(133): warning: passing argument 3 of 'execCommand' makes integer from pointer without a cast
+MainFiles/taskCommand.h(70): error: note: expected 'uint8_t' but argument is of type 'uint8_t *'
+MainFiles/taskCommand.c(133): error: too many arguments to function 'execCommand'
+MainFiles/taskCommand.h(70): error: note: declared here
+MainFiles/taskCommand.c(135): error: 'defaultSpeedJoyRight' undeclared (first use in this function)
+MainFiles/taskCommand.c(141): error: 'defaultValueJoyUp' undeclared (first use in this function)
+MainFiles/taskCommand.c(141): warning: passing argument 3 of 'execCommand' makes integer from pointer without a cast
+MainFiles/taskCommand.h(70): error: note: expected 'uint8_t' but argument is of type 'uint8_t *'
+MainFiles/taskCommand.c(141): error: too many arguments to function 'execCommand'
+MainFiles/taskCommand.h(70): error: note: declared here
+MainFiles/taskCommand.c(143): error: 'defaultSpeedJoyUp' undeclared (first use in this function)
+MainFiles/taskCommand.c(149): error: 'defaultValueJoyDown' undeclared (first use in this function)
+MainFiles/taskCommand.c(149): warning: passing argument 3 of 'execCommand' makes integer from pointer without a cast
+MainFiles/taskCommand.h(70): error: note: expected 'uint8_t' but argument is of type 'uint8_t *'
+MainFiles/taskCommand.c(149): error: too many arguments to function 'execCommand'
+MainFiles/taskCommand.h(70): error: note: declared here
+MainFiles/taskCommand.c(151): error: 'defaultSpeedJoyDown' undeclared (first use in this function)
+MainFiles/taskCommand.c(157): warning: passing argument 3 of 'execCommand' makes integer from pointer without a cast
+MainFiles/taskCommand.h(70): error: note: expected 'uint8_t' but argument is of type 'uint8_t *'
+MainFiles/taskCommand.c(157): error: too many arguments to function 'execCommand'
+MainFiles/taskCommand.h(70): error: note: declared here
+MainFiles/taskCommand.c(160): error: expected ';' before 'sendValueMsgLCD'
+MainFiles/taskCommand.c(167): warning: passing argument 3 of 'execCommand' makes integer from pointer without a cast
+MainFiles/taskCommand.h(70): error: note: expected 'uint8_t' but argument is of type 'uint8_t *'
+MainFiles/taskCommand.c(167): error: too many arguments to function 'execCommand'
+MainFiles/taskCommand.h(70): error: note: declared here
+MainFiles/taskCommand.c(90): warning: unused variable 'defaultJoyUp'
+MainFiles/taskCommand.c(88): warning: unused variable 'defaultJoyLeft'
+MainFiles/taskCommand.c: At top level:
+MainFiles/taskCommand.c(178): error: conflicting types for 'execCommand'
+MainFiles/taskCommand.h(70): error: note: previous declaration of 'execCommand' was here
 compiling taskConductor.c...
+MainFiles/taskConductor.c: In function 'updateTaskConductor':
+MainFiles/taskConductor.c(68): error: expected ')' before 'sendValueMsgLCD'
+MainFiles/taskConductor.c(69): error: expected ';' before '}' token
 compiling taskLocate.c...
+MainFiles/taskLocate.c: In function 'sendValueMsgLocate':
+MainFiles/taskLocate.c(70): warning: pointer targets in passing argument 4 of 'sendValueMsgLCD' differ in signedness
+MainFiles/taskLCD.h(136): error: note: expected 'char *' but argument is of type 'signed char *'
 MainFiles/taskLocate.c: In function 'updateTaskLocate':
-MainFiles/taskLocate.c(70): warning: unused variable 'dataCommand'
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
 compiling taskSensors.c...
 MainFiles/taskSensors.c: In function 'updateTaskSensors':
-MainFiles/taskSensors.c(106): warning: unused variable 'sensorsMsg'
+MainFiles/taskSensors.c(109): error: expected ';' before 'sendValueMsgLCD'
+MainFiles/taskSensors.c(114): error: expected ';' before 'sendValueMsgLCD'
+MainFiles/taskSensors.c(127): error: expected ';' before 'sendValueMsgLCD'
+MainFiles/taskSensors.c(121): warning: unused variable 'sensorsMsg'
 compiling taskTimers.c...
 compiling matrix.c...
 compiling syscalls.c...
@@ -44,10 +99,435 @@ compiling lpc17xx_pinsel.c...
 compiling lpc17xx_gpio.c...
 compiling lpc17xx_ssp.c...
 compiling vtI2C.c...
+Target not created
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/main.c(231): warning: null character(s) ignored
+compiling taskCommand.c...
+MainFiles/taskCommand.c: In function 'updateTaskCommand':
+MainFiles/taskCommand.c(125): warning: passing argument 3 of 'execCommand' makes integer from pointer without a cast
+MainFiles/taskCommand.h(70): error: note: expected 'uint8_t' but argument is of type 'uint8_t *'
+MainFiles/taskCommand.c(125): error: too many arguments to function 'execCommand'
+MainFiles/taskCommand.h(70): error: note: declared here
+MainFiles/taskCommand.c(127): error: 'defaultSpeedJoyLeft' undeclared (first use in this function)
+MainFiles/taskCommand.c(127): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/taskCommand.c(133): warning: passing argument 3 of 'execCommand' makes integer from pointer without a cast
+MainFiles/taskCommand.h(70): error: note: expected 'uint8_t' but argument is of type 'uint8_t *'
+MainFiles/taskCommand.c(133): error: too many arguments to function 'execCommand'
+MainFiles/taskCommand.h(70): error: note: declared here
+MainFiles/taskCommand.c(135): error: 'defaultSpeedJoyRight' undeclared (first use in this function)
+MainFiles/taskCommand.c(141): warning: passing argument 3 of 'execCommand' makes integer from pointer without a cast
+MainFiles/taskCommand.h(70): error: note: expected 'uint8_t' but argument is of type 'uint8_t *'
+MainFiles/taskCommand.c(141): error: too many arguments to function 'execCommand'
+MainFiles/taskCommand.h(70): error: note: declared here
+MainFiles/taskCommand.c(143): error: 'defaultSpeedJoyUp' undeclared (first use in this function)
+MainFiles/taskCommand.c(149): warning: passing argument 3 of 'execCommand' makes integer from pointer without a cast
+MainFiles/taskCommand.h(70): error: note: expected 'uint8_t' but argument is of type 'uint8_t *'
+MainFiles/taskCommand.c(149): error: too many arguments to function 'execCommand'
+MainFiles/taskCommand.h(70): error: note: declared here
+MainFiles/taskCommand.c(151): error: 'defaultSpeedJoyDown' undeclared (first use in this function)
+MainFiles/taskCommand.c(157): warning: passing argument 3 of 'execCommand' makes integer from pointer without a cast
+MainFiles/taskCommand.h(70): error: note: expected 'uint8_t' but argument is of type 'uint8_t *'
+MainFiles/taskCommand.c(157): error: too many arguments to function 'execCommand'
+MainFiles/taskCommand.h(70): error: note: declared here
+MainFiles/taskCommand.c(160): error: expected ';' before 'sendValueMsgLCD'
+MainFiles/taskCommand.c(167): warning: passing argument 3 of 'execCommand' makes integer from pointer without a cast
+MainFiles/taskCommand.h(70): error: note: expected 'uint8_t' but argument is of type 'uint8_t *'
+MainFiles/taskCommand.c(167): error: too many arguments to function 'execCommand'
+MainFiles/taskCommand.h(70): error: note: declared here
+MainFiles/taskCommand.c: At top level:
+MainFiles/taskCommand.c(178): error: conflicting types for 'execCommand'
+MainFiles/taskCommand.h(70): error: note: previous declaration of 'execCommand' was here
+compiling taskConductor.c...
+MainFiles/taskConductor.c: In function 'updateTaskConductor':
+MainFiles/taskConductor.c(68): error: expected ')' before 'sendValueMsgLCD'
+MainFiles/taskConductor.c(69): error: expected ';' before '}' token
+compiling taskLocate.c...
+MainFiles/taskLocate.c: In function 'sendValueMsgLocate':
+MainFiles/taskLocate.c(70): warning: pointer targets in passing argument 4 of 'sendValueMsgLCD' differ in signedness
+MainFiles/taskLCD.h(136): error: note: expected 'char *' but argument is of type 'signed char *'
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
+compiling taskSensors.c...
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(109): error: expected ';' before 'sendValueMsgLCD'
+MainFiles/taskSensors.c(114): error: expected ';' before 'sendValueMsgLCD'
+MainFiles/taskSensors.c(127): error: expected ';' before 'sendValueMsgLCD'
+MainFiles/taskSensors.c(121): warning: unused variable 'sensorsMsg'
+Target not created
+Build target 'AutoRover'
+compiling taskCommand.c...
+MainFiles/taskCommand.c: In function 'updateTaskCommand':
+MainFiles/taskCommand.c(125): warning: passing argument 3 of 'execCommand' makes integer from pointer without a cast
+MainFiles/taskCommand.h(70): error: note: expected 'uint8_t' but argument is of type 'uint8_t *'
+MainFiles/taskCommand.c(125): error: too many arguments to function 'execCommand'
+MainFiles/taskCommand.h(70): error: note: declared here
+MainFiles/taskCommand.c(127): error: 'defaultSpeedJoyLeft' undeclared (first use in this function)
+MainFiles/taskCommand.c(127): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/taskCommand.c(133): warning: passing argument 3 of 'execCommand' makes integer from pointer without a cast
+MainFiles/taskCommand.h(70): error: note: expected 'uint8_t' but argument is of type 'uint8_t *'
+MainFiles/taskCommand.c(133): error: too many arguments to function 'execCommand'
+MainFiles/taskCommand.h(70): error: note: declared here
+MainFiles/taskCommand.c(135): error: 'defaultSpeedJoyRight' undeclared (first use in this function)
+MainFiles/taskCommand.c(141): warning: passing argument 3 of 'execCommand' makes integer from pointer without a cast
+MainFiles/taskCommand.h(70): error: note: expected 'uint8_t' but argument is of type 'uint8_t *'
+MainFiles/taskCommand.c(141): error: too many arguments to function 'execCommand'
+MainFiles/taskCommand.h(70): error: note: declared here
+MainFiles/taskCommand.c(143): error: 'defaultSpeedJoyUp' undeclared (first use in this function)
+MainFiles/taskCommand.c(149): warning: passing argument 3 of 'execCommand' makes integer from pointer without a cast
+MainFiles/taskCommand.h(70): error: note: expected 'uint8_t' but argument is of type 'uint8_t *'
+MainFiles/taskCommand.c(149): error: too many arguments to function 'execCommand'
+MainFiles/taskCommand.h(70): error: note: declared here
+MainFiles/taskCommand.c(151): error: 'defaultSpeedJoyDown' undeclared (first use in this function)
+MainFiles/taskCommand.c(157): warning: passing argument 3 of 'execCommand' makes integer from pointer without a cast
+MainFiles/taskCommand.h(70): error: note: expected 'uint8_t' but argument is of type 'uint8_t *'
+MainFiles/taskCommand.c(157): error: too many arguments to function 'execCommand'
+MainFiles/taskCommand.h(70): error: note: declared here
+MainFiles/taskCommand.c(160): error: expected ';' before 'sendValueMsgLCD'
+MainFiles/taskCommand.c(167): warning: passing argument 3 of 'execCommand' makes integer from pointer without a cast
+MainFiles/taskCommand.h(70): error: note: expected 'uint8_t' but argument is of type 'uint8_t *'
+MainFiles/taskCommand.c(167): error: too many arguments to function 'execCommand'
+MainFiles/taskCommand.h(70): error: note: declared here
+MainFiles/taskCommand.c: At top level:
+MainFiles/taskCommand.c(178): error: conflicting types for 'execCommand'
+MainFiles/taskCommand.h(70): error: note: previous declaration of 'execCommand' was here
+compiling taskConductor.c...
+MainFiles/taskConductor.c: In function 'updateTaskConductor':
+MainFiles/taskConductor.c(68): error: expected ')' before 'sendValueMsgLCD'
+MainFiles/taskConductor.c(69): error: expected ';' before '}' token
+compiling taskLocate.c...
+MainFiles/taskLocate.c: In function 'sendValueMsgLocate':
+MainFiles/taskLocate.c(70): warning: pointer targets in passing argument 4 of 'sendValueMsgLCD' differ in signedness
+MainFiles/taskLCD.h(136): error: note: expected 'char *' but argument is of type 'signed char *'
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
+compiling taskSensors.c...
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(121): warning: unused variable 'sensorsMsg'
+Target not created
+Build target 'AutoRover'
+compiling taskCommand.c...
+MainFiles/taskCommand.c: In function 'updateTaskCommand':
+MainFiles/taskCommand.c(125): warning: passing argument 3 of 'execCommand' makes integer from pointer without a cast
+MainFiles/taskCommand.h(70): error: note: expected 'uint8_t' but argument is of type 'uint8_t *'
+MainFiles/taskCommand.c(125): error: too many arguments to function 'execCommand'
+MainFiles/taskCommand.h(70): error: note: declared here
+MainFiles/taskCommand.c(127): error: 'defaultSpeedJoyLeft' undeclared (first use in this function)
+MainFiles/taskCommand.c(127): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/taskCommand.c(133): warning: passing argument 3 of 'execCommand' makes integer from pointer without a cast
+MainFiles/taskCommand.h(70): error: note: expected 'uint8_t' but argument is of type 'uint8_t *'
+MainFiles/taskCommand.c(133): error: too many arguments to function 'execCommand'
+MainFiles/taskCommand.h(70): error: note: declared here
+MainFiles/taskCommand.c(135): error: 'defaultSpeedJoyRight' undeclared (first use in this function)
+MainFiles/taskCommand.c(141): warning: passing argument 3 of 'execCommand' makes integer from pointer without a cast
+MainFiles/taskCommand.h(70): error: note: expected 'uint8_t' but argument is of type 'uint8_t *'
+MainFiles/taskCommand.c(141): error: too many arguments to function 'execCommand'
+MainFiles/taskCommand.h(70): error: note: declared here
+MainFiles/taskCommand.c(143): error: 'defaultSpeedJoyUp' undeclared (first use in this function)
+MainFiles/taskCommand.c(149): warning: passing argument 3 of 'execCommand' makes integer from pointer without a cast
+MainFiles/taskCommand.h(70): error: note: expected 'uint8_t' but argument is of type 'uint8_t *'
+MainFiles/taskCommand.c(149): error: too many arguments to function 'execCommand'
+MainFiles/taskCommand.h(70): error: note: declared here
+MainFiles/taskCommand.c(151): error: 'defaultSpeedJoyDown' undeclared (first use in this function)
+MainFiles/taskCommand.c(157): warning: passing argument 3 of 'execCommand' makes integer from pointer without a cast
+MainFiles/taskCommand.h(70): error: note: expected 'uint8_t' but argument is of type 'uint8_t *'
+MainFiles/taskCommand.c(157): error: too many arguments to function 'execCommand'
+MainFiles/taskCommand.h(70): error: note: declared here
+MainFiles/taskCommand.c(160): error: expected ';' before 'sendValueMsgLCD'
+MainFiles/taskCommand.c(167): warning: passing argument 3 of 'execCommand' makes integer from pointer without a cast
+MainFiles/taskCommand.h(70): error: note: expected 'uint8_t' but argument is of type 'uint8_t *'
+MainFiles/taskCommand.c(167): error: too many arguments to function 'execCommand'
+MainFiles/taskCommand.h(70): error: note: declared here
+MainFiles/taskCommand.c: At top level:
+MainFiles/taskCommand.c(178): error: conflicting types for 'execCommand'
+MainFiles/taskCommand.h(70): error: note: previous declaration of 'execCommand' was here
+compiling taskConductor.c...
+compiling taskLocate.c...
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
+Target not created
+Build target 'AutoRover'
+compiling taskCommand.c...
+MainFiles/taskCommand.c: In function 'updateTaskCommand':
+MainFiles/taskCommand.c(127): error: 'defaultSpeedJoyLeft' undeclared (first use in this function)
+MainFiles/taskCommand.c(127): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/taskCommand.c(135): error: 'defaultSpeedJoyRight' undeclared (first use in this function)
+MainFiles/taskCommand.c(143): error: 'defaultSpeedJoyUp' undeclared (first use in this function)
+MainFiles/taskCommand.c(151): error: 'defaultSpeedJoyDown' undeclared (first use in this function)
+MainFiles/taskCommand.c(160): error: expected ';' before 'sendValueMsgLCD'
+compiling taskLocate.c...
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
+compiling taskTimers.c...
+Target not created
+Build target 'AutoRover'
+compiling taskCommand.c...
+MainFiles/taskCommand.c: In function 'updateTaskCommand':
+MainFiles/taskCommand.c(127): error: 'defaultSpeedJoyLeft' undeclared (first use in this function)
+MainFiles/taskCommand.c(127): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/taskCommand.c(135): error: 'defaultSpeedJoyRight' undeclared (first use in this function)
+MainFiles/taskCommand.c(143): error: 'defaultSpeedJoyUp' undeclared (first use in this function)
+Target not created
+Build target 'AutoRover'
+compiling taskCommand.c...
 linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 3 Warning(s).
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
 Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
-Internal DLL Error
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskLocate.c...
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 1 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskLCD.c...
+MainFiles/taskLCD.c: In function 'updateInfo':
+MainFiles/taskLCD.c(325): warning: pointer targets in passing argument 4 of 'GLCD_DisplayString' differ in signedness
+./../vtCode/vtLCD/GLCD.h(55): error: note: expected 'unsigned char *' but argument is of type 'char *'
+MainFiles/taskLCD.c(327): error: expected ')' before '->' token
+MainFiles/taskLCD.c(327): error: expected expression before ')' token
+MainFiles/taskLCD.c(334): warning: pointer targets in passing argument 4 of 'GLCD_DisplayString' differ in signedness
+./../vtCode/vtLCD/GLCD.h(55): error: note: expected 'unsigned char *' but argument is of type 'char *'
+MainFiles/taskLCD.c(336): error: expected ')' before '->' token
+MainFiles/taskLCD.c(336): error: expected expression before ')' token
+MainFiles/taskLCD.c(343): warning: pointer targets in passing argument 4 of 'GLCD_DisplayString' differ in signedness
+./../vtCode/vtLCD/GLCD.h(55): error: note: expected 'unsigned char *' but argument is of type 'char *'
+MainFiles/taskLCD.c(345): error: expected ')' before '->' token
+MainFiles/taskLCD.c(345): error: expected expression before ')' token
+MainFiles/taskLCD.c(352): warning: pointer targets in passing argument 4 of 'GLCD_DisplayString' differ in signedness
+./../vtCode/vtLCD/GLCD.h(55): error: note: expected 'unsigned char *' but argument is of type 'char *'
+MainFiles/taskLCD.c(354): error: expected ')' before '->' token
+MainFiles/taskLCD.c(354): error: expected expression before ')' token
+MainFiles/taskLCD.c(361): warning: pointer targets in passing argument 4 of 'GLCD_DisplayString' differ in signedness
+./../vtCode/vtLCD/GLCD.h(55): error: note: expected 'unsigned char *' but argument is of type 'char *'
+MainFiles/taskLCD.c(363): error: expected ')' before '->' token
+MainFiles/taskLCD.c(363): error: expected expression before ')' token
+MainFiles/taskLCD.c(370): warning: pointer targets in passing argument 4 of 'GLCD_DisplayString' differ in signedness
+./../vtCode/vtLCD/GLCD.h(55): error: note: expected 'unsigned char *' but argument is of type 'char *'
+MainFiles/taskLCD.c(372): error: expected ')' before '->' token
+MainFiles/taskLCD.c(372): error: expected expression before ')' token
+MainFiles/taskLCD.c(379): warning: pointer targets in passing argument 4 of 'GLCD_DisplayString' differ in signedness
+./../vtCode/vtLCD/GLCD.h(55): error: note: expected 'unsigned char *' but argument is of type 'char *'
+MainFiles/taskLCD.c(381): error: expected ')' before '->' token
+MainFiles/taskLCD.c(381): error: expected expression before ')' token
+MainFiles/taskLCD.c(388): warning: pointer targets in passing argument 4 of 'GLCD_DisplayString' differ in signedness
+./../vtCode/vtLCD/GLCD.h(55): error: note: expected 'unsigned char *' but argument is of type 'char *'
+MainFiles/taskLCD.c(390): error: expected ')' before '->' token
+MainFiles/taskLCD.c(390): error: expected expression before ')' token
+MainFiles/taskLCD.c(397): warning: pointer targets in passing argument 4 of 'GLCD_DisplayString' differ in signedness
+./../vtCode/vtLCD/GLCD.h(55): error: note: expected 'unsigned char *' but argument is of type 'char *'
+MainFiles/taskLCD.c(399): error: expected ')' before '->' token
+MainFiles/taskLCD.c(399): error: expected expression before ')' token
+compiling taskCommand.c...
+compiling taskLocate.c...
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
+compiling taskSensors.c...
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(121): warning: unused variable 'sensorsMsg'
+compiling taskTimers.c...
+Target not created
+Build target 'AutoRover'
+compiling taskLCD.c...
+MainFiles/taskLCD.c: In function 'updateInfo':
+MainFiles/taskLCD.c(327): error: expected ')' before '->' token
+MainFiles/taskLCD.c(327): error: expected expression before ')' token
+MainFiles/taskLCD.c(336): error: expected ')' before '->' token
+MainFiles/taskLCD.c(336): error: expected expression before ')' token
+MainFiles/taskLCD.c(345): error: expected ')' before '->' token
+MainFiles/taskLCD.c(345): error: expected expression before ')' token
+MainFiles/taskLCD.c(354): error: expected ')' before '->' token
+MainFiles/taskLCD.c(354): error: expected expression before ')' token
+MainFiles/taskLCD.c(363): error: expected ')' before '->' token
+MainFiles/taskLCD.c(363): error: expected expression before ')' token
+MainFiles/taskLCD.c(372): error: expected ')' before '->' token
+MainFiles/taskLCD.c(372): error: expected expression before ')' token
+MainFiles/taskLCD.c(381): error: expected ')' before '->' token
+MainFiles/taskLCD.c(381): error: expected expression before ')' token
+MainFiles/taskLCD.c(390): error: expected ')' before '->' token
+MainFiles/taskLCD.c(390): error: expected expression before ')' token
+MainFiles/taskLCD.c(399): error: expected ')' before '->' token
+MainFiles/taskLCD.c(399): error: expected expression before ')' token
+Target not created
+Build target 'AutoRover'
+compiling taskLCD.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskLCD.c...
+MainFiles/taskLCD.c: In function 'drawInfo':
+MainFiles/taskLCD.c(269): error: 'lineMotion' undeclared (first use in this function)
+MainFiles/taskLCD.c(269): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/taskLCD.c(274): error: 'lineGoalPrime' undeclared (first use in this function)
+MainFiles/taskLCD.c(279): error: 'lineGoalSec' undeclared (first use in this function)
+MainFiles/taskLCD.c(284): error: 'linePosRover' undeclared (first use in this function)
+MainFiles/taskLCD.c(289): error: 'linePosRamp' undeclared (first use in this function)
+MainFiles/taskLCD.c(294): error: 'lineSizeMap' undeclared (first use in this function)
+MainFiles/taskLCD.c(299): error: 'lineConnect' undeclared (first use in this function)
+MainFiles/taskLCD.c(304): error: 'lineCmd' undeclared (first use in this function)
+compiling taskCommand.c...
+compiling taskLocate.c...
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
+compiling taskSensors.c...
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(121): warning: unused variable 'sensorsMsg'
+compiling taskTimers.c...
+Target not created
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+_____^
+*** error 56: cannot open file
+Build target 'AutoRover'
+compiling taskLCD.c...
+MainFiles/taskLCD.c: In function 'updateTaskLCD':
+MainFiles/taskLCD.c(109): error: expected '=' before ',' token
+compiling taskCommand.c...
+compiling taskLocate.c...
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
+compiling taskSensors.c...
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(121): warning: unused variable 'sensorsMsg'
+compiling taskTimers.c...
+Target not created
+Build target 'AutoRover'
+compiling taskLCD.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskLCD.c...
+MainFiles/taskLCD.c: In function 'updateTaskLCD':
+MainFiles/taskLCD.c(120): error: 'TabData' has no member named 'motion'
+MainFiles/taskLCD.c(121): error: 'TabData' has no member named 'goalPrime'
+MainFiles/taskLCD.c(122): error: 'TabData' has no member named 'goalSec'
+MainFiles/taskLCD.c(123): error: 'TabData' has no member named 'sizeMap'
+MainFiles/taskLCD.c(124): error: 'TabData' has no member named 'connect'
+MainFiles/taskLCD.c(125): error: 'TabData' has no member named 'cmd'
+MainFiles/taskLCD.c(126): error: 'TabData' has no member named 'sensorData'
+Target not created
+Build target 'AutoRover'
+compiling taskLCD.c...
+MainFiles/taskLCD.c: In function 'updateTaskLCD':
+MainFiles/taskLCD.c(120): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(120): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(121): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(121): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(122): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(122): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(123): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(123): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(124): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(124): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(125): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(125): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(126): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(126): warning: zero-length gnu_printf format string
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 14 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskLCD.c...
+MainFiles/taskLCD.c: In function 'updateTaskLCD':
+MainFiles/taskLCD.c(120): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(120): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(121): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(121): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(122): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(122): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(123): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(123): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(124): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(124): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(125): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(125): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(126): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(126): warning: zero-length gnu_printf format string
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 14 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskLCD.c...
+MainFiles/taskLCD.c: In function 'updateTaskLCD':
+MainFiles/taskLCD.c(120): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(120): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(121): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(121): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(122): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(122): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(123): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(123): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(124): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(124): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(125): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(125): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(126): warning: zero-length gnu_printf format string
+MainFiles/taskLCD.c(126): warning: zero-length gnu_printf format string
+compiling taskCommand.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 14 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskLCD.c...
+MainFiles/taskLCD.c: In function 'updateTaskLCD':
+MainFiles/taskLCD.c(121): error: expected ';' before 'tabData'
+Target not created
+Build target 'AutoRover'
+compiling taskLCD.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskLCD.c...
+MainFiles/taskLCD.c: In function 'updateInfo':
+MainFiles/taskLCD.c(538): error: expected declaration or statement at end of input
+compiling taskCommand.c...
+compiling taskLocate.c...
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
+compiling taskSensors.c...
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(121): warning: unused variable 'sensorsMsg'
+compiling taskTimers.c...
+Target not created
+Build target 'AutoRover'
+compiling taskLCD.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskLCD.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
 Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
 Full Chip Erase Done.
 Programming Done.
@@ -56,15 +536,377 @@ Build target 'AutoRover'
 compiling taskLCD.c...
 compiling taskCommand.c...
 compiling taskLocate.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'statePrimeGoal2String':
+MainFiles/taskLocate.h(253): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
 MainFiles/taskLocate.c: In function 'updateTaskLocate':
-MainFiles/taskLocate.c(70): warning: unused variable 'dataCommand'
+MainFiles/taskLocate.c(172): error: 'Rover' has no member named 'curStateMotion'
+MainFiles/taskLocate.c(172): error: expected ')' before ';' token
+MainFiles/taskLocate.c(409): error: expected declaration or statement at end of input
+MainFiles/taskLocate.c(84): warning: unused variable 'msg'
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
 compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'statePrimeGoal2String':
+MainFiles/taskLocate.h(253): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
 MainFiles/taskSensors.c: In function 'updateTaskSensors':
-MainFiles/taskSensors.c(106): warning: unused variable 'sensorsMsg'
+MainFiles/taskSensors.c(121): warning: unused variable 'sensorsMsg'
 compiling taskTimers.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'statePrimeGoal2String':
+MainFiles/taskLocate.h(253): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+Target not created
+Build target 'AutoRover'
+compiling taskLCD.c...
+compiling taskCommand.c...
+compiling taskLocate.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(172): error: 'Rover' has no member named 'curStateMotion'
+MainFiles/taskLocate.c(175): error: 'Rover' has no member named 'curStatePrimeGoal'
+MainFiles/taskLocate.c(178): error: 'Rover' has no member named 'curStatePrimeGoal'
+MainFiles/taskLocate.c(182): error: 'Rover' has no member named 'curStateScanSecGoal'
+MainFiles/taskLocate.c(187): error: 'Rover' has no member named 'curStateRoamSecGoal'
+MainFiles/taskLocate.c(192): error: 'Rover' has no member named 'curStateGoSecGoal'
+MainFiles/taskLocate.c(197): error: 'Rover' has no member named 'curStateAlignSecGoal'
+MainFiles/taskLocate.c(202): error: 'Rover' has no member named 'curRampRoamSecGoal'
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(121): warning: unused variable 'sensorsMsg'
+compiling taskTimers.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+Target not created
+Build target 'AutoRover'
+compiling taskLocate.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(202): error: 'States' has no member named 'curRampRoamSecGoal'
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
+Target not created
+Build target 'AutoRover'
+compiling taskLocate.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(202): error: 'States' has no member named 'curRampSecGoal'
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
+Target not created
+Build target 'AutoRover'
+compiling taskLocate.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 7 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskLocate.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(121): warning: unused variable 'sensorsMsg'
+compiling taskTimers.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 20 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskLCD.c...
+compiling taskCommand.c...
+compiling taskLocate.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(121): warning: unused variable 'sensorsMsg'
+compiling taskTimers.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
 compiling matrix.c...
 linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 2 Warning(s).
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 20 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskLCD.c...
+compiling taskCommand.c...
+compiling taskLocate.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(121): warning: unused variable 'sensorsMsg'
+compiling taskTimers.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+compiling matrix.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 20 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskLCD.c...
+compiling taskCommand.c...
+compiling taskLocate.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(121): warning: unused variable 'sensorsMsg'
+compiling taskTimers.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+compiling matrix.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 20 Warning(s).
 Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
 Full Chip Erase Done.
 Programming Done.
@@ -77,8 +919,6 @@ Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF"
 Full Chip Erase Done.
 Programming Done.
 Verify OK.
-Clean started: Project: 'RTOSDemo'
-   deleting intermediate output files for target 'AutoRover'
 Build target 'AutoRover'
 compiling list.c...
 compiling queue.c...
@@ -86,19 +926,439 @@ compiling tasks.c...
 compiling port.c...
 compiling timers.c...
 compiling main.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/main.c: At top level:
+MainFiles/main.c(231): warning: null character(s) ignored
+compiling vtUtilities.c...
+compiling ParTest.c...
+compiling taskLCD.c...
+compiling taskCommand.c...
+MainFiles/taskCommand.c: In function 'updateTaskCommand':
+MainFiles/taskCommand.c(90): error: expected statement before ']' token
+compiling taskConductor.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+compiling taskLocate.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(121): warning: unused variable 'sensorsMsg'
+compiling taskTimers.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+compiling matrix.c...
+compiling syscalls.c...
+compiling system_LPC17xx.c...
+assembling startup_LPC17xx.s...
+compiling USB_CDC.c...
+compiling usbcontrol.c...
+compiling usbhw_lpc.c...
+compiling usbinit.c...
+compiling usbstdreq.c...
+compiling vtSSP.c...
+compiling GLCD_SPI_LPC1700.c...
+compiling lpc17xx_clkpwr.c...
+compiling lpc17xx_i2c.c...
+compiling lpc17xx_libcfg_default.c...
+compiling lpc17xx_pinsel.c...
+compiling lpc17xx_gpio.c...
+compiling lpc17xx_ssp.c...
+compiling vtI2C.c...
+Target not created
+Build target 'AutoRover'
+compiling taskCommand.c...
+MainFiles/taskCommand.c: In function 'updateTaskCommand':
+MainFiles/taskCommand.c(90): error: expected statement before ']' token
+Target not created
+Build target 'AutoRover'
+compiling taskCommand.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskCommand.c...
+compiling taskLocate.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 7 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskLCD.c...
+compiling taskCommand.c...
+compiling taskLocate.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(110): error: 'i' undeclared (first use in this function)
+MainFiles/taskSensors.c(110): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/taskSensors.c(110): error: 'QUEUE_BUF_LEN_SENSORS' undeclared (first use in this function)
+MainFiles/taskSensors.c(131): warning: unused variable 'sensorsMsg'
+compiling taskTimers.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+Target not created
+Build target 'AutoRover'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(111): error: 'QUEUE_BUF_LEN_SENSORS' undeclared (first use in this function)
+MainFiles/taskSensors.c(111): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/taskSensors.c(132): warning: unused variable 'sensorsMsg'
+Target not created
+Build target 'AutoRover'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(132): warning: unused variable 'sensorsMsg'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 7 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskLCD.c...
+compiling taskCommand.c...
+compiling taskLocate.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(142): error: redeclaration of 'i' with no linkage
+MainFiles/taskSensors.c(129): error: note: previous declaration of 'i' was here
+MainFiles/taskSensors.c(122): warning: unused variable 'sensorsMsg'
+compiling taskTimers.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+compiling matrix.c...
+Target not created
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+_____^
+*** error 56: cannot open file
+Build target 'AutoRover'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(122): warning: unused variable 'sensorsMsg'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 7 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskLCD.c...
+compiling taskCommand.c...
+compiling taskLocate.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(122): warning: unused variable 'sensorsMsg'
+compiling taskTimers.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+compiling matrix.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 20 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Internal DLL Error
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling list.c...
+compiling queue.c...
+compiling tasks.c...
+compiling port.c...
+compiling timers.c...
+compiling main.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/main.c: At top level:
 MainFiles/main.c(231): warning: null character(s) ignored
 compiling vtUtilities.c...
 compiling ParTest.c...
 compiling taskLCD.c...
 compiling taskCommand.c...
 compiling taskConductor.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
 compiling taskLocate.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
 MainFiles/taskLocate.c: In function 'updateTaskLocate':
-MainFiles/taskLocate.c(70): warning: unused variable 'dataCommand'
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
 compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
 MainFiles/taskSensors.c: In function 'updateTaskSensors':
-MainFiles/taskSensors.c(106): warning: unused variable 'sensorsMsg'
+MainFiles/taskSensors.c(122): warning: unused variable 'sensorsMsg'
 compiling taskTimers.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
 compiling matrix.c...
 compiling syscalls.c...
 compiling system_LPC17xx.c...
@@ -118,7 +1378,133 @@ compiling lpc17xx_gpio.c...
 compiling lpc17xx_ssp.c...
 compiling vtI2C.c...
 linking...
-".\ObjectFiles\AutoRover.elf" - 0 Error(s), 3 Warning(s).
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 33 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskConductor.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(122): warning: unused variable 'sensorsMsg'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 13 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Internal DLL Error
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/main.c: At top level:
+MainFiles/main.c(231): warning: null character(s) ignored
+compiling taskConductor.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(122): warning: unused variable 'sensorsMsg'
+MainFiles/taskSensors.c(82): warning: unused variable 'dataLocate'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 21 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling main.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/main.c: At top level:
+MainFiles/main.c(231): warning: null character(s) ignored
+compiling taskCommand.c...
+compiling taskLocate.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 14 Warning(s).
 Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
 Full Chip Erase Done.
 Programming Done.
@@ -148,9 +1534,1152 @@ Full Chip Erase Done.
 Programming Done.
 Verify OK.
 Build target 'AutoRover'
+compiling taskLCD.c...
 compiling taskCommand.c...
 linking...
 ".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskLCD.c...
+MainFiles/taskLCD.c: In function 'updateInfo':
+MainFiles/taskLCD.c(346): error: expected expression before 'unsigned'
+MainFiles/taskLCD.c(359): error: expected expression before 'unsigned'
+MainFiles/taskLCD.c(372): error: expected expression before 'unsigned'
+MainFiles/taskLCD.c(385): error: expected expression before 'unsigned'
+MainFiles/taskLCD.c(398): error: expected expression before 'unsigned'
+MainFiles/taskLCD.c(411): error: expected expression before 'unsigned'
+Target not created
+Build target 'AutoRover'
+compiling taskLCD.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 0 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskLCD.c...
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(129): error: 'value' undeclared (first use in this function)
+MainFiles/taskSensors.c(129): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/taskSensors.c(131): error: expected ';' before ')' token
+MainFiles/taskSensors.c(131): error: expected statement before ')' token
+MainFiles/taskSensors.c(138): error: 'i' undeclared (first use in this function)
+MainFiles/taskSensors.c(122): warning: unused variable 'sensorsMsg'
+MainFiles/taskSensors.c(82): warning: unused variable 'dataLocate'
+Target not created
+Build target 'AutoRover'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(129): error: 'value' undeclared (first use in this function)
+MainFiles/taskSensors.c(129): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/taskSensors.c(132): error: expected ';' before 'sendValueMsgLCD'
+MainFiles/taskSensors.c(138): error: 'i' undeclared (first use in this function)
+MainFiles/taskSensors.c(122): warning: unused variable 'sensorsMsg'
+MainFiles/taskSensors.c(82): warning: unused variable 'dataLocate'
+Target not created
+Build target 'AutoRover'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(129): error: 'value' undeclared (first use in this function)
+MainFiles/taskSensors.c(129): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/taskSensors.c(138): error: 'i' undeclared (first use in this function)
+MainFiles/taskSensors.c(122): warning: unused variable 'sensorsMsg'
+MainFiles/taskSensors.c(82): warning: unused variable 'dataLocate'
+Target not created
+Build target 'AutoRover'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(129): error: 'value' undeclared (first use in this function)
+MainFiles/taskSensors.c(129): error: note: each undeclared identifier is reported only once for each function it appears in
+MainFiles/taskSensors.c(122): warning: unused variable 'sensorsMsg'
+MainFiles/taskSensors.c(82): warning: unused variable 'dataLocate'
+Target not created
+Build target 'AutoRover'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(132): warning: too many arguments for format
+MainFiles/taskSensors.c(132): warning: too many arguments for format
+MainFiles/taskSensors.c(122): warning: unused variable 'sensorsMsg'
+MainFiles/taskSensors.c(82): warning: unused variable 'dataLocate'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 10 Warning(s).
+Build target 'AutoRover'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(132): warning: too many arguments for format
+MainFiles/taskSensors.c(132): warning: too many arguments for format
+MainFiles/taskSensors.c(122): warning: unused variable 'sensorsMsg'
+MainFiles/taskSensors.c(82): warning: unused variable 'dataLocate'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 10 Warning(s).
+Build target 'AutoRover'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(122): warning: unused variable 'sensorsMsg'
+MainFiles/taskSensors.c(82): warning: unused variable 'dataLocate'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 8 Warning(s).
+Build target 'AutoRover'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(122): warning: unused variable 'sensorsMsg'
+MainFiles/taskSensors.c(82): warning: unused variable 'dataLocate'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 8 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskConductor.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(122): warning: unused variable 'sensorsMsg'
+MainFiles/taskSensors.c(88): warning: unused variable 'infoMsg'
+MainFiles/taskSensors.c(82): warning: unused variable 'dataLocate'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 15 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(122): warning: unused variable 'sensorsMsg'
+MainFiles/taskSensors.c(88): warning: unused variable 'infoMsg'
+MainFiles/taskSensors.c(82): warning: unused variable 'dataLocate'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 9 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(88): warning: unused variable 'infoMsg'
+MainFiles/taskSensors.c(82): warning: unused variable 'dataLocate'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 8 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskConductor.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(88): warning: unused variable 'infoMsg'
+MainFiles/taskSensors.c(82): warning: unused variable 'dataLocate'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 14 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskConductor.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 6 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskConductor.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 6 Warning(s).
+Build target 'AutoRover'
+compiling taskConductor.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 6 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskConductor.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(82): warning: unused variable 'dataLocate'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 13 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(157): error: expected '=', ',', ';', 'asm' or '__attribute__' before 'infoMsg'
+MainFiles/taskSensors.c(163): error: too many arguments to function 'strcat'
+MainFiles/taskSensors.c(82): warning: unused variable 'dataLocate'
+Target not created
+Build target 'AutoRover'
+compiling taskLCD.c...
+compiling taskCommand.c...
+compiling taskLocate.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(157): error: expected '=', ',', ';', 'asm' or '__attribute__' before 'infoMsg'
+MainFiles/taskSensors.c(165): error: expected ')' before 'strcat'
+MainFiles/taskSensors.c(166): error: expected ';' before '}' token
+MainFiles/taskSensors.c(82): warning: unused variable 'dataLocate'
+compiling taskTimers.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+Target not created
+Build target 'AutoRover'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(157): error: expected '=', ',', ';', 'asm' or '__attribute__' before 'infoMsg'
+MainFiles/taskSensors.c(165): error: expected ';' before 'strcat'
+MainFiles/taskSensors.c(82): warning: unused variable 'dataLocate'
+Target not created
+Build target 'AutoRover'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(157): error: expected '=', ',', ';', 'asm' or '__attribute__' before 'infoMsg'
+MainFiles/taskSensors.c(82): warning: unused variable 'dataLocate'
+Target not created
+Build target 'AutoRover'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(82): warning: unused variable 'dataLocate'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 7 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(88): warning: unused variable 'infoMsg'
+MainFiles/taskSensors.c(82): warning: unused variable 'dataLocate'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 8 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskCommand.c...
+compiling taskConductor.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(88): warning: unused variable 'infoMsg'
+MainFiles/taskSensors.c(82): warning: unused variable 'dataLocate'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 14 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskConductor.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 6 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskCommand.c...
+compiling taskConductor.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+compiling taskLocate.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(88): warning: unused variable 'infoMsg'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 20 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 6 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskLCD.c...
+compiling taskCommand.c...
+compiling taskLocate.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+compiling taskTimers.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 19 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 6 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskLCD.c...
+MainFiles/taskLCD.c: In function 'updateInfo':
+MainFiles/taskLCD.c(404): error: 'MSG_TYPE_LCD_SENS' undeclared (first use in this function)
+MainFiles/taskLCD.c(404): error: note: each undeclared identifier is reported only once for each function it appears in
+compiling taskCommand.c...
+compiling taskConductor.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+compiling taskLocate.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+compiling taskTimers.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+compiling matrix.c...
+Target not created
+Build target 'AutoRover'
+compiling taskLCD.c...
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 6 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskLCD.c...
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 6 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskLCD.c...
+compiling taskCommand.c...
+compiling taskLocate.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+compiling taskTimers.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+compiling matrix.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 19 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 6 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 6 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 6 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(82): warning: unused variable 'dataLocate'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 7 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskLCD.c...
+compiling taskCommand.c...
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(82): warning: unused variable 'dataLocate'
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 7 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskLCD.c...
+compiling taskCommand.c...
+compiling taskConductor.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+compiling taskLocate.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(82): warning: unused variable 'dataLocate'
+compiling taskTimers.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+compiling matrix.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 26 Warning(s).
+Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
+Full Chip Erase Done.
+Programming Done.
+Verify OK.
+Build target 'AutoRover'
+compiling taskLCD.c...
+compiling taskCommand.c...
+compiling taskConductor.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+compiling taskLocate.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.c: In function 'updateTaskLocate':
+MainFiles/taskLocate.c(80): warning: unused variable 'dataCommand'
+compiling taskSensors.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+MainFiles/taskSensors.c: In function 'updateTaskSensors':
+MainFiles/taskSensors.c(82): warning: unused variable 'dataLocate'
+compiling taskTimers.c...
+MainFiles/taskLocate.h: In function 'stateMotion2String':
+MainFiles/taskLocate.h(239): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateScanSecGoal2String':
+MainFiles/taskLocate.h(265): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRoamSecGoal2String':
+MainFiles/taskLocate.h(277): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateGoSecGoal2String':
+MainFiles/taskLocate.h(289): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateAlignSecGoal2String':
+MainFiles/taskLocate.h(301): warning: return discards qualifiers from pointer target type
+MainFiles/taskLocate.h: In function 'stateRampSecGoal2String':
+MainFiles/taskLocate.h(315): warning: return discards qualifiers from pointer target type
+compiling matrix.c...
+linking...
+".\ObjectFiles\AutoRover.elf" - 0 Error(s), 26 Warning(s).
 Load "E:\\Auto-Rover\\ARM\\RTOSDemo\\ObjectFiles\\AutoRover.ELF" 
 Full Chip Erase Done.
 Programming Done.

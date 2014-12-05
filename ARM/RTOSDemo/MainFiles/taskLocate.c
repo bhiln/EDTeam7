@@ -11,11 +11,14 @@ static portTASK_FUNCTION_PROTO(updateTaskLocate, pvParameters);
 
 void startTaskLocate(structLocate* dataLocate, unsigned portBASE_TYPE uxPriority, structLCD* dataLCD, structCommand* dataCommand)
 {
+    char eventsMsg[QUEUE_BUF_LEN_LCD];
+
     // Create the queue that will be used to talk to this task.
     dataLocate->inQ = xQueueCreate(QUEUE_LEN_LOCATE, sizeof(msgLocate));
     if(dataLocate->inQ == NULL)
     {
-        sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, errorQueueCreateLocate, portMAX_DELAY);
+        sprintf(eventsMsg, "Error: failed creating queue for task %s", taskNameLocate);
+        sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
         VT_HANDLE_FATAL_ERROR(0);
     }
 
@@ -26,13 +29,16 @@ void startTaskLocate(structLocate* dataLocate, unsigned portBASE_TYPE uxPriority
     portBASE_TYPE retval = xTaskCreate(updateTaskLocate, taskNameLocate, LOCATE_STACK_SIZE, (void*)dataLocate, uxPriority, (xTaskHandle*)NULL);
     if(retval != pdPASS)
     {
-        sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, errorTaskCreateLocate, portMAX_DELAY);
+        sprintf(eventsMsg, "Error: failed creating task %s", taskNameLocate);
+        sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
         VT_HANDLE_FATAL_ERROR(retval);
     }
 }
 
 void sendTimerMsgLocate(structLocate* dataLocate, portTickType ticksElapsed, portTickType ticksToBlock)
 {
+    char eventsMsg[QUEUE_BUF_LEN_LCD];
+
     msgLocate msg;
     msg.length = sizeof(ticksElapsed);
 
@@ -42,13 +48,16 @@ void sendTimerMsgLocate(structLocate* dataLocate, portTickType ticksElapsed, por
     portBASE_TYPE retval = xQueueSend(dataLocate->inQ, (void*)(&msg), ticksToBlock);
     if(retval != pdTRUE)
     {
-        sendValueMsgLCD(dataLocate->dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, errorQueueSendLocate, portMAX_DELAY);
+        sprintf(eventsMsg, "Error: failed sending to timer queue for task %s", taskNameLocate);
+        sendValueMsgLCD(dataLocate->dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
         VT_HANDLE_FATAL_ERROR(retval);
     }
 }
 
 void sendValueMsgLocate(structLocate* dataLocate, uint8_t type, float* value, portTickType ticksToBlock)
 {
+    char eventsMsg[QUEUE_BUF_LEN_LCD];
+
     msgLocate msg;
     msg.length = sizeof(float)*QUEUE_BUF_LEN_LOCATE;
 
@@ -57,7 +66,8 @@ void sendValueMsgLocate(structLocate* dataLocate, uint8_t type, float* value, po
     portBASE_TYPE retval = xQueueSend(dataLocate->inQ, (void*)(&msg), ticksToBlock);
     if(retval != pdTRUE)
     {
-        sendValueMsgLCD(dataLocate->dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, errorQueueSendLocate, portMAX_DELAY);
+        sprintf(eventsMsg, "Error: failed sending to value queue for task %s", taskNameLocate);
+        sendValueMsgLCD(dataLocate->dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
         VT_HANDLE_FATAL_ERROR(retval);
     }
 
@@ -72,6 +82,10 @@ static portTASK_FUNCTION(updateTaskLocate, pvParameters)
 	
 	// Buffer for receiving messages.
 	msgLocate msg;
+
+    char eventsMsg[QUEUE_BUF_LEN_LCD];
+    sprintf(eventsMsg, "Initializing localization algorithm");
+    sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
 
     // Initialize map.
     Map map = {
@@ -152,15 +166,20 @@ static portTASK_FUNCTION(updateTaskLocate, pvParameters)
     createMatrix(&(rover.curRamps));
     createVector(&(rover.curTarget));
 
+    // Write the initial configuration to the LCD.
+    char infoMsg[QUEUE_BUF_LEN_LCD];
+
     // Like all good tasks, this should never exit.
 	for(;;)
 	{
         toggleLED(PIN_LED_3);
+
         // Wait for a message from the queue.
         portBASE_TYPE retQueue = xQueueReceive(param->inQ, (void*)&msg, portMAX_DELAY);
         if (retQueue != pdTRUE)
         {
-            sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, errorQueueReceiveLocate, portMAX_DELAY);
+            sprintf(eventsMsg, "Error: failed receiving from queue for task %s", taskNameLocate);
+            sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
             VT_HANDLE_FATAL_ERROR(retQueue);
         }
 
@@ -169,35 +188,57 @@ static portTASK_FUNCTION(updateTaskLocate, pvParameters)
 		{
 		case MSG_TYPE_TIMER_LOCATE:
 		{
+            strcpy(infoMsg, stateMotion2String(rover.curStates.curStateMotion));
+            sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_MOTION, QUEUE_BUF_LEN_LCD, infoMsg, portMAX_DELAY);
+
+            strcpy(infoMsg, statePrimeGoal2String(rover.curStates.curStatePrimeGoal));
+            sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_GOAL_PRIME, QUEUE_BUF_LEN_LCD, infoMsg, portMAX_DELAY);
+
+            sprintf(infoMsg, "%u", map.map.rows * map.map.cols);
+            sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_SIZE_MAP, QUEUE_BUF_LEN_LCD, infoMsg, portMAX_DELAY);
+
            	switch(rover.curStates.curStatePrimeGoal)
             {
             case scan:
             {
                 //execScan(devI2C0);
+                strcpy(infoMsg, stateScanSecGoal2String(rover.curStates.curStateScanSecGoal));
+                sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_GOAL_SEC, QUEUE_BUF_LEN_LCD, infoMsg, portMAX_DELAY);
                 break; 
             }
             case roam:
             {
                 //execRoam(devI2C0);
+                strcpy(infoMsg, stateRoamSecGoal2String(rover.curStates.curStateRoamSecGoal));
+                sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_GOAL_SEC, QUEUE_BUF_LEN_LCD, infoMsg, portMAX_DELAY);
                 break;
             }
             case go:
             {
                 //execGo(devI2C0);
+                strcpy(infoMsg, stateGoSecGoal2String(rover.curStates.curStateGoSecGoal));
+                sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_GOAL_SEC, QUEUE_BUF_LEN_LCD, infoMsg, portMAX_DELAY);
+
                 break;
             }
             case align:
             {
                 //execAlign(devI2C0);
+                strcpy(infoMsg, stateAlignSecGoal2String(rover.curStates.curStateAlignSecGoal));
+                sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_GOAL_SEC, QUEUE_BUF_LEN_LCD, infoMsg, portMAX_DELAY);
                 break;
             }
             case ramp:
             {
                 //execRamp(devI2C0);               
+                strcpy(infoMsg, stateRampSecGoal2String(rover.curStates.curStateRampSecGoal));
+                sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_GOAL_SEC, QUEUE_BUF_LEN_LCD, infoMsg, portMAX_DELAY);
                 break;
             }
 			case none:
 			{
+                strcpy(infoMsg, "none");
+                sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_GOAL_SEC, QUEUE_BUF_LEN_LCD, infoMsg, portMAX_DELAY);
 			   	break;
 			}
             default:
@@ -215,7 +256,7 @@ static portTASK_FUNCTION(updateTaskLocate, pvParameters)
             for(i = 0; i < 8; i++)
                 data[i] = msg.buf[i + 2];
 
-            updateData(&rover, &map, data);
+            //updateData(&rover, &map, data);
 
             // Map updated data to global coordinates, allocating space if
             // need be.   

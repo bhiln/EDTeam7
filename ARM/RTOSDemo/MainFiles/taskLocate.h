@@ -226,4 +226,93 @@ bool execTurnAround(vtI2CStruct* devI2C0);
 bool execMoveToward(vtI2CStruct* devI2C0);
 bool execMoveTowardRamp(vtI2CStruct* devI2C0);
 
+static inline char* stateMotion2String(StateMotion f)
+{
+    static const char* strings[] = {
+        "stop",
+	    "moveForward",
+        "moveBackward",
+        "turnLeft",
+        "turnRight"
+    };
+
+    return strings[f];
+}
+
+static inline char* statePrimeGoal2String(StatePrimeGoal f)
+{
+    char* strings[] = {
+        "scan",
+        "roam",
+        "go",
+        "align",
+        "ramp",
+        "none"
+    };
+
+    return strings[f];
+}
+
+static inline char* stateScanSecGoal2String(StatePrimeGoal f)
+{
+    static const char* strings[] = {
+        "scanInit",
+        "scanExec",
+        "scanComp",
+        "scanError"
+    };
+
+    return strings[f];
+}
+
+static inline char* stateRoamSecGoal2String(StatePrimeGoal f)
+{
+    static const char* strings[] = {
+        "roamInit",
+        "roamExec",
+        "roamComp",
+        "roamError"
+    };
+
+    return strings[f];
+}
+
+static inline char* stateGoSecGoal2String(StatePrimeGoal f)
+{
+    static const char* strings[] = {
+        "goInit",
+        "goExec",
+        "goComp",
+        "goError"
+    };
+
+    return strings[f];
+}
+
+static inline char* stateAlignSecGoal2String(StatePrimeGoal f)
+{
+    static const char* strings[] = {
+        "alignInit",
+        "alignExec",
+        "alignComp",
+        "alignError"
+    };
+
+    return strings[f];
+}
+
+
+
+static inline char* stateRampSecGoal2String(StatePrimeGoal f)
+{
+    static const char* strings[] = {
+        "rampInit",
+        "rampExec",
+        "rampComp",
+        "rampError"
+    };
+
+    return strings[f];
+}
+
 #endif

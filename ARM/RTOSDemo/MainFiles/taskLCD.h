@@ -80,13 +80,16 @@ typedef struct __TabInfo
     char* motion;
     char* goalPrime;
     char* goalSec;
-    char* posRover;
-    char* posRamp;
     char* sizeMap;
-    char* slaveAddr;
-    char* connect;
     char* cmd;
     char* sensorData;
+
+    uint8_t lineMotion;
+    uint8_t lineGoalPrime;
+    uint8_t lineGoalSec;
+    uint8_t lineSizeMap;
+    uint8_t lineCmd;
+    uint8_t lineSensorData;
 } TabInfo;
 
 typedef struct __TabEvents

@@ -9,24 +9,10 @@
 #include "defs.h"
 
 // Debug information.
-char debugInitSystem[]            = "Initializing system";
-char debugInitLEDs[]              = "Initializing LEDs";
-char debugInitHardware[]          = "Initializing hardware";
-char debugStartTaskLCD[]          = "Starting task LCD";
-char debugStartTaskI2C[]          = "Starting task I2C";
-char debugStartTaskSensors[]      = "Starting task SENORS";
-char debugStartTaskLocate[]       = "Starting task LOCATE";
-char debugStartTaskCommand[]      = "Starting task COMMAND";
-char debugStartTaskConductor[]    = "Starting task CONDUCTOR";
-char debugInitScheduler[]         = "Initializing SCHEDULER";
 char debugStartTimerLCD[]         = "Starting timer LCD";
 char debugStartTimerSensors[]     = "Starting timer SENSORS";
 char debugStartTimerLocate[]      = "Starting timer LOCATE";
 char debugStartTimerCommand[]     = "Starting timer COMMAND";
-char debugRcvdSensorData[]        = "Received new sensor data";
-char debugNoRcvdSensorData[]      = "No new sensor data";
-char debugRcvdAck[]               = "Received command ack";
-char debugNoRcvdAck[]             = "No command ack";
 char debugSensorsQuery[]          = "Sending sensors query";
 char debugCommand[]               = "Sending command";
 

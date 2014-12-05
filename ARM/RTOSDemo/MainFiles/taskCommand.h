@@ -67,6 +67,6 @@ void startTaskCommand(structCommand* dataCommand, unsigned portBASE_TYPE uxPrior
 void sendTimerMsgCommand(structCommand* dataCommand, portTickType ticksElapsed, portTickType ticksToBlock);
 void sendValueMsgCommand(structCommand* dataCommand, uint8_t type, uint8_t* value, portTickType ticksToBlock);
 
-bool execCommand(vtI2CStruct* devI2C0, structLCD* dataLCD, uint8_t type, uint8_t value, uint8_t speed);
+bool execCommand(vtI2CStruct* devI2C0, structLCD* dataLCD, uint8_t* index, uint8_t type, uint8_t value, uint8_t speed);
 
 #endif
