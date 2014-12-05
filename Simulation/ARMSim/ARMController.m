@@ -9,13 +9,14 @@ classdef ARMController < handle
         
         function setIRSensor(sensorNum, value)
             global irSensors;
-            analogVolt = (value/310);
-            fprintf('analog volt: %d\n',analogVolt);
+            analogVolt = double(value)/310;
+            %fprintf('OUT: %d\n',analogVolt);
             irSensors(sensorNum) = 5.5085320959466787e+002 * analogVolt^0 ...
                                 + -1.0261454415387730e+003 * analogVolt^1 ...
                                  + 7.1555982778098962e+002 * analogVolt^2 ...
                                 + -2.1128075555690111e+002 * analogVolt^3 ...
                                  + 2.2264016814490361e+001 * analogVolt^4;
+            fprintf('OUT: %d\n',irSensors(sensorNum));
         end
         
         function setIRReady(value)
@@ -61,34 +62,34 @@ classdef ARMController < handle
 
             global irReady;
             if (irReady)
-                fprintf('SENSOR0: %d\n', irSensors(1));
+                %fprintf('SENSOR0: %d\n', irSensors(1));
                 figure(2);
                 hold on;
                 set(frontPointer, 'XData',[((XY(1,2)+XY(1,3))/2) ((XY(1,2)+XY(1,3))/2)+(2*cos(alpha))],'YData',[((XY(2,2)+XY(2,3))/2) ((XY(2,2)+XY(2,3))/2)+(2*sin(alpha))]);
 
-                set(frontLeft,'XData',[XY(1,3) XY(1,3)+(cos(alpha)*irSensors(1))],'YData',[XY(2,3), XY(2,3)+(sin(alpha)*irSensors(1))]);
-                plot(XY(1,3)+(cos(alpha)*irSensors(1)),XY(2,3)+(sin(alpha)*irSensors(1)),'x');
+                set(frontLeft,'XData',[XY(1,3) XY(1,3)+(cos(alpha)*irSensors(4)/10)],'YData',[XY(2,3), XY(2,3)+(sin(alpha)*irSensors(4)/10)]);
+                plot(XY(1,3)+(cos(alpha)*irSensors(4)/10),XY(2,3)+(sin(alpha)*irSensors(4)/10),'x');
 
-                set(frontRight,'XData',[XY(1,2) XY(1,2)+(cos(alpha)*irSensors(2))],'YData',[XY(2,2) XY(2,2)+(sin(alpha)*irSensors(2))]);
-                plot(XY(1,2)+(cos(alpha)*irSensors(2)),XY(2,2)+(sin(alpha)*irSensors(2)),'x');
-
-                set(leftFront,'XData',[XY(1,3) XY(1,3)-(sin(alpha)*irSensors(5))],'YData',[XY(2,3) XY(2,3)+(cos(alpha)*irSensors(5))]);
-                plot(XY(1,3)-(sin(alpha)*irSensors(5)),XY(2,3)+(cos(alpha)*irSensors(5)),'x');
-
-                set(leftBack,'XData',[XY(1,4) XY(1,4)-(sin(alpha)*irSensors(6))],'YData',[XY(2,4) XY(2,4)+(cos(alpha)*irSensors(6))]);
-                plot(XY(1,4)-(sin(alpha)*irSensors(6)),XY(2,4)+(cos(alpha)*irSensors(6)),'x');
-
-                set(rightFront,'XData',[XY(1,2) XY(1,2)+(sin(alpha)*irSensors(7))],'YData',[XY(2,2) XY(2,2)-(cos(alpha)*irSensors(7))]);
-                plot(XY(1,2)+(sin(alpha)*irSensors(7)),XY(2,2)-(cos(alpha)*irSensors(7)),'x');
-
-                set(rightBack,'XData',[XY(1,1) XY(1,1)+(sin(alpha)*irSensors(8))],'YData',[XY(2,1) XY(2,1)-(cos(alpha)*irSensors(8))]);
-                plot(XY(1,1)+(sin(alpha)*irSensors(8)),XY(2,1)-(cos(alpha)*irSensors(8)),'x');
-
-                set(backLeft,'XData',[XY(1,4) XY(1,4)-(cos(alpha)*irSensors(9))],'YData',[XY(2,4), XY(2,4)-(sin(alpha)*irSensors(9))]);
-                plot(XY(1,4)-(cos(alpha)*irSensors(9)),XY(2,4)-(sin(alpha)*irSensors(9)),'x');
-
-                set(backRight,'XData',[XY(1,1) XY(1,1)-(cos(alpha)*irSensors(10))],'YData',[XY(2,1), XY(2,1)-(sin(alpha)*irSensors(10))]);
-                plot(XY(1,1)-(cos(alpha)*irSensors(10)),XY(2,1)-(sin(alpha)*irSensors(10)),'x');
+                set(frontRight,'XData',[XY(1,2) XY(1,2)+(cos(alpha)*irSensors(3)/10)],'YData',[XY(2,2) XY(2,2)+(sin(alpha)*irSensors(3)/10)]);
+                plot(XY(1,2)+(cos(alpha)*irSensors(3)/10),XY(2,2)+(sin(alpha)*irSensors(3)/10),'x');
+% 
+%                 set(leftFront,'XData',[XY(1,3) XY(1,3)-(sin(alpha)*irSensors(5))],'YData',[XY(2,3) XY(2,3)+(cos(alpha)*irSensors(5))]);
+%                 plot(XY(1,3)-(sin(alpha)*irSensors(5)),XY(2,3)+(cos(alpha)*irSensors(5)),'x');
+% 
+%                 set(leftBack,'XData',[XY(1,4) XY(1,4)-(sin(alpha)*irSensors(6))],'YData',[XY(2,4) XY(2,4)+(cos(alpha)*irSensors(6))]);
+%                 plot(XY(1,4)-(sin(alpha)*irSensors(6)),XY(2,4)+(cos(alpha)*irSensors(6)),'x');
+% 
+                set(rightFront,'XData',[XY(1,2) XY(1,2)+(sin(alpha)*irSensors(5)/10)],'YData',[XY(2,2) XY(2,2)-(cos(alpha)*irSensors(5)/10)]);
+                plot(XY(1,2)+(sin(alpha)*irSensors(5)/10),XY(2,2)-(cos(alpha)*irSensors(5)/10),'x');
+% 
+                set(rightBack,'XData',[XY(1,1) XY(1,1)+(sin(alpha)*irSensors(6)/10)],'YData',[XY(2,1) XY(2,1)-(cos(alpha)*irSensors(6)/10)]);
+                plot(XY(1,1)+(sin(alpha)*irSensors(6)/10),XY(2,1)-(cos(alpha)*irSensors(6)/10),'x');
+% 
+%                 set(backLeft,'XData',[XY(1,4) XY(1,4)-(cos(alpha)*irSensors(9))],'YData',[XY(2,4), XY(2,4)-(sin(alpha)*irSensors(9))]);
+%                 plot(XY(1,4)-(cos(alpha)*irSensors(9)),XY(2,4)-(sin(alpha)*irSensors(9)),'x');
+% 
+%                 set(backRight,'XData',[XY(1,1) XY(1,1)-(cos(alpha)*irSensors(10))],'YData',[XY(2,1), XY(2,1)-(sin(alpha)*irSensors(10))]);
+%                 plot(XY(1,1)-(cos(alpha)*irSensors(10)),XY(2,1)-(sin(alpha)*irSensors(10)),'x');
 
                 hold off;
             end
@@ -120,31 +121,31 @@ classdef ARMController < handle
                     fprintf('SENSOR0: %d\n', irSensors(1));
                     figure(2);
                     hold on;
-                    set(frontPointer, 'XData',[((XY(1,2)+XY(1,3))/2) ((XY(1,2)+XY(1,3))/2)+(2*cos(alpha))],'YData',[((XY(2,2)+XY(2,3))/2) ((XY(2,2)+XY(2,3))/2)+(2*sin(alpha))]);
-
-                    set(frontLeft,'XData',[XY(1,3) XY(1,3)+(cos(alpha)*irSensors(1))],'YData',[XY(2,3), XY(2,3)+(sin(alpha)*irSensors(1))]);
-                    plot(XY(1,3)+(cos(alpha)*irSensors(1)),XY(2,3)+(sin(alpha)*irSensors(1)),'x');
-
-                    set(frontRight,'XData',[XY(1,2) XY(1,2)+(cos(alpha)*irSensors(2))],'YData',[XY(2,2) XY(2,2)+(sin(alpha)*irSensors(2))]);
-                    plot(XY(1,2)+(cos(alpha)*irSensors(2)),XY(2,2)+(sin(alpha)*irSensors(2)),'x');
-
-                    set(leftFront,'XData',[XY(1,3) XY(1,3)-(sin(alpha)*irSensors(5))],'YData',[XY(2,3) XY(2,3)+(cos(alpha)*irSensors(5))]);
-                    plot(XY(1,3)-(sin(alpha)*irSensors(5)),XY(2,3)+(cos(alpha)*irSensors(5)),'x');
-
-                    set(leftBack,'XData',[XY(1,4) XY(1,4)-(sin(alpha)*irSensors(6))],'YData',[XY(2,4) XY(2,4)+(cos(alpha)*irSensors(6))]);
-                    plot(XY(1,4)-(sin(alpha)*irSensors(6)),XY(2,4)+(cos(alpha)*irSensors(6)),'x');
-
-                    set(rightFront,'XData',[XY(1,2) XY(1,2)+(sin(alpha)*irSensors(7))],'YData',[XY(2,2) XY(2,2)-(cos(alpha)*irSensors(7))]);
-                    plot(XY(1,2)+(sin(alpha)*irSensors(7)),XY(2,2)-(cos(alpha)*irSensors(7)),'x');
-
-                    set(rightBack,'XData',[XY(1,1) XY(1,1)+(sin(alpha)*irSensors(8))],'YData',[XY(2,1) XY(2,1)-(cos(alpha)*irSensors(8))]);
-                    plot(XY(1,1)+(sin(alpha)*irSensors(8)),XY(2,1)-(cos(alpha)*irSensors(8)),'x');
-
-                    set(backLeft,'XData',[XY(1,4) XY(1,4)-(cos(alpha)*irSensors(9))],'YData',[XY(2,4), XY(2,4)-(sin(alpha)*irSensors(9))]);
-                    plot(XY(1,4)-(cos(alpha)*irSensors(9)),XY(2,4)-(sin(alpha)*irSensors(9)),'x');
-
-                    set(backRight,'XData',[XY(1,1) XY(1,1)-(cos(alpha)*irSensors(10))],'YData',[XY(2,1), XY(2,1)-(sin(alpha)*irSensors(10))]);
-                    plot(XY(1,1)-(cos(alpha)*irSensors(10)),XY(2,1)-(sin(alpha)*irSensors(10)),'x');
+%                     set(frontPointer, 'XData',[((XY(1,2)+XY(1,3))/2) ((XY(1,2)+XY(1,3))/2)+(2*cos(alpha))],'YData',[((XY(2,2)+XY(2,3))/2) ((XY(2,2)+XY(2,3))/2)+(2*sin(alpha))]);
+% 
+%                     set(frontLeft,'XData',[XY(1,3) XY(1,3)+(cos(alpha)*irSensors(1))],'YData',[XY(2,3), XY(2,3)+(sin(alpha)*irSensors(1))]);
+%                     plot(XY(1,3)+(cos(alpha)*irSensors(1)),XY(2,3)+(sin(alpha)*irSensors(1)),'x');
+% 
+%                     set(frontRight,'XData',[XY(1,2) XY(1,2)+(cos(alpha)*irSensors(2))],'YData',[XY(2,2) XY(2,2)+(sin(alpha)*irSensors(2))]);
+%                     plot(XY(1,2)+(cos(alpha)*irSensors(2)),XY(2,2)+(sin(alpha)*irSensors(2)),'x');
+% 
+%                     set(leftFront,'XData',[XY(1,3) XY(1,3)-(sin(alpha)*irSensors(5))],'YData',[XY(2,3) XY(2,3)+(cos(alpha)*irSensors(5))]);
+%                     plot(XY(1,3)-(sin(alpha)*irSensors(5)),XY(2,3)+(cos(alpha)*irSensors(5)),'x');
+% 
+%                     set(leftBack,'XData',[XY(1,4) XY(1,4)-(sin(alpha)*irSensors(6))],'YData',[XY(2,4) XY(2,4)+(cos(alpha)*irSensors(6))]);
+%                     plot(XY(1,4)-(sin(alpha)*irSensors(6)),XY(2,4)+(cos(alpha)*irSensors(6)),'x');
+% 
+%                     set(rightFront,'XData',[XY(1,2) XY(1,2)+(sin(alpha)*irSensors(7))],'YData',[XY(2,2) XY(2,2)-(cos(alpha)*irSensors(7))]);
+%                     plot(XY(1,2)+(sin(alpha)*irSensors(7)),XY(2,2)-(cos(alpha)*irSensors(7)),'x');
+% 
+%                     set(rightBack,'XData',[XY(1,1) XY(1,1)+(sin(alpha)*irSensors(8))],'YData',[XY(2,1) XY(2,1)-(cos(alpha)*irSensors(8))]);
+%                     plot(XY(1,1)+(sin(alpha)*irSensors(8)),XY(2,1)-(cos(alpha)*irSensors(8)),'x');
+% 
+%                     set(backLeft,'XData',[XY(1,4) XY(1,4)-(cos(alpha)*irSensors(9))],'YData',[XY(2,4), XY(2,4)-(sin(alpha)*irSensors(9))]);
+%                     plot(XY(1,4)-(cos(alpha)*irSensors(9)),XY(2,4)-(sin(alpha)*irSensors(9)),'x');
+% 
+%                     set(backRight,'XData',[XY(1,1) XY(1,1)-(cos(alpha)*irSensors(10))],'YData',[XY(2,1), XY(2,1)-(sin(alpha)*irSensors(10))]);
+%                     plot(XY(1,1)-(cos(alpha)*irSensors(10)),XY(2,1)-(sin(alpha)*irSensors(10)),'x');
 
                     hold off;
                 end
@@ -216,29 +217,29 @@ classdef ARMController < handle
                     figure(2);
                     hold on;
 
-                    set(frontLeft,'XData',[XY(1,3) XY(1,3)+(cos(alpha)*irSensors(1))],'YData',[XY(2,3), XY(2,3)+(sin(alpha)*irSensors(1))]);
-                    plot(XY(1,3)+(cos(alpha)*irSensors(1)),XY(2,3)+(sin(alpha)*irSensors(1)),'x');
-
-                    set(frontRight,'XData',[XY(1,2) XY(1,2)+(cos(alpha)*irSensors(2))],'YData',[XY(2,2) XY(2,2)+(sin(alpha)*irSensors(2))]);
-                    plot(XY(1,2)+(cos(alpha)*irSensors(2)),XY(2,2)+(sin(alpha)*irSensors(2)),'x');
-
-                    set(leftFront,'XData',[XY(1,3) XY(1,3)-(sin(alpha)*irSensors(5))],'YData',[XY(2,3) XY(2,3)+(cos(alpha)*irSensors(5))]);
-                    plot(XY(1,3)-(sin(alpha)*irSensors(5)),XY(2,3)+(cos(alpha)*irSensors(5)),'x');
-
-                    set(leftBack,'XData',[XY(1,4) XY(1,4)-(sin(alpha)*irSensors(6))],'YData',[XY(2,4) XY(2,4)+(cos(alpha)*irSensors(6))]);
-                    plot(XY(1,4)-(sin(alpha)*irSensors(6)),XY(2,4)+(cos(alpha)*irSensors(6)),'x');
-
-                    set(rightFront,'XData',[XY(1,2) XY(1,2)+(sin(alpha)*irSensors(7))],'YData',[XY(2,2) XY(2,2)-(cos(alpha)*irSensors(7))]);
-                    plot(XY(1,2)+(sin(alpha)*irSensors(7)),XY(2,2)-(cos(alpha)*irSensors(7)),'x');
-
-                    set(rightBack,'XData',[XY(1,1) XY(1,1)+(sin(alpha)*irSensors(8))],'YData',[XY(2,1) XY(2,1)-(cos(alpha)*irSensors(8))]);
-                    plot(XY(1,1)+(sin(alpha)*irSensors(8)),XY(2,1)-(cos(alpha)*irSensors(8)),'x');
-
-                    set(backLeft,'XData',[XY(1,4) XY(1,4)-(cos(alpha)*irSensors(9))],'YData',[XY(2,4), XY(2,4)-(sin(alpha)*irSensors(9))]);
-                    plot(XY(1,4)-(cos(alpha)*irSensors(9)),XY(2,4)-(sin(alpha)*irSensors(9)),'x');
-
-                    set(backRight,'XData',[XY(1,1) XY(1,1)-(cos(alpha)*irSensors(10))],'YData',[XY(2,1), XY(2,1)-(sin(alpha)*irSensors(10))]);
-                    plot(XY(1,1)-(cos(alpha)*irSensors(10)),XY(2,1)-(sin(alpha)*irSensors(10)),'x');
+%                     set(frontLeft,'XData',[XY(1,3) XY(1,3)+(cos(alpha)*irSensors(1))],'YData',[XY(2,3), XY(2,3)+(sin(alpha)*irSensors(1))]);
+%                     plot(XY(1,3)+(cos(alpha)*irSensors(1)),XY(2,3)+(sin(alpha)*irSensors(1)),'x');
+% 
+%                     set(frontRight,'XData',[XY(1,2) XY(1,2)+(cos(alpha)*irSensors(2))],'YData',[XY(2,2) XY(2,2)+(sin(alpha)*irSensors(2))]);
+%                     plot(XY(1,2)+(cos(alpha)*irSensors(2)),XY(2,2)+(sin(alpha)*irSensors(2)),'x');
+% 
+%                     set(leftFront,'XData',[XY(1,3) XY(1,3)-(sin(alpha)*irSensors(5))],'YData',[XY(2,3) XY(2,3)+(cos(alpha)*irSensors(5))]);
+%                     plot(XY(1,3)-(sin(alpha)*irSensors(5)),XY(2,3)+(cos(alpha)*irSensors(5)),'x');
+% 
+%                     set(leftBack,'XData',[XY(1,4) XY(1,4)-(sin(alpha)*irSensors(6))],'YData',[XY(2,4) XY(2,4)+(cos(alpha)*irSensors(6))]);
+%                     plot(XY(1,4)-(sin(alpha)*irSensors(6)),XY(2,4)+(cos(alpha)*irSensors(6)),'x');
+% 
+%                     set(rightFront,'XData',[XY(1,2) XY(1,2)+(sin(alpha)*irSensors(7))],'YData',[XY(2,2) XY(2,2)-(cos(alpha)*irSensors(7))]);
+%                     plot(XY(1,2)+(sin(alpha)*irSensors(7)),XY(2,2)-(cos(alpha)*irSensors(7)),'x');
+% 
+%                     set(rightBack,'XData',[XY(1,1) XY(1,1)+(sin(alpha)*irSensors(8))],'YData',[XY(2,1) XY(2,1)-(cos(alpha)*irSensors(8))]);
+%                     plot(XY(1,1)+(sin(alpha)*irSensors(8)),XY(2,1)-(cos(alpha)*irSensors(8)),'x');
+% 
+%                     set(backLeft,'XData',[XY(1,4) XY(1,4)-(cos(alpha)*irSensors(9))],'YData',[XY(2,4), XY(2,4)-(sin(alpha)*irSensors(9))]);
+%                     plot(XY(1,4)-(cos(alpha)*irSensors(9)),XY(2,4)-(sin(alpha)*irSensors(9)),'x');
+% 
+%                     set(backRight,'XData',[XY(1,1) XY(1,1)-(cos(alpha)*irSensors(10))],'YData',[XY(2,1), XY(2,1)-(sin(alpha)*irSensors(10))]);
+%                     plot(XY(1,1)-(cos(alpha)*irSensors(10)),XY(2,1)-(sin(alpha)*irSensors(10)),'x');
 
                     hold off;
                 end

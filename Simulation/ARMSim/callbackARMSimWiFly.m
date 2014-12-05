@@ -13,7 +13,7 @@ persistent dataBuffer;
 % how much and then read it into a data array.
 bytesAvailable = obj.BytesAvailable;
 [recievedByte, ~, ~] = fread(obj, 1, 'char');
-fprintf('%d\n', recievedByte);
+%fprintf('%d\n', recievedByte);
 if (length(dataBuffer) == 0)
     dataBuffer = [recievedByte];
 else
