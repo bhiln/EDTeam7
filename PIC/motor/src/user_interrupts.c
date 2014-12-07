@@ -34,7 +34,7 @@ void timer0_int_handler() {
         reply[0] = 0xFE;
         reply[1] = 0x35;
         reply[2] = 0xFF;
-        MotorData_sendmsg(3, MSGT_I2C_RQST, (void *) reply);
+//        MotorData_sendmsg(3, MSGT_I2C_RQST, (void *) reply);
         reply[0] = 0x0;
         reply[1] = 0x0;
         reply[2] = 0x0;
