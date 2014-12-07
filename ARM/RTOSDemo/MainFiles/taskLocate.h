@@ -48,7 +48,7 @@
 #define MAP_RADIUS_MAX          10000
 
 // Initial size of the map (experimentally found).
-#define MAP_RADIUS_INIT         51
+#define MAP_RADIUS_INIT         5
 
 // Units: number of cm per block.
 #define UNITS                   1

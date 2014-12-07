@@ -61,13 +61,6 @@ static portTASK_FUNCTION(updateTaskConductor, pvParameters)
 		    VT_HANDLE_FATAL_ERROR(retI2C);
         }
 
-        // Log that there is an error with I2C, since we are expecting a message.
-        if(rxLen == 0) 
-        {
-            sprintf(eventsMsg, "Error: bad I2C connection");
-            sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
-        }
-
         // Otherwise route it.
         else
         {
@@ -77,8 +70,15 @@ static portTASK_FUNCTION(updateTaskConductor, pvParameters)
                 // Sensor task.
                 case MSG_TYPE_I2C_SENSORS: 
                 {
+                    // Log that there is an error with I2C, since we are expecting a message.
+                    if(rxLen == 0) 
+                    {
+                        sprintf(eventsMsg, "Error: bad I2C connection");
+                        sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
+                    }
+
                     // If values[0] is 0, then we have no sensor data.
-                    if(values[0] == 0)
+                    else if(values[0] == 0)
                     {
                         sprintf(eventsMsg, "No received sensor data");
                         sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
@@ -87,7 +87,6 @@ static portTASK_FUNCTION(updateTaskConductor, pvParameters)
                     // If values[0] is 1, then we have new sensor data.
                     else if(values[0] == 1)
                     {
-                        writeDebug(PIN_DEBUG_0, 1);
                         sprintf(eventsMsg, "Received new sensor data");
                         sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
                         sendValueMsgSensors(dataSensors, MSG_TYPE_SENSORS, values, portMAX_DELAY);
@@ -101,8 +100,15 @@ static portTASK_FUNCTION(updateTaskConductor, pvParameters)
                 }
                 case MSG_TYPE_I2C_ACK:
                 {
+                    // Log that there is an error with I2C, since we are expecting a message.
+                    if(rxLen == 0) 
+                    {
+                        sprintf(eventsMsg, "Error: bad I2C connection");
+                        sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
+                    }
+
                     // If values[0] = 0, then we have no ack.
-                    if(values[0] == 0)
+                    else if(values[0] == 0)
                     {
                         sprintf(eventsMsg, "Command not yet completed");
                         sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
@@ -115,6 +121,16 @@ static portTASK_FUNCTION(updateTaskConductor, pvParameters)
                         sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
                         sendValueMsgLocate(dataLocate, MSG_TYPE_ACK, (float*)values, portMAX_DELAY);
                     }
+                    else
+                    {
+                        sprintf(eventsMsg, "Error: unrecognized ack message header");
+                        sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
+                    }
+                    break;
+                }
+                case MSG_TYPE_I2C_CMD:
+                {
+                    // Nothing to send to anywhere so break.
                     break;
                 }
                 default:

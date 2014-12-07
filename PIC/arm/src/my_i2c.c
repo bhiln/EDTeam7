@@ -217,35 +217,50 @@ void i2c_int_handler() {
         signed char send;
         // send to the queue to *ask* for the data to be sent out
         send = SensorData_recvmsg(ic_ptr->outbuflen, (void *) MSGT_I2C_RQST, (void *) ic_ptr->outbuffer);
-        if (send < 0) {
-            ic_ptr->outbuffer[0] = 0x0;
-            ic_ptr->outbuffer[1] = 0x0;
-            ic_ptr->outbuffer[2] = 0x0;
-            ic_ptr->outbuffer[3] = 0x0;
-            ic_ptr->outbuffer[4] = 0x0;
-            ic_ptr->outbuffer[5] = 0x0;
-            ic_ptr->outbuffer[6] = 0x0;
-            ic_ptr->outbuffer[7] = 0x0;
-            ic_ptr->outbuffer[8] = 0x0;
-            ic_ptr->outbuffer[9] = 0x0;
-            ic_ptr->outbuffer[10] = 0x0;
-            ic_ptr->outbuffer[11] = 0x0;
-            ic_ptr->outbuffer[12] = 0x0;
-            ic_ptr->outbuffer[13] = 0x0;
-            ic_ptr->outbuffer[14] = 0x0;
-            ic_ptr->outbuffer[15] = 0x0;
-            ic_ptr->outbuffer[16] = 0x0;
-            ic_ptr->outbuffer[17] = 0x0;
-            ic_ptr->outbuffer[18] = 0x0;
-            ic_ptr->outbuffer[19] = 0x0;
-            ic_ptr->outbuffer[20] = 0x0;
-            ic_ptr->outbuffer[21] = 0x0;
+        if(ic_ptr->buffer[0] == 0x0A)
+        {
+            if (send < 0) {
+                ic_ptr->outbuffer[0] = 0x0;
+                ic_ptr->outbuffer[1] = 0x0;
+                ic_ptr->outbuffer[2] = 0x0;
+                ic_ptr->outbuffer[3] = 0x0;
+                ic_ptr->outbuffer[4] = 0x0;
+                ic_ptr->outbuffer[5] = 0x0;
+                ic_ptr->outbuffer[6] = 0x0;
+                ic_ptr->outbuffer[7] = 0x0;
+                ic_ptr->outbuffer[8] = 0x0;
+                ic_ptr->outbuffer[9] = 0x0;
+                ic_ptr->outbuffer[10] = 0x0;
+                ic_ptr->outbuffer[11] = 0x0;
+                ic_ptr->outbuffer[12] = 0x0;
+                ic_ptr->outbuffer[13] = 0x0;
+                ic_ptr->outbuffer[14] = 0x0;
+                ic_ptr->outbuffer[15] = 0x0;
+                ic_ptr->outbuffer[16] = 0x0;
+                ic_ptr->outbuffer[17] = 0x0;
+                ic_ptr->outbuffer[18] = 0x0;
+                ic_ptr->outbuffer[19] = 0x0;
+                ic_ptr->outbuffer[20] = 0x0;
+                ic_ptr->outbuffer[21] = 0x0;
+                ic_ptr->outbuffer[22] = 0x0;
+            }
+            // toggle an LED1
+            LATAbits.LATA3 = !LATAbits.LATA3;
+            start_i2c_slave_reply(23, ic_ptr->outbuffer);
+            msg_to_send = 0;
         }
-        // toggle an LED1
-        LATAbits.LATA3 = !LATAbits.LATA3;
-        start_i2c_slave_reply(22, ic_ptr->outbuffer);
-//        ToMainHigh_sendmsg(0, MSGT_I2C_RQST, (void *) ic_ptr->buffer);
-        msg_to_send = 0;
+        else if(ic_ptr->buffer[0] == 0x0B)
+        {
+            unsigned char cmdAck2Send = ic_ptr->outbuffer[1];
+            ic_ptr->outbuflen = 1;
+            if (send < 0) {
+                ic_ptr->outbuffer[0] = 0x0;
+            }
+            // toggle an LED1
+            LATAbits.LATA3 = !LATAbits.LATA3;
+            start_i2c_slave_reply(1, cmdAck2Send);
+            msg_to_send = 0;
+        }
     }
 }
 

@@ -257,6 +257,14 @@ static portTASK_FUNCTION(updateTaskLCD, pvParameters)
 
 void drawInfo(TabInfo* tabInfo)
 {
+    // No idea why I need to do this, but it makes the message prettier..
+    tabInfo->motion[0] = ' ';     tabInfo->motion[1] = ' ';
+    tabInfo->goalPrime[0] = ' ';  tabInfo->goalPrime[1] = ' ';
+    tabInfo->goalSec[0] = ' ';    tabInfo->goalSec[1] = ' ';
+    tabInfo->sizeMap[0] = ' ';    tabInfo->sizeMap[1] = ' ';
+    tabInfo->cmd[0] = ' ';        tabInfo->cmd[1] = ' ';
+    tabInfo->sensorData[0] = ' '; tabInfo->sensorData[1] = ' ';
+
    	GLCD_SetTextColor(Blue);
     unsigned char initMsg0[] = "Team 7";
     unsigned char initMsg1[] = "VT ECE 4564";
@@ -268,6 +276,7 @@ void drawInfo(TabInfo* tabInfo)
     GLCD_SetTextColor(Cyan);
 	GLCD_DisplayString(tabInfo->lineMotion, 0, 0, (unsigned char*)"Motion: ");
     GLCD_SetTextColor(Green);
+    
 	GLCD_DisplayString(tabInfo->lineMotion + 1, 0, 0, (unsigned char*)(tabInfo->motion));
 
     GLCD_SetTextColor(Cyan);
@@ -345,6 +354,8 @@ void updateInfo(TabData* tabData, msgLCD* msg, uint8_t type)
                 GLCD_DisplayString(tabInfo->lineMotion, 0, 0, (unsigned char*)"Motion: ");
                 GLCD_ClearLn(tabInfo->lineMotion + 1, 0);
                 GLCD_SetTextColor(Green);
+                tabInfo->motion[0] = ' ';
+                tabInfo->motion[1] = ' ';
                 GLCD_DisplayString(tabInfo->lineMotion + 1, 0, 0, (unsigned char*)(tabInfo->motion));
             }
             break;
@@ -358,6 +369,8 @@ void updateInfo(TabData* tabData, msgLCD* msg, uint8_t type)
                 GLCD_DisplayString(tabInfo->lineGoalPrime, 0, 0, (unsigned char*)"Primary Goal: ");
                 GLCD_ClearLn(tabInfo->lineGoalPrime + 1, 0);
                 GLCD_SetTextColor(Green);
+                tabInfo->goalPrime[0] = ' ';
+                tabInfo->goalPrime[1] = ' ';
                 GLCD_DisplayString(tabInfo->lineGoalPrime + 1, 0, 0, (unsigned char*)(tabInfo->goalPrime));
             }
             break;
@@ -371,6 +384,8 @@ void updateInfo(TabData* tabData, msgLCD* msg, uint8_t type)
                 GLCD_DisplayString(tabInfo->lineGoalSec, 0, 0, (unsigned char*)"Secondary Goal: ");
                 GLCD_ClearLn(tabInfo->lineGoalSec + 1, 0);
                 GLCD_SetTextColor(Green);
+                tabInfo->goalSec[0] = ' ';
+                tabInfo->goalSec[1] = ' ';
                 GLCD_DisplayString(tabInfo->lineGoalSec + 1, 0, 0, (unsigned char*)(tabInfo->goalSec));
             }
             break;
@@ -384,6 +399,7 @@ void updateInfo(TabData* tabData, msgLCD* msg, uint8_t type)
                 GLCD_DisplayString(tabInfo->lineSizeMap, 0, 0, (unsigned char*)"Allocated Map Size: ");
                 GLCD_ClearLn(tabInfo->lineSizeMap + 1, 0);
                 GLCD_SetTextColor(Green);
+                tabInfo->sizeMap[0] = ' ';    tabInfo->sizeMap[1] = ' ';
                 GLCD_DisplayString(tabInfo->lineSizeMap + 1, 0, 0, (unsigned char*)(tabInfo->sizeMap));
             }
             break;
@@ -397,6 +413,8 @@ void updateInfo(TabData* tabData, msgLCD* msg, uint8_t type)
                 GLCD_DisplayString(tabInfo->lineCmd, 0, 0, (unsigned char*)"Last Command: ");
                 GLCD_ClearLn(tabInfo->lineCmd + 1, 0);
                 GLCD_SetTextColor(Green);
+                tabInfo->cmd[0] = ' ';
+                tabInfo->cmd[1] = ' ';
                 GLCD_DisplayString(tabInfo->lineCmd + 1, 0, 0, (unsigned char*)(tabInfo->cmd));
             }
             break;
@@ -410,6 +428,8 @@ void updateInfo(TabData* tabData, msgLCD* msg, uint8_t type)
                 GLCD_DisplayString(tabInfo->lineSensorData, 0, 0, (unsigned char*)"Sensor Data: ");
                 GLCD_ClearLn(tabInfo->lineSensorData + 1, 0);
                 GLCD_SetTextColor(Green);
+                tabInfo->sensorData[0] = ' ';
+                tabInfo->sensorData[1] = ' ';
                 GLCD_DisplayString(tabInfo->lineSensorData + 1, 0, 0, (unsigned char*)(tabInfo->sensorData));
             }
             break;

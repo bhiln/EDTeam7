@@ -108,7 +108,9 @@ static portTASK_FUNCTION(updateTaskSensors, pvParameters)
         {
             sprintf(eventsMsg, "Sending query for sensor data");
 			sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
-            portBASE_TYPE retI2C = vtI2CEnQ(devI2C0, MSG_TYPE_I2C_SENSORS, SLAVE_ADDR, 0, 0, QUEUE_BUF_LEN_SENS);
+
+			uint8_t query = 0x0A;
+            portBASE_TYPE retI2C = vtI2CEnQ(devI2C0, MSG_TYPE_I2C_SENSORS, SLAVE_ADDR, sizeof(query), &query, QUEUE_BUF_LEN_SENS);
             if(retI2C != pdTRUE)
             {
                 sprintf(eventsMsg, "Error: unable to communicate over I2C");

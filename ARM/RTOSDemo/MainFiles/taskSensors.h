@@ -39,7 +39,7 @@
 #define QUEUE_LEN_SENS          10
 
 // Maximum length of the buffer for this task.
-#define QUEUE_BUF_LEN_SENS      22
+#define QUEUE_BUF_LEN_SENS      23
 
 /*------------------------------------------------------------------------------
  * Task Data Structures

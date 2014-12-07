@@ -8,14 +8,6 @@
 #include "lpc17xx_gpio.h"
 #include "defs.h"
 
-// Debug information.
-char debugStartTimerLCD[]         = "Starting timer LCD";
-char debugStartTimerSensors[]     = "Starting timer SENSORS";
-char debugStartTimerLocate[]      = "Starting timer LOCATE";
-char debugStartTimerCommand[]     = "Starting timer COMMAND";
-char debugSensorsQuery[]          = "Sending sensors query";
-char debugCommand[]               = "Sending command";
-
 // Error information.
 char errorTaskCreateI2C[]         = "Error: task create I2C";
 char errorTaskCreateConductor[]   = "Error: task create CONDUCTOR";

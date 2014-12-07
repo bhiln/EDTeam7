@@ -8,48 +8,36 @@
 
 void createMatrix(Matrix* A)
 {
-    if(A == NULL)
-        return;
-
     if((A->rows) == 0 || (A->cols) == 0)
         return;
-        
+
     if(A->allocated)
         return;
 
     uint16_t i;
     uint16_t r = A->rows;
     uint16_t c = A->cols;
-    A->rowVectors = malloc(r * sizeof(Vector));
+    A->rowVectors = (Vector*)malloc(r * sizeof(Vector));
     for(i = 0; i < r; i++)
     {
         A->rowVectors[i].n = c;
         createVector(&(A->rowVectors[i]));
     }
     A->allocated = true;
-    
-    // Initialize all elements to 0.
-    //uint16_t j;
-    //for(i = 0; i < r; i++)
-    //{
-        //for(j = 0; j < c; j++)
-            //A->rowVectors[i].buf[j] = 0.0;
-    //}
 }
 
 void createVector(Vector* x)
 {
-    if(x == NULL)
-        return;
-
     if(x->allocated)
         return;
 
     x->buf = malloc(x->n * sizeof(float));
-    x->allocated = true;
-
     if(x->buf)
         x->allocated = true;
+
+    uint16_t j;
+    for(j = 0; j < x->n; j++)
+        x->buf[j] = 0.0;
 }
 
 void freeMatrix(Matrix* A)

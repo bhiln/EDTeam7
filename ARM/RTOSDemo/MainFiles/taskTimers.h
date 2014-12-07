@@ -32,10 +32,10 @@
 #define LCD_UPDATE_TIME		    1000
 #define lcdWRITE_RATE_BASE	    ((portTickType) LCD_UPDATE_TIME/portTICK_RATE_MS)
 
-#define LOCATE_UPDATE_TIME	    1000
+#define LOCATE_UPDATE_TIME	    500
 #define LOCATE_WRITE_RATE_BASE	((portTickType) LOCATE_UPDATE_TIME/portTICK_RATE_MS)
 
-#define COMMAND_UPDATE_TIME	    300
+#define COMMAND_UPDATE_TIME	    500
 #define COMMAND_WRITE_RATE_BASE	((portTickType) COMMAND_UPDATE_TIME/portTICK_RATE_MS)
 
 // Number of times to query slave PIC for sensor data (# reads/8 seconds)

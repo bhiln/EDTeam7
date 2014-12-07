@@ -172,6 +172,7 @@ static portTASK_FUNCTION(updateTaskLocate, pvParameters)
     // Like all good tasks, this should never exit.
 	for(;;)
 	{
+        // Test matrix.
         toggleLED(PIN_LED_3);
 
         // Wait for a message from the queue.
@@ -188,15 +189,13 @@ static portTASK_FUNCTION(updateTaskLocate, pvParameters)
 		{
 		case MSG_TYPE_TIMER_LOCATE:
 		{
+            // Update the LCD info tab.
             strcpy(infoMsg, stateMotion2String(rover.curStates.curStateMotion));
             sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_MOTION, QUEUE_BUF_LEN_LCD, infoMsg, portMAX_DELAY);
-
             strcpy(infoMsg, statePrimeGoal2String(rover.curStates.curStatePrimeGoal));
             sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_GOAL_PRIME, QUEUE_BUF_LEN_LCD, infoMsg, portMAX_DELAY);
-
             sprintf(infoMsg, "%u", map.map.rows * map.map.cols);
             sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_SIZE_MAP, QUEUE_BUF_LEN_LCD, infoMsg, portMAX_DELAY);
-
            	switch(rover.curStates.curStatePrimeGoal)
             {
             case scan:
@@ -247,6 +246,8 @@ static portTASK_FUNCTION(updateTaskLocate, pvParameters)
                 break;	
             }
 	        }
+
+            // Update the LCD map tab.
 			break;
         }
         case MSG_TYPE_LOCATE:
@@ -305,6 +306,7 @@ void updateData(Rover* rover, Map* map, float* data)
     rover->curObstacles.rowVectors[1].buf[3] = 0;
 
     // Update the current ramps.
+    // Fuck the ramps.
 }
 
 void mapData(Rover* rover, Map* map)
@@ -320,8 +322,8 @@ void mapData(Rover* rover, Map* map)
         .rows = 2,
         .cols = 4
     };
-    //createMatrix(&T);
-    //createMatrix(&result);
+    createMatrix(&T);
+    createMatrix(&result);
     T.rowVectors[0].buf[0] = cos(rover->orient);
     T.rowVectors[0].buf[1] = sin(rover->orient)*(-1);
     T.rowVectors[1].buf[0] = sin(rover->orient);
@@ -384,4 +386,8 @@ void mapData(Rover* rover, Map* map)
         uint16_t c = (uint16_t)(round(result.rowVectors[1].buf[i]));
         map->map.rowVectors[r].buf[c] = 1.0;
     }
+
+    // Free the matrices.
+    freeMatrix(&T);
+    freeMatrix(&result);
 }

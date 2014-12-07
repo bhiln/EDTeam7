@@ -10,41 +10,20 @@ static uart_comm *uc_ptr;
 
 void uart_recv_int_handler() {
     unsigned char echo[3];
-    unsigned char readin[6];
-    unsigned char test[22];
+    unsigned char readin[23];
     if (DataRdy1USART()) {
         readin[uc_ptr->msg_count] = Read1USART();
 
         // check if a message should be sent
 //        if (readin[5] == 0xFF) {
-        if (uc_ptr->msg_count == 5) {
-            test[0] = 0x1;
-            test[1] = 0x22;
-            test[2] = 0x33;
-            test[3] = 0x44;
-            test[4] = 0x55;
-            test[5] = 0x66;
-            test[6] = 0x1;
-            test[7] = 0x22;
-            test[8] = 0x33;
-            test[9] = 0x44;
-            test[10] = 0x55;
-            test[11] = 0x66;
-            test[12] = 0x1;
-            test[13] = 0x22;
-            test[14] = 0x33;
-            test[15] = 0x44;
-            test[16] = 0x55;
-            test[17] = 0x66;
-            test[18] = 0x1;
-            test[19] = 0x22;
-            test[20] = 0x33;
-            test[21] = 0x44;
+        if(readin[uc_ptr->msg_count] == 0xFF)
+        {
 //            readin[0] = 0x1;
 //            ToMainLow_sendmsg(uc_ptr->msg_count, MSGT_UART_DATA, (void *) readin);
 //            ToMainLow_sendmsg(6, MSGT_UART_DATA, test);
-//            SensorData_sendmsg(6, MSGT_I2C_RQST, readin);
-            SensorData_sendmsg(22, MSGT_I2C_RQST, test);
+            SensorData_sendmsg(23, MSGT_I2C_RQST, readin);
+
+            //SensorData_sendmsg(22, MSGT_I2C_RQST, test);
 //            echo[0] = 0x33;
 //            echo[1] = readin[0];
 //            echo[2] = 0xFF;
