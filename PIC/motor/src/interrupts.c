@@ -87,7 +87,7 @@ void InterruptHandlerHigh() {
     // see which device generated this interrupt.  Then we can call the correct handler.
 
     // check to see if we have an I2C interrupt
-    if (PIR1bits.SSPIF && PIE1bits.SSPIE) {
+    if (PIR1bits.SSPIF) {
         // clear the interrupt flag
         PIR1bits.SSPIF = 0;
         // call the handler

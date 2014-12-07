@@ -220,6 +220,7 @@ DEBUG_OFF(TIMER1);
                         case 0x0D: // stop
                         {
                             length = 2;
+                            t0.distance = 0;
                             msgbuffer[0] = 64;
                             msgbuffer[1] = 192;
                             uart_send(length, msgbuffer); // send motor command to motor controller
