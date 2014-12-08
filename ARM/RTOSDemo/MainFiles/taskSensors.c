@@ -110,11 +110,11 @@ static portTASK_FUNCTION(updateTaskSensors, pvParameters)
 			sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
 
 			uint8_t query = 0x0A;
-            portBASE_TYPE retI2C = vtI2CEnQ(devI2C0, MSG_TYPE_I2C_SENSORS, SLAVE_ADDR, sizeof(query), &query, QUEUE_BUF_LEN_SENS);
+            portBASE_TYPE retI2C = vtI2CEnQ(devI2C0, MSG_TYPE_I2C_SENSORS, SLAVE_ADDR, sizeof(query), &query, QUEUE_BUF_LEN_SENS + 1);
             if(retI2C != pdTRUE)
             {
                 sprintf(eventsMsg, "Error: unable to communicate over I2C");
-                sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
+                sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD + 1, eventsMsg, portMAX_DELAY);
                 VT_HANDLE_FATAL_ERROR(retI2C);
             }
             break;
@@ -154,10 +154,27 @@ static portTASK_FUNCTION(updateTaskSensors, pvParameters)
             sensorsProcessedI[10] = sensorsRaw[10]; // Fix this later.
             sensorsProcessedF[10] = sensorsRaw[10];
 
-            for (i = 0 ; i < QUEUE_BUF_LEN_SENS ; i++)
-                infoMsg[i] = msg.buf[i] + '0';
-            infoMsg[QUEUE_BUF_LEN_SENS] = '\0';
-			sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_SENS_DATA, QUEUE_BUF_LEN_LCD, infoMsg, portMAX_DELAY);
+            infoMsg[0] = '\0';
+            for (i = 0; i < 12; i = i + 2)
+            {
+                uint8_t byte0 = msg.buf[i];
+                uint8_t byte1 = msg.buf[i + 1];
+                char res[10];
+                sprintf(&res[0], "0x%02x%02x ", byte0, byte1);
+                strcat(infoMsg, res);
+            }
+			sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_TAB_SENS_0, QUEUE_BUF_LEN_LCD, infoMsg, portMAX_DELAY);
+
+            infoMsg[0] = '\0';
+            for (i = 12; i < QUEUE_BUF_LEN_SENS - 1; i = i + 2)
+            {
+                uint8_t byte0 = msg.buf[i];
+                uint8_t byte1 = msg.buf[i + 1];
+                char res[10];
+                sprintf(&res[0], "0x%02x%02x ", byte0, byte1);
+                strcat(infoMsg, res);
+            }
+			sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_TAB_SENS_1, QUEUE_BUF_LEN_LCD, infoMsg, portMAX_DELAY);
 
             // Send the processed sensor data to the locate task.
            	//sendValueMsgLocate(dataLocate, MSG_TYPE_LOCATE, sensorsProcessedF, portMAX_DELAY);

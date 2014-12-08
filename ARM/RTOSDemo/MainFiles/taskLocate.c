@@ -246,29 +246,26 @@ static portTASK_FUNCTION(updateTaskLocate, pvParameters)
                 break;	
             }
 	        }
+            // Update the LCD sensors tab.
 
             // Update the LCD map tab.
+            
 			break;
         }
         case MSG_TYPE_LOCATE:
         {
-            float data[8];
-            uint8_t i;
-            for(i = 0; i < 8; i++)
-                data[i] = msg.buf[i + 2];
+            // Update the rover.
+            updateRover(&rover, &map, msg.buf);
 
-            //updateData(&rover, &map, data);
-
-            // Map updated data to global coordinates, allocating space if
-            // need be.   
-            //mapData(&rover, &map);
+            // Update the map.
+            updateMap(&rover, &map);
              
             break;
         }
         case MSG_TYPE_ACK:
         {
             // Grab the acknowledgement from the motor controller.
-            //rover.ack = (bool)msg.buf[0];
+            rover.ack = (bool)msg.buf[0];
             break;
         }
         default:
@@ -281,13 +278,23 @@ static portTASK_FUNCTION(updateTaskLocate, pvParameters)
 
 }
 
-void updateData(Rover* rover, Map* map, float* data)
+void updateRover(Rover* rover, Map* map, float* data)
 {
+    // Update the raw obstacle data. Skip the first two sensors (ramps)
+    // and the last (accelerometer).
+    uint8_t i;
+    for(i = 2; i < SENS_LEN - 2; i++)
+        rover->curRawObst.buf[i - 2] = data[i];
+
+    // Update the raw ramp data. 
+    rover->curRawRamp.buf[0]  = data[0];
+    rover->curRawRamp.buf[1]  = data[1];
+    rover->curRawRamp.buf[10] = data[10];
+
     // Update the current obstacles.
     float B[4];
-    uint8_t i;
     for(i = 0; i < 7; i = i + 2)
-        B[i] = (data[i] + data[i + 1])/2;
+        B[i] = (rover->curRawObst.buf[i] + rover->curRawObst.buf[i + 1])/2;
 
     float IR1 = B[0]; 
     rover->curObstacles.rowVectors[0].buf[0] = 0;
@@ -305,11 +312,16 @@ void updateData(Rover* rover, Map* map, float* data)
     rover->curObstacles.rowVectors[0].buf[3] = IR4;
     rover->curObstacles.rowVectors[1].buf[3] = 0;
 
+    // Update the current corners.
+    
     // Update the current ramps.
-    // Fuck the ramps.
+    
+    // Update the current target.
+    
+
 }
 
-void mapData(Rover* rover, Map* map)
+void updateMap(Rover* rover, Map* map)
 {
     // Rotates the data to the normal coordinate system.
     Matrix T = {

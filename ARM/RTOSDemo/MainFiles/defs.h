@@ -97,22 +97,23 @@ typedef uint8_t bool;
 #define MSG_TYPE_LCD_MOTION     4
 #define MSG_TYPE_LCD_GOAL_PRIME 5
 #define MSG_TYPE_LCD_GOAL_SEC   6
-#define MSG_TYPE_LCD_SIZE_MAP   9
-#define MSG_TYPE_LCD_CMD        10
-#define MSG_TYPE_LCD_SENS_DATA  11
-#define MSG_TYPE_LCD_EVENTS     12
-#define MSG_TYPE_LCD_SENSORS    13
-#define MSG_TYPE_LCD_MAP        14
+#define MSG_TYPE_LCD_SIZE_MAP   7
+#define MSG_TYPE_LCD_CMD        8
+#define MSG_TYPE_LCD_TAB_SENS_0 9
+#define MSG_TYPE_LCD_TAB_SENS_1 10
+#define MSG_TYPE_LCD_EVENTS     11
+#define MSG_TYPE_LCD_SENSORS    12
+#define MSG_TYPE_LCD_MAP        13
 
 
-#define MSG_TYPE_I2C_SENSORS    15
-#define MSG_TYPE_I2C_CMD        16
-#define MSG_TYPE_I2C_ACK        17
+#define MSG_TYPE_I2C_SENSORS    20
+#define MSG_TYPE_I2C_CMD        21
+#define MSG_TYPE_I2C_ACK        22
 
-#define MSG_TYPE_TIMER_LCD      20
-#define MSG_TYPE_TIMER_SENSORS	21
-#define MSG_TYPE_TIMER_LOCATE	22
-#define MSG_TYPE_TIMER_CMD	 	23
+#define MSG_TYPE_TIMER_LCD      30
+#define MSG_TYPE_TIMER_SENSORS	31
+#define MSG_TYPE_TIMER_LOCATE	32
+#define MSG_TYPE_TIMER_CMD	 	33
 
 /*------------------------------------------------------------------------------
  * Rover Definitions

@@ -92,12 +92,13 @@ static portTASK_FUNCTION(updateTaskLCD, pvParameters)
     TabData tabData = {
         .curTab = info,   
         .tabInfo = {
-            .motion     = (char*)malloc(QUEUE_BUF_LEN_LCD * sizeof(char)),
-            .goalPrime  = (char*)malloc(QUEUE_BUF_LEN_LCD * sizeof(char)),
-            .goalSec    = (char*)malloc(QUEUE_BUF_LEN_LCD * sizeof(char)),
-            .sizeMap    = (char*)malloc(QUEUE_BUF_LEN_LCD * sizeof(char)),
-            .cmd        = (char*)malloc(QUEUE_BUF_LEN_LCD * sizeof(char)),
-            .sensorData = (char*)malloc(QUEUE_BUF_LEN_LCD * sizeof(char)),
+            .motion      = (char*)malloc(QUEUE_BUF_LEN_LCD * sizeof(char)),
+            .goalPrime   = (char*)malloc(QUEUE_BUF_LEN_LCD * sizeof(char)),
+            .goalSec     = (char*)malloc(QUEUE_BUF_LEN_LCD * sizeof(char)),
+            .sizeMap     = (char*)malloc(QUEUE_BUF_LEN_LCD * sizeof(char)),
+            .cmd         = (char*)malloc(QUEUE_BUF_LEN_LCD * sizeof(char)),
+            .sensorData0 = (char*)malloc(QUEUE_BUF_LEN_LCD * sizeof(char)),
+            .sensorData1 = (char*)malloc(QUEUE_BUF_LEN_LCD * sizeof(char)),
 
             .lineMotion     = 8,
             .lineGoalPrime  = 11,
@@ -108,17 +109,26 @@ static portTASK_FUNCTION(updateTaskLCD, pvParameters)
         },
         .tabEvents = {
             .initLine   = 4,
-            .totalLines = LINES_SMALL - 4,
+            .totalLines = SCREEN_HEIGHT_SMALL - 4,
             .curLine    = 4,
             .curIndex   = 0,
         }
     };
-    tabData.tabInfo.motion[0]     = '\0';
-    tabData.tabInfo.goalPrime[0]  = '\0';
-    tabData.tabInfo.goalSec[0]    = '\0';
-    tabData.tabInfo.sizeMap[0]    = '\0';
-    tabData.tabInfo.cmd[0]        = '\0';
-    tabData.tabInfo.sensorData[0] = '\0';
+    // Clear the contents of the info tab.
+    memset(tabData.tabInfo.motion, 0, QUEUE_BUF_LEN_LCD);
+    memset(tabData.tabInfo.goalPrime, 0, QUEUE_BUF_LEN_LCD);
+    memset(tabData.tabInfo.goalSec, 0, QUEUE_BUF_LEN_LCD);
+    memset(tabData.tabInfo.sizeMap, 0, QUEUE_BUF_LEN_LCD);
+    memset(tabData.tabInfo.cmd, 0, QUEUE_BUF_LEN_LCD);
+    memset(tabData.tabInfo.sensorData0, 0, QUEUE_BUF_LEN_LCD);
+    memset(tabData.tabInfo.sensorData1, 0, QUEUE_BUF_LEN_LCD);
+    //tabData.tabInfo.motion[0]     = '\0';
+    //tabData.tabInfo.goalPrime[0]  = '\0';
+    //tabData.tabInfo.goalSec[0]    = '\0';
+    //tabData.tabInfo.sizeMap[0]    = '\0';
+    //tabData.tabInfo.cmd[0]        = '\0';
+    //tabData.tabInfo.sensorData0[0] = '\0';
+    //tabData.tabInfo.sensorData1[0] = '\0';
 
     tabData.tabEvents.header = (char**)malloc(tabData.tabEvents.totalLines * sizeof(char*));
     tabData.tabEvents.body   = (char**)malloc(tabData.tabEvents.totalLines * sizeof(char*));
@@ -203,47 +213,52 @@ static portTASK_FUNCTION(updateTaskLCD, pvParameters)
         }
         case MSG_TYPE_LCD_MOTION:
         {
-            updateInfo(&tabData, &msg, MSG_TYPE_LCD_MOTION);
+            updateTabInfo(&tabData, &msg, MSG_TYPE_LCD_MOTION);
             break;
         }
         case MSG_TYPE_LCD_GOAL_PRIME:
         {
-            updateInfo(&tabData, &msg,MSG_TYPE_LCD_GOAL_PRIME);
+            updateTabInfo(&tabData, &msg,MSG_TYPE_LCD_GOAL_PRIME);
             break;
         }
         case MSG_TYPE_LCD_GOAL_SEC:
         {
-            updateInfo(&tabData, &msg, MSG_TYPE_LCD_GOAL_SEC);
+            updateTabInfo(&tabData, &msg, MSG_TYPE_LCD_GOAL_SEC);
             break;
         }
         case MSG_TYPE_LCD_SIZE_MAP:
         {
-            updateInfo(&tabData, &msg, MSG_TYPE_LCD_SIZE_MAP);
+            updateTabInfo(&tabData, &msg, MSG_TYPE_LCD_SIZE_MAP);
             break;
         }
         case MSG_TYPE_LCD_CMD:
         {
-            updateInfo(&tabData, &msg, MSG_TYPE_LCD_CMD);
+            updateTabInfo(&tabData, &msg, MSG_TYPE_LCD_CMD);
             break;
         }
-        case MSG_TYPE_LCD_SENS_DATA:
+        case MSG_TYPE_LCD_TAB_SENS_0:
         {
-            updateInfo(&tabData, &msg, MSG_TYPE_LCD_SENS_DATA);
+            updateTabInfo(&tabData, &msg, MSG_TYPE_LCD_TAB_SENS_0);
+            break;
+        }
+        case MSG_TYPE_LCD_TAB_SENS_1:
+        {
+            updateTabInfo(&tabData, &msg, MSG_TYPE_LCD_TAB_SENS_1);
             break;
         }
 		case MSG_TYPE_LCD_EVENTS:
 		{
-			updateEvents(&tabData, &msg);
+			updateTabEvents(&tabData, &msg);
 			break;
 		}
         case MSG_TYPE_LCD_SENSORS:
         {
-			updateSensors(&tabData, &msg);
+			updateTabSensors(&tabData, &msg);
             break;
         }
         case MSG_TYPE_LCD_MAP:
         {
-			updateMap(&tabData, &msg);
+			updateTabMap(&tabData, &msg);
             break;
         }
 		default:
@@ -258,19 +273,20 @@ static portTASK_FUNCTION(updateTaskLCD, pvParameters)
 void drawInfo(TabInfo* tabInfo)
 {
     // No idea why I need to do this, but it makes the message prettier..
-    tabInfo->motion[0] = ' ';     tabInfo->motion[1] = ' ';
-    tabInfo->goalPrime[0] = ' ';  tabInfo->goalPrime[1] = ' ';
-    tabInfo->goalSec[0] = ' ';    tabInfo->goalSec[1] = ' ';
-    tabInfo->sizeMap[0] = ' ';    tabInfo->sizeMap[1] = ' ';
-    tabInfo->cmd[0] = ' ';        tabInfo->cmd[1] = ' ';
-    tabInfo->sensorData[0] = ' '; tabInfo->sensorData[1] = ' ';
+    tabInfo->motion[0] = ' ';      tabInfo->motion[1] = ' ';
+    tabInfo->goalPrime[0] = ' ';   tabInfo->goalPrime[1] = ' ';
+    tabInfo->goalSec[0] = ' ';     tabInfo->goalSec[1] = ' ';
+    tabInfo->sizeMap[0] = ' ';     tabInfo->sizeMap[1] = ' ';
+    tabInfo->cmd[0] = ' ';         tabInfo->cmd[1] = ' ';
+    tabInfo->sensorData0[0] = ' '; tabInfo->sensorData0[1] = ' ';
+    tabInfo->sensorData1[0] = ' '; tabInfo->sensorData1[1] = ' ';
 
    	GLCD_SetTextColor(Blue);
     unsigned char initMsg0[] = "Team 7";
     unsigned char initMsg1[] = "VT ECE 4564";
 	GLCD_DisplayString(0, centerStr(initMsg0, 1, 1), 1, initMsg0);
     GLCD_DisplayString(1, centerStr(initMsg1, 1, 1), 1, initMsg1);
-	GLCD_ClearWindow(30, 2*FONT_LARGE_HEIGHT + 2, SCREEN_WIDTH - 2*30, 2, DarkCyan);
+	GLCD_ClearWindow(30, 2*FONT_LARGE_HEIGHT + 2, SCREEN_WIDTH_PIX - 2*30, 2, DarkCyan);
 
     // Update each of the fields.
     GLCD_SetTextColor(Cyan);
@@ -301,16 +317,20 @@ void drawInfo(TabInfo* tabInfo)
 
     GLCD_SetTextColor(Cyan);
     GLCD_DisplayString(tabInfo->lineSensorData, 0, 0, (unsigned char*)"Sensor Data: ");
+    GLCD_SetTextColor(Yellow);
+    GLCD_DisplayString(tabInfo->lineSensorData + 1, 0, 0, (unsigned char*)"  IR00   IR01   IR10   IR11   IR20   IR21");
+    GLCD_DisplayString(tabInfo->lineSensorData + 4, 0, 0, (unsigned char*)"  IR30   IR31   IR40   IR41   AC00");
     GLCD_SetTextColor(Green);
-    GLCD_DisplayString(tabInfo->lineSensorData + 1, 0, 0, (unsigned char*)(tabInfo->sensorData));
+    GLCD_DisplayString(tabInfo->lineSensorData + 2, 0, 0, (unsigned char*)(tabInfo->sensorData0));
+    GLCD_DisplayString(tabInfo->lineSensorData + 5, 0, 0, (unsigned char*)(tabInfo->sensorData1));
 }
 
 void drawEvents(TabEvents* tabEvents)
 {
-	GLCD_SetTextColor(Blue);
+    GLCD_SetTextColor(Blue);
     unsigned char initMsg[] = "0 :: Events";
     GLCD_DisplayString(0, centerStr(initMsg, 1, 1), 1, initMsg);
-	GLCD_ClearWindow(30, FONT_LARGE_HEIGHT + 2, SCREEN_WIDTH - 2*30, 2, DarkCyan);
+	GLCD_ClearWindow(30, FONT_LARGE_HEIGHT + 2, SCREEN_WIDTH_PIX - 2*30, 2, DarkCyan);
 
     uint8_t i;
     for(i = 0; i < tabEvents->curLine - tabEvents->initLine; i++)
@@ -327,7 +347,7 @@ void drawSensors(TabSensors* tabSensors)
 	GLCD_SetTextColor(Blue);
     unsigned char initMsg[] = "1 :: Sensors";
     GLCD_DisplayString(0, centerStr(initMsg, 1, 1), 1, initMsg);
-	GLCD_ClearWindow(30, FONT_LARGE_HEIGHT + 2, SCREEN_WIDTH - 2*30, 2, DarkCyan);
+	GLCD_ClearWindow(30, FONT_LARGE_HEIGHT + 2, SCREEN_WIDTH_PIX - 2*30, 2, DarkCyan);
 }
 
 
@@ -336,10 +356,10 @@ void drawMap(TabMap* tabMap)
     GLCD_SetTextColor(Blue);
     unsigned char initMsg[] = "2 :: Map";
     GLCD_DisplayString(0, centerStr(initMsg, 1, 1), 1, initMsg);
-	GLCD_ClearWindow(30, FONT_LARGE_HEIGHT + 2, SCREEN_WIDTH - 2*30, 2, DarkCyan);
+	GLCD_ClearWindow(30, FONT_LARGE_HEIGHT + 2, SCREEN_WIDTH_PIX - 2*30, 2, DarkCyan);
 }
 
-void updateInfo(TabData* tabData, msgLCD* msg, uint8_t type)
+void updateTabInfo(TabData* tabData, msgLCD* msg, uint8_t type)
 {
     TabInfo* tabInfo = &(tabData->tabInfo);
 
@@ -350,8 +370,6 @@ void updateInfo(TabData* tabData, msgLCD* msg, uint8_t type)
             strcpy(tabInfo->motion, (const char*)msg);
             if(tabData->curTab == info)
             {
-                GLCD_SetTextColor(Cyan);
-                GLCD_DisplayString(tabInfo->lineMotion, 0, 0, (unsigned char*)"Motion: ");
                 GLCD_ClearLn(tabInfo->lineMotion + 1, 0);
                 GLCD_SetTextColor(Green);
                 tabInfo->motion[0] = ' ';
@@ -365,8 +383,6 @@ void updateInfo(TabData* tabData, msgLCD* msg, uint8_t type)
             strcpy(tabInfo->goalPrime, (const char*)msg);
             if(tabData->curTab == info)
             {
-                GLCD_SetTextColor(Cyan);
-                GLCD_DisplayString(tabInfo->lineGoalPrime, 0, 0, (unsigned char*)"Primary Goal: ");
                 GLCD_ClearLn(tabInfo->lineGoalPrime + 1, 0);
                 GLCD_SetTextColor(Green);
                 tabInfo->goalPrime[0] = ' ';
@@ -380,8 +396,6 @@ void updateInfo(TabData* tabData, msgLCD* msg, uint8_t type)
             strcpy(tabInfo->goalSec, (const char*)msg);
             if(tabData->curTab == info)
             {
-                GLCD_SetTextColor(Cyan);
-                GLCD_DisplayString(tabInfo->lineGoalSec, 0, 0, (unsigned char*)"Secondary Goal: ");
                 GLCD_ClearLn(tabInfo->lineGoalSec + 1, 0);
                 GLCD_SetTextColor(Green);
                 tabInfo->goalSec[0] = ' ';
@@ -395,8 +409,6 @@ void updateInfo(TabData* tabData, msgLCD* msg, uint8_t type)
             strcpy(tabInfo->sizeMap, (const char*)msg);
             if(tabData->curTab == info)
             {
-                GLCD_SetTextColor(Cyan);
-                GLCD_DisplayString(tabInfo->lineSizeMap, 0, 0, (unsigned char*)"Allocated Map Size: ");
                 GLCD_ClearLn(tabInfo->lineSizeMap + 1, 0);
                 GLCD_SetTextColor(Green);
                 tabInfo->sizeMap[0] = ' ';    tabInfo->sizeMap[1] = ' ';
@@ -409,8 +421,6 @@ void updateInfo(TabData* tabData, msgLCD* msg, uint8_t type)
             strcpy(tabInfo->cmd, (const char*)msg);
             if(tabData->curTab == info)
             {
-                GLCD_SetTextColor(Cyan);
-                GLCD_DisplayString(tabInfo->lineCmd, 0, 0, (unsigned char*)"Last Command: ");
                 GLCD_ClearLn(tabInfo->lineCmd + 1, 0);
                 GLCD_SetTextColor(Green);
                 tabInfo->cmd[0] = ' ';
@@ -419,18 +429,29 @@ void updateInfo(TabData* tabData, msgLCD* msg, uint8_t type)
             }
             break;
         }
-        case MSG_TYPE_LCD_SENS_DATA:
+        case MSG_TYPE_LCD_TAB_SENS_0:
         {
-            strcpy(tabInfo->sensorData, (const char*)msg);
+            strcpy(tabInfo->sensorData0, (const char*)msg);
             if(tabData->curTab == info)
             {
-                GLCD_SetTextColor(Cyan);
-                GLCD_DisplayString(tabInfo->lineSensorData, 0, 0, (unsigned char*)"Sensor Data: ");
-                GLCD_ClearLn(tabInfo->lineSensorData + 1, 0);
+                GLCD_ClearLn(tabInfo->lineSensorData + 2, 0);
                 GLCD_SetTextColor(Green);
-                tabInfo->sensorData[0] = ' ';
-                tabInfo->sensorData[1] = ' ';
-                GLCD_DisplayString(tabInfo->lineSensorData + 1, 0, 0, (unsigned char*)(tabInfo->sensorData));
+                tabInfo->sensorData0[0] = ' ';
+                tabInfo->sensorData0[1] = ' ';
+                GLCD_DisplayString(tabInfo->lineSensorData + 2, 0, 0, (unsigned char*)(tabInfo->sensorData0));
+            }
+            break;
+        }
+        case MSG_TYPE_LCD_TAB_SENS_1:
+        {
+            strcpy(tabInfo->sensorData1, (const char*)msg);
+            if(tabData->curTab == info)
+            {
+                GLCD_ClearLn(tabInfo->lineSensorData + 5, 0);
+                GLCD_SetTextColor(Green);
+                tabInfo->sensorData1[0] = ' ';
+                tabInfo->sensorData1[1] = ' ';
+                GLCD_DisplayString(tabInfo->lineSensorData + 5, 0, 0, (unsigned char*)(tabInfo->sensorData1));
             }
             break;
         }
@@ -441,14 +462,14 @@ void updateInfo(TabData* tabData, msgLCD* msg, uint8_t type)
     }
 }
 
-void updateEvents(TabData* tabData, msgLCD* msg)
+void updateTabEvents(TabData* tabData, msgLCD* msg)
 {
     TabEvents* tabEvents = &(tabData->tabEvents);
-    if(tabEvents->curLine == LINES_SMALL)
+    if(tabEvents->curLine == SCREEN_HEIGHT_SMALL)
     {
         tabEvents->curLine = tabEvents->initLine;
         if(tabData->curTab == events)
-            GLCD_ClearWindow(0, 32, SCREEN_WIDTH, SCREEN_HEIGHT - 32, Black);
+            GLCD_ClearWindow(0, 32, SCREEN_WIDTH_PIX, SCREEN_HEIGHT_PIX - 32, Black);
     }
 	uint8_t dataIndex = tabEvents->curLine - tabEvents->initLine;
     sprintf((char*)tabEvents->header[dataIndex], "[%04d]", tabEvents->curIndex);
@@ -466,12 +487,12 @@ void updateEvents(TabData* tabData, msgLCD* msg)
     tabEvents->curIndex++;
 }
 
-void updateSensors(TabData* tabData, msgLCD* msg)
+void updateTabSensors(TabData* tabData, msgLCD* msg)
 {
 	GLCD_SetTextColor(Green);
 }
 
-void updateMap(TabData* tabData, msgLCD* msg)
+void updateTabMap(TabData* tabData, msgLCD* msg)
 {
 	GLCD_SetTextColor(Green);
 }
@@ -482,13 +503,13 @@ unsigned int centerStr(unsigned char* uncentStr, uint8_t fontInd, uint8_t alignI
 	unsigned int lineLen;
 
 	if(fontInd && alignInd)
-		lineLen = SCREEN_WIDTH/FONT_LARGE_WIDTH;
+		lineLen = SCREEN_WIDTH_PIX/FONT_LARGE_WIDTH;
 	else if(!fontInd && alignInd)
-		lineLen = SCREEN_WIDTH/FONT_SMALL_WIDTH;
+		lineLen = SCREEN_WIDTH_PIX/FONT_SMALL_WIDTH;
 	else if(fontInd && !alignInd)
-		lineLen = SCREEN_HEIGHT/FONT_LARGE_HEIGHT;
+		lineLen = SCREEN_HEIGHT_PIX/FONT_LARGE_HEIGHT;
 	else if(!fontInd && !alignInd)
-		lineLen = SCREEN_HEIGHT/FONT_SMALL_HEIGHT;
+		lineLen = SCREEN_HEIGHT_PIX/FONT_SMALL_HEIGHT;
 	else
 		lineLen = 0; 
 

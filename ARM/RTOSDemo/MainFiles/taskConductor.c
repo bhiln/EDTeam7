@@ -89,7 +89,7 @@ static portTASK_FUNCTION(updateTaskConductor, pvParameters)
                     {
                         sprintf(eventsMsg, "Received new sensor data");
                         sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
-                        sendValueMsgSensors(dataSensors, MSG_TYPE_SENSORS, values, portMAX_DELAY);
+                        sendValueMsgSensors(dataSensors, MSG_TYPE_SENSORS, &values[1], portMAX_DELAY);
                     }
                     else
                     {

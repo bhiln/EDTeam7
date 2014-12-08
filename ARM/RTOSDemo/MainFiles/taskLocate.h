@@ -163,14 +163,16 @@ typedef struct __Map
 
 typedef struct __Rover
 {
-    States curStates;	 // State machine of the rover
+    Matrix givenMap;     // Given map of the room.
     Matrix curObstacles; // Matrix of size (2 x 4) containing locations of obstacles orthogonally seperated from the front of the rover
     Matrix curCorners;	 // Matrix of size (2 x 4) containing data of current corners that have been discovered
     Matrix curRamps; 	 // Matrix of size (2 x 3) containing the locations of the last three ramps discovered
     Vector curTarget;	 // Vector of size 2 containing the location of the target ramp
 	Vector curRawObst;   // Vector of size 8 containing the raw sensor data relevant for obstacle detection
 	Vector curRawRamp; 	 // Vector of size 2 containing the raw sensor data relevant for ramp detection
+    States curStates;	 // State machine of the rover
     float  orient;		 // Orientation of the rover
+    bool   ack;          // Flag that is set when the last command completed.
 } Rover;
 
 // Initial states of the rover.
@@ -197,10 +199,10 @@ void sendTimerMsgLocate(structLocate* dataLocate, portTickType ticksElapsed, por
 void sendValueMsgLocate(structLocate* dataLocate, uint8_t type, float* value, portTickType ticksToBlock);
 
 /*------------------------------------------------------------------------------
- * Matrix Functions
+ * Update functions
  **/
-void updateData(Rover* rover, Map* map, float* data);
-void mapData(Rover* rover, Map* map);
+void updateRover(Rover* rover, Map* map, float* data);
+void updateMap(Rover* rover, Map* map);
 
 /*------------------------------------------------------------------------------
  * State Functions
@@ -226,9 +228,9 @@ bool execTurnAround(vtI2CStruct* devI2C0);
 bool execMoveToward(vtI2CStruct* devI2C0);
 bool execMoveTowardRamp(vtI2CStruct* devI2C0);
 
-static inline char* stateMotion2String(StateMotion f)
+char* stateMotion2String(StateMotion f)
 {
-    static const char* strings[] = {
+    char* strings[] = {
         "stop",
 	    "moveForward",
         "moveBackward",
@@ -239,7 +241,7 @@ static inline char* stateMotion2String(StateMotion f)
     return strings[f];
 }
 
-static inline char* statePrimeGoal2String(StatePrimeGoal f)
+char* statePrimeGoal2String(StatePrimeGoal f)
 {
     char* strings[] = {
         "scan",
@@ -253,9 +255,9 @@ static inline char* statePrimeGoal2String(StatePrimeGoal f)
     return strings[f];
 }
 
-static inline char* stateScanSecGoal2String(StatePrimeGoal f)
+char* stateScanSecGoal2String(StatePrimeGoal f)
 {
-    static const char* strings[] = {
+    char* strings[] = {
         "scanInit",
         "scanExec",
         "scanComp",
@@ -265,9 +267,9 @@ static inline char* stateScanSecGoal2String(StatePrimeGoal f)
     return strings[f];
 }
 
-static inline char* stateRoamSecGoal2String(StatePrimeGoal f)
+char* stateRoamSecGoal2String(StatePrimeGoal f)
 {
-    static const char* strings[] = {
+    char* strings[] = {
         "roamInit",
         "roamExec",
         "roamComp",
@@ -277,9 +279,9 @@ static inline char* stateRoamSecGoal2String(StatePrimeGoal f)
     return strings[f];
 }
 
-static inline char* stateGoSecGoal2String(StatePrimeGoal f)
+char* stateGoSecGoal2String(StatePrimeGoal f)
 {
-    static const char* strings[] = {
+    char* strings[] = {
         "goInit",
         "goExec",
         "goComp",
@@ -289,9 +291,9 @@ static inline char* stateGoSecGoal2String(StatePrimeGoal f)
     return strings[f];
 }
 
-static inline char* stateAlignSecGoal2String(StatePrimeGoal f)
+char* stateAlignSecGoal2String(StatePrimeGoal f)
 {
-    static const char* strings[] = {
+    char* strings[] = {
         "alignInit",
         "alignExec",
         "alignComp",
@@ -301,11 +303,9 @@ static inline char* stateAlignSecGoal2String(StatePrimeGoal f)
     return strings[f];
 }
 
-
-
-static inline char* stateRampSecGoal2String(StatePrimeGoal f)
+char* stateRampSecGoal2String(StatePrimeGoal f)
 {
-    static const char* strings[] = {
+    char* strings[] = {
         "rampInit",
         "rampExec",
         "rampComp",
