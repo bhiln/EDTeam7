@@ -156,7 +156,7 @@ static portTASK_FUNCTION(updateTaskLocate, pvParameters)
 		},
 		.curRawRamp = {
 			.buf = NULL,
-			.n = 8,
+			.n = 3,
 			.allocated = false
 		},
         .orient = 0.0
@@ -165,7 +165,23 @@ static portTASK_FUNCTION(updateTaskLocate, pvParameters)
     createMatrix(&(rover.curCorners));
     createMatrix(&(rover.curRamps));
     createVector(&(rover.curTarget));
+	createVector(&(rover.curRawObst));
+	createVector(&(rover.curRawRamp));
 
+    // Rotates the data to the normal coordinate system.
+    Matrix T = {
+        .allocated = false,
+        .rows = 2,
+        .cols = 2
+    };
+    Matrix result = {
+        .allocated = false,
+        .rows = 2,
+        .cols = 4
+    };
+    createMatrix(&T);
+    createMatrix(&result);
+    
     // Write the initial configuration to the LCD.
     char infoMsg[QUEUE_BUF_LEN_LCD];
 
@@ -258,7 +274,7 @@ static portTASK_FUNCTION(updateTaskLocate, pvParameters)
             updateRover(&rover, &map, msg.buf);
 
             // Update the map.
-            updateMap(&rover, &map);
+            updateMap(&rover, &map, &T, &result);
              
             break;
         }
@@ -283,17 +299,17 @@ void updateRover(Rover* rover, Map* map, float* data)
     // Update the raw obstacle data. Skip the first two sensors (ramps)
     // and the last (accelerometer).
     uint8_t i;
-    for(i = 2; i < SENS_LEN - 2; i++)
+    for(i = 2; i < SENS_LEN - 1; i++)
         rover->curRawObst.buf[i - 2] = data[i];
 
     // Update the raw ramp data. 
     rover->curRawRamp.buf[0]  = data[0];
     rover->curRawRamp.buf[1]  = data[1];
-    rover->curRawRamp.buf[10] = data[10];
+    rover->curRawRamp.buf[2]  = data[10];
 
-    // Update the current obstacles.
+    //// Update the current obstacles.
     float B[4];
-    for(i = 0; i < 7; i = i + 2)
+    for(i = 0; i < 4; i++)
         B[i] = (rover->curRawObst.buf[i] + rover->curRawObst.buf[i + 1])/2;
 
     float IR1 = B[0]; 
@@ -321,85 +337,68 @@ void updateRover(Rover* rover, Map* map, float* data)
 
 }
 
-void updateMap(Rover* rover, Map* map)
+void updateMap(Rover* rover, Map* map, Matrix* T, Matrix* result)
 {
-    // Rotates the data to the normal coordinate system.
-    Matrix T = {
-        .allocated = false,
-        .rows = 2,
-        .cols = 2
-    };
-    Matrix result = {
-        .allocated = false,
-        .rows = 2,
-        .cols = 4
-    };
-    createMatrix(&T);
-    createMatrix(&result);
-    T.rowVectors[0].buf[0] = cos(rover->orient);
-    T.rowVectors[0].buf[1] = sin(rover->orient)*(-1);
-    T.rowVectors[1].buf[0] = sin(rover->orient);
-    T.rowVectors[1].buf[1] = cos(rover->orient);
+    T->rowVectors[0].buf[0] = cos(rover->orient);
+    T->rowVectors[0].buf[1] = sin(rover->orient)*(-1);
+    T->rowVectors[1].buf[0] = sin(rover->orient);
+    T->rowVectors[1].buf[1] = cos(rover->orient);
 
     // Map front sensors.
     uint16_t direction = 0;
 	uint16_t i;
     for(i = 0; i < 4; i++)
     {
-        multiplyMatrix2Vector(&(result.rowVectors[direction]), &T, &(rover->curObstacles.rowVectors[direction])); 
-        if(result.rowVectors[i].buf[0] < SENS_DIST_CUTOFF && result.rowVectors[i].buf[1] < SENS_DIST_CUTOFF)
-        {
-            int r = (int)(round(result.rowVectors[i].buf[1]));    
-            int c = (int)(round(result.rowVectors[i].buf[0])); 
+        multiplyMatrix2Vector(&(result->rowVectors[direction]), T, &(rover->curObstacles.rowVectors[direction])); 
+        //if(result.rowVectors[i].buf[0] < SENS_DIST_CUTOFF && result.rowVectors[i].buf[1] < SENS_DIST_CUTOFF)
+        //{
+        //    int r = (int)(round(result.rowVectors[i].buf[1]));    
+        //    int c = (int)(round(result.rowVectors[i].buf[0])); 
 
-            // Convert to global coordinates.
-            int rp = r + map->radix.buf[0];
-            int cp = c + map->radix.buf[1];
+        //    // Convert to global coordinates.
+        //    int rp = r + map->radix.buf[0];
+        //    int cp = c + map->radix.buf[1];
 
-            // See if the new point fits on the map, otherwise reallocate.
-            if(rp < 0) 
-            {
-                recreateMatrix(&(map->map), SIDE_BACK);
-                rp = rp + 2*(map->radix.buf[0]);
-                cp = cp;
-                map->radix.buf[0] = 3*(map->radix.buf[0]);
-                map->radix.buf[1] = map->radix.buf[1]; 
-            }
-            if(rp > map->map.rows)
-            {
-                recreateMatrix(&(map->map), SIDE_FRONT);
-                rp = rp;
-                cp = cp;
-                map->radix.buf[0] = map->radix.buf[0];
-                map->radix.buf[1] = map->radix.buf[1];
-            }
-            if(cp < 0)
-            {
-                recreateMatrix(&(map->map), SIDE_LEFT);
-                rp = rp;
-                cp = cp + 2*(map->radix.buf[0]);
-                map->radix.buf[0] = map->radix.buf[0];
-                map->radix.buf[1] = 3*(map->radix.buf[1]);
+        //    // See if the new point fits on the map, otherwise reallocate.
+        //    if(rp < 0) 
+        //    {
+        //        recreateMatrix(&(map->map), SIDE_BACK);
+        //        rp = rp + 2*(map->radix.buf[0]);
+        //        cp = cp;
+        //        map->radix.buf[0] = 3*(map->radix.buf[0]);
+        //        map->radix.buf[1] = map->radix.buf[1]; 
+        //    }
+        //    if(rp > map->map.rows)
+        //    {
+        //        recreateMatrix(&(map->map), SIDE_FRONT);
+        //        rp = rp;
+        //        cp = cp;
+        //        map->radix.buf[0] = map->radix.buf[0];
+        //        map->radix.buf[1] = map->radix.buf[1];
+        //    }
+        //    if(cp < 0)
+        //    {
+        //        recreateMatrix(&(map->map), SIDE_LEFT);
+        //        rp = rp;
+        //        cp = cp + 2*(map->radix.buf[0]);
+        //        map->radix.buf[0] = map->radix.buf[0];
+        //        map->radix.buf[1] = 3*(map->radix.buf[1]);
 
-            }
-            if(cp > map->map.cols)
-            {
-                recreateMatrix(&(map->map), SIDE_RIGHT);
-                map->radix.buf[0] = map->radix.buf[0];
-                map->radix.buf[1] = map->radix.buf[1];
-            }
-        }
+        //    }
+        //    if(cp > map->map.cols)
+        //    {
+        //        recreateMatrix(&(map->map), SIDE_RIGHT);
+        //        map->radix.buf[0] = map->radix.buf[0];
+        //        map->radix.buf[1] = map->radix.buf[1];
+        //    }
+        //}
     }
 
     // Fit the new data to the map.
-    for(i = 0; i < 4; i++)
-    {
-        uint16_t r = (uint16_t)(round(result.rowVectors[0].buf[i]));
-        uint16_t c = (uint16_t)(round(result.rowVectors[1].buf[i]));
-        map->map.rowVectors[r].buf[c] = 1.0;
-    }
-
-    // Free the matrices.
-    freeMatrix(&T);
-    freeMatrix(&result);
+    //for(i = 0; i < 4; i++)
+    //{
+    //    uint16_t r = (uint16_t)(round(result.rowVectors[0].buf[i]));
+    //    uint16_t c = (uint16_t)(round(result.rowVectors[1].buf[i]));
+    //    map->map.rowVectors[r].buf[c] = 1.0;
+    //}
 }

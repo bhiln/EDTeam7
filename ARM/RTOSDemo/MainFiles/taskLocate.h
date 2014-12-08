@@ -202,7 +202,7 @@ void sendValueMsgLocate(structLocate* dataLocate, uint8_t type, float* value, po
  * Update functions
  **/
 void updateRover(Rover* rover, Map* map, float* data);
-void updateMap(Rover* rover, Map* map);
+void updateMap(Rover* rover, Map* map, Matrix* T, Matrix* result);
 
 /*------------------------------------------------------------------------------
  * State Functions

@@ -177,7 +177,7 @@ static portTASK_FUNCTION(updateTaskSensors, pvParameters)
 			sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_TAB_SENS_1, QUEUE_BUF_LEN_LCD, infoMsg, portMAX_DELAY);
 
             // Send the processed sensor data to the locate task.
-           	//sendValueMsgLocate(dataLocate, MSG_TYPE_LOCATE, sensorsProcessedF, portMAX_DELAY);
+           	sendValueMsgLocate(dataLocate, MSG_TYPE_LOCATE, sensorsProcessedF, portMAX_DELAY);
             
             break;
         }

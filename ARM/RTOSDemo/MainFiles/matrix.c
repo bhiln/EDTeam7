@@ -17,7 +17,7 @@ void createMatrix(Matrix* A)
     uint16_t i;
     uint16_t r = A->rows;
     uint16_t c = A->cols;
-    A->rowVectors = (Vector*)malloc(r * sizeof(Vector));
+    A->rowVectors = malloc(r * sizeof(Vector));
     for(i = 0; i < r; i++)
     {
         A->rowVectors[i].n = c;
@@ -42,9 +42,6 @@ void createVector(Vector* x)
 
 void freeMatrix(Matrix* A)
 {
-    if(A == NULL)
-        return;
-
     if(!A->allocated)
         return;
 
@@ -60,9 +57,6 @@ void freeMatrix(Matrix* A)
 
 void freeVector(Vector* x)
 {
-    if(x == NULL)
-        return;
-
     if(!x->allocated)
         return;
 
@@ -158,18 +152,18 @@ void recreateMatrix(Matrix* A, uint8_t direction)
     freeMatrix(&newMatrix);
 }
 
-void dotProduct(float result, Vector* x, Vector* y)
+void dotProduct(float* result, Vector* x, Vector* y)
 {
     if(!(x->allocated && y->allocated))
         return;
     if(x->n != y->n)
         return;
 
-    result = 0.0;
+    *result = 0.0;
 	uint16_t n = x->n;
     uint16_t i;
     for(i = 0; i < n; i++)
-        result += x->buf[i] * y->buf[i];
+        *result += x->buf[i] * y->buf[i];
 }
 
 void multiplyMatrix2Vector(Vector* y, Matrix* A, Vector* x)
@@ -183,7 +177,5 @@ void multiplyMatrix2Vector(Vector* y, Matrix* A, Vector* x)
      
     uint16_t i;
     for(i = 0; i < A->rows; i++)
-    {
-        dotProduct(y->buf[0], &(A->rowVectors[i]), x);
-    }
+        dotProduct(&(y->buf[0]), &(A->rowVectors[i]), x);
 }
