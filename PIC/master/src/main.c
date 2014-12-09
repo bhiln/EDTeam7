@@ -75,6 +75,8 @@ void main(void) {
     unsigned char speed;
     unsigned char distance;
     unsigned char command;
+    unsigned char done_msg[1];
+    unsigned char done_length;
     uart_comm uc;
     i2c_comm ic;
     unsigned char msgbuffer[MSGLEN + 1];
@@ -98,7 +100,7 @@ void main(void) {
     init_queues();
 
     // initialize Timers
-    OpenTimer0(TIMER_INT_ON & T0_16BIT & T0_SOURCE_INT & T0_PS_1_64);
+    OpenTimer0(TIMER_INT_ON & T0_16BIT & T0_SOURCE_INT & T0_PS_1_32);
     OpenTimer1(TIMER_INT_ON & T1_SOURCE_FOSC_4 & T1_PS_1_8 & T1_16BIT_RW & T1_OSC1EN_OFF & T1_SYNC_EXT_OFF,0x0);
 
     // Decide on the priority of the enabled peripheral interrupts
@@ -223,11 +225,25 @@ void main(void) {
                 {
                     // Send sensor/QE data to ARM
                     if (length == 3) { // motor data
-                        uart_send(length, msgbuffer);
+                        if (msgbuffer[1] == 0x35) {
+                            done_msg[0] = 1;
+                            MotorData_sendmsg(1, MSGT_I2C_MOTOR_DATA, (void *) done_msg);
+                        } else if (msgbuffer[1] == 0x34) {
+                            done_msg[0] = 2;
+                            MotorData_sendmsg(1, MSGT_I2C_MOTOR_DATA, (void *) done_msg);
+                        }
+//                        uart_send(length, msgbuffer);
                     }
                     if (length == 23) { // sensor data
-                        msgbuffer[22] = 0xFF;
-                        uart_send(length, msgbuffer);
+                        done_length = MotorData_recvmsg(1, (void *) MSGT_I2C_MOTOR_DATA, (void *) done_msg);
+                        if (done_length == 1) {
+                            msgbuffer[22] = done_msg[0];
+                            done_length = 0;
+                        } else {
+                            msgbuffer[22] = 0x0;
+                        }
+                        msgbuffer[23] = 0xFF;
+                        uart_send(24, msgbuffer);
                     }
                     break;
                 };

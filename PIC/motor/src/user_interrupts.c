@@ -34,18 +34,26 @@ void timer0_int_handler() {
         reply[0] = 0xFE;
         reply[1] = 0x35;
         reply[2] = 0xFF;
-//        MotorData_sendmsg(3, MSGT_I2C_RQST, (void *) reply);
-        reply[0] = 0x0;
-        reply[1] = 0x0;
-        reply[2] = 0x0;
+        MotorData_sendmsg(3, MSGT_I2C_RQST, (void *) reply);
+//        reply[0] = 0x0;
+//        reply[1] = 0x0;
+//        reply[2] = 0x0;
         msg[0] = 0x40;
         msg[1] = 0xC0;
         uart_send(length, msg);
     }
-//    else {
+//    else if ((t0_ptr->count % t0_ptr->distance) != 0) {
 //        reply[0] = 0xFE;
 //        reply[1] = 0x34;
 //        reply[2] = 0xFF;
+//        MotorData_sendmsg(3, MSGT_I2C_RQST, (void *) reply);
+////        reply[0] = 0x0;
+////        reply[1] = 0x0;
+////        reply[2] = 0x0;
+//    } else {
+//        reply[0] = 0x0;
+//        reply[1] = 0x0;
+//        reply[2] = 0x0;
 //        MotorData_sendmsg(3, MSGT_I2C_RQST, (void *) reply);
 //    }
     // untested
