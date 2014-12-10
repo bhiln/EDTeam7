@@ -21,44 +21,27 @@ void timer0_int_handler() {
 //    unsigned char done[1];
     // reset the timer
     WriteTimer0(200); // figure out how many ticks to go one inch
-    unsigned char reply[3];
+    unsigned char reply[1];
     
     t0_ptr->count++;
     if ((t0_ptr->count % t0_ptr->distance) == 0) {
         unsigned char length = 2;
         unsigned char msg[2];
         t0_ptr->count = 0;
-        // untested
-//        done[0] = 0x34;
-//        ToMainHigh_sendmsg(1, MSGT_I2C_RQST, done);
-        reply[0] = 0xFE;
-        reply[1] = 0x35;
-        reply[2] = 0xFF;
-        MotorData_sendmsg(3, MSGT_I2C_RQST, (void *) reply);
-//        reply[0] = 0x0;
-//        reply[1] = 0x0;
-//        reply[2] = 0x0;
+//        reply[0] = 0xFE;
+//        reply[1] = 0x35;
+//        reply[2] = 0xFF;
+        reply[0] = 0x35;
+        MotorData_sendmsg(1, MSGT_I2C_RQST, (void *) reply);
+        reply[0] = 0x0;
         msg[0] = 0x40;
         msg[1] = 0xC0;
         uart_send(length, msg);
     }
-//    else if ((t0_ptr->count % t0_ptr->distance) != 0) {
-//        reply[0] = 0xFE;
-//        reply[1] = 0x34;
-//        reply[2] = 0xFF;
-//        MotorData_sendmsg(3, MSGT_I2C_RQST, (void *) reply);
-////        reply[0] = 0x0;
-////        reply[1] = 0x0;
-////        reply[2] = 0x0;
-//    } else {
+//    else {
 //        reply[0] = 0x0;
-//        reply[1] = 0x0;
-//        reply[2] = 0x0;
-//        MotorData_sendmsg(3, MSGT_I2C_RQST, (void *) reply);
+//        MotorData_sendmsg(1, MSGT_I2C_RQST, (void *) reply);
 //    }
-    // untested
-//    done[0] = 0x0;
-//    ToMainHigh_sendmsg(1, MSGT_I2C_RQST, done);
 }
 
 // A function called by the interrupt handler

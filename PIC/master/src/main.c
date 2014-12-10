@@ -100,7 +100,7 @@ void main(void) {
     init_queues();
 
     // initialize Timers
-    OpenTimer0(TIMER_INT_ON & T0_16BIT & T0_SOURCE_INT & T0_PS_1_32);
+    OpenTimer0(TIMER_INT_ON & T0_16BIT & T0_SOURCE_INT & T0_PS_1_64);
     OpenTimer1(TIMER_INT_ON & T1_SOURCE_FOSC_4 & T1_PS_1_8 & T1_16BIT_RW & T1_OSC1EN_OFF & T1_SYNC_EXT_OFF,0x0);
 
     // Decide on the priority of the enabled peripheral interrupts
@@ -224,14 +224,19 @@ void main(void) {
                 case MSGT_I2C_MASTER_RECV_COMPLETE:
                 {
                     // Send sensor/QE data to ARM
-                    if (length == 3) { // motor data
-                        if (msgbuffer[1] == 0x35) {
-                            done_msg[0] = 1;
-                            MotorData_sendmsg(1, MSGT_I2C_MOTOR_DATA, (void *) done_msg);
-                        } else if (msgbuffer[1] == 0x34) {
-                            done_msg[0] = 2;
+                    if (length == 1) { // motor data
+                        if (msgbuffer[0] == 0x35) {
+                            done_msg[0] = 0x1;
                             MotorData_sendmsg(1, MSGT_I2C_MOTOR_DATA, (void *) done_msg);
                         }
+//                        else {
+//                            done_msg[0] = 0x0;
+//                            MotorData_sendmsg(1, MSGT_I2C_MOTOR_DATA, (void *) done_msg);
+//                        }
+//                        else if (msgbuffer[1] == 0x34) {
+//                            done_msg[0] = 2;
+//                            MotorData_sendmsg(1, MSGT_I2C_MOTOR_DATA, (void *) done_msg);
+//                        }
 //                        uart_send(length, msgbuffer);
                     }
                     if (length == 23) { // sensor data
