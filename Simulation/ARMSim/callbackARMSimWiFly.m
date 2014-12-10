@@ -7,10 +7,19 @@ function callbackARMSimWiFly( obj, event, h, AC, otherWiFly )
 % Keep around a persistent array that we add data to as we receive it.
 % We also keep around the current plot axis data.
 %global dataBuffer;
-
+persistent dataBuffer;
 % We are in the callback because we received some data. We calculate
 % how much and then read it into a data array.
 bytesAvailable = obj.BytesAvailable;
 [recievedByte, ~, ~] = fread(obj, 1, 'char');
-fwrite(otherWiFly,recievedByte);
+if (length(dataBuffer) == 0)
+    dataBuffer = [recievedByte];
+else
+    dataBuffer = [dataBuffer, recievedByte];
+end
+if (recievedByte == 254)
+    dataBuffer = [];
+elseif (recievedByte == 255)
+    fwrite(otherWiFly,dataBuffer);
+end
 end
