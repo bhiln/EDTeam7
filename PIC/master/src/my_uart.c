@@ -25,7 +25,6 @@ void uart_recv_int_handler() {
             msgCountEcho[2] = readin[0];
             msgCountEcho[3] = 0xFF;
             uart_send(4, msgCountEcho);
-            
 
             uc_ptr->cmd_count = 0;
         } else {

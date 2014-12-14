@@ -2,7 +2,8 @@
 stop(ARMSimTimer);
 
 % Close WiFly FID
-fclose(ioARMSimWiFly);
+fclose(ioARMWiFly);
+fclose(ioRovWiFly);
 %close(AC.f);
 
 % clear figure

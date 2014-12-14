@@ -23,17 +23,23 @@ h = 1;
 % 2. Connect to WiFly and setup serial callback
 % You will have to change this to agree with your WiFly
 % Note that I have set up the WiFly to have a baud rate of 57600
-ioARMSimWiFly = serial('COM5','BaudRate',57600);
-AC = ARMController(ioARMSimWiFly);
+ioARMWiFly = serial('COM6','BaudRate',57600);
+ioRovWiFly = serial('COM5','BaudRate',57600);
+AC = ARMController(ioRovWiFly);
 %ntimes = commandGUI(ioARMSimWiFly);
 
 % Note that we will pass the figure handle to the timer callback
 % We will use this handle when we update our data plot
-ioARMSimWiFly.BytesAvailableFcnCount = 1;
-ioARMSimWiFly.BytesAvailableFcnMode = 'byte';
-ioARMSimWiFly.BytesAvailableFcn = {@callbackARMSimWiFly,h,AC};
+ioARMWiFly.BytesAvailableFcnCount = 1;
+ioARMWiFly.BytesAvailableFcnMode = 'byte';
+ioARMWiFly.BytesAvailableFcn = {@callbackARMSimWiFly,h,AC,ioRovWiFly};
 
-fopen(ioARMSimWiFly);
+ioRovWiFly.BytesAvailableFcnCount = 1;
+ioRovWiFly.BytesAvailableFcnMode = 'byte';
+ioRovWiFly.BytesAvailableFcn = {@callbackRovSimWiFly,h,AC,ioARMWiFly};
+
+fopen(ioARMWiFly);
+fopen(ioRovWiFly);
 
 % ioARMSimWiFly.ReadAsyncMode = 'manual';
 
@@ -43,7 +49,7 @@ fopen(ioARMSimWiFly);
 ARMSimTimer = timer;
 ARMSimTimer.Period         = 1;
 ARMSimTimer.ExecutionMode  = 'fixedRate';
-ARMSimTimer.TimerFcn       = {@callbackARMSimTimer,ioARMSimWiFly};
+ARMSimTimer.TimerFcn       = {@callbackARMSimTimer,ioRovWiFly};
 ARMSimTimer.BusyMode       = 'drop';
 
 %start(ARMSimTimer);
