@@ -87,10 +87,10 @@ static portTASK_FUNCTION(updateTaskCommand, pvParameters)
 
     uint8_t index = 0;
 
-    uint8_t defaultJoyLeft[2]  = {5, 10};
-    uint8_t defaultJoyRight[2] = {5, 10};
-    uint8_t defaultJoyUp[2]    = {5, 10};
-    uint8_t defaultJoyDown[2]  = {5, 10};
+    uint8_t defaultJoyLeft[2]  = {20, 50};
+    uint8_t defaultJoyRight[2] = {20, 50};
+    uint8_t defaultJoyUp[2]    = {20, 50};
+    uint8_t defaultJoyDown[2]  = {20, 50};
 
 	// Like all good tasks, this should never exit.
 	for(;;)
@@ -132,19 +132,19 @@ static portTASK_FUNCTION(updateTaskCommand, pvParameters)
                 execCommand(devI2C0, dataLCD, &index, CMD_STOP, 0, 0);
 
             // Query the PIC for a complete command.
-            uint8_t query = 0x0B; 
-            portBASE_TYPE retI2C = vtI2CEnQ(devI2C0, MSG_TYPE_I2C_ACK, SLAVE_ADDR, sizeof(query), &query, 1);
-            if(retI2C != pdTRUE)
-            {
-                sprintf(eventsMsg, "Error: unable to communicate over I2C");
-                sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
-                VT_HANDLE_FATAL_ERROR(retI2C);
-            }
-			else
-			{
-				sprintf(eventsMsg, "Sending query for command ack");
-            	sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
-			}
+            //uint8_t query = 0x0B; 
+            //portBASE_TYPE retI2C = vtI2CEnQ(devI2C0, MSG_TYPE_I2C_ACK, SLAVE_ADDR, sizeof(query), &query, 1);
+            //if(retI2C != pdTRUE)
+            //{
+            //    sprintf(eventsMsg, "Error: unable to communicate over I2C");
+            //    sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
+            //    VT_HANDLE_FATAL_ERROR(retI2C);
+            //}
+			//else
+			//{
+			//	sprintf(eventsMsg, "Sending query for command ack");
+            //	sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
+			//}
 			break;
         }
         case MSG_TYPE_CMD:
@@ -184,7 +184,6 @@ bool execCommand(vtI2CStruct* devI2C0, structLCD* dataLCD, uint8_t* index, uint8
     cmd[CMD_TERM] = 0xFF;
 
 	// Send command over I2C.
-    writeDebug(PIN_DEBUG_0, 1);
     portBASE_TYPE retI2C = vtI2CEnQ(devI2C0, MSG_TYPE_I2C_CMD, SLAVE_ADDR, sizeof(cmd), cmd, 0);
     if(retI2C != pdTRUE)
     {

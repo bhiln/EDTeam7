@@ -21,6 +21,7 @@ void createMatrix(Matrix* A)
     for(i = 0; i < r; i++)
     {
         A->rowVectors[i].n = c;
+        A->rowVectors[i].allocated = false;
         createVector(&(A->rowVectors[i]));
     }
     A->allocated = true;

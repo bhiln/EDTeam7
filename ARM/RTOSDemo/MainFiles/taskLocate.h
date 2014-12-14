@@ -208,8 +208,8 @@ void updateMap(Rover* rover, Map* map, Matrix* T, Matrix* result);
  * State Functions
  **/
 
-void execScan(vtI2CStruct* devI2C0, structCommand* dataCommand, Rover* rover, Map* map);
-void execRoam(vtI2CStruct* devI2C0);
+void execScan(structCommand* dataCommand, Rover* rover, Map* map);
+void execRoam(vtI2CStruct* devI2C0, structCommand* dataCommand, Rover* rover, Map* map);
 void execGo(vtI2CStruct* devI2C0);
 void execAlign(vtI2CStruct* devI2C0);
 void execRamp(vtI2CStruct* devI2C0);
@@ -219,14 +219,12 @@ void execDefault();
  * Helper Functions
  **/
 
+void sendCommand(structCommand* dataCommand, Rover* rover, uint8_t type, uint8_t value, uint8_t speed);
+
 // Secondary state execution functions.
-bool execMoveAlong(vtI2CStruct* devI2C0);
-bool execParallelize(vtI2CStruct* devI2C0);
-bool execMoveZigzag(vtI2CStruct* devI2C0);
-bool execTurnCorner(vtI2CStruct* devI2C0);
-bool execTurnAround(vtI2CStruct* devI2C0);
-bool execMoveToward(vtI2CStruct* devI2C0);
-bool execMoveTowardRamp(vtI2CStruct* devI2C0);
+bool execMoveAlong(structCommand* dataCommand, Rover* rover, Map* map);
+
+uint8_t argminArray(float* values, uint8_t elements);
 
 char* stateMotion2String(StateMotion f)
 {

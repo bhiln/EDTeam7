@@ -159,7 +159,8 @@ static portTASK_FUNCTION(updateTaskLocate, pvParameters)
 			.n = 3,
 			.allocated = false
 		},
-        .orient = 0.0
+        .orient = 0.0,
+        .ack = false
     };
     createMatrix(&(rover.curObstacles));
     createMatrix(&(rover.curCorners));
@@ -185,10 +186,12 @@ static portTASK_FUNCTION(updateTaskLocate, pvParameters)
     // Write the initial configuration to the LCD.
     char infoMsg[QUEUE_BUF_LEN_LCD];
 
+    uint8_t wait = 0;
+    bool initialized = false;
+
     // Like all good tasks, this should never exit.
 	for(;;)
 	{
-        // Test matrix.
         toggleLED(PIN_LED_3);
 
         // Wait for a message from the queue.
@@ -205,6 +208,17 @@ static portTASK_FUNCTION(updateTaskLocate, pvParameters)
 		{
 		case MSG_TYPE_TIMER_LOCATE:
 		{
+            // Given the rover time to initialize before testing.
+            wait++;
+            if(wait == 10)
+                initialized = true;
+            if(initialized)
+			{
+                //execMoveAlong(dataCommand, &rover, &map);
+                float blah = 1;
+				blah++;
+			}
+
             // Update the LCD info tab.
             strcpy(infoMsg, stateMotion2String(rover.curStates.curStateMotion));
             sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_MOTION, QUEUE_BUF_LEN_LCD, infoMsg, portMAX_DELAY);
@@ -212,6 +226,8 @@ static portTASK_FUNCTION(updateTaskLocate, pvParameters)
             sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_GOAL_PRIME, QUEUE_BUF_LEN_LCD, infoMsg, portMAX_DELAY);
             sprintf(infoMsg, "%u", map.map.rows * map.map.cols);
             sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_SIZE_MAP, QUEUE_BUF_LEN_LCD, infoMsg, portMAX_DELAY);
+
+                           
            	switch(rover.curStates.curStatePrimeGoal)
             {
             case scan:
@@ -270,18 +286,23 @@ static portTASK_FUNCTION(updateTaskLocate, pvParameters)
         }
         case MSG_TYPE_LOCATE:
         {
-            // Update the rover.
-            updateRover(&rover, &map, msg.buf);
+            if(rover.curStates.curStateMotion == stop)
+            {
+                // Update the rover.
+                //sprintf(eventsMsg, "%f%f%f%f%f%f%f%f", msg.buf[2], msg.buf[3], msg.buf[4], msg.buf[5], msg.buf[6], msg.buf[7], msg.buf[8], msg.buf[9]);
+			    //sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_SENSORS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
+ 
+                updateRover(&rover, &map, msg.buf);
 
-            // Update the map.
-            updateMap(&rover, &map, &T, &result);
-             
+                // Update the map.
+                //updateMap(&rover, &map, &T, &result);
+            } 
             break;
         }
         case MSG_TYPE_ACK:
         {
             // Grab the acknowledgement from the motor controller.
-            rover.ack = (bool)msg.buf[0];
+            rover.ack = (bool)(*msg.buf);
             break;
         }
         default:
@@ -307,7 +328,7 @@ void updateRover(Rover* rover, Map* map, float* data)
     rover->curRawRamp.buf[1]  = data[1];
     rover->curRawRamp.buf[2]  = data[10];
 
-    //// Update the current obstacles.
+    // Update the current obstacles.
     float B[4];
     for(i = 0; i < 4; i++)
         B[i] = (rover->curRawObst.buf[i] + rover->curRawObst.buf[i + 1])/2;
@@ -328,6 +349,7 @@ void updateRover(Rover* rover, Map* map, float* data)
     rover->curObstacles.rowVectors[0].buf[3] = IR4;
     rover->curObstacles.rowVectors[1].buf[3] = 0;
 
+    // No time for this...
     // Update the current corners.
     
     // Update the current ramps.
@@ -350,55 +372,356 @@ void updateMap(Rover* rover, Map* map, Matrix* T, Matrix* result)
     for(i = 0; i < 4; i++)
     {
         multiplyMatrix2Vector(&(result->rowVectors[direction]), T, &(rover->curObstacles.rowVectors[direction])); 
-        //if(result.rowVectors[i].buf[0] < SENS_DIST_CUTOFF && result.rowVectors[i].buf[1] < SENS_DIST_CUTOFF)
-        //{
-        //    int r = (int)(round(result.rowVectors[i].buf[1]));    
-        //    int c = (int)(round(result.rowVectors[i].buf[0])); 
+        if(result->rowVectors[i].buf[0] < SENS_DIST_CUTOFF && result->rowVectors[i].buf[1] < SENS_DIST_CUTOFF)
+        {
+            int r = (int)(round(result->rowVectors[i].buf[1]));    
+            int c = (int)(round(result->rowVectors[i].buf[0])); 
 
-        //    // Convert to global coordinates.
-        //    int rp = r + map->radix.buf[0];
-        //    int cp = c + map->radix.buf[1];
+            // Convert to global coordinates.
+            int rp = r + map->radix.buf[0];
+            int cp = c + map->radix.buf[1];
 
-        //    // See if the new point fits on the map, otherwise reallocate.
-        //    if(rp < 0) 
-        //    {
-        //        recreateMatrix(&(map->map), SIDE_BACK);
-        //        rp = rp + 2*(map->radix.buf[0]);
-        //        cp = cp;
-        //        map->radix.buf[0] = 3*(map->radix.buf[0]);
-        //        map->radix.buf[1] = map->radix.buf[1]; 
-        //    }
-        //    if(rp > map->map.rows)
-        //    {
-        //        recreateMatrix(&(map->map), SIDE_FRONT);
-        //        rp = rp;
-        //        cp = cp;
-        //        map->radix.buf[0] = map->radix.buf[0];
-        //        map->radix.buf[1] = map->radix.buf[1];
-        //    }
-        //    if(cp < 0)
-        //    {
-        //        recreateMatrix(&(map->map), SIDE_LEFT);
-        //        rp = rp;
-        //        cp = cp + 2*(map->radix.buf[0]);
-        //        map->radix.buf[0] = map->radix.buf[0];
-        //        map->radix.buf[1] = 3*(map->radix.buf[1]);
+            // See if the new point fits on the map, otherwise reallocate.
+            if(rp < 0) 
+            {
+                recreateMatrix(&(map->map), SIDE_BACK);
+                rp = rp + 2*(map->radix.buf[0]);
+                cp = cp;
+                map->radix.buf[0] = 3*(map->radix.buf[0]);
+                map->radix.buf[1] = map->radix.buf[1]; 
+            }
+            if(rp > map->map.rows)
+            {
+                recreateMatrix(&(map->map), SIDE_FRONT);
+                rp = rp;
+                cp = cp;
+                map->radix.buf[0] = map->radix.buf[0];
+                map->radix.buf[1] = map->radix.buf[1];
+            }
+            if(cp < 0)
+            {
+                recreateMatrix(&(map->map), SIDE_LEFT);
+                rp = rp;
+                cp = cp + 2*(map->radix.buf[0]);
+                map->radix.buf[0] = map->radix.buf[0];
+                map->radix.buf[1] = 3*(map->radix.buf[1]);
 
-        //    }
-        //    if(cp > map->map.cols)
-        //    {
-        //        recreateMatrix(&(map->map), SIDE_RIGHT);
-        //        map->radix.buf[0] = map->radix.buf[0];
-        //        map->radix.buf[1] = map->radix.buf[1];
-        //    }
-        //}
+            }
+            if(cp > map->map.cols)
+            {
+                recreateMatrix(&(map->map), SIDE_RIGHT);
+                map->radix.buf[0] = map->radix.buf[0];
+                map->radix.buf[1] = map->radix.buf[1];
+            }
+        }
     }
 
     // Fit the new data to the map.
-    //for(i = 0; i < 4; i++)
+    for(i = 0; i < 4; i++)
+    {
+        uint16_t r = (uint16_t)(round(result->rowVectors[0].buf[i]));
+        uint16_t c = (uint16_t)(round(result->rowVectors[1].buf[i]));
+        map->map.rowVectors[r].buf[c] = 1.0;
+    }
+}
+
+
+void sendCommand(structCommand* dataCommand, Rover* rover, uint8_t type, uint8_t value, uint8_t speed)
+{
+    // Update the rover's motion state.
+    switch(type) 
+    {
+    case CMD_MF:
+    {
+        rover->curStates.curStateMotion = moveForward;
+        break;
+    }
+    case CMD_TL:
+    {
+        rover->curStates.curStateMotion = turnLeft;
+        break;
+    }
+    case CMD_TR:
+    {
+        rover->curStates.curStateMotion = turnRight;
+        break;
+    }
+    case CMD_STOP:
+    {
+        rover->curStates.curStateMotion = stop;
+        break;
+    }
+    case CMD_MB:
+    {
+        rover->curStates.curStateMotion = moveBackward;
+        break;
+    }
+    default:
+    {
+        // Error..
+        break;
+    }
+    }
+
+    // Now send the command.
+    uint8_t cmd[3];
+    cmd[0] = type;
+    cmd[1] = value;
+    cmd[2] = speed;
+    sendValueMsgCommand(dataCommand, MSG_TYPE_CMD, cmd, portMAX_DELAY);
+}
+
+void execRoam(vtI2CStruct* devI2C0, structCommand* dataCommand, Rover* rover, Map* map)
+{
+    static bool roamStop = false;
+    static bool (*roamType)(vtI2CStruct*);
+
+    //switch(rover->curStates.curStateRoamSecGoal)
     //{
-    //    uint16_t r = (uint16_t)(round(result.rowVectors[0].buf[i]));
-    //    uint16_t c = (uint16_t)(round(result.rowVectors[1].buf[i]));
-    //    map->map.rowVectors[r].buf[c] = 1.0;
+    //case roamInit:
+    //{
+        // Find the nearest wall.
+    //    // Get the closest object to the rover and the side it's on.
+    //    uint8_t side;
+    //    uint16_t closestObject[OBJ_LEN];
+    //    getClosestCurObj(&side, closestObject);
+
+    //    // Determine the roam type.
+    //    uint8_t thresh = 2;
+    //    if(closestObject[OBJ_DIST] < thresh)
+    //        roamType = &execMoveAlong;
+    //    else
+    //        roamType = &execMoveZigzag;
+
+    //    // Start roaming.
+    //    roamStop = roamType(devI2C0);
+
+    //    // Change local secondary state.
+    //    curStates.curStateRoamSecGoal = roamExec; 
+    //    break;
     //}
+    //case roamExec:
+    //{
+    //    if(ack && !roamStop)
+    //    {
+    //        ack = false;
+    //        roamStop = roamType(devI2C0);
+    //    }
+    //    if(ack && roamStop)
+    //    {
+    //        // Change the local secondary state.
+    //        curStates.curStateRoamSecGoal = roamComp;
+    //    }
+
+    //    // Check to see if a ramp was found.
+    //    if(anyRamps(curRamp))
+    //    {
+    //        targetRamp[OBJ_DIST]  = curRamp[OBJ_DIST];
+    //        targetRamp[OBJ_ANGLE] = curRamp[OBJ_ANGLE];
+    //        roamStop = true;
+    //    }
+    //    break;
+    //}
+    //case roamComp:
+    //{
+    //    // Change the primary state.
+    //    if(targetRamp[OBJ_DIST] > 0)
+    //        curStates.curStatePrimeGoal = go;
+    //    else
+    //        curStates.curStatePrimeGoal = scan;
+
+    //    // Change the local secondary state.
+    //    curStates.curStateRoamSecGoal = roamInit;
+    //    break;
+    //}
+	//case roamError:
+	//{
+	//	break;
+	//}
+    //default:
+    //{
+        // Error.
+    //    break;
+    //}
+    //}
+}
+
+bool execMoveAlong(structCommand* dataCommand, Rover* rover, Map* map)
+{
+    typedef enum
+    {
+        findNearestWall,
+        turn2NearestWall,
+        turn2NearestWallIdle,
+        move2NearestWall,
+        move2NearestWallIdle,
+        turn2Parallel,
+        turn2ParallelIdle,
+        moveAlongWall,
+        moveAlongWallIdle,
+    } StateMoveAlong;
+
+    bool retValue = false;
+    static StateMoveAlong stateMoveAlong = findNearestWall;
+
+    float dist2Wall = 0;
+    uint8_t turnDeg = 0;
+    uint8_t turnCmd = 0; 
+
+    switch(stateMoveAlong)
+    {
+    case findNearestWall:
+    {
+        // Based on the current sensor data, find the nearest wall and turn to it.
+        if(rover->curStates.curStateMotion == stop)
+        {
+            // Find the sensor with the minimum distance. 
+            uint8_t minSensor = argminArray(rover->curRawObst.buf, 8);
+            dist2Wall = rover->curRawObst.buf[minSensor];
+            switch(minSensor)
+            {
+            case SENS_OBST_IR10:
+            {
+                // No need to turn.  
+                stateMoveAlong = move2NearestWall;
+                break;
+            }
+            case SENS_OBST_IR11:
+            {
+                // No need to turn.
+                stateMoveAlong = move2NearestWall;
+                break;
+            }
+            case SENS_OBST_IR20:
+            {
+                // Turn 90 degrees.
+                turnDeg = 90;
+                turnCmd = CMD_TR;
+                stateMoveAlong = turn2NearestWall;
+                break;
+            }
+            case SENS_OBST_IR21:
+            {
+                // Turn 90 degrees.
+                turnDeg = 90;
+                turnCmd = CMD_TR;
+                stateMoveAlong = turn2NearestWall;
+                break;
+            }
+            case SENS_OBST_IR30:
+            {
+                // Turn 180 degrees.
+                turnDeg = 180;
+                turnCmd = CMD_TR;
+                stateMoveAlong = turn2NearestWall;
+                break;
+            }
+            case SENS_OBST_IR31:
+            {
+                // Turn 180 degrees.
+                turnDeg = 180;
+                turnCmd = CMD_TR;
+                stateMoveAlong = turn2NearestWall;
+                break;
+            }
+            case SENS_OBST_IR40:
+            {
+                // Turn 180 degrees.
+                turnDeg = 90;
+                turnCmd = CMD_TL;
+                stateMoveAlong = turn2NearestWall;
+                break;
+            }
+            case SENS_OBST_IR41:
+            {
+                // Turn 180 degrees.
+                turnDeg = 90;
+                turnCmd = CMD_TL;
+                stateMoveAlong = turn2NearestWall;
+                break;
+            }
+            default:
+            {
+                //Error...
+                break;
+            }
+            }
+        }
+        break;
+    }
+    case turn2NearestWall:
+    {
+        uint8_t cmdValue = turnDeg/2;
+        uint8_t cmdSpeed = 5;
+        uint8_t cmdType = turnCmd;
+        sendCommand(dataCommand, rover, cmdType, cmdValue, cmdSpeed);
+        stateMoveAlong = turn2NearestWallIdle;
+        break;
+    }
+    case turn2NearestWallIdle:
+    {
+        if(rover->ack)
+        {
+            rover->ack = false;
+            rover->curStates.curStateMotion = stop; 
+            stateMoveAlong = move2NearestWall;
+        }
+        break;
+    }
+    case move2NearestWall:
+    {
+        uint8_t cmdType  = CMD_MF;
+        uint8_t cmdValue = dist2Wall - 3;
+        uint8_t cmdSpeed = 5;
+        sendCommand(dataCommand, rover, cmdType, cmdValue, cmdSpeed);
+        stateMoveAlong = move2NearestWallIdle;
+        break;
+    }
+    case move2NearestWallIdle:
+    {
+        if(rover->ack)
+        {
+            rover->ack = false;
+            rover->curStates.curStateMotion = stop; 
+            uint8_t minSensor = argminArray(rover->curRawObst.buf, 8);
+            if(minSensor < 20)
+                stateMoveAlong = turn2Parallel;
+            else
+                stateMoveAlong = findNearestWall;
+        }
+        break;
+    }
+    case turn2Parallel:
+    {
+        break;
+    }
+    case moveAlongWall:
+    {
+        retValue = true;
+        break;
+    }
+    default:
+    {
+        // Error..       
+        break;
+    }
+    }
+    return retValue;
+}
+
+uint8_t argminArray(float* values, uint8_t elements)
+{
+    uint8_t smallestArg = 0;
+    float minValue = values[0];
+
+    uint8_t i; 
+    for (i = 1; i < elements; i++)
+    {
+        if(values[i] < minValue)
+        {
+            minValue = values[i];
+            smallestArg = i;
+        }
+    }
+    return smallestArg;
 }

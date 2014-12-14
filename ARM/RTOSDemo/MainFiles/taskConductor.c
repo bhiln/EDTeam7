@@ -76,25 +76,36 @@ static portTASK_FUNCTION(updateTaskConductor, pvParameters)
                         sprintf(eventsMsg, "Error: bad I2C connection");
                         sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
                     }
-
-                    // If values[0] is 0, then we have no sensor data.
-                    else if(values[0] == 0)
-                    {
-                        sprintf(eventsMsg, "No received sensor data");
-                        sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
-                    }
-
-                    // If values[0] is 1, then we have new sensor data.
-                    else if(values[0] == 1)
-                    {
-                        sprintf(eventsMsg, "Received new sensor data");
-                        sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
-                        sendValueMsgSensors(dataSensors, MSG_TYPE_SENSORS, &values[1], portMAX_DELAY);
-                    }
                     else
                     {
-                        sprintf(eventsMsg, "Error: unrecognized sensor message header");
-                        sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
+                        // If values[23] is 1, then the command is completed.
+                        if(values[22] == 0x01)
+						{
+                            sprintf(eventsMsg, "Command completed");
+                            sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
+							float ack = (float)values[22];
+                            sendValueMsgLocate(dataLocate, MSG_TYPE_ACK, &ack, portMAX_DELAY);
+						}
+                        
+                        // If values[0] is 0, then we have no sensor data.
+                        if(values[0] == 0)
+                        {
+                            sprintf(eventsMsg, "No received sensor data");
+                            sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
+                        }
+
+                        // If values[0] is 1, then we have new sensor data.
+                        else if(values[0] == 0xFE)
+                        {
+                            sprintf(eventsMsg, "Received new sensor data");
+                            sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
+                            sendValueMsgSensors(dataSensors, MSG_TYPE_SENSORS, &values[2], portMAX_DELAY);
+                        }
+                        else
+                        {
+                            sprintf(eventsMsg, "Error: unrecognized sensor message header");
+                            sendValueMsgLCD(dataLCD, MSG_TYPE_LCD_EVENTS, QUEUE_BUF_LEN_LCD, eventsMsg, portMAX_DELAY);
+                        }
                     }
                     break;
                 }

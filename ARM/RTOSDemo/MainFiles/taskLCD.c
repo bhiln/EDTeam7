@@ -112,6 +112,9 @@ static portTASK_FUNCTION(updateTaskLCD, pvParameters)
             .totalLines = SCREEN_HEIGHT_SMALL - 4,
             .curLine    = 4,
             .curIndex   = 0,
+        },
+        .tabSensors = {
+            .sensors = (char*)malloc(QUEUE_BUF_LEN_LCD * sizeof(char))
         }
     };
     // Clear the contents of the info tab.
@@ -122,6 +125,7 @@ static portTASK_FUNCTION(updateTaskLCD, pvParameters)
     memset(tabData.tabInfo.cmd, 0, QUEUE_BUF_LEN_LCD);
     memset(tabData.tabInfo.sensorData0, 0, QUEUE_BUF_LEN_LCD);
     memset(tabData.tabInfo.sensorData1, 0, QUEUE_BUF_LEN_LCD);
+    memset(tabData.tabSensors.sensors, 0, QUEUE_BUF_LEN_LCD);
     //tabData.tabInfo.motion[0]     = '\0';
     //tabData.tabInfo.goalPrime[0]  = '\0';
     //tabData.tabInfo.goalSec[0]    = '\0';
@@ -348,6 +352,8 @@ void drawSensors(TabSensors* tabSensors)
     unsigned char initMsg[] = "1 :: Sensors";
     GLCD_DisplayString(0, centerStr(initMsg, 1, 1), 1, initMsg);
 	GLCD_ClearWindow(30, FONT_LARGE_HEIGHT + 2, SCREEN_WIDTH_PIX - 2*30, 2, DarkCyan);
+    GLCD_SetTextColor(Green);
+    GLCD_DisplayString(4, 0, 0, (unsigned char*)(tabSensors->sensors));	
 }
 
 
@@ -489,7 +495,16 @@ void updateTabEvents(TabData* tabData, msgLCD* msg)
 
 void updateTabSensors(TabData* tabData, msgLCD* msg)
 {
-	GLCD_SetTextColor(Green);
+    TabSensors* tabSensors = &(tabData->tabSensors);
+    strcpy(tabSensors->sensors, (const char*)msg);
+    if(tabData->curTab == sensors)
+    {
+        GLCD_ClearLn(4, 0);
+        GLCD_SetTextColor(Green);
+        tabSensors->sensors[0] = ' ';
+        tabSensors->sensors[1] = ' ';
+        GLCD_DisplayString(4, 0, 0, (unsigned char*)(tabSensors->sensors));
+    }
 }
 
 void updateTabMap(TabData* tabData, msgLCD* msg)

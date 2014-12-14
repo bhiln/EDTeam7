@@ -121,17 +121,17 @@ typedef uint8_t bool;
 
 // Sensors on the rover.
 #define SENS_LEN 		    11
-#define SENS_IR00           0
-#define SENS_IR01           1
-#define SENS_IR10           2
-#define SENS_IR11           3
-#define SENS_IR20           4
-#define SENS_IR21           5
-#define SENS_IR30           6
-#define SENS_IR31           7
-#define SENS_IR40           8
-#define SENS_IR41           9
-#define SENS_AC00           10
+#define SENS_RAMP_IR00      0
+#define SENS_RAMP_IR01      1
+#define SENS_RAMP_AC00      2
+#define SENS_OBST_IR10      0
+#define SENS_OBST_IR11      1
+#define SENS_OBST_IR20      2
+#define SENS_OBST_IR21      3
+#define SENS_OBST_IR30      4
+#define SENS_OBST_IR31      5
+#define SENS_OBST_IR40      6
+#define SENS_OBST_IR41      7
 
 // Command message protocol.
 #define CMD_LEN             7

@@ -105,7 +105,7 @@ typedef struct __TabEvents
 
 typedef struct __TabSensors
 {
-    uint8_t blah;
+    char* sensors;
 } TabSensors;
 
 typedef struct __TabMap
