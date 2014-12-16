@@ -72,7 +72,21 @@ If a message is lost on the way from the ARM PIC to the rover, the rover will ne
 If the acknowledge message is lost on the way from the rover to the ARM PIC, then the ARM still times out and sends the message again. The rover will receive it, but know that it has already executed that command, and throw it out. It will, however, still send an acknowledge message to alert the ARM of a successful transfer.
 If the data is corrupt or not what the ARM expected (Information exchange during pairing), then analysis will not be triggered and the data will stay in the message buffer until a clear byte from a real message is sent to clear out the message buffer.
 We decided that if a sensor message is missed by the ARM PIC, it is not very important and does not require a resend. This is because it will receive a new set of sensor data very soon which will render the missed data obsolete.
- 
+
+\subsection{ARM Simulation}
+\textbf{Controls}
+Controls were presented to the user as a GUI with buttons for forward, backward, left, right, left loop, and stop. There were sliders available for choosing turn angle, distance, and speed. When the user selects a command, the turn angle, distance, and speed are sent as the values currently displayed.
+
+\textbf{Mapping}
+The map, as well as obstacles and rover, are drawn on another GUI. The rover location is updated in real time\cite{real time} as the rover drives around, including vertical/lateral position and angle. Received sensor information is also drawn in real time. A line protruding from the rover at the sensor length is drawn to show current readings, and a blue x is drawn at the intersection point to show the edge of the physical object. This is very helpful when driving along a wall to show current readings, but also draw out the wall. It will also draw out any obstacles that it finds. Finally, past locations of the rover and colored in light blue to show it’s driving path.
+
+\footnote{real time}
+How it was originally planned and coded. Due to timing restraints and progress of other components, this was changed to a simpler trigger design to still function as designed given less data from the rover. Specifically, instead of redrawing the rover on the done moving message from the rover, it triggers on the motor message acknowledge. This redraws the rover when the message is first received by the rover instead of when the rover completes the instruction. This still allows for live updates to the user, however does not show the location of the rover as it is moving. Status updates are not used to show smooth movement, so the rover jumps from starting position to ending position. The capability is still in the code and will update when the status update is received. However, due to time conditions, those updates are not implemented on the rover end. This can be demonstrated, though, with the full software simulation.
+
+\subsection{Sensor Simulation}
+The sensor simulation, as it stands, does not fully implement all of the rover capabilities. It replicates all messages exchanged with the ARM PIC, and can simulate moving in real time. However, the sensor data that is generated is centered around a pre-set point, and varies a given amount (simulating noise and unclear readings). The values are not updated according to its surroundings when the rover is moving.
+
+
 
 \subsection{Analysis of Design}
 What was good about it? Give your reasoning to support this analysis.
