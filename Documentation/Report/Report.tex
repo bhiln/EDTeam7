@@ -6,6 +6,7 @@
 %		        Project proposal.
 %%------------------------------------------------------------------------------ 
 
+
 \input{./Preamble.tex}
 \input{./Definitions.tex}
 \input{./Programming.tex}
@@ -18,10 +19,24 @@
 \input{./Title.tex}
 
 \subsection{Introduction}
-In order to build and program a rover that is completely autonomous, constant cooperation between components is needed. These components were looked after by specific roles given to us - Algorithms, Motors, Sensors, and Simulations. Each role served a critical part of the end goal of successfully building an autonomous rover. Igor was tasked with handling the algorithms and figuring out how the rover should manipulate acquired data and use this data to operate in numerous situations. Danny was the one who was in charge of the motors and this meant correctly implementing a robust communication network throughout the entire system as well as making sure the motors moved exactly as how the ARM wanted. Leah was given the sensors role and she ... Brian was assigned the simulations role and this role meant that he would fill in ...
+In order to build and program a rover that is completely autonomous, constant cooperation between components is needed. These components were looked after by specific roles given to us - Algorithms, Motors, Sensors, and Simulations. Each role served a critical part of the end goal of successfully building an autonomous rover. Igor was tasked with handling the algorithms and figuring out how the rover should manipulate acquired data and use this data to operate in numerous situations. Danny was the one who was in charge of the motors and this meant correctly implementing a robust communication network throughout the entire system as well as making sure the motors moved exactly as how the ARM wanted. Leah was given the sensors role and she was tasked with ordering, setting up, and mounting all sensors, as well as communicating the data those sensors acquired to the rover master PIC for further processing.  The specific goals and overview of the sensors used in our design are discussed in the sensors section below.  Brian was assigned the simulations role and this role meant that he would fill in ...
 
 \subsection{Objectives}
-The main objective was to successfully build and program an autonomous rover. To complete this, the sensors would need to be mounted in key positions in order to read meaningful data. This sensor data would then need to be relayed to the ARM board which would use this sensor data to calculate a unobstructed path so that the rover would continue moving toward its destination. In order for the rover to initially move, the ARM board would send a motor command and the motor commands would be handled before eventually being sent to the motor controller to power the motors. These operations would continue until the rover has successfully gone from the starting point to the destination.
+The main objective was to successfully build and program an autonomous rover. To complete this, the sensors would need to be mounted in key positions in order to read meaningful data. This sensor data would then need to be relayed to the ARM board which would use this sensor data to calculate an unobstructed path so that the rover would continue moving toward its destination. In order for the rover to initially move, the ARM board would send a motor command and the motor commands would be handled before eventually being sent to the motor controller to power the motors. These operations would continue until the rover has successfully gone from the starting point to the destination.
+
+\subsection{Sensors Overview}
+This section will provide an overview of the sensors that were integrated into the final rover design this semester.  In the project description document, there were five specific goals outlined that the sensors needed to complete.  These goals were as follows: 
+i.	Configure and control all sensors such that they are accurately sampled at the rate dictated by the team API.
+ii.	In response to I2C queries from the Rover Master PIC, send out reports of sensor data according to the team API.
+iii.	Mount sensors on the rover.
+iv.	Develop power system for sensor system on the rover.
+v.	Implement display on the rover that gives immediate feedback on the functionality of the sensor system.
+Additionally, the project description documentation outlined the need to detect and traverse ramps during the final demonstration.  Although no parts of this goal were specifically assigned to the sensor role, they were an integral part of our plan to meet this requirement.  So, ramps will also be discussed in this section as they pertain to the sensors.
+The main role of the sensors involved the ability to detect objects and provide data that could be used to adjust the path of the rover to avoid obstacles.  After researching various options, infrared distance sensors were selected to perform this operation since they are efficient, accurate, and affordable.  We selected the SHARP GP2Y0A60SZLF analog distance sensor for a few advantages that it had in comparison to other IR sensors.  First, its operating speed was on the higher end of the spectrum relative to the alternative options, so it was able to read and process sensor data more quickly.  It also had a relatively broad range for the supply voltage required to power the sensor, which gave us more flexibility when developing the on-board power system.  Finally, it has a detection range from 10cm – 150 cm, which covers most of the range that would typically require a combination of short, medium, and long range IR sensors.  
+Two IR sensors were mounted on each side of the rover and spaced about seven inches apart.  There were two additional sensors for ramp detection that were placed on the front, center of the rover and spaced vertically.  Since the supply voltage needed for the motor encoders was within the range of possible supply voltages for the sensors, we were able to develop one power system for both systems, and create a more efficient design.  We placed two battery packs in parallel to prevent power from dipping below 5 volts and connected the rover master pic to the 5 volt source from the sabretooth motor controller.  This allowed us to use the 3.3 volt output from the rover master PIC (PIC18F46J50) to power the encoders and all of the sensors.  Additionally, each sensor output was connected to an analog input of the ADC on the sensor PIC (PIC18F45J10).  In accordance with our team API, every 350 milliseconds, the sensor data was acquired, converted, and saved to an internal data structure in the program written to process and communicate the sensor data.  This was accomplished using a timer interrupt, and interrupt associated with the ADC, and message queues to create a non-blocking and consistent solution.  
+The data from the sensors was required to be sent via I2C to the rover master pic whenever it was requested, so the I2C interface on the sensor pic was initialized as a slave and an interrupt was triggered every time data was requested.  In response to any such query for data, the latest twenty bytes of data (two per sensor) were sent to the rover master pic for further processing.  
+At the time of the final demonstration, the sensors were all able to read correct data at desired time intervals, and then successfully save and relay that data to the rover master PIC whenever it was requested.  The front two sensors were also able to distinguish between a wall (consistent data between the two vertically spaced sensors) and a ramp (top sensor produces data that represents an object slightly further away than the data returned from the lower sensors).
+Unfortunately, there were also a few shortcomings in the sensor system.  No on rover display of immediate sensor data was implemented.  Since the ARM was able to display this information on the built in LCD with no extra hardware, we chose to alternatively display the information through that interface.  Additionally, we ordered an accelerometer to use in our solution for ramp traversal.  We intended to use the accelerometer to determine when the ramp was being traversed (i.e. rover was tilted on the incline of the ramp), and when the top of the ramp was reached (i.e. rover was no longer tilted or on an incline).  However, as we neared the final demonstration date, we decided not to include the accelerometer in our final demonstration due to our time constraints.  
 
 \subsection{Analysis of Design}
 What was good about it? Give your reasoning to support this analysis.
@@ -51,28 +66,36 @@ Describe what we would have done differently to solve any design problem that ar
 \subsection{Pictures}
 Pictures of boards/sensors, both close ups and in place.
 \begin{center}
-	\includegraphics[scale=0.35]{Images/mark4.png}
-	PIC18F46J50
+\includegraphics[scale=0.35]{Images/mark4.png}
+PIC18F46J50
 \end{center}
 \begin{center}
-	\includegraphics[scale=0.35]{Images/mark3.png}
-	PIC18F45J10
+\includegraphics[scale=0.35]{Images/mark3.png}
+PIC18F45J10
 \end{center}
 \begin{center}
-	\includegraphics[scale=0.35]{Images/motorcontroller.png}
-	Sabertooth 2x12 Motor Controller
+\includegraphics[scale=0.35]{Images/motorcontroller.png}
+Sabertooth 2x12 Motor Controller
 \end{center}
 \begin{center}
-	\includegraphics[scale=0.35]{Images/motor.png}
-	Motor PIC
+\includegraphics[scale=0.35]{Images/motor.png}
+Motor PIC
 \end{center}
 \begin{center}
-	\includegraphics[scale=0.35]{Images/sensor.png}
-	Sensor PIC
+\includegraphics[scale=0.35]{Images/sensor.png}
+Sensor PIC
 \end{center}
 \begin{center}
-	\includegraphics[scale=0.35]{Images/rover.png}
-	Top view of rover
+\includegraphics[scale=0.35]{Images/sensorIP.png}
+One of the Sensors In Place on the Rover
+\end{center}
+\begin{center}
+\includegraphics[scale=0.35]{Images/sensorCU.png}
+A Close up of the IR Sensor
+\end{center}
+\begin{center}
+\includegraphics[scale=0.35]{Images/rover.png}
+Top view of rover
 \end{center}
 
 \subsection{Conclusion}
